@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\Role;
 
 class LoginController extends Controller
 {
@@ -25,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/portal';
 
 
     /**
@@ -41,10 +43,13 @@ class LoginController extends Controller
     public function authenticated(Request $request)
     {
         echo "lll";
-        exit;
+        $role=Role::get()->where('id',$request->user()->role_id)->first();
+       // echo $role->name;
+       // exit;
         // Logic that determines where to send the user
-        if($request->user()->hasRole('student')){
+        if($role->name=='student'){
             echo "ooo";
+            exit;
         }
         if($request->user()->hasRole('supervisor')){
           echo "lll";

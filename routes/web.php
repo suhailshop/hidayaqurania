@@ -15,9 +15,16 @@ Route::get('/', function () {
     return view('site.welcome');
 });
 
+Route::get('/home', function () {
+    return view('portal.welcome');
+});
 
 Auth::routes();
 
+Route::get('/logout', function(){
+    Auth::logout();
+    return Redirect::to('login');
+ });
 
 
 
@@ -31,17 +38,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
         return view('portal.welcome');
     });
 
-    Route::get('/login', function () {
-        return view('portal.login');
-    });
-
-    Route::get('/register', function () {
-        return view('portal.register');
-    });
-
-    Route::get('/password/reset', function () {
-        return view('portal.reset_password');
-    });
+   
 
 
 

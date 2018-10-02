@@ -15,13 +15,25 @@
                     {{ csrf_field() }}
                 <h3 class="font-green">حساب جديد</h3>
                 <p class="hint">  معلومات الشخصية: </p>
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
-                    <input class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" /> </div>
-                <div class="form-group">
+                    <input class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
+                    @if ($errors->has('firstname'))
+                    <span class="help-block">
+                        <strong>{{ 'المرجو ادخال الاسم العائلي'}}</strong>
+                    </span>
+                @endif
+                </div>
+                <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label class="control-label visible-ie8 visible-ie9">الاسم الشخصي</label>
-                    <input class="form-control placeholder-no-fix" type="text" placeholder="الاسم الشخصي" name="lastname" /> </div>
+                    <input class="form-control placeholder-no-fix" type="text" placeholder="الاسم الشخصي" name="lastname" /> 
+                    @if ($errors->has('lastname'))
+                    <span class="help-block">
+                        <strong>{{ 'المرجو ادخال الاسم الشخصي'}}</strong>
+                    </span>
+                @endif
+                </div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">الجنس</label>
                     <select name="gender" class="form-control">
