@@ -42,18 +42,18 @@ class LoginController extends Controller
 
     public function authenticated(Request $request)
     {
-        echo "lll";
         $role=Role::get()->where('id',$request->user()->role_id)->first();
-       // echo $role->name;
-       // exit;
-        // Logic that determines where to send the user
+       
         if($role->name=='student'){
-            echo "ooo";
-            exit;
+            echo "student";
+            
         }
-        if($request->user()->hasRole('supervisor')){
-          echo "lll";
+        else if ($role->name=='supervisor'){
+          echo "supervisor";
         }
+        else if ($role->name=='admin'){
+            echo "admin";
+          }
     }
    
 }

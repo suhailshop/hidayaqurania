@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Role;
+use App\Registration;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -39,6 +40,10 @@ class User extends Authenticatable
     public function users()
     {
       return $this->belongsToMany(User::class);
+    }
+
+    public function registrations(){
+      return $this->hasOne(Registration::class);
     }
 
 

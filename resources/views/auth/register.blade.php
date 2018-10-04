@@ -11,10 +11,10 @@
         <div class="content">
             
             <!-- BEGIN REGISTRATION FORM -->
-            <form class="register-form" action="{{ route('register') }}" method="POST" style="display: initial !important">
+            <form class="register-form" action="{{ route('register') }}" method="POST" style="display: initial !important" enctype="multipart/form-data">
                     {{ csrf_field() }}
                 <h3 class="font-green">حساب جديد</h3>
-                <p class="hint">  معلومات الشخصية: </p>
+                <p class="hint">  معلومات شخصية: </p>
                 <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
                     <input class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
@@ -42,7 +42,9 @@
                     </select></div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">تاريخ الولادة</label>
-                    <input class="form-control placeholder-no-fix" type="text" placeholder="تاريخ الولادة" name="BirthDate" /> </div>
+                    <input class="form-control placeholder-no-fix" type="text" placeholder="تاريخ الولادة" name="birthdate" />
+                    
+                </div>
                 <div class="form-group">
                         <label class="control-label visible-ie8 visible-ie9">مكان الولادة</label>
                         <input class="form-control placeholder-no-fix" type="text" placeholder="مكان الولادة" name="BirthCity" /> </div>
@@ -50,7 +52,9 @@
                 <div class="form-group">
                         <label class="control-label visible-ie8 visible-ie9">الجنسية</label>
                         <select name="nationalitie" class="form-control">
-                            <option value="">اختر الجنسية</option>
+                            @foreach($nationalities as $nationalitie)
+                        <option value="{{$nationalitie->ID}}">{{$nationalitie->Name}}</option>
+                        @endforeach
                         </select>
                     </div>
                 <div class="form-group">
@@ -79,7 +83,9 @@
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">الدولة</label>
                     <select name="countrie" class="form-control">
-                        <option value="">اختر الدولة</option>
+                        @foreach($countries as $countrie)
+                    <option value="{{$countrie->ID}}">{{$countrie->Name}}</option>
+                        @endforeach
                     </select>
                 </div>
                 
@@ -117,16 +123,28 @@
             
                 <div class="form-group">
                                 <label class="control-label visible-ie8 visible-ie9">رقم الهاتف 2</label>
-                                <input class="form-control placeholder-no-fix" type="number" placeholder="رقم الهاتف 2" name="Phonne1" /> </div>
+                                <input class="form-control placeholder-no-fix" type="number" placeholder="رقم الهاتف 2" name="Phonne2" /> </div>
                             
 
                 <p class="hint">  معلومات الحساب : </p>
-                <div class="form-group">
+                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">البريد الالكتروني</label>
-                    <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="البريد الالكتروني" name="email" /> </div>
-                <div class="form-group">
+                    <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="البريد الالكتروني" name="email" />
+                    @if ($errors->has('email'))
+                    <span class="help-block">
+                        <strong>{{ 'المرجو ادخال البريد الالكتروني'}}</strong>
+                    </span>
+                    @endif
+                 </div>
+                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">كلمة المرور</label>
-                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="كلمة المرور" name="password" /> </div>
+                    <input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="كلمة المرور" name="password" /> 
+                    @if ($errors->has('password'))
+                    <span class="help-block">
+                        <strong>{{ 'المرجو ادخال كلمة المرور'}}</strong>
+                    </span>
+                    @endif
+                </div>
                
                 <div class="form-actions">
                     <a href="{{route('login')}}" id="register-back-btn" class="btn green btn-outline">تسجيل الدخول</a>
