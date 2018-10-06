@@ -11,7 +11,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title> @yield('title') </title>
+    <title> @yield('pageTitle') </title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
@@ -103,7 +103,9 @@
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="{{url('/')}}">
-                <img src="{!! asset('assets/layouts/layout2/img/logo-default.png') !!}" alt="logo" class="logo-default" /> </a>
+                <h3>هداية قرانية</h3>
+                <!--<img src="{!! asset('assets/pages/img/logona.png') !!}" alt="logo" class="logo-default" /> </a>-->
+            </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
             </div>
@@ -137,7 +139,13 @@
                     @if (Auth::user())
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                            @if(auth()->user()->registration ==null)
                             <img alt="" class="img-circle" src="{!! asset('assets/layouts/layout2/img/avatar3_small.jpg') !!}" />
+                            
+                            @else 
+                            <img alt="" class="img-circle" src="{{ asset('storage/registrations/'.auth()->user()->registration->PictureURL) }}" />
+                            
+                            @endif
                             <span class="username username-hide-on-mobile">  {{auth()->user()->name }} </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
@@ -201,7 +209,9 @@
 
 
         <!-- BEGIN SIDEBAR -->
+        @if (Auth::user())
         @include('layout.sidemenu')
+        @endif
         <!-- END SIDEBAR -->
 
 

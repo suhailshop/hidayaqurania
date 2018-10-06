@@ -5,6 +5,7 @@ namespace App;
 use App\Role;
 use App\Registration;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -34,6 +35,7 @@ class User extends Authenticatable
 
     public function roles()
     {
+      
       return $this->belongsToMany(Role::class);
     }
 
@@ -42,8 +44,8 @@ class User extends Authenticatable
       return $this->belongsToMany(User::class);
     }
 
-    public function registrations(){
-      return $this->hasOne(Registration::class);
+    public function registration(){
+      return $this->hasOne(Registration::class,'User');
     }
 
 
@@ -53,8 +55,12 @@ class User extends Authenticatable
     }
 
     
-    public function hasRole($role)
+    public function hasRole($role,$id)
     {
-    return null !== $this->roles()->where('name', $role)->first();
+      $role_id = Role::where('name',$role)->first();
+
+      if($role_id->id==$id)
+        return true;
+      else return false;
     }
 }

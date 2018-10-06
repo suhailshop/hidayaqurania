@@ -42,7 +42,7 @@
                     </select></div>
                 <div class="form-group">
                     <label class="control-label visible-ie8 visible-ie9">تاريخ الولادة</label>
-                    <input class="form-control placeholder-no-fix" type="text" placeholder="تاريخ الولادة" name="birthdate" />
+                    <input class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
                     
                 </div>
                 <div class="form-group">

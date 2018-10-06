@@ -1,4 +1,6 @@
 @extends('layout.master')
+
+@section('pageTitle', 'الجامعات')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -78,7 +80,8 @@
                                     <td>{{$universitie->Fax}}</td>
                                     <td>{{$universitie->Email}}</td>
                                     <td>
-                                        <img src="{{ url('storage/universities/'.$universitie->Logo) }}" style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
+                                        <img src="{{ url('storage/universities/'.$universitie->Logo) }}" 
+                                            style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
                                     </td>
                                     <td>{{$universitie->ContractDate}}</td>
                                     <td>{{$universitie->Status}}</td>

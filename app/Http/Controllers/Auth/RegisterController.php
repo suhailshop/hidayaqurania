@@ -80,6 +80,9 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $request = request();
+       
+
         $user = new User;
         $user->name=$data['firstname'];
         $user->email =$data['email'];
@@ -110,16 +113,12 @@ class RegisterController extends Controller
         $registration->Status = 'yes';
         $registration->User = $user->id;
         $registration->Email = $data['email'];
-        if(isset($_FILES['PictureURL'])){
-            
-            $PictureURL = $_FILES['PictureURL']['tmp_name'];
-            Validator::make($data,[
-                'PictureURL' => 'required|file|max:1024',
-            ]);
-            $fileName = "fileName".time().'.'.$_FILES['PictureURL']['name'];
-            move_uploaded_file($fileName, 'registrations/'.$PictureURL);
-            $registration->PictureURL = $PictureURL;
-        }
+        $profileImage = $request->file('PictureURL');
+        $profileImageSaveAsName = time().'.'.$profileImage->getClientOriginalExtension();
+        $upload_path = 'public/registrations';
+        $profile_image_url = $upload_path . $profileImageSaveAsName;
+        $success = $profileImage->storeAs($upload_path, $profileImageSaveAsName);
+        $registration->PictureURL = $profileImageSaveAsName;
         $registration->save();
 
         return $user;

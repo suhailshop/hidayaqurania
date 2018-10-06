@@ -3,7 +3,7 @@
     <body class=" login">
         <!-- BEGIN LOGO -->
         <div class="logo">
-            <a href="index.html">
+        <a href="{{route('portalwelcome')}}">
                 <img src="{!! asset('assets/pages/img/logona.png') !!}" alt="" style="width: 7%" /> </a>
         </div>
         <!-- END LOGO -->

@@ -1,4 +1,6 @@
 @extends('layout.master')
+
+@section('pageTitle', 'جامعة جديدة')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
