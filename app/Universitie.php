@@ -12,7 +12,7 @@ class Universitie extends Model
     public $timestamps = true;
 
 
-    protected $dates = ['deleted_at'];
+    protected $dates = ['deleted_at','updated_at'];
 
     public function countrie()
     {

@@ -36,6 +36,14 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisors','Admin\SupervisorController@index')->name('allSupervisor');
     Route::get('/supervisors/add','Admin\SupervisorController@add')->name('addSupervisor');
 
+    
+    Route::get('/universities','Admin\UniversityController@index')->name('allUniversity');
+    Route::get('/universities/add','Admin\UniversityController@add')->name('addUniversity');
+    Route::post('/universities/add','Admin\UniversityController@addPost')->name('addUniversityPost');
+    Route::get('/universities/edit/{id}','Admin\UniversityController@edit')->name('editUniversity');
+    Route::post('/universities/edit','Admin\UniversityController@editPost')->name('editUniversityPost');
+    Route::get('/universities/delete/{i}','Admin\UniversityController@delete')->name('deleteUniversityPost');
+    
     Route::get('/countries','Admin\CountrieController@index')->name('allCountrie');
     Route::get('/countries/add','Admin\CountrieController@add')->name('addCountrie');
 
@@ -64,12 +72,6 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/sms/sendSup','Admin\SMSController@sendSup')->name('sendSMSSup');
     Route::get('/sms/sendStu','Admin\SMSController@sendStu')->name('sendSMSStu');
 
-    Route::get('/universities','Admin\UniversityController@index')->name('allUniversity');
-    Route::get('/universities/add','Admin\UniversityController@add')->name('addUniversity');
-    Route::post('/universities/add','Admin\UniversityController@addPost')->name('addUniversityPost');
-    Route::get('/universities/edit/{id}','Admin\UniversityController@edit')->name('editUniversity');
-    Route::post('/universities/edit','Admin\UniversityController@editPost')->name('editUniversityPost');
-    Route::get('/universities/delete/{i}','Admin\UniversityController@delete')->name('deleteUniversityPost');
 
 
 

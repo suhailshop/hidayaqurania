@@ -66,12 +66,41 @@ class UniversityController extends Controller
         return redirect()->route('allUniversity');
     }
     public function edit($id){
-        return view('portal.admin.universities.edit');
+        $countries = Countrie::all();
+        $universitie = Universitie::where('ID',$id)->first();
+
+        return view('portal.admin.universities.edit',compact('universitie','countries'));
     }
     public function editPost(Request $request){
-        return view('portal.admin.universities.index');
+        $fileName = $request->input('img');
+        if($request->hasFile('logo')){
+            $request->validate([
+                'logo' => 'required|file|max:1024',
+            ]);
+            $fileName = "fileName".time().'.'.request()->logo->getClientOriginalExtension();
+            
+            $request->logo->storeAs('public/universities',$fileName);
+        }
+        DB::table('universities')->where('ID',$request->input('id'))
+        ->update(array(
+            'Name'=>$request->input('name'),
+            'President'=>$request->input('president'),
+            'Countrie'=>$request->input('countrie'),
+            'City'=>$request->input('city'),
+            'Location'=>$request->input('location'),
+            'Phonne'=>$request->input('phonne'),
+            'Fax'=>$request->input('fax'),
+            'Email'=>$request->input('email'),
+            'ContractID'=>$request->input('contratid'),
+            'ContractDate'=>$request->input('contratdate'),
+            'Status'=>$request->input('status'),
+            'Logo'=>$fileName            
+        ));
+                
+        return redirect()->route('allUniversity');
     }
     public function delete($id){
-        return view('portal.admin.universities.index');
+        Universitie::where('ID', $id)->forcedelete(); 
+        return redirect()->route('allUniversity');
     }
 }

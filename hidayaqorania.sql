@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 02 oct. 2018 à 20:12
+-- Généré le :  Dim 07 oct. 2018 à 01:45
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -30,12 +30,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `books` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
-  `Name` varchar(255) NOT NULL,
-  `Author` varchar(100) DEFAULT NULL,
-  `ISBN` varchar(50) DEFAULT NULL,
-  `PictureURL` varchar(255) DEFAULT NULL,
-  `Status` varchar(100) NOT NULL
+  `Code` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `Name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `Author` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `ISBN` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `PictureURL` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `Status` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -52,8 +55,11 @@ CREATE TABLE `committees` (
   `Gender` varchar(50) NOT NULL,
   `Function` varchar(100) NOT NULL,
   `PictureURL` varchar(255) DEFAULT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -75,8 +81,11 @@ CREATE TABLE `committesreports` (
   `URL` varchar(45) NOT NULL,
   `President` int(11) NOT NULL,
   `Professor` int(11) NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -89,8 +98,11 @@ CREATE TABLE `configs` (
   `Code` varchar(50) NOT NULL,
   `DateStartInscription` date NOT NULL,
   `DateEndInscription` date NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -103,8 +115,18 @@ CREATE TABLE `countries` (
   `Code` varchar(50) NOT NULL,
   `Name` varchar(255) NOT NULL,
   `Flag` varchar(255) DEFAULT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `countries`
+--
+
+INSERT INTO `countries` (`ID`, `Code`, `Name`, `Flag`, `Status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', 'المغرب', 'mmmm', 'yes', '2018-10-06 23:17:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -118,8 +140,11 @@ CREATE TABLE `criterias` (
   `Name` varchar(100) NOT NULL,
   `ProposedScore` int(11) NOT NULL,
   `MaximumScore` int(11) NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -134,8 +159,11 @@ CREATE TABLE `divisions` (
   `Alias` varchar(20) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Order` int(11) NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -149,8 +177,11 @@ CREATE TABLE `examsfiles` (
   `Provide` int(11) NOT NULL,
   `Type` varchar(45) NOT NULL,
   `URL` varchar(255) NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -169,8 +200,10 @@ CREATE TABLE `faculties` (
   `Fax` varchar(50) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `Logo` varchar(255) DEFAULT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -185,8 +218,10 @@ CREATE TABLE `helps` (
   `Price` decimal(7,2) NOT NULL,
   `DateTime` datetime NOT NULL,
   `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `Searcher` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -198,8 +233,18 @@ CREATE TABLE `nationalities` (
   `ID` int(11) NOT NULL,
   `Code` varchar(50) NOT NULL,
   `Name` varchar(100) NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `nationalities`
+--
+
+INSERT INTO `nationalities` (`ID`, `Code`, `Name`, `Status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, '1', 'مغربية', 'yes', '2018-10-06 23:17:03', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -219,8 +264,10 @@ CREATE TABLE `provides` (
   `InterviewDateTime` datetime DEFAULT NULL,
   `InterviewLocation` varchar(100) DEFAULT NULL,
   `InterviewResult` decimal(5,2) DEFAULT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -230,7 +277,7 @@ CREATE TABLE `provides` (
 
 CREATE TABLE `registrations` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `PassportNumber` varchar(50) DEFAULT NULL,
   `NationalNumber` varchar(50) DEFAULT NULL,
   `Fistname` varchar(100) NOT NULL,
@@ -253,8 +300,17 @@ CREATE TABLE `registrations` (
   `Email` varchar(50) NOT NULL,
   `PictureURL` varchar(255) DEFAULT NULL,
   `Status` varchar(50) DEFAULT NULL,
-  `User` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `User` int(11) NOT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `registrations`
+--
+
+INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `Status`, `User`, `updated_at`, `created_at`) VALUES
+(11, NULL, 'badouch', 'badouch', 'badouch', 'badouch', 'ذكر', '2018-12-31', 'badouch', 1, 1, 'badouch', 'badouch', 'badouch', 'badouch', '2018-12-31', 'searcher', 'badouch', 'badouch', '5555555', NULL, 'badouch@gmail.com', '1538833869.jpg', 'yes', 54, '2018-10-06 11:51:09', '2018-10-06 11:51:09');
 
 -- --------------------------------------------------------
 
@@ -291,42 +347,6 @@ CREATE TABLE `role_user` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `searchers`
---
-
-CREATE TABLE `searchers` (
-  `ID` int(11) NOT NULL,
-  `Registration` int(11) NOT NULL,
-  `PassportNumber` varchar(100) DEFAULT NULL,
-  `NationalNumber` varchar(50) DEFAULT NULL,
-  `Nationalitie` int(11) NOT NULL,
-  `FirstName` varchar(100) NOT NULL,
-  `LastName` varchar(100) NOT NULL,
-  `Gender` varchar(50) NOT NULL,
-  `BirthDate` varchar(45) DEFAULT NULL,
-  `BirthCity` varchar(45) DEFAULT NULL,
-  `Countrie` int(11) NOT NULL,
-  `Facultie` int(11) NOT NULL,
-  `Location` varchar(255) DEFAULT NULL,
-  `City` varchar(100) NOT NULL,
-  `CertificateType` varchar(100) DEFAULT NULL,
-  `CertificateDegree` varchar(45) DEFAULT NULL,
-  `InscriptionDate` date NOT NULL,
-  `PhoneNumber1` varchar(50) NOT NULL,
-  `PhoneNumber2` varchar(50) DEFAULT NULL,
-  `Email` varchar(255) DEFAULT NULL,
-  `PictureURL` varchar(255) DEFAULT NULL,
-  `Notification1` varchar(45) DEFAULT NULL,
-  `Notification2` varchar(45) DEFAULT NULL,
-  `Nomination` varchar(100) DEFAULT NULL,
-  `ContractID` varchar(50) DEFAULT NULL,
-  `ContractDate` date DEFAULT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `searchersreports`
 --
 
@@ -343,12 +363,15 @@ CREATE TABLE `searchersreports` (
   `HoursNumber` int(11) NOT NULL,
   `UpdatedRange` int(11) NOT NULL,
   `DateCommittee` date NOT NULL,
-  `Reasons` text,
-  `Difficulties` text,
-  `Notes` text,
+  `Reasons` mediumtext,
+  `Difficulties` mediumtext,
+  `Notes` mediumtext,
   `URL` varchar(255) NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -363,8 +386,11 @@ CREATE TABLE `searchs` (
   `Name` varchar(100) NOT NULL,
   `Order` int(11) NOT NULL,
   `Division` int(11) NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -378,8 +404,11 @@ CREATE TABLE `sections` (
   `Alias` varchar(50) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Order` int(11) NOT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -395,43 +424,11 @@ CREATE TABLE `sessions` (
   `StopDateTime` datetime NOT NULL,
   `SearcherURL` varchar(255) DEFAULT NULL,
   `SupervisorURL` varchar(255) DEFAULT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `supervisors`
---
-
-CREATE TABLE `supervisors` (
-  `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
-  `Registration` int(11) NOT NULL,
-  `PassportNumber` varchar(100) DEFAULT NULL,
-  `NationalNumber` varchar(50) DEFAULT NULL,
-  `Fistname` varchar(100) NOT NULL,
-  `LastName` varchar(100) NOT NULL,
-  `Gender` varchar(50) NOT NULL,
-  `BirthDate` date NOT NULL,
-  `BirthCity` varchar(50) DEFAULT NULL,
-  `Nationalitie` int(11) NOT NULL,
-  `Countrie` int(11) NOT NULL,
-  `City` varchar(50) DEFAULT NULL,
-  `Location` varchar(255) DEFAULT NULL,
-  `Facultie` int(11) NOT NULL,
-  `CertificateType` varchar(100) NOT NULL,
-  `CertificateDegree` varchar(20) NOT NULL,
-  `CertificateYear` int(11) NOT NULL,
-  `InscriptionDate` date DEFAULT NULL,
-  `Phonne1` varchar(50) NOT NULL,
-  `Phonne2` varchar(50) DEFAULT NULL,
-  `Email` varchar(100) DEFAULT NULL,
-  `PictureURL` varchar(255) DEFAULT NULL,
-  `ContractID` varchar(50) DEFAULT NULL,
-  `ContractDate` date DEFAULT NULL,
-  `Status` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -450,12 +447,12 @@ CREATE TABLE `supervisorsreports` (
   `QualityDirection` int(11) NOT NULL,
   `UpdatedRange` int(11) NOT NULL,
   `DateCommittee` date NOT NULL,
-  `Difficulties` text,
-  `NotesPositive` text,
-  `NotesNegative` text,
+  `Difficulties` mediumtext,
+  `NotesPositive` mediumtext,
+  `NotesNegative` mediumtext,
   `URL` varchar(255) NOT NULL,
   `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -471,9 +468,12 @@ CREATE TABLE `theses` (
   `CompletionDate` varchar(45) DEFAULT NULL,
   `Notes` varchar(45) DEFAULT NULL,
   `Status` varchar(45) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `Supervisor` int(11) NOT NULL,
   `Searcher` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -483,7 +483,7 @@ CREATE TABLE `theses` (
 
 CREATE TABLE `universities` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Name` varchar(255) NOT NULL,
   `President` varchar(255) NOT NULL,
   `Countrie` int(11) NOT NULL,
@@ -495,8 +495,18 @@ CREATE TABLE `universities` (
   `Logo` varchar(255) DEFAULT NULL,
   `ContractID` varchar(50) DEFAULT NULL,
   `ContractDate` date DEFAULT NULL,
-  `Status` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `universities`
+--
+
+INSERT INTO `universities` (`ID`, `Code`, `Name`, `President`, `Countrie`, `City`, `Location`, `Phonne`, `Fax`, `Email`, `Logo`, `ContractID`, `ContractDate`, `Status`, `created_at`, `updated_at`) VALUES
+(2, NULL, 'محمد السادس', 'الزبير محمودي', 1, 'الدار البيضاء', 'حي الورود', '0647412585', '0522149573', 'badouch.maroc@gmail.com', 'fileName1538685413.jpg', '2753', '2018-12-31', 'no', '2018-10-06 23:19:15', '2018-10-04 18:25:40'),
+(3, NULL, 'جامعة القاضي عياض', 'عمر حسين الجابري', 1, 'مراكش', 'حي الزهور', '0627391548', '0523141185', 'badouch.maroc@gmail.com', 'fileName1538867590.jpg', '1455', '2018-12-31', 'yes', '2018-10-06 23:18:01', '2018-10-04 18:36:53');
 
 -- --------------------------------------------------------
 
@@ -513,14 +523,15 @@ CREATE TABLE `users` (
   `remember_token` varchar(100) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(9, 'oooo', 'test@gmail.com', '$2y$10$m7Pdm1z/kA//ZOUg1Xpy3uRJ8Ax6jhyNzEQ5Wv/Rg0cIFFq8HLSRq', 2, 'Nl9lYb8AyljLL8UbGmUom8kTELbNIumEGi9QLXoIB5xjefX1qPJjhp5TDd2n', '2018-10-02 11:55:05', '2018-10-02 08:51:15');
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'XbaGa2MwQKmKjwMtspRsxhp7A8tN6DkptA50YXBTr0qYB1DtD6osqisdVl1v', '2018-10-06 23:22:06', '2018-10-03 08:22:44'),
+(54, 'student', 'student@student.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 2, 'FmF2NopiBXtQYhJq0LHApPLmLNnTrdIjenuakDqnbSJkHLufSzB00X7PBCXV', '2018-10-06 23:22:54', '2018-10-06 11:51:08');
 
 --
 -- Index pour les tables déchargées
@@ -630,16 +641,6 @@ ALTER TABLE `role_user`
   ADD KEY `role_id` (`role_id`);
 
 --
--- Index pour la table `searchers`
---
-ALTER TABLE `searchers`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_Registrations_Nationalities1_idx` (`Nationalitie`),
-  ADD KEY `fk_Registrations_Countries1_idx` (`Countrie`),
-  ADD KEY `fk_Searchers_Registrations1_idx` (`Registration`),
-  ADD KEY `fk_Searchers_Faculties1_idx` (`Facultie`);
-
---
 -- Index pour la table `searchersreports`
 --
 ALTER TABLE `searchersreports`
@@ -667,16 +668,6 @@ ALTER TABLE `sections`
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_Sessions_Searchers1_idx` (`Searcher`);
-
---
--- Index pour la table `supervisors`
---
-ALTER TABLE `supervisors`
-  ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_Registrations_Nationalities1_idx` (`Nationalitie`),
-  ADD KEY `fk_Registrations_Countries1_idx` (`Countrie`),
-  ADD KEY `fk_Supervisors_Registrations1_idx` (`Registration`),
-  ADD KEY `fk_Supervisors_Faculties1_idx` (`Facultie`);
 
 --
 -- Index pour la table `supervisorsreports`
@@ -740,7 +731,7 @@ ALTER TABLE `configs`
 -- AUTO_INCREMENT pour la table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `divisions`
@@ -764,7 +755,7 @@ ALTER TABLE `helps`
 -- AUTO_INCREMENT pour la table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
@@ -797,22 +788,16 @@ ALTER TABLE `sessions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT pour la table `supervisors`
---
-ALTER TABLE `supervisors`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT pour la table `universities`
 --
 ALTER TABLE `universities`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- Contraintes pour les tables déchargées
@@ -860,15 +845,6 @@ ALTER TABLE `registrations`
   ADD CONSTRAINT `fk_Registrations_Nationalities1` FOREIGN KEY (`Nationalitie`) REFERENCES `nationalities` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `searchers`
---
-ALTER TABLE `searchers`
-  ADD CONSTRAINT `fk_Registrations_Countries10` FOREIGN KEY (`Countrie`) REFERENCES `countries` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Registrations_Nationalities10` FOREIGN KEY (`Nationalitie`) REFERENCES `nationalities` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Searchers_Faculties1` FOREIGN KEY (`Facultie`) REFERENCES `faculties` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Searchers_Registrations1` FOREIGN KEY (`Registration`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Contraintes pour la table `searchersreports`
 --
 ALTER TABLE `searchersreports`
@@ -887,15 +863,6 @@ ALTER TABLE `searchs`
 --
 ALTER TABLE `sessions`
   ADD CONSTRAINT `fk_Sessions_Searchers1` FOREIGN KEY (`Searcher`) REFERENCES `searchers` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
--- Contraintes pour la table `supervisors`
---
-ALTER TABLE `supervisors`
-  ADD CONSTRAINT `fk_Registrations_Countries100` FOREIGN KEY (`Countrie`) REFERENCES `countries` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Registrations_Nationalities100` FOREIGN KEY (`Nationalitie`) REFERENCES `nationalities` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Supervisors_Faculties1` FOREIGN KEY (`Facultie`) REFERENCES `faculties` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Supervisors_Registrations1` FOREIGN KEY (`Registration`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `supervisorsreports`
