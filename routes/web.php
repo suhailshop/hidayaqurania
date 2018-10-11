@@ -46,6 +46,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     
     Route::get('/countries','Admin\CountrieController@index')->name('allCountrie');
     Route::get('/countries/add','Admin\CountrieController@add')->name('addCountrie');
+    Route::post('/countries/add','Admin\CountrieController@addPost')->name('addCountriePost');
+    Route::get('/countries/edit/{id}','Admin\CountrieController@edit')->name('editCountrie');
+    Route::post('/countries/edit','Admin\CountrieController@editPost')->name('editCountriePost');
+    Route::get('/countries/delete/{i}','Admin\CountrieController@delete')->name('deleteCountriePost');
 
     Route::get('/faculties','Admin\FacultyController@index')->name('allFaculty');
     Route::get('/faculties/add','Admin\FacultyController@add')->name('addFaculty');
@@ -54,6 +58,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     
     Route::get('/criterias','Admin\CriteriaController@index')->name('allCriteria');
     Route::get('/criterias/add','Admin\CriteriaController@add')->name('addCriteria');
+    Route::post('/criterias/add','Admin\CriteriaController@addPost')->name('addCriteriaPost');
+    Route::get('/criterias/edit/{id}','Admin\CriteriaController@edit')->name('editCriteria');
+    Route::post('/criterias/edit','Admin\CriteriaController@editPost')->name('editCriteriaPost');
+    Route::get('/criterias/delete/{i}','Admin\CriteriaController@delete')->name('deleteCriteriaPost');
 
     Route::get('/nationalites','Admin\NationaliteController@index')->name('allNationalite');
     Route::get('/nationalites/add','Admin\NationaliteController@add')->name('addNationalite');
