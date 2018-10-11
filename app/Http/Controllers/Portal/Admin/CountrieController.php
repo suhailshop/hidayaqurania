@@ -60,7 +60,7 @@ class CountrieController extends Controller
         return view('portal.admin.countries.edit',compact('countrie'));
     }
     public function editPost(Request $request){
-        
+        $fileName = $request->input('img');
         if($request->hasFile('flag')){
             $request->validate([
                 'flag' => 'required|file|max:1024',

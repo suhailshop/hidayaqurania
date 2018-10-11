@@ -1,15 +1,8 @@
 @extends('layout.master')
 
-@section('pageTitle', 'جامعة جديدة')
+@section('pageTitle', 'كتاب جديد')
 @section('pageStyle')
     {{--include here the style of the current page--}}
-        <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <link href="{!! asset('assets/global/plugins/select2/css/select2.min.css') !!}" rel="stylesheet" type="text/css" />
-        <link href="{!! asset('assets/global/plugins/select2/css/select2-bootstrap.min.css') !!}" rel="stylesheet" type="text/css" />
-        <link href="{!! asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}" rel="stylesheet" type="text/css" />
-        <link href="{!! asset('assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5-rtl.css') !!}" rel="stylesheet" type="text/css" />
-        <link href="{!! asset('assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css') !!}" rel="stylesheet" type="text/css" />
-        <!-- END PAGE LEVEL PLUGINS -->
 @endsection
 
 @section('pageTitle', 'الرئيسية')
@@ -35,25 +28,25 @@
                             <i class="fa fa-angle-left"></i>
                         </li>
                         <li>
-                                <i class="icon-graduation"></i>
-                                 <a href="{{route('allUniversity')}}">إدارة الجامعات</a>
+                                <i class="icon-docs"></i>
+                                 <a href="{{route('allBook')}}">إدارة الكتب</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>جامعة جديدة</span>
+                            <span>كتاب جديد</span>
                         </li>
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
             <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة جامعة جديدة</h3>
-                <p> المرجو ملء الخانات بالمعلومات الخاصة بالجامعة :
+                <h3>أضافة كتاب جديد</h3>
+                <p> المرجو ملء الخانات بالمعلومات الخاصة بالكتاب :
             </div>
 <div class="row">
     
-<form action="{{route('addUniversityPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{route('addBookPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
-            <div class="col-md-6">
+            <div class="col-md-12">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet light portlet-fit portlet-form ">
                        
@@ -69,7 +62,7 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="name"  placeholder="اسم الجامعة *"/> </div>
+                                                <input type="text" class="form-control" name="name"  placeholder="اسم الكتاب *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -77,99 +70,26 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="president" placeholder="الرئيس *"/> </div>
+                                                <input type="text" class="form-control" name="author" placeholder="اسم الكاتب *"/> </div>
                                         </div>
                                     </div>
+                                    
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select  class="form-control" name="countrie" placeholder="الدولة *"/>
-                                                @foreach($countries as $countrie)
-                                            <option value="{{$countrie->ID}}" >{{$countrie->Name}}</option>
-                                                @endforeach
-                                            </select> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control" name="city"  placeholder="المدينة *"/> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                       
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control" name="location" placeholder="العنوان *" /> </div>
+                                                <input type="text" id="mask_isbn" class="form-control" name="isbn"  placeholder="رقم ISBN *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group ">
                                             <div class="col-md-12">
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <input type="file" class="form-control" name="logo" > </div>
+                                                    <input type="file" class="form-control" name="pictureurl" > </div>
                                             </div>
                                         </div>
-                                    
-                                    
-                                </div>
-                                
-                            <!-- END FORM-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet light portlet-fit portlet-form ">
-                       
-                        
-                        <div class="portlet-body">
-                            <!-- BEGIN FORM-->
-                                <div class="form-body">
-                                    
-                                    
-                                        <div class="form-group margin-top-20">
-                                                <div class="col-md-12">
-                                                    <div class="input-icon right">
-                                                        <i class="fa"></i>
-                                                        <input type="number" class="form-control" name="phonne" placeholder="الهاتف *" /> </div>
-                                                </div>
-                                            </div>
-                                    <div class="form-group ">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" name="fax" placeholder="الفاكس *" /> </div>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="email" class="form-control" name="email" placeholder="البريد الاكتروني *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" name="contratid" placeholder="رقم العقدة *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="date" class="form-control" name="contratdate" placeholder="تاريخ العقدة" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-actions">
+                                        <div class="form-actions">
                                             <div class="row">
                                                 <div class="col-md-offset-3 col-md-9">
                                                     <button type="submit" class="btn green">تأكيد</button>
@@ -180,12 +100,12 @@
                                     
                                 </div>
                                 
-                            </form>
                             <!-- END FORM-->
                         </div>
                     </div>
                 </div>
-                    <!-- END VALIDATION STATES-->
+</form>
+                    <!-- END V<ALIDATION STATES-->
                 </div>
 
 
@@ -196,15 +116,8 @@
     <!-- END CONTENT -->
     @section('pageScript')
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="{!! asset('assets/global/plugins/select2/js/select2.full.min.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('assets/global/plugins/jquery-validation/js/jquery.validate.min.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('assets/global/plugins/jquery-validation/js/additional-methods.min.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('assets/global/plugins/bootstrap-markdown/lib/markdown.js') !!}" type="text/javascript"></script>
-    <script src="{!! asset('assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js') !!}" type="text/javascript"></script>
-    <!-- END PAGE LEVEL PLUGINS -->
-     <!-- BEGIN PAGE LEVEL SCRIPTS -->
-     <script src="{!! asset('assets/pages/scripts/form-validation.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js') !!}" type="text/javascript"></script>    
+    <script src="{!! asset('assets/pages/scripts/form-input-mask.min.js') !!}" type="text/javascript"></script>
      <!-- END PAGE LEVEL SCRIPTS -->
     @endsection
 @endsection

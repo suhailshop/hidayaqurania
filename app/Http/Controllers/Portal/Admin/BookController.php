@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Portal\Admin;
 use App\User;
 use App\Role;
 use App\Countrie;
-use App\Universitie;
+use App\Book;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class UniversityController extends Controller
+class BookController extends Controller
 {
     private $user ;
     public function __construct()
@@ -29,78 +29,60 @@ class UniversityController extends Controller
     }
     public function index(){
 
-        $universities = Universitie::all();
-        return view('portal.admin.universities.index')->with('universities',$universities);
+        $books = Book::all();
+        return view('portal.admin.books.index')->with('books',$books);
     }
   
     public function add(){
-        $countries = Countrie::all();
         
-      
-        return view('portal.admin.universities.add',compact('countries'));
+        return view('portal.admin.books.add');
     }
     public function addPost(Request $request){
        
-        $universitie = new Universitie;
-        $universitie->Name = $request->input('name');
-        $universitie->President = $request->input('president');
-        $universitie->Countrie = $request->input('countrie');
-        $universitie->City = $request->input('city');
-        $universitie->Location = $request->input('location');
-        $universitie->Phonne = $request->input('phonne');
-        $universitie->Fax = $request->input('fax');
-        $universitie->Email = $request->input('email');
-        $universitie->ContractID = $request->input('contratid');
-        $universitie->ContractDate = $request->input('contratdate');
-        $universitie->Status = "yes";
-        if($request->hasFile('logo')){
+        $book = new Book;
+        $book->Name = $request->input('name');
+        $book->Author = $request->input('author');
+        $book->ISBN = $request->input('isbn');
+        if($request->hasFile('pictureurl')){
             $request->validate([
-                'logo' => 'required|file|max:1024',
+                'pictureurl' => 'required|file|max:1024',
             ]);
-            $fileName = "fileName".time().'.'.request()->logo->getClientOriginalExtension();
-            
-            $request->logo->storeAs('public/universities',$fileName);
-            $universitie->Logo = $fileName;
+            $fileName = "fileName".time().'.'.request()->pictureurl->getClientOriginalExtension();
+            $request->pictureurl->storeAs('public/books',$fileName);
+            $book->PictureURL = $fileName;
         }
-        $universitie->save();
-        return redirect()->route('allUniversity');
+        $book->Status = "yes";
+       
+        $book->save();
+        return redirect()->route('allBook');
     }
     public function edit($id){
-        $countries = Countrie::all();
-        $universitie = Universitie::where('ID',$id)->first();
-
-        return view('portal.admin.universities.edit',compact('universitie','countries'));
+        $book = Book::where('ID',$id)->first();
+        return view('portal.admin.books.edit',compact('book'));
     }
     public function editPost(Request $request){
         $fileName = $request->input('img');
-        if($request->hasFile('logo')){
+        if($request->hasFile('pictureurl')){
             $request->validate([
-                'logo' => 'required|file|max:1024',
+                'pictureurl' => 'required|file|max:1024',
             ]);
-            $fileName = "fileName".time().'.'.request()->logo->getClientOriginalExtension();
+            $fileName = "fileName".time().'.'.request()->pictureurl->getClientOriginalExtension();
+            $request->pictureurl->storeAs('public/books',$fileName);
             
-            $request->logo->storeAs('public/universities',$fileName);
         }
-        DB::table('universities')->where('ID',$request->input('id'))
+        DB::table('books')->where('ID',$request->input('id'))
         ->update(array(
             'Name'=>$request->input('name'),
-            'President'=>$request->input('president'),
-            'Countrie'=>$request->input('countrie'),
-            'City'=>$request->input('city'),
-            'Location'=>$request->input('location'),
-            'Phonne'=>$request->input('phonne'),
-            'Fax'=>$request->input('fax'),
-            'Email'=>$request->input('email'),
-            'ContractID'=>$request->input('contratid'),
-            'ContractDate'=>$request->input('contratdate'),
-            'Status'=>$request->input('status'),
-            'Logo'=>$fileName            
+            'Author'=>$request->input('author'),
+            'ISBN'=>$request->input('isbn'),
+            'PictureURL'=>$fileName,
+            'Status'=>$request->input('status')          
         ));
                 
-        return redirect()->route('allUniversity');
+        return redirect()->route('allBook');
     }
     public function delete($id){
-        Universitie::where('ID', $id)->forcedelete(); 
-        return redirect()->route('allUniversity');
+        Book::where('ID', $id)->forcedelete(); 
+        return redirect()->route('allBook');
     }
 }

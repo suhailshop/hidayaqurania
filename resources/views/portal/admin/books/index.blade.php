@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'الجامعات')
+@section('pageTitle', 'الكتب')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -32,8 +32,8 @@
                         <i class="fa fa-angle-left"></i>
                     </li>
                     <li>
-                            <i class="icon-graduation"></i>
-                        <span>إدارة الجامعات</span>
+                            <i class="icon-docs"></i>
+                        <span>إدارة الكتب</span>
                     </li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة الجامعات المسجلة بالنظام</span>
+                            <span class="caption-subject bold uppercase">لائحة الكتب  بالنظام</span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -56,39 +56,25 @@
                             <thead>
                                 <tr>
                                     <th class="all">الاسم</th>
-                                    <th class="min-phone-l">الرئيس</th>
-                                    <th class="min-tablet">الدولة</th>
-                                    <th class="none">المدينة</th>
-                                    <th class="none">العنوان</th>
-                                    <th class="none">الهاتف</th>
-                                    <th class="desktop">الفاكس</th>
-                                    <th class="none">الاميل</th>
-                                    <th class="none">اللوجو</th>
-                                    <th class="none">رقم العقدة</th>
-                                    <th class="none">تاريخ العقدة</th>
+                                    <th class="all">الكاتب</th>
+                                    <th class="all">رقم ISBN</th>
+                                    <th class="none"> صورة الغلاف</th>
                                     <th class="desktop">الحالة</th>
                                     <th class="all">خيارات.</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($universities as $universitie)
+                                @foreach($books as $book)
                                 <tr>
-                                    <td>{{$universitie->Name}}</td>
-                                    <td>{{$universitie->President}}</td>
-                                    <td>{{$universitie->countrie->Name}}</td>
-                                    <td>{{$universitie->City}}</td>
-                                    <td>{{$universitie->Location}}</td>
-                                    <td>{{$universitie->Phonne}}</td>
-                                    <td>{{$universitie->Fax}}</td>
-                                    <td>{{$universitie->Email}}</td>
+                                    <td>{{$book->Name}}</td>
+                                    <td>{{$book->Author}}</td>
+                                    <td>{{$book->ISBN}}</td>
                                     <td>
-                                        <img src="{{ url('storage/universities/'.$universitie->Logo) }}" 
+                                        <img src="{{ url('storage/books/'.$books->PictureURL) }}" 
                                             style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
                                     </td>
                                     
-                                    <td>{{$universitie->ContractID}}</td>
-                                    <td>{{$universitie->ContractDate}}</td>
-                                    <td>@if($universitie->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    <td>@if($book->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
@@ -96,7 +82,7 @@
                                             </button>
                                             <ul class="dropdown-menu pull-right">
                                                 <li>
-                                                <a href="{{route('editUniversity',['id'=>$universitie->ID])}}">
+                                                <a href="{{route('editBook',['id'=>$book->ID])}}">
                                                         <i class="fa fa-edit"></i> تعديل </a>
                                                 </li>
                                                 <li>
@@ -105,7 +91,7 @@
                                                 data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
                                                 data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
                                                 data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
-                                                data-title="هل تريد الحذف ؟" href="{{route('deleteUniversityPost',['id'=>$universitie->ID])}}">
+                                                data-title="هل تريد الحذف ؟" href="{{route('deleteBookPost',['id'=>$book->ID])}}">
                                                         <i class="fa fa-remove"></i> حذف </a>
                                                 </li>
 

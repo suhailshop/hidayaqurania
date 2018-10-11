@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'تعديل جامعة ')
+@section('pageTitle', 'تعديل كتاب ')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -35,25 +35,25 @@
                             <i class="fa fa-angle-left"></i>
                         </li>
                         <li>
-                                <i class="icon-graduation"></i>
-                                 <a href="{{route('allUniversity')}}">إدارة الجامعات</a>
+                                <i class="icon-docs"></i>
+                                 <a href="{{route('allBook')}}">إدارة الكتب</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>تعديل جامعة</span>
+                            <span>تعديل كتاب</span>
                         </li>
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
             <div class="m-heading-1 border-green m-bordered">
-                <h3>تعديل معلومات الجامعة </h3>
-                <p> المرجو ملء الخانات بالمعلومات الخاصة بالجامعة :
+                <h3>تعديل معلومات الكتاب </h3>
+                <p> المرجو ملء الخانات بالمعلومات الخاصة بالكتاب :
             </div>
 <div class="row">
     
-<form action="{{route('editUniversityPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{route('editBookPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
-            <div class="col-md-6">
+            <div class="col-md-12">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet light portlet-fit portlet-form ">
                        
@@ -64,14 +64,14 @@
                                     <div class="alert alert-danger display-hide">
                                         <button class="close" data-close="alert"></button> لديك بعض الاخطاء في النموذج . يرجى مراجعة أدناه. </div>
                                    
-                                        <input type="hidden" value="{{$universitie->ID}}" name="id"/>
-                                        <input type="hidden" value="{{$universitie->Logo}}" name="img"/>
+                                        <input type="hidden" value="{{$book->ID}}" name="id"/>
+                                        <input type="hidden" value="{{$book->Logo}}" name="img"/>
                                     <div class="form-group  margin-top-20">
                                        
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                            <input type="text" class="form-control" name="name" value="{{$universitie->Name}}" placeholder="اسم الجامعة *"/> </div>
+                                            <input type="text" class="form-control" name="name" value="{{$book->Name}}" placeholder="اسم الكتاب *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -79,7 +79,7 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="president" value="{{$universitie->President}}" placeholder="الرئيس *"/> </div>
+                                                <input type="text" class="form-control" name="author" value="{{$book->Author}}" placeholder="اسم الكاتب *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -87,125 +87,53 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select  class="form-control" name="countrie" placeholder="الدولة *"/>
-                                                @foreach($countries as $countrie)
-                                                    <option @if($universitie->Countrie==$countrie->ID) selected @endif value="{{$countrie->ID}}" >{{$countrie->Name}}</option>
-                                                @endforeach
-                                            </select> </div>
+                                                <input type="text" id="mask_isbn" class="form-control" name="isbn"  value="{{$book->ISBN}}"  placeholder="رقم ISBN *"/> </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        
+                                    <div class="form-group ">
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="city" value="{{$universitie->City}}" placeholder="المدينة *"/> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                       
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control" name="location" value="{{$universitie->Location}}" placeholder="العنوان *" /> </div>
+                                                <input type="file" class="form-control" name="pictureurl" > </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
                                                 <div class="fileinput-new thumbnail img-fluid" style="width: 200px; height: 150px;">
-                                                        <img src="{{url('storage/universities/'.$universitie->Logo)}}" alt="" id="blah" /> </div>
+                                                        <img src="{{url('storage/books/'.$book->Logo)}}" alt="" id="blah" /> </div>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                            <div class="col-md-12">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <input type="file" class="form-control" name="logo" > </div>
-                                            </div>
-                                        </div>
-                                    
-                                    
-                                </div>
-                                
-                            <!-- END FORM-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet light portlet-fit portlet-form ">
-                       
-                        
-                        <div class="portlet-body">
-                            <!-- BEGIN FORM-->
-                                <div class="form-body">
-                                    
-                                    
-                                        <div class="form-group margin-top-20">
-                                                <div class="col-md-12">
-                                                    <div class="input-icon right">
-                                                        <i class="fa"></i>
-                                                        <input type="number" class="form-control" name="phonne" value="{{$universitie->Phonne}}" placeholder="الهاتف *" /> </div>
-                                                </div>
-                                            </div>
-                                    <div class="form-group ">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" name="fax" value="{{$universitie->Fax}}"  placeholder="الفاكس *" /> </div>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="email" class="form-control" name="email" value="{{$universitie->Email}}" placeholder="البريد الاكتروني *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" name="contratid" value="{{$universitie->ContractID}}" placeholder="رقم العقدة *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="date" class="form-control" name="contratdate" value="{{$universitie->ContractDate}}" placeholder="تاريخ العقدة" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                            
-                                            <div class="col-md-12">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <select  class="form-control" name="status" placeholder="الحالة *"/>
-                                                    
-                                                        <option @if($universitie->Status=='yes') selected @endif value="yes" >مفعلة</option>
 
-                                                        <option @if($universitie->Status=='no') selected @endif value="no" >غير مفعلة</option>
-                                                    </select> </div>
+                                    
+                                    <div class="form-group">
+                                        
+                                        <div class="col-md-12">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <select  class="form-control" name="status" placeholder="الحالة *"/>
+                                                
+                                                    <option @if($book->Status=='yes') selected @endif value="yes" >مفعلة</option>
+
+                                                    <option @if($book->Status=='no') selected @endif value="no" >غير مفعلة</option>
+                                                </select> </div>
+                                        </div>
+                                    </div>
+                                <div class="form-actions">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button type="submit" class="btn green">تأكيد</button>
+                                                <button type="reset" class="btn default">الغاء</button>
                                             </div>
                                         </div>
-                                    <div class="form-actions">
-                                            <div class="row">
-                                                <div class="col-md-offset-3 col-md-9">
-                                                    <button type="submit" class="btn green">تأكيد</button>
-                                                    <button type="reset" class="btn default">الغاء</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                                    </div>
                                     
                                 </div>
                                 
-                            </form>
                             <!-- END FORM-->
                         </div>
                     </div>
                 </div>
+            </form>
                     <!-- END VALIDATION STATES-->
                 </div>
 

@@ -68,6 +68,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
     Route::get('/books','Admin\BookController@index')->name('allBook');
     Route::get('/books/add','Admin\BookController@add')->name('addBook');
+    Route::post('/books/add','Admin\BookController@addPost')->name('addBookPost');
+    Route::get('/books/edit/{id}','Admin\BookController@edit')->name('editBook');
+    Route::post('/books/edit','Admin\BookController@editPost')->name('editBookPost');
+    Route::get('/books/delete/{i}','Admin\BookController@delete')->name('deleteBookPost');
 
     Route::get('/helps','Admin\HelpController@index')->name('allHelp');
     Route::get('/helps/add','Admin\HelpController@add')->name('addHelp');
