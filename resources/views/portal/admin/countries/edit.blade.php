@@ -68,7 +68,9 @@
                                         <input type="hidden" value="{{$countrie->Flag}}" name="img"/>
                                     <div class="form-group  margin-top-20">
                                        
+                                          
                                         <div class="col-md-12">
+                                                <label>الاسم</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                             <input type="text" class="form-control" name="name" value="{{$countrie->Name}}" placeholder="اسم الدولة *"/> </div>
@@ -83,6 +85,7 @@
                                     </div>
                                     <div class="form-group ">
                                             <div class="col-md-12">
+                                                    <label>العلم</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
                                                     <input type="file" class="form-control" name="flag" > </div>
@@ -91,6 +94,7 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                                <label>الحالة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <select  class="form-control" name="status" placeholder="الحالة *"/>

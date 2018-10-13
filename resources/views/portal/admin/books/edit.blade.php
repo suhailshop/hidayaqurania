@@ -69,6 +69,7 @@
                                     <div class="form-group  margin-top-20">
                                        
                                         <div class="col-md-12">
+                                                <label>الاسم</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                             <input type="text" class="form-control" name="name" value="{{$book->Name}}" placeholder="اسم الكتاب *"/> </div>
@@ -77,6 +78,7 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                                <label>الكاتب</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="author" value="{{$book->Author}}" placeholder="اسم الكاتب *"/> </div>
@@ -85,6 +87,7 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                                <label>رقم ISBN</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" id="mask_isbn" class="form-control" name="isbn"  value="{{$book->ISBN}}"  placeholder="رقم ISBN *"/> </div>
@@ -92,6 +95,7 @@
                                     </div>
                                     <div class="form-group ">
                                         <div class="col-md-12">
+                                                <label>الصورة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="file" class="form-control" name="pictureurl" > </div>
@@ -108,6 +112,7 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                                <label>الحالة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <select  class="form-control" name="status" placeholder="الحالة *"/>

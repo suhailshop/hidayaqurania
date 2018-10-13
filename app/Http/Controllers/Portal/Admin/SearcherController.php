@@ -4,13 +4,14 @@ namespace App\Http\Controllers\Portal\Admin;
 
 use App\User;
 use App\Role;
+use App\Countrie;
 use App\Registration;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class SupervisorController extends Controller
+class SearcherController extends Controller
 {
     private $user ;
     public function __construct()
@@ -28,13 +29,13 @@ class SupervisorController extends Controller
     }
     public function index(){
 
-        $supervisors = Registration::where('Type','Supervisor')->get();
-        return view('portal.admin.supervisors.index')->with('supervisors',$supervisors);
+        $searchers = Registration::all();
+        return view('portal.admin.searchers.index')->with('searchers',$searchers);
     }
   
-    
+   
     public function delete($id){
         Registration::where('ID', $id)->forcedelete(); 
-        return redirect()->route('allSupervisor');
+        return redirect()->route('allUniversity');
     }
 }

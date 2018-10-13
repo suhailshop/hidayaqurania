@@ -68,25 +68,31 @@
                                     <div class="form-group  margin-top-20">
                                        
                                         <div class="col-md-12">
+                                            
+                                                <label>اسم المعيار</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                            <input type="text" class="form-control" name="text" value="{{$criteria->Name}}" placeholder="اسم المعيار *"/> </div>
+                                            <input type="text" class="form-control" name="name" value="{{$criteria->Name}}" placeholder="اسم المعيار *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                            
+                                                <label>الدرجة المقترحة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="number" value="{{$criteria->ProposedScore}}" placeholder="الدرجة المقترحة *"/> </div>
+                                                <input type="number" class="form-control" name="proposedscore" value="{{$criteria->ProposedScore}}" placeholder="الدرجة المقترحة *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                            
+                                                <label>الدرجة القصوى</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="number" value="{{$criteria->MaximumScore}}" placeholder="الدرجة القصوى *"/> </div>
+                                                <input type="number" class="form-control" name="maximumscore" value="{{$criteria->MaximumScore}}" placeholder="الدرجة القصوى *"/> </div>
                                         </div>
                                     </div>
 
@@ -94,6 +100,8 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                            
+                                                <label>الحالة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <select  class="form-control" name="status" placeholder="الحالة *"/>

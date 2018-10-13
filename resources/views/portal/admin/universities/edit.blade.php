@@ -69,6 +69,7 @@
                                     <div class="form-group  margin-top-20">
                                        
                                         <div class="col-md-12">
+                                                <label>اسم الجامعة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                             <input type="text" class="form-control" name="name" value="{{$universitie->Name}}" placeholder="اسم الجامعة *"/> </div>
@@ -77,6 +78,7 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                                <label>الرئيس</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="president" value="{{$universitie->President}}" placeholder="الرئيس *"/> </div>
@@ -85,6 +87,7 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                                <label>الدولة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <select  class="form-control" name="countrie" placeholder="الدولة *"/>
@@ -97,6 +100,7 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                                <label>المدينة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="city" value="{{$universitie->City}}" placeholder="المدينة *"/> </div>
@@ -105,6 +109,7 @@
                                     <div class="form-group">
                                        
                                         <div class="col-md-12">
+                                                <label>العنوان</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="location" value="{{$universitie->Location}}" placeholder="العنوان *" /> </div>
@@ -118,6 +123,7 @@
                                     </div>
                                     <div class="form-group ">
                                             <div class="col-md-12">
+                                                    <label>الصورة</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
                                                     <input type="file" class="form-control" name="logo" > </div>
@@ -143,6 +149,7 @@
                                     
                                         <div class="form-group margin-top-20">
                                                 <div class="col-md-12">
+                                                        <label>الهاتف</label>
                                                     <div class="input-icon right">
                                                         <i class="fa"></i>
                                                         <input type="number" class="form-control" name="phonne" value="{{$universitie->Phonne}}" placeholder="الهاتف *" /> </div>
@@ -150,6 +157,7 @@
                                             </div>
                                     <div class="form-group ">
                                         <div class="col-md-12">
+                                                <label>الفاكس</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="number" class="form-control" name="fax" value="{{$universitie->Fax}}"  placeholder="الفاكس *" /> </div>
@@ -158,6 +166,7 @@
                                    
                                     <div class="form-group">
                                         <div class="col-md-12">
+                                                <label>البريد الالكتروني</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="email" class="form-control" name="email" value="{{$universitie->Email}}" placeholder="البريد الاكتروني *" /> </div>
@@ -165,6 +174,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
+                                                <label>رقم العقدة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="number" class="form-control" name="contratid" value="{{$universitie->ContractID}}" placeholder="رقم العقدة *" /> </div>
@@ -172,6 +182,7 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-12">
+                                                <label>تاريخ العقدة</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="date" class="form-control" name="contratdate" value="{{$universitie->ContractDate}}" placeholder="تاريخ العقدة" /> </div>
@@ -180,6 +191,7 @@
                                     <div class="form-group">
                                             
                                             <div class="col-md-12">
+                                                    <label>الحالة</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
                                                     <select  class="form-control" name="status" placeholder="الحالة *"/>

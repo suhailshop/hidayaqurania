@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'جامعة جديدة')
+@section('pageTitle', 'كلية جديدة')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -35,23 +35,23 @@
                             <i class="fa fa-angle-left"></i>
                         </li>
                         <li>
-                                <i class="icon-graduation"></i>
-                                 <a href="{{route('allUniversity')}}">إدارة الجامعات</a>
+                                <i class="icon-grid"></i>
+                                 <a href="{{route('allFaculty')}}">إدارة الكليات</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>جامعة جديدة</span>
+                            <span>كلية جديدة</span>
                         </li>
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
             <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة جامعة جديدة</h3>
-                <p> المرجو ملء الخانات بالمعلومات الخاصة بالجامعة :
+                <h3>أضافة كلية جديدة</h3>
+                <p> المرجو ملء الخانات بالمعلومات الخاصة بالكلية :
             </div>
 <div class="row">
     
-<form action="{{route('addUniversityPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{route('addFacultyPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
             <div class="col-md-6">
                     <!-- BEGIN VALIDATION STATES-->
@@ -69,7 +69,7 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="name"  placeholder="اسم الجامعة *"/> </div>
+                                                <input type="text" class="form-control" name="name"  placeholder="اسم الكلية *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -77,21 +77,10 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="president" placeholder="الرئيس *"/> </div>
+                                                <input type="text" class="form-control" name="presidentname" placeholder="الرئيس *"/> </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <select  class="form-control" name="countrie" placeholder="الدولة *"/>
-                                                @foreach($countries as $countrie)
-                                            <option value="{{$countrie->ID}}" >{{$countrie->Name}}</option>
-                                                @endforeach
-                                            </select> </div>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
@@ -108,13 +97,7 @@
                                                 <input type="text" class="form-control" name="location" placeholder="العنوان *" /> </div>
                                         </div>
                                     </div>
-                                    <div class="form-group ">
-                                            <div class="col-md-12">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <input type="file" class="form-control" name="logo" > </div>
-                                            </div>
-                                        </div>
+                                  
                                     
                                     
                                 </div>
@@ -131,7 +114,13 @@
                         <div class="portlet-body">
                             <!-- BEGIN FORM-->
                                 <div class="form-body">
-                                    
+                                    <div class="form-group ">
+                                        <div class="col-md-12">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="file" class="form-control" name="logo" > </div>
+                                        </div>
+                                    </div>
                                     
                                         <div class="form-group margin-top-20">
                                                 <div class="col-md-12">
@@ -153,20 +142,6 @@
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="email" class="form-control" name="email" placeholder="البريد الاكتروني *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" name="contratid" placeholder="رقم العقدة *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="date" class="form-control" name="contratdate" placeholder="تاريخ العقدة" /> </div>
                                         </div>
                                     </div>
                                     <div class="form-actions">

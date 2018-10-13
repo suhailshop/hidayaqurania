@@ -22,9 +22,9 @@
             </li>
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
             <li class="nav-item  ">
-                <a href="{{route('allStudent')}}" class="nav-link nav-toggle">
+                <a href="{{route('allSearcher')}}" class="nav-link nav-toggle">
                         <i class="icon-users"></i>
-                        <span class="title">الطلاب</span>
+                        <span class="title">الباحثين</span>
                         <span class="arrow"></span>
                     </a>
             </li>
@@ -104,13 +104,7 @@
                                     </li>
                             </ul>
                         </li>
-                        <li class="nav-item  ">
-                            <a href="{{route('allConfigs')}}" class="nav-link nav-toggle">
-                                    <i class="icon-settings"></i>
-                                    <span class="title">الاعدادات</span>
-                                    <span class="arrow"></span>
-                                </a>
-                            </li>
+                       
                             <li class="nav-item  ">
                                 <a href="javascript:;" class="nav-link nav-toggle">
                                         <i class="icon-badge"></i>
@@ -239,6 +233,13 @@
                                                                     </li>
                                                             </ul>
                                                         </li>
+                                                        <li class="nav-item  ">
+                                                                <a href="{{route('allConfigs')}}" class="nav-link nav-toggle">
+                                                                        <i class="icon-settings"></i>
+                                                                        <span class="title">الاعدادات</span>
+                                                                        <span class="arrow"></span>
+                                                                    </a>
+                                                                </li>
                                                         @endif
                      @if(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
                      <li class="nav-item  ">

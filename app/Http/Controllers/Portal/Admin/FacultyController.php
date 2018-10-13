@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Portal\Admin;
 
 use App\User;
 use App\Role;
-use App\Countrie;
-use App\Universitie;
+use App\Facultie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class UniversityController extends Controller
+class FacultyController extends Controller
 {
     private $user ;
     public function __construct()
@@ -29,47 +28,40 @@ class UniversityController extends Controller
     }
     public function index(){
 
-        $universities = Universitie::all();
-        return view('portal.admin.universities.index')->with('universities',$universities);
+        $faculties = Facultie::all();
+        return view('portal.admin.faculties.index')->with('faculties',$faculties);
     }
   
-    public function add(){
-        $countries = Countrie::all();
-        
+    public function add(){     
       
-        return view('portal.admin.universities.add',compact('countries'));
+        return view('portal.admin.faculties.add');
     }
     public function addPost(Request $request){
        
-        $universitie = new Universitie;
-        $universitie->Name = $request->input('name');
-        $universitie->President = $request->input('president');
-        $universitie->Countrie = $request->input('countrie');
-        $universitie->City = $request->input('city');
-        $universitie->Location = $request->input('location');
-        $universitie->Phonne = $request->input('phonne');
-        $universitie->Fax = $request->input('fax');
-        $universitie->Email = $request->input('email');
-        $universitie->ContractID = $request->input('contratid');
-        $universitie->ContractDate = $request->input('contratdate');
-        $universitie->Status = "yes";
+        $facultie = new Facultie;
+        $facultie->Name = $request->input('name');
+        $facultie->PresidentName = $request->input('presidentname');
+        $facultie->City = $request->input('city');
+        $facultie->Location = $request->input('location');
+        $facultie->Phonne = $request->input('phonne');
+        $facultie->Fax = $request->input('fax');
+        $facultie->Email = $request->input('email');
+        $facultie->Status = "yes";
         if($request->hasFile('logo')){
             $request->validate([
                 'logo' => 'required|file|max:1024',
             ]);
             $fileName = "fileName".time().'.'.request()->logo->getClientOriginalExtension();
             
-            $request->logo->storeAs('public/universities',$fileName);
-            $universitie->Logo = $fileName;
+            $request->logo->storeAs('public/faculties',$fileName);
+            $facultie->Logo = $fileName;
         }
-        $universitie->save();
-        return redirect()->route('allUniversity');
+        $facultie->save();
+        return redirect()->route('allFaculty');
     }
     public function edit($id){
-        $countries = Countrie::all();
-        $universitie = Universitie::where('ID',$id)->first();
-
-        return view('portal.admin.universities.edit',compact('universitie','countries'));
+        $facultie = Facultie::where('ID',$id)->first();
+        return view('portal.admin.faculties.edit',compact('facultie'));
     }
     public function editPost(Request $request){
         $fileName = $request->input('img');
@@ -79,28 +71,25 @@ class UniversityController extends Controller
             ]);
             $fileName = "fileName".time().'.'.request()->logo->getClientOriginalExtension();
             
-            $request->logo->storeAs('public/universities',$fileName);
+            $request->logo->storeAs('public/faculties',$fileName);
         }
-        DB::table('universities')->where('ID',$request->input('id'))
+        DB::table('faculties')->where('ID',$request->input('id'))
         ->update(array(
             'Name'=>$request->input('name'),
-            'President'=>$request->input('president'),
-            'Countrie'=>$request->input('countrie'),
+            'PresidentName'=>$request->input('presidentname'),
             'City'=>$request->input('city'),
             'Location'=>$request->input('location'),
             'Phonne'=>$request->input('phonne'),
             'Fax'=>$request->input('fax'),
             'Email'=>$request->input('email'),
-            'ContractID'=>$request->input('contratid'),
-            'ContractDate'=>$request->input('contratdate'),
             'Status'=>$request->input('status'),
             'Logo'=>$fileName            
         ));
                 
-        return redirect()->route('allUniversity');
+        return redirect()->route('allFaculty');
     }
     public function delete($id){
-        Universitie::where('ID', $id)->forcedelete(); 
-        return redirect()->route('allUniversity');
+        Facultie::where('ID', $id)->forcedelete(); 
+        return redirect()->route('allFaculty');
     }
 }

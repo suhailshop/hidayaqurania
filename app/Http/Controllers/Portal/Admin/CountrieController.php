@@ -66,7 +66,7 @@ class CountrieController extends Controller
                 'flag' => 'required|file|max:1024',
             ]);
             $fileName = "fileName".time().'.'.request()->flag->getClientOriginalExtension();
-            $request->logo->storeAs('public/countries',$fileName);
+            $request->flag->storeAs('public/countries',$fileName);
         }
         DB::table('countries')->where('ID',$request->input('id'))
         ->update(array(

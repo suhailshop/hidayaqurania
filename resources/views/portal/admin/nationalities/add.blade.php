@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'جامعة جديدة')
+@section('pageTitle', 'جنسية جديدة')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -35,25 +35,25 @@
                             <i class="fa fa-angle-left"></i>
                         </li>
                         <li>
-                                <i class="icon-graduation"></i>
-                                 <a href="{{route('allUniversity')}}">إدارة الجامعات</a>
+                                <i class="icon-globe"></i>
+                                 <a href="{{route('allNationalite')}}">إدارة الجنسيات</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>جامعة جديدة</span>
+                            <span>جنسية جديدة</span>
                         </li>
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
             <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة جامعة جديدة</h3>
-                <p> المرجو ملء الخانات بالمعلومات الخاصة بالجامعة :
+                <h3>أضافة جنسية جديدة</h3>
+                <p> المرجو ملء الخانات بالمعلومات الخاصة بالجنسية :
             </div>
 <div class="row">
     
-<form action="{{route('addUniversityPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{route('addNationalitePost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
-            <div class="col-md-6">
+            <div class="col-md-12">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet light portlet-fit portlet-form ">
                        
@@ -69,106 +69,10 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="name"  placeholder="اسم الجامعة *"/> </div>
+                                                <input type="text" class="form-control" name="name"  placeholder="اسم الجنسية *"/> </div>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control" name="president" placeholder="الرئيس *"/> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <select  class="form-control" name="countrie" placeholder="الدولة *"/>
-                                                @foreach($countries as $countrie)
-                                            <option value="{{$countrie->ID}}" >{{$countrie->Name}}</option>
-                                                @endforeach
-                                            </select> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control" name="city"  placeholder="المدينة *"/> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                       
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control" name="location" placeholder="العنوان *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group ">
-                                            <div class="col-md-12">
-                                                <div class="input-icon right">
-                                                    <i class="fa"></i>
-                                                    <input type="file" class="form-control" name="logo" > </div>
-                                            </div>
-                                        </div>
                                     
-                                    
-                                </div>
-                                
-                            <!-- END FORM-->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <!-- BEGIN VALIDATION STATES-->
-                    <div class="portlet light portlet-fit portlet-form ">
-                       
-                        
-                        <div class="portlet-body">
-                            <!-- BEGIN FORM-->
-                                <div class="form-body">
-                                    
-                                    
-                                        <div class="form-group margin-top-20">
-                                                <div class="col-md-12">
-                                                    <div class="input-icon right">
-                                                        <i class="fa"></i>
-                                                        <input type="number" class="form-control" name="phonne" placeholder="الهاتف *" /> </div>
-                                                </div>
-                                            </div>
-                                    <div class="form-group ">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" name="fax" placeholder="الفاكس *" /> </div>
-                                        </div>
-                                    </div>
-                                   
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="email" class="form-control" name="email" placeholder="البريد الاكتروني *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" name="contratid" placeholder="رقم العقدة *" /> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="col-md-12">
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="date" class="form-control" name="contratdate" placeholder="تاريخ العقدة" /> </div>
-                                        </div>
-                                    </div>
                                     <div class="form-actions">
                                             <div class="row">
                                                 <div class="col-md-offset-3 col-md-9">
@@ -180,11 +84,11 @@
                                     
                                 </div>
                                 
-                            </form>
                             <!-- END FORM-->
                         </div>
                     </div>
                 </div>
+            </form>
                     <!-- END VALIDATION STATES-->
                 </div>
 
