@@ -26,4 +26,7 @@ class Registration extends Model
     public function these(){
         return $this->hasOne('App\These','Searcher','ID');
     }
+    public function searcher_criteria(){
+        return $this->hasMany('App\Searcher_criteria','Searcher','ID');
+    }
 }

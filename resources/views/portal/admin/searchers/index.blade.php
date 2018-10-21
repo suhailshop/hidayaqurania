@@ -4,8 +4,10 @@
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/datatables/datatables.min.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/bootstrap-multiselect/css/bootstrap-multiselect.css') !!}" rel="stylesheet" type="text/css" />
+    
     <!-- END PAGE LEVEL PLUGINS -->
 @endsection
 
@@ -109,6 +111,11 @@
                                                 <li>
                                                 <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal1">
                                                     <i class="fa fa-black-tie"></i>  الاطروحة</a>
+                                                </li>
+
+                                                <li>
+                                                        <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2">
+                                                            <i class="fa fa-balance-scale"></i>  تنقيط المعايير </a>
                                                 </li>
                                                 
 
@@ -352,6 +359,76 @@
                                     </div>
                                     </div>
                                 </div>
+                                 <!-- Modal -->
+                                 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <form action="{{route('addCriteriasToSearcher')}}" method="post" >
+                                                    {{ csrf_field() }}
+                                            <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">المرجو اختيار المعايير المستوفاة من طرف الباحث : </h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                @if(empty($searcher->searcher_criteria))
+                                                    <input type="hidden" name="searcher" value="{{$searcher->ID}}" />
+                                                    <div class="form-group  " style="height:100px">
+                                                            
+                                                             <div class="col-md-12">
+                                                                 <div class="input-icon right">
+                                                                     <i class="fa"></i>
+                                                                     <select class="form-control" name="criterias[]" 
+                                                                            multiple="multiple" data-label="left" 
+                                                                            data-select-all="true" data-width="100%" data-filter="true" data-action-onchange="true">
+                                                                            @foreach($criterias as $criteria)   
+                                                                                <option value="{{$criteria->ID}}">{{$criteria->Name}} ( {{$criteria->ProposedScore}} / {{$criteria->MaximumScore}} ) </option>
+                                                                            @endforeach
+                                                                     </select>
+                                                             </div>
+                                                         </div>
+                                                </div>
+                                                <br />
+                                                @else
+                                                <div class="mt-element-list">
+                                                        @foreach($searcher->searcher_criteria as $cri)
+
+                                                            <div class="mt-list-container list-simple ext-1 group">
+                                                                <a class="list-toggle-container" data-toggle="collapse" href="#completed-simple" aria-expanded="false">
+                                                                    <div class="list-toggle done uppercase"> {{$cri->criteria->Name}}
+                                                                    </div>
+                                                                </a>
+                                                                <div class="panel-collapse collapse in" id="completed-simple" aria-expanded="false" style="">
+                                                                    <ul>
+                                                                        <li class="mt-list-item ">
+                                                                            
+                                                                            <div class="list-item-content">
+                                                                                <h3 class="uppercase"> 
+                                                                                    الدرجة المقترحة : {{$cri->criteria->ProposedScore}} 
+                                                                                    <br />
+                                                                                    الدرجة القصوى  : {{$cri->criteria->MaximumScore}} </h3>
+                                                                            </div>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        @endforeach
+                                                        </div>
+                                                    
+                                                @endif
+                                            </div>
+                                            <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                            @if(empty($searcher->searcher_criteria))
+                                                <button type="submit" class="btn btn-primary">حفظ </button>
+                                            @endif
+                                            </div>
+                                            </form>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    <!-- Modal -->
                                 @endforeach
                             </tbody>
                         </table>
@@ -370,11 +447,8 @@
         <script src="../assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
          <script src="../assets/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
-           <!-- BEGIN PAGE LEVEL PLUGINS -->
-           <script src="../assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
-           
-           <script src="../assets/pages/scripts/ui-confirmations.min.js" type="text/javascript"></script>
-           <!-- END PAGE LEVEL SCRIPTS -->
-        <!-- END PAGE LEVEL PLUGINS -->
+         <script src="../assets/global/plugins/bootstrap-multiselect/js/bootstrap-multiselect.js" type="text/javascript"></script>
+         <script src="../assets/pages/scripts/components-bootstrap-multiselect.min.js" type="text/javascript"></script>
+<!-- END PAGE LEVEL PLUGINS -->
     @endsection
 @endsection

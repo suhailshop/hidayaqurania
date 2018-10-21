@@ -183,9 +183,9 @@
                   
                 </div>
             @elseif(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
-                mmmmmmmmmm
+                حساب مشرف
             @elseif(auth()->user()->hasRole('student',auth()->user()->role_id))
-               
+               حساب باحث
             @endif
         </div>
         <!-- END CONTENT BODY -->

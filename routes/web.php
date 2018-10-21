@@ -33,7 +33,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@get')->name('getSearcher');
     Route::post('/searchers/addToMeeting','Admin\SearcherController@addToMeeting')->name('addToMeeting');
     Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
-    
+    Route::post('/searchers/addCriteriasToSearcher','Admin\SearcherController@addCriteriasToSearcher')->name('addCriteriasToSearcher'); 
     
 
     Route::get('/supervisors','Admin\SupervisorController@index')->name('allSupervisor');
@@ -116,6 +116,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     
     Route::get('/supervisor/searchers','Supervisor\SearcherController@index')->name('allSearcherSupervisor');
     Route::get('/supervisor/searchers/get/{id}','Supervisor\SearcherController@get')->name('getSearcherSupervisor');
+    Route::get('/supervisor/getSearcherSearchs/{id}','Supervisor\SearcherController@getSearcherSearchs')->name('getSearcherSearchs');
+    Route::post('/supervisor/addSupervisorNote','Supervisor\SearcherController@addSupervisorNote')->name('addSupervisorNote');
+    
+    
     
 
     //---------------------- Searcher ---------------------------------
@@ -127,4 +131,5 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searcher/editSearch/{id}','Searcher\SearchsController@edit')->name('editSearch');
     Route::post('/searcher/editSearchPost','Searcher\SearchsController@editPost')->name('editSearchPost');
     Route::get('/searcher/deleteSearch/{id}','Searcher\SearchsController@delete')->name('deleteSearchPost');
+    
 });

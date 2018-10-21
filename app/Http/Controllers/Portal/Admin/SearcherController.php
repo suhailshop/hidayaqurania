@@ -7,6 +7,7 @@ use App\Role;
 use App\Countrie;
 use App\Registration;
 use App\Meeting;
+use App\Criteria;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -33,7 +34,8 @@ class SearcherController extends Controller
         $searchers = Registration::where('Type','Searcher')->get();
         $meetings = Meeting::all();
         $supervisors = Registration::where('Type','Supervisor')->get();
-        return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('meetings',$meetings)->with('supervisors',$supervisors);
+        $criterias = Criteria::all();
+        return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors);
     }
   
    
@@ -67,4 +69,19 @@ class SearcherController extends Controller
         
         return redirect()->route('allSearcher');
     }
+
+    public function addCriteriasToSearcher(Request $request){
+        
+        foreach($request->input('criterias') as $m)
+        {
+            DB::table('searcher_critera')->insert([
+                'Searcher' => $request->input('searcher'),
+                'Criteria' => $m,
+                'Status' => 'yes'
+            ]);
+
+        }
+        return redirect()->route('allSearcher');
+    }
 }
+
