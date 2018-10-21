@@ -30,10 +30,15 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
-    Route::get('/searchers/get/{id}','Admin\SearcherController@get')->name('getSearcher');
+    Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@get')->name('getSearcher');
+    Route::post('/searchers/addToMeeting','Admin\SearcherController@addToMeeting')->name('addToMeeting');
+    Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
+    
+    
 
     Route::get('/supervisors','Admin\SupervisorController@index')->name('allSupervisor');
     Route::get('/supervisors/add','Admin\SupervisorController@add')->name('addSupervisor');
+    Route::post('/supervisors/add','Admin\SupervisorController@addPost')->name('addSupervisorPost');
 
     
     Route::get('/universities','Admin\UniversityController@index')->name('allUniversity');
@@ -80,6 +85,15 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/books/edit','Admin\BookController@editPost')->name('editBookPost');
     Route::get('/books/delete/{id}','Admin\BookController@delete')->name('deleteBookPost');
 
+    Route::get('/meetings','Admin\MeetingController@index')->name('allMeeting');
+    Route::get('/meetings/add','Admin\MeetingController@add')->name('addMeeting');
+    Route::post('/meetings/add','Admin\MeetingController@addPost')->name('addMeetingPost');
+    Route::get('/meetings/edit/{id}','Admin\MeetingController@edit')->name('editMeeting');
+    Route::post('/meetings/edit','Admin\MeetingController@editPost')->name('editMeetingPost');
+    Route::get('/meetings/delete/{id}','Admin\MeetingController@delete')->name('deleteMeetingPost');
+    Route::get('/meetings/allSearcherMeeting/{id}','Admin\MeetingController@allSearcherMeeting')->name('allSearcherMeeting');
+    
+
     Route::get('/helps','Admin\HelpController@index')->name('allHelp');
     Route::get('/helps/add','Admin\HelpController@add')->name('addHelp');
 
@@ -98,6 +112,19 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
 
 
+    //----------------------- Supervisor -----------------------------
+    
+    Route::get('/supervisor/searchers','Supervisor\SearcherController@index')->name('allSearcherSupervisor');
+    Route::get('/supervisor/searchers/get/{id}','Supervisor\SearcherController@get')->name('getSearcherSupervisor');
+    
 
+    //---------------------- Searcher ---------------------------------
 
+    
+    Route::get('/searcher/searchs','Searcher\SearchsController@index')->name('allSearchs');
+    Route::get('/searcher/addSearch','Searcher\SearchsController@add')->name('addSearch');
+    Route::post('/searcher/addSearchPost','Searcher\SearchsController@addPost')->name('addSearchPost');
+    Route::get('/searcher/editSearch/{id}','Searcher\SearchsController@edit')->name('editSearch');
+    Route::post('/searcher/editSearchPost','Searcher\SearchsController@editPost')->name('editSearchPost');
+    Route::get('/searcher/deleteSearch/{id}','Searcher\SearchsController@delete')->name('deleteSearchPost');
 });

@@ -35,7 +35,7 @@
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allStudent')}}">
+                <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allSearcher')}}">
                         <div class="visual">
                             <i class="fa fa-users"></i>
                         </div>
@@ -165,7 +165,7 @@
                                                         <span class="mt-comment-status mt-comment-status-pending">{{$searcher->Gender}}</span>
                                                         <ul class="mt-comment-actions">
                                                             <li>
-                                                            <a href="{{route('getStudent',['id'=>$searcher->ID])}}">معلومات الباحث</a>
+                                                            <a href="{{route('getSearcher',['id'=>$searcher->ID])}}">معلومات الباحث</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -183,9 +183,9 @@
                   
                 </div>
             @elseif(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
-
+                mmmmmmmmmm
             @elseif(auth()->user()->hasRole('student',auth()->user()->role_id))
-
+               
             @endif
         </div>
         <!-- END CONTENT BODY -->

@@ -24,8 +24,7 @@ class PortalController extends Controller
             $this->user= Auth::user();
             if(Auth::user() != null)
             {
-                $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/');}            
+                $role=Role::get()->where('id',$this->user->role_id)->first();         
                 return $next($request);
             }
             else{return redirect('/login');}

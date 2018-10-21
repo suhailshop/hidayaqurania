@@ -48,6 +48,25 @@
                     </ul>
             </li>
             <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-cup"></i>
+                        <span class="title">اللقاءات</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="{{route('allMeeting')}}" class="nav-link ">
+                                    <span class="title">لائحة اللقاءات</span>
+                                </a>
+                            </li>
+                            <li class="nav-item  ">
+                            <a href="{{route('addMeeting')}}" class="nav-link ">
+                                    <span class="title">أضف لقاء</span>
+                                </a>
+                            </li>
+                    </ul>
+                </li>
+            <li class="nav-item  ">
             <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-graduation"></i>
                     <span class="title">الجامعات</span>
@@ -243,9 +262,9 @@
                                                         @endif
                      @if(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
                      <li class="nav-item  ">
-                        <a href="{{route('allStudent')}}" class="nav-link nav-toggle">
+                        <a href="{{route('allSearcherSupervisor')}}" class="nav-link nav-toggle">
                                 <i class="icon-users"></i>
-                                <span class="title">الطلاب</span>
+                                <span class="title">طلابي</span>
                                 <span class="arrow"></span>
                             </a>
                     </li>
@@ -258,6 +277,26 @@
                                 <span class="arrow"></span>
                             </a>
                         </li>
+                        <li class="nav-item  ">
+                                <a href="javascript:;" class="nav-link nav-toggle">
+                                        <i class="icon-chemistry"></i>
+                                        <span class="title">بحوثي </span>
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="sub-menu">
+                                            <li class="nav-item  ">
+                                                <a href="{{route('allSearchs')}}" class="nav-link ">
+                                                    <span class="title"> لائحة بحوثي </span>
+                                                </a>
+                                            </li>
+                                            <li class="nav-item  ">
+                                            <a href="{{route('addSearch')}}" class="nav-link ">
+                                                    <span class="title">اضافة بحث</span>
+                                                </a>
+                                            </li>
+                                    </ul>
+                                </li>
+                      
                      @endif
               </ul>
         <!-- END SIDEBAR MENU -->

@@ -16,7 +16,7 @@ class These extends Model
 
     public function supervisor()
     {
-        return $this->hasOne('App\Registration');
+        return $this->hasOne('App\Registration','ID','Supervisor');
     }
     public function searcher()
     {

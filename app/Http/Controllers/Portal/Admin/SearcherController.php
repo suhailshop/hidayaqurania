@@ -6,6 +6,7 @@ use App\User;
 use App\Role;
 use App\Countrie;
 use App\Registration;
+use App\Meeting;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -29,13 +30,41 @@ class SearcherController extends Controller
     }
     public function index(){
 
-        $searchers = Registration::all();
-        return view('portal.admin.searchers.index')->with('searchers',$searchers);
+        $searchers = Registration::where('Type','Searcher')->get();
+        $meetings = Meeting::all();
+        $supervisors = Registration::where('Type','Supervisor')->get();
+        return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('meetings',$meetings)->with('supervisors',$supervisors);
     }
   
    
     public function delete($id){
         Registration::where('ID', $id)->forcedelete(); 
-        return redirect()->route('allUniversity');
+        return redirect()->route('allSearcher');
+    }
+
+    public function addToMeeting(Request $request){
+        DB::table('meetings_searchers')->insert([
+            'Meeting' => $request->input('meeting'),
+            'Searcher' => $request->input('searcher'),
+            'Status' => 'yes'
+        ]);
+        
+        return redirect()->route('allSearcher');
+    }
+
+    public function addThese(Request $request){
+        DB::table('theses')->insert([
+            'Supervisor' => $request->input('Supervisor'),
+            'Searcher' => $request->input('Searcher'),
+            'Title' => $request->input('Title'),
+            'ProgramDuration' => $request->input('ProgramDuration'),
+            'BeginningDate' => $request->input('BeginningDate'),
+            'CompletionDate' => $request->input('CompletionDate'),
+            'Notes' => $request->input('Notes'),
+
+            'Status' => 'yes'
+        ]);
+        
+        return redirect()->route('allSearcher');
     }
 }
