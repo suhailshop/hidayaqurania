@@ -105,7 +105,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     
     
     Route::get('/emails/sendSup','Admin\EmailController@sendSup')->name('sendEmailSup');
+    Route::post('/emails/sendemailsuppost','Admin\EmailController@sendemailsuppost')->name('sendemailsuppost');
     Route::get('/emails/sendStu','Admin\EmailController@sendStu')->name('SendEmailStu');
+    Route::post('/emails/sendemailstupost','Admin\EmailController@sendemailstupost')->name('sendemailstupost');
+    
 
     Route::get('/sms/sendSup','Admin\SMSController@sendSup')->name('sendSMSSup');
     Route::get('/sms/sendStu','Admin\SMSController@sendStu')->name('sendSMSStu');
