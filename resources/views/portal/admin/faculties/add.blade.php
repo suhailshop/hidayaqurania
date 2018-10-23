@@ -97,6 +97,18 @@
                                                 <input type="text" class="form-control" name="location" placeholder="العنوان *" /> </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        
+                                        <div class="col-md-12">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <select  class="form-control" name="universitie" placeholder="الجامعة *"/>
+                                                @foreach($universities as $universitie)
+                                            <option value="{{$universitie->ID}}" >{{$universitie->Name}}</option>
+                                                @endforeach
+                                            </select> </div>
+                                        </div>
+                                    </div>
                                   
                                     
                                     

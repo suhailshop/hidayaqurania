@@ -60,7 +60,8 @@
                                     <th class="none">المدينة</th>
                                     <th class="none">العنوان</th>
                                     <th class="none">الهاتف</th>
-                                    <th class="desktop">الفاكس</th>
+                                    <th class="none">الفاكس</th>
+                                    <th class="desktop">الجامعة</th>
                                     <th class="none">الاميل</th>
                                     <th class="none">اللوجو</th>
                                     <th class="desktop">الحالة</th>
@@ -76,6 +77,7 @@
                                     <td>{{$facultie->Location}}</td>
                                     <td>{{$facultie->Phonne}}</td>
                                     <td>{{$facultie->Fax}}</td>
+                                    <td>{{$facultie->universitie->Name}}</td>
                                     <td>{{$facultie->Email}}</td>
                                     <td>
                                         <img src="{{ url('storage/faculties/'.$facultie->Logo) }}" 

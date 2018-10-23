@@ -73,6 +73,7 @@ class MeetingController extends Controller
             ->join('meetings','meetings_searchers.Meeting','=','meetings.ID')
             ->where('meetings.ID',$id)
             ->where('meetings_searchers.Status','yes')
+             ->distinct('registrations.NationalNumber')
             ->get(['registrations.FistName','registrations.LastName','registrations.NationalNumber','registrations.Phonne1']);
         
         return view('portal.admin.meetings.allSearcherMeeting',compact('searchers'));

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Portal\Admin;
 use App\User;
 use App\Role;
 use App\Facultie;
+use App\Universitie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -34,7 +35,8 @@ class FacultyController extends Controller
   
     public function add(){     
       
-        return view('portal.admin.faculties.add');
+        $universities = Universitie::all();
+        return view('portal.admin.faculties.add',compact('universities'));
     }
     public function addPost(Request $request){
        
@@ -61,7 +63,9 @@ class FacultyController extends Controller
     }
     public function edit($id){
         $facultie = Facultie::where('ID',$id)->first();
-        return view('portal.admin.faculties.edit',compact('facultie'));
+        
+        $universities = Universitie::all();
+        return view('portal.admin.faculties.edit',compact('facultie','universities'));
     }
     public function editPost(Request $request){
         $fileName = $request->input('img');
@@ -83,6 +87,7 @@ class FacultyController extends Controller
             'Fax'=>$request->input('fax'),
             'Email'=>$request->input('email'),
             'Status'=>$request->input('status'),
+            'University'=>$request->input('universitie'),
             'Logo'=>$fileName            
         ));
                 

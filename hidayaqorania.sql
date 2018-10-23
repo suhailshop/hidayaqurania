@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 07 oct. 2018 à 01:45
+-- Généré le :  mar. 23 oct. 2018 à 13:15
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -30,16 +30,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `books` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) CHARACTER SET utf8 NOT NULL,
+  `Code` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `Name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Author` varchar(255) CHARACTER SET utf8 NOT NULL,
   `ISBN` varchar(255) CHARACTER SET utf8 NOT NULL,
   `PictureURL` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Status` varchar(255) CHARACTER SET utf8 NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `books`
+--
+
+INSERT INTO `books` (`ID`, `Code`, `Name`, `Author`, `ISBN`, `PictureURL`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'كتاب 1', 'محمد', '111-1-1111-1111-1', 'fileName1540290101.jpg', 'yes', '2018-10-23 08:21:42', '2018-10-23 08:21:42');
 
 -- --------------------------------------------------------
 
@@ -49,7 +55,7 @@ CREATE TABLE `books` (
 
 CREATE TABLE `committees` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `FirstName` varchar(100) NOT NULL,
   `LastName` varchar(100) NOT NULL,
   `Gender` varchar(50) NOT NULL,
@@ -57,8 +63,7 @@ CREATE TABLE `committees` (
   `PictureURL` varchar(255) DEFAULT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -69,7 +74,7 @@ CREATE TABLE `committees` (
 
 CREATE TABLE `committesreports` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Section` int(11) NOT NULL,
   `DoneRange` int(11) NOT NULL,
   `CurrentProgress` int(11) NOT NULL,
@@ -83,8 +88,7 @@ CREATE TABLE `committesreports` (
   `Professor` int(11) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -95,13 +99,12 @@ CREATE TABLE `committesreports` (
 
 CREATE TABLE `configs` (
   `ID` int(10) UNSIGNED NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `DateStartInscription` date NOT NULL,
   `DateEndInscription` date NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -112,21 +115,21 @@ CREATE TABLE `configs` (
 
 CREATE TABLE `countries` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Name` varchar(255) NOT NULL,
   `Flag` varchar(255) DEFAULT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `countries`
 --
 
-INSERT INTO `countries` (`ID`, `Code`, `Name`, `Flag`, `Status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '1', 'المغرب', 'mmmm', 'yes', '2018-10-06 23:17:16', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `countries` (`ID`, `Code`, `Name`, `Flag`, `Status`, `created_at`, `updated_at`) VALUES
+(2, NULL, 'السعودية', 'fileName1539427410.png', 'yes', '2018-10-13 08:43:30', '2018-10-13 08:43:30'),
+(3, NULL, 'موريطانيا', 'fileName1540290040.jpg', 'yes', '2018-10-23 08:20:41', '2018-10-23 08:20:41');
 
 -- --------------------------------------------------------
 
@@ -136,15 +139,22 @@ INSERT INTO `countries` (`ID`, `Code`, `Name`, `Flag`, `Status`, `created_at`, `
 
 CREATE TABLE `criterias` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Name` varchar(100) NOT NULL,
   `ProposedScore` int(11) NOT NULL,
   `MaximumScore` int(11) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `criterias`
+--
+
+INSERT INTO `criterias` (`ID`, `Code`, `Name`, `ProposedScore`, `MaximumScore`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'اللغة الانجليزية', 15, 30, 'yes', '2018-10-21 22:26:20', '2018-10-13 10:27:44'),
+(2, NULL, 'اللغة العربية', 12, 20, 'yes', '2018-10-21 19:57:10', '2018-10-21 19:57:10');
 
 -- --------------------------------------------------------
 
@@ -154,16 +164,26 @@ CREATE TABLE `criterias` (
 
 CREATE TABLE `divisions` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Section` int(11) NOT NULL,
   `Alias` varchar(20) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Order` int(11) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `divisions`
+--
+
+INSERT INTO `divisions` (`ID`, `Code`, `Section`, `Alias`, `Name`, `Order`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 1, 'الفصل 1', 'اسم السورة ، وفضلها ، واحوال نزولها', 1, 'yes', '2018-10-19 20:40:55', '0000-00-00 00:00:00'),
+(2, NULL, 2, 'الفصل 1', 'الهدايات الجزئية والكلية في السورة', 1, 'yes', '2018-10-19 20:41:35', '0000-00-00 00:00:00'),
+(3, NULL, 2, 'الفصل 2', ' مناسبات السورة وخصائصها وأساليبها في عرض هداياتها', 2, 'yes', '2018-10-19 20:41:56', '0000-00-00 00:00:00'),
+(4, NULL, 1, 'الفصل 2', 'معاني السورة، ومقاصدها', 2, 'yes', '2018-10-19 20:41:11', '0000-00-00 00:00:00'),
+(5, NULL, 2, 'الفصل 3', 'واقع الأمة في ضوء هدايات السورة وأثر ذلك عليها', 3, 'yes\r\n', '2018-10-19 20:42:34', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -173,14 +193,13 @@ CREATE TABLE `divisions` (
 
 CREATE TABLE `examsfiles` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Provide` int(11) NOT NULL,
   `Type` varchar(45) NOT NULL,
   `URL` varchar(255) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -191,7 +210,7 @@ CREATE TABLE `examsfiles` (
 
 CREATE TABLE `faculties` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Name` varchar(100) NOT NULL,
   `PresidentName` varchar(100) DEFAULT NULL,
   `City` varchar(100) NOT NULL,
@@ -200,10 +219,18 @@ CREATE TABLE `faculties` (
   `Fax` varchar(50) DEFAULT NULL,
   `Email` varchar(255) DEFAULT NULL,
   `Logo` varchar(255) DEFAULT NULL,
+  `University` int(11) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `faculties`
+--
+
+INSERT INTO `faculties` (`ID`, `Code`, `Name`, `PresidentName`, `City`, `Location`, `Phonne`, `Fax`, `Email`, `Logo`, `University`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'كلية العلوم', 'رشيد العامل', 'تطوان', '158 شارع المقاومة', '0002526969', '0635288745', 'badouch.maroc@gmail.com', 'fileName1539430010.jpg', 3, 'yes', '2018-10-23 11:14:08', '2018-10-13 09:26:50');
 
 -- --------------------------------------------------------
 
@@ -213,7 +240,7 @@ CREATE TABLE `faculties` (
 
 CREATE TABLE `helps` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Type` varchar(255) NOT NULL,
   `Price` decimal(7,2) NOT NULL,
   `DateTime` datetime NOT NULL,
@@ -226,25 +253,68 @@ CREATE TABLE `helps` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `meetings`
+--
+
+CREATE TABLE `meetings` (
+  `ID` int(11) NOT NULL,
+  `Date` date NOT NULL,
+  `Name` text NOT NULL,
+  `Location` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `meetings`
+--
+
+INSERT INTO `meetings` (`ID`, `Date`, `Name`, `Location`, `created_at`, `updated_at`) VALUES
+(2, '2018-12-31', 'لقاء تعريفي', 'جدة', '2018-10-23 08:12:57', '2018-10-23 08:12:57');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `meetings_searchers`
+--
+
+CREATE TABLE `meetings_searchers` (
+  `ID` int(11) NOT NULL,
+  `Meeting` int(11) NOT NULL,
+  `Searcher` int(11) NOT NULL,
+  `Status` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `meetings_searchers`
+--
+
+INSERT INTO `meetings_searchers` (`ID`, `Meeting`, `Searcher`, `Status`, `created_at`) VALUES
+(2, 2, 11, 'yes', '2018-10-23 10:13:23'),
+(3, 2, 11, 'yes', '2018-10-23 10:13:41');
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `nationalities`
 --
 
 CREATE TABLE `nationalities` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Name` varchar(100) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `nationalities`
 --
 
-INSERT INTO `nationalities` (`ID`, `Code`, `Name`, `Status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, '1', 'مغربية', 'yes', '2018-10-06 23:17:03', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+INSERT INTO `nationalities` (`ID`, `Code`, `Name`, `Status`, `created_at`, `updated_at`) VALUES
+(1, '1', 'مغربية', 'no', '2018-10-13 12:15:12', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -254,7 +324,7 @@ INSERT INTO `nationalities` (`ID`, `Code`, `Name`, `Status`, `created_at`, `upda
 
 CREATE TABLE `provides` (
   `ID` int(11) NOT NULL,
-  `Searche` int(11) NOT NULL,
+  `Searcher` int(11) NOT NULL,
   `Book` int(11) NOT NULL,
   `TheoreticalDateTime` datetime DEFAULT NULL,
   `TheoreticalLocation` datetime DEFAULT NULL,
@@ -286,7 +356,7 @@ CREATE TABLE `registrations` (
   `BirthDate` date NOT NULL,
   `BirthCity` varchar(100) DEFAULT NULL,
   `Nationalitie` int(11) NOT NULL,
-  `Countrie` int(11) NOT NULL,
+  `Countrie` int(11) DEFAULT NULL,
   `City` varchar(100) NOT NULL,
   `Location` varchar(255) DEFAULT NULL,
   `CertificateType` varchar(255) NOT NULL,
@@ -310,7 +380,8 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `Status`, `User`, `updated_at`, `created_at`) VALUES
-(11, NULL, 'badouch', 'badouch', 'badouch', 'badouch', 'ذكر', '2018-12-31', 'badouch', 1, 1, 'badouch', 'badouch', 'badouch', 'badouch', '2018-12-31', 'searcher', 'badouch', 'badouch', '5555555', NULL, 'badouch@gmail.com', '1538833869.jpg', 'yes', 54, '2018-10-06 11:51:09', '2018-10-06 11:51:09');
+(11, NULL, 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 2, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'badouch', 'badouch', '5555555', NULL, 'badouch@gmail.com', '1538833869.jpg', 'yes', 54, '2018-10-13 14:23:52', '2018-10-06 11:51:09'),
+(12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '55555555555555', NULL, 'supervisor@supervisor.com', '1539893309.jpg', 'yes', 55, '2018-10-18 18:08:29', '2018-10-18 18:08:29');
 
 -- --------------------------------------------------------
 
@@ -352,7 +423,7 @@ CREATE TABLE `role_user` (
 
 CREATE TABLE `searchersreports` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(100) NOT NULL,
+  `Code` varchar(100) DEFAULT NULL,
   `Searcher` int(11) NOT NULL,
   `TypeCyclic` varchar(45) NOT NULL,
   `Committee` int(11) NOT NULL,
@@ -369,9 +440,28 @@ CREATE TABLE `searchersreports` (
   `URL` varchar(255) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `searcher_critera`
+--
+
+CREATE TABLE `searcher_critera` (
+  `Searcher` int(11) NOT NULL,
+  `Criteria` int(11) NOT NULL,
+  `Status` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `searcher_critera`
+--
+
+INSERT INTO `searcher_critera` (`Searcher`, `Criteria`, `Status`) VALUES
+(11, 1, 'yes'),
+(11, 2, 'yes');
 
 -- --------------------------------------------------------
 
@@ -381,16 +471,25 @@ CREATE TABLE `searchersreports` (
 
 CREATE TABLE `searchs` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Alias` varchar(20) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Order` int(11) NOT NULL,
+  `SearchURL` text NOT NULL,
   `Division` int(11) NOT NULL,
+  `Searcher` int(11) NOT NULL,
+  `Note` text,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `searchs`
+--
+
+INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Division`, `Searcher`, `Note`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'جيد جدا', 'no', '2018-10-21 18:28:56', '2018-10-21 08:17:53');
 
 -- --------------------------------------------------------
 
@@ -400,7 +499,7 @@ CREATE TABLE `searchs` (
 
 CREATE TABLE `sections` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Alias` varchar(50) NOT NULL,
   `Name` varchar(100) NOT NULL,
   `Order` int(11) NOT NULL,
@@ -410,6 +509,14 @@ CREATE TABLE `sections` (
   `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `sections`
+--
+
+INSERT INTO `sections` (`ID`, `Code`, `Alias`, `Name`, `Order`, `Status`, `created_at`, `updated_at`, `deleted_at`) VALUES
+(1, NULL, 'القسم 1', 'مقدمات تفسيرية لدراسة هدايات السورة', 1, 'yes', '2018-10-19 20:40:23', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(2, NULL, 'القسم 2', 'دراسات تطبيقية في هدايات السورة وربط ذلك بواقع الأمة', 2, 'yes', '2018-10-19 20:40:37', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -418,7 +525,7 @@ CREATE TABLE `sections` (
 
 CREATE TABLE `sessions` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(50) NOT NULL,
+  `Code` varchar(50) DEFAULT NULL,
   `Searcher` int(11) NOT NULL,
   `StartDateTime` datetime NOT NULL,
   `StopDateTime` datetime NOT NULL,
@@ -426,8 +533,7 @@ CREATE TABLE `sessions` (
   `SupervisorURL` varchar(255) DEFAULT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -469,11 +575,16 @@ CREATE TABLE `theses` (
   `Notes` varchar(45) DEFAULT NULL,
   `Status` varchar(45) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `deleted_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `Supervisor` int(11) NOT NULL,
   `Searcher` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `theses`
+--
+
+INSERT INTO `theses` (`ID`, `Title`, `ProgramDuration`, `BeginningDate`, `CompletionDate`, `Notes`, `Status`, `created_at`, `Supervisor`, `Searcher`) VALUES
+(3, 'فقه الحديث', 'سنتين', '2018-01-01', '2020-01-01', 'لا شيء', 'yes', '2018-10-19 20:15:51', 12, 11);
 
 -- --------------------------------------------------------
 
@@ -486,7 +597,7 @@ CREATE TABLE `universities` (
   `Code` varchar(50) DEFAULT NULL,
   `Name` varchar(255) NOT NULL,
   `President` varchar(255) NOT NULL,
-  `Countrie` int(11) NOT NULL,
+  `Countrie` int(11) DEFAULT NULL,
   `City` varchar(255) NOT NULL,
   `Location` varchar(255) DEFAULT NULL,
   `Phonne` varchar(20) DEFAULT NULL,
@@ -505,8 +616,8 @@ CREATE TABLE `universities` (
 --
 
 INSERT INTO `universities` (`ID`, `Code`, `Name`, `President`, `Countrie`, `City`, `Location`, `Phonne`, `Fax`, `Email`, `Logo`, `ContractID`, `ContractDate`, `Status`, `created_at`, `updated_at`) VALUES
-(2, NULL, 'محمد السادس', 'الزبير محمودي', 1, 'الدار البيضاء', 'حي الورود', '0647412585', '0522149573', 'badouch.maroc@gmail.com', 'fileName1538685413.jpg', '2753', '2018-12-31', 'no', '2018-10-06 23:19:15', '2018-10-04 18:25:40'),
-(3, NULL, 'جامعة القاضي عياض', 'عمر حسين الجابري', 1, 'مراكش', 'حي الزهور', '0627391548', '0523141185', 'badouch.maroc@gmail.com', 'fileName1538867590.jpg', '1455', '2018-12-31', 'yes', '2018-10-06 23:18:01', '2018-10-04 18:36:53');
+(2, NULL, 'محمد السادس', 'الزبير محمودي', 2, 'الدار البيضاء', 'حي الورود', '0647412585', '0522149573', 'badouch.maroc@gmail.com', 'fileName1538685413.jpg', '2753', '2018-12-31', 'no', '2018-10-13 11:14:52', '2018-10-04 18:25:40'),
+(3, NULL, 'جامعة القاضي عياض', 'عمر حسين الجابري', 2, 'مراكش', 'حي الزهور', '0627391548', '0523141185', 'badouch.maroc@gmail.com', 'fileName1538867590.jpg', '1455', '2018-12-31', 'yes', '2018-10-13 11:14:58', '2018-10-04 18:36:53');
 
 -- --------------------------------------------------------
 
@@ -530,8 +641,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'XbaGa2MwQKmKjwMtspRsxhp7A8tN6DkptA50YXBTr0qYB1DtD6osqisdVl1v', '2018-10-06 23:22:06', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 2, 'FmF2NopiBXtQYhJq0LHApPLmLNnTrdIjenuakDqnbSJkHLufSzB00X7PBCXV', '2018-10-06 23:22:54', '2018-10-06 11:51:08');
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'qNlX2g7xBmxMv4x9TEuQFaaRQBu8Pzf6N1bF4Om4BrRu5gKg8S3FQhqvljoo', '2018-10-19 21:05:17', '2018-10-03 08:22:44'),
+(54, 'student', 'student@student.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 2, '5E4MaKjYAVTSw02eZO96hrUgodSCcGTk5VqLiL7YCuSao9qCtUKsrpufDYwI', '2018-10-21 12:39:19', '2018-10-06 11:51:08'),
+(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'TReEGdjsr0GmXr3wrnKicKmY8UBYUvWde6SFxJFHzOBgkAxBC2G2iugVTA1d', '2018-10-21 18:34:07', '2018-10-18 18:08:29');
 
 --
 -- Index pour les tables déchargées
@@ -594,7 +706,8 @@ ALTER TABLE `examsfiles`
 -- Index pour la table `faculties`
 --
 ALTER TABLE `faculties`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `University` (`University`);
 
 --
 -- Index pour la table `helps`
@@ -602,6 +715,20 @@ ALTER TABLE `faculties`
 ALTER TABLE `helps`
   ADD PRIMARY KEY (`ID`,`Searcher`),
   ADD KEY `fk_Helps_Searchers1_idx` (`Searcher`);
+
+--
+-- Index pour la table `meetings`
+--
+ALTER TABLE `meetings`
+  ADD PRIMARY KEY (`ID`);
+
+--
+-- Index pour la table `meetings_searchers`
+--
+ALTER TABLE `meetings_searchers`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `Meeting` (`Meeting`),
+  ADD KEY `Searcher` (`Searcher`);
 
 --
 -- Index pour la table `nationalities`
@@ -613,8 +740,8 @@ ALTER TABLE `nationalities`
 -- Index pour la table `provides`
 --
 ALTER TABLE `provides`
-  ADD PRIMARY KEY (`ID`,`Searche`,`Book`),
-  ADD KEY `fk_Provides_Searchers1_idx` (`Searche`),
+  ADD PRIMARY KEY (`ID`,`Searcher`,`Book`),
+  ADD KEY `fk_Provides_Searchers1_idx` (`Searcher`),
   ADD KEY `fk_Provides_Books1_idx` (`Book`);
 
 --
@@ -622,9 +749,9 @@ ALTER TABLE `provides`
 --
 ALTER TABLE `registrations`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_Registrations_Nationalities1` (`Nationalitie`),
-  ADD KEY `fk_Registrations_Countries1` (`Countrie`),
-  ADD KEY `User` (`User`);
+  ADD KEY `User` (`User`),
+  ADD KEY `dm` (`Countrie`),
+  ADD KEY `Nationalitie` (`Nationalitie`);
 
 --
 -- Index pour la table `roles`
@@ -650,11 +777,19 @@ ALTER TABLE `searchersreports`
   ADD KEY `fk_SearchersReports_Sections1_idx` (`Section`);
 
 --
+-- Index pour la table `searcher_critera`
+--
+ALTER TABLE `searcher_critera`
+  ADD PRIMARY KEY (`Searcher`,`Criteria`),
+  ADD KEY `Criteria` (`Criteria`);
+
+--
 -- Index pour la table `searchs`
 --
 ALTER TABLE `searchs`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_Searchs_Divisions1_idx` (`Division`);
+  ADD KEY `fk_Searchs_Divisions1_idx` (`Division`),
+  ADD KEY `Searcher` (`Searcher`);
 
 --
 -- Index pour la table `sections`
@@ -689,8 +824,8 @@ ALTER TABLE `theses`
 -- Index pour la table `universities`
 --
 ALTER TABLE `universities`
-  ADD PRIMARY KEY (`ID`,`Countrie`),
-  ADD KEY `fk_Universities_Countries1` (`Countrie`);
+  ADD PRIMARY KEY (`ID`) USING BTREE,
+  ADD KEY `Countrie` (`Countrie`);
 
 --
 -- Index pour la table `users`
@@ -707,7 +842,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `books`
 --
 ALTER TABLE `books`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `committees`
@@ -731,19 +866,25 @@ ALTER TABLE `configs`
 -- AUTO_INCREMENT pour la table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `criterias`
+--
+ALTER TABLE `criterias`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `divisions`
 --
 ALTER TABLE `divisions`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `faculties`
 --
 ALTER TABLE `faculties`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `helps`
@@ -752,10 +893,28 @@ ALTER TABLE `helps`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `meetings`
+--
+ALTER TABLE `meetings`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT pour la table `meetings_searchers`
+--
+ALTER TABLE `meetings_searchers`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT pour la table `nationalities`
+--
+ALTER TABLE `nationalities`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
@@ -776,10 +935,16 @@ ALTER TABLE `searchersreports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `searchs`
+--
+ALTER TABLE `searchs`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT pour la table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `sessions`
@@ -788,16 +953,22 @@ ALTER TABLE `sessions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT pour la table `theses`
+--
+ALTER TABLE `theses`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT pour la table `universities`
 --
 ALTER TABLE `universities`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- Contraintes pour les tables déchargées
@@ -824,25 +995,38 @@ ALTER TABLE `examsfiles`
   ADD CONSTRAINT `fk_ExamsFiles_Provides1` FOREIGN KEY (`Provide`) REFERENCES `provides` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Contraintes pour la table `faculties`
+--
+ALTER TABLE `faculties`
+  ADD CONSTRAINT `faculties_ibfk_1` FOREIGN KEY (`University`) REFERENCES `universities` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Contraintes pour la table `helps`
 --
 ALTER TABLE `helps`
   ADD CONSTRAINT `fk_Helps_Searchers1` FOREIGN KEY (`Searcher`) REFERENCES `searchers` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Contraintes pour la table `meetings_searchers`
+--
+ALTER TABLE `meetings_searchers`
+  ADD CONSTRAINT `meetings_searchers_ibfk_1` FOREIGN KEY (`Meeting`) REFERENCES `meetings` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `meetings_searchers_ibfk_2` FOREIGN KEY (`Searcher`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Contraintes pour la table `provides`
 --
 ALTER TABLE `provides`
   ADD CONSTRAINT `fk_Provides_Books1` FOREIGN KEY (`Book`) REFERENCES `books` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Provides_Searchers1` FOREIGN KEY (`Searche`) REFERENCES `searchers` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Provides_Searchers1` FOREIGN KEY (`Searcher`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `registrations`
 --
 ALTER TABLE `registrations`
+  ADD CONSTRAINT `dm` FOREIGN KEY (`Countrie`) REFERENCES `countries` (`ID`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `fk` FOREIGN KEY (`User`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_Registrations_Countries1` FOREIGN KEY (`Countrie`) REFERENCES `countries` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Registrations_Nationalities1` FOREIGN KEY (`Nationalitie`) REFERENCES `nationalities` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `registrations_ibfk_1` FOREIGN KEY (`Nationalitie`) REFERENCES `nationalities` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `searchersreports`
@@ -853,10 +1037,18 @@ ALTER TABLE `searchersreports`
   ADD CONSTRAINT `fk_SearchersReports_Sections1` FOREIGN KEY (`Section`) REFERENCES `sections` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Contraintes pour la table `searcher_critera`
+--
+ALTER TABLE `searcher_critera`
+  ADD CONSTRAINT `searcher_critera_ibfk_1` FOREIGN KEY (`Searcher`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `searcher_critera_ibfk_2` FOREIGN KEY (`Criteria`) REFERENCES `criterias` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
 -- Contraintes pour la table `searchs`
 --
 ALTER TABLE `searchs`
-  ADD CONSTRAINT `fk_Searchs_Divisions1` FOREIGN KEY (`Division`) REFERENCES `divisions` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Searchs_Divisions1` FOREIGN KEY (`Division`) REFERENCES `divisions` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `searchs_ibfk_1` FOREIGN KEY (`Searcher`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `sessions`
@@ -875,14 +1067,14 @@ ALTER TABLE `supervisorsreports`
 -- Contraintes pour la table `theses`
 --
 ALTER TABLE `theses`
-  ADD CONSTRAINT `fk_Theses_Searchers` FOREIGN KEY (`Searcher`) REFERENCES `searchers` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_Theses_Supervisors` FOREIGN KEY (`Supervisor`) REFERENCES `supervisors` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Theses_Searchers` FOREIGN KEY (`Searcher`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_Theses_Supervisors` FOREIGN KEY (`Supervisor`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `universities`
 --
 ALTER TABLE `universities`
-  ADD CONSTRAINT `fk_Universities_Countries1` FOREIGN KEY (`Countrie`) REFERENCES `countries` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `universities_ibfk_1` FOREIGN KEY (`Countrie`) REFERENCES `countries` (`ID`) ON DELETE SET NULL ON UPDATE SET NULL;
 
 --
 -- Contraintes pour la table `users`

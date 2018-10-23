@@ -108,6 +108,19 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        
+                                        <div class="col-md-12">
+                                            <label> الجامعة </label>
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <select  class="form-control" name="universitie" placeholder="الجامعة *"/>
+                                                @foreach($universities as $universitie)
+                                                    <option @if($facultie->universitie->ID==$universitie->ID) selected @endif  value="{{$universitie->ID}}" >{{$universitie->Name}}</option>
+                                                @endforeach
+                                            </select> </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <div class="col-md-12">
                                                 <div class="fileinput-new thumbnail img-fluid" style="width: 200px; height: 150px;">
                                                         <img src="{{url('storage/faculties/'.$facultie->Logo)}}" alt="" id="blah" /> </div>

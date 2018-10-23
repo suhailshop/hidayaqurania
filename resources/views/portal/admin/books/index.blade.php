@@ -70,7 +70,7 @@
                                     <td>{{$book->Author}}</td>
                                     <td>{{$book->ISBN}}</td>
                                     <td>
-                                        <img src="{{ url('storage/books/'.$books->PictureURL) }}" 
+                                        <img src="{{ url('storage/books/'.$book->PictureURL) }}" 
                                             style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
                                     </td>
                                     
