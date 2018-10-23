@@ -46,6 +46,18 @@
                         
                             {{ csrf_field() }}
                             <div class="col-md-6">
+                                @if(isset($msg) && isset($type)) 
+                                    @if($type=='danger')
+                                        <div class="alert alert-danger" role="alert">
+                                                
+                                                <strong>تنبيه !</strong>  {{$msg}}
+                                        </div>
+                                    @else
+                                        <div class="alert alert-success" role="alert">
+                                                <strong>مبروك !</strong>  {{$msg}}
+                                        </div>
+                                    @endif
+                                @endif
                                     <div class="portlet light ">
                                             <div class="portlet-title">
                                                 <div class="caption font-dark">

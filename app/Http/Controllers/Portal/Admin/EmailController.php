@@ -52,14 +52,22 @@ class EmailController extends Controller
     }
 
     public function sendemailsuppost(Request $request ){
+        $msg="";
+        $type="";
         if($request->input('selectedsup')!=NULL)
         {
             foreach($request->input('selectedsup') as $stu){
                 
                 Mail::to($stu)->send(new notifications($stu,$request->input('subject'),$request->input('text')));
             }
+            $msg ="تم ارسال الايميل للمشرفين";
+            $type="success";
             
+        }else{
+            $msg ="لم يتم ارسال الايميل المرجو اختيار مشرف واحد على الاقل";
+            $type = "danger";
         }
-        return redirect()->route('sendEmailSup'); 
+        $supervisors = Registration::where('Type','Supervisor')->get();
+        return view('portal.admin.email.sup')->with('supervisors',$supervisors)->with('msg',$msg)->with('type',$type);
     }
 }
