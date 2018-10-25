@@ -111,7 +111,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     
 
     Route::get('/sms/sendSup','Admin\SMSController@sendSup')->name('sendSMSSup');
+    Route::post('/sms/sendsmssuppost','Admin\SMSController@sendsmssuppost')->name('sendsmssuppost');
     Route::get('/sms/sendStu','Admin\SMSController@sendStu')->name('sendSMSStu');
+    Route::post('/sms/sendsmsstupost','Admin\SMSController@sendsmsstupost')->name('sendsmsstupost');
 
 
 

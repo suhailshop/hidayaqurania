@@ -40,15 +40,22 @@ class EmailController extends Controller
     }
 
     public function sendemailstupost(Request $request ){
+        $msg="";
+        $type="";
         if($request->input('selectedstu')!=NULL)
         {
             foreach($request->input('selectedstu') as $stu){
                 
                 Mail::to($stu)->send(new notifications($stu,$request->input('subject'),$request->input('text')));
             }
-            
+            $msg ="تم ارسال الايميل للمشرفين";
+            $type="success";
+        }else{
+            $msg ="لم يتم ارسال الايميل المرجو اختيار مشرف واحد على الاقل";
+            $type = "danger";
         }
-        return redirect()->route('SendEmailStu'); 
+        $searchers = Registration::where('Type','Searcher')->get();
+        return view('portal.admin.email.stu')->with('searchers',$searchers)->with('msg',$msg)->with('type',$type);
     }
 
     public function sendemailsuppost(Request $request ){

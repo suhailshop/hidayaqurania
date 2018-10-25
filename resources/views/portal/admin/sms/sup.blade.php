@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'ارسال الايميلات')
+@section('pageTitle', 'رسائل نصية قصيرة')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -32,8 +32,8 @@
                         <i class="fa fa-angle-left"></i>
                     </li>
                     <li>
-                            <i class="icon-envelope-open"></i>
-                        <span>ارسال ايميلات الى الباحثين</span>
+                            <i class="icon-bubbles"></i>
+                        <span>ارسال SMS الى المشرفين</span>
                     </li>
                 </ul>
             </div>
@@ -42,11 +42,11 @@
          
             <div class="row">
                 
-                    <form method="POST" action="{{route('sendemailstupost')}}" >
+                    <form method="POST" action="{{route('sendsmssuppost')}}" >
                         
                             {{ csrf_field() }}
                             <div class="col-md-6">
-                                    @if(isset($msg) && isset($type)) 
+                                @if(isset($msg) && isset($type)) 
                                     @if($type=='danger')
                                         <div class="alert alert-danger" role="alert">
                                                 
@@ -61,16 +61,13 @@
                                     <div class="portlet light ">
                                             <div class="portlet-title">
                                                 <div class="caption font-dark">
-                                                    <i class="icon-envelope-open font-dark"></i>
-                                                    <span class="caption-subject bold uppercase">معلومات الرسالة *</span>
+                                                    <i class="icon-bubbles font-dark"></i>
+                                                    <span class="caption-subject bold uppercase">معلومات SMS *</span>
                                                 </div>
                                                 <div class="tools"> </div>
                                             </div>
                                             <div class="portlet-body">
-                                    <div class="form-group">
-                                            <label for="subject">العنوان *</label>
-                                            <input type="text" class="form-control" id="subject" required name="subject" />
-                                        </div>
+                               
                                         <div class="form-group">
                                             <label for="text" >الرسالة * </label>
                                         <textarea name="text" class="form-control" required></textarea>
@@ -83,7 +80,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">المرجو اختيار الباحثين </span>
+                            <span class="caption-subject bold uppercase">المرجو اختيار المشرفين </span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -113,7 +110,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($searchers as $searcher)
+                                    @foreach($supervisors as $searcher)
                                     <tr>
                                         <td>{{$searcher->Fistname}} {{$searcher->LastName}}</td>
                                         <td>{{$searcher->Gender}}</td>
@@ -134,7 +131,7 @@
                                                 style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
                                         </td>        
                                         <td>@if($searcher->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
-                                        <td><input class="form-check-input" type="checkbox" value="{{$searcher->Email}}" name="selectedstu[]" id="defaultCheck1"></td>
+                                        <td><input class="form-check-input" type="checkbox" value="{{$searcher->Phonne1}}" name="selectedsup[]" id="defaultCheck1"></td>
                                         
                                         
                                     </tr>

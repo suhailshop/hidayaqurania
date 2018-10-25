@@ -5,13 +5,15 @@ namespace App\Http\Controllers\Portal\Admin;
 use App\User;
 use App\Role;
 use App\Countrie;
-use App\Universitie;
+use App\Registration;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Nexmo;
 
-class UniversityController extends Controller
+
+class SMSController extends Controller
 {
     private $user ;
     public function __construct()
@@ -27,80 +29,63 @@ class UniversityController extends Controller
             else{return redirect('/login');}
         });
     }
-    public function index(){
-
-        $universities = Universitie::all();
-        return view('portal.admin.universities.index')->with('universities',$universities);
-    }
-  
-    public function add(){
-        $countries = Countrie::all();
+    public function sendSup(){
+        $supervisors = Registration::where('Type','Supervisor')->get();
+        return view('portal.admin.sms.sup')->with('supervisors',$supervisors);
         
-      
-        return view('portal.admin.universities.add',compact('countries'));
     }
-    public function addPost(Request $request){
-       
-        $universitie = new Universitie;
-        $universitie->Name = $request->input('name');
-        $universitie->President = $request->input('president');
-        $universitie->Countrie = $request->input('countrie');
-        $universitie->City = $request->input('city');
-        $universitie->Location = $request->input('location');
-        $universitie->Phonne = $request->input('phonne');
-        $universitie->Fax = $request->input('fax');
-        $universitie->Email = $request->input('email');
-        $universitie->ContractID = $request->input('contratid');
-        $universitie->ContractDate = $request->input('contratdate');
-        $universitie->Status = "yes";
-        if($request->hasFile('logo')){
-            $request->validate([
-                'logo' => 'required|file|max:1024',
-            ]);
-            $fileName = "fileName".time().'.'.request()->logo->getClientOriginalExtension();
-            
-            $request->logo->storeAs('public/universities',$fileName);
-            $universitie->Logo = $fileName;
-        }
-        $universitie->save();
-        return redirect()->route('allUniversity');
+    public function sendStu(){
+        $searchers = Registration::where('Type','Searcher')->get();
+        return view('portal.admin.sms.stu')->with('searchers',$searchers);
     }
-    public function edit($id){
-        $countries = Countrie::all();
-        $universitie = Universitie::where('ID',$id)->first();
 
-        return view('portal.admin.universities.edit',compact('universitie','countries'));
-    }
-    public function editPost(Request $request){
-        $fileName = $request->input('img');
-        if($request->hasFile('logo')){
-            $request->validate([
-                'logo' => 'required|file|max:1024',
-            ]);
-            $fileName = "fileName".time().'.'.request()->logo->getClientOriginalExtension();
-            
-            $request->logo->storeAs('public/universities',$fileName);
+    public function sendsmsstupost(Request $request ){
+        $msg="";
+        $type="";
+        if($request->input('selectedstu')!=NULL)
+        {
+            $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('806ba54a', 'hsRZYwq8S6dGTKxb'));
+            foreach($request->input('selectedstu') as $stu){
+               
+                $message = $client->message()->send([
+                    'to' => $stu,
+                    'from' => 'Hidaya Qurania',
+                    'text' => $request->input('text'),
+                    'type' => 'unicode'
+                ]);
+            }
+            $msg ="تم ارسال SMS للباحثين";
+            $type="success";            
+        }else{
+            $msg ="لم يتم ارسال SMS المرجو اختيار باحث واحد على الاقل";
+            $type = "danger";
         }
-        DB::table('universities')->where('ID',$request->input('id'))
-        ->update(array(
-            'Name'=>$request->input('name'),
-            'President'=>$request->input('president'),
-            'Countrie'=>$request->input('countrie'),
-            'City'=>$request->input('city'),
-            'Location'=>$request->input('location'),
-            'Phonne'=>$request->input('phonne'),
-            'Fax'=>$request->input('fax'),
-            'Email'=>$request->input('email'),
-            'ContractID'=>$request->input('contratid'),
-            'ContractDate'=>$request->input('contratdate'),
-            'Status'=>$request->input('status'),
-            'Logo'=>$fileName            
-        ));
-                
-        return redirect()->route('allUniversity');
+        $searchers = Registration::where('Type','Searcher')->get();
+        return view('portal.admin.sms.stu')->with('searchers',$searchers)->with('msg',$msg)->with('type',$type);
     }
-    public function delete($id){
-        Universitie::where('ID', $id)->forcedelete(); 
-        return redirect()->route('allUniversity');
+
+    public function sendsmssuppost(Request $request ){
+        $msg="";
+        $type="";
+        if($request->input('selectedsup')!=NULL)
+        {
+            $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('806ba54a', 'hsRZYwq8S6dGTKxb'));
+            foreach($request->input('selectedsup') as $stu){
+                $message = $client->message()->send([
+                    'to' => $stu,
+                    'from' => 'Hidaya Qurania',
+                    'text' => $request->input('text'),
+                    'type' => 'unicode'
+                ]);                
+            }
+            $msg ="تم ارسال SMS للمشرفين";
+            $type="success";
+            
+        }else{
+            $msg ="لم يتم ارسال SMS المرجو اختيار مشرف واحد على الاقل";
+            $type = "danger";
+        }
+        $supervisors = Registration::where('Type','Supervisor')->get();
+        return view('portal.admin.sms.sup')->with('supervisors',$supervisors)->with('msg',$msg)->with('type',$type);
     }
 }
