@@ -141,6 +141,16 @@
                                                     <span class="title">أضف معيار</span>
                                                 </a>
                                             </li>
+                                            <li class="nav-item  ">
+                                                <a href="{{route('searcherok')}}" class="nav-link ">
+                                                        <span class="title">الباحثين المستوفين</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item  ">
+                                                    <a href="{{route('searcherko')}}" class="nav-link ">
+                                                            <span class="title">الباحثين الغير مستوفين</span>
+                                                        </a>
+                                                    </li>
                                     </ul>
                                 </li>
                                 <li class="nav-item  ">

@@ -70,6 +70,8 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/criterias/edit/{id}','Admin\CriteriaController@edit')->name('editCriteria');
     Route::post('/criterias/edit','Admin\CriteriaController@editPost')->name('editCriteriaPost');
     Route::get('/criterias/delete/{id}','Admin\CriteriaController@delete')->name('deleteCriteriaPost');
+    Route::get('/criterias/searcherok','Admin\CriteriaController@searcherok')->name('searcherok');
+    Route::get('/criterias/searcherko','Admin\CriteriaController@searcherko')->name('searcherko');
 
     Route::get('/nationalites','Admin\NationalitieController@index')->name('allNationalite');
     Route::get('/nationalites/add','Admin\NationalitieController@add')->name('addNationalite');

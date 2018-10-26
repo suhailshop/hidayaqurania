@@ -81,4 +81,6 @@ class CountrieController extends Controller
         Countrie::where('ID', $id)->forcedelete(); 
         return redirect()->route('allCountrie');
     }
+
+ 
 }

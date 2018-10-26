@@ -68,4 +68,25 @@ class CriteriaController extends Controller
         Criteria::where('ID', $id)->forcedelete(); 
         return redirect()->route('allCriteria');
     }
+
+    public function searcherok(){
+        $searchers = DB::table('registrations')
+                    ->join('searcher_critera','searcher_critera.Searcher','=','registrations.ID')
+                    ->join('criterias','criterias.ID','=','searcher_critera.Criteria')
+                    ->where('searcher_critera.Status','yes')
+                    ->distinct('registrations.ID')
+                    ->get(['registrations.*']);
+        return view('portal.admin.criterias.searcherok',compact('searchers'));
+    }
+
+    public function searcherko(){
+        $searchers = DB::table('registrations')
+        ->join('searcher_critera','searcher_critera.Searcher','=','registrations.ID')
+        ->join('criterias','criterias.ID','=','searcher_critera.Criteria')
+        ->where('searcher_critera.Status','no')
+        ->distinct('registrations.ID')
+        ->get(['registrations.*']);
+        return view('portal.admin.criterias.searcherko',compact('searchers'));
+
+    }
 }

@@ -372,7 +372,7 @@
                                             </button>
                                             </div>
                                             <div class="modal-body">
-                                                @if(empty($searcher->searcher_criteria))
+                                                @if(count($searcher->searcher_criteria)<=0)
                                                     <input type="hidden" name="searcher" value="{{$searcher->ID}}" />
                                                     <div class="form-group  " style="height:100px">
                                                             
@@ -420,7 +420,7 @@
                                             </div>
                                             <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                            @if(empty($searcher->searcher_criteria))
+                                            @if(count($searcher->searcher_criteria)<=0)
                                                 <button type="submit" class="btn btn-primary">حفظ </button>
                                             @endif
                                             </div>
