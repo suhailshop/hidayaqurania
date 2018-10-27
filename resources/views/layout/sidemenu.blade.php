@@ -278,6 +278,25 @@
                                 <span class="arrow"></span>
                             </a>
                     </li>
+                    <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-chemistry"></i>
+                                <span class="title">تقاريري </span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                    <li class="nav-item  ">
+                                        <a href="{{route('allSupervisorReports')}}" class="nav-link ">
+                                            <span class="title"> لائحة تقاريري </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                    <a href="{{route('addSupervisorReport')}}" class="nav-link ">
+                                            <span class="title">اضافة تقرير</span>
+                                        </a>
+                                    </li>
+                            </ul>
+                        </li>
                      @endif
                      @if(auth()->user()->hasRole('student',auth()->user()->role_id))
                      <li class="nav-item  ">
@@ -306,6 +325,27 @@
                                             </li>
                                     </ul>
                                 </li>
+                                <li class="nav-item  ">
+                                    <a href="javascript:;" class="nav-link nav-toggle">
+                                            <i class="icon-chemistry"></i>
+                                            <span class="title">تقاريري </span>
+                                            <span class="arrow"></span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                                <li class="nav-item  ">
+                                                    <a href="{{route('allSearcherReports')}}" class="nav-link ">
+                                                        <span class="title"> لائحة تقاريري </span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item  ">
+                                                <a href="{{route('addSearcherReport')}}" class="nav-link ">
+                                                        <span class="title">اضافة تقرير</span>
+                                                    </a>
+                                                </li>
+                                        </ul>
+                                    </li>
+                                
+                            </li>
                       
                      @endif
               </ul>
