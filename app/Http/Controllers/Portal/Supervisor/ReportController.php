@@ -63,7 +63,7 @@ class ReportController extends Controller
             $report->URL = $fileName;
         }
         $report->save();
-        return redirect()->route('SupervisorReports');
+        return redirect()->route('allSupervisorReports');
     }
     public function edit($id){
         $report = Supervisorsreport::where('ID',$id)->first();
@@ -76,9 +76,9 @@ class ReportController extends Controller
                 'URL' => 'required|file|max:1024',
             ]);
             $fileName = "fileName".time().'.'.request()->URL->getClientOriginalExtension();
-            $request->URL->storeAs('public/searchersreports',$fileName);
+            $request->URL->storeAs('public/supervisorsreports',$fileName);
         }
-        DB::table('searchersreports')->where('ID',$request->input('id'))
+        DB::table('supervisorsreports')->where('ID',$request->input('id'))
             ->update(array(
                 'TypeCyclic'=>$request->input('TypeCyclic'),
                 'DateSupervisor'=>$request->input('DateSupervisor'),
@@ -93,10 +93,10 @@ class ReportController extends Controller
                 'Status'=>$request->input('Status'),                
                 'URL'=>$fileName            
         ));
-        return redirect()->route('allSearcherReports');
+        return redirect()->route('allSupervisorReports');
     }
     public function delete($id){
-        Searchersreport::where('ID', $id)->forcedelete(); 
-        return redirect()->route('allSearcherReports');
+        Supervisorsreport::where('ID', $id)->forcedelete(); 
+        return redirect()->route('allSupervisorReports');
     }
 }

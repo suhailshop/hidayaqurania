@@ -263,6 +263,13 @@
                                                             </ul>
                                                         </li>
                                                         <li class="nav-item  ">
+                                                                <a href="{{route('allAdminReports')}}" class="nav-link nav-toggle">
+                                                                        <i class="icon-notebook"></i>
+                                                                        <span class="title">التقارير</span>
+                                                                        <span class="arrow"></span>
+                                                                    </a>
+                                                                </li>
+                                                        <li class="nav-item  ">
                                                                 <a href="{{route('allConfigs')}}" class="nav-link nav-toggle">
                                                                         <i class="icon-settings"></i>
                                                                         <span class="title">الاعدادات</span>

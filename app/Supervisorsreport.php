@@ -16,7 +16,11 @@ class Supervisorsreport extends Model
 
     public function supervisor()
     {
-        return $this->hasOne('App\Registration','Supervisor','ID');
+        return $this->hasOne('App\Registration','ID','Supervisor');
+    }
+    public function committesreport()
+    {
+        return $this->hasOne('App\Committesreport','Supervisorreports','ID');
     }
 
 }

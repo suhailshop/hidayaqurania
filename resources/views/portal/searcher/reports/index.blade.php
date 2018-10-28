@@ -91,9 +91,104 @@
                                     </td>
                                     <td>
                                     @if(isset($report->committesreport) )
-                                        <a href="{{ url('storage/adminreports/'.$report->committesreport->URL) }}" >تحميل</a>
+                                        <button type="button" class="btn green" data-toggle="modal" data-target="#exampleModal">مشاهدة</button>
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">تقرير الادارة </h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                        <div class="panel-group accordion" id="accordion1">
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_1"> تحميل الملف : </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="collapse_1" class="panel-collapse in">
+                                                                        <div class="panel-body">
+                                                                            <p><a class="btn red" href="{{ url('storage/adminreports/'.$report->committesreport->URL) }}"  target="_blank">تحميل </a></p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_2"> القسم : </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="collapse_2" class="panel-collapse collapse">
+                                                                        <div class="panel-body" style=" overflow-y:auto;">
+                                                                            <p> {{$report->committesreport->section->Name}} </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default">
+                                                                        <div class="panel-heading">
+                                                                            <h4 class="panel-title">
+                                                                                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_5"> اللجنة : </a>
+                                                                            </h4>
+                                                                        </div>
+                                                                        <div id="collapse_5" class="panel-collapse collapse">
+                                                                            <div class="panel-body" style=" overflow-y:auto;">
+                                                                                <p> الاسم العائلي : {{$report->committesreport->committee->FirstName}} </p>
+                                                                                <p>الاسم الشخصي : {{$report->committesreport->committee->LastName}}</p>
+                                                                                <p>الجنس : {{$report->committesreport->committee->Gender}}</p>
+                                                                                <p>المهمة : {{$report->committesreport->committee->Function}}</p>                                                                               
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_3">  التقييم : </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="collapse_3" class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <p> تقييم الجزء المنجز : {{$report->committesreport->DoneRange}} </p>
+                                                                            <p> مدى التقدم الحالي : {{$report->committesreport->CurrentProgress}} </p>
+                                                                            <p>مدى الالتزام بتوجيهات اللجنة : {{$report->committesreport->QualityDirection}} </p>
+                                                                            <p>رأي اللجنة : {{$report->committesreport->Recommendations}}</p>
+                                                                            <p>الجزء المنجز : {{$report->committesreport->UpdatedRange}}</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="panel panel-default">
+                                                                    <div class="panel-heading">
+                                                                        <h4 class="panel-title">
+                                                                            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse_4"> معلومات أخرى : </a>
+                                                                        </h4>
+                                                                    </div>
+                                                                    <div id="collapse_4" class="panel-collapse collapse">
+                                                                        <div class="panel-body">
+                                                                            <p> أسباب عدم القبول : {{$report->committesreport->Reasons}} </p>
+                                                                            <p> تاريخ الاعتماد : {{$report->committesreport->DateCommittee}} </p>
+                                                                            <p>  رئيس اللجنة العلمية : {{$report->committesreport->President}}<p>
+                                                                            <p> اعتماد استاذ الكرسي : {{$report->committesreport->Professor}}  </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+                                                        
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-info" data-dismiss="modal">اغلاق</button>
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
                                     @else 
-                                        لا تقرير
+                                    <button type="button" class="btn red" > لا تقرير</button>                                      
                                     @endif
                                     </td>
                                     <td>@if($report->Status == 'yes') مفعلة @else غير مفعلة @endif</td>

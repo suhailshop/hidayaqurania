@@ -4,6 +4,7 @@ namespace App;
 
 use App\Searchersreport;
 use App\Section;
+use App\Committee;
 use Illuminate\Database\Eloquent\Model;
 
 class Committesreport extends Model 
@@ -26,6 +27,10 @@ class Committesreport extends Model
     public function supervisorreport()
     {
         return $this->hasOne('App\Registration','Supervisorreports','ID');
+    }
+    public function committee()
+    {
+        return $this->hasOne('App\Committee','ID','Committee');
     }
 
 }

@@ -118,6 +118,11 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/sms/sendsmsstupost','Admin\SMSController@sendsmsstupost')->name('sendsmsstupost');
 
 
+    Route::get('/reports/get/{i}','Admin\ReportController@get')->name('getReportDetails');
+    Route::post('/reports/add','Admin\ReportController@add')->name('addReportDetails');
+    Route::get('/reports','Admin\ReportController@index')->name('allAdminReports');
+
+
 
     //----------------------- Supervisor -----------------------------
     
@@ -129,6 +134,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/reports','Supervisor\ReportController@index')->name('allSupervisorReports');
     Route::get('/supervisor/addReport','Supervisor\ReportController@add')->name('addSupervisorReport');
     Route::post('/supervisor/addReportPost','Supervisor\ReportController@addPost')->name('addSupervisorReportPost');
+    Route::post('/supervisor/addReportPost','Supervisor\ReportController@addPost')->name('addSupervisorReportPost');
+    Route::get('/supervisor/editReport/{i}','Supervisor\ReportController@edit')->name('editSupervisorReport');
+    Route::post('/supervisor/editReportPost','Supervisor\ReportController@editPost')->name('editSupervisorReportPost');
+    Route::get('/supervisor/deleteReport/{i}','Supervisor\ReportController@delete')->name('deleteSupervisorReport');
     
 
     //---------------------- Searcher ---------------------------------

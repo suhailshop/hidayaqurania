@@ -57,8 +57,7 @@
                                     <div class="alert alert-danger display-hide">
                                         <button class="close" data-close="alert"></button> لديك بعض الاخطاء في النموذج . يرجى مراجعة أدناه. </div>
                                    
-                                    <div class="form-group  ">
-                                       
+                              
                   
                                     <div class="form-group">
                                         <div class="col-md-12">

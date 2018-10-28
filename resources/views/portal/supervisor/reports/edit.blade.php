@@ -36,7 +36,7 @@
                         </li>
                         <li>
                                 <i class="icon-chemistry"></i>
-                                 <a href="{{route('allSearcherReports')}}">إدارة تقاريري</a>
+                                 <a href="{{route('allSupervisorReports')}}">إدارة تقاريري</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
@@ -51,7 +51,7 @@
             </div>
 <div class="row">
     
-<form action="{{route('editSearcherReportPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
+<form action="{{route('editSupervisorReportPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="col-md-6">
                 <!-- BEGIN VALIDATION STATES-->
@@ -66,68 +66,54 @@
                                
                                     <input type="hidden" value="{{$report->ID}}" name="id"/>
                                     <input type="hidden" value="{{$report->URL}}" name="URL"/>
-                                <div class="form-group  ">
-                                   
-                                    <div class="col-md-12">
-                                        <label>القسم</label>
-                                        <div class="input-icon right">
-                                            <i class="fa"></i>
-                                            <select  class="form-control" name="Section" >
-                                                @foreach($sections as $section)
-                                                    <option @if($report->Section==$section->ID) selected @endif value="{{$section->ID}}" >{{$section->Name}}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-md-12">
-                                        <label>الصنف *</label>
-                                        <div class="input-icon right">
-                                            <i class="fa"></i>
-                                            <input type="text" class="form-control" value="{{$report->TypeCyclic}}" name="TypeCyclic" placeholder="الصنف *"/> </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>التاريخ *</label>
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="date" class="form-control" value="{{$report->DateSearcher}}" name="DateSearcher" placeholder="التاريخ *"/> </div>
-                                        </div>
-                                </div>
-                                <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>تقييم الجزء المنجز *</label>
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" value="{{$report->DoneRange}}" name="DoneRange" placeholder="تقييم الجزء المنجز *"/> </div>
-                                        </div>
-                                </div>
-                                <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>عدد الجلسات *</label>
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" value="{{$report->SessionsCount}}" name="SessionsCount" placeholder="عدد الجلسات *"/> </div>
-                                        </div>
-                                </div>
-                                <div class="form-group">
-                                        <div class="col-md-12">
-                                            <label>مجموع ساعات الاشراف *</label>
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" value="{{$report->HoursNumber}}" name="HoursNumber" placeholder="مجموع ساعات الاشراف  *"/> </div>
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>مدى الالتزام بالتعديلات *</label>
+                                                <label>الصنف *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <input type="number" class="form-control" value="{{$report->UpdatedRange}}" name="UpdatedRange" placeholder="مدى الالتزام بالتعديلات *"/> </div>
+                                                    <input type="text" class="form-control" value="{{$report->TypeCyclic}}" name="TypeCyclic" placeholder="الصنف *"/> </div>
                                             </div>
-                                    </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>التاريخ *</label>
+                                                    <div class="input-icon right">
+                                                        <i class="fa"></i>
+                                                        <input type="date" class="form-control"  value="{{$report->DateSupervisor}}" name="DateSupervisor" placeholder="التاريخ *"/> </div>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>تقييم الجزء المنجز *</label>
+                                                    <div class="input-icon right">
+                                                        <i class="fa"></i>
+                                                        <input type="number" class="form-control" value="{{$report->DoneRange}}" name="DoneRange" placeholder="تقييم الجزء المنجز *"/> </div>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>جودة البحث *</label>
+                                                    <div class="input-icon right">
+                                                        <i class="fa"></i>
+                                                        <input type="number" class="form-control" value="{{$report->QualityProcess}}" name="QualityProcess" placeholder="جودة البحث *"/> </div>
+                                                </div>
+                                        </div>
+                                        <div class="form-group">
+                                                <div class="col-md-12">
+                                                    <label>مدى الالتزام بالتوجيهات *</label>
+                                                    <div class="input-icon right">
+                                                        <i class="fa"></i>
+                                                        <input type="number" class="form-control" value="{{$report->QualityDirection}}" name="QualityDirection" placeholder="مدى الالتزام بالتوجيهات  *"/> </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                    <div class="col-md-12">
+                                                        <label>القدر المعدل *</label>
+                                                        <div class="input-icon right">
+                                                            <i class="fa"></i>
+                                                            <input type="number" class="form-control"  value="{{$report->UpdatedRange}}" name="UpdatedRange" placeholder="القدر المعدل *"/> </div>
+                                                    </div>
+                                            </div>
                                     
                                     
                             </div>
@@ -145,15 +131,15 @@
                                                 <label>تاريخ الاعتماد *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <input type="date" class="form-control" value="{{$report->DateCommittee}}" name="DateCommittee" placeholder="تاريخ الاعتماد *"/> </div>
+                                                    <input type="date" class="form-control"  value="{{$report->DateCommittee}}" name="DateCommittee" placeholder="تاريخ الاعتماد *"/> </div>
                                             </div>
                                     </div>
                                     <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>الأسباب *</label>
+                                                <label>الملاحظات الايجابية *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <textarea class="form-control" name="Reasons" placeholder="الأسباب *">{{$report->Reasons}}</textarea> </div>
+                                                    <textarea class="form-control" name="NotesPositive" placeholder="الملاحظات الايجابية *">{{$report->NotesPositive}}</textarea> </div>
                                             </div>
                                     </div>
                                     <div class="form-group">
@@ -166,10 +152,10 @@
                                     </div>
                                     <div class="form-group">
                                             <div class="col-md-12">
-                                                <label>الملاحظات *</label>
+                                                <label>الملاحظات السلبية *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <textarea class="form-control" name="Notes" placeholder="الملاحظات *">{{$report->Notes}}</textarea> </div>
+                                                    <textarea class="form-control"  name="NotesNegative" placeholder="الملاحظات السلبية *">{{$report->NotesNegative}}</textarea> </div>
                                             </div>
                                     </div>
                                     
@@ -188,7 +174,7 @@
                                                     <label>الحالة</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <select  class="form-control" name="status" placeholder="الحالة *"/>
+                                                    <select  class="form-control" name="Status" placeholder="الحالة *"/>
                                                     
                                                         <option @if($report->Status=='yes') selected @endif value="yes" >مفعلة</option>
     
