@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 23 oct. 2018 à 13:15
+-- Généré le :  Dim 28 oct. 2018 à 22:31
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -66,6 +66,13 @@ CREATE TABLE `committees` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `committees`
+--
+
+INSERT INTO `committees` (`ID`, `Code`, `FirstName`, `LastName`, `Gender`, `Function`, `PictureURL`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'mm', 'mmm', 'mm', 'mm', NULL, 'mm', '2018-10-27 23:23:22', '0000-00-00 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -84,12 +91,24 @@ CREATE TABLE `committesreports` (
   `DateCommittee` date NOT NULL,
   `Reasons` varchar(45) DEFAULT NULL,
   `URL` varchar(45) NOT NULL,
-  `President` int(11) NOT NULL,
-  `Professor` int(11) NOT NULL,
+  `President` text NOT NULL,
+  `Professor` text NOT NULL,
+  `Committee` int(11) NOT NULL,
+  `Searcherreports` int(11) DEFAULT NULL,
+  `Supervisorreports` int(11) DEFAULT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `committesreports`
+--
+
+INSERT INTO `committesreports` (`ID`, `Code`, `Section`, `DoneRange`, `CurrentProgress`, `QualityDirection`, `Recommendations`, `UpdatedRange`, `DateCommittee`, `Reasons`, `URL`, `President`, `Professor`, `Committee`, `Searcherreports`, `Supervisorreports`, `Status`, `created_at`, `updated_at`) VALUES
+(5, NULL, 1, 1, 1, 1, 'mmm', 1, '2018-12-31', 'mm', 'fileName1540760566.pdf', 'mmmm', 'llll', 1, 3, NULL, 'yes', '2018-10-28 20:02:47', '2018-10-28 20:02:47'),
+(6, NULL, 1, 1, 1, 1, '1', 1, '0001-01-01', '1', 'fileName1540760611.docx', '1', '1', 1, 4, NULL, 'yes', '2018-10-28 20:03:31', '2018-10-28 20:03:31'),
+(7, NULL, 2, 2, 2, 2, '2', 2, '0002-02-02', '22', 'fileName1540761340.docx', '2', '2', 1, NULL, 1, 'yes', '2018-10-28 20:15:40', '2018-10-28 20:15:40');
 
 -- --------------------------------------------------------
 
@@ -380,8 +399,8 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `Status`, `User`, `updated_at`, `created_at`) VALUES
-(11, NULL, 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 2, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'badouch', 'badouch', '5555555', NULL, 'badouch@gmail.com', '1538833869.jpg', 'yes', 54, '2018-10-13 14:23:52', '2018-10-06 11:51:09'),
-(12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '55555555555555', NULL, 'supervisor@supervisor.com', '1539893309.jpg', 'yes', 55, '2018-10-18 18:08:29', '2018-10-18 18:08:29');
+(11, NULL, 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 2, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'badouch', 'badouch', '+33601106930', NULL, 'badouch.maroc@gmail.com', '1538833869.jpg', 'yes', 54, '2018-10-25 10:48:40', '2018-10-06 11:51:09'),
+(12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '+966506087020', NULL, 'badouch.maroc@gmail.com', '1539893309.jpg', 'yes', 55, '2018-10-25 10:44:12', '2018-10-18 18:08:29');
 
 -- --------------------------------------------------------
 
@@ -426,7 +445,6 @@ CREATE TABLE `searchersreports` (
   `Code` varchar(100) DEFAULT NULL,
   `Searcher` int(11) NOT NULL,
   `TypeCyclic` varchar(45) NOT NULL,
-  `Committee` int(11) NOT NULL,
   `Section` int(11) NOT NULL,
   `DateSearcher` date NOT NULL,
   `DoneRange` int(11) NOT NULL,
@@ -442,6 +460,14 @@ CREATE TABLE `searchersreports` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `searchersreports`
+--
+
+INSERT INTO `searchersreports` (`ID`, `Code`, `Searcher`, `TypeCyclic`, `Section`, `DateSearcher`, `DoneRange`, `SessionsCount`, `HoursNumber`, `UpdatedRange`, `DateCommittee`, `Reasons`, `Difficulties`, `Notes`, `URL`, `Status`, `created_at`, `updated_at`) VALUES
+(3, NULL, 11, 'صنف 1', 2, '2018-10-10', 1, 1, 1, 1, '2018-12-01', 'sll', 'll', 'll', 'fileName1540679376.pdf', 'yes', '2018-10-27 23:03:13', '2018-10-27 20:29:36'),
+(4, NULL, 11, '1', 2, '2018-12-31', 1, 1, 1, 1, '2018-12-31', '1', '1', '1', 'fileName1540683103.pdf', 'yes', '2018-10-27 21:31:43', '2018-10-27 21:31:43');
 
 -- --------------------------------------------------------
 
@@ -544,9 +570,8 @@ CREATE TABLE `sessions` (
 
 CREATE TABLE `supervisorsreports` (
   `ID` int(11) NOT NULL,
-  `Committee` int(11) NOT NULL,
   `Supervisor` int(11) NOT NULL,
-  `TypeCyclic` char(1) NOT NULL,
+  `TypeCyclic` varchar(45) NOT NULL,
   `DateSupervisor` date NOT NULL,
   `DoneRange` int(11) NOT NULL,
   `QualityProcess` varchar(20) NOT NULL,
@@ -557,8 +582,17 @@ CREATE TABLE `supervisorsreports` (
   `NotesPositive` mediumtext,
   `NotesNegative` mediumtext,
   `URL` varchar(255) NOT NULL,
-  `Status` varchar(100) NOT NULL
+  `Status` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `supervisorsreports`
+--
+
+INSERT INTO `supervisorsreports` (`ID`, `Supervisor`, `TypeCyclic`, `DateSupervisor`, `DoneRange`, `QualityProcess`, `QualityDirection`, `UpdatedRange`, `DateCommittee`, `Difficulties`, `NotesPositive`, `NotesNegative`, `URL`, `Status`, `created_at`, `updated_at`) VALUES
+(1, 12, 'صنف 1', '2018-10-18', 10, '2', 3, 5, '2018-10-17', 'oooo', 'llll', 'pppp', 'fileName1540748008.pdf', 'no', '2018-10-28 18:10:51', '2018-10-28 16:33:28');
 
 -- --------------------------------------------------------
 
@@ -641,9 +675,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'qNlX2g7xBmxMv4x9TEuQFaaRQBu8Pzf6N1bF4Om4BrRu5gKg8S3FQhqvljoo', '2018-10-19 21:05:17', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 2, '5E4MaKjYAVTSw02eZO96hrUgodSCcGTk5VqLiL7YCuSao9qCtUKsrpufDYwI', '2018-10-21 12:39:19', '2018-10-06 11:51:08'),
-(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'TReEGdjsr0GmXr3wrnKicKmY8UBYUvWde6SFxJFHzOBgkAxBC2G2iugVTA1d', '2018-10-21 18:34:07', '2018-10-18 18:08:29');
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'sy1szCqOW6kVEQU9DtoAWJlroofOahNJR6EbLZFWSfWxVXxpWyHrNoPOsg6T', '2018-10-23 19:50:41', '2018-10-03 08:22:44'),
+(54, 'student', 'student@student.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 2, 'U2hWh8LH6UaPnZHLmm0pQCViCkw0vAs8JgV3WnuozJXmwFFYcMRTjOhmMkmb', '2018-10-28 16:52:23', '2018-10-06 11:51:08'),
+(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'vPvh7L2ZJHBhLF8ycuJ0CtUw3cFieM5B1rQazimEfAcjwp9A3bgjieMljE1e', '2018-10-28 18:16:22', '2018-10-18 18:08:29');
 
 --
 -- Index pour les tables déchargées
@@ -666,9 +700,10 @@ ALTER TABLE `committees`
 --
 ALTER TABLE `committesreports`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_SearchersReports_Committees1_idx` (`President`),
-  ADD KEY `fk_CommittesReports_Committees1_idx` (`Professor`),
-  ADD KEY `fk_CommittesReports_Sections1_idx` (`Section`);
+  ADD KEY `fk_CommittesReports_Sections1_idx` (`Section`),
+  ADD KEY `Committee` (`Committee`),
+  ADD KEY `Searcherreports` (`Searcherreports`),
+  ADD KEY `Supervisorreports` (`Supervisorreports`);
 
 --
 -- Index pour la table `configs`
@@ -771,9 +806,8 @@ ALTER TABLE `role_user`
 -- Index pour la table `searchersreports`
 --
 ALTER TABLE `searchersreports`
-  ADD PRIMARY KEY (`ID`,`Searcher`,`Committee`,`Section`),
+  ADD PRIMARY KEY (`ID`,`Searcher`,`Section`),
   ADD KEY `fk_SearchersReports_Searchers1_idx` (`Searcher`),
-  ADD KEY `fk_SearchersReports_Committees1_idx` (`Committee`),
   ADD KEY `fk_SearchersReports_Sections1_idx` (`Section`);
 
 --
@@ -808,8 +842,7 @@ ALTER TABLE `sessions`
 -- Index pour la table `supervisorsreports`
 --
 ALTER TABLE `supervisorsreports`
-  ADD PRIMARY KEY (`ID`,`Committee`,`Supervisor`),
-  ADD KEY `fk_SearchersReports_Committees1_idx` (`Committee`),
+  ADD PRIMARY KEY (`ID`,`Supervisor`),
   ADD KEY `fk_SearchersReports_copy1_Supervisors1_idx` (`Supervisor`);
 
 --
@@ -848,13 +881,13 @@ ALTER TABLE `books`
 -- AUTO_INCREMENT pour la table `committees`
 --
 ALTER TABLE `committees`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `committesreports`
 --
 ALTER TABLE `committesreports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT pour la table `configs`
@@ -932,7 +965,7 @@ ALTER TABLE `role_user`
 -- AUTO_INCREMENT pour la table `searchersreports`
 --
 ALTER TABLE `searchersreports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `searchs`
@@ -951,6 +984,12 @@ ALTER TABLE `sections`
 --
 ALTER TABLE `sessions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `supervisorsreports`
+--
+ALTER TABLE `supervisorsreports`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT pour la table `theses`
@@ -978,9 +1017,10 @@ ALTER TABLE `users`
 -- Contraintes pour la table `committesreports`
 --
 ALTER TABLE `committesreports`
-  ADD CONSTRAINT `fk_CommittesReports_Committees1` FOREIGN KEY (`Professor`) REFERENCES `committees` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `committesreports_ibfk_2` FOREIGN KEY (`Searcherreports`) REFERENCES `searchersreports` (`ID`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `fk_CommittesReports_Sections1` FOREIGN KEY (`Section`) REFERENCES `sections` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_SearchersReports_Committees100` FOREIGN KEY (`President`) REFERENCES `committees` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_committee` FOREIGN KEY (`Committee`) REFERENCES `committees` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_sup` FOREIGN KEY (`Supervisorreports`) REFERENCES `supervisorsreports` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `divisions`
@@ -1032,8 +1072,7 @@ ALTER TABLE `registrations`
 -- Contraintes pour la table `searchersreports`
 --
 ALTER TABLE `searchersreports`
-  ADD CONSTRAINT `fk_SearchersReports_Committees1` FOREIGN KEY (`Committee`) REFERENCES `committees` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_SearchersReports_Searchers1` FOREIGN KEY (`Searcher`) REFERENCES `searchers` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_SearchersReports_Searchers1` FOREIGN KEY (`Searcher`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_SearchersReports_Sections1` FOREIGN KEY (`Section`) REFERENCES `sections` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -1060,8 +1099,7 @@ ALTER TABLE `sessions`
 -- Contraintes pour la table `supervisorsreports`
 --
 ALTER TABLE `supervisorsreports`
-  ADD CONSTRAINT `fk_SearchersReports_Committees10` FOREIGN KEY (`Committee`) REFERENCES `committees` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_SearchersReports_copy1_Supervisors1` FOREIGN KEY (`Supervisor`) REFERENCES `supervisors` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_SearchersReports_copy1_Supervisors1` FOREIGN KEY (`Supervisor`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `theses`
