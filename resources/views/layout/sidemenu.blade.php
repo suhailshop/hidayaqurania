@@ -48,6 +48,13 @@
                     </ul>
             </li>
             <li class="nav-item  ">
+                    <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
+                            <i class="icon-docs"></i>
+                            <span class="title">البحوث</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+            <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-cup"></i>
                         <span class="title">اللقاءات</span>
@@ -191,6 +198,14 @@
                                                     </li>
                                             </ul>
                                         </li>
+                                       
+                                                <li class="nav-item  ">
+                                                        <a href="{{route('allAdminReports')}}" class="nav-link nav-toggle">
+                                                                <i class="icon-notebook"></i>
+                                                                <span class="title">التقارير</span>
+                                                                <span class="arrow"></span>
+                                                            </a>
+                                                        </li>
                                         <li class="nav-item  ">
                                             <a href="javascript:;" class="nav-link nav-toggle">
                                                     <i class="icon-credit-card"></i>
@@ -262,13 +277,7 @@
                                                                     </li>
                                                             </ul>
                                                         </li>
-                                                        <li class="nav-item  ">
-                                                                <a href="{{route('allAdminReports')}}" class="nav-link nav-toggle">
-                                                                        <i class="icon-notebook"></i>
-                                                                        <span class="title">التقارير</span>
-                                                                        <span class="arrow"></span>
-                                                                    </a>
-                                                                </li>
+                                                       
                                                         <li class="nav-item  ">
                                                                 <a href="{{route('allConfigs')}}" class="nav-link nav-toggle">
                                                                         <i class="icon-settings"></i>
@@ -306,7 +315,22 @@
                         </li>
                      @endif
                      @if(auth()->user()->hasRole('student',auth()->user()->role_id))
+                     
                      <li class="nav-item  ">
+                        <a href="{{route('allHelp')}}" class="nav-link nav-toggle">
+                            <i class="icon-user"></i>
+                            <span class="title">معلوماتي</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{route('allHelp')}}" class="nav-link nav-toggle">
+                            <i class="icon-docs"></i>
+                            <span class="title">المصادر العلمية</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
                         <a href="{{route('allHelp')}}" class="nav-link nav-toggle">
                                 <i class="icon-credit-card"></i>
                                 <span class="title">المساعدات</span>
@@ -334,7 +358,7 @@
                                 </li>
                                 <li class="nav-item  ">
                                     <a href="javascript:;" class="nav-link nav-toggle">
-                                            <i class="icon-chemistry"></i>
+                                            <i class="icon-notebook"></i>
                                             <span class="title">تقاريري </span>
                                             <span class="arrow"></span>
                                         </a>

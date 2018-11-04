@@ -90,13 +90,27 @@
                                                 <label>القسم</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select name="division" class="form-control">
+                                                <select name="division" id="division1" class="form-control">
                                                     @foreach($divisions as $division)
                                                         <option @if($search->division->ID==$division->ID) selected @endif value="{{$division->ID}}">{{$division->Name}}</option>
                                                     @endforeach
                                                 </select>
                                         </div>
                                     </div></div>
+                                    <div class="form-group">
+                                            <div class="col-md-12">
+                                                <label>المبحث *</label>
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <select name="divisionunit" id="divisionunit" class="form-control" >
+                                                        @foreach($divisionunits as $divisionunit)
+                                                            <option @if($search->divisionunit->id==$divisionunit->id) selected @endif  value="{{$divisionunit->id}}">{{$divisionunit->Name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+    
                                     <div class="form-group ">
                                         <div class="col-md-12">
                                                 <label>الملف</label>
@@ -158,5 +172,22 @@
      <!-- BEGIN PAGE LEVEL SCRIPTS -->
      <script src="{!! asset('assets/pages/scripts/form-validation.min.js') !!}" type="text/javascript"></script>
      <!-- END PAGE LEVEL SCRIPTS -->
+     <script>
+            
+          
+          $('#division1').change(function() {
+            var i=$('#division1').val();
+               $.ajax({
+                   url: 'http://localhost/hidayaqurania/hidayaqurania/public/portal/searcher/getdivisionunit/'+$('#division1').val(),
+                   type: 'GET',
+                   data: { },
+                   success: function(response)
+                   {
+                       $('#divisionunit').html(response);
+                   }
+               });
+          });
+        
+   </script>
     @endsection
 @endsection

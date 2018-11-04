@@ -57,8 +57,10 @@
                                 <tr>
                                     <th class="all">الاختصار</th>
                                     <th class="all">الاسم</th>
-                                    <th class="all">القسم</th>
-                                    <th class="desktop"> الترتيب</th>
+                                    <th class="all">القسم </th>
+                                    <th class="all">المبحث</th>
+                                    <th class="none"> الترتيب</th>
+                                    <th class="all">الحالة</th>
                                     <th class="all">الملف</th>
                                     <th class="none">الملاحظات</th>
                                     <th class="all">خيارات.</th>
@@ -69,38 +71,68 @@
                                 <tr>
                                     <td>{{$search->Alias}}</td>
                                     <td>{{$search->Name}}</td>
+                                    <td>{{$search->diviName}}</td>
                                     <td>{{$search->divName}}</td>
                                     <td>{{$search->Order}}</td>
+                                    <td>  @if($search->Progress=='تم الرفع') 
+                                            <span class="badge badge-warning">{{$search->Progress}}</span>
+                                            @elseif($search->Progress=='رفض الادارة' || $search->Progress=='رفض المشرف' ) 
+                                            <span class="badge badge-danger">{{$search->Progress}}</span>
+                                            @elseif($search->Progress=='موافقة المشرف' || $search->Progress=='موافقة الادارة' ) 
+                                            <span class="badge badge-success">{{$search->Progress}}</span>
+                                            @endif                                    
+                                        </td>
                                     <td>
                                         <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
                                     </td>
                                     <td>@if(isset($search->Note)) {{$search->Note}} @else 'لا توجد اية ملاحظة' @endif </td>
                                     <td>
-                                            @if(!isset($search->Note))
+                                            
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
+                                                    @if(!isset($search->Note))
                                                 <li>
-                                                <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
+                                                <a href="#" type="button" data-toggle="modal" data-target="#exampleModal{{$search->ID}}">
                                                         <i class="fa fa-comment"></i> اضافة ملاحظة </a>
                                                 </li>
 
+                                                
+                                        @endif
+
+                                        <li>
+                                                <a data-toggle="confirmation"
+                                                data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
+                                                data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
+                                                data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
+                                                data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
+                                                data-title="هل تريد الموافقة ؟" href="{{route('updateSearchProgressok',['id'=>$search->ID])}}">
+                                                        <i class="fa fa-check"></i> موافقة المشرف </a>
+                                                </li>
+                                                <li>
+                                                        <a data-toggle="confirmation"
+                                                        data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
+                                                        data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
+                                                        data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
+                                                        data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
+                                                        data-title="هل تريد الرفض ؟" href="{{route('updateSearchProgressko',['id'=>$search->ID])}}">
+                                                                <i class="fa fa-close"></i> رفض المشرف </a>
+                                                        </li>
                                             </ul>
                                         </div>
-                                        @endif
                                     </td>
                                     
                                 </tr>
                                  <!-- Modal -->
-                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                 <div class="modal fade" id="exampleModal{{$search->ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel{{$search->ID}}" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <form action="{{route('addSupervisorNote')}}" method="post" >
                                                     {{ csrf_field() }}
                                             <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">أضف ملاحظات حول البحث</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel{{$search->ID}}">أضف ملاحظات حول البحث</h5>
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                 <span aria-hidden="true">&times;</span>
                                             </button>

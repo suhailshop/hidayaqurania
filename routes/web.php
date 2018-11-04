@@ -122,6 +122,12 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/reports/add','Admin\ReportController@add')->name('addReportDetails');
     Route::get('/reports','Admin\ReportController@index')->name('allAdminReports');
 
+    
+    Route::get('/searchs/getAll','Admin\SearchController@getAll')->name('getAllSearchs');
+    Route::get('/searchs/updateProgressok/{id}','Admin\SearchController@updateProgressok')->name('updateProgressok');
+    Route::get('/searchs/updateProgressko/{id}','Admin\SearchController@updateProgressko')->name('updateProgressko');
+    
+
 
 
     //----------------------- Supervisor -----------------------------
@@ -130,14 +136,16 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/searchers/get/{id}','Supervisor\SearcherController@get')->name('getSearcherSupervisor');
     Route::get('/supervisor/getSearcherSearchs/{id}','Supervisor\SearcherController@getSearcherSearchs')->name('getSearcherSearchs');
     Route::post('/supervisor/addSupervisorNote','Supervisor\SearcherController@addSupervisorNote')->name('addSupervisorNote');
+    Route::get('/supervisor/updateSearchProgressok/{id}','Supervisor\SearchController@updateSearchProgressok')->name('updateSearchProgressok');
+    Route::get('/supervisor/updateSearchProgressko/{id}','Supervisor\SearchController@updateSearchProgressko')->name('updateSearchProgressko');
     
     Route::get('/supervisor/reports','Supervisor\ReportController@index')->name('allSupervisorReports');
     Route::get('/supervisor/addReport','Supervisor\ReportController@add')->name('addSupervisorReport');
     Route::post('/supervisor/addReportPost','Supervisor\ReportController@addPost')->name('addSupervisorReportPost');
     Route::post('/supervisor/addReportPost','Supervisor\ReportController@addPost')->name('addSupervisorReportPost');
-    Route::get('/supervisor/editReport/{i}','Supervisor\ReportController@edit')->name('editSupervisorReport');
+    Route::get('/supervisor/editReport/{id}','Supervisor\ReportController@edit')->name('editSupervisorReport');
     Route::post('/supervisor/editReportPost','Supervisor\ReportController@editPost')->name('editSupervisorReportPost');
-    Route::get('/supervisor/deleteReport/{i}','Supervisor\ReportController@delete')->name('deleteSupervisorReport');
+    Route::get('/supervisor/deleteReport/{id}','Supervisor\ReportController@delete')->name('deleteSupervisorReport');
     
 
     //---------------------- Searcher ---------------------------------
@@ -153,8 +161,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searcher/reports','Searcher\ReportController@index')->name('allSearcherReports');
     Route::get('/searcher/addReport','Searcher\ReportController@add')->name('addSearcherReport');
     Route::post('/searcher/addReportPost','Searcher\ReportController@addPost')->name('addSearcherReportPost');
-    Route::get('/searcher/editReport/{i}','Searcher\ReportController@edit')->name('editSearcherReport');
+    Route::get('/searcher/editReport/{id}','Searcher\ReportController@edit')->name('editSearcherReport');
     Route::post('/searcher/editReportPost','Searcher\ReportController@editPost')->name('editSearcherReportPost');
-    Route::get('/searcher/deleteReport/{i}','Searcher\ReportController@delete')->name('deleteSearcherReport');
+    Route::get('/searcher/deleteReport/{id}','Searcher\ReportController@delete')->name('deleteSearcherReport');
     
+    Route::get('/searcher/getdivisionunit/{id}','Searcher\SearchsController@getdivisionunit');
 });

@@ -8,6 +8,7 @@ use App\Countrie;
 use App\Search;
 use App\Division;
 use App\Registration;
+use App\Divisionunit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -34,12 +35,24 @@ class SearchsController extends Controller
         $searchs = Search::all();
         return view('portal.searcher.searchs.index')->with('searchs',$searchs);
     }
-  
+
+
+    public function getdivisionunit($id){
+        $divisionunits = Divisionunit::where('Division',intval($id))->get();
+        $html = '<select name="divisionunit" class="form-control" >';
+        foreach($divisionunits as $divi){
+            $html =$html.'<option value="'.$divi->id.'">'.$divi->Name.'</option>';
+        }
+        $html .='</select>';
+        return $html;
+    }
+
+
     public function add(){
-        
        
+        $divisionunits=Divisionunit::where('Division',1)->get();
         $divisions = Division::all();
-        return view('portal.searcher.searchs.add',compact('divisions'));
+        return view('portal.searcher.searchs.add',compact('divisions','divisionunits'));
     }
     public function addPost(Request $request){
         $search = new Search;
@@ -47,9 +60,11 @@ class SearchsController extends Controller
         $search->Alias = $request->input('alias');
         $search->Division = $request->input('division');
         $search->Order = $request->input('order');
+        $search->Divisionunit = $request->input('divisionunit');
         $this->user= Auth::user();
         $search->Searcher = Registration::where('User',$this->user->id)->first()->ID;
         $search->Status = "yes";
+        $search->Progress= "تم الرفع";
         if($request->hasFile('searchURL')){
             $request->validate([
                 'searchURL' => 'required|file|max:1024',
@@ -63,9 +78,11 @@ class SearchsController extends Controller
         return redirect()->route('allSearchs');
     }
     public function edit($id){
+        
+        $divisionunits=Divisionunit::all();
         $search = Search::where('ID',$id)->first();
         $divisions = Division::all();
-        return view('portal.searcher.searchs.edit',compact('search','divisions'));
+        return view('portal.searcher.searchs.edit',compact('search','divisions','divisionunits'));
     }
     public function editPost(Request $request){
         $fileName = $request->input('URL');
@@ -82,6 +99,7 @@ class SearchsController extends Controller
             'Division'=>$request->input('division'),
             'Status'=>$request->input('status'),
             'Alias'=>$request->input('alias'),
+            'Divisionunit' => $request->input('divisionunit'),
             'searchURL'=>$fileName            
         ));
                 

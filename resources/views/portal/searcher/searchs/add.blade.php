@@ -82,7 +82,7 @@
                                             <label>القسم *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select name="division" class="form-control">
+                                                <select name="division" id="division1" class="form-control">
                                                     @foreach($divisions as $division)
                                                         <option value="{{$division->ID}}">{{$division->Name}}</option>
                                                     @endforeach
@@ -90,6 +90,23 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        
+                                        <div class="col-md-12">
+                                            <label>المبحث *</label>
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <select name="divisionunit" id="divisionunit" class="form-control" >
+                                                    @foreach($divisionunits as $divisionunit)
+                                                        <option value="{{$divisionunit->id}}">{{$divisionunit->Name}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
 
                                     <div class="form-group">
                                         
@@ -139,5 +156,22 @@
     <script src="{!! asset('assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js') !!}" type="text/javascript"></script>    
     <script src="{!! asset('assets/pages/scripts/form-input-mask.min.js') !!}" type="text/javascript"></script>
      <!-- END PAGE LEVEL SCRIPTS -->
+     <script>
+             
+           
+           $('#division1').change(function() {
+             var i=$('#division1').val();
+                $.ajax({
+                    url: 'getdivisionunit/'+$('#division1').val(),
+                    type: 'GET',
+                    data: { },
+                    success: function(response)
+                    {
+                        $('#divisionunit').html(response);
+                    }
+                });
+           });
+         
+    </script>
     @endsection
 @endsection

@@ -10,6 +10,9 @@ use App\Universitie;
 use App\Book;
 use App\These;
 use App\Help;
+use App\Search;
+use App\Section;
+use App\Division;
 use App\Provide;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -32,6 +35,21 @@ class PortalController extends Controller
     }
     public function index(){
 
+        //-------------searcher ----------------- //
+        $role=Role::get()->where('id',$this->user->role_id)->first();
+        $these_name='';
+        $sections='';
+        $divisions='';
+        $my_searchs='';
+        if($role->name=='student'){ 
+        $this->user= Auth::user();
+        $id = Registration::where('User',$this->user->id)->first()->ID;
+        $these_name = These::where('Searcher',$id)->first()->Title;
+        $my_searchs = Search::where('Searcher',$id)->get();
+        $divisions = Division::orderBy('Order','asc')->get();
+        $sections = Section::orderBy('Order','asc')->get();}
+
+
         $searchers = Registration::where('type','searcher')->get();
         $supervisors = Registration::where('type','supervisor')->get();
         $universities = Universitie::all();
@@ -42,6 +60,6 @@ class PortalController extends Controller
         $provides=Provide::all();
         $lastsearchers= Registration::where('Type','searcher')->orderBy('created_at', 'asc')->take(7)->get();
         
-        return view('portal.welcome',compact('countries','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers'));
+        return view('portal.welcome',compact('sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers'));
     }
 }

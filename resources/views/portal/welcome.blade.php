@@ -185,7 +185,175 @@
             @elseif(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
                 حساب مشرف
             @elseif(auth()->user()->hasRole('student',auth()->user()->role_id))
-               حساب باحث
+               
+            <div class="note note-info largeText">
+                <p> ملخص الحساب الخاص بي : </p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allSearcher')}}">
+                        <div class="visual">
+                            <i class="fa fa-users"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                <span data-counter="counterup" data-value="{{count($searchers)}}">{{count($searchers)}}</span>
+                            </div>
+                            <div class="desc">  الأجزاء البحثية </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('allSupervisor')}}">
+                        <div class="visual">
+                            <i class="fa fa-briefcase"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                <span data-counter="counterup" data-value="{{count($supervisors)}}">{{count($supervisors)}}</span></div>
+                            <div class="desc"> التقارير الدورية </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <a class="dashboard-stat dashboard-stat-v2 green" href="{{route('allUniversity')}}">
+                        <div class="visual">
+                            <i class="fa fa-graduation-cap"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                <span data-counter="counterup" data-value="{{count($universities)}}">{{count($universities)}}</span>
+                            </div>
+                            <div class="desc">  مرئيات المشرف </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <a class="dashboard-stat dashboard-stat-v2 purple" href="{{route('allCountrie')}}">
+                        <div class="visual">
+                            <i class="fa fa-globe"></i>
+                        </div>
+                        <div class="details">
+                            <div class="number">
+                                <span data-counter="counterup" data-value="{{count($countries)}}">{{count($countries)}}</span> </div>
+                            <div class="desc">  تقارير الإدارة </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="note note-info largeText">
+                <p> مخطط البحث الخاص بي : </p>
+            </div>
+
+
+            <div class="portlet light portlet-fit ">
+                <div class="portlet-body">
+                    <div class="mt-element-list">
+                        <div class="mt-list-head list-todo grey">
+                            <div class="list-head-title-container">
+
+                                <!-- هنا يتم استبدال اسم السورة حسب عنوان البحث الخاص بكل طالب، فمثلا هذا الطالب عنوان البحث الخاص به عن سورة الأنفال  -->
+                                <h4 class="list-title myfont">  عنوان البحث : {{$these_name}}
+                                </h4>
+
+                            </div>
+
+                        </div>
+                        <div class="mt-list-container list-todo">
+                            <div class="list-todo-line"></div>
+                            <ul>
+
+                                <!-- القسم الأول  -->
+                                @foreach($sections as $section)
+                                <li class="mt-list-item">
+                                    <div class="list-todo-icon bg-white">
+                                        <i class="fa fa-book"></i>
+                                    </div>
+                                    <div class="list-todo-item grey">
+                                    <a class="list-toggle-container font-white collapsed" data-toggle="collapse" href="#section{{$section->ID}}" aria-expanded="false">
+                                            <div class="list-toggle done uppercase">
+                                            <div class="list-toggle-title ">{{$section->Name}}</div>
+                                                <div class="badge badge-default pull-right bold">الفصول : {{count($section->divisions)}}</div>
+                                            </div>
+                                        </a>
+                                        <div class="task-list panel-collapse collapse" id="section{{$section->ID}}" aria-expanded="false" style="height: 0px;">
+                                            <ul>
+
+                                               <!--  الفصل الأول  -->
+                                               @foreach($section->divisions as $divs)
+
+                                                <li class="task-list-item">
+                                                    <div class="task-icon">
+                                                        <a href="javascript:;">
+                                                            <i class="fa fa-sticky-note-o"></i>
+                                                        </a>
+                                                    </div>
+                                                    <div class="task-status">
+                                                            @if(count($divs->divisionunit) <= count($divs->searchs))
+                                                           
+                                                            <span class="badge badge-success"> تم إكمال الفصل </span>
+                                                            @else
+                                                            <span class="badge badge-danger"> الفصل لم يكتمل بعد</span>
+                                                          
+                                                            @endif
+                                                             
+                                                    </div>
+                                                    <div class="task-content">
+                                                        <h4 class="uppercase bold myfont">
+                                                            <a class="list-toggle-container collapsed" data-toggle="collapse"  href="#section1data{{$divs->ID}}" aria-expanded="false">  {{$divs->Name}}</a>
+                                                        </h4>
+
+
+                                                        <div class="mt-list-container list-simple ext-1 group">
+                                                            <div class="panel-collapse collapse" id="section1data{{$divs->ID}}" aria-expanded="false" style="height: 0px;">
+                                                                <ul>
+
+                                                                    @foreach($divs->searchs as $search)
+                                                                    <li class="mt-list-item">
+                                                                        <div class="list-icon-container">
+                                                                            <span class="badge badge-warning"> {{$search->Progress}}</span>
+                                                                        </div>
+
+                                                                        <div class="list-item-content">
+                                                                            <h5 class="uppercase myfont">
+                                                                            <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" target="newtab">{{$search->divisionunit->Name}}</a>
+                                                                            </h5>
+                                                                        </div>
+                                                                    </li>
+
+                                                                    @endforeach
+
+                                                                  
+
+                                                                    <br>
+                                                                 </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </li>
+                                                @endforeach
+                                            
+
+                                             </ul>
+                                            <div class="task-footer bg-grey">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                @endforeach
+                             </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             @endif
         </div>
         <!-- END CONTENT BODY -->

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 28 oct. 2018 à 22:31
+-- Généré le :  Dim 04 nov. 2018 à 23:47
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -198,11 +198,54 @@ CREATE TABLE `divisions` (
 --
 
 INSERT INTO `divisions` (`ID`, `Code`, `Section`, `Alias`, `Name`, `Order`, `Status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 1, 'الفصل 1', 'اسم السورة ، وفضلها ، واحوال نزولها', 1, 'yes', '2018-10-19 20:40:55', '0000-00-00 00:00:00'),
-(2, NULL, 2, 'الفصل 1', 'الهدايات الجزئية والكلية في السورة', 1, 'yes', '2018-10-19 20:41:35', '0000-00-00 00:00:00'),
-(3, NULL, 2, 'الفصل 2', ' مناسبات السورة وخصائصها وأساليبها في عرض هداياتها', 2, 'yes', '2018-10-19 20:41:56', '0000-00-00 00:00:00'),
-(4, NULL, 1, 'الفصل 2', 'معاني السورة، ومقاصدها', 2, 'yes', '2018-10-19 20:41:11', '0000-00-00 00:00:00'),
-(5, NULL, 2, 'الفصل 3', 'واقع الأمة في ضوء هدايات السورة وأثر ذلك عليها', 3, 'yes\r\n', '2018-10-19 20:42:34', '0000-00-00 00:00:00');
+(1, '1', 1, '', '   الفصل الأول : اسم السورة ، وفضلها ، واحوال نزولها', 3, 'yes', '2018-11-04 21:38:11', '2018-10-27 05:43:40'),
+(2, '2', 1, '', ' الفصل الثاني : معاني السورة، ومقاصدها', 4, 'yes', '2018-11-04 17:54:03', '2018-10-27 05:43:40'),
+(3, '3', 2, '', 'الفصل الأول : الهدايات الجزئية والكلية في السورة', 5, 'yes', '2018-11-04 17:54:10', '2018-10-27 05:43:42'),
+(4, '4', 2, '', ' الفصل الثاني : مناسبات السورة وخصائصها وأساليبها في عرض هداياتها', 6, 'yes', '2018-11-04 17:58:33', '2018-10-27 05:43:42'),
+(5, '5', 2, '', ' الفصل الثالث : واقع الأمة في ضوء هدايات السورة وأثر ذلك عليها', 7, 'yes', '2018-11-04 17:58:39', '2018-10-27 05:43:42'),
+(6, '6', 3, 'مقدمة', 'مقدمة', 1, 'yes', '2018-11-02 19:27:06', '0000-00-00 00:00:00'),
+(7, '7', 4, 'تمهيد', 'تمهيد', 2, 'yes', '2018-11-02 19:27:11', '0000-00-00 00:00:00'),
+(8, '8', 5, 'خاتمة', 'خاتمة', 8, 'yes', '2018-11-02 19:26:38', '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `divisionunits`
+--
+
+CREATE TABLE `divisionunits` (
+  `id` int(11) NOT NULL,
+  `Code` int(11) NOT NULL,
+  `Division` int(11) NOT NULL,
+  `Name` text NOT NULL,
+  `Description` text NOT NULL,
+  `Order` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `divisionunits`
+--
+
+INSERT INTO `divisionunits` (`id`, `Code`, `Division`, `Name`, `Description`, `Order`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 'المبحث الأول : أسماء السورة.', '', 3, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(2, 2, 1, 'المبحث الثاني :  فضائل السورة أو بعض آياتها بما جاءت به الأحاديث الصحيحة.', '', 4, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(3, 3, 1, 'المبحث الثالث: أحوال نزول السورة.', '', 5, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(4, 4, 2, 'المبحث الأول: مقاصد السورة العامة ومدى دلالاتها على هدايات السورة.', '', 6, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(5, 5, 2, 'المبحث الثاني: معاني مفردات السورة ومدى دلالاتها على هدايات السورة.', '', 7, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(6, 6, 2, 'المبحث الثالث: المعنى الاجمالي للسورة بما يتوافق مع هدايات السورة.', '', 8, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(7, 7, 3, 'المبحث الأول : الهدايات الجزئية في السورة.', '', 9, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(8, 8, 3, 'المبحث الثاني :  الهدايات الكلية للسورة.', '', 10, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(9, 9, 4, 'المبحث الأول: المناسبات المتعلقة بهدايات آيات السورة.', '', 11, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(10, 10, 4, 'المبحث الثاني: خصائص هدايات آيات السورة.', '', 12, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(11, 11, 4, 'المبحث الثالث: أساليب السورة في عرض هداياتها', '', 13, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(12, 12, 5, 'المبحث الأول: واقع الفرد والمجتمع من هدايات السورة.', '', 14, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(13, 13, 5, 'المبحث الثاني: سبل تحقيق هدايات آيات السورة في واقع الأمة', '', 15, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(14, 14, 5, 'المبحث الثالث: أثر تطبيق هدايات آيات السورة على واقع الأمة', '', 16, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(15, 15, 6, 'مقدمة', '', 1, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(16, 16, 7, 'تمهيد', '', 2, '2018-10-27 16:19:43', '2018-10-27 16:19:43'),
+(17, 17, 8, 'خاتمة', '', 17, '2018-10-27 16:19:43', '2018-10-27 16:19:43');
 
 -- --------------------------------------------------------
 
@@ -505,6 +548,8 @@ CREATE TABLE `searchs` (
   `Division` int(11) NOT NULL,
   `Searcher` int(11) NOT NULL,
   `Note` text,
+  `Progress` text NOT NULL,
+  `Divisionunit` int(11) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -514,8 +559,11 @@ CREATE TABLE `searchs` (
 -- Déchargement des données de la table `searchs`
 --
 
-INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Division`, `Searcher`, `Note`, `Status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'جيد جدا', 'no', '2018-10-21 18:28:56', '2018-10-21 08:17:53');
+INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Division`, `Searcher`, `Note`, `Progress`, `Divisionunit`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'يممثككبمم', 'رفض الادارة', 12, 'no', '2018-11-04 22:41:42', '2018-10-21 08:17:53'),
+(2, NULL, 'llll', 'lllll', 5, 'fileName1541338106.pdf', 5, 11, NULL, 'موافقة المشرف', 13, 'yes', '2018-11-04 22:40:12', '2018-11-04 12:28:27'),
+(3, NULL, 'المبحث 22', 'مبحثي', 22, 'fileName1541367786.pdf', 5, 11, NULL, 'تم الرفع', 14, 'yes', '2018-11-04 20:43:06', '2018-11-04 20:43:06'),
+(4, NULL, 'بحثي', 'بحثي', 20, 'fileName1541368009.pdf', 6, 11, 'kkkkkk', 'موافقة الادارة', 15, 'yes', '2018-11-04 22:46:47', '2018-11-04 20:46:49');
 
 -- --------------------------------------------------------
 
@@ -540,8 +588,11 @@ CREATE TABLE `sections` (
 --
 
 INSERT INTO `sections` (`ID`, `Code`, `Alias`, `Name`, `Order`, `Status`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, NULL, 'القسم 1', 'مقدمات تفسيرية لدراسة هدايات السورة', 1, 'yes', '2018-10-19 20:40:23', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
-(2, NULL, 'القسم 2', 'دراسات تطبيقية في هدايات السورة وربط ذلك بواقع الأمة', 2, 'yes', '2018-10-19 20:40:37', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
+(1, '1', 'Section One', 'القسم الأول : مقدمات تفسيرية لدراسة هدايات السورة ', 3, 'yes', '2018-11-04 18:39:50', '2018-10-27 05:26:31', '0000-00-00 00:00:00'),
+(2, '2', 'Section Two', 'القسم الثاني : دراسات تطبيقية في هدايات السورة وربط ذلك بواقع الأمة', 4, 'yes', '2018-11-04 18:39:54', '2018-10-27 05:26:34', '0000-00-00 00:00:00'),
+(3, '3', 'مقدمة', 'مقدمة', 1, 'yes', '2018-11-04 18:39:42', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(4, '4', 'تمهيد', 'تمهيد', 2, 'yes', '2018-11-04 18:39:46', '0000-00-00 00:00:00', '0000-00-00 00:00:00'),
+(5, '5', 'خاتمة', 'خاتمة', 5, 'yes', '2018-11-02 19:24:22', '0000-00-00 00:00:00', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -618,7 +669,7 @@ CREATE TABLE `theses` (
 --
 
 INSERT INTO `theses` (`ID`, `Title`, `ProgramDuration`, `BeginningDate`, `CompletionDate`, `Notes`, `Status`, `created_at`, `Supervisor`, `Searcher`) VALUES
-(3, 'فقه الحديث', 'سنتين', '2018-01-01', '2020-01-01', 'لا شيء', 'yes', '2018-10-19 20:15:51', 12, 11);
+(3, 'الهدايات القرآنية في سورة الانفال', 'سنتين', '2018-01-01', '2020-01-01', 'لا شيء', 'yes', '2018-11-04 17:49:45', 12, 11);
 
 -- --------------------------------------------------------
 
@@ -675,9 +726,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'sy1szCqOW6kVEQU9DtoAWJlroofOahNJR6EbLZFWSfWxVXxpWyHrNoPOsg6T', '2018-10-23 19:50:41', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 2, 'U2hWh8LH6UaPnZHLmm0pQCViCkw0vAs8JgV3WnuozJXmwFFYcMRTjOhmMkmb', '2018-10-28 16:52:23', '2018-10-06 11:51:08'),
-(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'vPvh7L2ZJHBhLF8ycuJ0CtUw3cFieM5B1rQazimEfAcjwp9A3bgjieMljE1e', '2018-10-28 18:16:22', '2018-10-18 18:08:29');
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'EvpfsIhiRJrthOCo7wAplHs6x8jMAAm2yF0dpYw6yT1tHCvc9sAxnpGi7gvf', '2018-11-04 22:40:54', '2018-10-03 08:22:44'),
+(54, 'student', 'student@student.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 2, 'gbjAewSFmCe89TZNXYOzpWOckrINBMcQ44i2DUZLEXUwPdGMvCH1kHzQMl6z', '2018-11-04 21:48:52', '2018-10-06 11:51:08'),
+(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, '8QbFZmwn6w74tWbEiXDWGb0rrPqnyABe1ASJuZlt1u60s7rM6ZSDG1Fmyxhf', '2018-11-04 22:40:27', '2018-10-18 18:08:29');
 
 --
 -- Index pour les tables déchargées
@@ -729,6 +780,13 @@ ALTER TABLE `criterias`
 ALTER TABLE `divisions`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_Divisions_Sections1_idx` (`Section`);
+
+--
+-- Index pour la table `divisionunits`
+--
+ALTER TABLE `divisionunits`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `Division` (`Division`);
 
 --
 -- Index pour la table `examsfiles`
@@ -823,7 +881,8 @@ ALTER TABLE `searcher_critera`
 ALTER TABLE `searchs`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_Searchs_Divisions1_idx` (`Division`),
-  ADD KEY `Searcher` (`Searcher`);
+  ADD KEY `Searcher` (`Searcher`),
+  ADD KEY `Divisionunit` (`Divisionunit`);
 
 --
 -- Index pour la table `sections`
@@ -911,7 +970,13 @@ ALTER TABLE `criterias`
 -- AUTO_INCREMENT pour la table `divisions`
 --
 ALTER TABLE `divisions`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT pour la table `divisionunits`
+--
+ALTER TABLE `divisionunits`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `faculties`
@@ -971,13 +1036,13 @@ ALTER TABLE `searchersreports`
 -- AUTO_INCREMENT pour la table `searchs`
 --
 ALTER TABLE `searchs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `sections`
 --
 ALTER TABLE `sections`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `sessions`
@@ -1027,6 +1092,12 @@ ALTER TABLE `committesreports`
 --
 ALTER TABLE `divisions`
   ADD CONSTRAINT `fk_Divisions_Sections1` FOREIGN KEY (`Section`) REFERENCES `sections` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `divisionunits`
+--
+ALTER TABLE `divisionunits`
+  ADD CONSTRAINT `divisionunits_ibfk_1` FOREIGN KEY (`Division`) REFERENCES `divisions` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Contraintes pour la table `examsfiles`
@@ -1087,6 +1158,7 @@ ALTER TABLE `searcher_critera`
 --
 ALTER TABLE `searchs`
   ADD CONSTRAINT `fk_Searchs_Divisions1` FOREIGN KEY (`Division`) REFERENCES `divisions` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_div_univ` FOREIGN KEY (`Divisionunit`) REFERENCES `divisionunits` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `searchs_ibfk_1` FOREIGN KEY (`Searcher`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
