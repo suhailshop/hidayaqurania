@@ -73,7 +73,7 @@
                                 <div>
                                     <span class="btn default btn-file">
                                         <span class="fileinput-new"> اختر صورة </span>
-                                        <input type="file" name="PictureURL"> </span>
+                                        <input type="file" accept="image/gif, image/jpeg, image/jpg" name="PictureURL"> </span>
                                     <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> حذف </a>
                                 </div>
                             </div>

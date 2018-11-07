@@ -288,6 +288,14 @@
                                                         @endif
                      @if(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
                      <li class="nav-item  ">
+                        <a href="{{route('supervisorProfile')}}" class="nav-link nav-toggle">
+                            <i class="icon-user"></i>
+                            <span class="title">معلوماتي</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+
+                     <li class="nav-item  ">
                         <a href="{{route('allSearcherSupervisor')}}" class="nav-link nav-toggle">
                                 <i class="icon-users"></i>
                                 <span class="title">طلابي</span>
@@ -317,7 +325,7 @@
                      @if(auth()->user()->hasRole('student',auth()->user()->role_id))
                      
                      <li class="nav-item  ">
-                        <a href="{{route('allHelp')}}" class="nav-link nav-toggle">
+                        <a href="{{route('searcherProfile')}}" class="nav-link nav-toggle">
                             <i class="icon-user"></i>
                             <span class="title">معلوماتي</span>
                             <span class="arrow"></span>

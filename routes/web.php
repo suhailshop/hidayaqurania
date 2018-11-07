@@ -127,11 +127,13 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchs/updateProgressok/{id}','Admin\SearchController@updateProgressok')->name('updateProgressok');
     Route::get('/searchs/updateProgressko/{id}','Admin\SearchController@updateProgressko')->name('updateProgressko');
     
-
-
-
     //----------------------- Supervisor -----------------------------
     
+    Route::get('/supervisor/myprofile','Supervisor\MyProfilController@index')->name('supervisorProfile');
+    Route::post('/supervisor/editmyprofile','Supervisor\MyProfilController@editPost')->name('supervisorProfileEdit');
+    Route::post('/supervisor/editavatar','Supervisor\MyProfilController@editAvatar')->name('supervisorProfileEditAvatar');
+    Route::post('/supervisor/editpassword','Supervisor\MyProfilController@editPassword')->name('supervisorProfileEditPassword');
+
     Route::get('/supervisor/searchers','Supervisor\SearcherController@index')->name('allSearcherSupervisor');
     Route::get('/supervisor/searchers/get/{id}','Supervisor\SearcherController@get')->name('getSearcherSupervisor');
     Route::get('/supervisor/getSearcherSearchs/{id}','Supervisor\SearcherController@getSearcherSearchs')->name('getSearcherSearchs');
@@ -146,11 +148,16 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/editReport/{id}','Supervisor\ReportController@edit')->name('editSupervisorReport');
     Route::post('/supervisor/editReportPost','Supervisor\ReportController@editPost')->name('editSupervisorReportPost');
     Route::get('/supervisor/deleteReport/{id}','Supervisor\ReportController@delete')->name('deleteSupervisorReport');
-    
+
+
 
     //---------------------- Searcher ---------------------------------
 
-    
+    Route::get('/searcher/myprofile','Searcher\MyProfilController@index')->name('searcherProfile');
+    Route::post('/searcher/editmyprofile','Searcher\MyProfilController@editPost')->name('searcherProfileEdit');
+    Route::post('/searcher/editavatar','Searcher\MyProfilController@editAvatar')->name('searcherProfileEditAvatar');
+    Route::post('/searcher/editpassword','Searcher\MyProfilController@editPassword')->name('searcherProfileEditPassword');
+
     Route::get('/searcher/searchs','Searcher\SearchsController@index')->name('allSearchs');
     Route::get('/searcher/addSearch','Searcher\SearchsController@add')->name('addSearch');
     Route::post('/searcher/addSearchPost','Searcher\SearchsController@addPost')->name('addSearchPost');
