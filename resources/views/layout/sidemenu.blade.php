@@ -332,7 +332,7 @@
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="{{route('allHelp')}}" class="nav-link nav-toggle">
+                        <a href="{{route('allbookssearcher')}}" class="nav-link nav-toggle">
                             <i class="icon-docs"></i>
                             <span class="title">المصادر العلمية</span>
                             <span class="arrow"></span>

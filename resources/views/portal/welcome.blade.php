@@ -192,51 +192,51 @@
 
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allSearcher')}}">
+                    <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allSearchs')}}">
                         <div class="visual">
                             <i class="fa fa-users"></i>
                         </div>
                         <div class="details">
                             <div class="number">
-                                <span data-counter="counterup" data-value="{{count($searchers)}}">{{count($searchers)}}</span>
+                                <span data-counter="counterup" data-value="{{count($searchs)}}">{{count($searchs)}}</span>
                             </div>
                             <div class="desc">  الأجزاء البحثية </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('allSupervisor')}}">
+                    <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('allSearcherReports')}}">
                         <div class="visual">
                             <i class="fa fa-briefcase"></i>
                         </div>
                         <div class="details">
                             <div class="number">
-                                <span data-counter="counterup" data-value="{{count($supervisors)}}">{{count($supervisors)}}</span></div>
+                                <span data-counter="counterup" data-value="{{count($myreports)}}">{{count($myreports)}}</span></div>
                             <div class="desc"> التقارير الدورية </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a class="dashboard-stat dashboard-stat-v2 green" href="{{route('allUniversity')}}">
+                    <a class="dashboard-stat dashboard-stat-v2 green" href="{{route('allbookssearcher')}}">
                         <div class="visual">
                             <i class="fa fa-graduation-cap"></i>
                         </div>
                         <div class="details">
                             <div class="number">
-                                <span data-counter="counterup" data-value="{{count($universities)}}">{{count($universities)}}</span>
+                                <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
                             </div>
-                            <div class="desc">  مرئيات المشرف </div>
+                            <div class="desc">المصادر التعليمية </div>
                         </div>
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a class="dashboard-stat dashboard-stat-v2 purple" href="{{route('allCountrie')}}">
+                    <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
                         <div class="visual">
                             <i class="fa fa-globe"></i>
                         </div>
                         <div class="details">
                             <div class="number">
-                                <span data-counter="counterup" data-value="{{count($countries)}}">{{count($countries)}}</span> </div>
+                                <span data-counter="counterup" data-value="{{$admin_reports}}">{{$admin_reports}}</span> </div>
                             <div class="desc">  تقارير الإدارة </div>
                         </div>
                     </a>

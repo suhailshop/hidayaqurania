@@ -82,6 +82,15 @@
                                                 <input type="text" id="mask_isbn" class="form-control" name="isbn"  placeholder="رقم ISBN *"/> </div>
                                         </div>
                                     </div>
+
+                                    <div class="form-group">
+                                        
+                                        <div class="col-md-12">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="url" class="form-control" name="URL" placeholder="رابط الكتاب *"/> </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group ">
                                             <div class="col-md-12">
                                                 <div class="input-icon right">

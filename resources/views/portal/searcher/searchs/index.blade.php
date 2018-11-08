@@ -61,6 +61,7 @@
                                     <th class="all">المبحث</th>
                                     <th class="none"> الترتيب</th>
                                     <th class="all">الملف</th>
+                                    <th class="none">ملاحظات المشرف</th>
                                     <th class="desctop">الحالة</th>
                                     <th class="all">خيارات.</th>
                                 </tr>
@@ -76,7 +77,14 @@
                                     <td>
                                         <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
                                     </td>
-                                    <td>@if($search->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    <td>@if(!isset($search->Note)) لا توجد @else {{$search->Note}} @endif</td>
+                                    <td>@if($search->Progress == 'موافقة الادارة' || $search->Progress == 'موافقة المشرف' ) 
+                                        <div class="badge badge-primary">{{$search->Progress}}</div> 
+                                        @elseif($search->Progress == 'تم الرفع')
+                                        <div class="badge badge-warning">{{$search->Progress}}</div>
+                                        @elseif($search->Progress == 'رفض الادارة' || $search->Progress == 'رفض المشرف') 
+                                        <div class="badge badge-danger">{{$search->Progress}}</div>
+                                        @endif</td>
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر

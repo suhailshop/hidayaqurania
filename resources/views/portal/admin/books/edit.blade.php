@@ -93,6 +93,15 @@
                                                 <input type="text" id="mask_isbn" class="form-control" name="isbn"  value="{{$book->ISBN}}"  placeholder="رقم ISBN *"/> </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        
+                                        <div class="col-md-12">
+                                                <label>رابط الكتاب</label>
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="url" class="form-control" name="URL"  value="{{$book->URL}}" placeholder="رابط الكتاب *"/> </div>
+                                        </div>
+                                    </div>
                                     <div class="form-group ">
                                         <div class="col-md-12">
                                                 <label>الصورة</label>
@@ -104,7 +113,7 @@
                                     <div class="form-group">
                                         <div class="col-md-12">
                                                 <div class="fileinput-new thumbnail img-fluid" style="width: 200px; height: 150px;">
-                                                        <img src="{{url('storage/books/'.$book->Logo)}}" alt="" id="blah" /> </div>
+                                                        <img src="{{url('storage/books/'.$book->PictureURL)}}" alt="" id="blah" /> </div>
                                         </div>
                                     </div>
 

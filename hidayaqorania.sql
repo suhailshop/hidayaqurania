@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 04 nov. 2018 à 23:47
+-- Généré le :  jeu. 08 nov. 2018 à 20:13
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -33,6 +33,7 @@ CREATE TABLE `books` (
   `Code` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
   `Name` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Author` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `URL` text,
   `ISBN` varchar(255) CHARACTER SET utf8 NOT NULL,
   `PictureURL` varchar(255) CHARACTER SET utf8 NOT NULL,
   `Status` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -44,8 +45,8 @@ CREATE TABLE `books` (
 -- Déchargement des données de la table `books`
 --
 
-INSERT INTO `books` (`ID`, `Code`, `Name`, `Author`, `ISBN`, `PictureURL`, `Status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'كتاب 1', 'محمد', '111-1-1111-1111-1', 'fileName1540290101.jpg', 'yes', '2018-10-23 08:21:42', '2018-10-23 08:21:42');
+INSERT INTO `books` (`ID`, `Code`, `Name`, `Author`, `URL`, `ISBN`, `PictureURL`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'كتاب 1', 'محمد', 'https://www.google.com/pdf.pdf', '111-1-1111-1111-1', 'fileName1541702624.PNG', 'yes', '2018-11-08 18:43:44', '2018-10-23 08:21:42');
 
 -- --------------------------------------------------------
 
@@ -442,8 +443,8 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `Status`, `User`, `updated_at`, `created_at`) VALUES
-(11, NULL, 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 2, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'badouch', 'badouch', '+33601106930', NULL, 'badouch.maroc@gmail.com', '1538833869.jpg', 'yes', 54, '2018-10-25 10:48:40', '2018-10-06 11:51:09'),
-(12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '+966506087020', NULL, 'badouch.maroc@gmail.com', '1539893309.jpg', 'yes', 55, '2018-10-25 10:44:12', '2018-10-18 18:08:29');
+(11, NULL, 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 2, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'badouch', 'badouch', '+33601106930', '222222222', 'badouch.maroc@gmail.com', 'fileName1541620612.jpg', 'yes', 54, '2018-11-07 20:12:17', '2018-10-06 11:51:09'),
+(12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '+966506087020', NULL, 'badouch.maroc@gmail.com', 'fileName1541621862.jpg', 'yes', 55, '2018-11-07 20:17:42', '2018-10-18 18:08:29');
 
 -- --------------------------------------------------------
 
@@ -726,9 +727,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'EvpfsIhiRJrthOCo7wAplHs6x8jMAAm2yF0dpYw6yT1tHCvc9sAxnpGi7gvf', '2018-11-04 22:40:54', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 2, 'gbjAewSFmCe89TZNXYOzpWOckrINBMcQ44i2DUZLEXUwPdGMvCH1kHzQMl6z', '2018-11-04 21:48:52', '2018-10-06 11:51:08'),
-(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, '8QbFZmwn6w74tWbEiXDWGb0rrPqnyABe1ASJuZlt1u60s7rM6ZSDG1Fmyxhf', '2018-11-04 22:40:27', '2018-10-18 18:08:29');
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, '1xJmbCzNDUmDZQn5TSDl2CW4RAwaBnLHYYl7WJz6FAefuSDHKSMelzDRRijl', '2018-11-08 18:43:55', '2018-10-03 08:22:44'),
+(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'zRgLc6HQzaZpf6mIDm6UVnmsKugbWDf5OdyjiBJXG4SZxzNlG9sTZlP4WdBR', '2018-11-08 18:54:38', '2018-10-06 11:51:08'),
+(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'rDWi3fYCMbBOuLMwLOud461bfvrMnsjRSqWKzeqY7wR0UvD7GMVTBKTNk4kS', '2018-11-08 18:56:11', '2018-10-18 18:08:29');
 
 --
 -- Index pour les tables déchargées

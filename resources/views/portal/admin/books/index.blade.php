@@ -58,6 +58,7 @@
                                     <th class="all">الاسم</th>
                                     <th class="all">الكاتب</th>
                                     <th class="all">رقم ISBN</th>
+                                    <th class="desktop">الرابط</th>
                                     <th class="none"> صورة الغلاف</th>
                                     <th class="desktop">الحالة</th>
                                     <th class="all">خيارات.</th>
@@ -69,6 +70,7 @@
                                     <td>{{$book->Name}}</td>
                                     <td>{{$book->Author}}</td>
                                     <td>{{$book->ISBN}}</td>
+                                    <td> <a href="{{$book->URL}}">تحميل</a></td>
                                     <td>
                                         <img src="{{ url('storage/books/'.$book->PictureURL) }}" 
                                             style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>

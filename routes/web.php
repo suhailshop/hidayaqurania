@@ -173,4 +173,6 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searcher/deleteReport/{id}','Searcher\ReportController@delete')->name('deleteSearcherReport');
     
     Route::get('/searcher/getdivisionunit/{id}','Searcher\SearchsController@getdivisionunit');
+
+    Route::get('/searcher/allbooks','Searcher\BooksController@index')->name('allbookssearcher');
 });

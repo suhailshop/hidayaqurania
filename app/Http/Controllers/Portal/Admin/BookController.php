@@ -43,6 +43,7 @@ class BookController extends Controller
         $book->Name = $request->input('name');
         $book->Author = $request->input('author');
         $book->ISBN = $request->input('isbn');
+        $book->URL = $request->input('URL');
         if($request->hasFile('pictureurl')){
             $request->validate([
                 'pictureurl' => 'required|file|max:1024',
@@ -75,6 +76,7 @@ class BookController extends Controller
             'Name'=>$request->input('name'),
             'Author'=>$request->input('author'),
             'ISBN'=>$request->input('isbn'),
+            'URL'=>$request->input('URL'),
             'PictureURL'=>$fileName,
             'Status'=>$request->input('status')          
         ));
