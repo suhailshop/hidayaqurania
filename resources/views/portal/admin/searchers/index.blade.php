@@ -105,6 +105,9 @@
                                             </button>
                                             <ul class="dropdown-menu pull-right">
                                                 <li>
+                                                <a href="{{route('getSearcher',$searcher->ID)}}" >
+                                                                <i class="fa fa-user"></i> عرض صفحة الطالب
+                                                            </a></li><li>
                                                 <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
                                                     <i class="fa fa-check"></i> تسجيل حضور </a>
                                                 </li>
@@ -114,9 +117,10 @@
                                                 </li>
 
                                                 <li>
-                                                        <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2">
-                                                            <i class="fa fa-balance-scale"></i>  تنقيط المعايير </a>
+                                                <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2">
+                                                    <i class="fa fa-balance-scale"></i>  تنقيط المعايير </a>
                                                 </li>
+                                                
                                                 
 
                                             </ul>

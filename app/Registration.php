@@ -6,6 +6,7 @@ use App\User;
 use App\Nationalitie;
 use App\Countrie;
 use App\These;
+use App\Progress;
 use Illuminate\Database\Eloquent\Model;
 
 class Registration extends Model
@@ -28,5 +29,8 @@ class Registration extends Model
     }
     public function searcher_criteria(){
         return $this->hasMany('App\Searcher_criteria','Searcher','ID');
+    }
+    public function progress(){
+        return $this->hasOne('App\Progress','Searcher','ID');
     }
 }

@@ -44,6 +44,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchers/addToMeeting','Admin\SearcherController@addToMeeting')->name('addToMeeting');
     Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
     Route::post('/searchers/addCriteriasToSearcher','Admin\SearcherController@addCriteriasToSearcher')->name('addCriteriasToSearcher'); 
+    Route::post('/searchers/searcherProgressPost','Admin\SearcherController@searcherProgressPost')->name('searcherProgressPost');
     
 
     Route::get('/supervisors','Admin\SupervisorController@index')->name('allSupervisor');

@@ -8,6 +8,7 @@ use App\Countrie;
 use App\Registration;
 use App\Meeting;
 use App\Criteria;
+use App\Progrss;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -36,6 +37,52 @@ class SearcherController extends Controller
         $supervisors = Registration::where('Type','Supervisor')->get();
         $criterias = Criteria::all();
         return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors);
+    }
+
+    public function get($id){
+        $searcher = Registration::where('ID',$id)->first();
+        // Set dates
+        $dateIni = $searcher->these->BeginningDate;
+        $dateFin = date("Y-m-d");
+
+        // Get year and month of initial date (From)
+        $yearIni = date("Y", strtotime($dateIni));
+        $monthIni = date("m", strtotime($dateIni));
+
+        // Get year an month of finish date (To)
+        $yearFin = date("Y", strtotime($dateFin));
+        $monthFin = date("m", strtotime($dateFin));
+
+        // Checking if both dates are some year
+
+        if ($yearIni == $yearFin) {
+        $numberOfMonths = ($monthFin-$monthIni) + 1;
+        } else {
+        $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
+        }
+        
+        return view('portal.admin.searchers.get')->with('searcher',$searcher)->with('numberOfMonths',$numberOfMonths);
+    }
+
+    public function searcherProgressPost(Request $request){
+        $searcher = Registration::where('ID',$request->input('id_searcher'))->first();
+        if(!isset($searcher->progress->ID)){
+            DB::table('Progress')->insert([
+                'Months' => $request->input('Months'),
+                'Searcher' => $request->input('id_searcher'),
+                'MonthlyProgress' => $request->input('MonthlyProgress'),
+                'InitialProgress' => $request->input('InitialProgress'),
+            ]);
+        }
+        else{
+            DB::table('Progress')
+            ->where('Searcher', $searcher->ID)
+            ->update(['Months' => $request->input('Months'),
+                      'MonthlyProgress'=>$request->input('MonthlyProgress'),
+                      'InitialProgress'=>$request->input('InitialProgress')]);
+        }
+            
+        return redirect()->route('getSearcher',array('id' => $searcher->ID));
     }
   
    
