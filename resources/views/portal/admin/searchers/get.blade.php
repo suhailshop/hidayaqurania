@@ -7,6 +7,10 @@
     <link href="{!! asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')!!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/pages/css/profile-rtl.min.css')!!}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
+
+    <link href="{!! asset('assets/pages/css/bootstrap-year-calendar.css')!!}" rel="stylesheet" type="text/css" />
+    
+    
 @endsection
 
 @section('pageTitle', 'الرئيسية')
@@ -189,8 +193,22 @@
                                             </div>
                                             <!-- END CHANGE AVATAR TAB -->
                                             <!-- CHANGE PASSWORD TAB -->
-                                            <div class="tab-pane" id="tab_1_3">
-                                            
+                                            <div class="tab-pane" id="tab_1_3" style="direction: ltr">
+                                                <?php $array = [];?>
+                                                @foreach($searcher->plan as $p)
+                                                    <?php 
+                                                    $stdate="new Date()";
+                                                    $enddate="new Date(currentYear,"."5".",28".")";
+                                                    array_push($array,[
+                                                        'id'=>0,
+                                                        'name'=> 'm',
+                                                        'location'=> 'm',
+                                                        'startDate'=> $stdate,//Date($p->StartDate),
+                                                        'endDate'=> $enddate
+                                                    ]); ?>
+                                                @endforeach
+                                                    <div id="calendar"></div>
+                                                
                                             </div>
                                             <!-- END CHANGE PASSWORD TAB -->
                                            
@@ -215,7 +233,89 @@
          <script src="{!! asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')!!}" type="text/javascript"></script>
          <script src="{!! asset('assets/global/plugins/jquery.sparkline.min.js')!!}" type="text/javascript"></script>
          <script src="{!! asset('assets/pages/scripts/profile.min.js')!!}" type="text/javascript"></script>
-       
+         
         <!-- END PAGE LEVEL PLUGINS -->
+        <script src="{!! asset('assets/pages/scripts/bootstrap-year-calendar.js')!!}" type="text/javascript"></script>
+        <script src="{!! asset('assets/pages/scripts/calendarapp.js')!!}" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            $(function() {
+    var currentYear = new Date().getFullYear();
+
+    $('#calendar').calendar({ 
+        enableContextMenu: true,
+        enableRangeSelection: true,
+        contextMenuItems:[
+            {
+                text: 'Update',
+                click: editEvent
+            },
+            {
+                text: 'Delete',
+                click: deleteEvent
+            }
+        ],
+        selectRange: function(e) {
+            editEvent({ startDate: e.startDate, endDate: e.endDate });
+        },
+        mouseOnDay: function(e) {
+            if(e.events.length > 0) {
+                var content = '';
+                
+                for(var i in e.events) {
+                    content += '<div class="event-tooltip-content">'
+                                    + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
+                                    + '<div class="event-location">' + e.events[i].location + '</div>'
+                                + '</div>';
+                }
+            
+                $(e.element).popover({ 
+                    trigger: 'manual',
+                    container: 'body',
+                    html:true,
+                    content: content
+                });
+                
+                $(e.element).popover('show');
+            }
+        },
+        mouseOutDay: function(e) {
+            if(e.events.length > 0) {
+                $(e.element).popover('hide');
+            }
+        },
+        dayContextMenu: function(e) {
+            $(e.element).popover('hide');
+        },
+        dataSource:
+        <?php echo "[";
+                    foreach($searcher->plan as $pp){
+                        $stdate = strtotime($pp->StartDate);
+                        $endate = strtotime($pp->EndDate);
+                        $datestartmonth=date('m',strtotime($pp->StartDate))-1;
+                        $dateendmonth=date('m',strtotime($pp->EndDate))-1;
+                        $datestartday=date('d',strtotime($pp->StartDate))-1;
+                        $dateendday=date('d',strtotime($pp->EndDate))-1;
+                        $datediff = $endate - $stdate;
+                        echo "{
+                        id:".$pp->ID.",
+                        name: '".$pp->Record."',
+                        location : '".round($datediff / (60 * 60 * 24))." يوم ',
+                        startDate: new Date(currentYear,  ".$datestartmonth.",".$datestartday."),
+                        endDate: new Date(currentYear, ".$dateendmonth.", ".$dateendday.")
+                    },";
+                    
+                    }
+                    echo "]";
+        
+                   ?>
+    });
+    
+    $('#save-event').click(function() {
+        saveEvent();
+    });
+    });
+        </script>
+        
     @endsection
 @endsection

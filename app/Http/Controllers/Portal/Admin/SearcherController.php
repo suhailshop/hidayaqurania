@@ -40,7 +40,7 @@ class SearcherController extends Controller
     }
 
     public function get($id){
-        $searcher = Registration::where('ID',$id)->first();
+        $searcher = Registration::where('ID',$id)->first();        
         // Set dates
         $dateIni = $searcher->these->BeginningDate;
         $dateFin = date("Y-m-d");

@@ -7,6 +7,7 @@ use App\Nationalitie;
 use App\Countrie;
 use App\These;
 use App\Progress;
+use App\Plan;
 use Illuminate\Database\Eloquent\Model;
 
 class Registration extends Model
@@ -32,5 +33,8 @@ class Registration extends Model
     }
     public function progress(){
         return $this->hasOne('App\Progress','Searcher','ID');
+    }
+    public function plan(){
+        return $this->hasMany('App\Plan','Searcher','ID');
     }
 }

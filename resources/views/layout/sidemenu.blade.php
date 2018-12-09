@@ -339,6 +339,25 @@
                         </a>
                     </li>
                     <li class="nav-item  ">
+                        <a href="javascript:;" class="nav-link nav-toggle">
+                                <i class="icon-compass"></i>
+                                <span class="title">الخطة الزمنية </span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul class="sub-menu">
+                                    <li class="nav-item  ">
+                                        <a href="{{route('searcherPlan')}}" class="nav-link ">
+                                            <span class="title"> لائحة التسجيلات </span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                    <a href="{{route('addPlan')}}" class="nav-link ">
+                                            <span class="title">اضافة تسجيل</span>
+                                        </a>
+                                    </li>
+                            </ul>
+                        </li>
+                    <li class="nav-item  ">
                         <a href="{{route('allHelp')}}" class="nav-link nav-toggle">
                                 <i class="icon-credit-card"></i>
                                 <span class="title">المساعدات</span>

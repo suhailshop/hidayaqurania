@@ -186,4 +186,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searcher/getdivisionunit/{id}','Searcher\SearchsController@getdivisionunit');
 
     Route::get('/searcher/allbooks','Searcher\BooksController@index')->name('allbookssearcher');
+
+    
+    Route::get('/searcher/searcherPlan','Searcher\PlanController@index')->name('searcherPlan');
+    Route::get('/searcher/addPlan','Searcher\PlanController@add')->name('addPlan');
+    Route::post('/searcher/addPlanPost','Searcher\PlanController@addPost')->name('addPlanPost');
+    Route::get('/searcher/deletePlan/{id}','Searcher\PlanController@delete')->name('deletePlan');
 });
