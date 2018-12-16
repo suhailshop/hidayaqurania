@@ -98,7 +98,7 @@
                                     </td>        
                                     
                                     <td>{{$searcher->thesesTitle}}</td>
-                                    <td>@if($searcher->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    <td>{{$searcher->Status}}</td>
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر

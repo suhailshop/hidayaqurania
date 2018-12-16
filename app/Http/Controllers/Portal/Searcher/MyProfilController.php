@@ -92,4 +92,23 @@ class MyProfilController extends Controller
         ));
         return redirect()->route('searcherProfile');
     }
+
+    public function uploadSearcherCV(Request $request){
+        $fileName="";
+        if($request->hasFile('CV')){
+
+            $request->validate([
+                'CV' => 'required|file|max:1024',
+            ]);
+            $fileName = "CV".time().'.'.request()->CV->getClientOriginalExtension();
+            $request->CV->storeAs('public/CV',$fileName);
+        }
+       
+        DB::table('registrations')->where('User',$request->input('id_user'))
+        ->update(array(
+            'CV'=>$fileName
+        ));
+
+        return redirect()->route('searcherProfile');
+    }
 }

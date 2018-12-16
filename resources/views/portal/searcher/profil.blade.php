@@ -95,6 +95,9 @@
                                             <li>
                                                 <a href="#tab_1_3" data-toggle="tab">معلومات الحساب</a>
                                             </li>
+                                            <li>
+                                                <a href="#tab_1_4" data-toggle="tab">السيرة الذاتية</a>
+                                            </li>
                                         </ul>
                                     </div>
                                     <div class="portlet-body">
@@ -266,7 +269,33 @@
                                                 </form>
                                             </div>
                                             <!-- END CHANGE PASSWORD TAB -->
-                                           
+                                            <div class="tab-pane" id="tab_1_4">
+                                                    <form action="{{route('uploadSearcherCV')}}" method="POST" enctype="multipart/form-data">
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="id_user" value="{{$user->id}}" />
+                                                            <div class="form-group">
+                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                                                                        @if($registration->CV!="")
+                                                                            <a class="btn btn-danger" target="_blank" href="{{ asset('storage/CV/'.auth()->user()->registration->CV) }}" style="margin: inherit;">تحميل الملف</a>
+                                                                        @endif
+                                                                        <br />
+                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
+                                                                        <div>
+                                                                            <span class="btn default btn-file">
+                                                                                <span class="fileinput-new"> اختيار  الملف </span>
+                                                                                <span class="fileinput-exists"> تغيير </span>
+                                                                                <input type="file" accept="application/pdf, application/msword,.doc,.docx" name="CV" required> </span>
+                                                                            <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> الغاء </a>
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                            <div class="margin-top-10">
+                                                                <input type="submit" class="btn green" value="رفع" />
+                                                                <input type="reset" value="الغاء" class="btn default" /> 
+                                                            </div>
+                                                        </form>
+                                                    </div>
                                         </div>
                                     </div>
                                 </div>

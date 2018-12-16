@@ -130,7 +130,7 @@
                                             <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" 
                                                 style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
                                         </td>        
-                                        <td>@if($searcher->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                        <td>{{$searcher->Status}}</td>
                                         <td><input class="form-check-input" type="checkbox" value="{{$searcher->Phonne1}}" name="selectedstu[]" id="defaultCheck1"></td>
                                         
                                         

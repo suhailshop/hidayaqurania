@@ -14,7 +14,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class SearcherController extends Controller
+class SubmissionController extends Controller
 {
     private $user ;
     public function __construct()
@@ -32,51 +32,19 @@ class SearcherController extends Controller
     }
     public function index(){
 
-        $searchers = Registration::where('Type','Searcher')->where('Status','مفعل')->get();
+        $searchers = Registration::where('Type','Searcher')->where('Status','!=','مفعل')->get();
         $meetings = Meeting::all();
         $supervisors = Registration::where('Type','Supervisor')->get();
         $criterias = Criteria::all();
-        return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors);
+        return view('portal.admin.submissions.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors);
     }
 
-    public function plandetails($id){
-        $searcher = Registration::where('ID',$id)->first();
-        return view('portal.admin.searchers.plandetails')->with('searcher',$searcher);
-    }
+    
 
-    public function editPlanEnable(Request $request){
-        $searcher = Registration::where('ID',$request->input('id_searcher'))->first();
-        if($searcher->EnablePlanEdit=='true')
-        {
-                DB::table('Registrations')
-                ->where('ID', $searcher->ID)
-                ->update(['EnablePlanEdit' => 'false']);
-        }
-        else {
-            DB::table('Registrations')
-            ->where('ID', $searcher->ID)
-            ->update(['EnablePlanEdit' => 'true']);
-        }
-        $searcher->save();
-        return redirect()->route('plandetails',array('id' => $searcher->ID));
-
-    }
-
-    public function get($id){
-        $meetings = DB::table('meetings_searchers')
-                    ->join('registrations','meetings_searchers.Searcher','registrations.ID')
-                    ->join('meetings','meetings_searchers.Meeting','meetings.ID')
-                    ->distinct()
-                    ->select('meetings.Date','meetings.Location','meetings.Name')
-                    ->get();
-        $criterias = DB::table('searcher_critera')
-                    ->join('registrations','searcher_critera.Searcher','registrations.ID')
-                    ->join('criterias','searcher_critera.Criteria','criterias.ID')
-                    ->distinct()
-                    ->select('criterias.ProposedScore','criterias.MaximumScore','criterias.Name')
-                    ->get();
-
-        $searcher = Registration::where('ID',$id)->first();        
+    public function getSubmission($id){
+        $searcher = Registration::where('ID',$id)->first();      
+        $supervisors = Registration::where('Type','supervisor')->get();  
+        $countries = Countrie::all();
         // Set dates
         $dateIni = $searcher->these->BeginningDate;
         $dateFin = date("Y-m-d");
@@ -97,12 +65,10 @@ class SearcherController extends Controller
         $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
         }
         
-        $supervisors = Registration::where('Type','supervisor')->get();  
-        $countries = Countrie::all();
-        return view('portal.admin.searchers.get')->with('countries',$countries)->with('supervisors',$supervisors)->with('searcher',$searcher)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings);
+        return view('portal.admin.submissions.get')->with('countries',$countries)->with('supervisors',$supervisors)->with('searcher',$searcher)->with('numberOfMonths',$numberOfMonths);
     }
 
-    public function searcherProgressPost(Request $request){
+    public function submissionProgressPost(Request $request){
         $searcher = Registration::where('ID',$request->input('id_searcher'))->first();
         if(!isset($searcher->progress->ID)){
             DB::table('Progress')->insert([
@@ -120,42 +86,21 @@ class SearcherController extends Controller
                       'InitialProgress'=>$request->input('InitialProgress')]);
         }
             
-        return redirect()->route('getSearcher',array('id' => $searcher->ID));
+        return redirect()->route('getSubmission',array('id' => $searcher->ID));
     }
   
-   
-    public function delete($id){
-        Registration::where('ID', $id)->forcedelete(); 
-        return redirect()->route('allSearcher');
-    }
 
-    public function addToMeeting(Request $request){
+    public function addSubmissionToMeeting(Request $request){
         DB::table('meetings_searchers')->insert([
             'Meeting' => $request->input('meeting'),
             'Searcher' => $request->input('searcher'),
             'Status' => 'yes'
         ]);
         
-        return redirect()->route('allSearcher');
+        return redirect()->route('allSubmissions');
     }
 
-    public function addThese(Request $request){
-        DB::table('theses')->insert([
-            'Supervisor' => $request->input('Supervisor'),
-            'Searcher' => $request->input('Searcher'),
-            'Title' => $request->input('Title'),
-            'ProgramDuration' => $request->input('ProgramDuration'),
-            'BeginningDate' => $request->input('BeginningDate'),
-            'CompletionDate' => $request->input('CompletionDate'),
-            'Notes' => $request->input('Notes'),
-
-            'Status' => 'yes'
-        ]);
-        
-        return redirect()->route('allSearcher');
-    }
-
-    public function addCriteriasToSearcher(Request $request){
+    public function addCriteriasToSubmission(Request $request){
         
         foreach($request->input('criterias') as $m)
         {
@@ -166,20 +111,19 @@ class SearcherController extends Controller
             ]);
 
         }
-        return redirect()->route('allSearcher');
+        return redirect()->route('allSubmissions');
     }
-
-    public function editStatusSearcher($id,$status){
+    public function editStatusSubmission($id,$status){
         DB::table('registrations')
-        ->where('ID',$id)
-        ->update([
-            'Status' => $status
+            ->where('ID',$id)
+            ->update([
+                'Status' => $status
         ]);
 
-        return redirect()->route('allSearcher');
+        return redirect()->route('allSubmissions');
     }
 
-    public function updateSearcherInfos(Request $request){
+    public function updateSubmissionInfos(Request $request){
         DB::table('registrations')
             ->where('ID',$request->input('id_registration'))
             ->update([
@@ -197,7 +141,7 @@ class SearcherController extends Controller
                 'BeginningDate' => $request->input('BeginningDate'),
                 'supervisor' => $request->input('supervisor')
             ]);
-        return redirect()->route('getSearcher',array('id' => $request->input('id_registration')));
+        return redirect()->route('getSubmission',array('id' => $request->input('id_registration')));
     }
 }
 

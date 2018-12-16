@@ -29,7 +29,12 @@
                     <span class="help-block">
                         <strong>{{ 'البريد الالكتروني او كلمة المرور خاطئة' }}</strong>
                     </span>
-                @endif
+                    @endif
+                    @if($errors->has('notactive'))
+                        <span class="help-block">
+                            <strong>{{ 'تم استقبال طلبكم وجاري العمل عليه' }}</strong>
+                        </span>
+                    @endif
                 </div>
                 
                     <div class="form-actions">

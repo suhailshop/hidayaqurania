@@ -37,4 +37,5 @@ class Registration extends Model
     public function plan(){
         return $this->hasMany('App\Plan','Searcher','ID');
     }
+    
 }

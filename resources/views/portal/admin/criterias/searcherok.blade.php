@@ -92,7 +92,7 @@
                                         <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" 
                                             style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
                                     </td>        
-                                    <td>@if($searcher->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    <td>{{$searcher->Status }}</td>
                                    
                                 </tr>
                                

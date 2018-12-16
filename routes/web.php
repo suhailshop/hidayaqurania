@@ -45,6 +45,19 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
     Route::post('/searchers/addCriteriasToSearcher','Admin\SearcherController@addCriteriasToSearcher')->name('addCriteriasToSearcher'); 
     Route::post('/searchers/searcherProgressPost','Admin\SearcherController@searcherProgressPost')->name('searcherProgressPost');
+    Route::get('/searchers/plandetails/{id}','Admin\SearcherController@plandetails')->name('plandetails');
+    Route::post('/searchers/editPlanEnable','Admin\SearcherController@editPlanEnable')->name('editPlanEnable');
+    Route::get('/searchers/editStatusSearcher/{id}/{status}','Admin\SearcherController@editStatusSearcher')->name('editStatusSearcher');
+    Route::post('/searchers/updateSearcherInfos','Admin\SearcherController@updateSearcherInfos')->name('updateSearcherInfos');
+
+    Route::get('/submissions','Admin\SubmissionController@index')->name('allSubmissions');
+    Route::get('/submissions/getSubmission/{id}','Admin\SubmissionController@getSubmission')->name('getSubmission');
+    Route::post('/submissions/addSubmissionToMeeting','Admin\SubmissionController@addSubmissionToMeeting')->name('addSubmissionToMeeting');
+    Route::post('/submissions/addCriteriasToSubmission','Admin\SubmissionController@addCriteriasToSubmission')->name('addCriteriasToSubmission'); 
+    Route::post('/submissions/submissionProgressPost','Admin\SubmissionController@submissionProgressPost')->name('submissionProgressPost');
+    Route::get('/submissions/editStatusSubmission/{id}/{status}','Admin\SubmissionController@editStatusSubmission')->name('editStatusSubmission');
+    Route::post('/submissions/updateSubmissionInfos','Admin\SubmissionController@updateSubmissionInfos')->name('updateSubmissionInfos');
+    
     
 
     Route::get('/supervisors','Admin\SupervisorController@index')->name('allSupervisor');
@@ -182,14 +195,13 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searcher/editReport/{id}','Searcher\ReportController@edit')->name('editSearcherReport');
     Route::post('/searcher/editReportPost','Searcher\ReportController@editPost')->name('editSearcherReportPost');
     Route::get('/searcher/deleteReport/{id}','Searcher\ReportController@delete')->name('deleteSearcherReport');
-    
     Route::get('/searcher/getdivisionunit/{id}','Searcher\SearchsController@getdivisionunit');
-
-    Route::get('/searcher/allbooks','Searcher\BooksController@index')->name('allbookssearcher');
-
-    
+    Route::get('/searcher/allbooks','Searcher\BooksController@index')->name('allbookssearcher');    
     Route::get('/searcher/searcherPlan','Searcher\PlanController@index')->name('searcherPlan');
     Route::get('/searcher/addPlan','Searcher\PlanController@add')->name('addPlan');
+    Route::post('/searchers/editPlan','Searcher\PlanController@editPlan')->name('editPlan');
     Route::post('/searcher/addPlanPost','Searcher\PlanController@addPost')->name('addPlanPost');
     Route::get('/searcher/deletePlan/{id}','Searcher\PlanController@delete')->name('deletePlan');
+    Route::post('/searcher/uploadSearcherCV','Searcher\MyProfilController@uploadSearcherCV')->name('uploadSearcherCV');
+    
 });

@@ -7,8 +7,9 @@
     <link href="{!! asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')!!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/pages/css/profile-rtl.min.css')!!}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
-
-    <link href="{!! asset('assets/pages/css/bootstrap-year-calendar.css')!!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/datatables/datatables.min.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css') !!}" rel="stylesheet" type="text/css" />
+   
     
     
 @endsection
@@ -67,10 +68,21 @@
                             <div class="profile-usermenu">
                                 <ul class="nav">
                                    
+                                    
                                     <li class="active">
+                                            <a href="{{route('plandetails',$searcher->ID)}}">
+                                            <i class="icon-arrow-left"></i>  الخطة الزمنية للباحث </a>
+                                    </li>
+                                    <li class="">
                                             <a href="{{route('allSearcher')}}">
                                             <i class="icon-arrow-right"></i>  رجوع لصفحة الباحثين </a>
                                     </li>
+                                    @if($searcher->CV!="")
+                                        <li class="">
+                                            <a class="btn btn-success" target="_blank" href="{{ asset('storage/CV/'.$searcher->CV) }}" style="margin: inherit;color:white">                                                
+                                            <i class="icon-arrow-right"></i>  تحميل السيرة الذاتية</a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                             <!-- END MENU -->
@@ -88,7 +100,7 @@
                                         <div class="caption caption-md">
                                             <i class="icon-globe theme-font hide"></i>
                                         </div>
-                                        <ul class="nav nav-tabs">
+                                        <ul class="nav nav-tabs navbar-left">
                                             <li class="active">
                                                 <a href="#tab_1_1" data-toggle="tab">معلومات شخصية</a>
                                             </li>
@@ -96,71 +108,83 @@
                                                 <a href="#tab_1_2" data-toggle="tab">نسبة التقدم في الاطروحة </a>
                                             </li>
                                             <li>
-                                                <a href="#tab_1_3" data-toggle="tab">الخطة الزمنية</a>
+                                                <a href="#tab_1_3" data-toggle="tab">لائحة اللقاءات </a>
                                             </li>
+                                            <li>
+                                                <a href="#tab_1_4" data-toggle="tab">نتائج تنقيط المعايير </a>
+                                            </li>
+                                          
                                         </ul>
                                     </div>
                                     <div class="portlet-body">
                                         <div class="tab-content">
                                             <!-- PERSONAL INFO TAB -->
                                             <div class="tab-pane active" id="tab_1_1">
-                                                <form role="form" >
-                                                    <input type="hidden" name="id_registration" value="{{$searcher->ID}}" />
-                                                    <p class="hint">الاسم العائلي و الشخصي :</p>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
-                                                        <input  value="{{$searcher->Fistname}}" class="form-control placeholder-no-fix" type="text" disabled name="firstname" />
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الاسم الشخصي</label>
-                                                        <input  value="{{$searcher->LastName}}"  class="form-control placeholder-no-fix" type="text" disabled  name="lastname" /> 
-                                                        </div>
-                                                    
-                                                    
-                                                                  
-                                                    <p class="hint">  معلومات الاقامة : </p>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الدولة</label>
-                                                        <input  value="{{$searcher->countrie->Name}}"  class="form-control placeholder-no-fix" type="text" disabled  name="countrie" />
-                                                    </div>
-                                                    
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">المدينة</label>
-                                                        <input  value="{{$searcher->City}}" class="form-control placeholder-no-fix" type="text" disabled name="city1" /> </div>
-                                                    
-                                                    <p class="hint"> نسبة التقدم في الاطروحة : @if(isset($searcher->progress)) {{ ceil(((($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress) * 100)/ (($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress))}}% @else 0% @endif </p>
-                                                        <div class="progress">
-                                                                @if(isset($searcher->progress)) 
-
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$searcher->progress->ID}}" aria-valuemin="0" aria-valuemax="{{($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress}}" style="width:{{($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress}}%"></div>
-                                                              </div>
-                                                              @else
-                                                              المرجو ملئ المعلومات في النافذة الخاصة 
-                                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%"></div>
+                                                    <form role="form" method="POST" action="{{route('updateSubmissionInfos')}}" >
+                                                            {{ csrf_field() }}
+                                                            <input type="hidden" name="id_registration" value="{{$searcher->ID}}" />
+                                                            <p class="hint">الاسم العائلي و الشخصي :</p>
+                                                            <div class="form-group">
+                                                                <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
+                                                                <input  value="{{$searcher->Fistname}}" class="form-control placeholder-no-fix" type="text"  name="Fistname" />
                                                             </div>
-                                                              @endif
-                                                    <div class="form-group">
-                                                        <label class="control-label ">الجامعة : </label>
-                                                        <input  value="{{$searcher->University}}" class="form-control placeholder-no-fix" type="text" disabled  name="University" /> </div>              
-                                    
-                                                    <div class="form-group">
-                                                                <label class="control-label">اسم المشرف : </label>
-                                                                <input  value="{{$searcher->these->supervisor->Fistname}} {{$searcher->these->supervisor->LastName}}" class="form-control placeholder-no-fix" disabled type="text" name="CertificateType" /> </div>
-                                                   
-                                                    <div class="form-group">
-                                                                <label class="control-label">عنوان الاطروحة : </label>
-                                                                <input  value="{{$searcher->these->Title}}" class="form-control placeholder-no-fix" disabled type="text"  /> </div>
-                                                    <div class="form-group">
-                                                                <label class="control-label ">تاريخ بداية البرنامج : </label>
-                                                                <input dir="rtl" value="{{$searcher->these->BeginningDate}}" class="form-control placeholder-no-fix" disabled   name="InscriptionDate" /> </div>
-                                                    <div class="form-group">
-                                                                <label class="control-label ">تاريخ نهاية البرنامج : </label>
-                                                                <input dir="rtl" value="{{$searcher->these->CompletionDate}}" class="form-control placeholder-no-fix" disabled  name="InscriptionDate" /> </div>
-                                                                                        
-
-                                                    
-                                                </form>
-                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label visible-ie8 visible-ie9">الاسم الشخصي</label>
+                                                                <input  value="{{$searcher->LastName}}"  class="form-control placeholder-no-fix" type="text"   name="LastName" /> 
+                                                            </div>
+                                                                          
+                                                            <p class="hint">  معلومات الاقامة : </p>
+                                                            <div class="form-group">
+                                                                <label class="control-label visible-ie8 visible-ie9">الدولة</label>
+                                                                <select class="form-control" name="Countrie">
+                                                                    @foreach($countries as $countrie)
+                                                                        <option value="{{$countrie->ID}}" @if($countrie->ID == $searcher->countrie->ID) selected @endif>{{$countrie->Name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            </div>
+                                                            
+                                                            <div class="form-group">
+                                                                <label class="control-label visible-ie8 visible-ie9">المدينة</label>
+                                                                <input  value="{{$searcher->City}}" class="form-control placeholder-no-fix" type="text"  name="City" /> </div>
+                                                            
+                                                            <p class="hint"> نسبة التقدم في الاطروحة : @if(isset($searcher->progress)) {{ ceil(((($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress) * 100)/ (($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress))}}% @else 0% @endif </p>
+                                                                <div class="progress">
+                                                                    @if(isset($searcher->progress)) 
+                                                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$searcher->progress->ID}}" aria-valuemin="0" aria-valuemax="{{($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress}}" style="width:{{($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress}}%"></div></div>
+                                                                    @else
+                                                                      المرجو ملئ المعلومات في النافذة الخاصة 
+                                                                <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%"></div>
+                                                                    </div>
+                                                                      @endif
+                                                            <div class="form-group">
+                                                                <label class="control-label ">الجامعة : </label>
+                                                                <input  value="{{$searcher->University}}" class="form-control placeholder-no-fix" type="text"   name="University" /> </div>              
+                                            
+                                                            <div class="form-group">
+                                                                        <label class="control-label">المشرف : </label>
+                                                                        <select class="form-control" name="supervisor">
+                                                                        @foreach($supervisors as $supervisor)
+                                                                        <option value="{{$supervisor->ID}}" @if($supervisor->ID == $searcher->these->supervisor->ID) selected @endif>{{$searcher->these->supervisor->Fistname}} {{$searcher->these->supervisor->LastName}}</option>
+                                                                        @endforeach
+                                                                        </select></div>
+                                                                    <input type="hidden" name="these_id" value="{{$searcher->these->ID}}"/>
+                                                            <div class="form-group">
+                                                                        <label class="control-label">عنوان الاطروحة : </label>
+                                                                        <input  value="{{$searcher->these->Title}}" class="form-control placeholder-no-fix"  type="text"  name="Title" /> </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">تاريخ بداية البرنامج : </label>
+                                                                        <input dir="rtl" value="{{$searcher->these->BeginningDate}}" class="form-control placeholder-no-fix"    name="BeginningDate" /> </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">تاريخ نهاية البرنامج : </label>
+                                                                        <input dir="rtl" value="{{$searcher->these->CompletionDate}}" class="form-control placeholder-no-fix"   name="CompletionDate" /> </div>
+                                                                                                
+                                                                        <div class="margin-top-10">
+                                                                                <input type="submit" class="btn green" value="تأكيد" />
+                                                                                <input type="reset" value="الغاء" class="btn default" /> 
+                                                                            </div>
+                                                            
+                                                        </form>
+                                                    </div>
                                             <!-- END PERSONAL INFO TAB -->
                                             <!-- CHANGE AVATAR TAB -->
                                             <div class="tab-pane" id="tab_1_2">
@@ -192,25 +216,49 @@
                                                     
                                             </div>
                                             <!-- END CHANGE AVATAR TAB -->
-                                            <!-- CHANGE PASSWORD TAB -->
-                                            <div class="tab-pane" id="tab_1_3" style="direction: ltr">
-                                                <?php $array = [];?>
-                                                @foreach($searcher->plan as $p)
-                                                    <?php 
-                                                    $stdate="new Date()";
-                                                    $enddate="new Date(currentYear,"."5".",28".")";
-                                                    array_push($array,[
-                                                        'id'=>0,
-                                                        'name'=> 'm',
-                                                        'location'=> 'm',
-                                                        'startDate'=> $stdate,//Date($p->StartDate),
-                                                        'endDate'=> $enddate
-                                                    ]); ?>
-                                                @endforeach
-                                                    <div id="calendar"></div>
-                                                
+                                            <div class="tab-pane" id="tab_1_3">
+                                                <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="table12">
+                                                    <thead>
+                                                        <tr>
+                                                            <th  class="all">العنوان</th>
+                                                            <th  class="all">التاريخ</th>
+                                                            <th  class="all">المكان</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($meetings as $meeting)
+                                                        <tr>
+                                                            <td>{{$meeting->Name}}</td>
+                                                            <td>{{$meeting->Date}}</td>
+                                                            <td>{{$meeting->Location}}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <!-- END CHANGE PASSWORD TAB -->
+
+                                            <div class="tab-pane" id="tab_1_4">
+                                                    <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="table13">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th  class="all">المعيار</th>
+                                                                    <th  class="all">الدرجة القصوى</th>
+                                                                    <th  class="all">الدرجة المقترحة</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($criterias as $criteria)
+                                                                <tr>
+                                                                    <td>{{$criteria->Name}}</td>
+                                                                    <td>{{$criteria->MaximumScore}}</td>
+                                                                    <td>{{$criteria->ProposedScore}}</td>
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
+                                            </div>
+
+
                                            
                                         </div>
                                     </div>
@@ -233,89 +281,37 @@
          <script src="{!! asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')!!}" type="text/javascript"></script>
          <script src="{!! asset('assets/global/plugins/jquery.sparkline.min.js')!!}" type="text/javascript"></script>
          <script src="{!! asset('assets/pages/scripts/profile.min.js')!!}" type="text/javascript"></script>
-         
+         <script src="{!! asset('assets/global/scripts/datatable.js')!!}" type="text/javascript"></script>
+         <script src="{!! asset('assets/global/plugins/datatables/datatables.min.js')!!}" type="text/javascript"></script>
+         <script src="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')!!}" type="text/javascript"></script>
+          <script src="{!! asset('assets/pages/scripts/table-datatables-responsive.min.js')!!}" type="text/javascript"></script>
         <!-- END PAGE LEVEL PLUGINS -->
-        <script src="{!! asset('assets/pages/scripts/bootstrap-year-calendar.js')!!}" type="text/javascript"></script>
-        <script src="{!! asset('assets/pages/scripts/calendarapp.js')!!}" type="text/javascript"></script>
-
-        <script type="text/javascript">
-            $(function() {
-    var currentYear = new Date().getFullYear();
-
-    $('#calendar').calendar({ 
-        enableContextMenu: true,
-        enableRangeSelection: true,
-        contextMenuItems:[
-            {
-                text: 'Update',
-                click: editEvent
+       <script>
+           $('#table12').DataTable( {
+            "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json"
             },
-            {
-                text: 'Delete',
-                click: deleteEvent
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "aButtons": [
+                    "copy",
+                    "save"
+                ]
             }
-        ],
-        selectRange: function(e) {
-            editEvent({ startDate: e.startDate, endDate: e.endDate });
-        },
-        mouseOnDay: function(e) {
-            if(e.events.length > 0) {
-                var content = '';
-                
-                for(var i in e.events) {
-                    content += '<div class="event-tooltip-content">'
-                                    + '<div class="event-name" style="color:' + e.events[i].color + '">' + e.events[i].name + '</div>'
-                                    + '<div class="event-location">' + e.events[i].location + '</div>'
-                                + '</div>';
-                }
-            
-                $(e.element).popover({ 
-                    trigger: 'manual',
-                    container: 'body',
-                    html:true,
-                    content: content
-                });
-                
-                $(e.element).popover('show');
+        } );
+        $('#table13').DataTable( {
+            "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json"
+            },
+            "dom": 'T<"clear">lfrtip',
+            "tableTools": {
+                "aButtons": [
+                    "copy",
+                    "save"
+                ]
             }
-        },
-        mouseOutDay: function(e) {
-            if(e.events.length > 0) {
-                $(e.element).popover('hide');
-            }
-        },
-        dayContextMenu: function(e) {
-            $(e.element).popover('hide');
-        },
-        dataSource:
-        <?php echo "[";
-                    foreach($searcher->plan as $pp){
-                        $stdate = strtotime($pp->StartDate);
-                        $endate = strtotime($pp->EndDate);
-                        $datestartmonth=date('m',strtotime($pp->StartDate))-1;
-                        $dateendmonth=date('m',strtotime($pp->EndDate))-1;
-                        $datestartday=date('d',strtotime($pp->StartDate))-1;
-                        $dateendday=date('d',strtotime($pp->EndDate))-1;
-                        $datediff = $endate - $stdate;
-                        echo "{
-                        id:".$pp->ID.",
-                        name: '".$pp->Record."',
-                        location : '".round($datediff / (60 * 60 * 24))." يوم ',
-                        startDate: new Date(currentYear,  ".$datestartmonth.",".$datestartday."),
-                        endDate: new Date(currentYear, ".$dateendmonth.", ".$dateendday.")
-                    },";
-                    
-                    }
-                    echo "]";
-        
-                   ?>
-    });
-    
-    $('#save-event').click(function() {
-        saveEvent();
-    });
-    });
-        </script>
+        } );
+       </script>
         
     @endsection
 @endsection

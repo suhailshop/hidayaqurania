@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Role;
+use App\Registration;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -37,23 +39,19 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        
         $this->middleware('guest')->except('logout');
     }
 
-    public function authenticated(Request $request)
-    {
-        $role=Role::get()->where('id',$request->user()->role_id)->first();
-       
+    public function authenticated(Request $request, $user)
+    {      
+        $registration = Registration::where('User',$user->id)->first();
+        $role = Role::where('ID',$user->role_id)->first();
         if($role->name=='student'){
-            echo "student";
-            
-        }
-        else if ($role->name=='supervisor'){
-          echo "supervisor";
-        }
-        else if ($role->name=='admin'){
-            echo "admin";
-          }
-    }
-   
+            if ($registration->Status != 'مفعل') {
+                Auth::logout();
+                return redirect(route('login'))->withErrors(['notactive' => 'تم استقبال طلبكم وجاري العمل عليه']);
+            }
+        }       
+    }   
 }

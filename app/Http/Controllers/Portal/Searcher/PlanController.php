@@ -31,9 +31,30 @@ class PlanController extends Controller
     }
     public function index(){
         $this->user= Auth::user();
-        $id = Registration::where('User',$this->user->id)->first()->ID;
-        $plans = Plan::where('Searcher',$id)->get();
-        return view('portal.searcher.plan.index')->with('plans',$plans);
+        $searcher = Registration::where('User',$this->user->id)->first();
+        $plans = Plan::where('Searcher',$searcher->ID)->get();
+
+        // Set dates
+        $dateIni = $searcher->these->BeginningDate;
+        $dateFin = date("Y-m-d");
+
+        // Get year and month of initial date (From)
+        $yearIni = date("Y", strtotime($dateIni));
+        $monthIni = date("m", strtotime($dateIni));
+
+        // Get year an month of finish date (To)
+        $yearFin = date("Y", strtotime($dateFin));
+        $monthFin = date("m", strtotime($dateFin));
+
+        // Checking if both dates are some year
+
+        if ($yearIni == $yearFin) {
+        $numberOfMonths = ($monthFin-$monthIni) + 1;
+        } else {
+        $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
+        }
+
+        return view('portal.searcher.plan.index')->with('plans',$plans)->with('enabledPlan',$searcher->EnablePlanEdit)->with('numberOfMonths',$numberOfMonths);
     }
   
     public function add(){
@@ -52,8 +73,11 @@ class PlanController extends Controller
         return redirect()->route('searcherPlan');
    
     }
-    public function delete($id){
-        Plan::where('ID', $id)->forcedelete(); 
+    public function editPlan(Request $request){
+        if($request->input('enabledPlan')== 'true'){
+        DB::table('plans')
+            ->where('ID',$request->input('id_plan'))
+            ->update(['Record'=>$request->input('Record') , 'StartDate'=>$request->input('StartDate') , 'EndDate'=>$request->input('EndDate')]);}
         return redirect()->route('searcherPlan');
     }
 }

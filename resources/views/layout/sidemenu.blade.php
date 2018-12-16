@@ -29,6 +29,13 @@
                     </a>
             </li>
             <li class="nav-item  ">
+                <a href="{{route('allSubmissions')}}" class="nav-link nav-toggle">
+                        <i class="icon-paper-plane"></i>
+                        <span class="title">التقديمات</span>
+                        <span class="arrow"></span>
+                    </a>
+            </li>
+            <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-briefcase"></i>
                         <span class="title">المشرفين</span>

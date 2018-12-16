@@ -97,7 +97,36 @@
                                         <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" 
                                             style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
                                     </td>        
-                                    <td>@if($searcher->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    <td>
+                                            <div class="btn-group pull-right">
+                                                    <button class="btn red btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">{{$searcher->Status}}
+                                                        <i class="fa fa-angle-down"></i>
+                                                    </button>
+                                                    <ul class="dropdown-menu pull-right">
+                                                        <li>
+                                                        <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'غير مفعل'])}}" type="button">
+                                                        <i class="fa fa-close"></i>غير مفعل </a>
+                                                        </li>
+                                                        <li>
+                                                        <li>
+                                                        <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'مرشح أولي'])}}" type="button">
+                                                        <i class="fa fa-angle-up"></i>مرشح أولي </a>
+                                                        </li>
+                                                        <li>
+                                                        <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'مرشح نهائي'])}}" type="button">
+                                                        <i class="fa fa-angle-double-up"></i>مرشح نهائي </a>
+                                                        </li>
+                                                        <li>
+                                                        <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'مستبعد'])}}" type="button">
+                                                        <i class="fa fa-sign-out"></i>مستبعد </a>
+                                                        </li>
+                                                        <li>
+                                                        <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'موقف'])}}" type="button">
+                                                        <i class="fa fa-stop"></i>موقف </a>
+                                                        </li>
+                                                    </ul>
+                                            </div>
+                                    </td>
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر

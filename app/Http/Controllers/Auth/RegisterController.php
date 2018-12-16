@@ -110,7 +110,7 @@ class RegisterController extends Controller
         $registration->Phonne1 = $data['Phonne1'];
         $registration->Phonne2 = $data['Phonne2'];
         $registration->Type = "searcher";
-        $registration->Status = 'yes';
+        $registration->Status = 'غير مفعل';
         $registration->User = $user->id;
         $registration->Email = $data['email'];
         $profileImage = $request->file('PictureURL');
