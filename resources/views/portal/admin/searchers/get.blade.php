@@ -177,11 +177,12 @@
                                                             <div class="form-group">
                                                                         <label class="control-label ">تاريخ نهاية البرنامج : </label>
                                                                         <input dir="rtl" value="{{$searcher->these->CompletionDate}}" class="form-control placeholder-no-fix"   name="CompletionDate" /> </div>
-                                                                                                
+                                                                        @if(auth()->user()->hasRole('admin',auth()->user()->role_id))           
                                                                         <div class="margin-top-10">
                                                                                 <input type="submit" class="btn green" value="تأكيد" />
                                                                                 <input type="reset" value="الغاء" class="btn default" /> 
-                                                                            </div>
+                                                                        </div>
+                                                                        @endif
                                                             
                                                         </form>
                                                     </div>
@@ -206,10 +207,12 @@
                                                                 <input class="form-control placeholder-no-fix" type="number" step="0.01" value="@if(isset($searcher->progress->InitialProgress)){{$searcher->progress->InitialProgress}}@endif" required name="InitialProgress" />
                                                                 
                                                              </div>
+                                                             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                                         <div class="margin-top-10">
                                                             <input type="submit" class="btn green" value="تأكيد" />
                                                             <input type="reset" value="الغاء" class="btn default" /> 
                                                         </div>
+                                                        @endif
                                                     </form>
                                                 
                                                 

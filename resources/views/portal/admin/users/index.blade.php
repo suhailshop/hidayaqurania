@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'اللقاءات')
+@section('pageTitle', 'المدراء')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -32,8 +32,8 @@
                         <i class="fa fa-angle-left"></i>
                     </li>
                     <li>
-                            <i class="icon-cup"></i>
-                        <span>إدارة اللقاءات</span>
+                            <i class="icon-screen-desktop"></i>
+                        <span>المدراء</span>
                     </li>
                 </ul>
             </div>
@@ -47,7 +47,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة اللقاءات  بالنظام</span>
+                            <span class="caption-subject bold uppercase">لائحة المدراء بالنظام</span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -55,50 +55,23 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="all">اللقاء</th>
-                                    <th class="all">التاريخ</th>
-                                    <th class="all"> المكان</th>
-                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                    <th class="all">خيارات.</th>
-                                    @endif
+                                    <th class="all">اسم المستخدم</th>
+                                    <th class="all">البريد الالكتروني</th>
+                                    <th class="all">الوظيفة</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($meetings as $meeting)
+                                @foreach($admins as $admin)
                                 <tr>
-                                    <td>{{$meeting->Name}}</td>
-                                    <td>{{$meeting->Date}}</td>
-                                    <td>{{$meeting->Location}}</td>
-                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))                                
-                                    <td>
-                                        <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li>
-                                                <a href="{{route('editMeeting',['id'=>$meeting->ID])}}">
-                                                        <i class="fa fa-edit"></i> تعديل </a>
-                                                </li>
-                                                <li>
-                                                <a data-toggle="confirmation"
-                                                data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
-                                                data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
-                                                data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
-                                                data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
-                                                data-title="هل تريد الحذف ؟" href="{{route('deleteMeetingPost',['id'=>$meeting->ID])}}">
-                                                        <i class="fa fa-remove"></i> حذف </a>
-                                                </li>
-                                                <li>
-                                                    <a href="{{route('allSearcherMeeting',['id'=>$meeting->ID])}}">
-                                                            <i class="fa fa-list"></i> لائحة الحضور </a>
-                                                    </li>
-
-                                            </ul>
-                                        </div>
-                                        
+                                    <td>{{$admin->name}} </td>
+                                    <td>{{$admin->email}}</td>
+                                    <td>@if($admin->rolename=='admin') 
+                                            <span class="badge badge-primary"> مدير عام </span>
+                                        @else 
+                                            <span class="badge badge-danger">مدير جزئي</span> 
+                                        @endif
                                     </td>
-                                    @endif
+                                   
                                 </tr>
                                 @endforeach
                             </tbody>

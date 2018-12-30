@@ -37,6 +37,10 @@ class SearchController extends Controller
         return view('portal.admin.searchs.index',compact('searchs'));
     }
   
+    public function getOne($id){
+        $search=Search::where('ID',$id)->first();
+        return view('portal.admin.searchs.getOne',compact('search'));
+    }
     
     public function updateProgressok($id){
         DB::table('searchs')->where('ID',$id)

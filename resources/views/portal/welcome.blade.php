@@ -32,7 +32,7 @@
             <div class="note note-info">
                 <p> هذه الصفحة الرئيسية للبوابة الالكترونية </p>
             </div>
-            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+            @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allSearcher')}}">
@@ -163,11 +163,13 @@
                                                     <div class="mt-comment-text"> {{$searcher->Location}} , {{$searcher->City}} </div>
                                                     <div class="mt-comment-details">
                                                         <span class="mt-comment-status mt-comment-status-pending">{{$searcher->Gender}}</span>
+                                                        @if(isset($searcher->these))
                                                         <ul class="mt-comment-actions">
                                                             <li>
                                                             <a href="{{route('getSearcher',['id'=>$searcher->ID])}}">معلومات الباحث</a>
                                                             </li>
                                                         </ul>
+                                                        @endif
                                                     </div>
                                                 </div>
                                             </div>   

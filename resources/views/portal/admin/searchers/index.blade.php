@@ -72,8 +72,11 @@
                                     <th class="none"> الجامعة</th>
                                     <th class="none">الكلية</th>
                                     <th class="none">الصورة</th>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="desktop">الحالة</th>
+                                    @endif
                                     <th class="all">خيارات.</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -97,6 +100,7 @@
                                         <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" 
                                             style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
                                     </td>        
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                             <div class="btn-group pull-right">
                                                     <button class="btn red btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">{{$searcher->Status}}
@@ -127,16 +131,23 @@
                                                     </ul>
                                             </div>
                                     </td>
+                                    @endif
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
+                                                @if(isset($searcher->these))
                                                 <li>
-                                                <a href="{{route('getSearcher',$searcher->ID)}}" >
-                                                                <i class="fa fa-user"></i> عرض صفحة الطالب
-                                                            </a></li><li>
+                                                    <a href="{{route('getSearcher',$searcher->ID)}}" >
+                                                        <i class="fa fa-user"></i> عرض صفحة الطالب
+                                                    </a>
+                                                </li>
+                                                @endif
+                                                           
+                                                 @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                                 <li>
                                                 <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
                                                     <i class="fa fa-check"></i> تسجيل حضور </a>
                                                 </li>
@@ -149,8 +160,7 @@
                                                 <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2">
                                                     <i class="fa fa-balance-scale"></i>  تنقيط المعايير </a>
                                                 </li>
-                                                
-                                                
+                                                @endif
 
                                             </ul>
                                         </div>

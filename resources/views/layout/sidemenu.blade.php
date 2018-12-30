@@ -20,7 +20,34 @@
                 </a>
                 
             </li>
+            @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
+         
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-screen-desktop"></i>
+                        <span class="title">الادارة</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="{{route('allUser')}}" class="nav-link ">
+                                    <span class="title">لائحة المدراء</span>
+                                </a>
+                            </li>
+                            <li class="nav-item  ">
+                            <a href="{{route('addUserAdmin')}}" class="nav-link ">
+                                    <span class="title">أضف مدير</span>
+                                </a>
+                            </li>
+                            <li class="nav-item  ">
+                                <a href="{{route('addUserSearcher')}}" class="nav-link ">
+                                        <span class="title">أضف طالب</span>
+                                    </a>
+                                </li>
+                    </ul>
+            </li>
+            @endif
             <li class="nav-item  ">
                 <a href="{{route('allSearcher')}}" class="nav-link nav-toggle">
                         <i class="icon-users"></i>
@@ -47,11 +74,13 @@
                                     <span class="title">لائحة المشرفين</span>
                                 </a>
                             </li>
+                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                             <li class="nav-item  ">
                             <a href="{{route('addSupervisor')}}" class="nav-link ">
                                     <span class="title">أضف مشرف</span>
                                 </a>
                             </li>
+                            @endif
                     </ul>
             </li>
             <li class="nav-item  ">
@@ -73,11 +102,13 @@
                                     <span class="title">لائحة اللقاءات</span>
                                 </a>
                             </li>
+                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                             <li class="nav-item  ">
                             <a href="{{route('addMeeting')}}" class="nav-link ">
                                     <span class="title">أضف لقاء</span>
                                 </a>
                             </li>
+                            @endif
                     </ul>
                 </li>
             <li class="nav-item  ">
@@ -92,11 +123,13 @@
                                 <span class="title">لائحة الجامعات</span>
                             </a>
                         </li>
+                        @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                         <li class="nav-item  ">
                         <a href="{{route('addUniversity')}}" class="nav-link ">
                                 <span class="title">أضف جامعة</span>
                             </a>
                         </li>
+                        @endif
                 </ul>
             </li>
                 <li class="nav-item  ">
@@ -111,11 +144,13 @@
                                         <span class="title">لائحة الدول</span>
                                     </a>
                                 </li>
+                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                 <li class="nav-item  ">
                                 <a href="{{route('addCountrie')}}" class="nav-link ">
                                         <span class="title">أضف دولة</span>
                                     </a>
                                 </li>
+                                @endif
                         </ul>
                     </li>
                     <li class="nav-item  ">
@@ -130,11 +165,13 @@
                                             <span class="title">لائحة الكليات</span>
                                         </a>
                                     </li>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <li class="nav-item  ">
                                     <a href="{{route('addFaculty')}}" class="nav-link ">
                                             <span class="title">أضف كلية</span>
                                         </a>
                                     </li>
+                                    @endif
                             </ul>
                         </li>
                        
@@ -150,11 +187,13 @@
                                                     <span class="title">لائحة المعايير</span>
                                                 </a>
                                             </li>
+                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                             <li class="nav-item  ">
                                             <a href="{{route('addCriteria')}}" class="nav-link ">
                                                     <span class="title">أضف معيار</span>
                                                 </a>
                                             </li>
+                                            @endif
                                             <li class="nav-item  ">
                                                 <a href="{{route('searcherok')}}" class="nav-link ">
                                                         <span class="title">الباحثين المستوفين</span>
@@ -179,11 +218,13 @@
                                                         <span class="title">لائحة الجنسيات</span>
                                                     </a>
                                                 </li>
+                                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                                 <li class="nav-item  ">
                                                 <a href="{{route('addNationalite')}}" class="nav-link ">
                                                         <span class="title">أضف جنسية</span>
                                                     </a>
                                                 </li>
+                                                @endif
                                         </ul>
                                     </li>
                                     <li class="nav-item  ">
@@ -198,11 +239,13 @@
                                                             <span class="title">لائحة الكتب</span>
                                                         </a>
                                                     </li>
+                                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                                     <li class="nav-item  ">
                                                     <a href="{{route('addBook')}}" class="nav-link ">
                                                             <span class="title">أضف كتاب</span>
                                                         </a>
                                                     </li>
+                                                    @endif
                                             </ul>
                                         </li>
                                        
@@ -225,19 +268,23 @@
                                                                 <span class="title">لائحة المساعدات</span>
                                                             </a>
                                                         </li>
+                                                        @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                                         <li class="nav-item  ">
                                                         <a href="{{route('addHelp')}}" class="nav-link ">
                                                                 <span class="title">أضف مساعدة</span>
                                                             </a>
                                                         </li>
+                                                        @endif
                                                 </ul>
                                             </li>
+                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                             <li class="nav-item  ">
                                                 <a href="javascript:;" class="nav-link nav-toggle">
                                                         <i class="icon-chemistry"></i>
                                                         <span class="title">الاختبارات</span>
                                                         <span class="arrow"></span>
                                                     </a>
+                                                    
                                                     <ul class="sub-menu">
                                                             <li class="nav-item  ">
                                                             <a href="{{route('addProvide')}}" class="nav-link ">
@@ -246,6 +293,7 @@
                                                             </li>
                                                     </ul>
                                                 </li>
+                                                @endif
                                                 <li class="nav-item  ">
                                                     <a href="javascript:;" class="nav-link nav-toggle">
                                                             <i class="icon-envelope-open"></i>

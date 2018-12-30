@@ -71,7 +71,9 @@
                                     <th class="none">الكلية</th>
                                     <th class="none">الصورة</th>
                                     <th class="desktop">الحالة</th>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="all">خيارات.</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,6 +98,7 @@
                                             style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
                                     </td>        
                                     <td>@if($supervisor->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
@@ -116,6 +119,7 @@
                                         </div>
                                         
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -57,7 +57,9 @@
                                 <tr>
                                     <th class="all">الاسم</th>
                                     <th class="all">الحالة</th>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="all">خيارات.</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,6 +67,7 @@
                                 <tr>
                                     <td>{{$nationalitie->Name}}</td>
                                     <td>@if($nationalitie->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
@@ -89,6 +92,7 @@
                                         </div>
                                         
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

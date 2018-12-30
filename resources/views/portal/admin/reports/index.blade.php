@@ -189,6 +189,7 @@
                                             </div>
                                         </div>
                                     @else 
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <button type="button" class="btn green" data-toggle="modal" data-target="#exampleModal2">أضف تقرير</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -321,7 +322,8 @@
                                                 </div>
                                             </div>
                                         </form>
-                                    </div>                                
+                                    </div> 
+                                    @endif                               
                                     @endif
                                     </td>
                                     <td>@if($report->Status == 'yes') مفعلة @else غير مفعلة @endif</td>

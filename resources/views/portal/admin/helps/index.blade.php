@@ -67,7 +67,9 @@
                                     <th class="none">رقم العقدة</th>
                                     <th class="none">تاريخ العقدة</th>
                                     <th class="desktop">الحالة</th>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="all">خيارات.</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -89,6 +91,7 @@
                                     <td>{{$universitie->ContractID}}</td>
                                     <td>{{$universitie->ContractDate}}</td>
                                     <td>@if($universitie->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
@@ -113,6 +116,7 @@
                                         </div>
                                         
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

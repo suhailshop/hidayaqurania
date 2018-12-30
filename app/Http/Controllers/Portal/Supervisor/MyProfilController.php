@@ -23,7 +23,7 @@ class MyProfilController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='student' || $role->name=='admin'){ return redirect('/');}            
+                if($role->name=='student' || $role->name=='admin' || $role->name=='admin2'){ return redirect('/');}            
                 return $next($request);
             }
             else{return redirect('/login');}

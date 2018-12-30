@@ -59,7 +59,9 @@
                                     <th class="all">الدرجة المقترحة</th>
                                     <th class="all">الدرجة القصوى</th>
                                     <th class="desktop">الحالة</th>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="all">خيارات.</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,6 +71,7 @@
                                     <td>{{$criteria->ProposedScore}}</td>
                                     <td>{{$criteria->MaximumScore}}</td>
                                     <td>@if($criteria->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
@@ -93,6 +96,7 @@
                                         </div>
                                         
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

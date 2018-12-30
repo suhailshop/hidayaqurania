@@ -64,7 +64,9 @@
                                     <th class="none"> الترتيب</th>
                                     <th class="all">الملف</th>
                                     <th class="all">الحالة</th>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="all">خيارات.</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -88,6 +90,7 @@
                                         <span class="badge badge-success">{{$search->Progress}}</span>
                                         @endif                                    
                                     </td>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
@@ -101,23 +104,15 @@
                                                 data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
                                                 data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
                                                 data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
-                                                data-title="هل تريد الموافقة ؟" href="{{route('updateProgressok',['id'=>$search->ID])}}">
-                                                        <i class="fa fa-check"></i> موافقة الادارة </a>
+                                                data-title="هل تريد الموافقة ؟" href="{{route('getOneSearch',$search->ID)}}">
+                                                        <i class="fa fa-ok"></i> اظهار البحث </a>
                                                 </li>
-                                                <li>
-                                                        <a data-toggle="confirmation"
-                                                        data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
-                                                        data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
-                                                        data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
-                                                        data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
-                                                        data-title="هل تريد الرفض ؟" href="{{route('updateProgressko',['id'=>$search->ID])}}">
-                                                                <i class="fa fa-close"></i> رفض الادارة </a>
-                                                        </li>
-
+                                               
                                             </ul>
                                         </div>
                                         
                                     </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

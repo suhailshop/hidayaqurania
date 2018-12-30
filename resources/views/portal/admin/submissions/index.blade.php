@@ -72,8 +72,12 @@
                                     <th class="none"> الجامعة</th>
                                     <th class="none">الكلية</th>
                                     <th class="none">الصورة</th>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="desktop">الحالة</th>
+                                    @endif
+                                    @if(isset($searcher->these))
                                     <th class="all">خيارات.</th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -96,7 +100,8 @@
                                     <td>
                                         <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" 
                                             style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
-                                    </td>        
+                                    </td>
+                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))        
                                     <td>
                                             <div class="btn-group pull-right">
                                                     <button class="btn red btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">{{$searcher->Status}}
@@ -126,16 +131,22 @@
                                                     </ul>
                                             </div>
                                     </td>
+                                    @endif
+                                    
+                                    @if(isset($searcher->these))
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
+                                                 
                                                 <li>
                                                 <a href="{{route('getSubmission',$searcher->ID)}}" >
                                                                 <i class="fa fa-user"></i> عرض صفحة المتقدم
-                                                            </a></li><li>
+                                                            </a></li>
+                                                  @if(auth()->user()->hasRole('admin',auth()->user()->role_id))        
+                                                            <li>
                                                 <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
                                                     <i class="fa fa-check"></i> تسجيل حضور </a>
                                                 </li>
@@ -144,14 +155,16 @@
                                                 <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2">
                                                     <i class="fa fa-balance-scale"></i>  تنقيط المعايير </a>
                                                 </li>
-                                                
+                                                @endif     
                                                 
 
                                             </ul>
                                         </div>
                                         
                                     </td>
+                                    @endif
                                 </tr>
+                                
                                 <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">

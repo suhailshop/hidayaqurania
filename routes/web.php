@@ -37,7 +37,11 @@ Route::get('/logout', function(){
 Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' => 'portal'), function () {
     Route::get('/','PortalController@index')->name('portalwelcome');
 
-    
+    Route::get('/users','Admin\UserController@index')->name('allUser');
+    Route::get('/users/addUserAdmin','Admin\UserController@addUserAdmin')->name('addUserAdmin');
+    Route::get('/users/addUserSearcher','Admin\UserController@addUserSearcher')->name('addUserSearcher');
+    Route::post('/users/addUserAdminPost','Admin\UserController@addUserAdminPost')->name('addUserAdminPost');
+    Route::post('/users/addUserSearcherPost','Admin\UserController@addUserSearcherPost')->name('addUserSearcherPost');
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
     Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@get')->name('getSearcher');
@@ -148,6 +152,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
     
     Route::get('/searchs/getAll','Admin\SearchController@getAll')->name('getAllSearchs');
+    Route::get('/searchs/getOneSearch/{id}','Admin\SearchController@getOne')->name('getOneSearch');
     Route::get('/searchs/updateProgressok/{id}','Admin\SearchController@updateProgressok')->name('updateProgressok');
     Route::get('/searchs/updateProgressko/{id}','Admin\SearchController@updateProgressko')->name('updateProgressko');
     

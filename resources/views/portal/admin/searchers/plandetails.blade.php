@@ -72,9 +72,11 @@
                                             <li>
                                                 <a href="#tab_1_4" data-toggle="tab">تتبع الخطة الزمنية</a>
                                             </li>
+                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                             <li>
                                                 <a href="#tab_1_5" data-toggle="tab">تعديل الخطة الزمنية</a>
                                             </li>
+                                            @endif
                                         </ul>
                                     </div>
                                     <div class="portlet-body">
@@ -112,6 +114,7 @@
                                             </div>
                                             <!-- END CHANGE PASSWORD TAB -->
                                             <!-- CHANGE PASSWORD TAB -->
+                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                             <div class="tab-pane" id="tab_1_5">
                                             <form action="{{route('editPlanEnable')}}" method="POST">
                                                         {{ csrf_field() }}
@@ -124,6 +127,7 @@
                                                 </form>
                                                 
                                             </div>
+                                            @endif
                                             <!-- END CHANGE PASSWORD TAB -->
 
                                            
