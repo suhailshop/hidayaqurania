@@ -47,6 +47,27 @@
                                 </li>
                     </ul>
             </li>
+
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-reload"></i>
+                    <span class="title">أرقام التقارير الدورية</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="{{route('allCycle')}}" class="nav-link ">
+                                <span class="title">لائحة الأرقام</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                        <a href="{{route('addCycle')}}" class="nav-link ">
+                                <span class="title">أضف رقم تقرير</span>
+                            </a>
+                        </li>
+                </ul>
+            </li>
+
             @endif
             <li class="nav-item  ">
                 <a href="{{route('allSearcher')}}" class="nav-link nav-toggle">

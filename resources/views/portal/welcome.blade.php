@@ -47,6 +47,7 @@
                         </div>
                     </a>
                 </div>
+
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                     <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('allSupervisor')}}">
                         <div class="visual">

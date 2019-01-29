@@ -115,6 +115,13 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/books/edit','Admin\BookController@editPost')->name('editBookPost');
     Route::get('/books/delete/{id}','Admin\BookController@delete')->name('deleteBookPost');
 
+    Route::get('/cycles','Admin\CycleController@index')->name('allCycle');
+    Route::get('/cycles/add','Admin\CycleController@add')->name('addCycle');
+    Route::post('/cycles/add','Admin\CycleController@addPost')->name('addCyclePost');
+    Route::get('/cycles/edit/{id}','Admin\CycleController@edit')->name('editCycle');
+    Route::post('/cycles/edit','Admin\CycleController@editPost')->name('editCyclePost');
+    Route::get('/cycles/delete/{id}','Admin\CycleController@delete')->name('deleteCyclePost');
+
     Route::get('/meetings','Admin\MeetingController@index')->name('allMeeting');
     Route::get('/meetings/add','Admin\MeetingController@add')->name('addMeeting');
     Route::post('/meetings/add','Admin\MeetingController@addPost')->name('addMeetingPost');
