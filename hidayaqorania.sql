@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  mar. 29 jan. 2019 à 22:49
+-- Généré le :  mer. 30 jan. 2019 à 23:53
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -224,7 +224,7 @@ CREATE TABLE `cycles` (
 --
 
 INSERT INTO `cycles` (`ID`, `name`, `startDate`, `endDate`, `created_at`, `updated_at`) VALUES
-(1, 'تقرير دوري الأول', '2019-01-01', '2019-01-08', '2019-01-29 20:46:04', '2019-01-29 20:46:04');
+(1, 'تقرير دوري الأول', '2019-01-01', '2019-03-14', '2019-01-30 22:52:16', '2019-01-29 20:46:04');
 
 -- --------------------------------------------------------
 
@@ -749,13 +749,14 @@ CREATE TABLE `searchs` (
   `Code` varchar(50) DEFAULT NULL,
   `Alias` varchar(20) NOT NULL,
   `Name` varchar(100) NOT NULL,
-  `Order` int(11) NOT NULL,
+  `Order` int(11) DEFAULT NULL,
   `SearchURL` text NOT NULL,
   `Division` int(11) DEFAULT NULL,
   `Searcher` int(11) NOT NULL,
   `Note` text,
   `Progress` text NOT NULL,
   `Divisionunit` int(11) DEFAULT NULL,
+  `Cycle` int(11) NOT NULL,
   `Status` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
@@ -765,11 +766,11 @@ CREATE TABLE `searchs` (
 -- Déchargement des données de la table `searchs`
 --
 
-INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Division`, `Searcher`, `Note`, `Progress`, `Divisionunit`, `Status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'يممثككبمم', 'رفض الادارة', 12, 'no', '2018-12-30 21:28:42', '2018-10-21 08:17:53'),
-(2, NULL, 'llll', 'lllll', 5, 'fileName1541338106.pdf', 5, 11, NULL, 'موافقة الادارة', 13, 'yes', '2018-12-30 21:40:23', '2018-11-04 12:28:27'),
-(3, NULL, 'المبحث 22', 'مبحثي', 22, 'fileName1541367786.pdf', 5, 11, NULL, 'تم الرفع', 14, 'yes', '2018-11-04 20:43:06', '2018-11-04 20:43:06'),
-(4, NULL, 'بحثي', 'بحثي', 20, 'fileName1541368009.pdf', 6, 11, 'kkkkkk', 'موافقة الادارة', 15, 'yes', '2018-12-30 21:28:24', '2018-11-04 20:46:49');
+INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Division`, `Searcher`, `Note`, `Progress`, `Divisionunit`, `Cycle`, `Status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'يممثككبمم', 'رفض الادارة', 12, 0, 'no', '2018-12-30 21:28:42', '2018-10-21 08:17:53'),
+(3, NULL, 'المبحث 22', 'مبحثي', 22, 'fileName1541367786.pdf', 5, 11, NULL, 'تم الرفع', 14, 0, 'yes', '2018-11-04 20:43:06', '2018-11-04 20:43:06'),
+(4, NULL, 'بحثي', 'بحثي', 20, 'fileName1541368009.pdf', 6, 11, 'kkkkkk', 'موافقة الادارة', 15, 0, 'yes', '2018-12-30 21:28:24', '2018-11-04 20:46:49'),
+(5, NULL, 'بحثي', 'بحثي', 5, 'fileName1548887678.pdf', 1, 11, NULL, 'تم الرفع', 1, 1, 'yes', '2019-01-30 21:34:38', '2019-01-30 21:34:38');
 
 -- --------------------------------------------------------
 
@@ -962,7 +963,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'lF5k4azAhaUDfoUHwrjQb3nEB8ltfPKizA9Dg8cMdk49G8v1jgSSGUhTckIj', '2018-12-30 18:26:03', '2018-10-03 08:22:44'),
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'HI7nj7SxEkHYu05bxkoIY0BK7FNyie5RpCEROSQEfkSWNK0dVWTSVLnNZzMM', '2019-01-30 22:20:58', '2018-10-03 08:22:44'),
 (54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, '1aet35Da5tnEEZtTDLvGSyT9x1yjo34U03oQDqZn6Nf9sL0hsXYFkfsT8FZf', '2019-01-29 20:51:44', '2018-10-06 11:51:08'),
 (55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'rDWi3fYCMbBOuLMwLOud461bfvrMnsjRSqWKzeqY7wR0UvD7GMVTBKTNk4kS', '2018-11-08 18:56:11', '2018-10-18 18:08:29'),
 (56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, 'byVybkoqn01esQOg7p7xCvGFO63zboPcff60BMar1bx5eEr4rrzVgBeqz7dB', '2019-01-29 20:52:46', '2018-12-30 16:27:37'),
@@ -1164,7 +1165,8 @@ ALTER TABLE `searchs`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_Searchs_Divisions1_idx` (`Division`),
   ADD KEY `Searcher` (`Searcher`),
-  ADD KEY `Divisionunit` (`Divisionunit`);
+  ADD KEY `Divisionunit` (`Divisionunit`),
+  ADD KEY `cycle` (`Cycle`);
 
 --
 -- Index pour la table `sections`
@@ -1366,7 +1368,7 @@ ALTER TABLE `searchers_reports`
 -- AUTO_INCREMENT pour la table `searchs`
 --
 ALTER TABLE `searchs`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT pour la table `sections`

@@ -3,6 +3,12 @@
 @section('pageTitle', 'بحث جديد')
 @section('pageStyle')
     {{--include here the style of the current page--}}
+    <link href="{!! asset('assets/global/plugins/select2/css/select2.min.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/select2/css/select2-bootstrap.min.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/bootstrap-wysihtml5/bootstrap-wysihtml5-rtl.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css') !!}" rel="stylesheet" type="text/css" />
+   
 @endsection
 
 @section('pageTitle', 'الرئيسية')
@@ -76,6 +82,21 @@
                                         </div>
                                     </div>
                                     
+                                    <div class="form-group">
+                                        
+                                        <div class="col-md-12">
+                                            <label>الرقم الدوري *</label>
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <select name="cycle" id="cycle" class="form-control" required>
+                                                    @foreach($cycles as $cycle)
+                                                <option value="{{$cycle->ID}}">{{$cycle->name}} [ {{$cycle->startDate}} => {{$cycle->endDate}} ]</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
@@ -153,25 +174,32 @@
     <!-- END CONTENT -->
     @section('pageScript')
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <script src="{!! asset('assets/global/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js') !!}" type="text/javascript"></script>    
-    <script src="{!! asset('assets/pages/scripts/form-input-mask.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/global/plugins/select2/js/select2.full.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/global/plugins/jquery-validation/js/jquery.validate.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/global/plugins/jquery-validation/js/additional-methods.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/global/plugins/bootstrap-markdown/lib/markdown.js') !!}" type="text/javascript"></script>
+    <script src="{!! asset('assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js') !!}" type="text/javascript"></script>
+    <!-- END PAGE LEVEL PLUGINS -->
+     <!-- BEGIN PAGE LEVEL SCRIPTS -->
+     <script src="{!! asset('assets/pages/scripts/form-validation.min.js') !!}" type="text/javascript"></script>
      <!-- END PAGE LEVEL SCRIPTS -->
      <script>
-             
-           
-           $('#division1').change(function() {
-             var i=$('#division1').val();
-                $.ajax({
-                    url: 'getdivisionunit/'+$('#division1').val(),
-                    type: 'GET',
-                    data: { },
-                    success: function(response)
-                    {
-                        $('#divisionunit').html(response);
-                    }
-                });
-           });
-         
-    </script>
+            
+          
+          $('#division1').change(function() {
+            var i=$('#division1').val();
+               $.ajax({
+                   url: 'http://localhost/hidayaqurania/hidayaqurania/public/portal/searcher/getdivisionunit/'+$('#division1').val(),
+                   type: 'GET',
+                   data: { },
+                   success: function(response)
+                   {
+                       $('#divisionunit').html(response);
+                   }
+               });
+          });
+        
+   </script>
     @endsection
 @endsection

@@ -9,6 +9,7 @@ use App\Search;
 use App\Division;
 use App\Registration;
 use App\Divisionunit;
+use App\Cycle;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -50,9 +51,10 @@ class SearchsController extends Controller
 
     public function add(){
        
+        $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',date(now()))->get();
         $divisionunits=Divisionunit::where('Division',1)->get();
         $divisions = Division::all();
-        return view('portal.searcher.searchs.add',compact('divisions','divisionunits'));
+        return view('portal.searcher.searchs.add',compact('divisions','divisionunits','cycles'));
     }
     public function addPost(Request $request){
         $search = new Search;
@@ -61,6 +63,7 @@ class SearchsController extends Controller
         $search->Division = $request->input('division');
         $search->Order = $request->input('order');
         $search->Divisionunit = $request->input('divisionunit');
+        $search->Cycle = $request->input('cycle');
         $this->user= Auth::user();
         $search->Searcher = Registration::where('User',$this->user->id)->first()->ID;
         $search->Status = "yes";
@@ -78,11 +81,11 @@ class SearchsController extends Controller
         return redirect()->route('allSearchs');
     }
     public function edit($id){
-        
+        $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',date(now()))->get();
         $divisionunits=Divisionunit::all();
         $search = Search::where('ID',$id)->first();
         $divisions = Division::all();
-        return view('portal.searcher.searchs.edit',compact('search','divisions','divisionunits'));
+        return view('portal.searcher.searchs.edit',compact('search','divisions','divisionunits','cycles'));
     }
     public function editPost(Request $request){
         $fileName = $request->input('URL');
@@ -100,6 +103,7 @@ class SearchsController extends Controller
             'Status'=>$request->input('status'),
             'Alias'=>$request->input('alias'),
             'Divisionunit' => $request->input('divisionunit'),
+            'Cycle'=> $request->input('cycle'),
             'searchURL'=>$fileName            
         ));
                 

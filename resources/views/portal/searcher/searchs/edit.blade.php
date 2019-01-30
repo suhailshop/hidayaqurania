@@ -78,6 +78,20 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
+                                            <label>الرقم الدوري *</label>
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <select name="cycle" id="cycle" class="form-control" required>
+                                                    @foreach($cycles as $cycle)
+                                                <option @if($search->cycle->ID==$cycle->ID) selected @endif  value="{{$cycle->ID}}">{{$cycle->name}} [ {{$cycle->startDate}} => {{$cycle->endDate}} ]</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        
+                                        <div class="col-md-12">
                                                 <label>الاختصار</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>

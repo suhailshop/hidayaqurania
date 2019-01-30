@@ -89,6 +89,10 @@
                                                                     <input  value="{{$search->Alias}}" readonly  class="form-control placeholder-no-fix" type="text"   /> 
                                                             </div>  
                                                             <div class="form-group">
+                                                                <label class="control-label">الرقم الدوري</label>
+                                                                <input  value="{{$search->Cycle}}" readonly  class="form-control placeholder-no-fix" type="text"   /> 
+                                                        </div>  
+                                                            <div class="form-group">
                                                                 <label class="control-label">القسم</label>
                                                                 <input  value="{{$search->division->Name}}" readonly class="form-control placeholder-no-fix" type="text"   /> 
                                                             </div>

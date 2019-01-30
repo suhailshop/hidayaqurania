@@ -4,6 +4,7 @@ namespace App;
 
 use App\Registration;
 use App\Division;
+use App\Cycle;
 use App\Divisionunit;
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,5 +29,10 @@ class Search extends Model
     {
         return $this->hasOne('App\Registration','ID','Searcher');
     }
+    public function cycle()
+    {
+        return $this->hasOne('App\Cycle','ID','Cycle');
+    }
+
 
 }
