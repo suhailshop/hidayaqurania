@@ -69,6 +69,28 @@
             </li>
 
             @endif
+            @if(auth()->user()->hasRole('admin2',auth()->user()->role_id))
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-like"></i>
+                        <span class="title">المراجعين</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="{{route('allReviewer')}}" class="nav-link ">
+                                    <span class="title">لائحة المراجعين</span>
+                                </a>
+                            </li>
+                            <li class="nav-item  ">
+                            <a href="{{route('addReviewer')}}" class="nav-link ">
+                                    <span class="title">أضف مراجع</span>
+                                </a>
+                            </li>
+                    </ul>
+                </li>   
+            
+            @endif
             <li class="nav-item  ">
                 <a href="{{route('allSearcher')}}" class="nav-link nav-toggle">
                         <i class="icon-users"></i>

@@ -37,6 +37,12 @@ Route::get('/logout', function(){
 Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' => 'portal'), function () {
     Route::get('/','PortalController@index')->name('portalwelcome');
 
+    Route::get('/reviewers','Admin\ReviewerController@index')->name('allReviewer');
+    Route::get('/reviewers/addReviewer','Admin\ReviewerController@addReviewer')->name('addReviewer');
+    Route::post('/reviewers/addReviewerPost','Admin\ReviewerController@addReviewerPost')->name('addReviewerPost');
+    Route::get('/reviewers/delete/{id}','Admin\ReviewerController@delete')->name('deleteReviwerPost');
+    
+
     Route::get('/users','Admin\UserController@index')->name('allUser');
     Route::get('/users/addUserAdmin','Admin\UserController@addUserAdmin')->name('addUserAdmin');
     Route::get('/users/addUserSearcher','Admin\UserController@addUserSearcher')->name('addUserSearcher');
