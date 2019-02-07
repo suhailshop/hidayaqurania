@@ -91,6 +91,15 @@
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
+                                                    <li>
+                                                            <a data-toggle="confirmation"
+                                                            data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
+                                                            data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
+                                                            data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
+                                                            data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
+                                                            data-title="هل تريد الموافقة ؟" href="{{route('getOneSearch',$search->ID)}}">
+                                                                    <i class="fa fa-search"></i> اظهار البحث </a>
+                                                            </li>
                                                 <li>
                                                 <a href="{{route('editSearch',['id'=>$search->ID])}}">
                                                         <i class="fa fa-edit"></i> تعديل </a>

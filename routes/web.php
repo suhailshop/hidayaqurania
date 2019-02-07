@@ -169,11 +169,14 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchs/updateProgressok/{id}','Admin\SearchController@updateProgressok')->name('updateProgressok');
     Route::get('/searchs/updateProgressko/{id}','Admin\SearchController@updateProgressko')->name('updateProgressko');
     Route::post('/searchs/addSearchReviewer','Admin\SearchController@addSearchReviewer')->name('addSearchReviewer');
+    Route::post('/searchs/addadmin2_reports','Admin\SearchController@addadmin2_reports')->name('addadmin2_reports');
+    
 
 
     //----------------------- Reviewer -------------------------
     Route::get('/searchs/getAllMySearchs','Reviewer\SearchController@getAllMySearchs')->name('getAllMySearchs');
     Route::get('/searchs/getOneMySearch/{id}','Reviewer\SearchController@getOneMySearch')->name('getOneMySearch');
+    Route::post('/searchs/addreviewers_reports','Reviewer\SearchController@addreviewers_reports')->name('addreviewers_reports');
     
     
     //----------------------- Supervisor -----------------------------
@@ -189,6 +192,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/supervisor/addSupervisorNote','Supervisor\SearcherController@addSupervisorNote')->name('addSupervisorNote');
     Route::get('/supervisor/updateSearchProgressok/{id}','Supervisor\SearchController@updateSearchProgressok')->name('updateSearchProgressok');
     Route::get('/supervisor/updateSearchProgressko/{id}','Supervisor\SearchController@updateSearchProgressko')->name('updateSearchProgressko');
+    Route::post('/supervisor/addsupervisor_reports','Supervisor\SearchController@addsupervisor_reports')->name('addsupervisor_reports');
     
     Route::get('/supervisor/reports','Supervisor\ReportController@index')->name('allSupervisorReports');
     Route::get('/supervisor/addReport','Supervisor\ReportController@add')->name('addSupervisorReport');
@@ -213,6 +217,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searcher/editSearch/{id}','Searcher\SearchsController@edit')->name('editSearch');
     Route::post('/searcher/editSearchPost','Searcher\SearchsController@editPost')->name('editSearchPost');
     Route::get('/searcher/deleteSearch/{id}','Searcher\SearchsController@delete')->name('deleteSearchPost');
+    Route::post('/searcher/addsearcher_reports','Searcher\SearchsController@addsearcher_reports')->name('addsearcher_reports');
 
     Route::get('/searcher/reports','Searcher\ReportController@index')->name('allSearcherReports');
     Route::get('/searcher/addReport','Searcher\ReportController@add')->name('addSearcherReport');

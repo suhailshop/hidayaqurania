@@ -50,5 +50,33 @@ class SearchController extends Controller
         ));
         return redirect()->route('allSearcherSupervisor');
     }
+
+    public function addsupervisor_reports(Request $request){
+        $regid = Registration::where('User',$this->user->id)->first();
+        
+        if($request->hasFile('filename')){
+            $request->validate([
+                'filename' => 'required|file|max:1024',
+            ]);
+            $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
+            $request->filename->storeAs('public/supervisor_reports',$fileName);
+        
+        DB::table('supervisors_reports')->insert([
+            'search'=>$request->input('search'),
+            'supervisor'=>$regid->ID,
+            'q1'=>$request->input('q1'),
+            'q2'=>$request->input('q2'),
+            'q3'=>$request->input('q3'),
+            'q4'=>$request->input('q4'),
+            'q5'=>$request->input('q5'),
+            'q6'=>$request->input('q6'),
+            'q7'=>$request->input('q7'),
+            'q8'=>$request->input('q8'),
+            'note'=>$request->input('note'),
+            'filename'=>$fileName,
+        ]);
+        }
+        return redirect()->route('getOneSearch',['id'=>$request->input('search')]);
+    }
    
 }

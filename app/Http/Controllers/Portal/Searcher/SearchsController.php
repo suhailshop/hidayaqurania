@@ -113,4 +113,28 @@ class SearchsController extends Controller
         Search::where('ID', $id)->forcedelete(); 
         return redirect()->route('allSearchs');
     }
+    public function addsearcher_reports(Request $request){
+        if($request->hasFile('filename')){
+            $request->validate([
+                'filename' => 'required|file|max:1024',
+            ]);
+            $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
+            $request->filename->storeAs('public/searcher_reports',$fileName);
+        
+        DB::table('searchers_reports')->insert([
+            'search'=>$request->input('search'),
+            'q1'=>$request->input('q1'),
+            'q2'=>$request->input('q2'),
+            'q3'=>$request->input('q3'),
+            'q4'=>$request->input('q4'),
+            'q5'=>$request->input('q5'),
+            'q6'=>$request->input('q6'),
+            'q7'=>$request->input('q7'),
+            'q8'=>$request->input('q8'),
+            'q9'=>$request->input('q9'),
+            'filename'=>$fileName,
+        ]);
+        }
+        return redirect()->route('allSearchs');
+    }
 }

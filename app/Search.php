@@ -7,6 +7,10 @@ use App\Division;
 use App\Cycle;
 use App\Divisionunit;
 use App\ReviewerSearch;
+use App\Reviewers_reports;
+use App\Supervisors_reports;
+use App\Searchers_reports;
+use App\Admin2_reports;
 use Illuminate\Database\Eloquent\Model;
 
 class Search extends Model 
@@ -37,5 +41,16 @@ class Search extends Model
     public function reviewerSearch(){
         return $this->hasMany('App\ReviewerSearch','search','ID');
     }
-
+    public function admin2_reports(){
+        return $this->hasMany('App\Admin2_reports','search','ID')->limit(1);
+    }
+    public function supervisors_reports(){
+        return $this->hasMany('App\Supervisors_reports','search','ID');
+    }
+    public function searchers_reports(){
+        return $this->hasMany('App\Searchers_reports','search','ID');
+    }
+    public function reviewers_reports(){
+        return $this->hasMany('App\Reviewers_reports','search','ID');
+    }
 }

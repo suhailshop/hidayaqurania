@@ -70,6 +70,29 @@
                                             <li>
                                                 <a href="#tab_1_2" data-toggle="tab">معلومات الباحث </a>
                                             </li>
+                                            @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) && count($search->admin2_reports)==0)
+                                            <li>
+                                                <a href="#tab_1_3" data-toggle="tab">تقرير الادارة  </a>
+                                            </li>
+                                            @endif
+                                            @if(auth()->user()->hasRole('supervisor',auth()->user()->role_id) && count($search->supervisors_reports)==0)
+                                            <li>
+                                                <a href="#tab_1_4" data-toggle="tab">تقرير المشرف </a>
+                                            </li>
+                                            @endif
+                                            @if(auth()->user()->hasRole('student',auth()->user()->role_id) && count($search->searchers_reports)==0)
+                                            <li>
+                                                <a href="#tab_1_5" data-toggle="tab">تقرير الطالب </a>
+                                            </li>
+                                            @endif
+                                            @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) && count($search->reviewers_reports)==0)
+                                            <li>
+                                                <a href="#tab_1_6" data-toggle="tab">تقرير المراجع</a>
+                                            </li>
+                                            @endif
+                                            <li>
+                                                <a href="#tab_1_7" data-toggle="tab">تقارير كل الجهات   </a>
+                                            </li>
                                          
                                         </ul>
                                     </div>
@@ -115,9 +138,10 @@
                                                                
         
                                                             <br />
+                                                            @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id))
                                                             <a class="btn btn-primary" href="{{route('updateProgressok',['id'=>$search->ID])}}">موافقة الادارة</a>
                                                             <a class="btn btn-danger" href="{{route('updateProgressko',['id'=>$search->ID])}}">رفض الادارة</a>
-                                                           
+                                                            @endif
                                                                                                                       
                                                         </form>
                                                 </div>
@@ -139,7 +163,246 @@
                                                             </div>      
                                                                                                                    
                                                         </form>                                             
-                                            </div>                                     
+                                            </div>   
+                                            <div class="tab-pane" id="tab_1_3">
+                                                    <form role="form" method="POST" action="{{route('addadmin2_reports')}}" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                                                            <input type="hidden" value="{{$search->ID}}" name="search" />
+                                                            <div class="form-group">
+                                                                <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
+                                                                <textarea required class="form-control " name="q1" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : </label>
+                                                                    <textarea required class="form-control " name="q2" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">اهم الايجابيات على عمل الطالب ؟ : </label>
+                                                                    <textarea required class="form-control " name="q3" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : </label>
+                                                                        <textarea required class="form-control " name="q4" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">التوصيات والمقترحات : </label>
+                                                                    <textarea required class="form-control " name="q5" ></textarea>
+                                                                </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">ملاحظات عامة  : </label>
+                                                                        <textarea required class="form-control " name="note" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">رفع الملف : </label>
+                                                                        <input required class="form-control " name="filename" type="file"  />
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">تأكيد</button>
+                                                    </form>
+                                            </div>
+                                            <div class="tab-pane" id="tab_1_4">
+                                                    <form role="form" method="POST" action="{{route('addsupervisor_reports')}}" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                                                            <input type="hidden" value="{{$search->ID}}" name="search" />
+                                                            <div class="form-group">
+                                                                <label class="control-label ">نسبة ما تم إنجازه من الرسالة : </label>
+                                                                <textarea required class="form-control " name="q1" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">مسوغات وتوضيحات حول نسبة الإنجاز : </label>
+                                                                    <textarea required class="form-control " name="q2" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي
+                                                                            (ممتاز، جيد جدا، جيد، مقبول)  : </label>
+                                                                    <textarea required class="form-control " name="q3" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">مدى الالتزام بتوجيهات المشرف واللجنة 
+                                                                                العلمية بالكرسي 
+                                                                                100%, 90%,...etc 
+                                                                                 : </label>
+                                                                        <textarea required class="form-control " name="q4" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">أبرز الملاحظات الإيجابية على عمل الباحث  : </label>
+                                                                    <textarea required class="form-control " name="q5" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">أبرز الملاحظات السلبية على عمل الباحث : </label>
+                                                                        <textarea required class="form-control " name="q6" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">ما الصعوبات التي تواجه الباحث ( إن وجدت ) : </label>
+                                                                        <textarea required class="form-control " name="q7" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                            <label class="control-label ">التوصيات والمقترحات التطويرية : </label>
+                                                                            <textarea required class="form-control " name="q8" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">ملاحظات : </label>
+                                                                        <textarea required class="form-control " name="note" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">رفع الملف : </label>
+                                                                    <input required class="form-control " name="filename" type="file" />
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary" >تأكيد</button>
+                                                    </form>
+                                            </div>
+                                            <div class="tab-pane" id="tab_1_5">
+                                                    <form role="form" method="POST" action="{{route('addsearcher_reports')}}" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                                                            <input type="hidden" value="{{$search->ID}}" name="search" />
+                                                            <div class="form-group">
+                                                                <label class="control-label ">1- اجمالي عدد الهدايات القرآنية التي تضمنتها رسالتك حتى تاريخه : </label>
+                                                                <textarea required class="form-control " name="q1" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">2- مستوى التواصل بين المشرف و الطالب : </label>
+                                                                    <textarea required class="form-control " name="q2" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">3- أسباب عدم التواصل ان وجد : </label>
+                                                                    <textarea required class="form-control " name="q3" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">4- عدد الجلسات الاشرافية : </label>
+                                                                        <textarea required class="form-control " name="q4" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">5- مجموع ساعات الإشراف : </label>
+                                                                    <textarea required class="form-control " name="q5" ></textarea>
+                                                                </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">6- مدى الالتزام بتعديلات المشرف واللجنة العلمية بالكرسي   : </label>
+                                                                        <textarea required class="form-control " name="q6" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">7- أسباب عدم الالتزام بتعديلات المشرف  : </label>
+                                                                    <textarea required class="form-control " name="q7" ></textarea>
+                                                        </div>
+                                                        <div class="form-group">
+                                                                <label class="control-label ">8- مالصعوبات التي تواجه الباحث ( إن وجدت )  : </label>
+                                                                <textarea required class="form-control " name="q8" ></textarea>
+                                                    </div>
+                                                    <div class="form-group">
+                                                            <label class="control-label ">9- إضافات أخرى : </label>
+                                                            <textarea required class="form-control " name="q9" ></textarea>
+                                                </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">رفع الملف : </label>
+                                                                        <input required class="form-control " name="filename" type="file"  />
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">تأكيد</button>
+                                                    </form>
+                                            </div>
+                                            <div class="tab-pane" id="tab_1_6">
+                                                <form role="form" method="POST" action="{{route('addreviewers_reports')}}" enctype="multipart/form-data">
+                                                        {{ csrf_field() }}
+                                                            <input type="hidden" value="{{$search->ID}}" name="search" />
+                                                            <div class="form-group">
+                                                                <label class="control-label ">1- كفاية المصادر وأصالتها، والمراجع وحداثتها، ومدى إفادة الباحث منها، واستيعابه للدراسات السابقة. (الدرجة 1-10) : </label>
+                                                                <input required class="form-control " name="q1" type="text"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                <textarea required class="form-control " name="q1_details" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">2- مدى تقيد الطالب بعقيدة أهل السنة والجماعة فيما يقرره من هدايات.(الدرجة 1-10) : </label>
+                                                                    <input required class="form-control " name="q2" type="text"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                    <textarea required class="form-control " name="q2_details" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">3- التقيد بالخطة والإجراءات الموضوعة للدراسة.(الدرجة 1-10)  : </label>
+                                                                    <input required class="form-control " name="q3" type="text"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                    <textarea required class="form-control " name="q3_details" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">4- مراعاة ضوابط الكتابة العلمية من سلامة اللغة، ودقة الصياغة، ووضوحها، والقدرة على تنظيم المعلومات والأفكار، وعرضها بطريقة علمية، ودعمها بالأدلة المناسبة.(الدرجة 1-10) * : </label>
+                                                                    <input required class="form-control " name="q4" type="text"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                    <textarea required class="form-control " name="q4_details" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">5- مدى التزام الباحث بضوابط النقل والاقتباس، والتحلي بالأمانة العلمية، والتزام منهج البحث العلمي وخطواته الإجرائية في التوثيق، والتخريج والحكم على الأحاديث، والترجمة للأعلام وغيرها.(الدرجة 1-10)  : </label>
+                                                                        <input required class="form-control " name="q5" type="text"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                        <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                        <textarea required class="form-control " name="q5_details" ></textarea>
+                                                            </div><div class="form-group">
+                                                                            <label class="control-label ">6- مستوى تطبيق الباحث لمحتوى الدراسة التأصيلية والتزامه بها، وبالضوابط والإجراءات الموضوعة للمشروع.(الدرجة 1-10) * : </label>
+                                                                            <input required class="form-control " name="q6" type="text"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                <textarea required class="form-control " name="q6_details" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label ">7- ظهور شخصية الباحث، ومستوى ما له من تحليلات ومناقشات واستنتاجات وإضافات.(الدرجة 1-10) * : </label>
+                                                                <input required class="form-control " name="q7" type="text"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                 <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                <textarea required class="form-control " name="q7_details" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label ">8- مطابقة المحتوى للعنوان، وتحقيق الباحث للأهداف، ومستوى الإضافات العلمية التي قدمها(الدرجة 1-10) : </label>
+                                                                <input required class="form-control " name="q8" type="text"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                <textarea required class="form-control " name="q8_details" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">9- مدى ارتباط الهدايات بالواقع ودورها في حل المشكلات. (الدرجة 1-10) : </label>
+                                                                    <input required class="form-control " name="q9" type="text"  />
+                                                                </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                    <textarea required class="form-control " name="q9_details" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">10- التنسيق والإخراج (الدرجة 1-10) : </label>
+                                                                    <input required class="form-control " name="q10" type="text"  />
+                                                                </div>
+                                                            <div class="form-group">
+                                                                <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                <textarea required class="form-control " name="q10_details"></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">ملحوظات ومقترحات اضافية :  </label>
+                                                                    <textarea required class="form-control " name="q11" ></textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">رابط ملف البحث بعد التحديث </label>
+                                                                    <input required class="form-control " name="filename" type="file"  />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">ملاحظات  : </label>
+                                                                    <textarea required class="form-control " name="note" ></textarea>
+                                                            </div>
+                                                            <button type="submit" class="btn btn-primary">تأكيد</button>
+                                                </form> 
+                                            </div>
+                                            <div class="tab-pane" id="tab_1_7">
+
+                                                
+                                               <a class="btn btn-primary" target="_blank" href="{{ url('storage/admin2_reports/'.$search->admin2_reports[0]->filename) }}"> تقرير الادارة </a>
+                                               <a class="btn btn-primary" target="_blank" href="{{url('storage/searcher_reports/'.$search->searchers_reports[0]->filename)}}"> تقرير الباحث </a>
+                                               <a class="btn btn-primary" target="_blank" href="{{url('storage/supervisor_reports/'.$search->supervisors_reports[0]->filename)}}"> تقرير المشرف </a>
+                                               <a class="btn btn-primary" target="_blank" href="{{url('storage/reviewers_reports/'.$search->reviewers_reports[0]->filename)}}"> تقرير المراجع </a>
+                                            </div>                               
                                         </div>
                                     </div>
                                 </div>

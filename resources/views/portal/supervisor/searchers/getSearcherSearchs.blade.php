@@ -87,6 +87,7 @@
                                     </td>
                                     <td>@if(isset($search->Note)) {{$search->Note}} @else 'لا توجد اية ملاحظة' @endif </td>
                                     <td>
+                                        
                                             
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
@@ -101,7 +102,15 @@
 
                                                 
                                         @endif
-
+                                        <li>
+                                                <a data-toggle="confirmation"
+                                                data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
+                                                data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
+                                                data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
+                                                data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
+                                                data-title="هل تريد الموافقة ؟" href="{{route('getOneSearch',$search->ID)}}">
+                                                        <i class="fa fa-search"></i> اظهار البحث </a>
+                                                </li>
                                         <li>
                                                 <a data-toggle="confirmation"
                                                 data-btn-ok-label="نعم" data-btn-ok-class="btn-success"

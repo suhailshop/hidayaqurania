@@ -19,19 +19,7 @@ use Illuminate\Support\Facades\DB;
 class SearchController extends Controller
 {
     private $user ;
-    public function __construct()
-    {
-       $this->middleware(function ($request, $next) {
-            $this->user= Auth::user();
-            if(Auth::user() != null)
-            {
-                $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/');}            
-                return $next($request);
-            }
-            else{return redirect('/login');}
-        });
-    }
+    
     public function getAll(){
         $searchs = Search::all();
         $reviewers = DB::table('registrations')
@@ -102,6 +90,28 @@ class SearchController extends Controller
             }
         }else{
             DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->delete();
+        }
+        return redirect()->route('getAllSearchs');
+    }
+
+    public function addadmin2_reports(Request $request){
+        if($request->hasFile('filename')){
+            $request->validate([
+                'filename' => 'required|file|max:1024',
+            ]);
+            $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
+            $request->filename->storeAs('public/admin2_reports',$fileName);
+        
+        DB::table('admin2_reports')->insert([
+            'search'=>$request->input('search'),
+            'q1'=>$request->input('q1'),
+            'q2'=>$request->input('q2'),
+            'q3'=>$request->input('q3'),
+            'q4'=>$request->input('q4'),
+            'q5'=>$request->input('q5'),
+            'note'=>$request->input('note'),
+            'filename'=>$fileName,
+        ]);
         }
         return redirect()->route('getAllSearchs');
     }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 07 fév. 2019 à 14:05
+-- Généré le :  jeu. 07 fév. 2019 à 23:48
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `hidayaqorania`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `admin2_reports`
+--
+
+CREATE TABLE `admin2_reports` (
+  `ID` int(11) NOT NULL,
+  `search` int(11) NOT NULL,
+  `q1` varchar(1000) NOT NULL,
+  `q2` varchar(1000) NOT NULL,
+  `q3` varchar(1000) NOT NULL,
+  `q4` varchar(1000) NOT NULL,
+  `q5` varchar(1000) NOT NULL,
+  `note` varchar(500) NOT NULL,
+  `filename` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `admin2_reports`
+--
+
+INSERT INTO `admin2_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `note`, `filename`) VALUES
+(3, 1, 'mpm', 'm', 'm', 'm', 'm', 'm', 'fileName1549575501.pdf');
 
 -- --------------------------------------------------------
 
@@ -110,34 +135,6 @@ INSERT INTO `committesreports` (`ID`, `Code`, `Section`, `DoneRange`, `CurrentPr
 (5, NULL, 1, 1, 1, 1, 'mmm', 1, '2018-12-31', 'mm', 'fileName1540760566.pdf', 'mmmm', 'llll', 1, 3, NULL, 'yes', '2018-10-28 20:02:47', '2018-10-28 20:02:47'),
 (6, NULL, 1, 1, 1, 1, '1', 1, '0001-01-01', '1', 'fileName1540760611.docx', '1', '1', 1, 4, NULL, 'yes', '2018-10-28 20:03:31', '2018-10-28 20:03:31'),
 (7, NULL, 2, 2, 2, 2, '2', 2, '0002-02-02', '22', 'fileName1540761340.docx', '2', '2', 1, NULL, 1, 'yes', '2018-10-28 20:15:40', '2018-10-28 20:15:40');
-
--- --------------------------------------------------------
-
---
--- Structure de la table `committes_reports`
---
-
-CREATE TABLE `committes_reports` (
-  `ID` int(11) NOT NULL,
-  `SearcherReport` int(11) NOT NULL,
-  `Cycle` int(11) NOT NULL,
-  `committee` int(11) NOT NULL,
-  `SupervisorReport` int(11) NOT NULL,
-  `ReviwerReport` int(11) NOT NULL,
-  `q1` varchar(1000) NOT NULL,
-  `q2` varchar(1000) NOT NULL,
-  `q3` varchar(1000) NOT NULL,
-  `q4` varchar(1000) NOT NULL,
-  `q5` varchar(1000) NOT NULL,
-  `note` varchar(500) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
---
--- Déchargement des données de la table `committes_reports`
---
-
-INSERT INTO `committes_reports` (`ID`, `SearcherReport`, `Cycle`, `committee`, `SupervisorReport`, `ReviwerReport`, `q1`, `q2`, `q3`, `q4`, `q5`, `note`) VALUES
-(1, 0, 0, 0, 0, 0, 'مدى مطابقة تقرير الطالب مع واقع عمله ؟', 'مدى مطابقة تقرير الطالب مع تقرير الشرف ؟', 'اهم الايجابيات على عمل الطالب ؟', 'أهم المآخذ على عمل الطالب ؟ ', 'التوصيات والمقترحات', 'ملاحظات');
 
 -- --------------------------------------------------------
 
@@ -585,6 +582,14 @@ CREATE TABLE `reviewersearchs` (
   `search` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `reviewersearchs`
+--
+
+INSERT INTO `reviewersearchs` (`reviewer`, `search`) VALUES
+(16, 1),
+(16, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -593,9 +598,8 @@ CREATE TABLE `reviewersearchs` (
 
 CREATE TABLE `reviewers_reports` (
   `ID` int(11) NOT NULL,
-  `SearcherReport` int(11) NOT NULL,
-  `cycleId` int(11) NOT NULL,
-  `Reviewer` int(11) NOT NULL,
+  `search` int(11) NOT NULL,
+  `reviewer` int(11) NOT NULL,
   `q1` varchar(200) NOT NULL,
   `q1_details` varchar(1000) NOT NULL,
   `q2` varchar(200) NOT NULL,
@@ -617,18 +621,16 @@ CREATE TABLE `reviewers_reports` (
   `q10` varchar(200) NOT NULL,
   `q10_details` varchar(1000) NOT NULL,
   `q11` varchar(1500) NOT NULL,
-  `updatedSearchURL` varchar(250) NOT NULL,
-  `note` text NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `filename` text CHARACTER SET utf8 NOT NULL,
+  `note` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `reviewers_reports`
 --
 
-INSERT INTO `reviewers_reports` (`ID`, `SearcherReport`, `cycleId`, `Reviewer`, `q1`, `q1_details`, `q2`, `q2_details`, `q3`, `q3_details`, `q4`, `q4_details`, `q5`, `q5_details`, `q6`, `q6_details`, `q7`, `q7_details`, `q8`, `q8_details`, `q9`, `q9_details`, `q10`, `q10_details`, `q11`, `updatedSearchURL`, `note`, `status`) VALUES
-(1, 0, 0, 0, '1- كفاية المصادر وأصالتها، والمراجع وحداثتها، ومدى إفادة الباحث منها، واستيعابه للدراسات السابقة. (الدرجة 1-10)', 'التعليقات والمبررات ', '2- مدى تقيد الطالب بعقيدة أهل السنة والجماعة فيما يقرره من هدايات.(الدرجة 1-10)', 'التعليقات والمبررات ', '3- التقيد بالخطة والإجراءات الموضوعة للدراسة.(الدرجة 1-10) ', 'التعليقات والمبررات ', '4- مراعاة ضوابط الكتابة العلمية من سلامة اللغة، ودقة الصياغة، ووضوحها، والقدرة على تنظيم المعلومات والأفكار، وعرضها بطريقة علمية، ودعمها بالأدلة المناسبة.(الدرجة 1-10) *', 'التعليقات والمبررات ', '5- مدى التزام الباحث بضوابط النقل والاقتباس، والتحلي بالأمانة العلمية، والتزام منهج البحث العلمي وخطواته الإجرائية في التوثيق، والتخريج والحكم على الأحاديث، والترجمة للأعلام وغيرها.(الدرجة 1-10) ', 'التعليقات والمبررات ', '6- مستوى تطبيق الباحث لمحتوى الدراسة التأصيلية والتزامه بها، وبالضوابط والإجراءات الموضوعة للمشروع.(الدرجة 1-10) *', 'التعليقات والمبررات ', '7- ظهور شخصية الباحث، ومستوى ما له من تحليلات ومناقشات واستنتاجات وإضافات.(الدرجة 1-10) *', 'التعليقات والمبررات ', '8- مطابقة المحتوى للعنوان، وتحقيق الباحث للأهداف، ومستوى الإضافات العلمية التي قدمها(الدرجة 1-10)', 'التعليقات والمبررات ', '9- مدى ارتباط الهدايات بالواقع ودورها في حل المشكلات. (الدرجة 1-10)', 'التعليقات والمبررات ', '10- التنسيق والإخراج (الدرجة 1-10)', 'التعليقات والمبررات ', 'ملحوظات ومقترحات اضافية :', 'رابط ملف البحث بعد التحديث', 'ملاحظات عامة', 0),
-(2, 0, 0, 0, '1- كفاية المصادر وأصالتها، والمراجع وحداثتها، ومدى إفادة الباحث منها، واستيعابه للدراسات السابقة. (الدرجة 1-10)', 'التعليقات والمبررات ', '2- مدى تقيد الطالب بعقيدة أهل السنة والجماعة فيما يقرره من هدايات.(الدرجة 1-10)', 'التعليقات والمبررات ', '3- التقيد بالخطة والإجراءات الموضوعة للدراسة.(الدرجة 1-10) ', 'التعليقات والمبررات ', '4- مراعاة ضوابط الكتابة العلمية من سلامة اللغة، ودقة الصياغة، ووضوحها، والقدرة على تنظيم المعلومات والأفكار، وعرضها بطريقة علمية، ودعمها بالأدلة المناسبة.(الدرجة 1-10) *', 'التعليقات والمبررات ', '5- مدى التزام الباحث بضوابط النقل والاقتباس، والتحلي بالأمانة العلمية، والتزام منهج البحث العلمي وخطواته الإجرائية في التوثيق، والتخريج والحكم على الأحاديث، والترجمة للأعلام وغيرها.(الدرجة 1-10) ', 'التعليقات والمبررات ', '6- مستوى تطبيق الباحث لمحتوى الدراسة التأصيلية والتزامه بها، وبالضوابط والإجراءات الموضوعة للمشروع.(الدرجة 1-10) *', 'التعليقات والمبررات ', '7- ظهور شخصية الباحث، ومستوى ما له من تحليلات ومناقشات واستنتاجات وإضافات.(الدرجة 1-10) *', 'التعليقات والمبررات ', '8- مطابقة المحتوى للعنوان، وتحقيق الباحث للأهداف، ومستوى الإضافات العلمية التي قدمها(الدرجة 1-10)', 'التعليقات والمبررات ', '9- مدى ارتباط الهدايات بالواقع ودورها في حل المشكلات. (الدرجة 1-10)', 'التعليقات والمبررات ', '10- التنسيق والإخراج (الدرجة 1-10)', 'التعليقات والمبررات ', 'ملحوظات ومقترحات اضافية :', 'رابط ملف البحث بعد التحديث', 'ملاحظات عامة', 0);
+INSERT INTO `reviewers_reports` (`ID`, `search`, `reviewer`, `q1`, `q1_details`, `q2`, `q2_details`, `q3`, `q3_details`, `q4`, `q4_details`, `q5`, `q5_details`, `q6`, `q6_details`, `q7`, `q7_details`, `q8`, `q8_details`, `q9`, `q9_details`, `q10`, `q10_details`, `q11`, `filename`, `note`) VALUES
+(3, 1, 16, 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'fileName1549574845.pdf', 'u');
 
 -- --------------------------------------------------------
 
@@ -707,9 +709,7 @@ INSERT INTO `searchersreports` (`ID`, `Code`, `Searcher`, `TypeCyclic`, `Section
 
 CREATE TABLE `searchers_reports` (
   `ID` int(11) NOT NULL,
-  `Code` varchar(100) NOT NULL,
-  `CycleId` int(11) NOT NULL,
-  `Searcher` int(11) NOT NULL,
+  `search` int(11) NOT NULL,
   `q1` varchar(100) NOT NULL,
   `q2` varchar(100) NOT NULL,
   `q3` varchar(1000) NOT NULL,
@@ -719,16 +719,16 @@ CREATE TABLE `searchers_reports` (
   `q7` varchar(1000) NOT NULL,
   `q8` varchar(1000) NOT NULL,
   `q9` varchar(500) NOT NULL,
-  `search_file_id` int(11) NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `filename` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `searchers_reports`
 --
 
-INSERT INTO `searchers_reports` (`ID`, `Code`, `CycleId`, `Searcher`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `search_file_id`, `status`) VALUES
-(1, '0', 0, 0, '1اجمالي عدد الهدايات القرآنية التي تضمنتها رسالتك حتى تاريخه', 'مستوى التواصل بين المشرف والطالب2 ', 'أسباب عدم التواصل ان وجد 3', 'عدد الجلسات الاشرافية 4', 'مجموع ساعات الإشراف 5 ', '6مدى الالتزام بتعديلات المشرف واللجنة العلمية بالكرسي', 'أسباب عدم الالتزام بتعديلات المشرف 7', ' 8مالصعوبات التي تواجه الباحث ( إن وجدت )', 'إضافات أخرى  9', 0, 0);
+INSERT INTO `searchers_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `filename`) VALUES
+(4, 4, 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'uu', 'u', 'fileName1549578745.pdf'),
+(3, 1, 'm', 'm', 'm', 'm', 'mm', 'm', 'm', 'm', 'w', 'fileName1549576327.pdf');
 
 -- --------------------------------------------------------
 
@@ -779,9 +779,9 @@ CREATE TABLE `searchs` (
 --
 
 INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Division`, `Searcher`, `Note`, `Progress`, `Divisionunit`, `Cycle`, `Status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'يممثككبمم', 'رفض الادارة', 12, 0, 'no', '2018-12-30 21:28:42', '2018-10-21 08:17:53'),
-(3, NULL, 'المبحث 22', 'مبحثي', 22, 'fileName1541367786.pdf', 5, 11, NULL, 'تم الرفع', 14, 0, 'yes', '2018-11-04 20:43:06', '2018-11-04 20:43:06'),
-(4, NULL, 'بحثي', 'بحثي', 20, 'fileName1541368009.pdf', 6, 11, 'kkkkkk', 'موافقة الادارة', 15, 0, 'yes', '2018-12-30 21:28:24', '2018-11-04 20:46:49'),
+(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'يممثككبمم', 'رفض الادارة', 12, 1, 'no', '2019-02-07 22:20:47', '2018-10-21 08:17:53'),
+(3, NULL, 'المبحث 22', 'مبحثي', 22, 'fileName1541367786.pdf', 5, 11, NULL, 'تم الرفع', 14, 1, 'yes', '2019-02-07 22:20:50', '2018-11-04 20:43:06'),
+(4, NULL, 'بحثي', 'بحثي', 20, 'fileName1541368009.pdf', 6, 11, 'kkkkkk', 'موافقة الادارة', 15, 1, 'yes', '2019-02-07 22:20:55', '2018-11-04 20:46:49'),
 (5, NULL, 'بحثي', 'بحثي', 5, 'fileName1548887678.pdf', 1, 11, NULL, 'تم الرفع', 1, 1, 'yes', '2019-01-30 21:34:38', '2019-01-30 21:34:38');
 
 -- --------------------------------------------------------
@@ -872,9 +872,8 @@ INSERT INTO `supervisorsreports` (`ID`, `Supervisor`, `TypeCyclic`, `DateSupervi
 
 CREATE TABLE `supervisors_reports` (
   `ID` int(11) NOT NULL,
-  `Supervisor` int(11) NOT NULL,
-  `cycleId` int(11) NOT NULL,
-  `Searcher` int(11) NOT NULL,
+  `supervisor` int(11) NOT NULL,
+  `search` int(11) NOT NULL,
   `q1` varchar(100) NOT NULL,
   `q2` varchar(100) NOT NULL,
   `q3` varchar(100) NOT NULL,
@@ -883,16 +882,16 @@ CREATE TABLE `supervisors_reports` (
   `q6` varchar(1000) NOT NULL,
   `q7` varchar(1000) NOT NULL,
   `q8` varchar(1000) NOT NULL,
-  `notes` text NOT NULL,
-  `status` tinyint(1) NOT NULL
+  `note` text NOT NULL,
+  `filename` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `supervisors_reports`
 --
 
-INSERT INTO `supervisors_reports` (`ID`, `Supervisor`, `cycleId`, `Searcher`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `notes`, `status`) VALUES
-(1, 0, 0, 0, 'نسبة ما تم إنجازه من الرسالة', 'مسوغات وتوضيحات حول نسبة الإنجاز', 'مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي\r\n (ممتاز، جيد جدا، جيد، مقبول) ', 'مدى الالتزام بتوجيهات المشرف واللجنة \r\nالعلمية بالكرسي \r\n100%, 90%,...etc \r\n', 'أبرز الملاحظات الإيجابية على عمل الباحث ', 'أبرز الملاحظات السلبية على عمل الباحث', 'ما الصعوبات التي تواجه الباحث ( إن وجدت )', 'التوصيات والمقترحات التطويرية', 'ملاحظات', 0);
+INSERT INTO `supervisors_reports` (`ID`, `supervisor`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `note`, `filename`) VALUES
+(4, 12, 1, 'p', 'p', 'pp', 'p', 'p', 'pp', 'p', 'p', 'w', 'fileName1549577176.pdf');
 
 -- --------------------------------------------------------
 
@@ -976,16 +975,22 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'qLoRdCCw9zfGOI5P7mSd7MySMFcpQsBvhI1FRQDzOmY8IO2O8IK3DZQCYdwH', '2019-02-07 11:45:05', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'V48YgQPbcGhzIUhnb4FEDZOBmJRecbmI98EtHOA5BQipvSRh01t3GeVBxycA', '2019-02-01 20:18:13', '2018-10-06 11:51:08'),
-(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'rDWi3fYCMbBOuLMwLOud461bfvrMnsjRSqWKzeqY7wR0UvD7GMVTBKTNk4kS', '2018-11-08 18:56:11', '2018-10-18 18:08:29'),
-(56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, '7UZmgpIfvXaNrUktzL0giZVgGezshSxMdQRr3jFjDJpPKjErefoIhwvpgq8P', '2019-02-07 11:44:04', '2018-12-30 16:27:37'),
+(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'x9leKszd9kdCCRTYuenUHS3EeuFIVUnTbctHtfFjLttJ7Y5nJVbBtWLLwjMv', '2019-02-07 22:33:27', '2018-10-06 11:51:08'),
+(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'RnbkG3iQKJHmOhjGLx14ribNn9FtjJZiTwoctPGOik2l7JQIxl7SbpJ7vJux', '2019-02-07 22:26:15', '2018-10-18 18:08:29'),
+(56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, '4UrCnRrLgmu2IJKP32kGmKkSkjy4PT9PnpiNKTAzuVV3IWlcCFmAJTj9zilf', '2019-02-07 22:26:31', '2018-12-30 16:27:37'),
 (57, 'عبد الرحمان', 'searcher@searcher.com', '$2y$10$Q/ZpMzea39jIwdDfBHwZLOJl6EK2ZEbH4b05C9rYwOK6lNwaUBVOu', 2, 'VP1XKUrAIMSlOyUUWmkm9zYSHsKsGFBnlJrIA3eep91IWiEnacwGktrtv1gp', '2018-12-30 18:20:22', '2018-12-30 17:19:07'),
-(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, NULL, '2019-02-01 23:02:55', '2019-02-01 23:02:55'),
+(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, 'jKSTk66S6lcQsQ4enCZ0FQ1ZgcX2DDtKowPq8lVFzP7uv5vxMJVgCK7RyHRn', '2019-02-07 22:33:54', '2019-02-01 23:02:55'),
 (63, 'reviewer1', 'reviewer1@reviewer1.com', '$2y$10$74zavaLkuqA/P6HngsMID.gHHtzd3pU7h8GXw5ullar3O3rGzExiy', 5, NULL, '2019-02-07 10:46:35', '2019-02-07 10:46:35');
 
 --
 -- Index pour les tables déchargées
 --
+
+--
+-- Index pour la table `admin2_reports`
+--
+ALTER TABLE `admin2_reports`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Index pour la table `books`
@@ -1008,12 +1013,6 @@ ALTER TABLE `committesreports`
   ADD KEY `Committee` (`Committee`),
   ADD KEY `Searcherreports` (`Searcherreports`),
   ADD KEY `Supervisorreports` (`Supervisorreports`);
-
---
--- Index pour la table `committes_reports`
---
-ALTER TABLE `committes_reports`
-  ADD PRIMARY KEY (`ID`);
 
 --
 -- Index pour la table `configs`
@@ -1142,7 +1141,9 @@ ALTER TABLE `reviewersearchs`
 -- Index pour la table `reviewers_reports`
 --
 ALTER TABLE `reviewers_reports`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `search` (`search`),
+  ADD KEY `reviewer` (`reviewer`);
 
 --
 -- Index pour la table `roles`
@@ -1242,6 +1243,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT pour la table `admin2_reports`
+--
+ALTER TABLE `admin2_reports`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT pour la table `books`
 --
 ALTER TABLE `books`
@@ -1258,12 +1265,6 @@ ALTER TABLE `committees`
 --
 ALTER TABLE `committesreports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT pour la table `committes_reports`
---
-ALTER TABLE `committes_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `configs`
@@ -1359,7 +1360,7 @@ ALTER TABLE `registrations`
 -- AUTO_INCREMENT pour la table `reviewers_reports`
 --
 ALTER TABLE `reviewers_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
@@ -1383,7 +1384,7 @@ ALTER TABLE `searchersreports`
 -- AUTO_INCREMENT pour la table `searchers_reports`
 --
 ALTER TABLE `searchers_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `searchs`
@@ -1413,7 +1414,7 @@ ALTER TABLE `supervisorsreports`
 -- AUTO_INCREMENT pour la table `supervisors_reports`
 --
 ALTER TABLE `supervisors_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `theses`
@@ -1535,6 +1536,7 @@ ALTER TABLE `searcher_critera`
 -- Contraintes pour la table `searchs`
 --
 ALTER TABLE `searchs`
+  ADD CONSTRAINT `cycle` FOREIGN KEY (`Cycle`) REFERENCES `cycles` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_Searchs_Divisions1` FOREIGN KEY (`Division`) REFERENCES `divisions` (`ID`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `fk_div_univ` FOREIGN KEY (`Divisionunit`) REFERENCES `divisionunits` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
   ADD CONSTRAINT `searchs_ibfk_1` FOREIGN KEY (`Searcher`) REFERENCES `registrations` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
