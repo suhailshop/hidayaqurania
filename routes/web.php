@@ -168,6 +168,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchs/getOneSearch/{id}','Admin\SearchController@getOne')->name('getOneSearch');
     Route::get('/searchs/updateProgressok/{id}','Admin\SearchController@updateProgressok')->name('updateProgressok');
     Route::get('/searchs/updateProgressko/{id}','Admin\SearchController@updateProgressko')->name('updateProgressko');
+    Route::post('/searchs/addSearchReviewer','Admin\SearchController@addSearchReviewer')->name('addSearchReviewer');
     
     //----------------------- Supervisor -----------------------------
     

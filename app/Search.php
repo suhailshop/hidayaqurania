@@ -6,6 +6,7 @@ use App\Registration;
 use App\Division;
 use App\Cycle;
 use App\Divisionunit;
+use App\ReviewerSearch;
 use Illuminate\Database\Eloquent\Model;
 
 class Search extends Model 
@@ -33,6 +34,8 @@ class Search extends Model
     {
         return $this->hasOne('App\Cycle','ID','Cycle');
     }
-
+    public function reviewerSearch(){
+        return $this->hasMany('App\ReviewerSearch','search','ID');
+    }
 
 }

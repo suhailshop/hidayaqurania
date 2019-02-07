@@ -37,6 +37,11 @@
                         <i class="fa fa-angle-left"></i>
                     </li>
                     <li>
+                        <i class="icon-chemistry"></i>
+                    <a href="{{route('getAllSearchs')}}">لائحة البحوث</a>
+                        <i class="fa fa-angle-left"></i>
+                    </li>
+                    <li>
                             <i class="icon-user"></i>
                         <span>معلومات البحث</span>
                     </li>

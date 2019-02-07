@@ -34,7 +34,11 @@ class SearchController extends Controller
     }
     public function getAll(){
         $searchs = Search::all();
-        return view('portal.admin.searchs.index',compact('searchs'));
+        $reviewers = DB::table('registrations')
+                    ->join('users','registrations.User','=','users.id')
+                    ->join('roles','roles.id','=','users.role_id')
+                    ->where('roles.name','reviewer')->get(['registrations.id','registrations.Fistname','registrations.LastName']);
+        return view('portal.admin.searchs.index',compact('searchs','reviewers'));
     }
   
     public function getOne($id){
@@ -58,4 +62,47 @@ class SearchController extends Controller
         return redirect()->route('getAllSearchs');
     }
    
+    public function addSearchReviewer(Request $request){
+
+        $reviewers = $request->input('reviewers');
+        $allreviewers = DB::table('registrations')
+        ->join('users','registrations.User','=','users.id')
+        ->join('roles','roles.id','=','users.role_id')
+        ->join('reviewerSearchs','reviewerSearchs.reviewer','=','registrations.ID')
+        ->where('roles.name','reviewer')
+        ->where('reviewerSearchs.search',$request->input('searchid'))
+        ->get(['registrations.id']);
+
+        if(isset($reviewers)){
+        foreach($allreviewers as $al){
+           if(!in_array($al->id,$reviewers))
+           { 
+                DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->where('reviewer',$al->id)->delete();
+            }else{
+                
+           }
+        }
+        }
+        
+        
+        if(isset($reviewers)){
+            foreach($reviewers as $rev){
+                $exist= DB::table('reviewerSearchs')
+                ->where('search',$request->input('searchid'))
+                ->where('reviewer',$rev)
+                ->count();
+
+                if(empty($exist)){
+                    DB::table('reviewerSearchs')->insert(
+                        ['search' => $request->input('searchid'), 'reviewer' => $rev]
+                    );
+                }else{
+                    //DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->where('reviewer',$rev)->delete();
+                }
+            }
+        }else{
+            DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->delete();
+        }
+        return redirect()->route('getAllSearchs');
+    }
 }

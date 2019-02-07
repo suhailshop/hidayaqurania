@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 02 fév. 2019 à 01:03
+-- Généré le :  jeu. 07 fév. 2019 à 14:05
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -571,7 +571,19 @@ CREATE TABLE `registrations` (
 INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `CV`, `Status`, `User`, `EnablePlanEdit`, `updated_at`, `created_at`) VALUES
 (11, NULL, 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 3, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'جامعة مولاي عبد الله', 'badouch', '+33601106930', '222222222', 'badouch.maroc@gmail.com', 'fileName1541620612.jpg', 'CV1544995491.pdf', 'مفعل', 54, 'true', '2018-12-16 22:12:23', '2018-10-06 11:51:09'),
 (12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '+966506087020', NULL, 'badouch.maroc@gmail.com', 'fileName1541621862.jpg', NULL, 'yes', 55, 'false', '2018-12-11 19:26:55', '2018-10-18 18:08:29'),
-(16, NULL, '25SK3DD', '852447XP1266', 'reviewer', 'reviewer', 'ذكر', '1979-11-30', 'المغرب', 1, 2, 'TOURS', 'قاعة المؤتمرات بالمنامة', 'ماجستير', 'جيد', '2019-02-06', 'reviewer', 'الامير محمد الخطابي', 'الحقوق و العلوم الشرعية', '11111111111', '22222222222', 'reviewer@reviewer.com', '1549065775.jpg', NULL, 'غير مفعل', 62, 'true', '2019-02-01 23:02:56', '2019-02-01 23:02:56');
+(16, NULL, '25SK3DD', '852447XP1266', 'reviewer', 'reviewer', 'ذكر', '1979-11-30', 'المغرب', 1, 2, 'TOURS', 'قاعة المؤتمرات بالمنامة', 'ماجستير', 'جيد', '2019-02-06', 'reviewer', 'الامير محمد الخطابي', 'الحقوق و العلوم الشرعية', '11111111111', '22222222222', 'reviewer@reviewer.com', '1549065775.jpg', NULL, 'غير مفعل', 62, 'true', '2019-02-01 23:02:56', '2019-02-01 23:02:56'),
+(17, NULL, '25SK3DD', '852447XP1266', 'reviewer1', 'reviewer1', 'ذكر', '2019-02-13', 'LA RICHE', 1, 3, 'TOURS', 'قاعة المؤتمرات بالمنامة', 'ماجستير', 'جيد', '2019-02-12', 'reviewer', 'الامير محمد الخطابي', 'الحقوق و العلوم الشرعية', '5555555555', '3333333333', 'reviewer1@reviewer1.com', '1549539995.jpg', NULL, 'غير مفعل', 63, 'true', '2019-02-07 10:46:35', '2019-02-07 10:46:35');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `reviewersearchs`
+--
+
+CREATE TABLE `reviewersearchs` (
+  `reviewer` int(11) NOT NULL,
+  `search` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -963,12 +975,13 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'hhzYcxHJ7FTcut9oYDMNIR6m0heOXSYxzSBevA3qxcmxFr1gkj4RlmCZUTwa', '2019-02-01 20:18:50', '2018-10-03 08:22:44'),
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'qLoRdCCw9zfGOI5P7mSd7MySMFcpQsBvhI1FRQDzOmY8IO2O8IK3DZQCYdwH', '2019-02-07 11:45:05', '2018-10-03 08:22:44'),
 (54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'V48YgQPbcGhzIUhnb4FEDZOBmJRecbmI98EtHOA5BQipvSRh01t3GeVBxycA', '2019-02-01 20:18:13', '2018-10-06 11:51:08'),
 (55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'rDWi3fYCMbBOuLMwLOud461bfvrMnsjRSqWKzeqY7wR0UvD7GMVTBKTNk4kS', '2018-11-08 18:56:11', '2018-10-18 18:08:29'),
-(56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, 'X89yk1FRJtACHTmGdcUFZtGzXDg7nRjGqsVkOx1zVUa1OyubMe9eYi8M2s7r', '2019-02-01 20:18:39', '2018-12-30 16:27:37'),
+(56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, '7UZmgpIfvXaNrUktzL0giZVgGezshSxMdQRr3jFjDJpPKjErefoIhwvpgq8P', '2019-02-07 11:44:04', '2018-12-30 16:27:37'),
 (57, 'عبد الرحمان', 'searcher@searcher.com', '$2y$10$Q/ZpMzea39jIwdDfBHwZLOJl6EK2ZEbH4b05C9rYwOK6lNwaUBVOu', 2, 'VP1XKUrAIMSlOyUUWmkm9zYSHsKsGFBnlJrIA3eep91IWiEnacwGktrtv1gp', '2018-12-30 18:20:22', '2018-12-30 17:19:07'),
-(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, NULL, '2019-02-01 23:02:55', '2019-02-01 23:02:55');
+(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, NULL, '2019-02-01 23:02:55', '2019-02-01 23:02:55'),
+(63, 'reviewer1', 'reviewer1@reviewer1.com', '$2y$10$74zavaLkuqA/P6HngsMID.gHHtzd3pU7h8GXw5ullar3O3rGzExiy', 5, NULL, '2019-02-07 10:46:35', '2019-02-07 10:46:35');
 
 --
 -- Index pour les tables déchargées
@@ -1117,6 +1130,13 @@ ALTER TABLE `registrations`
   ADD KEY `User` (`User`),
   ADD KEY `dm` (`Countrie`),
   ADD KEY `Nationalitie` (`Nationalitie`);
+
+--
+-- Index pour la table `reviewersearchs`
+--
+ALTER TABLE `reviewersearchs`
+  ADD PRIMARY KEY (`reviewer`,`search`),
+  ADD KEY `search` (`search`);
 
 --
 -- Index pour la table `reviewers_reports`
@@ -1333,7 +1353,7 @@ ALTER TABLE `progress`
 -- AUTO_INCREMENT pour la table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT pour la table `reviewers_reports`
@@ -1411,7 +1431,7 @@ ALTER TABLE `universities`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 
 --
 -- Contraintes pour les tables déchargées
@@ -1489,6 +1509,13 @@ ALTER TABLE `registrations`
   ADD CONSTRAINT `dm` FOREIGN KEY (`Countrie`) REFERENCES `countries` (`ID`) ON DELETE SET NULL ON UPDATE SET NULL,
   ADD CONSTRAINT `fk` FOREIGN KEY (`User`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `registrations_ibfk_1` FOREIGN KEY (`Nationalitie`) REFERENCES `nationalities` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Contraintes pour la table `reviewersearchs`
+--
+ALTER TABLE `reviewersearchs`
+  ADD CONSTRAINT `reviewersearchs_ibfk_1` FOREIGN KEY (`search`) REFERENCES `searchs` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `reviewersearchs_ibfk_2` FOREIGN KEY (`reviewer`) REFERENCES `registrations` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Contraintes pour la table `searchersreports`
