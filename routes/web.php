@@ -169,6 +169,12 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchs/updateProgressok/{id}','Admin\SearchController@updateProgressok')->name('updateProgressok');
     Route::get('/searchs/updateProgressko/{id}','Admin\SearchController@updateProgressko')->name('updateProgressko');
     Route::post('/searchs/addSearchReviewer','Admin\SearchController@addSearchReviewer')->name('addSearchReviewer');
+
+
+    //----------------------- Reviewer -------------------------
+    Route::get('/searchs/getAllMySearchs','Reviewer\SearchController@getAllMySearchs')->name('getAllMySearchs');
+    Route::get('/searchs/getOneMySearch/{id}','Reviewer\SearchController@getOneMySearch')->name('getOneMySearch');
+    
     
     //----------------------- Supervisor -----------------------------
     
