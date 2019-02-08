@@ -396,12 +396,308 @@
                                                 </form> 
                                             </div>
                                             <div class="tab-pane" id="tab_1_7">
-
+                                                @if(count($search->admin2_reports)>0)
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#admin2modal">
+                                                        تقرير الادارة
+                                                    </button>
+                                                <div class="modal fade" id="admin2modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="exampleModalLabel">تفاصيل التقرير</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form role="form" method="POST" action="#" >
+                                                                    <div class="form-group">
+                                                                        <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
+                                                                        <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q1}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : </label>
+                                                                            <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q2}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label ">اهم الايجابيات على عمل الطالب ؟ : </label>
+                                                                        <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q3}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : </label>
+                                                                        <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q4}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label ">التوصيات والمقترحات : </label>
+                                                                        <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q5}}</textarea>
+                                                                        </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label ">ملاحظات عامة  : </label>
+                                                                        <textarea readonly class="form-control " >{{$search->admin2_reports[0]->note}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="control-label "> الملف : </label>
+                                                                        <a class="btn btn-primary" target="_blank" href="{{ url('storage/admin2_reports/'.$search->admin2_reports[0]->filename) }}"> تقرير الادارة </a>
+                                                                                
+                                                                    </div>
+                                                            </form>
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
                                                 
-                                               <a class="btn btn-primary" target="_blank" href="{{ url('storage/admin2_reports/'.$search->admin2_reports[0]->filename) }}"> تقرير الادارة </a>
-                                               <a class="btn btn-primary" target="_blank" href="{{url('storage/searcher_reports/'.$search->searchers_reports[0]->filename)}}"> تقرير الباحث </a>
-                                               <a class="btn btn-primary" target="_blank" href="{{url('storage/supervisor_reports/'.$search->supervisors_reports[0]->filename)}}"> تقرير المشرف </a>
-                                               <a class="btn btn-primary" target="_blank" href="{{url('storage/reviewers_reports/'.$search->reviewers_reports[0]->filename)}}"> تقرير المراجع </a>
+                                            
+                                                @endif                                           
+                                            
+                                            @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
+                                                @if(count($search->searchers_reports)>0)
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#searchermodal">
+                                                        تقرير الباحث
+                                                    </button>
+                                                <div class="modal fade" id="searchermodal" tabindex="-1" role="dialog" aria-labelledby="searchermodallabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                      <div class="modal-content">
+                                                        <div class="modal-header">
+                                                          <h5 class="modal-title" id="searchermodallabel">تفاصيل التقرير</h5>
+                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                          </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <form role="form" method="POST" action="#" enctype="multipart/form-data">
+                                                               
+                                                                    <div class="form-group">
+                                                                        <label class="control-label ">1- اجمالي عدد الهدايات القرآنية التي تضمنتها رسالتك حتى تاريخه : </label>
+                                                                        <textarea readonly class="form-control " name="q1" >{{$search->searchers_reports[0]->q1}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">2- مستوى التواصل بين المشرف و الطالب : </label>
+                                                                            <textarea readonly class="form-control " name="q2" >{{$search->searchers_reports[0]->q2}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">3- أسباب عدم التواصل ان وجد : </label>
+                                                                            <textarea readonly class="form-control " name="q3" >{{$search->searchers_reports[0]->q3}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                                <label class="control-label ">4- عدد الجلسات الاشرافية : </label>
+                                                                                <textarea readonly class="form-control " name="q4" >{{$search->searchers_reports[0]->q4}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">5- مجموع ساعات الإشراف : </label>
+                                                                            <textarea readonly class="form-control " name="q5" >{{$search->searchers_reports[0]->q5}}</textarea>
+                                                                        </div>
+                                                                    <div class="form-group">
+                                                                                <label class="control-label ">6- مدى الالتزام بتعديلات المشرف واللجنة العلمية بالكرسي   : </label>
+                                                                                <textarea readonly class="form-control " name="q6" >{{$search->searchers_reports[0]->q6}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">7- أسباب عدم الالتزام بتعديلات المشرف  : </label>
+                                                                            <textarea readonly class="form-control " name="q7" >{{$search->searchers_reports[0]->q7}}</textarea>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                        <label class="control-label ">8- مالصعوبات التي تواجه الباحث ( إن وجدت )  : </label>
+                                                                        <textarea readonly class="form-control " name="q8" >{{$search->searchers_reports[0]->q8}}</textarea>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <label class="control-label ">9- إضافات أخرى : </label>
+                                                                    <textarea readonly class="form-control " name="q9" >{{$search->searchers_reports[0]->q9}}</textarea>
+                                                            </div>
+                                                                    <div class="form-group">
+                                                                                <label class="control-label ">رفع الملف : </label>
+                                                                                <a class="btn btn-primary" target="_blank" href="{{url('storage/searcher_reports/'.$search->searchers_reports[0]->filename)}}"> تقرير الباحث </a>     
+                                                                    </div>
+                                                            </form>
+                                                          
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                @endif
+                                            @endif
+
+                                                @if(count($search->supervisors_reports)>0)   
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#supervisormodal">
+                                                        تقرير المشرف
+                                                    </button>
+                                                    <div class="modal fade" id="supervisormodal" tabindex="-1" role="dialog">
+                                                            <div class="modal-dialog" role="document">
+                                                                    <div class="modal-content">
+                                                                      <div class="modal-header">
+                                                                        <h5 class="modal-title" id="searchermodallabel">تفاصيل التقرير</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                          <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                      </div>
+                                                                      <div class="modal-body">
+                                                            <form role="form" method="POST" action="#" enctype="multipart/form-data">
+                                                              
+                                                                    <div class="form-group">
+                                                                        <label class="control-label ">نسبة ما تم إنجازه من الرسالة : </label>
+                                                                    <textarea readonly class="form-control " name="q1" >{{$search->supervisors_reports[0]->q1}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">مسوغات وتوضيحات حول نسبة الإنجاز : </label>
+                                                                            <textarea readonly class="form-control " name="q2" >{{$search->supervisors_reports[0]->q2}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي
+                                                                                    (ممتاز، جيد جدا، جيد، مقبول)  : </label>
+                                                                            <textarea readonly class="form-control " name="q3" >{{$search->supervisors_reports[0]->q3}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                                <label class="control-label ">مدى الالتزام بتوجيهات المشرف واللجنة 
+                                                                                        العلمية بالكرسي 
+                                                                                        100%, 90%,...etc 
+                                                                                         : </label>
+                                                                                <textarea readonly class="form-control " name="q4" >{{$search->supervisors_reports[0]->q4}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">أبرز الملاحظات الإيجابية على عمل الباحث  : </label>
+                                                                            <textarea readonly class="form-control " name="q5" >{{$search->supervisors_reports[0]->q5}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                                <label class="control-label ">أبرز الملاحظات السلبية على عمل الباحث : </label>
+                                                                                <textarea readonly class="form-control " name="q6" >{{$search->supervisors_reports[0]->q6}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                                <label class="control-label ">ما الصعوبات التي تواجه الباحث ( إن وجدت ) : </label>
+                                                                                <textarea readonly class="form-control " name="q7" >{{$search->supervisors_reports[0]->q7}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                                    <label class="control-label ">التوصيات والمقترحات التطويرية : </label>
+                                                                                    <textarea readonly class="form-control " name="q8" >{{$search->supervisors_reports[0]->q8}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                                <label class="control-label ">ملاحظات : </label>
+                                                                                <textarea readonly class="form-control " name="note" >{{$search->supervisors_reports[0]->note}}</textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                            <label class="control-label ">رفع الملف : </label>
+                                                                            <a class="btn btn-primary" target="_blank" href="{{url('storage/supervisor_reports/'.$search->supervisors_reports[0]->filename)}}"> تقرير المشرف </a>                                                                            
+                                                                    </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                                    </div>
+                                                @endif
+
+
+                                                @if(count($search->reviewers_reports)>0)   
+                                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#reviewermodal">
+                                                        تقرير المراجع
+                                                    </button>
+                                                    <div class="modal fade" id="reviewermodal" tabindex="-1" role="dialog" aria-labelledby="reviewermodallabel" aria-hidden="true">
+                                                            <div class="modal-dialog" role="document">
+                                                              <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                  <h5 class="modal-title" id="reviewermodallabel">تفاصيل التقرير</h5>
+                                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                  </button>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                        <form role="form" method="POST" action="{{route('addreviewers_reports')}}" enctype="multipart/form-data">
+                                                                            {{ csrf_field() }}
+                                                                                <input type="hidden" value="{{$search->ID}}" name="search" />
+                                                                                <div class="form-group">
+                                                                                    <label class="control-label ">1- كفاية المصادر وأصالتها، والمراجع وحداثتها، ومدى إفادة الباحث منها، واستيعابه للدراسات السابقة. (الدرجة 1-10) : </label>
+                                                                                    <input readonly class="form-control " name="q1" type="text" value="{{$search->reviewers_reports[0]->q1}}"  />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                    <textarea readonly class="form-control " name="q1_details" >{{$search->reviewers_reports[0]->q1_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">2- مدى تقيد الطالب بعقيدة أهل السنة والجماعة فيما يقرره من هدايات.(الدرجة 1-10) : </label>
+                                                                                        <input readonly class="form-control " name="q2" type="text" value="{{$search->reviewers_reports[0]->q2}}"  />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                        <textarea readonly class="form-control " name="q2_details" >{{$search->reviewers_reports[0]->q2_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">3- التقيد بالخطة والإجراءات الموضوعة للدراسة.(الدرجة 1-10)  : </label>
+                                                                                        <input readonly class="form-control " name="q3" type="text"  value="{{$search->reviewers_reports[0]->q3}}" />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                        <textarea readonly class="form-control " name="q3_details" >{{$search->reviewers_reports[0]->q3_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">4- مراعاة ضوابط الكتابة العلمية من سلامة اللغة، ودقة الصياغة، ووضوحها، والقدرة على تنظيم المعلومات والأفكار، وعرضها بطريقة علمية، ودعمها بالأدلة المناسبة.(الدرجة 1-10) * : </label>
+                                                                                        <input readonly class="form-control " name="q4" type="text"  value="{{$search->reviewers_reports[0]->q4}}" />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                        <textarea readonly class="form-control " name="q4_details" >{{$search->reviewers_reports[0]->q4_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                            <label class="control-label ">5- مدى التزام الباحث بضوابط النقل والاقتباس، والتحلي بالأمانة العلمية، والتزام منهج البحث العلمي وخطواته الإجرائية في التوثيق، والتخريج والحكم على الأحاديث، والترجمة للأعلام وغيرها.(الدرجة 1-10)  : </label>
+                                                                                            <input readonly class="form-control " name="q5" type="text"  value="{{$search->reviewers_reports[0]->q5}}" />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                            <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                            <textarea readonly class="form-control " name="q5_details" >{{$search->reviewers_reports[0]->q5_details}} </textarea>
+                                                                                </div><div class="form-group">
+                                                                                                <label class="control-label ">6- مستوى تطبيق الباحث لمحتوى الدراسة التأصيلية والتزامه بها، وبالضوابط والإجراءات الموضوعة للمشروع.(الدرجة 1-10) * : </label>
+                                                                                                <input readonly class="form-control " name="q6" type="text"  value="{{$search->reviewers_reports[0]->q6}}" />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                    <textarea readonly class="form-control " name="q6_details" >{{$search->reviewers_reports[0]->q6_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="control-label ">7- ظهور شخصية الباحث، ومستوى ما له من تحليلات ومناقشات واستنتاجات وإضافات.(الدرجة 1-10) * : </label>
+                                                                                    <input readonly class="form-control " name="q7" type="text" value="{{$search->reviewers_reports[0]->q7}}"  />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                     <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                    <textarea readonly class="form-control " name="q7_details" >{{$search->reviewers_reports[0]->q7_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="control-label ">8- مطابقة المحتوى للعنوان، وتحقيق الباحث للأهداف، ومستوى الإضافات العلمية التي قدمها(الدرجة 1-10) : </label>
+                                                                                    <input readonly class="form-control " name="q8" type="text" value="{{$search->reviewers_reports[0]->q8}}"  />
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                    <textarea readonly class="form-control " name="q8_details" >{{$search->reviewers_reports[0]->q8_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">9- مدى ارتباط الهدايات بالواقع ودورها في حل المشكلات. (الدرجة 1-10) : </label>
+                                                                                        <input readonly class="form-control " name="q9" type="text" value="{{$search->reviewers_reports[0]->q9}}"  />
+                                                                                    </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                        <textarea readonly class="form-control " name="q9_details" >{{$search->reviewers_reports[0]->q9_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">10- التنسيق والإخراج (الدرجة 1-10) : </label>
+                                                                                        <input readonly class="form-control " name="q10" type="text" value="{{$search->reviewers_reports[0]->q10}}"  />
+                                                                                    </div>
+                                                                                <div class="form-group">
+                                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                                    <textarea readonly class="form-control " name="q10_details">{{$search->reviewers_reports[0]->q10_details}} </textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">ملحوظات ومقترحات اضافية :  </label>
+                                                                                        <textarea readonly class="form-control " name="q11" >{{$search->reviewers_reports[0]->q11}}</textarea>
+                                                                                </div>
+                                                                                
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">ملاحظات  : </label>
+                                                                                        <textarea readonly class="form-control " name="note" >{{$search->reviewers_reports[0]->note}}</textarea>
+                                                                                </div>
+                                                                                <div class="form-group">
+                                                                                        <label class="control-label ">رابط ملف البحث بعد التحديث </label>
+                                                                                        <a class="btn btn-primary" target="_blank" href="{{url('storage/reviewers_reports/'.$search->reviewers_reports[0]->filename)}}"> تقرير المراجع </a>                                                                                        
+                                                                                </div>
+                                                                    </form> 
+                                                                </div>
+                                                              </div>
+                                                            </div>
+                                                    </div>
+                                                @endif
                                             </div>                               
                                         </div>
                                     </div>

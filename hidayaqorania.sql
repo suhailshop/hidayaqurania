@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  jeu. 07 fév. 2019 à 23:48
+-- Généré le :  ven. 08 fév. 2019 à 14:06
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -975,7 +975,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'qLoRdCCw9zfGOI5P7mSd7MySMFcpQsBvhI1FRQDzOmY8IO2O8IK3DZQCYdwH', '2019-02-07 11:45:05', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'x9leKszd9kdCCRTYuenUHS3EeuFIVUnTbctHtfFjLttJ7Y5nJVbBtWLLwjMv', '2019-02-07 22:33:27', '2018-10-06 11:51:08'),
+(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'tkpyKHmOdUrhApC4xwtGK33IOW4edgi34zNz9kv9sQEgXmVW7I1OFZVEs5zx', '2019-02-08 12:50:34', '2018-10-06 11:51:08'),
 (55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'RnbkG3iQKJHmOhjGLx14ribNn9FtjJZiTwoctPGOik2l7JQIxl7SbpJ7vJux', '2019-02-07 22:26:15', '2018-10-18 18:08:29'),
 (56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, '4UrCnRrLgmu2IJKP32kGmKkSkjy4PT9PnpiNKTAzuVV3IWlcCFmAJTj9zilf', '2019-02-07 22:26:31', '2018-12-30 16:27:37'),
 (57, 'عبد الرحمان', 'searcher@searcher.com', '$2y$10$Q/ZpMzea39jIwdDfBHwZLOJl6EK2ZEbH4b05C9rYwOK6lNwaUBVOu', 2, 'VP1XKUrAIMSlOyUUWmkm9zYSHsKsGFBnlJrIA3eep91IWiEnacwGktrtv1gp', '2018-12-30 18:20:22', '2018-12-30 17:19:07'),
