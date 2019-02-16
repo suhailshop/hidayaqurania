@@ -33,12 +33,24 @@
     <!-- Force to use Arabic Font for the entire app -->
     <style>
         html, h1,h2,h3,h4,div{
-            font-family: 'droid-sans';
+            font-family: 'droid-sans', serif;
         }
 
         .page-title{
-            font-family: 'droid-sans';
+            font-family: 'droid-sans', serif;
 
+        }
+
+        .myfont {
+            font-family: 'droid-sans', serif;
+        }
+
+        .dashcolor {
+            color: #fedda0;
+        }
+
+        body{
+            font-family: 'droid-sans', serif;
         }
 
 
@@ -102,9 +114,9 @@
 
         <!-- BEGIN LOGO -->
         <div class="page-logo">
-            <a href="{{url('/')}}">
-                <h3>هداية قرانية</h3>
-                <!--<img src="{!! asset('assets/pages/img/logona.png') !!}" alt="logo" class="logo-default" /> </a>-->
+            <a href="{{url('/portal')}}">
+
+                <img src="{!! asset('assets/pages/img/logona.png') !!}" alt="logo" class="logo-default" /> </a>
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->

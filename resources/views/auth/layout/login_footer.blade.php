@@ -1,4 +1,4 @@
-<div class="copyright">  الحقوق محفوظة لموقع هدايات قرانية 2018 ©</div>
+<div class="copyright myfont" style="color:black;">  الحقوق محفوظة لموقع هدايات قرانية 2018 ©</div>
 <script src="{!! asset('assets/global/plugins/jquery.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('assets/global/plugins/bootstrap/js/bootstrap.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('assets/global/plugins/js.cookie.min.js') !!}" type="text/javascript"></script>

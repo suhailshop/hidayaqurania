@@ -8,11 +8,11 @@
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
-        <div class="content">
+        <div class="content myfont">
             <!-- BEGIN LOGIN FORM -->
             <form class="login-form" action="{{ route('login') }}" method="POST">
                     {{ csrf_field() }}
-                <h3 class="form-title font-green">تسجيل الدخول</h3>
+                <h3 class="form-title font-yellow myfont">تسجيل الدخول</h3>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>
                     <span> المرجو ادخال معلومات حسابكم  </span>
@@ -38,7 +38,7 @@
                 </div>
                 
                     <div class="form-actions">
-                    <button type="submit" class="btn green uppercase">دخول</button>
+                    <button type="submit" class="btn yellow uppercase">دخول</button>
                     
                     <a href="{{route('password.request')}}" id="forget-password" class="forget-password">نسيت كلمة المرور ؟</a>
                 </div>

@@ -16,9 +16,7 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
 
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -29,9 +27,7 @@
             </div>
             <!-- END PAGE HEADER-->
 
-            <div class="note note-info">
-                <p> هذه الصفحة الرئيسية للبوابة الالكترونية </p>
-            </div>
+
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -185,17 +181,19 @@
                     </div>
                   
                 </div>
+
+
             @elseif(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
                 حساب مشرف
+
+
             @elseif(auth()->user()->hasRole('student',auth()->user()->role_id))
                
-            <div class="note note-info largeText">
-                <p> ملخص الحساب الخاص بي : </p>
-            </div>
+
 
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allSearchs')}}">
+                    <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearchs')}}">
                         <div class="visual">
                             <i class="fa fa-users"></i>
                         </div>
@@ -208,7 +206,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('allSearcherReports')}}">
+                    <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcherReports')}}">
                         <div class="visual">
                             <i class="fa fa-briefcase"></i>
                         </div>
@@ -220,7 +218,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a class="dashboard-stat dashboard-stat-v2 green" href="{{route('allbookssearcher')}}">
+                    <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allbookssearcher')}}">
                         <div class="visual">
                             <i class="fa fa-graduation-cap"></i>
                         </div>
@@ -233,7 +231,7 @@
                     </a>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <a class="dashboard-stat dashboard-stat-v2 purple" href="#">
+                    <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
                         <div class="visual">
                             <i class="fa fa-globe"></i>
                         </div>
@@ -247,19 +245,15 @@
             </div>
 
 
-            <div class="note note-info largeText">
-                <p> مخطط البحث الخاص بي : </p>
-            </div>
-
 
             <div class="portlet light portlet-fit ">
                 <div class="portlet-body">
                     <div class="mt-element-list">
-                        <div class="mt-list-head list-todo grey">
+                        <div class="mt-list-head list-todo ">
                             <div class="list-head-title-container">
 
                                 <!-- هنا يتم استبدال اسم السورة حسب عنوان البحث الخاص بكل طالب، فمثلا هذا الطالب عنوان البحث الخاص به عن سورة الأنفال  -->
-                                <h4 class="list-title myfont">  عنوان البحث : {{$these_name}}
+                                <h4 class="list-title myfont">  عنوان الرسالة البحثية  : {{$these_name}}
                                 </h4>
 
                             </div>

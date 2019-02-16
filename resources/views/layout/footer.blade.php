@@ -1,14 +1,27 @@
 
+ </div>
+
 
 
 <!-- BEGIN FOOTER -->
-<div class="page-footer" style="align-content: center">
-    <div class="page-footer-inner"> 2018 &copy; البوابة الالكترونية لموسوعة الهدايات القرآنية
+<div class="page-footer" >
+
+    <div class="page-footer-inner" > 2018 &copy; البوابة الالكترونية لموسوعة الهدايات القرآنية
+
           <div class="scroll-to-top">
             <i class="icon-arrow-up"></i>
-        </div>
+          </div>
+
     </div>
+
 </div>
+
+
+
+
+
+
+
 <!-- END FOOTER -->
 
 

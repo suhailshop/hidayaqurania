@@ -310,6 +310,7 @@
 </div>
         <!-- END CONTENT BODY -->
     </div>
+        </div>
     <!-- END CONTENT -->
     @section('pageScript')
         <!-- BEGIN PAGE LEVEL PLUGINS -->

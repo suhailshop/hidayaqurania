@@ -8,12 +8,12 @@
         </div>
         <!-- END LOGO -->
         <!-- BEGIN LOGIN -->
-        <div class="content">
+        <div class="content myfont">
             
             <!-- BEGIN REGISTRATION FORM -->
             <form class="register-form" action="{{ route('register') }}" method="POST" style="display: initial !important" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                <h3 class="font-green">حساب جديد</h3>
+                <h3 class="font-yellow myfont">حساب جديد</h3>
                 <p class="hint">  معلومات شخصية: </p>
                 <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
@@ -68,7 +68,7 @@
                         <div class="col-md-12">
                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                  <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%; height: 100%;max-width: 200px; max-height: 150px;"> 
-                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                    <img src="https://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
                                 </div>
                                 <div>
                                     <span class="btn default btn-file">
@@ -147,8 +147,8 @@
                 </div>
                
                 <div class="form-actions">
-                    <a href="{{route('login')}}" id="register-back-btn" class="btn green btn-outline">تسجيل الدخول</a>
-                    <button type="submit" id="register-submit-btn" class="btn btn-success uppercase pull-right">تأكيد</button>
+                    <a href="{{route('login')}}" id="register-back-btn" class="btn yellow btn-outline">تسجيل الدخول</a>
+                    <button type="submit" id="register-submit-btn" class="btn yellow  uppercase pull-right">تسجيل الآن</button>
                 </div>
             </form>
             <!-- END REGISTRATION FORM -->
