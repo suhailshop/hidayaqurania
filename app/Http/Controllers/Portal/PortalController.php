@@ -15,6 +15,7 @@ use App\Section;
 use App\Division;
 use App\Provide;
 use App\Searchersreport;
+use App\Cycle;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -46,7 +47,7 @@ class PortalController extends Controller
         $searchs=[];
         $myreports=[];
         if($role->name=='student'){
-
+        $cycles=Cycle::all();
         $this->user= Auth::user();
         $id = Registration::where('User',$this->user->id)->first()->ID;
         $these_name = These::where('Searcher',$id)->first()->Title;
@@ -59,14 +60,7 @@ class PortalController extends Controller
                 ->join('searchersreports','searchersreports.ID','=','committesreports.Searcherreports')
                 ->where('searchersreports.Searcher',$id)
                 ->count();
-
-
-
-
         }
-
-
-
 
         $searchers = Registration::where('type','searcher')->get();
         $supervisors = Registration::where('type','supervisor')->get();
@@ -78,6 +72,6 @@ class PortalController extends Controller
         $provides=Provide::all();
         $lastsearchers= Registration::where('Type','searcher')->orderBy('created_at', 'asc')->take(7)->get();
         
-        return view('portal.welcome',compact('admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers'));
+        return view('portal.welcome',compact('cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers'));
     }
 }
