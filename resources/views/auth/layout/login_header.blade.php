@@ -35,7 +35,7 @@
         
         
         body  {
-  		background-image: url({{URL('/')}}/project/resources/views/auth/layout/header.png);
+  		background-image: url({!!asset('assets/pages/img/header.png') !!}) 
  		 background-color: #cccccc;
 		}
         

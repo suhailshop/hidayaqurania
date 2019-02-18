@@ -57,7 +57,7 @@
                                 <tr>
                                     <th class="all">الاختصار</th>
                                     <th class="all">الاسم</th>
-                                    <th class="all">القسم</th>
+                                    <th class="desctop">القسم</th>
                                     <th class="all">المبحث</th>
                                     <th class="none"> الترتيب</th>
                                     <th class="all">الملف</th>

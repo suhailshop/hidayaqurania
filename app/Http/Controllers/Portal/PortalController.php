@@ -45,7 +45,8 @@ class PortalController extends Controller
         $my_searchs='';
         $searchs=[];
         $myreports=[];
-        if($role->name=='student'){ 
+        if($role->name=='student'){
+
         $this->user= Auth::user();
         $id = Registration::where('User',$this->user->id)->first()->ID;
         $these_name = These::where('Searcher',$id)->first()->Title;
@@ -58,8 +59,13 @@ class PortalController extends Controller
                 ->join('searchersreports','searchersreports.ID','=','committesreports.Searcherreports')
                 ->where('searchersreports.Searcher',$id)
                 ->count();
-            
+
+
+
+
         }
+
+
 
 
         $searchers = Registration::where('type','searcher')->get();

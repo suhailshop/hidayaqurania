@@ -42,6 +42,8 @@ class SearchController extends Controller
         return redirect()->route('getAllSearchs');
     }
 
+
+
     public function updateProgressko($id){
         DB::table('searchs')->where('ID',$id)
         ->update(array(
@@ -49,7 +51,10 @@ class SearchController extends Controller
         ));
         return redirect()->route('getAllSearchs');
     }
-   
+
+
+
+
     public function addSearchReviewer(Request $request){
 
         $reviewers = $request->input('reviewers');
@@ -93,6 +98,8 @@ class SearchController extends Controller
         }
         return redirect()->route('getAllSearchs');
     }
+
+
 
     public function addadmin2_reports(Request $request){
         if($request->hasFile('filename')){

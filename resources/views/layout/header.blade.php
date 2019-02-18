@@ -96,7 +96,7 @@
 <!-- BEGIN BODY -->
 
 {{--@if(Auth::check())--}}
-<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-boxed">
+<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid  ">
 {{--@else--}}
 {{--<body class="page-header-fixed page-sidebar-closed-hide-logo page-footer-fixed page-content-white page-boxed">--}}
 {{--@endif--}}
@@ -108,7 +108,7 @@
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->
-    <div class="page-header-inner container">
+    <div class="page-header-inner  ">
 
 
 
@@ -212,7 +212,7 @@
 <!-- BEGIN HEADER & CONTENT DIVIDER -->
 <div class="clearfix"> </div>
 <!-- END HEADER & CONTENT DIVIDER -->
-<div class="container">
+
     <!-- BEGIN CONTAINER -->
     <div class="page-container">
 

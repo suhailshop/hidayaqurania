@@ -93,9 +93,9 @@
                                     <td>{{$searcher->University}}</td>
                                     <td>{{$searcher->Faculty}}</td>
                                     <td>
-                                        <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" 
+                                        <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}"
                                             style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
-                                    </td>        
+                                    </td>
                                     
                                     <td>{{$searcher->thesesTitle}}</td>
                                     <td>{{$searcher->Status}}</td>
