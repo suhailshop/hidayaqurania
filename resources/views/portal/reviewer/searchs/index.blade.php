@@ -61,6 +61,7 @@
 
                                     <th class="all">الباحث</th>
                                      <th class="all">تحميل البحث</th>
+                                    <th> حالة التحكيم </th>
                                      <th class="all">تحكيم البحث</th>
                                 </tr>
                             </thead>
@@ -84,6 +85,7 @@
                                         <span class="badge badge-success">{{$search->Progress}}</span>
                                         @endif                                    
                                     </td>--}}
+                                    <td>  <span class="badge badge-danger">لم يتم التحكيم</span> </td>
                                     <td>
                                         <a  href="{{route('getOneSearch',$search->ID)}}">
                                             <i class="fa fa-search"></i> تحكيم البحث </a>
