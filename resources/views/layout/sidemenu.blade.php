@@ -157,56 +157,128 @@
                         </a>
              </li>
 
-            <li class="nav-item  ">
-                <a href="{{route('allSubmissions')}}" class="nav-link nav-toggle">
-                    <i class="icon-paper-plane"></i>
-                    <span class="title">التقديمات</span>
-                    <span class="arrow"></span>
-                </a>
-            </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">المراجع العلمية</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="{{route('allBook')}}" class="nav-link ">
+                                <span class="title">لائحة الكتب</span>
+                            </a>
+                        </li>
 
-            <li class="nav-item  ">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-cup"></i>
-                        <span class="title">اللقاءات</span>
+                            <li class="nav-item  ">
+                                <a href="{{route('addBook')}}" class="nav-link ">
+                                    <span class="title">أضف مرجع علمي</span>
+                                </a>
+                            </li>
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-envelope-open"></i>
+                        <span class="title">ارسال بريد</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="{{route('sendEmailSup')}}" class="nav-link ">
+                                <span class="title"> الى المشرفين </span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('SendEmailStu')}}" class="nav-link ">
+                                <span class="title">الى الطلاب</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-bubbles"></i>
+                        <span class="title">ارسال SMS</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="{{route('sendSMSSup')}}" class="nav-link ">
+                                <span class="title"> الى المشرفين </span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('sendSMSStu')}}" class="nav-link ">
+                                <span class="title">الى الطلاب</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+
+
+             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+
+                <li class="nav-item  ">
+                    <a href="{{route('allSubmissions')}}" class="nav-link nav-toggle">
+                        <i class="icon-paper-plane"></i>
+                        <span class="title">التقديمات</span>
+                        <span class="arrow"></span>
+                    </a>
+
+                 </li>
+
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-cup"></i>
+                            <span class="title">اللقاءات</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{route('allMeeting')}}" class="nav-link ">
+                                        <span class="title">لائحة اللقاءات</span>
+                                    </a>
+                                </li>
+                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                <li class="nav-item  ">
+                                <a href="{{route('addMeeting')}}" class="nav-link ">
+                                        <span class="title">أضف لقاء</span>
+                                    </a>
+                                </li>
+                                @endif
+                        </ul>
+                </li>
+
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-graduation"></i>
+                        <span class="title">الجامعات</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                             <li class="nav-item  ">
-                                <a href="{{route('allMeeting')}}" class="nav-link ">
-                                    <span class="title">لائحة اللقاءات</span>
+                                <a href="{{route('allUniversity')}}" class="nav-link ">
+                                    <span class="title">لائحة الجامعات</span>
                                 </a>
                             </li>
                             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                             <li class="nav-item  ">
-                            <a href="{{route('addMeeting')}}" class="nav-link ">
-                                    <span class="title">أضف لقاء</span>
+                            <a href="{{route('addUniversity')}}" class="nav-link ">
+                                    <span class="title">أضف جامعة</span>
                                 </a>
                             </li>
                             @endif
                     </ul>
                 </li>
-            <li class="nav-item  ">
-            <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-graduation"></i>
-                    <span class="title">الجامعات</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="{{route('allUniversity')}}" class="nav-link ">
-                                <span class="title">لائحة الجامعات</span>
-                            </a>
-                        </li>
-                        @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                        <li class="nav-item  ">
-                        <a href="{{route('addUniversity')}}" class="nav-link ">
-                                <span class="title">أضف جامعة</span>
-                            </a>
-                        </li>
-                        @endif
-                </ul>
-            </li>
+
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="icon-directions"></i>
@@ -227,231 +299,181 @@
                                 </li>
                                 @endif
                         </ul>
-                    </li>
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-grid"></i>
-                                <span class="title">الكليات</span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                    <li class="nav-item  ">
-                                        <a href="{{route('allFaculty')}}" class="nav-link ">
-                                            <span class="title">لائحة الكليات</span>
-                                        </a>
-                                    </li>
-                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                    <li class="nav-item  ">
-                                    <a href="{{route('addFaculty')}}" class="nav-link ">
-                                            <span class="title">أضف كلية</span>
-                                        </a>
-                                    </li>
-                                    @endif
-                            </ul>
-                        </li>
-                       
-                            <li class="nav-item  ">
-                                <a href="javascript:;" class="nav-link nav-toggle">
-                                        <i class="icon-badge"></i>
-                                        <span class="title">المعايير</span>
-                                        <span class="arrow"></span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                            <li class="nav-item  ">
-                                                <a href="{{route('allCriteria')}}" class="nav-link ">
-                                                    <span class="title">لائحة المعايير</span>
-                                                </a>
-                                            </li>
-                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                            <li class="nav-item  ">
-                                            <a href="{{route('addCriteria')}}" class="nav-link ">
-                                                    <span class="title">أضف معيار</span>
-                                                </a>
-                                            </li>
-                                            @endif
-                                            <li class="nav-item  ">
-                                                <a href="{{route('searcherok')}}" class="nav-link ">
-                                                        <span class="title">الباحثين المستوفين</span>
-                                                    </a>
-                                                </li>
-                                                <li class="nav-item  ">
-                                                    <a href="{{route('searcherko')}}" class="nav-link ">
-                                                            <span class="title">الباحثين الغير مستوفين</span>
-                                                        </a>
-                                                    </li>
-                                    </ul>
-                                </li>
-                                <li class="nav-item  ">
-                                    <a href="javascript:;" class="nav-link nav-toggle">
-                                            <i class="icon-globe"></i>
-                                            <span class="title">الجنسيات</span>
-                                            <span class="arrow"></span>
-                                        </a>
-                                        <ul class="sub-menu">
-                                                <li class="nav-item  ">
-                                                    <a href="{{route('allNationalite')}}" class="nav-link ">
-                                                        <span class="title">لائحة الجنسيات</span>
-                                                    </a>
-                                                </li>
-                                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                                <li class="nav-item  ">
-                                                <a href="{{route('addNationalite')}}" class="nav-link ">
-                                                        <span class="title">أضف جنسية</span>
-                                                    </a>
-                                                </li>
-                                                @endif
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item  ">
-                                        <a href="javascript:;" class="nav-link nav-toggle">
-                                                <i class="icon-docs"></i>
-                                                <span class="title">الكتب</span>
-                                                <span class="arrow"></span>
-                                            </a>
-                                            <ul class="sub-menu">
-                                                    <li class="nav-item  ">
-                                                        <a href="{{route('allBook')}}" class="nav-link ">
-                                                            <span class="title">لائحة الكتب</span>
-                                                        </a>
-                                                    </li>
-                                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                                    <li class="nav-item  ">
-                                                    <a href="{{route('addBook')}}" class="nav-link ">
-                                                            <span class="title">أضف كتاب</span>
-                                                        </a>
-                                                    </li>
-                                                    @endif
-                                            </ul>
-                                        </li>
-                                       
-                                                <li class="nav-item  ">
-                                                        <a href="{{route('allAdminReports')}}" class="nav-link nav-toggle">
-                                                                <i class="icon-notebook"></i>
-                                                                <span class="title">التقارير</span>
-                                                                <span class="arrow"></span>
-                                                            </a>
-                                                        </li>
-                                        <li class="nav-item  ">
-                                            <a href="javascript:;" class="nav-link nav-toggle">
-                                                    <i class="icon-credit-card"></i>
-                                                    <span class="title">المساعدات</span>
-                                                    <span class="arrow"></span>
-                                                </a>
-                                                <ul class="sub-menu">
-                                                        <li class="nav-item  ">
-                                                            <a href="{{route('allHelp')}}" class="nav-link ">
-                                                                <span class="title">لائحة المساعدات</span>
-                                                            </a>
-                                                        </li>
-                                                        @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                                        <li class="nav-item  ">
-                                                        <a href="{{route('addHelp')}}" class="nav-link ">
-                                                                <span class="title">أضف مساعدة</span>
-                                                            </a>
-                                                        </li>
-                                                        @endif
-                                                </ul>
-                                            </li>
-                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                            <li class="nav-item  ">
-                                                <a href="javascript:;" class="nav-link nav-toggle">
-                                                        <i class="icon-chemistry"></i>
-                                                        <span class="title">الاختبارات</span>
-                                                        <span class="arrow"></span>
-                                                    </a>
-                                                    
-                                                    <ul class="sub-menu">
-                                                            <li class="nav-item  ">
-                                                            <a href="{{route('addProvide')}}" class="nav-link ">
-                                                                    <span class="title">أضف اختبار</span>
-                                                                </a>
-                                                            </li>
-                                                    </ul>
-                                                </li>
-                                                @endif
-                                                <li class="nav-item  ">
-                                                    <a href="javascript:;" class="nav-link nav-toggle">
-                                                            <i class="icon-envelope-open"></i>
-                                                            <span class="title">ارسال بريد</span>
-                                                            <span class="arrow"></span>
-                                                        </a>
-                                                        <ul class="sub-menu">
-                                                                <li class="nav-item  ">
-                                                                    <a href="{{route('sendEmailSup')}}" class="nav-link ">
-                                                                        <span class="title"> الى المشرفين </span>
-                                                                    </a>
-                                                                </li>
-                                                                <li class="nav-item  ">
-                                                                <a href="{{route('SendEmailStu')}}" class="nav-link ">
-                                                                        <span class="title">الى الطلاب</span>
-                                                                    </a>
-                                                                </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="nav-item  ">
-                                                        <a href="javascript:;" class="nav-link nav-toggle">
-                                                                <i class="icon-bubbles"></i>
-                                                                <span class="title">ارسال SMS</span>
-                                                                <span class="arrow"></span>
-                                                            </a>
-                                                            <ul class="sub-menu">
-                                                                    <li class="nav-item  ">
-                                                                        <a href="{{route('sendSMSSup')}}" class="nav-link ">
-                                                                            <span class="title"> الى المشرفين </span>
-                                                                        </a>
-                                                                    </li>
-                                                                    <li class="nav-item  ">
-                                                                    <a href="{{route('sendSMSStu')}}" class="nav-link ">
-                                                                            <span class="title">الى الطلاب</span>
-                                                                        </a>
-                                                                    </li>
-                                                            </ul>
-                                                        </li>
-                                                       
-                                                        <li class="nav-item  ">
-                                                                <a href="{{route('allConfigs')}}" class="nav-link nav-toggle">
-                                                                        <i class="icon-settings"></i>
-                                                                        <span class="title">الاعدادات</span>
-                                                                        <span class="arrow"></span>
-                                                                    </a>
-                                                                </li>
-                                                        @endif
-                     @if(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
-                     <li class="nav-item  ">
-                        <a href="{{route('supervisorProfile')}}" class="nav-link nav-toggle">
-                            <i class="icon-user"></i>
-                            <span class="title">معلوماتي</span>
+                </li>
+
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-grid"></i>
+                            <span class="title">الكليات</span>
                             <span class="arrow"></span>
                         </a>
+                        <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{route('allFaculty')}}" class="nav-link ">
+                                        <span class="title">لائحة الكليات</span>
+                                    </a>
+                                </li>
+                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                <li class="nav-item  ">
+                                <a href="{{route('addFaculty')}}" class="nav-link ">
+                                        <span class="title">أضف كلية</span>
+                                    </a>
+                                </li>
+                                @endif
+                        </ul>
                     </li>
+                       
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-badge"></i>
+                            <span class="title">المعايير</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{route('allCriteria')}}" class="nav-link ">
+                                        <span class="title">لائحة المعايير</span>
+                                    </a>
+                                </li>
+                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                <li class="nav-item  ">
+                                <a href="{{route('addCriteria')}}" class="nav-link ">
+                                        <span class="title">أضف معيار</span>
+                                    </a>
+                                </li>
+                                @endif
+                                <li class="nav-item  ">
+                                    <a href="{{route('searcherok')}}" class="nav-link ">
+                                            <span class="title">الباحثين المستوفين</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item  ">
+                                        <a href="{{route('searcherko')}}" class="nav-link ">
+                                                <span class="title">الباحثين الغير مستوفين</span>
+                                            </a>
+                                        </li>
+                        </ul>
+                </li>
 
-                     <li class="nav-item  ">
-                        <a href="{{route('allSearcherSupervisor')}}" class="nav-link nav-toggle">
-                                <i class="icon-users"></i>
-                                <span class="title">طلابي</span>
-                                <span class="arrow"></span>
-                            </a>
+                <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-globe"></i>
+                        <span class="title">الجنسيات</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                            <li class="nav-item  ">
+                                <a href="{{route('allNationalite')}}" class="nav-link ">
+                                    <span class="title">لائحة الجنسيات</span>
+                                </a>
+                            </li>
+                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                            <li class="nav-item  ">
+                            <a href="{{route('addNationalite')}}" class="nav-link ">
+                                    <span class="title">أضف جنسية</span>
+                                </a>
+                            </li>
+                            @endif
+                    </ul>
+             </li>
+
+                <li class="nav-item  ">
+                    <a href="{{route('allAdminReports')}}" class="nav-link nav-toggle">
+                            <i class="icon-notebook"></i>
+                            <span class="title">التقارير</span>
+                            <span class="arrow"></span>
+                        </a>
+                </li>
+
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-credit-card"></i>
+                            <span class="title">المساعدات</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{route('allHelp')}}" class="nav-link ">
+                                        <span class="title">لائحة المساعدات</span>
+                                    </a>
+                                </li>
+                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                <li class="nav-item  ">
+                                <a href="{{route('addHelp')}}" class="nav-link ">
+                                        <span class="title">أضف مساعدة</span>
+                                    </a>
+                                </li>
+                                @endif
+                        </ul>
+                </li>
+
+                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-chemistry"></i>
+                            <span class="title">الاختبارات</span>
+                            <span class="arrow"></span>
+                        </a>
+
+                        <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                <a href="{{route('addProvide')}}" class="nav-link ">
+                                        <span class="title">أضف اختبار</span>
+                                    </a>
+                                </li>
+                        </ul>
                     </li>
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-chemistry"></i>
-                                <span class="title">تقاريري </span>
+                @endif
+
+                <li class="nav-item  ">
+                        <a href="{{route('allConfigs')}}" class="nav-link nav-toggle">
+                                <i class="icon-settings"></i>
+                                <span class="title">الاعدادات</span>
                                 <span class="arrow"></span>
                             </a>
-                            <ul class="sub-menu">
-                                    <li class="nav-item  ">
-                                        <a href="{{route('allSupervisorReports')}}" class="nav-link ">
-                                            <span class="title"> لائحة تقاريري </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item  ">
-                                    <a href="{{route('addSupervisorReport')}}" class="nav-link ">
-                                            <span class="title">اضافة تقرير</span>
-                                        </a>
-                                    </li>
-                            </ul>
-                        </li>
-                     @endif
+                </li>
+
+                @endif
+
+            @endif
+
+
+                @if(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
+                <li class="nav-item  ">
+                    <a href="{{route('supervisorProfile')}}" class="nav-link nav-toggle">
+                        <i class="icon-user"></i>
+                        <span class="title">معلوماتي</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+
+                <li class="nav-item  ">
+                    <a href="{{route('allSearcherSupervisor')}}" class="nav-link nav-toggle">
+                            <i class="icon-users"></i>
+                            <span class="title">طلابي</span>
+                            <span class="arrow"></span>
+                        </a>
+                </li>
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-chemistry"></i>
+                            <span class="title">تقاريري </span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
+                                <li class="nav-item  ">
+                                    <a href="{{route('allSupervisorReports')}}" class="nav-link ">
+                                        <span class="title"> لائحة تقاريري </span>
+                                    </a>
+                                </li>
+                                <li class="nav-item  ">
+                                <a href="{{route('addSupervisorReport')}}" class="nav-link ">
+                                        <span class="title">اضافة تقرير</span>
+                                    </a>
+                                </li>
+                        </ul>
+                 </li>
+                 @endif
 
 
 

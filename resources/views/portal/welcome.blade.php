@@ -52,7 +52,7 @@
                <div class="number">
                   <span data-counter="counterup" data-value="{{count($supervisors)}}">{{count($supervisors)}}</span>
                </div>
-               <div class="desc"> المشرفين </div>
+               <div class="desc"> المشرفون </div>
             </div>
          </a>
       </div>
@@ -93,7 +93,7 @@
                <div class="number">
                   <span data-counter="counterup" data-value="{{count($provides)}}">{{count($provides)}}</span>
                </div>
-               <div class="desc"> المراجعين </div>
+               <div class="desc"> المراجعون </div>
             </div>
          </a>
       </div>
