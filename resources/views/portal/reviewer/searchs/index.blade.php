@@ -23,9 +23,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -49,7 +46,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة البحوث بالنظام  </span>
+                            <span class="caption-subject bold uppercase">لائحة البحوث   </span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -58,15 +55,13 @@
                             <thead>
                                 <tr>
                                     
-                                    <th class="all">الاسم</th>
-                                    <th class="none">الاختصار</th>
+                                    <th class="all">اسم الجزء البحثي</th>
+
                                     <th class="all">القسم</th>
-                                    <th class="all">المبحث</th>
+
                                     <th class="all">الباحث</th>
-                                    <th class="none"> الترتيب</th>
-                                    <th class="all">الملف</th>
-                                    <th class="all">الحالة</th>
-                                    <th class="all">خيارات.</th>
+                                     <th class="all">تحميل البحث</th>
+                                     <th class="all">تحكيم البحث</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,41 +69,24 @@
                                 <tr>
                                     
                                     <td>{{$search->Name}}</td>
-                                    <td>{{$search->Alias}}</td>
+
                                     <td>{{$search->divname}}</td>
-                                    <td>{{$search->NameDivUni}}</td>
+
                                     <td>{{$search->Fistname}} {{$search->LastName}}</td>
-                                    <td>{{$search->Order}}</td>
-                                    <td>
+                                     <td>
                                         <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
                                     </td>
-                                    <td>  @if($search->Progress=='تم الرفع') 
+                                   {{-- <td>  @if($search->Progress=='تم الرفع')
                                         <span class="badge badge-warning">{{$search->Progress}}</span>
                                         @elseif($search->Progress=='رفض الادارة' || $search->Progress=='رفض المشرف' ) 
                                         <span class="badge badge-danger">{{$search->Progress}}</span>
                                         @elseif($search->Progress=='موافقة المشرف' || $search->Progress=='موافقة الادارة' ) 
                                         <span class="badge badge-success">{{$search->Progress}}</span>
                                         @endif                                    
-                                    </td>
+                                    </td>--}}
                                     <td>
-                                        <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                              
-                                                <li>
-                                                <a data-toggle="confirmation"
-                                                data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
-                                                data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
-                                                data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
-                                                data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
-                                                data-title="هل تريد الموافقة ؟" href="{{route('getOneSearch',$search->ID)}}">
-                                                        <i class="fa fa-search"></i> اظهار البحث </a>
-                                                </li>
-                                               
-                                            </ul>
-                                        </div>
+                                        <a  href="{{route('getOneSearch',$search->ID)}}">
+                                            <i class="fa fa-search"></i> تحكيم البحث </a>
                                            
                                     </td>
                                 </tr>

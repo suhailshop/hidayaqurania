@@ -177,8 +177,18 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchs/getAllMySearchs','Reviewer\SearchController@getAllMySearchs')->name('getAllMySearchs');
     Route::get('/searchs/getOneMySearch/{id}','Reviewer\SearchController@getOneMySearch')->name('getOneMySearch');
     Route::post('/searchs/addreviewers_reports','Reviewer\SearchController@addreviewers_reports')->name('addreviewers_reports');
-    
-    
+    Route::get('/reviewer/myprofile','Reviewer\MyProfilController@index')->name('reviewerProfile');
+    Route::post('/reviewer/editmyprofile','Reviewer\MyProfilController@editPost')->name('reviewerProfileEdit');
+    Route::post('/reviewer/editavatar','Reviewer\MyProfilController@editAvatar')->name('reviewerProfileEditAvatar');
+    Route::post('/reviewer/editpassword','Reviewer\MyProfilController@editPassword')->name('reviewerProfileEditPassword');
+
+
+
+
+
+
+
+
     //----------------------- Supervisor -----------------------------
     
     Route::get('/supervisor/myprofile','Supervisor\MyProfilController@index')->name('supervisorProfile');
@@ -193,7 +203,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/updateSearchProgressok/{id}','Supervisor\SearchController@updateSearchProgressok')->name('updateSearchProgressok');
     Route::get('/supervisor/updateSearchProgressko/{id}','Supervisor\SearchController@updateSearchProgressko')->name('updateSearchProgressko');
     Route::post('/supervisor/addsupervisor_reports','Supervisor\SearchController@addsupervisor_reports')->name('addsupervisor_reports');
-    
+
+    Route::get('/supervisor/getSearcherProfile/{id}','Supervisor\SearcherController@getSearcherProfile')->name('getSearcherProfile');
+
     Route::get('/supervisor/reports','Supervisor\ReportController@index')->name('allSupervisorReports');
     Route::get('/supervisor/addReport','Supervisor\ReportController@add')->name('addSupervisorReport');
     Route::post('/supervisor/addReportPost','Supervisor\ReportController@addPost')->name('addSupervisorReportPost');

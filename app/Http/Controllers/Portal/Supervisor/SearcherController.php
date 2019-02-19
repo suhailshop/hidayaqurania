@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Supervisor;
 
+use App\Nationalitie;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -54,6 +55,18 @@ class SearcherController extends Controller
         ->get();
         return view('portal.supervisor.searchers.getSearcherSearchs',compact('searchs','searcher'));
     }
+
+
+
+    // search profile with limit info for supervisor
+    public function getSearcherProfile($id) {
+        $searcher = Registration::where('ID',$id)->get()->first();
+        $nationalities = Nationalitie::all();
+        $countries = Countrie::all();
+        return view('portal.supervisor.searchers.SearcherProfile',compact('searcher' , 'nationalities' , 'countries'));
+    }
+
+
     
     public function addSupervisorNote(Request $request){
         

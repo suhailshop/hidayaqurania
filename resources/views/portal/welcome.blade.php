@@ -20,13 +20,18 @@
       </ul>
    </div>
    <!-- END PAGE HEADER-->
+
+
+
+
+
    {{--
    حساب الإدارة
    --}}
    @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
    <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allSearcher')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcher')}}">
             <div class="visual">
                <i class="fa fa-users"></i>
             </div>
@@ -39,7 +44,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('allSupervisor')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSupervisor')}}">
             <div class="visual">
                <i class="fa fa-briefcase"></i>
             </div>
@@ -52,7 +57,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 green" href="{{route('allUniversity')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allUniversity')}}">
             <div class="visual">
                <i class="fa fa-graduation-cap"></i>
             </div>
@@ -65,7 +70,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 purple" href="{{route('allCountrie')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allCountrie')}}">
             <div class="visual">
                <i class="fa fa-globe"></i>
             </div>
@@ -88,12 +93,12 @@
                <div class="number">
                   <span data-counter="counterup" data-value="{{count($provides)}}">{{count($provides)}}</span>
                </div>
-               <div class="desc"> التزويدات </div>
+               <div class="desc"> المراجعين </div>
             </div>
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 green-haze " href="{{route('allBook')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint " href="{{route('allBook')}}">
             <div class="visual">
                <i class="fa fa-book"></i>
             </div>
@@ -106,7 +111,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 purple-plum" href="{{route('allThese')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allThese')}}">
             <div class="visual">
                <i class="fa fa-comments"></i>
             </div>
@@ -119,7 +124,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allHelp')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allHelp')}}">
             <div class="visual">
                <i class="fa fa-credit-card"></i>
             </div>
@@ -178,6 +183,80 @@
          </div>
       </div>
    </div>
+
+
+
+
+
+
+        {{-- حساب المراجع --}}
+    @elseif(auth()->user()->hasRole('reviewer',auth()->user()->role_id))
+        {{--الملخص--}}
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearchs')}}">
+                    <div class="visual">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{count($searchs)}}">{{count($searchs)}}</span>
+                        </div>
+                        <div class="desc"> أبحاث لم يتم مراجعتها </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcherReports')}}">
+                    <div class="visual">
+                        <i class="fa fa-briefcase"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{count($myreports)}}">{{count($myreports)}}</span>
+                        </div>
+                        <div class="desc"> أبحاث تمت مراجعتها </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allbookssearcher')}}">
+                    <div class="visual">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
+                        </div>
+                        <div class="desc">إجمالي الأبحاث </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
+                    <div class="visual">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="10">10</span>
+                        </div>
+                        <div class="desc">  تقارير الإدارة </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+       {{--حساب المشرف--}}
    @elseif(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
    {{--الملخص--}}
    <div class="row">
@@ -243,7 +322,7 @@
             <div class="portlet-title">
                <div class="caption font-dark">
                   <i class="icon-graduation font-dark"></i>
-                  <span class="caption-subject bold uppercase">لائحة الباحثين تحت اشرافي بالنظام</span>
+                  <span class="caption-subject bold uppercase">لائحة الباحثين تحت اشرافي </span>
                </div>
             </div>
             <div class="portlet-body">
@@ -261,7 +340,8 @@
                   <tbody>
                      @foreach($searchers as $searcher)
                      <tr>
-                        <td>{{$searcher->Fistname}} {{$searcher->LastName}}</td>
+                        <td>   <a href="{{route('getSearcherProfile',['id'=>$searcher->ID])}}" >
+                            {{$searcher->Fistname}} {{$searcher->LastName}}  </a> </td>
                         <td>{{$searcher->City}}</td>
                         <td>{{$searcher->Email}}</td>
                         <td>{{$searcher->University}}</td>
@@ -277,6 +357,16 @@
             </div>
          </div>
       </div>
+
+
+
+
+
+
+
+
+
+{{--حساب الباحث   --}}
       @elseif(auth()->user()->hasRole('student',auth()->user()->role_id))
       <div class="row">
          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -333,7 +423,7 @@
          </div>
       </div>
      
-      <div class="portlet light portlet-fit ">
+                    <div class="portlet light portlet-fit ">
          <div class="portlet-body">
             <div class="mt-element-list">
                <div class="mt-list-head list-todo ">
@@ -377,7 +467,7 @@
                                         <?php $exist1=false;?>
                                        <div class="timeline  white-bg white-bg">
                                           @foreach($my_searchs as $search)
-                                            @if($search->cycle->name == 'التقرير الدوري الأول' )
+                                            @if($search->cycle->name == 'التقرير الدوري الأول' && $search->Status =='yes' )
                                                 <?php $exist1=true;?>
                                                 <div class="timeline-item">
                                                     <div class="timeline-badge">
@@ -407,6 +497,7 @@
                                                 </div>
                                             @endif
                                           @endforeach
+
                                           @if(!$exist1)
                                              <div class="timeline-item">
                                                 <div class="timeline-badge">
@@ -438,10 +529,12 @@
                                              </div>
                                           @endif
                                           <!-- END TIMELINE ITEM -->
+
+
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الثاني' )
+                                          @if($search->cycle->name == 'التقرير الدوري الثاني' && $search->Status =='yes')
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -472,6 +565,7 @@
                                               </div>
                                           @endif
                                           @endforeach
+
                                           @if(!$exist1)
                                            <div class="timeline-item">
                                               <div class="timeline-badge">
@@ -506,7 +600,7 @@
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الثالث' )
+                                          @if($search->cycle->name == 'التقرير الدوري الثالث' && $search->Status =='yes' )
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -571,7 +665,7 @@
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الرابع' )
+                                          @if($search->cycle->name == 'التقرير الدوري الرابع' && $search->Status =='yes')
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -677,7 +771,7 @@
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الخامس' )
+                                          @if($search->cycle->name == 'التقرير الدوري الخامس' && $search->Status =='yes')
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -743,7 +837,7 @@
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري السادس' )
+                                          @if($search->cycle->name == 'التقرير الدوري السادس' && $search->Status =='yes')
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -808,7 +902,7 @@
                                           
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري السابع' )
+                                          @if($search->cycle->name == 'التقرير الدوري السابع' && $search->Status =='yes' )
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -874,7 +968,7 @@
                                           
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الثامن' )
+                                          @if($search->cycle->name == 'التقرير الدوري الثامن' && $search->Status =='yes' )
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -979,7 +1073,7 @@
                                           
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري التاسع' )
+                                          @if($search->cycle->name == 'التقرير الدوري التاسع' && $search->Status =='yes')
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -1044,7 +1138,7 @@
                                           
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري العاشر' )
+                                          @if($search->cycle->name == 'التقرير الدوري العاشر' && $search->Status =='yes' )
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -1109,7 +1203,7 @@
                                           
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الحادي عشر' )
+                                          @if($search->cycle->name == 'التقرير الدوري الحادي عشر' && $search->Status =='yes' )
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -1175,7 +1269,7 @@
                                           
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الثاني عشر' )
+                                          @if($search->cycle->name == 'التقرير الدوري الثاني عشر' && $search->Status =='yes')
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -1252,10 +1346,15 @@
          </div>
       </div>
       @endif
+
+
+
    </div>
    <!-- END CONTENT BODY -->
 </div>
 <!-- END CONTENT -->
+
+
 @section('pageScript')
 <script src="{!! asset('assets/global/plugins/counterup/jquery.waypoints.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('assets/global/plugins/counterup/jquery.counterup.min.js') !!}" type="text/javascript"></script>

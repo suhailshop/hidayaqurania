@@ -20,6 +20,10 @@
                 </a>
                 
             </li>
+
+
+
+           {{-- قائمة المراجع--}}
             @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id))
             <li class="nav-item  ">
                 <a href="{{route('getAllMySearchs')}}" class="nav-link nav-toggle">
@@ -28,7 +32,20 @@
                         <span class="arrow"></span>
                     </a>
                 </li>
+
+                <li class="nav-item  ">
+                    <a href="{{route('reviewerProfile')}}" class="nav-link nav-toggle">
+                        <i class="icon-user"></i>
+                        <span class="title">معلوماتي</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
             @endif
+
+
+
+
+
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
          
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
@@ -78,11 +95,13 @@
             </li>
 
             @endif
+
+
             @if(auth()->user()->hasRole('admin2',auth()->user()->role_id))
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-like"></i>
-                        <span class="title">المراجعين</span>
+                        <span class="title">المراجعون</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -103,21 +122,15 @@
             <li class="nav-item  ">
                 <a href="{{route('allSearcher')}}" class="nav-link nav-toggle">
                         <i class="icon-users"></i>
-                        <span class="title">الباحثين</span>
+                        <span class="title">الباحثون</span>
                         <span class="arrow"></span>
                     </a>
             </li>
-            <li class="nav-item  ">
-                <a href="{{route('allSubmissions')}}" class="nav-link nav-toggle">
-                        <i class="icon-paper-plane"></i>
-                        <span class="title">التقديمات</span>
-                        <span class="arrow"></span>
-                    </a>
-            </li>
+
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-briefcase"></i>
-                        <span class="title">المشرفين</span>
+                        <span class="title">المشرفون</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -135,13 +148,23 @@
                             @endif
                     </ul>
             </li>
+
             <li class="nav-item  ">
                     <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
                             <i class="icon-docs"></i>
-                            <span class="title">البحوث</span>
+                            <span class="title">جميع البحوث</span>
                             <span class="arrow"></span>
                         </a>
-                    </li>
+             </li>
+
+            <li class="nav-item  ">
+                <a href="{{route('allSubmissions')}}" class="nav-link nav-toggle">
+                    <i class="icon-paper-plane"></i>
+                    <span class="title">التقديمات</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-cup"></i>
@@ -438,6 +461,14 @@
 
                      @if(auth()->user()->hasRole('student',auth()->user()->role_id))
 
+                <li class="nav-item  ">
+                    <a href="{{route('searcherProfile')}}" class="nav-link nav-toggle">
+                        <i class="icon-user"></i>
+                        <span class="title">معلوماتي</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+
 
                     <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
@@ -460,13 +491,26 @@
                 </li>
 
 
-                    <li class="nav-item  ">
-                        <a href="{{route('searcherProfile')}}" class="nav-link nav-toggle">
-                            <i class="icon-user"></i>
-                            <span class="title">معلوماتي</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
+
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-compass"></i>
+                        <span class="title">الخطة الزمنية </span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="{{route('searcherPlan')}}" class="nav-link ">
+                                <span class="title"> لائحة التسجيلات </span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('addPlan')}}" class="nav-link ">
+                                <span class="title">اضافة تسجيل</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
 
                     <li class="nav-item  ">
@@ -478,37 +522,20 @@
                     </li>
 
 
-                    <li class="nav-item  ">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                                <i class="icon-compass"></i>
-                                <span class="title">الخطة الزمنية </span>
-                                <span class="arrow"></span>
-                            </a>
-                            <ul class="sub-menu">
-                                    <li class="nav-item  ">
-                                        <a href="{{route('searcherPlan')}}" class="nav-link ">
-                                            <span class="title"> لائحة التسجيلات </span>
-                                        </a>
-                                    </li>
-                                    <li class="nav-item  ">
-                                    <a href="{{route('addPlan')}}" class="nav-link ">
-                                            <span class="title">اضافة تسجيل</span>
-                                        </a>
-                                    </li>
-                            </ul>
-                    </li>
+
 
 
                     <li class="nav-item  ">
                         <a href="{{route('allHelp')}}" class="nav-link nav-toggle">
                                 <i class="icon-credit-card"></i>
-                                <span class="title">المساعدات</span>
+                                <span class="title">تنبيهات الإدارة</span>
                                 <span class="arrow"></span>
                             </a>
                     </li>
 
 
 
+{{--
 
 
                      <li class="nav-item  ">
@@ -531,6 +558,7 @@
                                 </ul>
                     </li>
 
+--}}
 
 
 

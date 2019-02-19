@@ -21,9 +21,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -56,21 +53,10 @@
                             <thead>
                                 <tr>
                                     <th class="min-phone-l">الاسم الكامل</th>
-                                    <th class="none">الجنس</th>
-                                    <th class="desc">تاريخ الازدياد</th>
-                                    <th class="none">مكان الازدياد</th>
-                                    <th class="desktop">الجنسية</th>
-                                    <th class="none">الدولة</th>
-                                    <th class="none">المدينة</th>
-                                    <th class="none">العنوان</th>
-                                    <th class="none">رقم جواز السفر</th>
-                                    <th class="none">الرقم الوطني</th>
-                                    <th class="none"> البريد الالكتروني </th>
-                                    <th class="none"> الهاتف</th>
-                                    <th class="none"> الجامعة</th>
-                                    <th class="none">الكلية</th>
-                                    <th class="none">الصورة</th>
-                                    <th class="desktop">الاطروحة</th>
+                                               <th class="desktop"> الجامعة</th>
+                                    <th class="all">الكلية</th>
+
+                                    <th class="all">عنوان الرسالة</th>
                                     <th class="desktop">الحالة</th>
                                     <th class="all">خيارات.</th>
                                 </tr>
@@ -78,36 +64,29 @@
                             <tbody>
                                 @foreach($searchers as $searcher)
                                 <tr>
-                                    <td>{{$searcher->Fistname}} {{$searcher->LastName}}</td>
-                                    <td>{{$searcher->Gender}}</td>
-                                    <td>{{$searcher->BirthDate}}</td>
-                                    <td>{{$searcher->BirthCity}}</td>
-                                    <td>{{$searcher->countrieName}}</td>
-                                    <td>{{$searcher->nationalitieName}}</td>
-                                    <td>{{$searcher->City}}</td>
-                                    <th>{{$searcher->Location}}</th>
-                                    <td>{{$searcher->PassportNumber}}</td>
-                                    <td>{{$searcher->NationalNumber}}</td>
-                                    <td>{{$searcher->Email}}</td>
-                                    <td>{{$searcher->Phonne1}}</td>
-                                    <td>{{$searcher->University}}</td>
+                                    <td>    <a href="{{route('getSearcherProfile',['id'=>$searcher->ID])}}" >
+                                            {{$searcher->Fistname}} {{$searcher->LastName}}
+                                        </a> </td>
+                                     <td>{{$searcher->University}}</td>
                                     <td>{{$searcher->Faculty}}</td>
-                                    <td>
-                                        <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}"
-                                            style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
-                                    </td>
+
                                     
                                     <td>{{$searcher->thesesTitle}}</td>
                                     <td>{{$searcher->Status}}</td>
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
-                                                <li>
+                                                <li class="myfont">
                                                 <a href="{{route('getSearcherSearchs',['id'=>$searcher->ID])}}" >
                                                     <i class="fa fa-search-plus"></i> البحوث</a>
+                                                </li>
+
+                                                <li class="myfont">
+                                                    <a href="{{route('getSearcherSearchs',['id'=>$searcher->ID])}}" >
+                                                        <i class="fa fa-search-plus"></i> صفحة الطالب</a>
                                                 </li>
                                                 
 

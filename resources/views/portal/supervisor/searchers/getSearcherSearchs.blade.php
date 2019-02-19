@@ -21,9 +21,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -47,7 +44,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة البحوث الخاصة بالطالب  : {{$searcher->Fistname}} {{$searcher->LastName}} </span>
+                            <span class="caption-subject bold uppercase">لائحة البحوث الخاصة بالباحث  : {{$searcher->Fistname}} {{$searcher->LastName}} </span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -55,33 +52,38 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="all">الاختصار</th>
+
                                     <th class="all">الاسم</th>
                                     <th class="all">القسم </th>
-                                    <th class="all">المبحث</th>
-                                    <th class="none"> الترتيب</th>
-                                    <th class="all">الحالة</th>
-                                    <th class="all">الملف</th>
-                                    <th class="none">الملاحظات</th>
+
+
+                                     <th class="all">تحميل البحث</th>
+                                    <th class="all">ملاحظات المشرف</th>
                                     <th class="all">خيارات.</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($searchs as $search)
                                 <tr>
-                                    <td>{{$search->Alias}}</td>
-                                    <td>{{$search->Name}}</td>
+
+                                    <td>
+                                        <a   href="{{route('getOneSearch',$search->ID)}}">
+                                             {{$search->Name}}</a>
+
+                                       </td>
+
+
                                     <td>{{$search->diviName}}</td>
-                                    <td>{{$search->divName}}</td>
-                                    <td>{{$search->Order}}</td>
-                                    <td>  @if($search->Progress=='تم الرفع') 
+
+
+                                  {{--  <td>  @if($search->Progress=='تم الرفع')
                                             <span class="badge badge-warning">{{$search->Progress}}</span>
                                             @elseif($search->Progress=='رفض الادارة' || $search->Progress=='رفض المشرف' ) 
                                             <span class="badge badge-danger">{{$search->Progress}}</span>
                                             @elseif($search->Progress=='موافقة المشرف' || $search->Progress=='موافقة الادارة' ) 
                                             <span class="badge badge-success">{{$search->Progress}}</span>
                                             @endif                                    
-                                        </td>
+                                        </td>--}}
                                     <td>
                                         <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
                                     </td>
@@ -90,28 +92,24 @@
                                         
                                             
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
                                                     @if(!isset($search->Note))
-                                                <li>
+                                                <li class="myfont">
                                                 <a href="#" type="button" data-toggle="modal" data-target="#exampleModal{{$search->ID}}">
                                                         <i class="fa fa-comment"></i> اضافة ملاحظة </a>
                                                 </li>
 
                                                 
                                         @endif
-                                        <li>
-                                                <a data-toggle="confirmation"
-                                                data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
-                                                data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
-                                                data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
-                                                data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
-                                                data-title="هل تريد الموافقة ؟" href="{{route('getOneSearch',$search->ID)}}">
-                                                        <i class="fa fa-search"></i> اظهار البحث </a>
-                                                </li>
-                                        <li>
+                                        <li class="myfont">
+                                                <a   href="{{route('getOneSearch',$search->ID)}}">
+                                                        <i class="fa fa-search"></i> تفاصيل البحث </a>
+                                        </li>
+
+                                    {{--    <li>
                                                 <a data-toggle="confirmation"
                                                 data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
                                                 data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
@@ -128,7 +126,7 @@
                                                         data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
                                                         data-title="هل تريد الرفض ؟" href="{{route('updateSearchProgressko',['id'=>$search->ID])}}">
                                                                 <i class="fa fa-close"></i> رفض المشرف </a>
-                                                        </li>
+                                                        </li>--}}
                                             </ul>
                                         </div>
                                     </td>

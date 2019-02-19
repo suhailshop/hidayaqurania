@@ -45,11 +45,12 @@
                             <i class="fa fa-angle-left"></i>
                         </li>
 
-                    @else
+                    @elseif(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
 
                     <li>
                         <i class="icon-chemistry"></i>
-                        <a href="{{route('getAllSearchs')}}">لائحة البحوث</a>
+                        <a href="{{route('getSearcherSearchs',['id'=>$search->Searcher])}}" > إدارة بحوث الطالب</a>
+                       {{-- <a href="{{route('getAllSearchs')}}">إدارة بحوث الطالب</a>--}}
                         <i class="fa fa-angle-left"></i>
                     </li>
 
