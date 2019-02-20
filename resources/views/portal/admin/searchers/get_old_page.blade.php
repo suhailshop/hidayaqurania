@@ -26,9 +26,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -38,7 +35,7 @@
                     </li>
                     <li>
                             <i class="icon-user"></i>
-                        <span>معلومات الطالب</span>
+                        <span>صفحة الباحث</span>
                     </li>
                 </ul>
             </div>
@@ -146,6 +143,8 @@
                                                             <div class="form-group">
                                                                 <label class="control-label visible-ie8 visible-ie9">المدينة</label>
                                                                 <input  value="{{$searcher->City}}" class="form-control placeholder-no-fix" type="text"  name="City" /> </div>
+
+
                                                             
                                                             <p class="hint"> نسبة التقدم في الاطروحة : @if(isset($searcher->progress)) {{ ceil(((($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress) * 100)/ (($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress))}}% @else 0% @endif </p>
                                                                 <div class="progress">
@@ -156,6 +155,12 @@
                                                                 <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%"></div>
                                                                     </div>
                                                                       @endif
+
+
+
+
+
+
                                                             <div class="form-group">
                                                                 <label class="control-label ">الجامعة : </label>
                                                                 <input  value="{{$searcher->University}}" class="form-control placeholder-no-fix" type="text"   name="University" /> </div>              

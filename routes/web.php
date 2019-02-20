@@ -50,7 +50,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/users/addUserSearcherPost','Admin\UserController@addUserSearcherPost')->name('addUserSearcherPost');
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
-    Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@get')->name('getSearcher');
+    Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@getSearch')->name('getSearcher');
     Route::post('/searchers/addToMeeting','Admin\SearcherController@addToMeeting')->name('addToMeeting');
     Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
     Route::post('/searchers/addCriteriasToSearcher','Admin\SearcherController@addCriteriasToSearcher')->name('addCriteriasToSearcher'); 
@@ -59,6 +59,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchers/editPlanEnable','Admin\SearcherController@editPlanEnable')->name('editPlanEnable');
     Route::get('/searchers/editStatusSearcher/{id}/{status}','Admin\SearcherController@editStatusSearcher')->name('editStatusSearcher');
     Route::post('/searchers/updateSearcherInfos','Admin\SearcherController@updateSearcherInfos')->name('updateSearcherInfos');
+
+    //show searchers searchs for admins
+    Route::get('/searchers/getSearcherSearchs/{id}','Admin\SearcherController@getSearcherSearchs')->name('getSearcherSearchsAdmin');
+
 
     Route::get('/submissions','Admin\SubmissionController@index')->name('allSubmissions');
     Route::get('/submissions/getSubmission/{id}','Admin\SubmissionController@getSubmission')->name('getSubmission');

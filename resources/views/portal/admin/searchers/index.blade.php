@@ -23,9 +23,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -57,21 +54,13 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="min-phone-l">الاسم الكامل</th>
-                                    <th class="min-tablet">الجنس</th>
-                                    <th class="none">تاريخ الازدياد</th>
-                                    <th class="none">مكان الازدياد</th>
-                                    <th class="none">الجنسية</th>
+                                    <th class="all">الاسم الكامل</th>
+
                                     <th class="desktop">الدولة</th>
-                                    <th class="none">المدينة</th>
-                                    <th class="none">العنوان</th>
-                                    <th class="none">رقم جواز السفر</th>
-                                    <th class="none">الرقم الوطني</th>
-                                    <th class="none"> البريد الالكتروني </th>
-                                    <th class="none"> الهاتف</th>
-                                    <th class="none"> الجامعة</th>
-                                    <th class="none">الكلية</th>
-                                    <th class="none">الصورة</th>
+
+                                    <th class="all"> الجامعة</th>
+                                    <th class="all">الكلية</th>
+
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="desktop">الحالة</th>
                                     @endif
@@ -82,24 +71,18 @@
                             <tbody>
                                 @foreach($searchers as $searcher)
                                 <tr>
-                                    <td>{{$searcher->Fistname}} {{$searcher->LastName}}</td>
-                                    <td>{{$searcher->Gender}}</td>
-                                    <td>{{$searcher->BirthDate}}</td>
-                                    <td>{{$searcher->BirthCity}}</td>
-                                    <td>{{$searcher->nationalitie->Name}}</td>
+                                    <td>
+                                        <a href="{{route('getSearcher',$searcher->ID)}}" >
+                                        {{$searcher->Fistname}} {{$searcher->LastName}}
+                                        </a>
+
+                                    </td>
+
                                     <td>{{$searcher->countrie->Name}}</td>
-                                    <td>{{$searcher->City}}</td>
-                                    <th>{{$searcher->Location}}</th>
-                                    <td>{{$searcher->PassportNumber}}</td>
-                                    <td>{{$searcher->NationalNumber}}</td>
-                                    <td>{{$searcher->Email}}</td>
-                                    <td>{{$searcher->Phonne1}}</td>
+
                                     <td>{{$searcher->University}}</td>
                                     <td>{{$searcher->Faculty}}</td>
-                                    <td>
-                                        <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" 
-                                            style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
-                                    </td>        
+
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                             <div class="btn-group pull-right">
@@ -134,14 +117,20 @@
                                     @endif
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
                                                 @if(isset($searcher->these))
-                                                <li>
+                                                <li class="myfont">
                                                     <a href="{{route('getSearcher',$searcher->ID)}}" >
                                                         <i class="fa fa-user"></i> عرض صفحة الطالب
+                                                    </a>
+                                                </li>
+
+                                                <li class="myfont">
+                                                    <a href="{{route('getSearcherSearchsAdmin',$searcher->ID)}}" >
+                                                        <i class="fa fa-search"></i> عرض بحوث الطالب
                                                     </a>
                                                 </li>
                                                 @endif

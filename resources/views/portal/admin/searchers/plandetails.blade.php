@@ -26,9 +26,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -38,12 +35,12 @@
                     </li>
                     <li>
                         <i class="icon-user"></i>
-                    <a href="{{route('getSearcher',$searcher->ID)}}">صفحة الطالب</a>
+                    <a href="{{route('getSearcher',$searcher->ID)}}">صفحة الباحث</a>
                         <i class="fa fa-angle-left"></i>
                     </li>
                     <li>
                         <i class="icon-compass"></i>
-                        <span>معلومات الخطة الزمنية</span>
+                        <span>المعلومات الأكاديمية</span>
                     </li>
                 </ul>
             </div>
@@ -54,7 +51,44 @@
             <div class="col-md-12">
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="col-md-12">
-                   
+                    <!-- BEGIN PROFILE SIDEBAR -->
+                    <div class="profile-sidebar">
+                        <!-- PORTLET MAIN -->
+                        <div class="portlet light profile-sidebar-portlet ">
+                            <!-- SIDEBAR USERPIC -->
+                            <div class="profile-userpic">
+                                <img src="{{ asset('storage/registrations/'.$searcher->PictureURL) }}" class="img-responsive" alt=""> </div>
+                            <!-- END SIDEBAR USERPIC -->
+                            <!-- SIDEBAR USER TITLE -->
+                            <div class="profile-usertitle">
+                                <div class="profile-usertitle-name"> {{$searcher->Fistname}} {{$searcher->LastName}}</div>
+                                <div class="profile-usertitle-job"> باحث </div>
+                            </div>
+
+                            <div class="profile-userbuttons">
+                                <a type="button"  href=" {{ url('https://api.whatsapp.com/send?phone='.$searcher->Phonne2) }}" target="_blank" class="btn btn-circle green btn-sm">تواصل عبر الواتس</a>
+                                <a type="button"  href=" {{ url('mailto:'.$searcher->Email.'?subject=موسوعة الهدايات القرآنية') }}" target="_blank" class="btn btn-circle red btn-sm">ارسال بريد الكتروني</a>
+
+                            </div>
+
+                            <!-- END SIDEBAR USER TITLE -->
+
+                            <!-- SIDEBAR MENU -->
+                            <div class="profile-usermenu">
+                                <ul class="nav">
+
+                                    <li class="active">
+                                        <a href="{{route('getSearcher',$searcher->ID)}}">
+                                            <i class="icon-school"></i> مشاهدة المعلومات الشخصية  </a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- END MENU -->
+                        </div>
+                        <!-- END PORTLET MAIN -->
+
+                    </div>
+                    <!-- END BEGIN PROFILE SIDEBAR -->
                     <!-- BEGIN PROFILE CONTENT -->
                     <div class="profile-content">
                         <div class="row">
@@ -67,24 +101,162 @@
                                         <ul class="nav nav-tabs navbar-left">
                                            
                                             <li class="active">
-                                                <a href="#tab_1_3" data-toggle="tab">جدول الخطة الزمنية</a>
+                                                <a href="#tab_1_1" data-toggle="tab">معلومات الأطروحة</a>
+                                            </li>
+
+                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                            <li>
+                                                <a href="#tab_1_2" data-toggle="tab">تعديل معدل نسبة التقدم</a>
+                                            </li>
+                                            @endif
+
+                                            <li>
+                                                <a href="#tab_1_3" data-toggle="tab">جدول الخطة الزمنية للباحث</a>
                                             </li>
                                             <li>
-                                                <a href="#tab_1_4" data-toggle="tab">تتبع الخطة الزمنية</a>
+                                                <a href="#tab_1_4" data-toggle="tab"> تقويم الخطة الزمنية للباحث</a>
                                             </li>
+
+
                                             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                             <li>
                                                 <a href="#tab_1_5" data-toggle="tab">تعديل الخطة الزمنية</a>
                                             </li>
                                             @endif
+
+                                            <li>
+                                                <a href="#tab_1_6" data-toggle="tab"> لائحة اللقاءات </a>
+                                            </li>
+
+
+
                                         </ul>
                                     </div>
                                     <div class="portlet-body">
                                         <div class="tab-content">
-                                          
-                                           
-                                              <!-- CHANGE PASSWORD TAB -->
-                                            <div class="tab-pane active" id="tab_1_3">
+
+
+
+
+                                            <!-- CHANGE PASSWORD TAB -->
+                                        <div class="tab-pane active" id="tab_1_1">
+
+
+                                                <form role="form" method="POST" action="{{route('updateSubmissionInfos')}}" >
+                                                    {{ csrf_field() }}
+                                                    <input type="hidden" name="id_registration" value="{{$searcher->ID}}" />
+                                                    <p class="hint">اسم الباحث :</p>
+                                                    <div class="form-group">
+                                                        <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
+                                                        <input   @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->Fistname}}" class="form-control placeholder-no-fix" type="text"  name="Fistname" />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label class="control-label visible-ie8 visible-ie9">الاسم الشخصي</label>
+                                                        <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->LastName}}"  class="form-control placeholder-no-fix" type="text"   name="LastName" />
+                                                    </div>
+
+                                                    <br>
+
+
+                                                    <div class="form-group">
+                                                        <label class="control-label">عنوان الاطروحة : </label>
+                                                        <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->these->Title}}" class="form-control placeholder-no-fix"  type="text"  name="Title" />
+                                                    </div>
+
+                                                   <br>
+
+
+                                                    <p class="hint"> نسبة التقدم في الاطروحة : @if(isset($searcher->progress)) {{ ceil(((($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress) * 100)/ (($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress))}}% @else 0% @endif </p>
+                                                    <div class="progress">
+                                                        @if(isset($searcher->progress))
+                                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{$searcher->progress->ID}}" aria-valuemin="0" aria-valuemax="{{($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress}}" style="width:{{($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress}}%"></div></div>
+                                                    @else
+                                                        المرجو ملئ المعلومات في النافذة الخاصة
+                                                        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%"></div>
+                                                </div>
+                                                @endif
+
+
+
+                                            <div class="form-group">
+                                                <label class="control-label ">الجامعة : </label>
+                                                <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->University}}" class="form-control placeholder-no-fix" type="text"   name="University" /> </div>
+
+                                            <div class="form-group">
+                                                <label class="control-label">المشرف : </label>
+                                                <select  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  class="form-control" name="supervisor">
+                                                    @foreach($supervisors as $supervisor)
+                                                        <option value="{{$supervisor->ID}}" @if($supervisor->ID == $searcher->these->supervisor->ID) selected @endif>{{$searcher->these->supervisor->Fistname}} {{$searcher->these->supervisor->LastName}}</option>
+                                                    @endforeach
+                                                </select></div>
+                                            <input type="hidden" name="these_id" value="{{$searcher->these->ID}}"/>
+
+
+
+                                            <div class="form-group">
+                                                <label class="control-label ">تاريخ بداية البرنامج : </label>
+                                                <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  dir="rtl" value="{{$searcher->these->BeginningDate}}" class="form-control placeholder-no-fix"    name="BeginningDate" /> </div>
+                                            <div class="form-group">
+                                                <label class="control-label ">تاريخ نهاية البرنامج : </label>
+                                                <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  dir="rtl" value="{{$searcher->these->CompletionDate}}" class="form-control placeholder-no-fix"   name="CompletionDate" /> </div>
+                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                                <div class="margin-top-10">
+                                                    <input type="submit" class="btn green" value="تأكيد" />
+                                                    <input type="reset" value="الغاء" class="btn default" />
+                                                </div>
+                                                @endif
+
+                                                </form>
+
+
+
+                                        </div>
+                                            <!-- END CHANGE PASSWORD TAB -->
+
+
+
+
+                                        <!-- CHANGE PASSWORD TAB -->
+                                        @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+
+                                        <div class="tab-pane" id="tab_1_2">
+                                            <form action="{{route('searcherProgressPost')}}" method="POST">
+                                                {{ csrf_field() }}
+                                                <input type="hidden" name="id_searcher" value="{{$searcher->ID}}" />
+                                                <div class="form-group">
+                                                    <label class="control-label ">مدة الدراسة بالاشهر : </label>
+                                                    <input class="form-control placeholder-no-fix"  type="number"  required value="@if(isset($searcher->progress->Months)){{$searcher->progress->Months}}@endif"  name="Months" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label ">التقدم في كل شهر : </label>
+                                                    <input class="form-control placeholder-no-fix" type="number" step="0.01" value="@if(isset($searcher->progress->MonthlyProgress)){{$searcher->progress->MonthlyProgress}}@endif" required name="MonthlyProgress" />
+
+                                                </div>
+                                                <div class="form-group">
+                                                    <label class="control-label ">التقدم البدئي : </label>
+                                                    <input class="form-control placeholder-no-fix" type="number" step="0.01" value="@if(isset($searcher->progress->InitialProgress)){{$searcher->progress->InitialProgress}}@endif" required name="InitialProgress" />
+
+                                                </div>
+                                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                                    <div class="margin-top-10">
+                                                        <input type="submit" class="btn green" value="تأكيد" />
+                                                        <input type="reset" value="الغاء" class="btn default" />
+                                                    </div>
+                                                @endif
+                                            </form>
+
+
+
+                                        </div>
+                                        @endif
+                                        <!-- END CHANGE PASSWORD TAB -->
+
+
+
+
+                                            <!-- CHANGE PASSWORD TAB -->
+                                            <div class="tab-pane" id="tab_1_3">
                                                 <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                                                     <thead>
                                                         <tr>
@@ -106,6 +278,8 @@
                                                 
                                             </div>
                                             <!-- END CHANGE PASSWORD TAB -->
+
+
                                             <!-- CHANGE PASSWORD TAB -->
                                             <div class="tab-pane" id="tab_1_4" style="direction: ltr">
                                                 
@@ -113,6 +287,8 @@
                                                 
                                             </div>
                                             <!-- END CHANGE PASSWORD TAB -->
+
+
                                             <!-- CHANGE PASSWORD TAB -->
                                             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                             <div class="tab-pane" id="tab_1_5">
@@ -130,8 +306,37 @@
                                             @endif
                                             <!-- END CHANGE PASSWORD TAB -->
 
-                                           
-                                        </div>
+
+
+                                            <!-- CHANGE PASSWORD TAB -->
+                                            <div class="tab-pane" id="tab_1_6">
+
+                                                <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="table12">
+                                                    <thead>
+                                                    <tr>
+                                                        <th  class="all">العنوان</th>
+                                                        <th  class="all">التاريخ</th>
+                                                        <th  class="all">المكان</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    @foreach($meetings as $meeting)
+                                                        <tr>
+                                                            <td>{{$meeting->Name}}</td>
+                                                            <td>{{$meeting->Date}}</td>
+                                                            <td>{{$meeting->Location}}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                    </tbody>
+                                                </table>
+
+
+                                            </div>
+                                            <!-- END CHANGE PASSWORD TAB -->
+
+
+
+                                    </div>
                                     </div>
                                 </div>
                             </div>

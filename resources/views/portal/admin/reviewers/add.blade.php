@@ -24,9 +24,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -36,17 +33,17 @@
                         </li>
                         <li>
                                 <i class="icon-like"></i>
-                                 <a href="{{route('allReviewer')}}">إدارة  المراجعين</a>
+                                 <a href="{{route('allReviewer')}}">إدارة  المحكمين</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>مراجع جديد</span>
+                            <span>محكم جديد</span>
                         </li>
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة مراجع جديد</h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">إضافة محكم جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالمراجع :
             </div>
 <div class="row">

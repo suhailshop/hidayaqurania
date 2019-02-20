@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Nationalitie;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -41,7 +42,48 @@ class SearcherController extends Controller
 
     public function plandetails($id){
         $searcher = Registration::where('ID',$id)->first();
-        return view('portal.admin.searchers.plandetails')->with('searcher',$searcher);
+
+
+        $meetings = DB::table('meetings_searchers')
+            ->join('registrations','meetings_searchers.Searcher','registrations.ID')
+            ->join('meetings','meetings_searchers.Meeting','meetings.ID')
+            ->distinct()
+            ->select('meetings.Date','meetings.Location','meetings.Name')
+            ->get();
+        $criterias = DB::table('searcher_critera')
+            ->join('registrations','searcher_critera.Searcher','registrations.ID')
+            ->join('criterias','searcher_critera.Criteria','criterias.ID')
+            ->distinct()
+            ->select('criterias.ProposedScore','criterias.MaximumScore','criterias.Name')
+            ->get();
+
+         // Set dates
+        $dateIni = $searcher->these->BeginningDate;
+        $dateFin = date("Y-m-d");
+
+        // Get year and month of initial date (From)
+        $yearIni = date("Y", strtotime($dateIni));
+        $monthIni = date("m", strtotime($dateIni));
+
+        // Get year an month of finish date (To)
+        $yearFin = date("Y", strtotime($dateFin));
+        $monthFin = date("m", strtotime($dateFin));
+
+        // Checking if both dates are some year
+
+        if ($yearIni == $yearFin) {
+            $numberOfMonths = ($monthFin-$monthIni) + 1;
+        } else {
+            $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
+        }
+
+        $supervisors = Registration::where('Type','supervisor')->get();
+        $countries = Countrie::all();
+
+
+
+
+        return view('portal.admin.searchers.plandetails')->with('searcher',$searcher)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings);
     }
 
     public function editPlanEnable(Request $request){
@@ -101,6 +143,37 @@ class SearcherController extends Controller
         $countries = Countrie::all();
         return view('portal.admin.searchers.get')->with('countries',$countries)->with('supervisors',$supervisors)->with('searcher',$searcher)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings);
     }
+
+
+
+    public function getSearch($id){
+
+
+        $registration = Registration::where('ID',$id)->get()->first();
+        $countries = Countrie::all();
+        $nationalities = Nationalitie::all();
+
+
+        return view('portal.admin.searchers.getSearch', compact('registration', 'countries','nationalities'));
+
+    }
+
+
+
+    public function getSearcherSearchs($id) {
+
+        $searcher = Registration::where('ID',$id)->get()->first();
+        $searchs = DB::table('searchs')
+            ->join('registrations','registrations.ID','=','searchs.Searcher')
+            ->join('divisionunits','divisionunits.id','=','searchs.Divisionunit')
+            ->join('divisions','divisions.ID','=','searchs.Division')
+            ->where('registrations.ID',$id)
+            ->select('searchs.*','divisionunits.Name as divName','divisions.Name as diviName')
+            ->get();
+        return view('portal.admin.searchers.getSearcherSearchs',compact('searchs','searcher'));
+    }
+
+
 
     public function searcherProgressPost(Request $request){
         $searcher = Registration::where('ID',$request->input('id_searcher'))->first();

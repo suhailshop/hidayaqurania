@@ -101,18 +101,18 @@
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-like"></i>
-                        <span class="title">المراجعون</span>
+                        <span class="title">المحكمون</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
                             <li class="nav-item  ">
                                 <a href="{{route('allReviewer')}}" class="nav-link ">
-                                    <span class="title">لائحة المراجعين</span>
+                                    <span class="title">لائحة المحكمين</span>
                                 </a>
                             </li>
                             <li class="nav-item  ">
                             <a href="{{route('addReviewer')}}" class="nav-link ">
-                                    <span class="title">أضف مراجع</span>
+                                    <span class="title">أضف محكم جديد</span>
                                 </a>
                             </li>
                     </ul>
