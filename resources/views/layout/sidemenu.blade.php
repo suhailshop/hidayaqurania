@@ -483,19 +483,13 @@
 
                      @if(auth()->user()->hasRole('student',auth()->user()->role_id))
 
-                <li class="nav-item  ">
-                    <a href="{{route('searcherProfile')}}" class="nav-link nav-toggle">
-                        <i class="icon-user"></i>
-                        <span class="title">معلوماتي</span>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
+
 
 
                     <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-chemistry"></i>
-                        <span class="title">بحوثي </span>
+                        <span class="title">الأبحاث والتقارير </span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -514,7 +508,7 @@
 
 
 
-                <li class="nav-item  ">
+          {{--      <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-compass"></i>
                         <span class="title">الخطة الزمنية </span>
@@ -532,20 +526,42 @@
                             </a>
                         </li>
                     </ul>
+                </li>--}}
+
+
+                <li class="nav-item  ">
+                    <a href="{{route('searcherAcademic')}}" class="nav-link nav-toggle">
+                        <i class="fa fa-graduation-cap"></i>
+                        <span class="title">معلوماتي الأكاديمية </span>
+                        <span class="arrow"></span>
+                    </a>
                 </li>
 
 
-                    <li class="nav-item  ">
-                        <a href="{{route('allbookssearcher')}}" class="nav-link nav-toggle">
-                            <i class="icon-docs"></i>
-                            <span class="title">المصادر العلمية</span>
-                            <span class="arrow"></span>
-                        </a>
-                    </li>
+                <li class="nav-item  ">
+                    <a href="{{route('searcherProfile')}}" class="nav-link nav-toggle">
+                        <i class="icon-user"></i>
+                        <span class="title">معلوماتي الشخصية</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+
+
+                <li class="nav-item  ">
+                    <a href="{{route('allbookssearcher')}}" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">المصادر العلمية</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
 
 
 
 
+
+
+
+{{--
 
                     <li class="nav-item  ">
                         <a href="{{route('allHelp')}}" class="nav-link nav-toggle">
@@ -554,6 +570,7 @@
                                 <span class="arrow"></span>
                             </a>
                     </li>
+--}}
 
 
 

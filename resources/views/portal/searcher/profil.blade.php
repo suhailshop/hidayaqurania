@@ -72,6 +72,12 @@
                                             <a href="{{route('searcherProfile')}}">
                                             <i class="icon-settings"></i> تعديل معلوماتي الشخصية </a>
                                     </li>
+                                    <br>
+                                    <li class="active">
+                                        <a href="{{route('searcherAcademic')}}">
+                                            <i class="fa fa-graduation-cap"></i> عرض معلوماتي الأكاديمية </a>
+                                    </li>
+
                                 </ul>
                             </div>
                             <!-- END MENU -->
@@ -118,15 +124,7 @@
 
                                                     <h4 class="block myfont">معلومات أساسية</h4>
 
-                                                    <div class="form-group">
-                                                        <label class="col-md-2 control-label">اسم العائلة</label>
-                                                        <div class="col-md-10">
-                                                            <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="اسم العائلة" data-container="body"></i>
-                                                                <input type="text" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
 
 
                                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">

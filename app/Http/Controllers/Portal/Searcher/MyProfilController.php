@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Portal\Searcher;
 
+use App\Meeting;
+use App\Plan;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -111,4 +113,67 @@ class MyProfilController extends Controller
 
         return redirect()->route('searcherProfile');
     }
+
+
+
+
+    public function academic(){
+
+
+        $this->user= Auth::user();
+        $registration = Registration::where('User',$this->user->id)->first();
+        $countries = Countrie::all();
+        $nationalities = Nationalitie::all();
+        $user = Auth::user();
+        $searcher = Registration::where('User',$this->user->id)->first();
+
+        $plans = Plan::where('Searcher',$searcher->ID)->get();
+
+
+        $meetings = DB::table('meetings_searchers')
+            ->join('registrations','meetings_searchers.Searcher','registrations.ID')
+            ->join('meetings','meetings_searchers.Meeting','meetings.ID')
+            ->distinct()
+            ->select('meetings.Date','meetings.Location','meetings.Name')
+            ->get();
+
+
+        // Set dates
+        $dateIni = $registration->these->BeginningDate;
+        $dateFin = date("Y-m-d");
+
+        // Get year and month of initial date (From)
+        $yearIni = date("Y", strtotime($dateIni));
+        $monthIni = date("m", strtotime($dateIni));
+
+        // Get year an month of finish date (To)
+        $yearFin = date("Y", strtotime($dateFin));
+        $monthFin = date("m", strtotime($dateFin));
+
+        // Checking if both dates are some year
+
+        if ($yearIni == $yearFin) {
+            $numberOfMonths = ($monthFin-$monthIni) + 1;
+        } else {
+            $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
+        }
+
+
+
+        $supervisors = Registration::where('Type','Supervisor')->get();
+
+
+
+        return view('portal.searcher.myacademic')->with('registration',$registration)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('meetings',$meetings)->with('plans', $plans)->with('enabledPlan',$searcher->EnablePlanEdit);
+    }
+
+    public function editPlan(Request $request){
+        if($request->input('enabledPlan')== 'true'){
+            DB::table('plans')
+                ->where('ID',$request->input('id_plan'))
+                ->update(['Record'=>$request->input('Record') , 'StartDate'=>$request->input('StartDate') , 'EndDate'=>$request->input('EndDate')]);}
+        return redirect()->route('searcherAcademic');
+    }
+
+
 }

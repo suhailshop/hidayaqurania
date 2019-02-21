@@ -222,7 +222,12 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
     //---------------------- Searcher ---------------------------------
 
+
     Route::get('/searcher/myprofile','Searcher\MyProfilController@index')->name('searcherProfile');
+    //show searcher academic info
+    Route::get('/searcher/myacademic','Searcher\MyProfilController@academic')->name('searcherAcademic');
+    Route::post('/searcher/editPlan','Searcher\MyProfilController@editPlan')->name('editPlan2');
+
     Route::post('/searcher/editmyprofile','Searcher\MyProfilController@editPost')->name('searcherProfileEdit');
     Route::post('/searcher/editavatar','Searcher\MyProfilController@editAvatar')->name('searcherProfileEditAvatar');
     Route::post('/searcher/editpassword','Searcher\MyProfilController@editPassword')->name('searcherProfileEditPassword');
@@ -249,5 +254,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searcher/addPlanPost','Searcher\PlanController@addPost')->name('addPlanPost');
     Route::get('/searcher/deletePlan/{id}','Searcher\PlanController@delete')->name('deletePlan');
     Route::post('/searcher/uploadSearcherCV','Searcher\MyProfilController@uploadSearcherCV')->name('uploadSearcherCV');
-    
+
+    //show my supervisor's profile.
+    Route::get('/searcher/mysupervisor/{id}','Searcher\MySupervisorController@getSupervisorProfile')->name('mySupervisorProfile');
+
+
 });
