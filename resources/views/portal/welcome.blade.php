@@ -442,7 +442,7 @@
                            <i class="fa fa-book"></i>
                         </div>
                         <div class="list-todo-item yellow">
-                           <a class="list-toggle-container font-white collapsed" data-toggle="collapse" href="#section1" aria-expanded="false">
+                           <a class="list-toggle-container font-white" data-toggle="collapse" href="#section1" aria-expanded="true">
                               <div class="list-toggle done uppercase">
                                  <div class="list-toggle-title ">التقارير الدورية </div>
                                  <div class="badge badge-info info pull-right bold"> التقارير : 12</div>
@@ -1339,8 +1339,7 @@
                                     </div>
                                  </div>
                               </ul>
-                              <div class="task-footer bg-grey">
-                              </div>
+                              
                            </div>
                         </div>
                      </li>
