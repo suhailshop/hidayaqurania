@@ -36,6 +36,10 @@
                         </span>
                     @endif
                 </div>
+
+                <div class="form-group">
+                    <input type="checkbox" name="remember_me" /> تذكرني ؟
+                </div>
                 
                     <div class="form-actions">
                     <button type="submit" class="btn yellow uppercase">دخول</button>

@@ -25,9 +25,7 @@ Route::get('/details/{id}','Site\SiteController@details');
     return view('site.welcome');
 });*/
 
-Route::get('/home', function () {
-    return view('portal.welcome');
-});
+Route::get('/home','Portal\PortalController@index')->name('portalwelcome');
 Auth::routes();
 Route::get('/logout', function(){
     Auth::logout();

@@ -43,8 +43,26 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function login(Request $request)
+    {
+            
+        $email=$request->input('email');
+        $password=$request->input('password');
+        $remember_me = $request->has('remember_me') ? true : false;  
+        if (Auth::attempt(['email' => $email, 'password' => $password], $remember_me))
+        {
+                $user = auth()->user();
+                Auth::login($user,true);
+                return redirect()->intended(route('portalwelcome'));
+        }
+        return redirect()->back()->withInput($request->only('email', 'remember_me'))->withErrors([
+            'email' => 'البريد الالكتروني او كلمة المرور خاطئة',
+        ]);
+        
+    }
+
     public function authenticated(Request $request, $user)
-    {      
+    {  
         $registration = Registration::where('User',$user->id)->first();
         $role = Role::where('ID',$user->role_id)->first();
         if($role->name=='student'){
@@ -52,6 +70,6 @@ class LoginController extends Controller
                 Auth::logout();
                 return redirect(route('login'))->withErrors(['notactive' => 'تم استقبال طلبكم وجاري العمل عليه']);
             }
-        }       
+        }          
     }   
 }
