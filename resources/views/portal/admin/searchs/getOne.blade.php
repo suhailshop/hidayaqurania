@@ -95,7 +95,7 @@
                                                 <a href="#tab_1_4" data-toggle="tab">إضافة تقرير المشرف </a>
                                             </li>
                                             @endif
-                                            @if(auth()->user()->hasRole('student',auth()->user()->role_id) && count($search->searchers_reports)==0)
+                                            @if(auth()->user()->hasRole('student',auth()->user()->role_id) && $search->cycle->startDate<=date('Y-m-d') && $search->cycle->endDate>=date('Y-m-d') && count($search->searchers_reports)==0)
                                             <li>
                                                 <a href="#tab_1_5" data-toggle="tab">إضافة تقرير الطالب </a>
                                             </li>

@@ -109,12 +109,14 @@
                                             <ul class="dropdown-menu pull-right">
                                                     <li class="myfont">
                                                             <a  href="{{route('getOneSearch',$search->ID)}}">
-                                                                    <i class="fa fa-search"></i> تفاصيل البحث </a>
+                                                                    <i class="fa fa-search"></i> تفاصيل البحث  </a>
                                                             </li>
+                                                @if($search->cycle->startDate<=date('Y-m-d') && $search->cycle->endDate>=date('Y-m-d'))
                                                 <li class="myfont">
                                                 <a href="{{route('editSearch',['id'=>$search->ID])}}">
                                                         <i class="fa fa-edit"></i> تعديل </a>
                                                 </li>
+                                                @endif
                                                 {{--<li>
                                                 <a data-toggle="confirmation"
                                                 data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
