@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'حسابي')
+@section('pageTitle', 'حساب الباحث')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -70,8 +70,41 @@
                                    
                                     <li class="active">
                                         <a href="{{route('plandetails',$registration->ID)}}">
-                                        <i class="icon-school"></i> مشاهدة المعلومات الأكاديمية  </a>
+                                        <i class="icon-school"></i> مشاهدة المعلومات الأكاديمية  <i class="fa fa-search"></i></a>
                                     </li>
+                                    <li class="active">
+                                            <a href="#" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="icon-school"></i> 
+                                                @if(empty($registration->Code))
+                                                    لا يوجد رقم للباحث <i class="icon-plus"></i>
+                                                @else
+                                                   رقم الباحث : {{$registration->Code}} <i class="fa fa-edit"></i>
+                                                @endif
+                                            </a>
+                                    </li>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">رقم الباحث :</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <form method="POST" action="{{route('updateCodeSearcher')}}">
+                                                            {{ csrf_field() }}
+                                                        <input type="hidden" name="idsearcher" value="{{$registration->ID}}"/>
+                                                        <div class="form-group">
+                                                        <input type="text" class="form-control " name="code" value="{{$registration->Code}}" />
+                                                        </div>
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                                        <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                                                    </form>
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
                                 </ul>
                             </div>
                             <!-- END MENU -->
