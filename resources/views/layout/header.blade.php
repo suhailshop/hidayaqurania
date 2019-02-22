@@ -151,8 +151,9 @@
                     @if (Auth::user())
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            @if(auth()->user()->registration ==null)
-                            <img alt="" class="img-circle" src="{!! asset('assets/layouts/layout2/img/avatar3_small.jpg') !!}" />
+
+                        @if(auth()->user()->registration ==null)
+                            <img alt="" class="img-circle" src="{!! asset('assets/layouts/layout2/img/avatar.png') !!}" />
                             
                             @else 
                             <img alt="" class="img-circle" src="{{ asset('storage/registrations/'.auth()->user()->registration->PictureURL) }}" />
@@ -164,7 +165,7 @@
                         <ul class="dropdown-menu dropdown-menu-default">
                             
                             
-                            <li>
+                            <li class="myfont">
                                 <a href="{{ route('logout') }}">
                                     <i class="icon-key"></i>خروج</a>
                             </li>
@@ -173,7 +174,7 @@
                     @else 
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <span class="username username-hide-on-mobile"> ولوج للموقع </span>
+                            <span class="username username-hide-on-mobile"> دخول للموقع </span>
                             <i class="fa fa-angle-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-default">

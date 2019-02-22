@@ -70,7 +70,9 @@ class PlanController extends Controller
         $plan->Searcher = Registration::where('User',$this->user->id)->first()->ID;
         
         $plan->save();
-        return redirect()->route('searcherPlan');
+       // old one : return redirect()->route('searcherPlan');
+        return redirect()->route('searcherAcademic');
+
    
     }
     public function editPlan(Request $request){
@@ -78,6 +80,7 @@ class PlanController extends Controller
         DB::table('plans')
             ->where('ID',$request->input('id_plan'))
             ->update(['Record'=>$request->input('Record') , 'StartDate'=>$request->input('StartDate') , 'EndDate'=>$request->input('EndDate')]);}
-        return redirect()->route('searcherPlan');
+        //return redirect()->route('searcherPlan');
+        return redirect()->route('searcherAcademic');
     }
 }

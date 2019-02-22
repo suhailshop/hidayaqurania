@@ -35,8 +35,8 @@
         
         
         body  {
-  		background-image: url({!!asset('assets/pages/img/header.png') !!}) 
- 		 background-color: #cccccc;
+            background-image: url('{{ asset('assets/pages/img/header.png') }}');
+ 		    background-color: #cccccc;
 		}
         
         

@@ -20,13 +20,18 @@
       </ul>
    </div>
    <!-- END PAGE HEADER-->
+
+
+
+
+
    {{--
    حساب الإدارة
    --}}
    @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
    <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 blue" href="{{route('allSearcher')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcher')}}">
             <div class="visual">
                <i class="fa fa-users"></i>
             </div>
@@ -39,7 +44,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 red" href="{{route('allSupervisor')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSupervisor')}}">
             <div class="visual">
                <i class="fa fa-briefcase"></i>
             </div>
@@ -47,12 +52,12 @@
                <div class="number">
                   <span data-counter="counterup" data-value="{{count($supervisors)}}">{{count($supervisors)}}</span>
                </div>
-               <div class="desc"> المشرفين </div>
+               <div class="desc"> المشرفون </div>
             </div>
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 green" href="{{route('allUniversity')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allUniversity')}}">
             <div class="visual">
                <i class="fa fa-graduation-cap"></i>
             </div>
@@ -65,7 +70,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 purple" href="{{route('allCountrie')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allCountrie')}}">
             <div class="visual">
                <i class="fa fa-globe"></i>
             </div>
@@ -88,12 +93,12 @@
                <div class="number">
                   <span data-counter="counterup" data-value="{{count($provides)}}">{{count($provides)}}</span>
                </div>
-               <div class="desc"> التزويدات </div>
+               <div class="desc"> المراجعون </div>
             </div>
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 green-haze " href="{{route('allBook')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint " href="{{route('allBook')}}">
             <div class="visual">
                <i class="fa fa-book"></i>
             </div>
@@ -106,7 +111,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 purple-plum" href="{{route('allThese')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allThese')}}">
             <div class="visual">
                <i class="fa fa-comments"></i>
             </div>
@@ -119,7 +124,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allHelp')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allHelp')}}">
             <div class="visual">
                <i class="fa fa-credit-card"></i>
             </div>
@@ -178,6 +183,80 @@
          </div>
       </div>
    </div>
+
+
+
+
+
+
+        {{-- حساب المراجع --}}
+    @elseif(auth()->user()->hasRole('reviewer',auth()->user()->role_id))
+        {{--الملخص--}}
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearchs')}}">
+                    <div class="visual">
+                        <i class="fa fa-users"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{count($searchs)}}">{{count($searchs)}}</span>
+                        </div>
+                        <div class="desc"> أبحاث لم يتم مراجعتها </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcherReports')}}">
+                    <div class="visual">
+                        <i class="fa fa-briefcase"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{count($myreports)}}">{{count($myreports)}}</span>
+                        </div>
+                        <div class="desc"> أبحاث تمت مراجعتها </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allbookssearcher')}}">
+                    <div class="visual">
+                        <i class="fa fa-graduation-cap"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
+                        </div>
+                        <div class="desc">إجمالي الأبحاث </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
+                    <div class="visual">
+                        <i class="fa fa-globe"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            <span data-counter="counterup" data-value="10">10</span>
+                        </div>
+                        <div class="desc">  تقارير الإدارة </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+       {{--حساب المشرف--}}
    @elseif(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
    {{--الملخص--}}
    <div class="row">
@@ -243,7 +322,7 @@
             <div class="portlet-title">
                <div class="caption font-dark">
                   <i class="icon-graduation font-dark"></i>
-                  <span class="caption-subject bold uppercase">لائحة الباحثين تحت اشرافي بالنظام</span>
+                  <span class="caption-subject bold uppercase">لائحة الباحثين تحت اشرافي </span>
                </div>
             </div>
             <div class="portlet-body">
@@ -261,7 +340,8 @@
                   <tbody>
                      @foreach($searchers as $searcher)
                      <tr>
-                        <td>{{$searcher->Fistname}} {{$searcher->LastName}}</td>
+                        <td>   <a href="{{route('getSearcherProfile',['id'=>$searcher->ID])}}" >
+                            {{$searcher->Fistname}} {{$searcher->LastName}}  </a> </td>
                         <td>{{$searcher->City}}</td>
                         <td>{{$searcher->Email}}</td>
                         <td>{{$searcher->University}}</td>
@@ -277,6 +357,16 @@
             </div>
          </div>
       </div>
+
+
+
+
+
+
+
+
+
+{{--حساب الباحث   --}}
       @elseif(auth()->user()->hasRole('student',auth()->user()->role_id))
       <div class="row">
          <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
@@ -333,7 +423,7 @@
          </div>
       </div>
      
-      <div class="portlet light portlet-fit ">
+                    <div class="portlet light portlet-fit ">
          <div class="portlet-body">
             <div class="mt-element-list">
                <div class="mt-list-head list-todo ">
@@ -352,10 +442,10 @@
                            <i class="fa fa-book"></i>
                         </div>
                         <div class="list-todo-item yellow">
-                           <a class="list-toggle-container font-white collapsed" data-toggle="collapse" href="#section1" aria-expanded="false">
+                           <a class="list-toggle-container font-white" data-toggle="collapse" href="#section1" aria-expanded="true">
                               <div class="list-toggle done uppercase">
-                                 <div class="list-toggle-title ">تقارير السنة الأولى</div>
-                                 <div class="badge badge-default yellow pull-right bold"> التقارير : 4</div>
+                                 <div class="list-toggle-title ">التقارير الدورية </div>
+                                 <div class="badge badge-info info pull-right bold"> التقارير : 12</div>
                               </div>
                            </a>
                            <div class="task-list panel-collapse collapse" id="section1" aria-expanded="false" style="height: 0px;">
@@ -364,7 +454,7 @@
                                     <div class="portlet-title">
                                        <div class="caption">
                                           <i class="icon-folder  font-black"></i>
-                                          <span class="caption-subject bold font-dark uppercase"> قائمة التقارير الخاصة بالسنة الأولى</span>
+                                          <span class="caption-subject bold font-dark uppercase">قائمة تقارير الباحث</span>
                                        </div>
                                        <div class="actions">
                                             <a class="btn-group btn-group-devided" href="{{route('addSearch')}}">
@@ -374,11 +464,18 @@
                                        </div>
                                     </div>
                                     <div class="portlet-body">
-                                        <?php $exist1=false;?>
-                                       <div class="timeline  white-bg white-bg">
-                                          @foreach($my_searchs as $search)
-                                            @if($search->cycle->name == 'التقرير الدوري الأول' )
-                                                <?php $exist1=true;?>
+
+
+                                            <!-- بداية التقارير -->
+
+
+
+                                             <!-- TIMELINE ITEM -->
+                                          <?php $exist1=false;?>
+                                           <div class="timeline  white-bg white-bg">
+                                              @foreach($my_searchs as $search)
+                                                @if($search->cycle->name == 'التقرير الدوري الأول' && $search->Status =='yes' )
+                                                    <?php $exist1=true;?>
                                                 <div class="timeline-item">
                                                     <div class="timeline-badge">
                                                         <div class="timeline-icon">
@@ -407,6 +504,7 @@
                                                 </div>
                                             @endif
                                           @endforeach
+
                                           @if(!$exist1)
                                              <div class="timeline-item">
                                                 <div class="timeline-badge">
@@ -419,10 +517,11 @@
                                                    <div class="timeline-body-head">
                                                       <div class="timeline-body-head-caption">
                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الأول</span>
-                                                         <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
+                                                         <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                              @foreach($cycles as $cycle)
                                                                 @if($cycle->name == 'التقرير الدوري الأول')
-                                                                    {{$cycle->endDate}}
+                                                                 إلى تاريخ : {{$cycle->startDate}}  {{$cycle->endDate}} فترة إرسال التقرير من :
+
                                                                 @endif
                                                              @endforeach </span>
                                                       </div>
@@ -438,10 +537,14 @@
                                              </div>
                                           @endif
                                           <!-- END TIMELINE ITEM -->
+
+
+
+
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الثاني' )
+                                          @if($search->cycle->name == 'التقرير الدوري الثاني' && $search->Status =='yes')
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -472,6 +575,10 @@
                                               </div>
                                           @endif
                                           @endforeach
+
+
+
+
                                           @if(!$exist1)
                                            <div class="timeline-item">
                                               <div class="timeline-badge">
@@ -484,11 +591,11 @@
                                                  <div class="timeline-body-head">
                                                     <div class="timeline-body-head-caption">
                                                        <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثاني</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
+                                                       <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                            @foreach($cycles as $cycle)
                                                               @if($cycle->name == 'التقرير الدوري الثاني')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
+                                                                  <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                               @endif
                                                            @endforeach </span>
                                                     </div>
                                                     <div class="timeline-body-head-actions">
@@ -503,10 +610,14 @@
                                            </div>
                                           @endif
                                           <!-- END TIMELINE ITEM -->
+
+
+
+
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الثالث' )
+                                          @if($search->cycle->name == 'التقرير الدوري الثالث' && $search->Status =='yes' )
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -552,8 +663,9 @@
                                                        <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
                                                            @foreach($cycles as $cycle)
                                                               @if($cycle->name == 'التقرير الدوري الثالث')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
+                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+
+                                                               @endif
                                                            @endforeach </span>
                                                     </div>
                                                     <div class="timeline-body-head-actions">
@@ -568,10 +680,16 @@
                                            </div>
                                           @endif
                                           <!-- END TIMELINE ITEM -->
+
+
+
+
+
+
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الرابع' )
+                                          @if($search->cycle->name == 'التقرير الدوري الرابع' && $search->Status =='yes')
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -614,182 +732,12 @@
                                                  <div class="timeline-body-head">
                                                     <div class="timeline-body-head-caption">
                                                        <span class="timeline-body-alerttitle font-dark">التقرير الدوري الرابع</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
+                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                            @foreach($cycles as $cycle)
                                                               @if($cycle->name == 'التقرير الدوري الرابع')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
-                                                           @endforeach </span>
-                                                    </div>
-                                                    <div class="timeline-body-head-actions">
-                                                       <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
-                                                       <i class="fa"></i>
-                                                       </button>
-                                                    </div>
-                                                 </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
-                                                 </div>
-                                              </div>
-                                           </div>
-                                          @endif
-                                          <!-- END TIMELINE ITEM -->
-                                       </div>
-                                    </div>
-                                 </div>
-                              </ul>
-                              <div class="task-footer bg-grey">
-                              </div>
-                           </div>
-                        </div>
-                     </li>
-                     <!-- نهاية تقارير السنة الأولى  -->
-                     <!-- تقارير السنة الثانية  -->
-                     <li class="mt-list-item">
-                        <div class="list-todo-icon bg-white">
-                           <i class="fa fa-book"></i>
-                        </div>
-                        <div class="list-todo-item yellow">
-                           <a class="list-toggle-container font-white collapsed" data-toggle="collapse" href="#section2" aria-expanded="false">
-                              <div class="list-toggle done uppercase">
-                                 <div class="list-toggle-title ">تقارير السنة الثانية</div>
-                                 <div class="badge badge-default yellow pull-right bold"> التقارير : 4</div>
-                              </div>
-                           </a>
-                           <div class="task-list panel-collapse collapse" id="section2" aria-expanded="false" style="height: 0px;">
-                              <ul>
-                                 {{--بداية تقارير الطالب--}}
-                                 <div class="portlet light portlet-fit bg-inverse bordered">
-                                    <div class="portlet-title">
-                                       <div class="caption">
-                                          <i class="icon-folder  font-black"></i>
-                                          <span class="caption-subject bold font-dark uppercase"> قائمة التقارير الخاصة بالسنة الثانية</span>
-                                       </div>
-                                       <div class="actions">
-                                            
-                                          <a class="btn-group btn-group-devided" href="{{route('addSearch')}}">
-                                             <label class="btn btn-transparent green  btn-lg">
-                                             <i class="icon-plus"></i> إضافة بحث جديد  </label>
-                                             </a>
-                                       </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                       <div class="timeline  white-bg white-bg">
-                                          <!-- TIMELINE ITEM -->
-                                          <?php $exist1=false;?>
-                                          @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الخامس' )
-                                              <?php $exist1=true;?>
-                                              <div class="timeline-item">
-                                                  <div class="timeline-badge">
-                                                      <div class="timeline-icon">
-                                                      <i class="icon-docs font-blue "></i>
-                                                      </div>
-                                                  </div>
-                                                  <div class="timeline-body">
-                                                      <div class="timeline-body-arrow"> </div>
-                                                      <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الخامس </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                                </div>
-                                                          </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="timeline-body-content">
-                                                      <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          @endif
-                                          @endforeach
-                                          @if(!$exist1)
-                                           <div class="timeline-item">
-                                              <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
-                                              </div>
-                                              <div class="timeline-body">
-                                                 <div class="timeline-body-arrow"> </div>
-                                                 <div class="timeline-body-head">
-                                                    <div class="timeline-body-head-caption">
-                                                       <span class="timeline-body-alerttitle font-dark">التقرير الدوري الخامس</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
-                                                           @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري الخامس')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
-                                                           @endforeach </span>
-                                                    </div>
-                                                    <div class="timeline-body-head-actions">
-                                                       <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
-                                                       <i class="fa"></i>
-                                                       </button>
-                                                    </div>
-                                                 </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
-                                                 </div>
-                                              </div>
-                                           </div>
-                                          @endif
+                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
 
-                                          <!-- END TIMELINE ITEM -->
-                                          <!-- TIMELINE ITEM -->
-                                          <?php $exist1=false;?>
-                                          @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري السادس' )
-                                              <?php $exist1=true;?>
-                                              <div class="timeline-item">
-                                                  <div class="timeline-badge">
-                                                      <div class="timeline-icon">
-                                                      <i class="icon-docs font-blue "></i>
-                                                      </div>
-                                                  </div>
-                                                  <div class="timeline-body">
-                                                      <div class="timeline-body-arrow"> </div>
-                                                      <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري السادس </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                          </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="timeline-body-content">
-                                                      <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          @endif
-                                          @endforeach
-                                          @if(!$exist1)
-                                           <div class="timeline-item">
-                                              <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
-                                              </div>
-                                              <div class="timeline-body">
-                                                 <div class="timeline-body-arrow"> </div>
-                                                 <div class="timeline-body-head">
-                                                    <div class="timeline-body-head-caption">
-                                                       <span class="timeline-body-alerttitle font-dark">التقرير الدوري السادس</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
-                                                           @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري السادس')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
+                                                               @endif
                                                            @endforeach </span>
                                                     </div>
                                                     <div class="timeline-body-head-actions">
@@ -804,458 +752,619 @@
                                            </div>
                                           @endif
                                           <!-- END TIMELINE ITEM -->
+
+
+
+
+
+                                          <!-- التقرير الدوري الخامس -->
                                           <!-- TIMELINE ITEM -->
-                                          
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري السابع' )
-                                              <?php $exist1=true;?>
-                                              <div class="timeline-item">
-                                                  <div class="timeline-badge">
-                                                      <div class="timeline-icon">
-                                                      <i class="icon-docs font-blue "></i>
+                                          @if($search->cycle->name == 'التقرير الدوري الخامس' && $search->Status =='yes')
+                                           <?php $exist1=true;?>
+                                               <div class="timeline-item">
+                                                      <div class="timeline-badge">
+                                                          <div class="timeline-icon">
+                                                              <i class="icon-docs font-blue "></i>
+                                                          </div>
+                                                      </div>
+                                                      <div class="timeline-body">
+                                                          <div class="timeline-body-arrow"> </div>
+                                                          <div class="timeline-body-head">
+                                                              <div class="timeline-body-head-caption">
+                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري الخامس </span>
+                                                                  <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                              </div>
+                                                              <div class="timeline-body-head-actions">
+                                                                  <div class="btn-group dropup">
+                                                                      <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                          <i class="fa fa-eye"></i>
+                                                                      </a>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
+                                                      <div class="timeline-body-content">
+                                                          <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
                                                       </div>
                                                   </div>
-                                                  <div class="timeline-body">
-                                                      <div class="timeline-body-arrow"> </div>
-                                                      <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري السابع </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
+                                               </div>
+                                          @endif
+                                          @endforeach
+                                          @if(!$exist1)
+                                              <div class="timeline-item">
+                                                        <div class="timeline-badge">
+                                                            <div class="timeline-icon">
+                                                                <i class="icon-docs font-red"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-body">
+                                                            <div class="timeline-body-arrow"> </div>
+                                                            <div class="timeline-body-head">
+                                                                <div class="timeline-body-head-caption">
+                                                                    <span class="timeline-body-alerttitle font-dark">التقرير الدوري الخامس</span>
+                                                                    <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                        @foreach($cycles as $cycle)
+                                                                            @if($cycle->name == 'التقرير الدوري الخامس')
+                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+
+                                                                            @endif
+                                                                        @endforeach </span>
                                                                 </div>
-                                                          </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="timeline-body-content">
-                                                      <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          @endif
-                                          @endforeach
-                                          @if(!$exist1)
-                                           <div class="timeline-item">
-                                              <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
-                                              </div>
-                                              <div class="timeline-body">
-                                                 <div class="timeline-body-arrow"> </div>
-                                                 <div class="timeline-body-head">
-                                                    <div class="timeline-body-head-caption">
-                                                       <span class="timeline-body-alerttitle font-dark">التقرير الدوري السابع</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
-                                                           @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري السابع')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
-                                                           @endforeach </span>
+                                                                <div class="timeline-body-head-actions">
+                                                                    <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
+                                                                        <i class="fa"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="timeline-body-head-actions">
-                                                       <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
-                                                       <i class="fa"></i>
-                                                       </button>
-                                                    </div>
-                                                 </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
-                                                 </div>
-                                              </div>
-                                           </div>
                                           @endif
-                                          <!-- END TIMELINE ITEM -->
-                                          <!-- TIMELINE ITEM -->
-                                          
-                                          <?php $exist1=false;?>
-                                          @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الثامن' )
-                                              <?php $exist1=true;?>
-                                              <div class="timeline-item">
-                                                  <div class="timeline-badge">
-                                                      <div class="timeline-icon">
-                                                      <i class="icon-docs font-blue "></i>
-                                                      </div>
-                                                  </div>
-                                                  <div class="timeline-body">
-                                                      <div class="timeline-body-arrow"> </div>
-                                                      <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثامن </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                          </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="timeline-body-content">
-                                                      <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          @endif
-                                          @endforeach
-                                          @if(!$exist1)
-                                           <div class="timeline-item">
-                                              <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
-                                              </div>
-                                              <div class="timeline-body">
-                                                 <div class="timeline-body-arrow"> </div>
-                                                 <div class="timeline-body-head">
-                                                    <div class="timeline-body-head-caption">
-                                                       <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثامن</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
-                                                           @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري الثامن')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
-                                                           @endforeach </span>
+                                           <!-- END TIMELINE ITEM -->
+
+
+
+
+
+
+
+                                            <!-- التقرير الدوري السادس -->
+                                            <!-- TIMELINE ITEM -->
+                                            <?php $exist1=false;?>
+                                            @foreach($my_searchs as $search)
+                                                @if($search->cycle->name == 'التقرير الدوري السادس' && $search->Status =='yes')
+                                                    <?php $exist1=true;?>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-badge">
+                                                            <div class="timeline-icon">
+                                                                <i class="icon-docs font-blue "></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-body">
+                                                            <div class="timeline-body-arrow"> </div>
+                                                            <div class="timeline-body-head">
+                                                                <div class="timeline-body-head-caption">
+                                                                    <span class="timeline-body-alerttitle font-dark">التقرير الدوري السادس </span>
+                                                                    <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                                </div>
+                                                                <div class="timeline-body-head-actions">
+                                                                    <div class="btn-group dropup">
+                                                                        <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                            <i class="fa fa-eye"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="timeline-body-content">
+                                                                <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                    <div class="timeline-body-head-actions">
-                                                       <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
-                                                       <i class="fa"></i>
-                                                       </button>
+                                                @endif
+                                            @endforeach
+                                            @if(!$exist1)
+                                                <div class="timeline-item">
+                                                    <div class="timeline-badge">
+                                                        <div class="timeline-icon">
+                                                            <i class="icon-docs font-red"></i>
+                                                        </div>
                                                     </div>
+                                                    <div class="timeline-body">
+                                                        <div class="timeline-body-arrow"> </div>
+                                                        <div class="timeline-body-head">
+                                                            <div class="timeline-body-head-caption">
+                                                                <span class="timeline-body-alerttitle font-dark">التقرير الدوري السادس</span>
+                                                                <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                    @foreach($cycles as $cycle)
+                                                                        @if($cycle->name == 'التقرير الدوري السادس')
+                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+
+                                                                        @endif
+                                                                    @endforeach </span>
+                                                            </div>
+                                                            <div class="timeline-body-head-actions">
+                                                                <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
+                                                                    <i class="fa"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                            <!-- END TIMELINE ITEM -->
+
+
+
+
+
+
+
+                                            <!-- التقرير الدوري السابع -->
+
+                                            <!-- TIMELINE ITEM -->
+
+                                            <?php $exist1=false;?>
+                                             @foreach($my_searchs as $search)
+                                              @if($search->cycle->name == 'التقرير الدوري السابع' && $search->Status =='yes' )
+                                                    <?php $exist1=true;?>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-badge">
+                                                            <div class="timeline-icon">
+                                                                <i class="icon-docs font-blue "></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-body">
+                                                            <div class="timeline-body-arrow"> </div>
+                                                            <div class="timeline-body-head">
+                                                                <div class="timeline-body-head-caption">
+                                                                    <span class="timeline-body-alerttitle font-dark">التقرير الدوري السابع </span>
+                                                                    <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                                </div>
+                                                                <div class="timeline-body-head-actions">
+                                                                    <div class="btn-group dropup">
+                                                                        <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                            <i class="fa fa-eye"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-body-content">
+                                                            <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+                                                        </div>
+                                                    </div>
+                                                    </div>
+                                             @endif
+                                             @endforeach
+                                             @if(!$exist1)
+                                                 <div class="timeline-item">
+                                                     <div class="timeline-badge">
+                                                         <div class="timeline-icon">
+                                                             <i class="icon-docs font-red"></i>
+                                                         </div>
+                                                     </div>
+                                                     <div class="timeline-body">
+                                                         <div class="timeline-body-arrow"> </div>
+                                                         <div class="timeline-body-head">
+                                                             <div class="timeline-body-head-caption">
+                                                                 <span class="timeline-body-alerttitle font-dark">التقرير الدوري السابع</span>
+                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                     @foreach($cycles as $cycle)
+                                                                         @if($cycle->name == 'التقرير الدوري السابع')
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+
+                                                                         @endif
+                                                                     @endforeach </span>
+                                                             </div>
+                                                             <div class="timeline-body-head-actions">
+                                                                 <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
+                                                                     <i class="fa"></i>
+                                                                 </button>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                                         </div>
+                                                     </div>
                                                  </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                             @endif
+                                            <!-- END TIMELINE ITEM -->
+
+
+
+
+
+                                             <!-- التقرير الدوري الثامن -->
+                                             <!-- TIMELINE ITEM -->
+                                             <?php $exist1=false;?>
+                                             @foreach($my_searchs as $search)
+                                                 @if($search->cycle->name == 'التقرير الدوري الثامن' && $search->Status =='yes' )
+                                                     <?php $exist1=true;?>
+                                                     <div class="timeline-item">
+                                                         <div class="timeline-badge">
+                                                             <div class="timeline-icon">
+                                                                 <i class="icon-docs font-blue "></i>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body">
+                                                             <div class="timeline-body-arrow"> </div>
+                                                             <div class="timeline-body-head">
+                                                                 <div class="timeline-body-head-caption">
+                                                                     <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثامن </span>
+                                                                     <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                                 </div>
+                                                                 <div class="timeline-body-head-actions">
+                                                                     <div class="btn-group dropup">
+                                                                         <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                             <i class="fa fa-eye"></i>
+                                                                         </a>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="timeline-body-content">
+                                                                 <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 @endif
+                                             @endforeach
+                                             @if(!$exist1)
+                                                 <div class="timeline-item">
+                                                     <div class="timeline-badge">
+                                                         <div class="timeline-icon">
+                                                             <i class="icon-docs font-red"></i>
+                                                         </div>
+                                                     </div>
+                                                     <div class="timeline-body">
+                                                         <div class="timeline-body-arrow"> </div>
+                                                         <div class="timeline-body-head">
+                                                             <div class="timeline-body-head-caption">
+                                                                 <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثامن</span>
+                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                     @foreach($cycles as $cycle)
+                                                                         @if($cycle->name == 'التقرير الدوري الثامن')
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+
+                                                                         @endif
+                                                                     @endforeach </span>
+                                                             </div>
+                                                             <div class="timeline-body-head-actions">
+                                                                 <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
+                                                                     <i class="fa"></i>
+                                                                 </button>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                                         </div>
+                                                     </div>
                                                  </div>
-                                              </div>
-                                           </div>
-                                          @endif
-                                          <!-- END TIMELINE ITEM -->
-                                       </div>
+                                             @endif
+                                             <!-- END TIMELINE ITEM -->
+
+
+
+
+
+
+
+                                             <!-- التقرير الدوري التاسع -->
+                                             <!-- TIMELINE ITEM -->
+                                             <?php $exist1=false;?>
+                                             @foreach($my_searchs as $search)
+                                                 @if($search->cycle->name == 'التقرير الدوري التاسع' && $search->Status =='yes')
+                                                     <?php $exist1=true;?>
+                                                     <div class="timeline-item">
+                                                         <div class="timeline-badge">
+                                                             <div class="timeline-icon">
+                                                                 <i class="icon-docs font-blue "></i>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body">
+                                                             <div class="timeline-body-arrow"> </div>
+                                                             <div class="timeline-body-head">
+                                                                 <div class="timeline-body-head-caption">
+                                                                     <span class="timeline-body-alerttitle font-dark">التقرير الدوري التاسع </span>
+                                                                     <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                                 </div>
+                                                                 <div class="timeline-body-head-actions">
+                                                                     <div class="btn-group dropup">
+                                                                         <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                             <i class="fa fa-eye"></i>
+                                                                         </a>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="timeline-body-content">
+                                                                 <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 @endif
+                                             @endforeach
+                                             @if(!$exist1)
+                                                 <div class="timeline-item">
+                                                     <div class="timeline-badge">
+                                                         <div class="timeline-icon">
+                                                             <i class="icon-docs font-red"></i>
+                                                         </div>
+                                                     </div>
+                                                     <div class="timeline-body">
+                                                         <div class="timeline-body-arrow"> </div>
+                                                         <div class="timeline-body-head">
+                                                             <div class="timeline-body-head-caption">
+                                                                 <span class="timeline-body-alerttitle font-dark">التقرير الدوري التاسع</span>
+                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                     @foreach($cycles as $cycle)
+                                                                         @if($cycle->name == 'التقرير الدوري التاسع')
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+
+                                                                         @endif
+                                                                     @endforeach </span>
+                                                             </div>
+                                                             <div class="timeline-body-head-actions">
+                                                                 <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
+                                                                     <i class="fa"></i>
+                                                                 </button>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             @endif
+                                             <!-- END TIMELINE ITEM -->
+
+
+
+
+                                             <!-- التقرير الدوري العاشر -->
+                                             <!-- TIMELINE ITEM -->
+                                             <?php $exist1=false;?>
+                                             @foreach($my_searchs as $search)
+                                                 @if($search->cycle->name == 'التقرير الدوري العاشر' && $search->Status =='yes' )
+                                                     <?php $exist1=true;?>
+                                                     <div class="timeline-item">
+                                                         <div class="timeline-badge">
+                                                             <div class="timeline-icon">
+                                                                 <i class="icon-docs font-blue "></i>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body">
+                                                             <div class="timeline-body-arrow"> </div>
+                                                             <div class="timeline-body-head">
+                                                                 <div class="timeline-body-head-caption">
+                                                                     <span class="timeline-body-alerttitle font-dark">التقرير الدوري العاشر </span>
+                                                                     <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                                 </div>
+                                                                 <div class="timeline-body-head-actions">
+                                                                     <div class="btn-group dropup">
+                                                                         <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                             <i class="fa fa-eye"></i>
+                                                                         </a>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                             <div class="timeline-body-content">
+                                                                 <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+                                                             </div>
+                                                         </div>
+                                                     </div>
+                                                 @endif
+                                             @endforeach
+                                             @if(!$exist1)
+                                                 <div class="timeline-item">
+                                                     <div class="timeline-badge">
+                                                         <div class="timeline-icon">
+                                                             <i class="icon-docs font-red"></i>
+                                                         </div>
+                                                     </div>
+                                                     <div class="timeline-body">
+                                                         <div class="timeline-body-arrow"> </div>
+                                                         <div class="timeline-body-head">
+                                                             <div class="timeline-body-head-caption">
+                                                                 <span class="timeline-body-alerttitle font-dark">التقرير الدوري العاشر</span>
+                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                     @foreach($cycles as $cycle)
+                                                                         @if($cycle->name == 'التقرير الدوري العاشر')
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+
+                                                                         @endif
+                                                                     @endforeach </span>
+                                                             </div>
+                                                             <div class="timeline-body-head-actions">
+                                                                 <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
+                                                                     <i class="fa"></i>
+                                                                 </button>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                                         </div>
+                                                     </div>
+                                                 </div>
+                                             @endif
+                                            <!-- END TIMELINE ITEM -->
+
+
+
+
+
+
+                                             <!-- التقرير الدوري الحادي عشر -->
+                                             <!-- TIMELINE ITEM -->
+                                             <?php $exist1=false;?>
+                                             @foreach($my_searchs as $search)
+                                                 @if($search->cycle->name == 'التقرير الدوري الحادي عشر' && $search->Status =='yes' )
+                                                     <?php $exist1=true;?>
+                                                     <div class="timeline-item">
+                                                         <div class="timeline-badge">
+                                                             <div class="timeline-icon">
+                                                                 <i class="icon-docs font-blue "></i>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body">
+                                                             <div class="timeline-body-arrow"> </div>
+                                                             <div class="timeline-body-head">
+                                                                 <div class="timeline-body-head-caption">
+                                                                     <span class="timeline-body-alerttitle font-dark">التقرير الدوري الحادي عشر </span>
+                                                                     <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                                 </div>
+                                                                 <div class="timeline-body-head-actions">
+                                                                     <div class="btn-group dropup">
+                                                                         <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                             <i class="fa fa-eye"></i>
+                                                                         </a>
+                                                                     </div>
+                                                                 </div>
+                                                             </div>
+                                                         </div>
+                                                         <div class="timeline-body-content">
+                                                             <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+                                                         </div>
+                                                     </div>
+                                                    </div>
+                                             @endif
+                                             @endforeach
+                                             @if(!$exist1)
+                                                <div class="timeline-item">
+                                                    <div class="timeline-badge">
+                                                        <div class="timeline-icon">
+                                                            <i class="icon-docs font-red"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="timeline-body">
+                                                        <div class="timeline-body-arrow"> </div>
+                                                        <div class="timeline-body-head">
+                                                            <div class="timeline-body-head-caption">
+                                                                <span class="timeline-body-alerttitle font-dark">التقرير الدوري الحادي عشر</span>
+                                                                <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                    @foreach($cycles as $cycle)
+                                                                        @if($cycle->name == 'التقرير الدوري الحادي عشر')
+                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                        @endif
+                                                                    @endforeach </span>
+                                                            </div>
+                                                            <div class="timeline-body-head-actions">
+                                                                <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
+                                                                    <i class="fa"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                             @endif
+                                             <!-- END TIMELINE ITEM -->
+
+
+
+
+
+                                            <!-- التقرير الدوري الثاني عشر -->
+
+                                            <!-- TIMELINE ITEM -->
+                                            <?php $exist1=false;?>
+                                            @foreach($my_searchs as $search)
+                                               @if($search->cycle->name == 'التقرير الدوري الثاني عشر' && $search->Status =='yes')
+                                                    <?php $exist1=true;?>
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-badge">
+                                                            <div class="timeline-icon">
+                                                                <i class="icon-docs font-blue "></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-body">
+                                                            <div class="timeline-body-arrow"> </div>
+                                                            <div class="timeline-body-head">
+                                                                <div class="timeline-body-head-caption">
+                                                                    <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثاني عشر </span>
+                                                                    <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                                </div>
+                                                                <div class="timeline-body-head-actions">
+                                                                    <div class="btn-group dropup">
+                                                                        <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                            <i class="fa fa-eye"></i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="timeline-body-content">
+                                                                <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                @endif
+                                                @endforeach
+                                                @if(!$exist1)
+                                                    <div class="timeline-item">
+                                                        <div class="timeline-badge">
+                                                            <div class="timeline-icon">
+                                                                <i class="icon-docs font-red"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="timeline-body">
+                                                            <div class="timeline-body-arrow"> </div>
+                                                            <div class="timeline-body-head">
+                                                                <div class="timeline-body-head-caption">
+                                                                    <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثاني عشر</span>
+                                                                    <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                        @foreach($cycles as $cycle)
+                                                                            @if($cycle->name == 'التقرير الدوري الثاني عشر')
+                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                            @endif
+                                                                        @endforeach </span>
+                                                                </div>
+                                                                <div class="timeline-body-head-actions">
+                                                                    <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
+                                                                        <i class="fa"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            @endif
+                                            <!-- END TIMELINE ITEM -->
+
+
+
+
+
+            </div>
                                     </div>
                                  </div>
-                                 {{-- نهاية تقارير الطالب --}}
                               </ul>
-                              <div class="task-footer bg-grey">
-                              </div>
+                              
                            </div>
                         </div>
                      </li>
-                     <!-- نهاية تقارير السنة الثانية  -->
-                     <!-- تقارير السنة الثالثة  -->
-                     <li class="mt-list-item">
-                        <div class="list-todo-icon bg-white">
-                           <i class="fa fa-book"></i>
-                        </div>
-                        <div class="list-todo-item yellow">
-                           <a class="list-toggle-container font-white collapsed" data-toggle="collapse" href="#section3" aria-expanded="false">
-                              <div class="list-toggle done uppercase">
-                                 <div class="list-toggle-title ">تقارير السنة الثالثة</div>
-                                 <div class="badge badge-default yellow pull-right bold"> التقارير : 4</div>
-                              </div>
-                           </a>
-                           <div class="task-list panel-collapse collapse" id="section3" aria-expanded="false" style="height: 0px;">
-                              <ul>
-                                 <div class="portlet light portlet-fit bg-inverse bordered">
-                                    <div class="portlet-title">
-                                       <div class="caption">
-                                          <i class="icon-folder  font-black"></i>
-                                          <span class="caption-subject bold font-dark uppercase"> قائمة التقارير الخاصة بالسنة الثالثة</span>
-                                       </div>
-                                       <div class="actions">
-                                            <a class="btn-group btn-group-devided" href="{{route('addSearch')}}">
-                                                    <label class="btn btn-transparent green  btn-lg">
-                                                    <i class="icon-plus"></i> إضافة بحث جديد  </label>
-                                            </a>
-                                       </div>
-                                    </div>
-                                    <div class="portlet-body">
-                                       <div class="timeline  white-bg white-bg">
-                                          <!-- TIMELINE ITEM -->
-                                          
-                                          <?php $exist1=false;?>
-                                          @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري التاسع' )
-                                              <?php $exist1=true;?>
-                                              <div class="timeline-item">
-                                                  <div class="timeline-badge">
-                                                      <div class="timeline-icon">
-                                                      <i class="icon-docs font-blue "></i>
-                                                      </div>
-                                                  </div>
-                                                  <div class="timeline-body">
-                                                      <div class="timeline-body-arrow"> </div>
-                                                      <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري التاسع </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                          </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="timeline-body-content">
-                                                      <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          @endif
-                                          @endforeach
-                                          @if(!$exist1)
-                                           <div class="timeline-item">
-                                              <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
-                                              </div>
-                                              <div class="timeline-body">
-                                                 <div class="timeline-body-arrow"> </div>
-                                                 <div class="timeline-body-head">
-                                                    <div class="timeline-body-head-caption">
-                                                       <span class="timeline-body-alerttitle font-dark">التقرير الدوري التاسع</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
-                                                           @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري التاسع')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
-                                                           @endforeach </span>
-                                                    </div>
-                                                    <div class="timeline-body-head-actions">
-                                                       <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
-                                                       <i class="fa"></i>
-                                                       </button>
-                                                    </div>
-                                                 </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
-                                                 </div>
-                                              </div>
-                                           </div>
-                                          @endif
-                                          <!-- END TIMELINE ITEM -->
-                                          <!-- TIMELINE ITEM -->
-                                          
-                                          <?php $exist1=false;?>
-                                          @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري العاشر' )
-                                              <?php $exist1=true;?>
-                                              <div class="timeline-item">
-                                                  <div class="timeline-badge">
-                                                      <div class="timeline-icon">
-                                                      <i class="icon-docs font-blue "></i>
-                                                      </div>
-                                                  </div>
-                                                  <div class="timeline-body">
-                                                      <div class="timeline-body-arrow"> </div>
-                                                      <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري العاشر </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                          </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="timeline-body-content">
-                                                      <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          @endif
-                                          @endforeach
-                                          @if(!$exist1)
-                                           <div class="timeline-item">
-                                              <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
-                                              </div>
-                                              <div class="timeline-body">
-                                                 <div class="timeline-body-arrow"> </div>
-                                                 <div class="timeline-body-head">
-                                                    <div class="timeline-body-head-caption">
-                                                       <span class="timeline-body-alerttitle font-dark">التقرير الدوري العاشر</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
-                                                           @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري العاشر')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
-                                                           @endforeach </span>
-                                                    </div>
-                                                    <div class="timeline-body-head-actions">
-                                                       <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
-                                                       <i class="fa"></i>
-                                                       </button>
-                                                    </div>
-                                                 </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
-                                                 </div>
-                                              </div>
-                                           </div>
-                                          @endif
-                                          <!-- END TIMELINE ITEM -->
-                                          <!-- TIMELINE ITEM -->
-                                          
-                                          <?php $exist1=false;?>
-                                          @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الحادي عشر' )
-                                              <?php $exist1=true;?>
-                                              <div class="timeline-item">
-                                                  <div class="timeline-badge">
-                                                      <div class="timeline-icon">
-                                                      <i class="icon-docs font-blue "></i>
-                                                      </div>
-                                                  </div>
-                                                  <div class="timeline-body">
-                                                      <div class="timeline-body-arrow"> </div>
-                                                      <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الحادي عشر </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                                </div>
-                                                          </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="timeline-body-content">
-                                                      <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          @endif
-                                          @endforeach
-                                          @if(!$exist1)
-                                           <div class="timeline-item">
-                                              <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
-                                              </div>
-                                              <div class="timeline-body">
-                                                 <div class="timeline-body-arrow"> </div>
-                                                 <div class="timeline-body-head">
-                                                    <div class="timeline-body-head-caption">
-                                                       <span class="timeline-body-alerttitle font-dark">التقرير الدوري الحادي عشر</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
-                                                           @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري الحادي عشر')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
-                                                           @endforeach </span>
-                                                    </div>
-                                                    <div class="timeline-body-head-actions">
-                                                       <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
-                                                       <i class="fa"></i>
-                                                       </button>
-                                                    </div>
-                                                 </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
-                                                 </div>
-                                              </div>
-                                           </div>
-                                          @endif
-                                          <!-- END TIMELINE ITEM -->
-                                          <!-- TIMELINE ITEM -->
-                                          
-                                          <?php $exist1=false;?>
-                                          @foreach($my_searchs as $search)
-                                          @if($search->cycle->name == 'التقرير الدوري الثاني عشر' )
-                                              <?php $exist1=true;?>
-                                              <div class="timeline-item">
-                                                  <div class="timeline-badge">
-                                                      <div class="timeline-icon">
-                                                      <i class="icon-docs font-blue "></i>
-                                                      </div>
-                                                  </div>
-                                                  <div class="timeline-body">
-                                                      <div class="timeline-body-arrow"> </div>
-                                                      <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثاني عشر </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                          <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                              <i class="fa fa-eye"></i>
-                                                              </a>
-                                                          </div>
-                                                      </div>
-                                                      </div>
-                                                      <div class="timeline-body-content">
-                                                      <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
-                                                      </div>
-                                                  </div>
-                                              </div>
-                                          @endif
-                                          @endforeach
-                                          @if(!$exist1)
-                                           <div class="timeline-item">
-                                              <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
-                                              </div>
-                                              <div class="timeline-body">
-                                                 <div class="timeline-body-arrow"> </div>
-                                                 <div class="timeline-body-head">
-                                                    <div class="timeline-body-head-caption">
-                                                       <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثاني عشر</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
-                                                           @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري الثاني عشر')
-                                                                  {{$cycle->endDate}}
-                                                              @endif
-                                                           @endforeach </span>
-                                                    </div>
-                                                    <div class="timeline-body-head-actions">
-                                                       <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
-                                                       <i class="fa"></i>
-                                                       </button>
-                                                    </div>
-                                                 </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
-                                                 </div>
-                                              </div>
-                                           </div>
-                                          @endif
-                                          <!-- END TIMELINE ITEM -->
-                                       </div>
-                                    </div>
-                                 </div>
-                              </ul>
-                              <div class="task-footer bg-grey">
-                              </div>
-                           </div>
-                        </div>
-                     </li>
-                     <!-- نهاية تقارير السنة الثالثة  -->
+                     <!-- نهاية التقارير    -->
+
+
+
+
+
+
                   </ul>
                </div>
             </div>
          </div>
       </div>
       @endif
+
+
+
    </div>
    <!-- END CONTENT BODY -->
 </div>
 <!-- END CONTENT -->
+
+
 @section('pageScript')
 <script src="{!! asset('assets/global/plugins/counterup/jquery.waypoints.min.js') !!}" type="text/javascript"></script>
 <script src="{!! asset('assets/global/plugins/counterup/jquery.counterup.min.js') !!}" type="text/javascript"></script>

@@ -23,9 +23,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -44,8 +41,8 @@
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة بحث جديد</h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">إضافة بحث جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالبحث :
             </div>
 <div class="row">
@@ -62,33 +59,37 @@
                                 <div class="form-body">
                                     <div class="alert alert-danger display-hide">
                                         <button class="close" data-close="alert"></button> لديك بعض الاخطاء في النموذج . يرجى مراجعة أدناه. </div>
-                                   
+
                                     <div class="form-group  margin-top-20">
-                                       
+
                                         <div class="col-md-12">
-                                            <label>الاختصار</label>
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="text" class="form-control" name="alias"  placeholder="الاختصار *"/> </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        
-                                        <div class="col-md-12">
-                                            <label>الاسم *</label>
+                                            <label>اسم الجزء البحثي *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="name" placeholder="الاسم *"/> </div>
                                         </div>
                                     </div>
+
+
+                                    <div class="form-group ">
+                                       
+                                        <div class="col-md-12">
+                                            <label> وصف الجزء البحثي *</label>
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" class="form-control" required name="alias"  placeholder="الوصف *"/> </div>
+                                        </div>
+                                    </div>
+
                                     
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
-                                            <label>الرقم الدوري *</label>
+                                            <label>رقم التقرير الدوري *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select name="cycle" id="cycle" class="form-control" required>
+                                                <select name="cycle"  id="cycle" class="form-control" required>
+                                                    <option selected disabled>اختر رقم التقرير</option>
                                                     @foreach($cycles as $cycle)
                                                 <option value="{{$cycle->ID}}">{{$cycle->name}} [ {{$cycle->startDate}} => {{$cycle->endDate}} ]</option>
                                                     @endforeach
@@ -103,7 +104,8 @@
                                             <label>القسم *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select name="division" id="division1" class="form-control">
+                                                <select name="division" required id="division1" class="form-control">
+                                                    <option selected disabled>اختر القسم </option>
                                                     @foreach($divisions as $division)
                                                         <option value="{{$division->ID}}">{{$division->Name}}</option>
                                                     @endforeach
@@ -112,7 +114,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group">
+                                 {{--   <div class="form-group">
                                         
                                         <div class="col-md-12">
                                             <label>المبحث *</label>
@@ -126,31 +128,22 @@
                                             </div>
                                         </div>
                                     </div>
-
+--}}
                                     
 
-                                    <div class="form-group">
-                                        
-                                        <div class="col-md-12">
-                                            <label>الترتيب *</label>
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <input type="number" class="form-control" name="order" placeholder="الترتيب *"/> </div>
-                                        </div>
-                                    </div>
 
                                     <div class="form-group ">
                                             <div class="col-md-12">
                                                 <label>الملف *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <input type="file" class="form-control" name="searchURL" > </div>
+                                                    <input type="file" required accept="application/pdf" class="form-control" name="searchURL" > </div>
                                             </div>
                                         </div>
                                         <div class="form-actions">
                                             <div class="row">
                                                 <div class="col-md-offset-3 col-md-9">
-                                                    <button type="submit" class="btn green">تأكيد</button>
+                                                    <button type="submit" class="btn blue">إرسال البحث</button>
                                                     <button type="reset" class="btn default">الغاء</button>
                                                 </div>
                                             </div>

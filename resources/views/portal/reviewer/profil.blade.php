@@ -48,12 +48,17 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img src="{{ asset('storage/registrations/'.auth()->user()->registration->PictureURL) }}" class="img-responsive" alt=""> </div>
+                                @if(auth()->user()->registration->PictureURL == null)
+
+                                @else
+                                <img src="{{ asset('storage/registrations/default.jpg') }}" class="img-responsive" alt="">
+                                @endif
+                            </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
                             <div class="profile-usertitle-name"> {{$registration->Fistname}} {{$registration->LastName}}</div>
-                                <div class="profile-usertitle-job"> باحث </div>
+                                <div class="profile-usertitle-job"> محكم </div>
                             </div>
 
                             <div class="profile-userbuttons">
@@ -69,15 +74,9 @@
                                 <ul class="nav">
                                    
                                     <li class="active">
-                                            <a href="{{route('searcherProfile')}}">
+                                            <a href="{{route('reviewerProfile')}}">
                                             <i class="icon-settings"></i> تعديل معلوماتي الشخصية </a>
                                     </li>
-                                    <br>
-                                    <li class="active">
-                                        <a href="{{route('searcherAcademic')}}">
-                                            <i class="fa fa-graduation-cap"></i> عرض معلوماتي الأكاديمية </a>
-                                    </li>
-
                                 </ul>
                             </div>
                             <!-- END MENU -->
@@ -107,16 +106,14 @@
                                             <li>
                                                 <a href="#tab_1_3" data-toggle="tab">تغيير الرقم السري</a>
                                             </li>
-                                            <li>
-                                                <a href="#tab_1_4" data-toggle="tab">السيرة الذاتية</a>
-                                            </li>
+
                                         </ul>
                                     </div>
                                     <div class="portlet-body">
                                         <div class="tab-content">
                                             <!-- PERSONAL INFO TAB -->
                                             <div class="tab-pane active" id="tab_1_1">
-                                                <form role="form" class="form-horizontal" action="{{route('searcherProfileEdit')}}" method="POST">
+                                                <form role="form" class="form-horizontal" action="{{route('reviewerProfileEdit')}}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id_registration" value="{{$registration->ID}}" />
 
@@ -124,7 +121,15 @@
 
                                                     <h4 class="block myfont">معلومات أساسية</h4>
 
-
+                                                    <div class="form-group">
+                                                        <label class="col-md-2 control-label">اسم العائلة</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="اسم العائلة" data-container="body"></i>
+                                                                <input type="text" class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
 
                                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
@@ -448,7 +453,7 @@
                                             <!-- CHANGE AVATAR TAB -->
                                             <div class="tab-pane" id="tab_1_2">
                                                 <p> يمكنك اختيار صورة جديدة لحسابك من هنا </p>
-                                            <form action="{{route('searcherProfileEditAvatar')}}" method="POST" role="form" enctype="multipart/form-data">
+                                            <form action="{{route('reviewerProfileEditAvatar')}}" method="POST" role="form" enctype="multipart/form-data">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id_registration" value="{{$registration->ID}}" />
                                                     <div class="form-group">
@@ -476,7 +481,7 @@
                                             <!-- END CHANGE AVATAR TAB -->
                                             <!-- CHANGE PASSWORD TAB -->
                                             <div class="tab-pane" id="tab_1_3">
-                                            <form class="form-horizontal" action="{{route('searcherProfileEditPassword')}}" method="POST">
+                                            <form class="form-horizontal" action="{{route('reviewerProfileEditPassword')}}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id_user" value="{{$user->id}}" />
 
@@ -529,44 +534,8 @@
 
                                                 </form>
                                             </div>
-                                            <!-- END CHANGE PASSWORD TAB -->
-                                            <div class="tab-pane" id="tab_1_4">
-                                                    <form action="{{route('uploadSearcherCV')}}" method="POST" enctype="multipart/form-data">
-                                                            {{ csrf_field() }}
-                                                            <input type="hidden" name="id_user" value="{{$user->id}}" />
-                                                            <div class="form-group">
 
 
-
-
-
-
-                                                                    <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                                        @if($registration->CV!="")
-                                                                            <a class="btn btn-primary" target="_blank" href="{{ asset('storage/CV/'.auth()->user()->registration->CV) }}" style="margin: inherit;">تحميل الملف</a>
-                                                                        @endif
-                                                                        <br />
-                                                                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
-                                                                        <div>
-                                                                            <span class="btn default btn-file">
-                                                                                <span class="fileinput-new"> رفع السيرة الذاتية   </span>
-                                                                                <span class="fileinput-exists"> تغيير </span>
-                                                                                <input type="file" accept="application/pdf, application/msword,.doc,.docx" name="CV" required> </span>
-                                                                            <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> الغاء </a>
-                                                                        </div>
-                                                                    </div>
-
-
-
-
-                                                                    
-                                                                </div>
-                                                            <div class="margin-top-10">
-                                                                <input type="submit" class="btn blue" value="رفع" />
-                                                                <input type="reset" value="الغاء" class="btn default" /> 
-                                                            </div>
-                                                        </form>
-                                                    </div>
                                         </div>
                                     </div>
                                 </div>

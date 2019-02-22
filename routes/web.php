@@ -48,7 +48,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/users/addUserSearcherPost','Admin\UserController@addUserSearcherPost')->name('addUserSearcherPost');
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
-    Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@get')->name('getSearcher');
+    Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@getSearch')->name('getSearcher');
     Route::post('/searchers/addToMeeting','Admin\SearcherController@addToMeeting')->name('addToMeeting');
     Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
     Route::post('/searchers/addCriteriasToSearcher','Admin\SearcherController@addCriteriasToSearcher')->name('addCriteriasToSearcher'); 
@@ -57,6 +57,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchers/editPlanEnable','Admin\SearcherController@editPlanEnable')->name('editPlanEnable');
     Route::get('/searchers/editStatusSearcher/{id}/{status}','Admin\SearcherController@editStatusSearcher')->name('editStatusSearcher');
     Route::post('/searchers/updateSearcherInfos','Admin\SearcherController@updateSearcherInfos')->name('updateSearcherInfos');
+
+    //show searchers searchs for admins
+    Route::get('/searchers/getSearcherSearchs/{id}','Admin\SearcherController@getSearcherSearchs')->name('getSearcherSearchsAdmin');
+
 
     Route::get('/submissions','Admin\SubmissionController@index')->name('allSubmissions');
     Route::get('/submissions/getSubmission/{id}','Admin\SubmissionController@getSubmission')->name('getSubmission');
@@ -175,8 +179,18 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchs/getAllMySearchs','Reviewer\SearchController@getAllMySearchs')->name('getAllMySearchs');
     Route::get('/searchs/getOneMySearch/{id}','Reviewer\SearchController@getOneMySearch')->name('getOneMySearch');
     Route::post('/searchs/addreviewers_reports','Reviewer\SearchController@addreviewers_reports')->name('addreviewers_reports');
-    
-    
+    Route::get('/reviewer/myprofile','Reviewer\MyProfilController@index')->name('reviewerProfile');
+    Route::post('/reviewer/editmyprofile','Reviewer\MyProfilController@editPost')->name('reviewerProfileEdit');
+    Route::post('/reviewer/editavatar','Reviewer\MyProfilController@editAvatar')->name('reviewerProfileEditAvatar');
+    Route::post('/reviewer/editpassword','Reviewer\MyProfilController@editPassword')->name('reviewerProfileEditPassword');
+
+
+
+
+
+
+
+
     //----------------------- Supervisor -----------------------------
     
     Route::get('/supervisor/myprofile','Supervisor\MyProfilController@index')->name('supervisorProfile');
@@ -191,7 +205,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/updateSearchProgressok/{id}','Supervisor\SearchController@updateSearchProgressok')->name('updateSearchProgressok');
     Route::get('/supervisor/updateSearchProgressko/{id}','Supervisor\SearchController@updateSearchProgressko')->name('updateSearchProgressko');
     Route::post('/supervisor/addsupervisor_reports','Supervisor\SearchController@addsupervisor_reports')->name('addsupervisor_reports');
-    
+
+    Route::get('/supervisor/getSearcherProfile/{id}','Supervisor\SearcherController@getSearcherProfile')->name('getSearcherProfile');
+
     Route::get('/supervisor/reports','Supervisor\ReportController@index')->name('allSupervisorReports');
     Route::get('/supervisor/addReport','Supervisor\ReportController@add')->name('addSupervisorReport');
     Route::post('/supervisor/addReportPost','Supervisor\ReportController@addPost')->name('addSupervisorReportPost');
@@ -204,7 +220,12 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
     //---------------------- Searcher ---------------------------------
 
+
     Route::get('/searcher/myprofile','Searcher\MyProfilController@index')->name('searcherProfile');
+    //show searcher academic info
+    Route::get('/searcher/myacademic','Searcher\MyProfilController@academic')->name('searcherAcademic');
+    Route::post('/searcher/editPlan','Searcher\MyProfilController@editPlan')->name('editPlan2');
+
     Route::post('/searcher/editmyprofile','Searcher\MyProfilController@editPost')->name('searcherProfileEdit');
     Route::post('/searcher/editavatar','Searcher\MyProfilController@editAvatar')->name('searcherProfileEditAvatar');
     Route::post('/searcher/editpassword','Searcher\MyProfilController@editPassword')->name('searcherProfileEditPassword');
@@ -231,5 +252,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searcher/addPlanPost','Searcher\PlanController@addPost')->name('addPlanPost');
     Route::get('/searcher/deletePlan/{id}','Searcher\PlanController@delete')->name('deletePlan');
     Route::post('/searcher/uploadSearcherCV','Searcher\MyProfilController@uploadSearcherCV')->name('uploadSearcherCV');
-    
+
+    //show my supervisor's profile.
+    Route::get('/searcher/mysupervisor/{id}','Searcher\MySupervisorController@getSupervisorProfile')->name('mySupervisorProfile');
+
+
 });
