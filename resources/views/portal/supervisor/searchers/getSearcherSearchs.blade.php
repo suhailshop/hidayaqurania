@@ -55,7 +55,7 @@
 
                                     <th class="all">الاسم</th>
                                     <th class="all">القسم </th>
-
+                                    <th class="all">المبحث </th>
 
                                      <th class="all">تحميل البحث</th>
                                     <th>  تقرير المشرف </th>
@@ -76,6 +76,9 @@
 
                                     <td>{{$search->diviName}}</td>
 
+                                    <td>{{$search->divName}}</td>
+
+
 
                                   {{--  <td>  @if($search->Progress=='تم الرفع')
                                             <span class="badge badge-warning">{{$search->Progress}}</span>
@@ -91,7 +94,9 @@
                                     </td>
 
                                     <td>  <span class="badge badge-danger">لم يتم إرسال التقرير</span> </td>
-                                    <td>@if(isset($search->Note)) {{$search->Note}} @else 'لا توجد اية ملاحظة' @endif </td>
+
+
+                                    <td>@if(isset($search->Note)) {{$search->Note}} @else 'لم يتم كتابة ملاحظة' @endif </td>
 
                                     <td>
                                         

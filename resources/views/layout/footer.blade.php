@@ -6,10 +6,10 @@
 <!-- BEGIN FOOTER -->
 <div class="page-footer" >
 
-    <div class="page-footer-inner" > 2018 &copy; البوابة الالكترونية لموسوعة الهدايات القرآنية
+    <div class="page-footer-inner" >  جميع الحقوق محفوظة لموسوعة الهدايات القرآنية &copy; <?php echo date('Y'); ?>
 
           <div class="scroll-to-top">
-            <i class="icon-arrow-up"></i>
+            <i class="icon-arrow-up" style="color: #8b7005"></i>
           </div>
 
     </div>

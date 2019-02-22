@@ -114,7 +114,7 @@
                                         </div>
                                     </div>
 
-                                 {{--   <div class="form-group">
+                                    <div class="form-group">
                                         
                                         <div class="col-md-12">
                                             <label>المبحث *</label>
@@ -128,8 +128,7 @@
                                             </div>
                                         </div>
                                     </div>
---}}
-                                    
+
 
 
                                     <div class="form-group ">

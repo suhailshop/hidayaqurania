@@ -454,7 +454,8 @@
                             <span class="arrow"></span>
                         </a>
                 </li>
-                <li class="nav-item  ">
+
+              {{--  <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="icon-chemistry"></i>
                             <span class="title">تقاريري </span>
@@ -472,8 +473,22 @@
                                     </a>
                                 </li>
                         </ul>
-                 </li>
-                 @endif
+                 </li>--}}
+
+
+                <li class="nav-item  ">
+                    <a href="{{route('allbookssupervisor')}}" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">المصادر العلمية</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+
+
+
+
+
+            @endif
 
 
 

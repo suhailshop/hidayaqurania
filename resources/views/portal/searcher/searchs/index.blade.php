@@ -46,20 +46,31 @@
                             <i class="icon-graduation font-dark"></i>
                             <span class="caption-subject bold uppercase">لائحة البحوث الخاصة بي  </span>
                         </div>
-                        {{--<div class="tools"> </div>--}}
+
+                                               {{--<div class="tools"> </div>--}}
                     </div>
                     <div class="portlet-body">
+
+
+                        <div>
+                            <a class=" btn-group  btn-group-devided" href="{{route('addSearch')}}">
+                                <label class="btn btn-transparent yellow">
+                                    <i class="icon-plus"></i> إضافة بحث جديد  </label>
+                            </a>
+                        </div>
+                        <br>
+
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
 
                                     <th class="all">الاسم</th>
                                     <th class="all">القسم</th>
-                                   {{-- <th class="all">المبحث</th>--}}
+                                    <th class="all">المبحث</th>
 
                                     <th class="all">تحميل البحث</th>
 
-                                    <th class="all">حالة النشر</th>
+
 
                                     <th class="all">خيارات.</th>
                                 </tr>
@@ -78,7 +89,7 @@
 
 
                                     <td>{{$search->division->Name}}</td>
-                                  {{--  <td>{{$search->divisionunit->Name}}</td>--}}
+                                    <td>{{$search->divisionunit->Name}}</td>
 
                                     <td>
                                         <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
@@ -92,14 +103,14 @@
                                         @elseif($search->Progress == 'رفض الادارة' || $search->Progress == 'رفض المشرف') 
                                         <div class="badge badge-danger">{{$search->Progress}}</div>
                                         @endif</td>--}}
-                                    <td>
+                                {{--    <td>
 
                                         @if($search->Status == 'yes')
                                             <div class="badge badge-primary"> منشور </div>
                                         @elseif($search->Status == 'no')
                                             <div class="badge badge-danger"> غير منشور </div>
                                         @endif
-                                    </td>
+                                    </td>--}}
 
                                     <td>
                                         <div class="btn-group pull-right">

@@ -133,7 +133,7 @@
                                                                 <input  value="{{$search->Name}}" readonly class="form-control placeholder-no-fix" type="text"  />
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label">الاختصار</label>
+                                                                    <label class="control-label">وصف البحث</label>
                                                                     <input  value="{{$search->Alias}}" readonly  class="form-control placeholder-no-fix" type="text"   /> 
                                                             </div>  
                                                             <div class="form-group">
@@ -174,11 +174,11 @@
                                             <div class="tab-pane" id="tab_1_2">
                                                     <form role="form" method="POST" action="#" >
                                                             <div class="form-group">
-                                                                <label class="control-label ">الاسم العائلي </label>
+                                                                <label class="control-label ">الاسم  </label>
                                                                 <input  value="{{$search->searcher->Fistname}}" readonly class="form-control placeholder-no-fix" type="text"  />
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label ">الاسم الشخصي</label>
+                                                                <label class="control-label ">اللقب </label>
                                                                 <input  value="{{$search->searcher->LastName}}" readonly class="form-control placeholder-no-fix" type="text"  /> 
                                                             </div>
                                                             <div class="form-group">
@@ -198,32 +198,32 @@
                                                         {{ csrf_field() }}
                                                             <input type="hidden" value="{{$search->ID}}" name="search" />
                                                             <div class="form-group">
-                                                                <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
+                                                                <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : *</label>
                                                                 <textarea required class="form-control " name="q1" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : </label>
+                                                                    <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : *</label>
                                                                     <textarea required class="form-control " name="q2" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">اهم الايجابيات على عمل الطالب ؟ : </label>
+                                                                    <label class="control-label ">اهم الايجابيات على عمل الطالب ؟ : *</label>
                                                                     <textarea required class="form-control " name="q3" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : </label>
+                                                                        <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : *</label>
                                                                         <textarea required class="form-control " name="q4" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">التوصيات والمقترحات : </label>
+                                                                    <label class="control-label ">التوصيات والمقترحات : *</label>
                                                                     <textarea required class="form-control " name="q5" ></textarea>
                                                                 </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">ملاحظات عامة  : </label>
+                                                                        <label class="control-label ">ملاحظات عامة  : *</label>
                                                                         <textarea required class="form-control " name="note" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">رفع الملف : </label>
-                                                                        <input required class="form-control " name="filename" type="file"  />
+                                                                        <label class="control-label ">رفع ملف (اختياري) : </label>
+                                                                        <input  class="form-control " name="filename" type="file"  />
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">تأكيد</button>
                                                     </form>
@@ -236,20 +236,20 @@
                                                         {{ csrf_field() }}
                                                             <input type="hidden" value="{{$search->ID}}" name="search" />
                                                             <div class="form-group">
-                                                                <label class="control-label ">نسبة ما تم إنجازه من الرسالة : </label>
+                                                                <label class="control-label ">نسبة ما تم إنجازه من الرسالة : *</label>
                                                                 <textarea required class="form-control " name="q1" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مسوغات وتوضيحات حول نسبة الإنجاز : </label>
+                                                                    <label class="control-label ">مسوغات وتوضيحات حول نسبة الإنجاز : *</label>
                                                                     <textarea required class="form-control " name="q2" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي
+                                                                    <label class="control-label ">مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي *
                                                                             (ممتاز، جيد جدا، جيد، مقبول)  : </label>
                                                                     <textarea required class="form-control " name="q3" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">مدى الالتزام بتوجيهات المشرف واللجنة 
+                                                                        <label class="control-label ">مدى الالتزام بتوجيهات المشرف واللجنة *
                                                                                 العلمية بالكرسي 
                                                                                 100%, 90%,...etc 
                                                                                  : </label>
@@ -276,8 +276,8 @@
                                                                         <textarea required class="form-control " name="note" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">رفع الملف : </label>
-                                                                    <input required class="form-control " name="filename" type="file" />
+                                                                    <label class="control-label ">رفع ملف (اختياري) </label>
+                                                                    <input  class="form-control " name="filename" type="file" />
                                                             </div>
                                                             <button type="submit" class="btn btn-primary" >تأكيد</button>
                                                     </form>
@@ -326,8 +326,8 @@
                                                             <textarea required class="form-control " name="q9" ></textarea>
                                                 </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">رفع الملف : </label>
-                                                                        <input required class="form-control " name="filename" type="file"  />
+                                                                        <label class="control-label ">رفع ملف (اختياري) : </label>
+                                                                        <input  class="form-control " name="filename" type="file"  />
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">تأكيد</button>
                                                     </form>

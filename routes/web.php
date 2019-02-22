@@ -217,6 +217,8 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/editReport/{id}','Supervisor\ReportController@edit')->name('editSupervisorReport');
     Route::post('/supervisor/editReportPost','Supervisor\ReportController@editPost')->name('editSupervisorReportPost');
     Route::get('/supervisor/deleteReport/{id}','Supervisor\ReportController@delete')->name('deleteSupervisorReport');
+    Route::get('/supervisor/allbooks','Supervisor\BooksController@index')->name('allbookssupervisor');
+
 
 
 

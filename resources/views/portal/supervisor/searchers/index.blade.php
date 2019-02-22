@@ -85,7 +85,7 @@
                                                 </li>
 
                                                 <li class="myfont">
-                                                    <a href="{{route('getSearcherSearchs',['id'=>$searcher->ID])}}" >
+                                                    <a href="{{route('getSearcherProfile',['id'=>$searcher->ID])}}" >
                                                         <i class="fa fa-search-plus"></i> صفحة الطالب</a>
                                                 </li>
                                                 
