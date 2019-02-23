@@ -133,6 +133,7 @@ class SearchsController extends Controller
             'q8'=>$request->input('q8'),
             'q9'=>$request->input('q9'),
             'filename'=>$fileName,
+            'date'=>date('Y-m-d')
         ]);
         }
         return redirect()->route('allSearchs');
