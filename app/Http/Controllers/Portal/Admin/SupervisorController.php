@@ -86,4 +86,32 @@ class SupervisorController extends Controller
         Registration::where('ID', $id)->forcedelete(); 
         return redirect()->route('allSupervisor');
     }
+
+
+
+    public function showProfile($id){
+
+        $supervisor = Registration::where('ID',$id)->get()->first();
+        $nationalities = Nationalitie::all();
+        $countries = Countrie::all();
+
+
+        $searchers = DB::table('theses')
+            ->join('registrations','registrations.ID','=','theses.Searcher')
+            ->join('nationalities','nationalities.ID','=','registrations.Nationalitie')
+            ->join('countries','countries.ID','=','registrations.Countrie')
+            ->where('theses.Supervisor',$supervisor->ID)
+            ->select('registrations.*','countries.Name as countrieName','nationalities.Name as nationalitieName','theses.Title as thesesTitle')
+            ->get();
+
+
+
+
+        return view('portal.admin.supervisors.profile',compact('supervisor' , 'nationalities' , 'countries'))->with('searchers',$searchers);
+
+
+    }
+
+
+
 }

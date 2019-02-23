@@ -77,8 +77,11 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisors','Admin\SupervisorController@index')->name('allSupervisor');
     Route::get('/supervisors/add','Admin\SupervisorController@add')->name('addSupervisor');
     Route::post('/supervisors/add','Admin\SupervisorController@addPost')->name('addSupervisorPost');
+    Route::get('/supervisors/profile/{id}','Admin\SupervisorController@showProfile')->name('adminSupervisorProfile');
 
-    
+
+
+
     Route::get('/universities','Admin\UniversityController@index')->name('allUniversity');
     Route::get('/universities/add','Admin\UniversityController@add')->name('addUniversity');
     Route::post('/universities/add','Admin\UniversityController@addPost')->name('addUniversityPost');

@@ -21,9 +21,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -33,7 +30,7 @@
                     </li>
                     <li>
                             <i class="icon-briefcase"></i>
-                        <span>إدارة المشرفين</span>
+                        <span> المشرفون </span>
                     </li>
                 </ul>
             </div>
@@ -56,22 +53,15 @@
                             <thead>
                                 <tr>
                                     <th class="min-phone-l">الاسم الكامل</th>
-                                    <th class="min-tablet">الجنس</th>
-                                    <th class="none">تاريخ الازدياد</th>
-                                    <th class="none">مكان الازدياد</th>
-                                    <th class="none">الجنسية</th>
-                                    <th class="desktop">الدولة</th>
-                                    <th class="none">المدينة</th>
-                                    <th class="none">العنوان</th>
-                                    <th class="none">رقم جواز السفر</th>
-                                    <th class="none">الرقم الوطني</th>
-                                    <th class="none"> البريد الالكتروني </th>
-                                    <th class="none"> الهاتف</th>
-                                    <th class="none"> الجامعة</th>
-                                    <th class="none">الكلية</th>
-                                    <th class="none">الصورة</th>
-                                    <th class="desktop">الحالة</th>
-                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+
+                                    <th class="all">الجنسية</th>
+                                    <th class="all">الدولة</th>
+                                    <th class="all">المدينة</th>
+
+                                    <th class="all"> الجامعة</th>
+                                    <th class="all">الكلية</th>
+
+                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="all">خيارات.</th>
                                     @endif
                                 </tr>
@@ -79,25 +69,18 @@
                             <tbody>
                                 @foreach($supervisors as $supervisor)
                                 <tr>
-                                    <td>{{$supervisor->Fistname}} {{$supervisor->LastName}}</td>
-                                    <td>{{$supervisor->Gender}}</td>
-                                    <td>{{$supervisor->BirthDate}}</td>
-                                    <td>{{$supervisor->BirthCity}}</td>
+
+                                    <td>  <a href="{{route('adminSupervisorProfile',['id'=>$supervisor->ID])}}" > {{$supervisor->Fistname}} {{$supervisor->LastName}}
+                                    </a> </td>
+
                                     <td>{{$supervisor->nationalitie->Name}}</td>
                                     <td>{{$supervisor->countrie->Name}}</td>
                                     <td>{{$supervisor->City}}</td>
-                                    <th>{{$supervisor->Location}}</th>
-                                    <td>{{$supervisor->PassportNumber}}</td>
-                                    <td>{{$supervisor->NationalNumber}}</td>
-                                    <td>{{$supervisor->Email}}</td>
-                                    <td>{{$supervisor->Phonne1}}</td>
+
                                     <td>{{$supervisor->University}}</td>
                                     <td>{{$supervisor->Faculty}}</td>
-                                    <td>
-                                        <img src="{{ url('storage/registrations/'.$supervisor->PictureURL) }}" 
-                                            style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
-                                    </td>        
-                                    <td>@if($supervisor->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+
+
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">

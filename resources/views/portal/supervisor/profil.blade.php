@@ -98,105 +98,378 @@
                                         <div class="tab-content">
                                             <!-- PERSONAL INFO TAB -->
                                             <div class="tab-pane active" id="tab_1_1">
-                                                <form role="form" action="{{route('supervisorProfileEdit')}}" method="POST">
+                                                <form role="form" class="form-horizontal" action="{{route('supervisorProfileEdit')}}" method="POST">
+
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id_registration" value="{{$registration->ID}}" />
+
+
+
+
+
+                                                    <h4 class="block myfont">معلومات أساسية</h4>
+
+
+
+
                                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                                                        <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
-                                                        <input required value="{{$registration->Fistname}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
-                                                        @if ($errors->has('firstname'))
-                                                        <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال الاسم العائلي'}}</strong>
-                                                        </span>
-                                                    @endif
-                                                    </div>
-                                                    <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
-                                                        <label class="control-label visible-ie8 visible-ie9">الاسم الشخصي</label>
-                                                        <input required value="{{$registration->LastName}}"  class="form-control placeholder-no-fix" type="text" placeholder="الاسم الشخصي" name="lastname" /> 
-                                                        @if ($errors->has('lastname'))
-                                                        <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال الاسم الشخصي'}}</strong>
-                                                        </span>
-                                                    @endif
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الجنس</label>
-                                                        <select name="gender" class="form-control">
-                                                            <option @if($registration->Gender=='ذكر') selected @endif value="ذكر"> ذكر</option>
-                                                            <option @if($registration->Gender=='أنثى') selected @endif value="أنثى"> أنثى</option>
-                                                        </select></div>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">تاريخ الولادة</label>
-                                                        <input required value="{{$registration->BirthDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
-                                                        
-                                                    </div>
-                                                    <div class="form-group">
-                                                            <label class="control-label visible-ie8 visible-ie9">مكان الولادة</label>
-                                                            <input required value="{{$registration->BirthCity}}" class="form-control placeholder-no-fix" type="text" placeholder="مكان الولادة" name="BirthCity" /> </div>
-                                                    
-                                                    <div class="form-group">
-                                                            <label class="control-label visible-ie8 visible-ie9">الجنسية</label>
-                                                            <select name="nationalitie" class="form-control">
-                                                                @foreach($nationalities as $nationalitie)
-                                                                    <option @if($registration->Nationalitie==$nationalitie->ID) selected @endif value="{{$nationalitie->ID}}">{{$nationalitie->Name}}</option>
-                                                                @endforeach
-                                                            </select>
+                                                        <label class="col-md-2 control-label">الاسم  </label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="الاسم كاملا" data-container="body"></i>
+                                                                <input required value="{{$registration->Fistname}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم " name="firstname" />
+                                                                @if ($errors->has('firstname'))
+                                                                    <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال الاسم '}}</strong>
+                                                            </span>
+                                                                @endif
+                                                            </div>
                                                         </div>
-                                                    <div class="form-group">
-                                                            <label class="control-label visible-ie8 visible-ie9">رقم جواز السفر</label>
-                                                            <input required value="{{$registration->PassportNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم جواز السفر" name="PassportNumber" /> </div>
-                                                    <div class="form-group">
-                                                                <label class="control-label visible-ie8 visible-ie9">الرقم الوطني</label>
-                                                                <input required value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" /> </div>
-                                                   
-                                                        
-                                                    <p class="hint">  معلومات الاقامة : </p>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الدولة</label>
-                                                        <select name="countrie" class="form-control">
-                                                            @foreach($countries as $countrie)
-                                                                <option @if($registration->Countrie==$countrie->ID) selected @endif value="{{$countrie->ID}}">{{$countrie->Name}}</option>
+                                                    </div>
+
+
+
+                                                    <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">اللقب</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="اللقب " data-container="body"></i>
+                                                                <input required value="{{$registration->LastName}}" class="form-control placeholder-no-fix" type="text" placeholder="اللقب" name="lastname" />
+                                                                @if ($errors->has('LastName'))
+                                                                    <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال اللقب '}}</strong>
+                                                            </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">الجنس</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="الجنس" data-container="body"></i>
+                                                                <select name="gender" class="form-control">
+                                                                    <option @if($registration->Gender=='ذكر') selected @endif value="ذكر"> ذكر</option>
+                                                                    <option @if($registration->Gender=='أنثى') selected @endif value="أنثى"> أنثى</option>
+                                                                </select>
+                                                                @if ($errors->has('gender'))
+                                                                    <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال الجنس '}}</strong>
+                                                            </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group{{ $errors->has('birthdate') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">تاريخ الميلاد</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="تاريخ الميلاد" data-container="body"></i>
+                                                                <input required value="{{$registration->BirthDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
+
+                                                                @if ($errors->has('birthdate'))
+                                                                    <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال تاريخ الميلاد '}}</strong>
+                                                            </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                    <div class="form-group{{ $errors->has('BirthCity') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">مكان الميلاد</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="مكان الولادة" data-container="body"></i>
+                                                                <input required value="{{$registration->BirthCity}}" class="form-control placeholder-no-fix" type="text" placeholder="مكان الميلاد" name="BirthCity" /> </div>
+                                                                @if ($errors->has('BirthCity'))
+                                                                    <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال مكان الميلاد '}}</strong>
+                                                            </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+
+
+
+
+                                            <div class="form-group{{ $errors->has('nationalitie') ? ' has-error' : '' }}">
+                                                <label class="col-md-2 control-label">الجنسية</label>
+                                                <div class="col-md-10">
+                                                    <div class="input-icon right">
+                                                        <i class="fa fa-info-circle tooltips" data-original-title="الجنسية" data-container="body"></i>
+                                                        <select name="nationalitie" class="form-control">
+                                                            @foreach($nationalities as $nationalitie)
+                                                                <option @if($registration->Nationalitie==$nationalitie->ID) selected @endif value="{{$nationalitie->ID}}">{{$nationalitie->Name}}</option>
                                                             @endforeach
                                                         </select>
+
+                                                        @if ($errors->has('nationalitie'))
+                                                            <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال الجنسية '}}</strong>
+                                                            </span>
+                                                        @endif
                                                     </div>
-                                                    
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">المدينة</label>
-                                                        <input required value="{{$registration->City}}" class="form-control placeholder-no-fix" type="text" placeholder="المدينة" name="city1" /> </div>
-                                                    <div class="form-group">
-                                                            <label class="control-label visible-ie8 visible-ie9">العنوان</label>
-                                                            <input required value="{{$registration->Location}}" class="form-control placeholder-no-fix" type="text" placeholder="العنوان" name="location" /> </div>
-                                                   
-                                                    <p class="hint">  معلومات دراسية : </p>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الجامعة</label>
-                                                        <input required value="{{$registration->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" /> </div>              
-                                    
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الكلية</label>
-                                                        <input required value="{{$registration->Faculty}}" class="form-control placeholder-no-fix" type="text" placeholder="الكلية" name="Faculty" /> </div>
-                                                     
-                                                    <div class="form-group">
-                                                                <label class="control-label visible-ie8 visible-ie9">نوع الشهادة</label>
-                                                                <input required value="{{$registration->CertificateType}}" class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" /> </div>
-                                                   
-                                                    <div class="form-group">
-                                                                <label class="control-label visible-ie8 visible-ie9">درجة الشهادة</label>
-                                                                <input required value="{{$registration->CertificateDegree}}" class="form-control placeholder-no-fix" type="text" placeholder="درجة الشهادة" name="CertificateDegree" /> </div>
-                                                    <div class="form-group">
-                                                                <label class="control-label visible-ie8 visible-ie9">تاريخ التسجيل</label>
-                                                                <input required value="{{$registration->InscriptionDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ التسجيل" name="InscriptionDate" /> </div>
-                                                                                
-                                                    <p class="hint">  معلومات الاتصال : </p>
-                                                    <div class="form-group">
-                                                                    <label class="control-label visible-ie8 visible-ie9">رقم الهاتف 1 </label>
-                                                                    <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 1" name="Phonne1" /> </div>              
-                                                
-                                                    <div class="form-group">
-                                                                    <label class="control-label visible-ie8 visible-ie9">رقم الهاتف 2</label>
-                                                                    <input required value="{{$registration->Phonne2}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 2" name="Phonne2" /> </div>
-                                                                
-                                    
+                                                </div>
+                                            </div>
+
+
+
+
+
+                                                    <div class="form-group{{ $errors->has('BirthCity') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">رقم جواز السفر</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="جواز السفر" data-container="body"></i>
+                                                                <input required value="{{$registration->PassportNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم جواز السفر" name="PassportNumber" /> </div>
+                                                            @if ($errors->has('BirthCity'))
+                                                                <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال رقم جواز السفر '}}</strong>
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                    <div class="form-group{{ $errors->has('BirthCity') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">الرقم الوطني</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="الرقم الوطني" data-container="body"></i>
+                                                                <input required value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" /> </div>
+                                                            @if ($errors->has('BirthCity'))
+                                                                <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال الرقم الوطني'}}</strong>
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                    <br>
+
+
+                                                    <h4 class="block myfont">معلومات الإقامة</h4>
+
+
+
+
+
+                                                    <div class="form-group{{ $errors->has('countrie') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">الدولة</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="الدولة " data-container="body"></i>
+                                                                <select name="countrie" class="form-control">
+                                                                    @foreach($countries as $countrie)
+                                                                        <option @if($registration->Countrie==$countrie->ID) selected @endif value="{{$countrie->ID}}">{{$countrie->Name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                @if ($errors->has('countrie'))
+                                                                <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال الدولة '}}</strong>
+                                                            </span>
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                        </div>
+
+
+                                                    <div class="form-group{{ $errors->has('countrie') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">المدينة</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="المدينة " data-container="body"></i>
+                                                                <input required value="{{$registration->City}}" class="form-control placeholder-no-fix" type="text" placeholder="المدينة" name="city1" />
+
+                                                            @if ($errors->has('countrie'))
+                                                                    <span class="help-block">
+                                                        <strong>{{ 'المرجو ادخال المدينة '}}</strong>
+                                                        </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group{{ $errors->has('location') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">العنوان</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="العنوان " data-container="body"></i>
+                                                                <input required value="{{$registration->Location}}" class="form-control placeholder-no-fix" type="text" placeholder="العنوان" name="location" />
+
+                                                                @if ($errors->has('location'))
+                                                                    <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال العنوان '}}</strong>
+                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                     </div>
+                                                    </div>
+
+
+
+
+
+                                                    <br>
+
+                                                    <h4 class="block myfont">معلومات الجامعة</h4>
+
+
+                                                    <div class="form-group{{ $errors->has('University') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">الجامعة</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="الجامعة " data-container="body"></i>
+                                                                <input required value="{{$registration->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" />
+
+                                                            @if ($errors->has('University'))
+                                                                    <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال الجامعة '}}</strong>
+                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group{{ $errors->has('Faculty') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">الكلية</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="الكلية " data-container="body"></i>
+                                                                <input required value="{{$registration->Faculty}}" class="form-control placeholder-no-fix" type="text" placeholder="الكلية" name="Faculty" />
+
+                                                                @if ($errors->has('Faculty'))
+                                                                    <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال الكلية '}}</strong>
+                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group{{ $errors->has('CertificateType') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">الشهادة</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="الشهادة " data-container="body"></i>
+                                                                <input required value="{{$registration->CertificateType}}" class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" />
+
+                                                            @if ($errors->has('CertificateType'))
+                                                                    <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال الشهادة '}}</strong>
+                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group{{ $errors->has('CertificateDegree') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">الدرجة العلمية</label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="الدرجة العلمية " data-container="body"></i>
+                                                                <input required value="{{$registration->CertificateDegree}}" class="form-control placeholder-no-fix" type="text" placeholder="الدرجة العلمية " name="CertificateDegree" />
+
+                                                                @if ($errors->has('CertificateDegree'))
+                                                                    <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال الدرجة العلمية '}}</strong>
+                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                    <div class="form-group{{ $errors->has('InscriptionDate') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label">تاريخ الالتحاق </label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="تاريخ الالتحاق " data-container="body"></i>
+                                                                <input required value="{{$registration->InscriptionDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ التسجيل" name="InscriptionDate" />
+
+                                                            @if ($errors->has('InscriptionDate'))
+                                                                    <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال الدرجة العلمية '}}</strong>
+                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+
+                                                    <br>
+
+                                                    <h4 class="block myfont">معلومات الاتصال</h4>
+
+
+
+                                                    <div class="form-group{{ $errors->has('Phonne1') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label"> هاتف 1 </label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="هاتف 1 " data-container="body"></i>
+                                                                <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 1" name="Phonne1" />
+
+                                                                @if ($errors->has('Phonne1'))
+                                                                    <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال هاتف 1 '}}</strong>
+                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="form-group{{ $errors->has('Phonne2') ? ' has-error' : '' }}">
+                                                        <label class="col-md-2 control-label"> رقم الواتس اب </label>
+                                                        <div class="col-md-10">
+                                                            <div class="input-icon right">
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="هاتف 1 " data-container="body"></i>
+                                                                <input required value="{{$registration->Phonne2}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 2" name="Phonne2" />
+
+                                                                @if ($errors->has('Phonne1'))
+                                                                    <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال هاتف 1 '}}</strong>
+                                                    </span>
+                                                                @endif
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
                                                    
                                                     <div class="margiv-top-10">
                                                         <input type="submit"  class="btn green" value="تأكيد" />  
