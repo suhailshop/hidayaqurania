@@ -14,7 +14,7 @@
 
 Route::get('/','Site\SiteController@index');
 Route::get('/admin','Site\SiteController@admin');
-Route::get('/add','Site\SiteController@add');
+Route::get('/add','Site\SiteController@add')->name('addNews');
 Route::post('/add','Site\SiteController@addpost');
 Route::get('/delete/{id}','Site\SiteController@delete');
 Route::get('/edit/{id}','Site\SiteController@edit');
