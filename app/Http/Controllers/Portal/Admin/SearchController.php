@@ -118,7 +118,8 @@ class SearchController extends Controller
             'q5'=>$request->input('q5'),
             'note'=>$request->input('note'),
             'filename'=>$fileName,
-            'admin2',Auth::user()->name
+            'date'=>date('Y-m-d'),
+            'admin2'=>Auth::user()->name
         ]);
         }
         return redirect()->route('getAllSearchs');

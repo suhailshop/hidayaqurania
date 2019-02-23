@@ -104,6 +104,14 @@
                                                 <a href="{{route('deleteReviwerPost',['id'=>$reviewer->ID])}}">
                                                         <i class="fa fa-remove"></i> حذف </a>
                                                 </li>
+                                                <li>
+                                                    <a href="{{route('getAllReviewerSearchs',['id'=>$reviewer->ID])}}">
+                                                            <i class="fa fa-search"></i> الابحاث </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('getOneProfile',['id'=>$reviewer->ID])}}">
+                                                            <i class="fa fa-user"></i> الحساب </a>
+                                                </li>
 
                                             </ul>
                                         </div>

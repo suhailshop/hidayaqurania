@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 23 fév. 2019 à 01:08
+-- Généré le :  sam. 23 fév. 2019 à 20:10
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -644,7 +644,8 @@ CREATE TABLE `reviewers_reports` (
 --
 
 INSERT INTO `reviewers_reports` (`ID`, `search`, `reviewer`, `q1`, `q1_details`, `q2`, `q2_details`, `q3`, `q3_details`, `q4`, `q4_details`, `q5`, `q5_details`, `q6`, `q6_details`, `q7`, `q7_details`, `q8`, `q8_details`, `q9`, `q9_details`, `q10`, `q10_details`, `q11`, `filename`, `note`, `date`) VALUES
-(3, 1, 16, 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'fileName1549574845.pdf', 'u', '2019-02-22');
+(3, 1, 16, 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'fileName1549574845.pdf', 'u', '2019-02-22'),
+(4, 3, 16, 'oo', 'oo', 'o', 'o', 'o', 'o', 'oo', 'o', 'o', 'o', 'o', 'o', 'oo', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'fileName1550938822.pdf', 'pp', '2019-02-23');
 
 -- --------------------------------------------------------
 
@@ -992,11 +993,11 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
 (39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'XpJk7bWecKLtzrj9NY63pAgV7zE2W1i3ap0aDamuTBAmflKweGNNmcxYWCge', '2019-02-18 18:50:18', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'xwwIXBbeRpJwhnnHLgxQMPazBVLEKboq5q0A6OIJPVjA42ij5z4F1urBLidc', '2019-02-22 12:43:06', '2018-10-06 11:51:08'),
+(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'qELaRXEFXfYplbXhSTLrL32yfqdUhxmIhypW4Mkjck9VlQGrWNAtDTu354WN', '2019-02-23 15:59:55', '2018-10-06 11:51:08'),
 (55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, '9j1WemhjDpX3OFiNQbAzff1TjN2g0BNdD2KxYYdmn0GRXZhoQ2XedljpSvKB', '2019-02-18 17:17:40', '2018-10-18 18:08:29'),
 (56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, 'kRhqjYgEGlRXeSy47S0aF4F4sEaL7gWIz4RpaM1pFl1BtEKIQRpuvSHvrYOm', '2019-02-22 20:38:13', '2018-12-30 16:27:37'),
 (57, 'عبد الرحمان', 'searcher@searcher.com', '$2y$10$Q/ZpMzea39jIwdDfBHwZLOJl6EK2ZEbH4b05C9rYwOK6lNwaUBVOu', 2, 'VP1XKUrAIMSlOyUUWmkm9zYSHsKsGFBnlJrIA3eep91IWiEnacwGktrtv1gp', '2018-12-30 18:20:22', '2018-12-30 17:19:07'),
-(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, 'jKSTk66S6lcQsQ4enCZ0FQ1ZgcX2DDtKowPq8lVFzP7uv5vxMJVgCK7RyHRn', '2019-02-07 22:33:54', '2019-02-01 23:02:55'),
+(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, 'hBipG3rQdAQshdZEcASNsRNs5q3MVZA0lvbAMvVhQCZ85qiomPTSrGtGENEL', '2019-02-23 16:24:54', '2019-02-01 23:02:55'),
 (63, 'reviewer1', 'reviewer1@reviewer1.com', '$2y$10$74zavaLkuqA/P6HngsMID.gHHtzd3pU7h8GXw5ullar3O3rGzExiy', 5, NULL, '2019-02-07 10:46:35', '2019-02-07 10:46:35');
 
 --
@@ -1377,7 +1378,7 @@ ALTER TABLE `registrations`
 -- AUTO_INCREMENT pour la table `reviewers_reports`
 --
 ALTER TABLE `reviewers_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `roles`

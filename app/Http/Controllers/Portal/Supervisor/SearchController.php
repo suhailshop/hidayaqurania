@@ -74,6 +74,7 @@ class SearchController extends Controller
             'q8'=>$request->input('q8'),
             'note'=>$request->input('note'),
             'filename'=>$fileName,
+            'date'=>date('Y-m-d')
         ]);
         }
         return redirect()->route('getOneSearch',['id'=>$request->input('search')]);

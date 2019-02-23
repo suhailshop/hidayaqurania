@@ -18,7 +18,7 @@ class Registration extends Model
     public $timestamps = true;
 
     public function user(){
-        return $this->hasOne('User');
+        return $this->belongsTo('App\User','User','ID');
     }
     public function nationalitie(){
         return $this->belongsTo('App\Nationalitie','Nationalitie','ID');
