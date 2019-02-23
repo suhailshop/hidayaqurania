@@ -77,7 +77,7 @@
 
                                     <td>{{$reviewer->University}}</td>
                                     <td>{{$reviewer->Faculty}}</td>
- 
+
 
                                      <td>
                                         <img src="{{ url('storage/registrations/'.$reviewer->PictureURL) }}" 

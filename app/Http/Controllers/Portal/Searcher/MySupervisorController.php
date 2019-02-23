@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Portal\Searcher;
  use App\Nationalitie;
  use App\Registration;
  use App\Role;
+ use Illuminate\Support\Facades\Auth;
 
  class MySupervisorController extends Controller
 {
