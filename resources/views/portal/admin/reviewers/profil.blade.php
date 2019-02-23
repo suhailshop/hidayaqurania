@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'حسابي')
+@section('pageTitle', 'الباحث المساعد')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -31,7 +31,7 @@
                     </li>
                     <li>
                             <i class="icon-user"></i>
-                        <span>معلوماتي</span>
+                        <span>صفحة الباحث المساعد </span>
                     </li>
                 </ul>
             </div>
@@ -48,7 +48,7 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                @if(auth()->user()->registration->PictureURL == null)
+                                @if($reviwer->PictureURL == null)
 
                                 @else
                                 <img src="{{ asset('storage/registrations/default.jpg') }}" class="img-responsive" alt="">
@@ -57,13 +57,13 @@
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> {{$registration->Fistname}} {{$registration->LastName}}</div>
-                                <div class="profile-usertitle-job"> محكم </div>
+                            <div class="profile-usertitle-name"> {{$reviwer->Fistname}} {{$reviwer->LastName}}</div>
+                                <div class="profile-usertitle-job"> باحث مساعد </div>
                             </div>
 
                             <div class="profile-userbuttons">
-                                <a type="button"  href=" {{ url('https://api.whatsapp.com/send?phone='.auth()->user()->registration->Phonne2) }}" target="_blank" class="btn btn-circle green btn-sm">تواصل عبر الواتس</a>
-                                <a type="button"  href=" {{ url('mailto:'.auth()->user()->registration->Email.'?subject=موسوعة الهدايات القرآنية') }}" target="_blank" class="btn btn-circle red btn-sm">ارسال بريد الكتروني</a>
+                                <a type="button"  href=" {{ url('https://api.whatsapp.com/send?phone='.$reviwer->Phonne2) }}" target="_blank" class="btn btn-circle green btn-sm">تواصل عبر الواتس</a>
+                                <a type="button"  href=" {{ url('mailto:'.$reviwer->Email.'?subject=موسوعة الهدايات القرآنية') }}" target="_blank" class="btn btn-circle red btn-sm">ارسال بريد الكتروني</a>
 
                              </div>
 
@@ -98,13 +98,11 @@
                                         </div>
                                         <ul class="nav nav-tabs">
                                             <li class="active">
-                                                <a href="#tab_1_1" data-toggle="tab">معلومات شخصية</a>
+                                                <a href="#tab_1_1" data-toggle="tab">معلومات الباحث المساعد</a>
                                             </li>
+
                                             <li>
-                                                <a href="#tab_1_2" data-toggle="tab">تغيير الصورة</a>
-                                            </li>
-                                            <li>
-                                                <a href="#tab_1_3" data-toggle="tab">تغيير الرقم السري</a>
+                                                <a href="#tab_1_3" data-toggle="tab">قائمة البحوث المحكمة</a>
                                             </li>
 
                                         </ul>
@@ -113,9 +111,9 @@
                                         <div class="tab-content">
                                             <!-- PERSONAL INFO TAB -->
                                             <div class="tab-pane active" id="tab_1_1">
-                                                <form role="form" class="form-horizontal" action="{{route('reviewerProfileEdit')}}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden" name="id_registration" value="{{$registration->ID}}" />
+                                                <div role="form" class="form-horizontal" >
+
+                                                    <input type="hidden" name="id_registration" value="{{$reviwer->ID}}" />
 
 
 
@@ -131,7 +129,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الاسم كاملا" data-container="body"></i>
-                                                                <input required value="{{$registration->Fistname}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
+                                                                <input disabled value="{{$reviwer->Fistname}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
                                                                 @if ($errors->has('firstname'))
                                                                     <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال الاسم '}}</strong>
@@ -148,7 +146,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="اسم العائلة" data-container="body"></i>
-                                                                <input required value="{{$registration->LastName}}"  class="form-control placeholder-no-fix" type="text" placeholder="الاسم الشخصي" name="lastname" />
+                                                                <input disabled required value="{{$reviwer->LastName}}"  class="form-control placeholder-no-fix" type="text" placeholder="الاسم الشخصي" name="lastname" />
                                                                 @if ($errors->has('lastname'))
                                                                     <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال  اللقب'}}</strong>
@@ -166,9 +164,9 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الجنس" data-container="body"></i>
-                                                                <select name="gender" class="form-control">
-                                                                    <option @if($registration->Gender=='ذكر') selected @endif value="ذكر"> ذكر</option>
-                                                                    <option @if($registration->Gender=='أنثى') selected @endif value="أنثى"> أنثى</option>
+                                                                <select disabled name="gender" class="form-control">
+                                                                    <option @if($reviwer->Gender=='ذكر') selected @endif value="ذكر"> ذكر</option>
+                                                                    <option @if($reviwer->Gender=='أنثى') selected @endif value="أنثى"> أنثى</option>
                                                                 </select>
                                                             </div>
                                                         </div>
@@ -183,7 +181,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="تاريخ الميلاد" data-container="body"></i>
-                                                                <input required value="{{$registration->BirthDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
+                                                                <input disabled required value="{{$reviwer->BirthDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
 
                                                             </div>
                                                         </div>
@@ -198,7 +196,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="مكان الميلاد" data-container="body"></i>
-                                                                <input required value="{{$registration->BirthCity}}" class="form-control placeholder-no-fix" type="text" placeholder="مكان الميلاد" name="BirthCity" />
+                                                                <input disabled required value="{{$reviwer->BirthCity}}" class="form-control placeholder-no-fix" type="text" placeholder="مكان الميلاد" name="BirthCity" />
                                                                 @if ($errors->has('BirthCity'))
                                                                     <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال مكان الميلاد'}}</strong>
@@ -217,9 +215,9 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الجنسية" data-container="body"></i>
-                                                                <select name="nationalitie" class="form-control">
+                                                                <select disabled name="nationalitie" class="form-control">
                                                                     @foreach($nationalities as $nationalitie)
-                                                                        <option @if($registration->Nationalitie==$nationalitie->ID) selected @endif value="{{$nationalitie->ID}}">{{$nationalitie->Name}}</option>
+                                                                        <option @if($reviwer->Nationalitie==$nationalitie->ID) selected @endif value="{{$nationalitie->ID}}">{{$nationalitie->Name}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -234,7 +232,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم جواز السفر" data-container="body"></i>
-                                                                <input required value="{{$registration->PassportNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم جواز السفر" name="PassportNumber" />
+                                                                <input disabled required value="{{$reviwer->PassportNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم جواز السفر" name="PassportNumber" />
                                                                 @if ($errors->has('PassportNumber'))
                                                                     <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال رقم الجواز'}}</strong>
@@ -251,7 +249,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم الهوية" data-container="body"></i>
-                                                                <input required value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" />
+                                                                <input disabled required value="{{$reviwer->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" />
                                                                 @if ($errors->has('NationalNumber'))
                                                                     <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال رقم الهوية الوطنية'}}</strong>
@@ -280,9 +278,9 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="دولة الإقامة" data-container="body"></i>
-                                                                <select name="countrie" class="form-control">
+                                                                <select disabled name="countrie" class="form-control">
                                                                     @foreach($countries as $countrie)
-                                                                        <option @if($registration->Countrie==$countrie->ID) selected @endif value="{{$countrie->ID}}">{{$countrie->Name}}</option>
+                                                                        <option @if($reviwer->Countrie==$countrie->ID) selected @endif value="{{$countrie->ID}}">{{$countrie->Name}}</option>
                                                                     @endforeach
                                                                 </select>
                                                             </div>
@@ -297,7 +295,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="مدينة الإقامة" data-container="body"></i>
-                                                                <input required value="{{$registration->City}}" class="form-control placeholder-no-fix" type="text" placeholder="المدينة" name="city1" />
+                                                                <input disabled required value="{{$reviwer->City}}" class="form-control placeholder-no-fix" type="text" placeholder="المدينة" name="city1" />
 
                                                             </div>
                                                         </div>
@@ -310,7 +308,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="العنوان" data-container="body"></i>
-                                                                <input required value="{{$registration->Location}}" class="form-control placeholder-no-fix" type="text" placeholder="العنوان" name="location" />
+                                                                <input disabled required value="{{$reviwer->Location}}" class="form-control placeholder-no-fix" type="text" placeholder="العنوان" name="location" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -327,7 +325,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الجامعة" data-container="body"></i>
-                                                                <input required value="{{$registration->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" />
+                                                                <input disabled required value="{{$reviwer->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -342,7 +340,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الكلية" data-container="body"></i>
-                                                                <input required value="{{$registration->Faculty}}" class="form-control placeholder-no-fix" type="text" placeholder="الكلية" name="Faculty" />
+                                                                <input disabled required value="{{$reviwer->Faculty}}" class="form-control placeholder-no-fix" type="text" placeholder="الكلية" name="Faculty" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -357,7 +355,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="نوع الشهادة" data-container="body"></i>
-                                                                <input required value="{{$registration->CertificateType}}" class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" />
+                                                                <input disabled required value="{{$reviwer->CertificateType}}" class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -373,7 +371,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الدرجة العلمية" data-container="body"></i>
-                                                                <input required value="{{$registration->CertificateDegree}}" class="form-control placeholder-no-fix" type="text" placeholder="درجة الشهادة" name="CertificateDegree" />
+                                                                <input disabled required value="{{$reviwer->CertificateDegree}}" class="form-control placeholder-no-fix" type="text" placeholder="درجة الشهادة" name="CertificateDegree" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -388,7 +386,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="تاريخ التسجيل" data-container="body"></i>
-                                                                <input required value="{{$registration->InscriptionDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ التسجيل" name="InscriptionDate" />
+                                                                <input disabled required value="{{$reviwer->InscriptionDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ التسجيل" name="InscriptionDate" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -409,7 +407,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم الهاتف 1" data-container="body"></i>
-                                                                <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 1" name="Phonne1" />
+                                                                <input disabled required value="{{$reviwer->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 1" name="Phonne1" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -425,108 +423,78 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم الهاتف 2" data-container="body"></i>
-                                                                <input required value="{{$registration->Phonne2}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 2" name="Phonne2" />
+                                                                <input disabled required value="{{$reviwer->Phonne2}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 2" name="Phonne2" />
                                                             </div>
                                                         </div>
                                                     </div>
 
 
-                                    
-                                                   
-                                                    <div class="margiv-top-10">
-                                                        <input type="submit"  class="btn blue" value="حفظ التغييرات" />
-                                                    </div>
-                                                </form>
+
+                                                </div>
                                             </div>
                                             <!-- END PERSONAL INFO TAB -->
 
 
 
-
-
-                                            <!-- CHANGE AVATAR TAB -->
-                                            <div class="tab-pane" id="tab_1_2">
-                                                <p> يمكنك اختيار صورة جديدة لحسابك من هنا </p>
-                                            <form action="{{route('reviewerProfileEditAvatar')}}" method="POST" role="form" enctype="multipart/form-data">
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden" name="id_registration" value="{{$registration->ID}}" />
-                                                    <div class="form-group">
-                                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                                            <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
-                                                            <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
-                                                            <div>
-                                                                <span class="btn default btn-file">
-                                                                    <span class="fileinput-new"> اختر صورة </span>
-                                                                    <span class="fileinput-exists"> تغيير </span>
-                                                                    <input type="file" accept="image/gif, image/jpeg, image/jpg" name="PictureURL" required> </span>
-                                                                <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> الغاء </a>
-                                                            </div>
-                                                        </div>
-                                                        
-                                                    </div>
-                                                    
-                                                    <div class="margin-top-10">
-                                                        <input type="submit" value="حفظ التغييرات" class="btn blue" />
-                                                        <input type="reset" value="الغاء" class="btn default" />
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <!-- END CHANGE AVATAR TAB -->
                                             <!-- CHANGE PASSWORD TAB -->
                                             <div class="tab-pane" id="tab_1_3">
-                                            <form class="form-horizontal" action="{{route('reviewerProfileEditPassword')}}" method="POST">
-                                                    {{ csrf_field() }}
-                                                    <input type="hidden" name="id_user" value="{{$user->id}}" />
 
-
-
-                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label class="col-md-2 control-label">البريد الالكتروني الخاص بالحساب</label>
-                                                    <div class="col-md-10">
-                                                        <div class="input-icon right">
-                                                            <i class="fa fa-info-circle tooltips" data-original-title="البريد الالكتروني" data-container="body"></i>
-                                                            <input class="form-control placeholder-no-fix" type="email" autocomplete="off" required value="" placeholder="البريد الالكتروني" name="Email" />
-                                                            @if ($errors->has('email'))
-                                                                <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال البريد الالكتروني'}}</strong>
-                                                        </span>
-                                                            @endif
+                                                <div class="portlet light ">
+                                                    <div class="portlet-title">
+                                                        <div class="caption font-dark">
+                                                            <i class="icon-graduation font-dark"></i>
+                                                            <span class="caption-subject bold uppercase">لائحة البحوث   </span>
                                                         </div>
+                                                        <div class="tools"> </div>
+                                                    </div>
+                                                    <div class="portlet-body">
+                                                        <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
+                                                            <thead>
+                                                            <tr>
+
+                                                                <th class="all">اسم الجزء البحثي</th>
+
+                                                                <th class="all">القسم</th>
+
+                                                                <th class="all">الباحث</th>
+                                                                <th class="all">تحميل البحث</th>
+                                                                <th> حالة التحكيم </th>
+
+                                                            </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                            @foreach($searchs as $search)
+                                                                <tr>
+
+                                                                    <td>
+                                                                        <a   href="{{route('getOneSearch',$search->ID)}}">
+                                                                        {{$search->Name}}
+                                                                        </a>
+                                                                    </td>
+
+                                                                    <td>{{$search->divname}}</td>
+
+                                                                    <td>{{$search->Fistname}} {{$search->LastName}}</td>
+                                                                    <td>
+                                                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
+                                                                    </td>
+                                                                    {{-- <td>  @if($search->Progress=='تم الرفع')
+                                                                         <span class="badge badge-warning">{{$search->Progress}}</span>
+                                                                         @elseif($search->Progress=='رفض الادارة' || $search->Progress=='رفض المشرف' )
+                                                                         <span class="badge badge-danger">{{$search->Progress}}</span>
+                                                                         @elseif($search->Progress=='موافقة المشرف' || $search->Progress=='موافقة الادارة' )
+                                                                         <span class="badge badge-success">{{$search->Progress}}</span>
+                                                                         @endif
+                                                                     </td>--}}
+                                                                    <td>  <span class="badge badge-danger">لم يتم التحكيم</span> </td>
+
+                                                                </tr>
+                                                            @endforeach
+                                                            </tbody>
+                                                        </table>
                                                     </div>
                                                 </div>
 
-
-
-
-                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label class="col-md-2 control-label">الرقم السري الجديد</label>
-                                                    <div class="col-md-10">
-                                                        <div class="input-icon right">
-                                                            <i class="fa fa-info-circle tooltips" data-original-title="الرقم السري" data-container="body"></i>
-                                                            <input class="form-control placeholder-no-fix" type="password" autocomplete="off" required id="register_password" placeholder="أدخل الرقم السري الجديد" name="Password" />
-                                                            @if ($errors->has('password'))
-                                                                <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال كلمة السر'}}</strong>
-                                                        </span>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-
-
-
-
-
-                                                    <div class="margin-top-10">
-                                                        <input type="submit" class="btn blue" value="حفظ التغييرات" />
-                                                        <input type="reset" value="الغاء" class="btn default" /> 
-                                                    </div>
-
-
-                                                </form>
                                             </div>
 
 

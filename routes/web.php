@@ -41,6 +41,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/reviewers/addReviewer','Admin\ReviewerController@addReviewer')->name('addReviewer');
     Route::post('/reviewers/addReviewerPost','Admin\ReviewerController@addReviewerPost')->name('addReviewerPost');
     Route::get('/reviewers/delete/{id}','Admin\ReviewerController@delete')->name('deleteReviwerPost');
+    Route::get('/reviewers/profile/{id}','Admin\ReviewerController@showProfile')->name('adminReviewersProfile');
+
+
+
     
 
     Route::get('/users','Admin\UserController@index')->name('allUser');
