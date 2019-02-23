@@ -58,7 +58,7 @@
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
                             <div class="profile-usertitle-name"> {{$registration->Fistname}} {{$registration->LastName}}</div>
-                                <div class="profile-usertitle-job"> محكم </div>
+                                <div class="profile-usertitle-job"> باحث مساعد </div>
                             </div>
 
                             <div class="profile-userbuttons">

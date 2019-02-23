@@ -458,7 +458,7 @@
 
                                                                 <th class="all">الباحث</th>
                                                                 <th class="all">تحميل البحث</th>
-                                                                <th> حالة التحكيم </th>
+
 
                                                             </tr>
                                                             </thead>
@@ -486,7 +486,6 @@
                                                                          <span class="badge badge-success">{{$search->Progress}}</span>
                                                                          @endif
                                                                      </td>--}}
-                                                                    <td>  <span class="badge badge-danger">لم يتم التحكيم</span> </td>
 
                                                                 </tr>
                                                             @endforeach

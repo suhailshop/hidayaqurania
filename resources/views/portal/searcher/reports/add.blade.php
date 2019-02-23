@@ -63,7 +63,7 @@
                                             <label>القسم</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select  class="form-control" name="Section" >
+                                                <select required  class="form-control" name="Section" >
                                                     @foreach($sections as $section)
                                                         <option value="{{$section->ID}}" >{{$section->Name}}</option>
                                                     @endforeach
@@ -76,7 +76,7 @@
                                             <label>الصنف *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="TypeCyclic" placeholder="الصنف *"/> </div>
+                                                <input required type="text" class="form-control" name="TypeCyclic" placeholder="الصنف *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -84,7 +84,7 @@
                                                 <label>التاريخ *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <input type="date" class="form-control" name="DateSearcher" placeholder="التاريخ *"/> </div>
+                                                    <input required type="date" class="form-control" name="DateSearcher" placeholder="التاريخ *"/> </div>
                                             </div>
                                     </div>
                                     <div class="form-group">
@@ -92,7 +92,7 @@
                                                 <label>تقييم الجزء المنجز *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <input type="number" class="form-control" name="DoneRange" placeholder="تقييم الجزء المنجز *"/> </div>
+                                                    <input  required type="number" class="form-control" name="DoneRange" placeholder="تقييم الجزء المنجز *"/> </div>
                                             </div>
                                     </div>
                                     <div class="form-group">
@@ -100,7 +100,7 @@
                                                 <label>عدد الجلسات *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <input type="number" class="form-control" name="SessionsCount" placeholder="عدد الجلسات *"/> </div>
+                                                    <input required type="number" class="form-control" name="SessionsCount" placeholder="عدد الجلسات *"/> </div>
                                             </div>
                                     </div>
                                     <div class="form-group">
@@ -108,7 +108,7 @@
                                                 <label>مجموع ساعات الاشراف *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <input type="number" class="form-control" name="HoursNumber" placeholder="مجموع ساعات الاشراف  *"/> </div>
+                                                    <input type="number" required class="form-control" name="HoursNumber" placeholder="مجموع ساعات الاشراف  *"/> </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -166,7 +166,7 @@
 
                                     <div class="form-group ">
                                             <div class="col-md-12">
-                                                <label>الملف *</label>
+                                                <label>الملف </label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
                                                     <input type="file" class="form-control" name="URL" > </div>

@@ -30,7 +30,7 @@
                     </li>
                     <li>
                             <i class="icon-like"></i>
-                        <span>إدارة المحكمين</span>
+                        <span>إدارة الباحثون المساعدون</span>
                     </li>
                 </ul>
             </div>
@@ -44,7 +44,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة المراجعين المسجلين بالنظام</span>
+                            <span class="caption-subject bold uppercase">لائحة الباحثون المساعدون  </span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -59,6 +59,7 @@
                                     <th class="all">المدينة</th>
                                      <th class="all"> الجامعة</th>
                                     <th class="all">الكلية</th>
+                                    <th class="all">خيارات</th>
 
                                 </tr>
                             </thead>
@@ -79,27 +80,24 @@
                                     <td>{{$reviewer->Faculty}}</td>
 
 
-                                     <td>
-                                        <img src="{{ url('storage/registrations/'.$reviewer->PictureURL) }}" 
-                                            style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
-                                    </td>        
+
                                     @if(auth()->user()->hasRole('admin2',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
-                                                <li>
+                                                {{--<li>
                                                 <a href="{{route('deleteReviwerPost',['id'=>$reviewer->ID])}}">
                                                         <i class="fa fa-remove"></i> حذف </a>
-                                                </li>
-                                                <li>
+                                                </li>--}}
+                                                <li class="myfont">
                                                     <a href="{{route('getAllReviewerSearchs',['id'=>$reviewer->ID])}}">
                                                             <i class="fa fa-search"></i> الابحاث </a>
                                                 </li>
-                                                <li>
-                                                    <a href="{{route('getOneProfile',['id'=>$reviewer->ID])}}">
+                                                <li class="myfont">
+                                                    <a href="{{route('adminReviewersProfile',['id'=>$reviewer->ID])}}" >
                                                             <i class="fa fa-user"></i> الحساب </a>
                                                 </li>
 

@@ -23,9 +23,7 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
 
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -57,108 +55,106 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    
-                                    <th class="all">الاسم</th>
-                                    <th class="none">الاختصار</th>
-                                    <th class="all">القسم</th>
-                                    <th class="all">المبحث</th>
+                                    <th class="all">الرقم</th>
                                     <th class="all">الباحث</th>
-                                    <th class="none"> الترتيب</th>
-                                    <th class="all">الملف</th>
-                                    <th class="all">الحالة</th>
+                                    <th class="all">جزء البحث</th>
+                                     <th class="all">القسم</th>
+
+
+                                     <th class="all">الملف</th>
+
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id))
-                                    <th class="all">خيارات.</th>
+                                        <th class="all">تعيين باحث مساعد</th>
+                                        <th class="all">خيارات.</th>
                                     @endif
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($searchs as $search)
                                 <tr>
-                                    
-                                    <td>{{$search->Name}}</td>
-                                    <td>{{$search->Alias}}</td>
-                                    <td>{{$search->division->Name}}</td>
-                                    <td>{{$search->divisionunit->Name}}</td>
+                                    <td> {{$search->searcher->Code}}</td>
                                     <td>{{$search->searcher->Fistname}} {{$search->searcher->LastName}}</td>
-                                    <td>{{$search->Order}}</td>
                                     <td>
+                                        <a   href="{{route('getOneSearch',$search->ID)}}">
+                                        {{$search->Name}}
+                                        </a>
+                                    </td>
+                                     <td>{{$search->division->Name}}</td>
+
+
+                                     <td>
                                         <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
                                     </td>
-                                    <td>  @if($search->Progress=='تم الرفع') 
+
+
+                                   {{-- <td>  @if($search->Progress=='تم الرفع')
                                         <span class="badge badge-warning">{{$search->Progress}}</span>
                                         @elseif($search->Progress=='رفض الادارة' || $search->Progress=='رفض المشرف' ) 
                                         <span class="badge badge-danger">{{$search->Progress}}</span>
                                         @elseif($search->Progress=='موافقة المشرف' || $search->Progress=='موافقة الادارة' ) 
                                         <span class="badge badge-success">{{$search->Progress}}</span>
                                         @endif                                    
-                                    </td>
+                                    </td>--}}
+
+
                                     @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                   <td>
+                                       <a  data-toggle="modal" data-target="#exampleModal{{$search->ID}}">
+                                           <i class="fa fa-check-square-o"></i> تعيين / إلغاء تعيين </a>
+                                       <div class="modal fade" id="exampleModal{{$search->ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                           <div class="modal-dialog" role="document">
+                                               <div class="modal-content">
+                                                   <form method="POST" action="{{route('addSearchReviewer')}}">
+                                                       {{ csrf_field() }}
+
+
+                                                       <div class="modal-header">
+                                                           <h5 class="modal-title" id="exampleModalLabel">المراجعين</h5>
+                                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                               <span aria-hidden="true">&times;</span>
+                                                           </button>
+                                                       </div>
+                                                       <div class="modal-body">
+                                                           <input type="hidden" name="searchid" value="{{$search->ID}}"/>
+                                                           <div class="form-group">
+                                                               <label class="col-md-4">لائحة المراجعين :</label>
+                                                               <select class="col-md-8 multiple-checkboxes form-control" name="reviewers[]" multiple="multiple">
+
+
+                                                                   <?php
+                                                                   $isAssigned = false;
+                                                                   $arr = array();
+                                                                   foreach($search->reviewerSearch as $rev)
+                                                                   {
+                                                                       array_push($arr,$rev->reviewer);
+                                                                   }
+                                                                   ?>
+
+                                                                   @foreach($reviewers as $rev)
+                                                                       <option value="{{$rev->id}}" @if(in_array($rev->id,$arr)) selected <?php  $isAssigned = true;  ?> @endif>{{$rev->Fistname}} {{$rev->LastName}}</option>
+                                                                   @endforeach
+
+                                                               </select>
+                                                           </div>
+                                                       </div>
+                                                       <div class="modal-footer">
+                                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                                                           <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
+                                                       </div>
+                                                   </form>
+                                               </div>
+                                           </div>
+                                       </div>
+                                       @if(!$isAssigned)
+                                             <span class="badge badge-danger"> لم يتم تعيين باحث مساعد </span>
+                                       @endif
+
+                                   </td>
+
                                     <td>
-                                        <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                              
-                                                <li>
-                                                <a data-toggle="confirmation"
-                                                data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
-                                                data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
-                                                data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
-                                                data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
-                                                data-title="هل تريد الموافقة ؟" href="{{route('getOneSearch',$search->ID)}}">
-                                                        <i class="fa fa-search"></i> اظهار البحث </a>
-                                                </li>
-                                               
-                                                <li>
-                                                <a  data-toggle="modal" data-target="#exampleModal{{$search->ID}}">
-                                                            <i class="fa fa-check-square-o"></i> المراجعين </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="modal fade" id="exampleModal{{$search->ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog" role="document">
-                                              <div class="modal-content">
-                                              <form method="POST" action="{{route('addSearchReviewer')}}">
-                                                {{ csrf_field() }}
+                                        <a   href="{{route('getOneSearch',$search->ID)}}">
+                                            <i class="fa fa-search"></i> اظهار البحث </a>
 
-                                                
-                                                        <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">المراجعين</h5>
-                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                        </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                        <input type="hidden" name="searchid" value="{{$search->ID}}"/>
-                                                            <div class="form-group">
-                                                            <label class="col-md-4">لائحة المراجعين :</label>
-                                                            <select class="col-md-8 multiple-checkboxes form-control" name="reviewers[]" multiple="multiple">
-                                                               
-                                                           
-                                                                <?php 
-                                                                $arr = array();
-                                                                foreach($search->reviewerSearch as $rev)
-                                                                {
-                                                                    array_push($arr,$rev->reviewer);
-                                                                }
-                                                                ?>
-
-                                                                @foreach($reviewers as $rev)
-                                                                    <option value="{{$rev->id}}" @if(in_array($rev->id,$arr)) selected @endif>{{$rev->Fistname}} {{$rev->LastName}}</option>
-                                                                @endforeach
-                                                                
-                                                            </select>
-                                                        </div>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
-                                                        <button type="submit" class="btn btn-primary">حفظ التعديلات</button>
-                                                        </div>
-                                                    </form>
-                                              </div>
-                                            </div>
-                                          </div>
                                     </td>
                                     @endif
                                 </tr>
@@ -186,7 +182,8 @@
             $(document).ready(function() {
                 $('.multiple-checkboxes').multiselect({
                     nonSelectedText:'لا مراجع',
-                    allSelectedText: 'الكل', 
+                    allSelectedText: 'الكل',
+
                 });
             });
         </script>

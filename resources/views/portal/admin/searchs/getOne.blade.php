@@ -102,7 +102,7 @@
                                             @endif
                                             @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) && count($search->reviewers_reports)==0)
                                             <li>
-                                                <a href="#tab_1_6" data-toggle="tab">إضافة تقرير المراجع</a>
+                                                <a href="#tab_1_6" data-toggle="tab">إضافة تقرير الباحث المساعد</a>
                                             </li>
                                             @endif
                                             <li>
@@ -334,7 +334,7 @@
                                             </div>
 
 
-                                            <!-- تقرير المراجع -->
+                                            <!-- تقرير الباحث المساعد -->
                                             <div class="tab-pane" id="tab_1_6">
                                                 <form role="form" method="POST" action="{{route('addreviewers_reports')}}" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
@@ -556,7 +556,8 @@
                                                                 <td> تقرير المشرف </td>
                                                                 <td>
                                                                         @if(!empty($search->supervisors_reports[0]))
-                                                                        تم الارسال من طرف : {{$search->supervisors_reports[0]->superviso->Fistname}} {{$search->supervisors_reports[0]->superviso->LastName}} @endif</td>
+                                                                        تم الارسال من طرف : {{$search->supervisors_reports[0]->superviso->Fistname}} {{$search->supervisors_reports[0]->superviso->LastName}}
+                                                                        @endif</td>
                                                                 
                                                                 <td>
                                                                         @if(!empty($search->supervisors_reports[0]))
@@ -644,7 +645,7 @@
 
                                                             <!-- تقرير المراجع -->
                                                             <tr>
-                                                                <td> تقرير المراجع </td>
+                                                                <td> تقرير الباحث المساعد </td>
                                                                 <td>@if(!empty($search->reviewers_reports[0]))
                                                                     تم الارسال من طرف : {{$search->reviewers_reports[0]->reviewe->Fistname}} {{$search->reviewers_reports[0]->reviewe->LastName}} @endif </td>
                                                                 <td>
@@ -653,11 +654,11 @@
                                                                 <td>
 
 
-                                                                    <!-- تفاصيل تقرير المراجع -->
+                                                                    <!-- تفاصيل تقرير الباحث المساعد -->
 
                                                                     @if(count($search->reviewers_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewermodal">
-                                                                            عرض تقرير المراجع
+                                                                            عرض تقرير الباحث المساعد
                                                                         </button>
                                                                         <div class="modal fade" id="reviewermodal" tabindex="-1" role="dialog" aria-labelledby="reviewermodallabel" aria-hidden="true">
                                                                             <div class="modal-dialog" role="document">
@@ -794,6 +795,8 @@
 
 
                                                                     <!-- تفاصيل تقرير الإدارة -->
+                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id))
+
                                                                     @if(count($search->admin2_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#admin2modal">
                                                                             عرض تقرير الادارة
@@ -850,6 +853,7 @@
 
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
+                                                                    @endif
                                                                     @endif
 
                                                                 </td>

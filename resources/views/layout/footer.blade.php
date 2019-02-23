@@ -14,6 +14,13 @@
 
     </div>
 
+    <div class="btn-group   btn-group-sm pull-right ">
+
+        <a type="button" class="btn red" href="https://wa.me/966506087020" target="_blank">فضلا راسلنا لاي مشكلة فنية </a>
+
+    </div>
+
+
 </div>
 
 
