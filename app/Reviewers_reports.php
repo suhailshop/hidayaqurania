@@ -2,6 +2,8 @@
 
 namespace App;
 
+use App\Registration;
+
 use Illuminate\Database\Eloquent\Model;
 
 class Reviewers_reports extends Model 
@@ -12,5 +14,10 @@ class Reviewers_reports extends Model
 
 
     protected $dates = ['deleted_at','updated_at'];
+
+    public function reviewe()
+    {
+        return $this->hasOne('App\Registration','ID','reviewer');
+    }
 
 }

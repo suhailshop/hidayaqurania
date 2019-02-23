@@ -25,9 +25,7 @@ Route::get('/details/{id}','Site\SiteController@details');
     return view('site.welcome');
 });*/
 
-Route::get('/home', function () {
-    return view('portal.welcome');
-});
+Route::get('/home','Portal\PortalController@index')->name('portalwelcome');
 Auth::routes();
 Route::get('/logout', function(){
     Auth::logout();
@@ -41,11 +39,16 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/reviewers/addReviewer','Admin\ReviewerController@addReviewer')->name('addReviewer');
     Route::post('/reviewers/addReviewerPost','Admin\ReviewerController@addReviewerPost')->name('addReviewerPost');
     Route::get('/reviewers/delete/{id}','Admin\ReviewerController@delete')->name('deleteReviwerPost');
+
     Route::get('/reviewers/profile/{id}','Admin\ReviewerController@showProfile')->name('adminReviewersProfile');
 
 
 
     
+
+    Route::get('/reviewers/getAllReviewerSearchs/{id}','Admin\ReviewerController@getAllReviewerSearchs')->name('getAllReviewerSearchs');
+    Route::get('/reviewers/getOneProfile/{id}','Admin\ReviewerController@getOneProfile')->name('getOneProfile');
+
 
     Route::get('/users','Admin\UserController@index')->name('allUser');
     Route::get('/users/addUserAdmin','Admin\UserController@addUserAdmin')->name('addUserAdmin');
@@ -55,6 +58,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
     Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@getSearch')->name('getSearcher');
+    Route::post('/searchers/updateCodeSearcher','Admin\SearcherController@updateCodeSearcher')->name('updateCodeSearcher');
     Route::post('/searchers/addToMeeting','Admin\SearcherController@addToMeeting')->name('addToMeeting');
     Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
     Route::post('/searchers/addCriteriasToSearcher','Admin\SearcherController@addCriteriasToSearcher')->name('addCriteriasToSearcher'); 

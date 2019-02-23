@@ -80,6 +80,7 @@ class SearchController extends Controller
             'q10_details'=>$request->input('q10_details'),
             'note'=>$request->input('note'),
             'filename'=>$fileName,
+            'date'=>date('Y-m-d')
         ]);
         }
         return redirect()->route('getAllMySearchs');

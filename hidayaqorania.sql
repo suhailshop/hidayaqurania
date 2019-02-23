@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  ven. 08 fév. 2019 à 14:06
+-- Généré le :  sam. 23 fév. 2019 à 20:10
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -37,15 +37,17 @@ CREATE TABLE `admin2_reports` (
   `q4` varchar(1000) NOT NULL,
   `q5` varchar(1000) NOT NULL,
   `note` varchar(500) NOT NULL,
-  `filename` text NOT NULL
+  `filename` text NOT NULL,
+  `date` text NOT NULL,
+  `admin2` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `admin2_reports`
 --
 
-INSERT INTO `admin2_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `note`, `filename`) VALUES
-(3, 1, 'mpm', 'm', 'm', 'm', 'm', 'm', 'fileName1549575501.pdf');
+INSERT INTO `admin2_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `note`, `filename`, `date`, `admin2`) VALUES
+(3, 1, 'mpm', 'm', 'm', 'm', 'm', 'm', 'fileName1549575501.pdf', '2019-02-22', 'admin');
 
 -- --------------------------------------------------------
 
@@ -221,7 +223,18 @@ CREATE TABLE `cycles` (
 --
 
 INSERT INTO `cycles` (`ID`, `name`, `startDate`, `endDate`, `created_at`, `updated_at`) VALUES
-(1, 'تقرير دوري الأول', '2019-01-01', '2019-03-14', '2019-01-30 22:52:16', '2019-01-29 20:46:04');
+(1, 'التقرير الدوري الأول', '2019-01-01', '2019-03-14', '2019-02-18 19:12:52', '2019-01-29 20:46:04'),
+(2, 'التقرير الدوري الثاني', '2019-02-05', '2019-02-28', '2019-02-18 18:42:30', '0000-00-00 00:00:00'),
+(3, 'التقرير الدوري الثالث', '2019-03-01', '2019-03-12', '2019-02-18 18:44:06', '0000-00-00 00:00:00'),
+(4, 'التقرير الدوري الرابع', '2019-03-13', '2019-03-21', '2019-02-18 18:44:06', '0000-00-00 00:00:00'),
+(5, 'التقرير الدوري الخامس', '2019-04-01', '2019-04-12', '2019-02-18 18:45:27', '0000-00-00 00:00:00'),
+(6, 'التقرير الدوري السادس', '2019-04-14', '2019-04-23', '2019-02-18 18:45:27', '0000-00-00 00:00:00'),
+(7, 'التقرير الدوري السابع', '2019-05-14', '2019-05-23', '2019-02-18 18:46:36', '0000-00-00 00:00:00'),
+(8, 'التقرير الدوري الثامن', '2019-01-01', '2019-03-01', '2019-02-22 21:13:17', '2019-02-18 17:47:43'),
+(9, 'التقرير الدوري التاسع', '2019-07-01', '2019-07-10', '2019-02-18 17:48:14', '2019-02-18 17:48:14'),
+(10, 'التقرير الدوري العاشر', '2019-07-11', '2019-07-22', '2019-02-18 17:48:46', '2019-02-18 17:48:46'),
+(11, 'التقرير الدوري الحادي عشر', '2019-07-23', '2019-07-30', '2019-02-18 17:49:16', '2019-02-18 17:49:16'),
+(12, 'التقرير الدوري الثاني عشر', '2019-05-16', '2019-08-10', '2019-02-22 20:49:11', '2019-02-18 17:49:35');
 
 -- --------------------------------------------------------
 
@@ -566,7 +579,7 @@ CREATE TABLE `registrations` (
 --
 
 INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `CV`, `Status`, `User`, `EnablePlanEdit`, `updated_at`, `created_at`) VALUES
-(11, NULL, 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 3, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'جامعة مولاي عبد الله', 'badouch', '+33601106930', '222222222', 'badouch.maroc@gmail.com', 'fileName1541620612.jpg', 'CV1544995491.pdf', 'مفعل', 54, 'true', '2018-12-16 22:12:23', '2018-10-06 11:51:09'),
+(11, '85963', 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 3, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'جامعة مولاي عبد الله', 'badouch', '+33601106930', '222222222', 'badouch.maroc@gmail.com', 'fileName1541620612.jpg', 'CV1544995491.pdf', 'مفعل', 54, 'true', '2019-02-22 20:36:08', '2018-10-06 11:51:09'),
 (12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '+966506087020', NULL, 'badouch.maroc@gmail.com', 'fileName1541621862.jpg', NULL, 'yes', 55, 'false', '2018-12-11 19:26:55', '2018-10-18 18:08:29'),
 (16, NULL, '25SK3DD', '852447XP1266', 'reviewer', 'reviewer', 'ذكر', '1979-11-30', 'المغرب', 1, 2, 'TOURS', 'قاعة المؤتمرات بالمنامة', 'ماجستير', 'جيد', '2019-02-06', 'reviewer', 'الامير محمد الخطابي', 'الحقوق و العلوم الشرعية', '11111111111', '22222222222', 'reviewer@reviewer.com', '1549065775.jpg', NULL, 'غير مفعل', 62, 'true', '2019-02-01 23:02:56', '2019-02-01 23:02:56'),
 (17, NULL, '25SK3DD', '852447XP1266', 'reviewer1', 'reviewer1', 'ذكر', '2019-02-13', 'LA RICHE', 1, 3, 'TOURS', 'قاعة المؤتمرات بالمنامة', 'ماجستير', 'جيد', '2019-02-12', 'reviewer', 'الامير محمد الخطابي', 'الحقوق و العلوم الشرعية', '5555555555', '3333333333', 'reviewer1@reviewer1.com', '1549539995.jpg', NULL, 'غير مفعل', 63, 'true', '2019-02-07 10:46:35', '2019-02-07 10:46:35');
@@ -622,15 +635,17 @@ CREATE TABLE `reviewers_reports` (
   `q10_details` varchar(1000) NOT NULL,
   `q11` varchar(1500) NOT NULL,
   `filename` text CHARACTER SET utf8 NOT NULL,
-  `note` text NOT NULL
+  `note` text NOT NULL,
+  `date` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `reviewers_reports`
 --
 
-INSERT INTO `reviewers_reports` (`ID`, `search`, `reviewer`, `q1`, `q1_details`, `q2`, `q2_details`, `q3`, `q3_details`, `q4`, `q4_details`, `q5`, `q5_details`, `q6`, `q6_details`, `q7`, `q7_details`, `q8`, `q8_details`, `q9`, `q9_details`, `q10`, `q10_details`, `q11`, `filename`, `note`) VALUES
-(3, 1, 16, 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'fileName1549574845.pdf', 'u');
+INSERT INTO `reviewers_reports` (`ID`, `search`, `reviewer`, `q1`, `q1_details`, `q2`, `q2_details`, `q3`, `q3_details`, `q4`, `q4_details`, `q5`, `q5_details`, `q6`, `q6_details`, `q7`, `q7_details`, `q8`, `q8_details`, `q9`, `q9_details`, `q10`, `q10_details`, `q11`, `filename`, `note`, `date`) VALUES
+(3, 1, 16, 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'u', 'u', 'fileName1549574845.pdf', 'u', '2019-02-22'),
+(4, 3, 16, 'oo', 'oo', 'o', 'o', 'o', 'o', 'oo', 'o', 'o', 'o', 'o', 'o', 'oo', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'o', 'fileName1550938822.pdf', 'pp', '2019-02-23');
 
 -- --------------------------------------------------------
 
@@ -719,16 +734,18 @@ CREATE TABLE `searchers_reports` (
   `q7` varchar(1000) NOT NULL,
   `q8` varchar(1000) NOT NULL,
   `q9` varchar(500) NOT NULL,
-  `filename` text NOT NULL
+  `filename` text NOT NULL,
+  `date` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `searchers_reports`
 --
 
-INSERT INTO `searchers_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `filename`) VALUES
-(4, 4, 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'uu', 'u', 'fileName1549578745.pdf'),
-(3, 1, 'm', 'm', 'm', 'm', 'mm', 'm', 'm', 'm', 'w', 'fileName1549576327.pdf');
+INSERT INTO `searchers_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `filename`, `date`) VALUES
+(4, 4, 'u', 'u', 'u', 'uu', 'u', 'u', 'u', 'uu', 'u', 'fileName1549578745.pdf', '2019-02-22'),
+(3, 1, 'm', 'm', 'm', 'm', 'mm', 'm', 'm', 'm', 'w', 'fileName1549576327.pdf', '2019-02-22'),
+(5, 5, 'ppp', 'ppp', 'ppp', 'pp', 'pp', 'pp', 'ppp', 'ppp', 'pp', 'fileName1550870024.docx', '2019-02-22');
 
 -- --------------------------------------------------------
 
@@ -779,10 +796,10 @@ CREATE TABLE `searchs` (
 --
 
 INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Division`, `Searcher`, `Note`, `Progress`, `Divisionunit`, `Cycle`, `Status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'يممثككبمم', 'رفض الادارة', 12, 1, 'no', '2019-02-07 22:20:47', '2018-10-21 08:17:53'),
-(3, NULL, 'المبحث 22', 'مبحثي', 22, 'fileName1541367786.pdf', 5, 11, NULL, 'تم الرفع', 14, 1, 'yes', '2019-02-07 22:20:50', '2018-11-04 20:43:06'),
-(4, NULL, 'بحثي', 'بحثي', 20, 'fileName1541368009.pdf', 6, 11, 'kkkkkk', 'موافقة الادارة', 15, 1, 'yes', '2019-02-07 22:20:55', '2018-11-04 20:46:49'),
-(5, NULL, 'بحثي', 'بحثي', 5, 'fileName1548887678.pdf', 1, 11, NULL, 'تم الرفع', 1, 1, 'yes', '2019-01-30 21:34:38', '2019-01-30 21:34:38');
+(1, NULL, 'المبحث2', 'المبحث1', 1, 'fileName1540123896.pdf', 5, 11, 'يممثككبمم', 'رفض الادارة', 12, 1, 'no', '2019-02-18 19:34:31', '2018-10-21 08:17:53'),
+(3, NULL, 'المبحث 22', 'مبحثي', 22, 'fileName1541367786.pdf', 5, 11, NULL, 'تم الرفع', 14, 6, 'yes', '2019-02-18 18:49:58', '2018-11-04 20:43:06'),
+(4, NULL, 'بحثي', 'بحثي', 20, 'fileName1541368009.pdf', 6, 11, 'kkkkkk', 'موافقة الادارة', 15, 12, 'yes', '2019-02-18 20:12:29', '2018-11-04 20:46:49'),
+(5, NULL, 'بحثي', 'بحثي', 5, 'fileName1548887678.pdf', 1, 11, NULL, 'تم الرفع', 1, 8, 'yes', '2019-02-18 18:50:11', '2019-01-30 21:34:38');
 
 -- --------------------------------------------------------
 
@@ -883,15 +900,16 @@ CREATE TABLE `supervisors_reports` (
   `q7` varchar(1000) NOT NULL,
   `q8` varchar(1000) NOT NULL,
   `note` text NOT NULL,
-  `filename` text NOT NULL
+  `filename` text NOT NULL,
+  `date` text NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `supervisors_reports`
 --
 
-INSERT INTO `supervisors_reports` (`ID`, `supervisor`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `note`, `filename`) VALUES
-(4, 12, 1, 'p', 'p', 'pp', 'p', 'p', 'pp', 'p', 'p', 'w', 'fileName1549577176.pdf');
+INSERT INTO `supervisors_reports` (`ID`, `supervisor`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `note`, `filename`, `date`) VALUES
+(4, 12, 1, 'p', 'p', 'pp', 'p', 'p', 'pp', 'p', 'p', 'w', 'fileName1549577176.pdf', '2019-02-22');
 
 -- --------------------------------------------------------
 
@@ -974,12 +992,12 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'qLoRdCCw9zfGOI5P7mSd7MySMFcpQsBvhI1FRQDzOmY8IO2O8IK3DZQCYdwH', '2019-02-07 11:45:05', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'tkpyKHmOdUrhApC4xwtGK33IOW4edgi34zNz9kv9sQEgXmVW7I1OFZVEs5zx', '2019-02-08 12:50:34', '2018-10-06 11:51:08'),
-(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'RnbkG3iQKJHmOhjGLx14ribNn9FtjJZiTwoctPGOik2l7JQIxl7SbpJ7vJux', '2019-02-07 22:26:15', '2018-10-18 18:08:29'),
-(56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, '4UrCnRrLgmu2IJKP32kGmKkSkjy4PT9PnpiNKTAzuVV3IWlcCFmAJTj9zilf', '2019-02-07 22:26:31', '2018-12-30 16:27:37'),
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'XpJk7bWecKLtzrj9NY63pAgV7zE2W1i3ap0aDamuTBAmflKweGNNmcxYWCge', '2019-02-18 18:50:18', '2018-10-03 08:22:44'),
+(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'qELaRXEFXfYplbXhSTLrL32yfqdUhxmIhypW4Mkjck9VlQGrWNAtDTu354WN', '2019-02-23 15:59:55', '2018-10-06 11:51:08'),
+(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, '9j1WemhjDpX3OFiNQbAzff1TjN2g0BNdD2KxYYdmn0GRXZhoQ2XedljpSvKB', '2019-02-18 17:17:40', '2018-10-18 18:08:29'),
+(56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, 'kRhqjYgEGlRXeSy47S0aF4F4sEaL7gWIz4RpaM1pFl1BtEKIQRpuvSHvrYOm', '2019-02-22 20:38:13', '2018-12-30 16:27:37'),
 (57, 'عبد الرحمان', 'searcher@searcher.com', '$2y$10$Q/ZpMzea39jIwdDfBHwZLOJl6EK2ZEbH4b05C9rYwOK6lNwaUBVOu', 2, 'VP1XKUrAIMSlOyUUWmkm9zYSHsKsGFBnlJrIA3eep91IWiEnacwGktrtv1gp', '2018-12-30 18:20:22', '2018-12-30 17:19:07'),
-(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, 'jKSTk66S6lcQsQ4enCZ0FQ1ZgcX2DDtKowPq8lVFzP7uv5vxMJVgCK7RyHRn', '2019-02-07 22:33:54', '2019-02-01 23:02:55'),
+(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, 'hBipG3rQdAQshdZEcASNsRNs5q3MVZA0lvbAMvVhQCZ85qiomPTSrGtGENEL', '2019-02-23 16:24:54', '2019-02-01 23:02:55'),
 (63, 'reviewer1', 'reviewer1@reviewer1.com', '$2y$10$74zavaLkuqA/P6HngsMID.gHHtzd3pU7h8GXw5ullar3O3rGzExiy', 5, NULL, '2019-02-07 10:46:35', '2019-02-07 10:46:35');
 
 --
@@ -1288,7 +1306,7 @@ ALTER TABLE `criterias`
 -- AUTO_INCREMENT pour la table `cycles`
 --
 ALTER TABLE `cycles`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT pour la table `divisions`
@@ -1360,7 +1378,7 @@ ALTER TABLE `registrations`
 -- AUTO_INCREMENT pour la table `reviewers_reports`
 --
 ALTER TABLE `reviewers_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `roles`
@@ -1384,7 +1402,7 @@ ALTER TABLE `searchersreports`
 -- AUTO_INCREMENT pour la table `searchers_reports`
 --
 ALTER TABLE `searchers_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `searchs`

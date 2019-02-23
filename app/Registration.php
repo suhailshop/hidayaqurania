@@ -8,6 +8,7 @@ use App\Countrie;
 use App\These;
 use App\Progress;
 use App\Plan;
+use App\Supervisors_reports;
 use Illuminate\Database\Eloquent\Model;
 
 class Registration extends Model
@@ -17,7 +18,7 @@ class Registration extends Model
     public $timestamps = true;
 
     public function user(){
-        return $this->hasOne('User');
+        return $this->belongsTo('App\User','User','ID');
     }
     public function nationalitie(){
         return $this->belongsTo('App\Nationalitie','Nationalitie','ID');
@@ -36,6 +37,9 @@ class Registration extends Model
     }
     public function plan(){
         return $this->hasMany('App\Plan','Searcher','ID');
+    }
+    public function supervisors_report(){
+        return $this->hasMany('App\Supervisors_reports','supervisor','ID');
     }
     
 }

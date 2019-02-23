@@ -108,7 +108,7 @@ class SearchController extends Controller
             ]);
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/admin2_reports',$fileName);
-        
+                
         DB::table('admin2_reports')->insert([
             'search'=>$request->input('search'),
             'q1'=>$request->input('q1'),
@@ -118,6 +118,8 @@ class SearchController extends Controller
             'q5'=>$request->input('q5'),
             'note'=>$request->input('note'),
             'filename'=>$fileName,
+            'date'=>date('Y-m-d'),
+            'admin2'=>Auth::user()->name
         ]);
         }
         return redirect()->route('getAllSearchs');

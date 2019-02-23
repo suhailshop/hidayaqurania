@@ -77,9 +77,38 @@
 
                                     <td>{{$reviewer->University}}</td>
                                     <td>{{$reviewer->Faculty}}</td>
+ 
 
+                                     <td>
+                                        <img src="{{ url('storage/registrations/'.$reviewer->PictureURL) }}" 
+                                            style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
+                                    </td>        
+                                    @if(auth()->user()->hasRole('admin2',auth()->user()->role_id))
+                                    <td>
+                                        <div class="btn-group pull-right">
+                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                                <i class="fa fa-angle-down"></i>
+                                            </button>
+                                            <ul class="dropdown-menu pull-right">
+                                                <li>
+                                                <a href="{{route('deleteReviwerPost',['id'=>$reviewer->ID])}}">
+                                                        <i class="fa fa-remove"></i> حذف </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('getAllReviewerSearchs',['id'=>$reviewer->ID])}}">
+                                                            <i class="fa fa-search"></i> الابحاث </a>
+                                                </li>
+                                                <li>
+                                                    <a href="{{route('getOneProfile',['id'=>$reviewer->ID])}}">
+                                                            <i class="fa fa-user"></i> الحساب </a>
+                                                </li>
 
-                                </tr>
+                                            </ul>
+                                        </div>
+                                        
+                                    </td>
+                                    @endif
+                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>

@@ -95,7 +95,7 @@
                                                 <a href="#tab_1_4" data-toggle="tab">إضافة تقرير المشرف </a>
                                             </li>
                                             @endif
-                                            @if(auth()->user()->hasRole('student',auth()->user()->role_id) && count($search->searchers_reports)==0)
+                                            @if(auth()->user()->hasRole('student',auth()->user()->role_id) && $search->cycle->startDate<=date('Y-m-d') && $search->cycle->endDate>=date('Y-m-d') && count($search->searchers_reports)==0)
                                             <li>
                                                 <a href="#tab_1_5" data-toggle="tab">إضافة تقرير الطالب </a>
                                             </li>
@@ -459,7 +459,19 @@
 
                                                             <!-- تقرير الباحث -->
                                                             <tr>
+
                                                                 <td> تقرير الباحث </td>
+                                                                <td>
+                                                                        @if(!empty($search->searchers_reports[0]))
+                                                                        تم الارسال من طرف : {{$search->searcher->Fistname}} {{$search->searcher->LastName}} 
+                                                                        @endif
+                                                                    </td>
+                                                                    <td>
+                                                                            @if(!empty($search->searchers_reports[0]))
+                                                                        
+                                                                            تم الارسال بتاريخ :{{$search->searchers_reports[0]->date}} 
+                                                                            @endif
+                                                                    </td>
 
                                                                 <td>
 
@@ -529,19 +541,26 @@
                                                                             </div>
                                                                         @else
 
-                                                                            <span class="btn-danger"> لم يتم إرسال التقرير </span>
+                                                                            <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
                                                                         @endif
                                                                     @endif
 
                                                                 </td>
+                                                               
                                                             </tr>
 
 
                                                             <!-- تقرير المشرف -->
                                                             <tr>
                                                                 <td> تقرير المشرف </td>
-
+                                                                <td>
+                                                                        @if(!empty($search->supervisors_reports[0]))
+                                                                        تم الارسال من طرف : {{$search->supervisors_reports[0]->superviso->Fistname}} {{$search->supervisors_reports[0]->superviso->LastName}} @endif</td>
+                                                                
+                                                                <td>
+                                                                        @if(!empty($search->supervisors_reports[0]))
+                                                                        تم الارسال بتاريخ : {{$search->supervisors_reports[0]->date}} @endif </td>
                                                                 <td>
 
 
@@ -564,6 +583,7 @@
                                                                                     <div class="modal-body">
                                                                                         <form role="form" method="POST" action="#" enctype="multipart/form-data">
 
+                                                                                           
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label ">نسبة ما تم إنجازه من الرسالة : </label>
                                                                                                 <textarea readonly class="form-control " name="q1" >{{$search->supervisors_reports[0]->q1}}</textarea>
@@ -614,7 +634,7 @@
                                                                             </div>
                                                                         </div>
                                                                     @else
-                                                                        <span class="btn-danger"> لم يتم إرسال التقرير </span>
+                                                                        <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
                                                                     @endif
 
 
@@ -625,6 +645,11 @@
                                                             <!-- تقرير المراجع -->
                                                             <tr>
                                                                 <td> تقرير المراجع </td>
+                                                                <td>@if(!empty($search->reviewers_reports[0]))
+                                                                    تم الارسال من طرف : {{$search->reviewers_reports[0]->reviewe->Fistname}} {{$search->reviewers_reports[0]->reviewe->LastName}} @endif </td>
+                                                                <td>
+                                                                    @if(!empty($search->reviewers_reports[0]))
+                                                                    تم الارسال بتاريخ : {{$search->reviewers_reports[0]->date}} @endif</td>
                                                                 <td>
 
 
@@ -644,9 +669,9 @@
                                                                                         </button>
                                                                                     </div>
                                                                                     <div class="modal-body">
-                                                                                        <form role="form" method="POST" action="{{route('addreviewers_reports')}}" enctype="multipart/form-data">
+                                                                                        <form role="form" method="POST" action="#" enctype="multipart/form-data">
                                                                                             {{ csrf_field() }}
-                                                                                            <input type="hidden" value="{{$search->ID}}" name="search" />
+                                                                                            
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label ">1- كفاية المصادر وأصالتها، والمراجع وحداثتها، ومدى إفادة الباحث منها، واستيعابه للدراسات السابقة. (الدرجة 1-10) : </label>
                                                                                                 <input readonly class="form-control " name="q1" type="text" value="{{$search->reviewers_reports[0]->q1}}"  />
@@ -746,7 +771,7 @@
                                                                         </div>
                                                                     @else
 
-                                                                        <span class="btn-danger"> لم يتم إرسال التقرير </span>
+                                                                        <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
                                                                     @endif
                                                                 </td>
@@ -756,6 +781,13 @@
                                                             <!-- تقرير الإدارة -->
                                                             <tr>
                                                                 <td> تقرير الإدارة </td>
+                                                                <td>
+                                                                    @if(!empty($search->admin2_reports[0]))
+                                                                     تم الارسال من طرف : {{$search->admin2_reports[0]->admin2}} @endif</td>
+                                                                <td>@if(!empty($search->admin2_reports[0]))
+                                                                    تم الارسال بتاريخ : {{$search->admin2_reports[0]->date}} @endif</td>
+                                                               
+                                                                
                                                                 <td>
 
 
@@ -777,6 +809,7 @@
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                         <form role="form" method="POST" action="#" >
+                                                                                              
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
                                                                                                 <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q1}}</textarea>
@@ -815,7 +848,7 @@
 
                                                                     @else
 
-                                                                        <span class="btn-danger"> لم يتم إرسال التقرير </span>
+                                                                        <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
                                                                     @endif
 

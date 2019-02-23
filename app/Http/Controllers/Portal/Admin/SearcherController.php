@@ -158,7 +158,14 @@ class SearcherController extends Controller
 
     }
 
+    public function updateCodeSearcher(Request $request){
+        DB::table('registrations')
+        ->where('ID', $request->input('idsearcher'))
+        ->update(['Code' => $request->input('code')]);
 
+        return redirect()->route('getSearcher',array('id' =>$request->input('idsearcher')));
+
+    }
 
     public function getSearcherSearchs($id) {
 

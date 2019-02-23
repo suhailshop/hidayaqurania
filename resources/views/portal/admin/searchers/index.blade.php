@@ -54,13 +54,14 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
+                                        <th class="all">رقم</th>
                                     <th class="all">الاسم الكامل</th>
 
                                     <th class="desktop">الدولة</th>
 
                                     <th class="all"> الجامعة</th>
-                                    <th class="all">الكلية</th>
-
+                                    <th class="desktop">الكلية</th>
+                                    
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="desktop">الحالة</th>
                                     @endif
@@ -71,6 +72,11 @@
                             <tbody>
                                 @foreach($searchers as $searcher)
                                 <tr>
+                                    <td>@if(empty($searcher->Code)) لا يوجد 
+                                        @else
+                                         <a href="{{route('getSearcher',$searcher->ID)}}" >
+                                        {{$searcher->Code}} </a>
+                                        @endif</td>
                                     <td>
                                         <a href="{{route('getSearcher',$searcher->ID)}}" >
                                         {{$searcher->Fistname}} {{$searcher->LastName}}

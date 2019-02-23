@@ -92,6 +92,7 @@ class ReviewerController extends Controller
 
 
 
+
     public function showProfile($id){
 
         $reviwer = Registration::where('ID',$id)->get()->first();
@@ -115,5 +116,27 @@ class ReviewerController extends Controller
     }
 
 
+
+
+    public function getAllReviewerSearchs($id){
+        $searchs = DB::table('searchs')
+                    ->join('divisions','divisions.ID','=','searchs.Division')
+                    ->join('divisionunits','divisionunits.ID','=','searchs.Divisionunit')
+                    ->join('reviewersearchs','reviewersearchs.search','=','searchs.ID')
+                    ->join('registrations','registrations.ID','=','searchs.Searcher')
+                    ->join('users','users.id','=','registrations.User')
+                    ->where('reviewersearchs.reviewer',$id)
+                    ->get(['divisionunits.Name as NameDivUni','divisions.Name as divname','searchs.*','registrations.Fistname','registrations.LastName']);
+        return view('portal.admin.reviewers.allsearchs',compact('searchs'));
+    }
+
+    public function getOneProfile($id){
+        
+        $registration = Registration::where('ID',$id)->first();
+        $countries = Countrie::all();
+        $nationalities = Nationalitie::all();
+        $user = $registration->user;
+        return view('portal.admin.reviewers.getOne',compact('registration','user','countries','nationalities'));
+    }
 
 }
