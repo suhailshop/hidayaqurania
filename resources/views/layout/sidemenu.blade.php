@@ -22,6 +22,7 @@
             </li>
 
 
+            @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
 
             <li class="nav-item  ">
                 <a href="{{route('allSearcher')}}" class="nav-link nav-toggle">
@@ -30,12 +31,13 @@
                     <span class="arrow"></span>
                 </a>
             </li>
+            @endif
 
 
 
 
 
-
+            @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
 
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -59,7 +61,7 @@
                 </ul>
             </li>
 
-
+            @endif
 
 
 
