@@ -55,85 +55,52 @@
                         
                             <div class="portlet-body">
                         <div class="form-body">
-                               
-                            
-                            <p class="hint">  معلومات شخصية: </p>
-                            <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }} ">
-                                    <div class="col-md-12">
-                                <input class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
-                                @if ($errors->has('firstname'))
-                                <span class="help-block">
-                                    <strong>{{ 'المرجو ادخال الاسم العائلي'}}</strong>
-                                </span>
-                            @endif
-                                    </div>
-                            </div>
-                            <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
-                                    <div class="col-md-12">
-                                <input class="form-control placeholder-no-fix" type="text" placeholder="الاسم الشخصي" name="lastname" /> 
-                                @if ($errors->has('lastname'))
-                                <span class="help-block">
-                                    <strong>{{ 'المرجو ادخال الاسم الشخصي'}}</strong>
-                                </span>
-                            @endif
-                                    </div>
-                            </div>
-                            <div class="form-group">
-                                    <div class="col-md-12">
-                                <label class="control-label visible-ie8 visible-ie9">الجنس</label>
-                                <select name="gender" class="form-control">
-                                    <option value="ذكر"> ذكر</option>
-                                    <option value="أنثى"> أنثى</option>
-                                </select>
-                                    </div>
-                            </div>
-                            <div class="form-group">
-                                    <div class="col-md-12">
-                                <label class="control-label visible-ie8 visible-ie9">تاريخ الولادة</label>
-                                <input class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
-                                    </div>
-                                   </div>
-                            <div class="form-group">
-                                    <div class="col-md-12">
-                                    <label class="control-label visible-ie8 visible-ie9">مكان الولادة</label>
-                                    <input class="form-control placeholder-no-fix" type="text" placeholder="مكان الولادة" name="BirthCity" />
-                                    </div> </div>
-                            
-                            <div class="form-group">
-                                    <div class="col-md-12">
-                                    <label class="control-label visible-ie8 visible-ie9">الجنسية</label>
-                                    <select name="nationalitie" class="form-control">
-                                        @foreach($nationalities as $nationalitie)
-                                    <option value="{{$nationalitie->ID}}">{{$nationalitie->Name}}</option>
-                                    @endforeach
-                                    </select>
-                                    </div>
-                                </div>
-                            <div class="form-group">
-                                    <div class="col-md-12">
-                                    <label class="control-label visible-ie8 visible-ie9">رقم جواز السفر</label>
-                                    <input class="form-control placeholder-no-fix" type="text" placeholder="رقم جواز السفر" name="PassportNumber" /> </div>
-                            </div>
-                            <div class="form-group">
-                                    <div class="col-md-12">
-                                        <label class="control-label visible-ie8 visible-ie9">الرقم الوطني</label>
-                                        <input class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" /> </div>
-                            </div>
-                                <div class="form-group last">
-                                    <div class="col-md-12">
-                                        <div class="fileinput fileinput-new" data-provides="fileinput">
-                                             <div class="fileinput-preview fileinput-exists thumbnail" style="width: 100%; height: 100%;max-width: 200px; max-height: 150px;"> 
-                                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" />
+                                <p class="hint">  معلومات الحساب : </p>
+                                <div class="alert alert-danger" role="alert">
+                                        <strong>ملاحظة! </strong>         المرجو الاحتفاظ بمعلومات الحساب ليتم ارسالها للطالب الجديد    
+                                      </div>
+                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  <div class="col-md-12">
+                                            <label class="control-label visible-ie8 visible-ie9">اسم المستخدم</label>
+                                            <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="اسم المستخدم" name="firstname" />
+                                            @if ($errors->has('email'))
+                                            <span class="help-block">
+                                                <strong>{{ 'المرجو ادخال اسم المستخدم'}}</strong>
+                                            </span>
+                                            @endif
                                             </div>
-                                            <div>
-                                                <span class="btn default btn-file">
-                                                    <span class="fileinput-new"> اختر صورة </span>
-                                                    <input type="file" accept="image/gif, image/jpeg, image/jpg" name="PictureURL"> </span>
-                                                <a href="javascript:;" class="btn red fileinput-exists" data-dismiss="fileinput"> حذف </a>
-                                            </div>
+                                         </div>
+                                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  <div class="col-md-12">
+                                                <label class="control-label visible-ie8 visible-ie9">رقم الباحث</label>
+                                                <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="رقم الباحث" name="Code" />
+                                                @if ($errors->has('email'))
+                                                <span class="help-block">
+                                                    <strong>{{ 'المرجو ادخال رقم الباحث'}}</strong>
+                                                </span>
+                                                @endif
+                                                </div>
+                                             </div>
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  <div class="col-md-12">
+                                    <label class="control-label visible-ie8 visible-ie9">البريد الالكتروني</label>
+                                    <input required class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="البريد الالكتروني" name="email" />
+                                    @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ 'المرجو ادخال البريد الالكتروني'}}</strong>
+                                    </span>
+                                    @endif
+                                    </div>
+                                 </div>
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                        <div class="col-md-12">
+                                    <label class="control-label visible-ie8 visible-ie9">كلمة المرور</label>
+                                    <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" id="register_password" placeholder="كلمة المرور" name="password" /> 
+                                    @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ 'المرجو ادخال كلمة المرور'}}</strong>
+                                    </span>
+                                    @endif
                                         </div>
-                                    </div>
                                 </div>
+                            
                            
                                 </div>
                             </div>
@@ -150,83 +117,53 @@
                         <div class="portlet-body">
                             <!-- BEGIN FORM-->
                                 <div class="form-body">
-
-                                        <p class="hint">  معلومات الاقامة : </p>
-                                        <div class="form-group">
+ 
+                                        <p class="hint">  المشرف: </p>
+                                        <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }} ">
                                                 <div class="col-md-12">
-                                            <label class="control-label visible-ie8 visible-ie9">الدولة</label>
-                                            <select name="countrie" class="form-control">
-                                                @foreach($countries as $countrie)
-                                            <option value="{{$countrie->ID}}">{{$countrie->Name}}</option>
+                                            <select class="form-control placeholder-no-fix" name="Supervisor"  >
+                                                @foreach($supervisors as $sup)
+                                            <option value="{{$sup->ID}}">{{$sup->Fistname}} {{$sup->LastName}}</option>
                                                 @endforeach
-                                            </select></div>
-                                        </div>
-                                        
-                                        <div class="form-group">  <div class="col-md-12">
-                                            <label class="control-label visible-ie8 visible-ie9">المدينة</label>
-                                            <input class="form-control placeholder-no-fix" type="text" placeholder="المدينة" name="city1" /> </div>
-                                        </div><div class="form-group">  <div class="col-md-12">
-                                                <label class="control-label visible-ie8 visible-ie9">العنوان</label>
-                                                <input class="form-control placeholder-no-fix" type="text" placeholder="العنوان" name="location" /> </div>
-                                       </div>
-                                        
-                                                
-                                                
-                                        <p class="hint">  معلومات دراسية : </p>
-                                        <div class="form-group">  <div class="col-md-12">
-                                            <label class="control-label visible-ie8 visible-ie9">الجامعة</label>
-                                            <input class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" /> </div>              
-                                        </div>
-                                        <div class="form-group">  <div class="col-md-12">
-                                            <label class="control-label visible-ie8 visible-ie9">الكلية</label>
-                                            <input class="form-control placeholder-no-fix" type="text" placeholder="الكلية" name="Faculty" /> </div>
-                                        </div>
-                                        <div class="form-group">  <div class="col-md-12">
-                                                    <label class="control-label visible-ie8 visible-ie9">نوع الشهادة</label>
-                                                    <input class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" /> </div>
-                                        </div>
-                                        <div class="form-group">  <div class="col-md-12">
-                                                    <label class="control-label visible-ie8 visible-ie9">درجة الشهادة</label>
-                                                    <input class="form-control placeholder-no-fix" type="text" placeholder="درجة الشهادة" name="CertificateDegree" /> </div>
-                                        </div><div class="form-group">  <div class="col-md-12">
-                                                    <label class="control-label visible-ie8 visible-ie9">تاريخ التسجيل</label>
-                                                    <input class="form-control placeholder-no-fix" type="date" placeholder="تاريخ التسجيل" name="InscriptionDate" /> </div>
-                                          </div>                          
-                                        <p class="hint">  معلومات الاتصال : </p>
-                                        <div class="form-group">  <div class="col-md-12">
-                                                        <label class="control-label visible-ie8 visible-ie9">رقم الهاتف 1 </label>
-                                                        <input class="form-control placeholder-no-fix" type="number" placeholder="رقم الهاتف 1" name="Phonne1" /> </div>              
-                                        </div>
-                                        <div class="form-group">  <div class="col-md-12">
-                                                        <label class="control-label visible-ie8 visible-ie9">رقم الهاتف 2</label>
-                                                        <input class="form-control placeholder-no-fix" type="number" placeholder="رقم الهاتف 2" name="Phonne2" /> </div>
-                                        </div>
-                        
-                                        <p class="hint">  معلومات الحساب : </p>
-                                        <div class="alert alert-danger" role="alert">
-                                                <strong>ملاحظة! </strong>         المرجو الاحتفاظ بمعلومات الحساب ليتم ارسالها للطالب الجديد    
-                                              </div>
-                                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  <div class="col-md-12">
-                                            <label class="control-label visible-ie8 visible-ie9">البريد الالكتروني</label>
-                                            <input class="form-control placeholder-no-fix" type="email" autocomplete="off" placeholder="البريد الالكتروني" name="email" />
-                                            @if ($errors->has('email'))
-                                            <span class="help-block">
-                                                <strong>{{ 'المرجو ادخال البريد الالكتروني'}}</strong>
-                                            </span>
-                                            @endif
+                                            </select>
+                                            
                                             </div>
-                                         </div>
-                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                                <div class="col-md-12">
-                                            <label class="control-label visible-ie8 visible-ie9">كلمة المرور</label>
-                                            <input class="form-control placeholder-no-fix" type="text" autocomplete="off" id="register_password" placeholder="كلمة المرور" name="password" /> 
-                                            @if ($errors->has('password'))
-                                            <span class="help-block">
-                                                <strong>{{ 'المرجو ادخال كلمة المرور'}}</strong>
-                                            </span>
-                                            @endif
-                                                </div>
                                         </div>
+                                        <p class="hint">  الأطروحة: </p>
+                                <div class="form-group">  <div class="col-md-12">
+                                        <label class="control-label visible-ie8 visible-ie9">الأطروحة</label>
+                                        <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="عنوان الأطروحة" name="Title" />
+                                        
+                                        </div>
+                                </div>
+                                <div class="form-group">  <div class="col-md-12">
+                                        <label class="control-label visible-ie8 visible-ie9">مدة البرنامج</label>
+                                        <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="مدة البرنامج" name="ProgramDuration" />
+                                        
+                                        </div>
+                                </div>
+                                <div class="form-group">  <div class="col-md-12">
+                                        <label class="control-label visible-ie8 visible-ie9">تاريخ البداية</label>
+                                        <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="تاريخ البداية" name="BeginningDate" />
+                                        
+                                        </div>
+                                </div>
+                                <div class="form-group">  <div class="col-md-12">
+                                        <label class="control-label visible-ie8 visible-ie9">تاريخ النهاية</label>
+                                        <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="تاريخ النهاية" name="CompletionDate" />
+                                        
+                                        </div>
+                                </div>
+                                <div class="form-group">  <div class="col-md-12">
+                                        <label class="control-label visible-ie8 visible-ie9">ملاحظات</label>
+                                        <textarea class="form-control placeholder-no-fix"  name="Notes" placeholder="ملاحظات"></textarea>
+                                        
+                                        </div>
+                                </div>
+
+                            
+                                        
+
                                     <div class="form-actions">
                                             <div class="row">
                                                 <div class="col-md-offset-3 col-md-9">

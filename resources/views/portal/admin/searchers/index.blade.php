@@ -145,16 +145,16 @@
                                                            
                                                  @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                                  <li>
-                                                <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
+                                                <a href="#" type="button" data-toggle="modal" data-target="#exampleModal{{$searcher->ID}}">
                                                     <i class="fa fa-check"></i> تسجيل حضور </a>
                                                 </li>
                                                 <li>
-                                                <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal1">
+                                                <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal1{{$searcher->ID}}">
                                                     <i class="fa fa-black-tie"></i>  الاطروحة</a>
                                                 </li>
 
                                                 <li>
-                                                <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2">
+                                                <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2{{$searcher->ID}}">
                                                     <i class="fa fa-balance-scale"></i>  تنقيط المعايير </a>
                                                 </li>
                                                 @endif
@@ -165,7 +165,7 @@
                                     </td>
                                 </tr>
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal{{$searcher->ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
                                         <form action="{{route('addToMeeting')}}" method="post" >
@@ -202,7 +202,7 @@
                                     </div>
                                 </div>
                                 <!-- Modal -->
-                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="exampleModal1{{$searcher->ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog" role="document">
                                     <div class="modal-content">
 
@@ -314,7 +314,7 @@
                                                 </div>
 
 
-                                                @else
+                                        @else
 
 
                                                 <form action="{{route('addThese')}}" method="post" class="form-horizontal">
@@ -400,7 +400,7 @@
                                     </div>
                                 </div>
                                  <!-- Modal -->
-                                 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                 <div class="modal fade" id="exampleModal2{{$searcher->ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                         <div class="modal-dialog" role="document">
                                         <div class="modal-content">
                                             <form action="{{route('addCriteriasToSearcher')}}" method="post" >

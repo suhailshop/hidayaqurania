@@ -193,55 +193,42 @@
     @elseif(auth()->user()->hasRole('reviewer',auth()->user()->role_id))
         {{--الملخص--}}
         <div class="row">
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearchs')}}">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('getAllMySearchs')}}">
                     <div class="visual">
                         <i class="fa fa-users"></i>
                     </div>
                     <div class="details">
                         <div class="number">
-                            <span data-counter="counterup" data-value="{{count($searchs)}}">{{count($searchs)}}</span>
+                            <span data-counter="counterup" data-value="{{$searchsko}}">{{$searchsko}}</span>
                         </div>
                         <div class="desc"> أبحاث لم يتم مراجعتها </div>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcherReports')}}">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('getAllMySearchs')}}">
                     <div class="visual">
                         <i class="fa fa-briefcase"></i>
                     </div>
                     <div class="details">
                         <div class="number">
-                            <span data-counter="counterup" data-value="{{count($myreports)}}">{{count($myreports)}}</span>
+                            <span data-counter="counterup" data-value="{{$searchsok}}">{{$searchsok}}</span>
                         </div>
                         <div class="desc"> أبحاث تمت مراجعتها </div>
                     </div>
                 </a>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allbookssearcher')}}">
+            <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('getAllMySearchs')}}">
                     <div class="visual">
                         <i class="fa fa-graduation-cap"></i>
                     </div>
                     <div class="details">
                         <div class="number">
-                            <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
+                            <span data-counter="counterup" data-value="{{count($searchs)}}">{{count($searchs)}}</span>
                         </div>
                         <div class="desc">إجمالي الأبحاث </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
-                    <div class="visual">
-                        <i class="fa fa-globe"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                            <span data-counter="counterup" data-value="10">10</span>
-                        </div>
-                        <div class="desc">  تقارير الإدارة </div>
                     </div>
                 </a>
             </div>
@@ -260,21 +247,21 @@
    @elseif(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
    {{--الملخص--}}
    <div class="row">
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearchs')}}">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcherSupervisor')}}">
             <div class="visual">
                <i class="fa fa-users"></i>
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($searchs)}}">{{count($searchs)}}</span>
+                  <span data-counter="counterup" data-value="{{count($searchers)}}">{{count($searchers)}}</span>
                </div>
                <div class="desc"> طلابي </div>
             </div>
          </a>
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcherReports')}}">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSupervisorReports')}}">
             <div class="visual">
                <i class="fa fa-briefcase"></i>
             </div>
@@ -286,7 +273,7 @@
             </div>
          </a>
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+      <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
          <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allbookssearcher')}}">
             <div class="visual">
                <i class="fa fa-graduation-cap"></i>
@@ -299,19 +286,7 @@
             </div>
          </a>
       </div>
-      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
-            <div class="visual">
-               <i class="fa fa-globe"></i>
-            </div>
-            <div class="details">
-               <div class="number">
-                  <span data-counter="counterup" data-value="10">10</span> 
-               </div>
-               <div class="desc">  تقارير الإدارة </div>
-            </div>
-         </a>
-      </div>
+     
    </div>
    {{--طلابي--}}
    <div class="row">
@@ -369,7 +344,7 @@
 {{--حساب الباحث   --}}
       @elseif(auth()->user()->hasRole('student',auth()->user()->role_id))
       <div class="row">
-         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearchs')}}">
                <div class="visual">
                   <i class="fa fa-users"></i>
@@ -382,7 +357,7 @@
                </div>
             </a>
          </div>
-         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcherReports')}}">
                <div class="visual">
                   <i class="fa fa-briefcase"></i>
@@ -395,7 +370,7 @@
                </div>
             </a>
          </div>
-         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allbookssearcher')}}">
                <div class="visual">
                   <i class="fa fa-graduation-cap"></i>
@@ -408,19 +383,7 @@
                </div>
             </a>
          </div>
-         <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
-               <div class="visual">
-                  <i class="fa fa-globe"></i>
-               </div>
-               <div class="details">
-                  <div class="number">
-                     <span data-counter="counterup" data-value="{{$admin_reports}}">{{$admin_reports}}</span> 
-                  </div>
-                  <div class="desc">  تقارير الإدارة </div>
-               </div>
-            </a>
-         </div>
+         
       </div>
      
                     <div class="portlet light portlet-fit ">

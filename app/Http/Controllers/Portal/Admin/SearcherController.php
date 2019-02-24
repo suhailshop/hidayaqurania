@@ -35,9 +35,9 @@ class SearcherController extends Controller
     }
     public function index(){
 
-        $searchers = Registration::where('Type','Searcher')->where('Status','مفعل')->get();
+        $searchers = Registration::where('Type','searcher')->where('Status','مفعل')->get();
         $meetings = Meeting::all();
-        $supervisors = Registration::where('Type','Supervisor')->get();
+        $supervisors = Registration::where('Type','supervisor')->get();
         $criterias = Criteria::all();
         return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors);
     }
@@ -81,9 +81,6 @@ class SearcherController extends Controller
 
         $supervisors = Registration::where('Type','supervisor')->get();
         $countries = Countrie::all();
-
-
-
 
         return view('portal.admin.searchers.plandetails')->with('searcher',$searcher)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings);
     }

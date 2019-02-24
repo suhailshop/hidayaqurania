@@ -52,6 +52,14 @@ class LoginController extends Controller
         if (Auth::attempt(['email' => $email, 'password' => $password], $remember_me))
         {
                 $user = auth()->user();
+                $registration = Registration::where('User',$user->id)->first();
+                $role = Role::where('ID',$user->role_id)->first();
+                if($role->name=='student'){
+                    if ($registration->Status != 'مفعل') {
+                        Auth::logout();
+                        return redirect(route('login'))->withErrors(['notactive' => 'تم استقبال طلبكم وجاري العمل عليه']);
+                    }
+                } 
                 Auth::login($user,true);
                 return redirect()->intended(route('portalwelcome'));
         }

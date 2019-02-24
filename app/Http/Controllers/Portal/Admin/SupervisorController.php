@@ -32,7 +32,7 @@ class SupervisorController extends Controller
     }
     public function index(){
 
-        $supervisors = Registration::where('Type','Supervisor')->get();
+        $supervisors = Registration::where('Type','supervisor')->get();
         return view('portal.admin.supervisors.index')->with('supervisors',$supervisors);
     }
 

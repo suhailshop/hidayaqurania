@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  sam. 23 fév. 2019 à 20:10
+-- Généré le :  lun. 25 fév. 2019 à 00:38
 -- Version du serveur :  10.1.30-MariaDB
 -- Version de PHP :  7.2.1
 
@@ -73,7 +73,8 @@ CREATE TABLE `books` (
 --
 
 INSERT INTO `books` (`ID`, `Code`, `Name`, `Author`, `URL`, `ISBN`, `PictureURL`, `Status`, `created_at`, `updated_at`) VALUES
-(1, NULL, 'كتاب 1', 'محمد', 'https://www.google.com/pdf.pdf', '111-1-1111-1111-1', 'fileName1541702624.PNG', 'yes', '2018-11-08 18:43:44', '2018-10-23 08:21:42');
+(1, NULL, 'كتاب 1', 'محمد', 'https://www.google.com/pdf.pdf', '111-1-1111-1111-1', 'fileName1541702624.PNG', 'yes', '2018-11-08 18:43:44', '2018-10-23 08:21:42'),
+(2, NULL, 'ككك', 'كككك', 'https://books.com/mybook', '111-1-1111-1111-1', 'fileName1550949896.pdf', 'yes', '2019-02-23 18:24:56', '2019-02-23 18:24:56');
 
 -- --------------------------------------------------------
 
@@ -547,31 +548,31 @@ CREATE TABLE `registrations` (
   `Code` varchar(50) DEFAULT NULL,
   `PassportNumber` varchar(50) DEFAULT NULL,
   `NationalNumber` varchar(50) DEFAULT NULL,
-  `Fistname` varchar(100) NOT NULL,
-  `LastName` varchar(100) NOT NULL,
-  `Gender` varchar(20) NOT NULL,
-  `BirthDate` date NOT NULL,
+  `Fistname` varchar(100) DEFAULT NULL,
+  `LastName` varchar(100) DEFAULT NULL,
+  `Gender` varchar(20) DEFAULT NULL,
+  `BirthDate` date DEFAULT NULL,
   `BirthCity` varchar(100) DEFAULT NULL,
-  `Nationalitie` int(11) NOT NULL,
-  `Countrie` int(11) DEFAULT NULL,
-  `City` varchar(100) NOT NULL,
+  `Nationalitie` int(11) DEFAULT '1',
+  `Countrie` int(11) DEFAULT '2',
+  `City` varchar(100) DEFAULT NULL,
   `Location` varchar(255) DEFAULT NULL,
   `CertificateType` varchar(255) DEFAULT NULL,
   `CertificateDegree` varchar(200) DEFAULT NULL,
   `InscriptionDate` date DEFAULT NULL,
-  `Type` varchar(100) NOT NULL,
+  `Type` varchar(100) DEFAULT NULL,
   `University` varchar(100) DEFAULT NULL,
   `Faculty` varchar(100) DEFAULT NULL,
   `Phonne1` varchar(50) DEFAULT NULL,
   `Phonne2` varchar(50) DEFAULT NULL,
-  `Email` varchar(50) NOT NULL,
-  `PictureURL` varchar(255) DEFAULT NULL,
+  `Email` varchar(50) DEFAULT NULL,
+  `PictureURL` varchar(255) DEFAULT 'avat.png',
   `CV` text,
   `Status` varchar(50) DEFAULT NULL,
-  `User` int(11) NOT NULL,
-  `EnablePlanEdit` varchar(11) NOT NULL DEFAULT 'true',
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+  `User` int(11) DEFAULT NULL,
+  `EnablePlanEdit` varchar(11) DEFAULT 'true',
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -580,9 +581,11 @@ CREATE TABLE `registrations` (
 
 INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `CV`, `Status`, `User`, `EnablePlanEdit`, `updated_at`, `created_at`) VALUES
 (11, '85963', 'badouch', 'badouch', 'بادوش', 'محمد', 'ذكر', '2018-12-31', 'الداخلة', 1, 3, 'جدة', 'شارع الورود اقامة الياسمين', 'badouch', 'badouch', '2018-12-31', 'searcher', 'جامعة مولاي عبد الله', 'badouch', '+33601106930', '222222222', 'badouch.maroc@gmail.com', 'fileName1541620612.jpg', 'CV1544995491.pdf', 'مفعل', 54, 'true', '2019-02-22 20:36:08', '2018-10-06 11:51:09'),
-(12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '+966506087020', NULL, 'badouch.maroc@gmail.com', 'fileName1541621862.jpg', NULL, 'yes', 55, 'false', '2018-12-11 19:26:55', '2018-10-18 18:08:29'),
+(12, NULL, 'US526334', '1524114758', 'supervisor', 'supervisor', 'ذكر', '2018-12-31', 'مكة', 1, 2, 'جدة', '158 شارع المقاومة', 'ماجستر', 'درجة', '2018-12-31', 'supervisor', 'جامعة مولاي عبد الله', 'كلية الاتصال', '+966506087020', NULL, 'badouch.maroc@gmail.com', 'fileName1551049442.jpg', NULL, 'yes', 55, 'false', '2019-02-24 23:04:02', '2018-10-18 18:08:29'),
 (16, NULL, '25SK3DD', '852447XP1266', 'reviewer', 'reviewer', 'ذكر', '1979-11-30', 'المغرب', 1, 2, 'TOURS', 'قاعة المؤتمرات بالمنامة', 'ماجستير', 'جيد', '2019-02-06', 'reviewer', 'الامير محمد الخطابي', 'الحقوق و العلوم الشرعية', '11111111111', '22222222222', 'reviewer@reviewer.com', '1549065775.jpg', NULL, 'غير مفعل', 62, 'true', '2019-02-01 23:02:56', '2019-02-01 23:02:56'),
-(17, NULL, '25SK3DD', '852447XP1266', 'reviewer1', 'reviewer1', 'ذكر', '2019-02-13', 'LA RICHE', 1, 3, 'TOURS', 'قاعة المؤتمرات بالمنامة', 'ماجستير', 'جيد', '2019-02-12', 'reviewer', 'الامير محمد الخطابي', 'الحقوق و العلوم الشرعية', '5555555555', '3333333333', 'reviewer1@reviewer1.com', '1549539995.jpg', NULL, 'غير مفعل', 63, 'true', '2019-02-07 10:46:35', '2019-02-07 10:46:35');
+(17, NULL, '25SK3DD', '852447XP1266', 'reviewer1', 'reviewer1', 'ذكر', '2019-02-13', 'LA RICHE', 1, 3, 'TOURS', 'قاعة المؤتمرات بالمنامة', 'ماجستير', 'جيد', '2019-02-12', 'reviewer', 'الامير محمد الخطابي', 'الحقوق و العلوم الشرعية', '5555555555', '3333333333', 'reviewer1@reviewer1.com', '1549539995.jpg', NULL, 'غير مفعل', 63, 'true', '2019-02-07 10:46:35', '2019-02-07 10:46:35'),
+(18, NULL, 'hh', 'hhh', 'hh', 'hh', 'ذكر', '2018-12-31', 'hhh', 1, 2, 'hhh', 'hhh', 'hhh', 'hhh', '2019-12-31', 'searcher', 'hhh', 'hhh', '11111111', '22222222', 'hh@gmail.com', '1551019405.jpg', NULL, 'مفعل', 65, 'true', '2019-02-24 14:47:22', '2019-02-24 13:43:25'),
+(22, '11', NULL, NULL, 'kk', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'searcher', NULL, NULL, NULL, NULL, 'kk@gmail.com', 'avat.png', NULL, 'مرشح نهائي', 69, 'true', '2019-02-24 22:39:05', '2019-02-24 18:50:05');
 
 -- --------------------------------------------------------
 
@@ -992,13 +995,19 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'XpJk7bWecKLtzrj9NY63pAgV7zE2W1i3ap0aDamuTBAmflKweGNNmcxYWCge', '2019-02-18 18:50:18', '2018-10-03 08:22:44'),
-(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'qELaRXEFXfYplbXhSTLrL32yfqdUhxmIhypW4Mkjck9VlQGrWNAtDTu354WN', '2019-02-23 15:59:55', '2018-10-06 11:51:08'),
-(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, '9j1WemhjDpX3OFiNQbAzff1TjN2g0BNdD2KxYYdmn0GRXZhoQ2XedljpSvKB', '2019-02-18 17:17:40', '2018-10-18 18:08:29'),
-(56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, 'kRhqjYgEGlRXeSy47S0aF4F4sEaL7gWIz4RpaM1pFl1BtEKIQRpuvSHvrYOm', '2019-02-22 20:38:13', '2018-12-30 16:27:37'),
+(39, 'admin', 'admin@admin.com', '$2y$10$keJAuYnSmgndZMt57doE6u907gjNo8vpZPGicEwFU6ojU7ftAzupi', 1, 'EjRLPI2VzDuQHW9f2hp7Ld3LDOuKR4JIKMBq1WRO0GhIT2kCCTE6Yq4H8ypW', '2019-02-24 22:47:44', '2018-10-03 08:22:44'),
+(54, 'student', 'student@student.com', '$2y$10$lXvKVcGpNW1UFgt0uW5Dhu6DvV8MqcOQ/lb1mchY0GKtElNgu26qy', 2, 'wwFjeZb2uLgG1SpdqYEJbipUKEGwWLORQNykdEi4hHdNrJqz7Z0rFbwBQXza', '2019-02-24 22:55:46', '2018-10-06 11:51:08'),
+(55, 'supervisor', 'supervisor@supervisor.com', '$2y$10$98N4xru.BXg0U7VSZM6wduzmW5p0.2/tZYGb.o08nFgEs6XsZucpu', 3, 'Onf9yrNhsQLPUrnZB3t0MG0sQcL2you6coMdENsNRezxakn8p5aJNmcsYGUD', '2019-02-24 23:04:08', '2018-10-18 18:08:29'),
+(56, 'admin2', 'admin2@admin2.com', '$2y$10$e9ZRZgOz1IJ1AtaZCWu47OSQpaNg5LVWVXqjyKjrjXnWsMXxCS9VW', 4, 'GjIuDJhKYon1GthXJFFKXrxZFu9K4ju2pwmMCJwRv0ZsF8D34GzJ4BjEm4Vl', '2019-02-23 19:55:35', '2018-12-30 16:27:37'),
 (57, 'عبد الرحمان', 'searcher@searcher.com', '$2y$10$Q/ZpMzea39jIwdDfBHwZLOJl6EK2ZEbH4b05C9rYwOK6lNwaUBVOu', 2, 'VP1XKUrAIMSlOyUUWmkm9zYSHsKsGFBnlJrIA3eep91IWiEnacwGktrtv1gp', '2018-12-30 18:20:22', '2018-12-30 17:19:07'),
-(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, 'hBipG3rQdAQshdZEcASNsRNs5q3MVZA0lvbAMvVhQCZ85qiomPTSrGtGENEL', '2019-02-23 16:24:54', '2019-02-01 23:02:55'),
-(63, 'reviewer1', 'reviewer1@reviewer1.com', '$2y$10$74zavaLkuqA/P6HngsMID.gHHtzd3pU7h8GXw5ullar3O3rGzExiy', 5, NULL, '2019-02-07 10:46:35', '2019-02-07 10:46:35');
+(62, 'reviewer', 'reviewer@reviewer.com', '$2y$10$tiXkW26Rl1VXqEPJflt.WuQ4HOOp.myw75GXllb.BxPPQQJFmhq36', 5, '0qItsv3tw4P0HYFXHuMMTKzxEVZfWXCMCXUtYHGljSC2YaMksdotOK1a5Xty', '2019-02-24 23:38:03', '2019-02-01 23:02:55'),
+(63, 'reviewer1', 'reviewer1@reviewer1.com', '$2y$10$74zavaLkuqA/P6HngsMID.gHHtzd3pU7h8GXw5ullar3O3rGzExiy', 5, NULL, '2019-02-07 10:46:35', '2019-02-07 10:46:35'),
+(64, 'administrateur', 'administrateur@gmail.com', '$2y$10$/sFCOuT.DA9FbpTxiOjA2Odxqyr3AJ4OIDnEWMLkDVXBHj6C6rTPq', 4, NULL, '2019-02-23 19:18:00', '2019-02-23 19:18:00'),
+(65, 'hh', 'hh@gmail.com', '$2y$10$bKgq2fd0j90zMIux9Sk6fuSNCinSsmODy4Af3Vr.VQGfLyEj/5Upu', 2, 'MuAgVsfe4w6KBd4hLb0ox2Vng0Tdwmg4Tkyrwv31QncJRnb1jfuBfWhwPzTR', '2019-02-24 14:50:23', '2019-02-24 13:43:25'),
+(66, 'bad', 'med@gmail.com', '$2y$10$C8rwYrfEQH0f19AwHkYTkOnKJwkR8uQvxNR9RFqqmyscxdRPMaLIG', 2, NULL, '2019-02-24 18:46:44', '2019-02-24 18:46:44'),
+(67, 'bad', 'med@gmail.com', '$2y$10$J49J6SheXOHPXoIsMy6rn..FfnNBsXl7Osf3slpN3GiAc7IY7DY2m', 2, NULL, '2019-02-24 18:47:47', '2019-02-24 18:47:47'),
+(68, 'bad', 'med@gmail.com', '$2y$10$Y1odfWT.VK6JScN65M4W0ezytbCIKhKSTiP546deiNeYzjlmDJOhi', 2, NULL, '2019-02-24 18:48:06', '2019-02-24 18:48:06'),
+(69, 'kk', 'kk@gmail.com', '$2y$10$DG.jD5IY1s7pXpZ4JXtN2uBn1bWhx.X3JacO78hy1Ctgx0hcwMnDS', 2, NULL, '2019-02-24 18:50:05', '2019-02-24 18:50:05');
 
 --
 -- Index pour les tables déchargées
@@ -1270,7 +1279,7 @@ ALTER TABLE `admin2_reports`
 -- AUTO_INCREMENT pour la table `books`
 --
 ALTER TABLE `books`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT pour la table `committees`
@@ -1372,7 +1381,7 @@ ALTER TABLE `progress`
 -- AUTO_INCREMENT pour la table `registrations`
 --
 ALTER TABLE `registrations`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT pour la table `reviewers_reports`
@@ -1438,7 +1447,7 @@ ALTER TABLE `supervisors_reports`
 -- AUTO_INCREMENT pour la table `theses`
 --
 ALTER TABLE `theses`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT pour la table `universities`
@@ -1450,7 +1459,7 @@ ALTER TABLE `universities`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- Contraintes pour les tables déchargées
