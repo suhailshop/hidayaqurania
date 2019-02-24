@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class BookController extends Controller
 {
@@ -55,6 +57,7 @@ class BookController extends Controller
         $book->Status = "yes";
        
         $book->save();
+        Session::put('success_add', 'تم اضافة الكتاب بنجاح');
         return redirect()->route('allBook');
     }
     public function edit($id){
@@ -80,11 +83,12 @@ class BookController extends Controller
             'PictureURL'=>$fileName,
             'Status'=>$request->input('status')          
         ));
-                
+        Session::put('success_edit', 'تم تعديل الكتاب بنجاح');
         return redirect()->route('allBook');
     }
     public function delete($id){
         Book::where('ID', $id)->forcedelete(); 
+        Session::put('success_delete', 'تم حذف الكتاب بنجاح');
         return redirect()->route('allBook');
     }
 }

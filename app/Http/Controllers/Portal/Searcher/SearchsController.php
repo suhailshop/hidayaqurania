@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class SearchsController extends Controller
 {
@@ -78,6 +80,7 @@ class SearchsController extends Controller
             $search->searchURL = $fileName;
         }
         $search->save();
+        Session::put('success_edit', 'تم اضافة البحث بنجاح');           
         return redirect()->route('allSearchs');
     }
     public function edit($id){
@@ -106,11 +109,12 @@ class SearchsController extends Controller
             'Cycle'=> $request->input('cycle'),
             'searchURL'=>$fileName            
         ));
-                
+        Session::put('success_edit', 'تم تعديل البحث بنجاح');           
         return redirect()->route('allSearchs');
     }
     public function delete($id){
         Search::where('ID', $id)->forcedelete(); 
+        Session::put('success_edit', 'تم حذف البحث بنجاح');           
         return redirect()->route('allSearchs');
     }
     public function addsearcher_reports(Request $request){
@@ -136,6 +140,8 @@ class SearchsController extends Controller
             'date'=>date('Y-m-d')
         ]);
         }
+
+        Session::put('success_edit', 'تم اضافة التقرير  بنجاح');           
         return redirect()->route('allSearchs');
     }
 }

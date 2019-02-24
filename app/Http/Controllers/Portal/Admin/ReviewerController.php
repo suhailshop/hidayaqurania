@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class ReviewerController extends Controller
 {
@@ -79,6 +81,7 @@ class ReviewerController extends Controller
         $success = $profileImage->storeAs($upload_path, $profileImageSaveAsName);
         $registration->PictureURL = $profileImageSaveAsName;
         $registration->save();
+        Session::put('success_edit', 'تم اضافة المراجع بنجاح'); 
         return redirect()->route('allReviewer');
     }
     public function delete($id){
@@ -86,7 +89,7 @@ class ReviewerController extends Controller
         User::destroy($reviewer->User);
 
         Registration::where('ID', $id)->forcedelete(); 
-        
+        Session::put('success_edit', 'تمت حذف المراجع بنجاح'); 
         return redirect()->route('allReviewer');
     }
 

@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class SearchController extends Controller
 {
@@ -39,6 +41,8 @@ class SearchController extends Controller
         ->update(array(
             'Progress'=>'موافقة الادارة'     
         ));
+        Session::put('success_edit', 'تمت موافقة الادارة بنجاح'); 
+        
         return redirect()->route('getAllSearchs');
     }
 
@@ -49,6 +53,8 @@ class SearchController extends Controller
         ->update(array(
             'Progress'=>'رفض الادارة'        
         ));
+        Session::put('success_edit', 'تم رفض الادارة بنجاح'); 
+        
         return redirect()->route('getAllSearchs');
     }
 
@@ -96,6 +102,8 @@ class SearchController extends Controller
         }else{
             DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->delete();
         }
+        Session::put('success_edit', 'تم اضافة المراجعين للبحث بنجاح'); 
+        
         return redirect()->route('getAllSearchs');
     }
 
@@ -122,6 +130,8 @@ class SearchController extends Controller
             'admin2'=>Auth::user()->name
         ]);
         }
+        Session::put('success_edit', 'تم اضافة تقرير المدير بنجاح'); 
+        
         return redirect()->route('getAllSearchs');
     }
 }

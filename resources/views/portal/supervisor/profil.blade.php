@@ -7,6 +7,8 @@
     <link href="{!! asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')!!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/pages/css/profile-rtl.min.css')!!}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    
 @endsection
 
 @section('pageTitle', 'الرئيسية')
@@ -559,6 +561,30 @@
          <script src="{!! asset('assets/global/plugins/jquery.sparkline.min.js')!!}" type="text/javascript"></script>
          <script src="{!! asset('assets/pages/scripts/profile.min.js')!!}" type="text/javascript"></script>
        
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+         <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- END PAGE LEVEL PLUGINS -->
+    
+        @if ($message = Session::get('success_edit'))
+        <script>
+            $.confirm({
+                title: 'تهانينا!',
+                content: '<?php echo Session::get("success_edit"); ?>',
+                type: 'green',
+                typeAnimated: true,autoClose: 'tryAgain|3000',
+                buttons: {
+                    tryAgain: {
+                        text: 'اغلاق',
+                        btnClass: 'btn-green',
+                        action: function(){
+                        }
+                    }
+                }
+            });
+        </script>
+        <?php Session::forget('success_edit');?>
+        @endif  
+ 
         <!-- END PAGE LEVEL PLUGINS -->
     @endsection
 @endsection

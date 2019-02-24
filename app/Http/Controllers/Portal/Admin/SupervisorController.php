@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class SupervisorController extends Controller
 {
@@ -79,11 +81,15 @@ class SupervisorController extends Controller
         $success = $profileImage->storeAs($upload_path, $profileImageSaveAsName);
         $registration->PictureURL = $profileImageSaveAsName;
         $registration->save();
+        Session::put('success_edit', 'تم اضافة المشرف بنجاح'); 
+        
         return redirect()->route('allSupervisor');
     }
 
     public function delete($id){
         Registration::where('ID', $id)->forcedelete(); 
+        Session::put('success_edit', 'تم حذف المشرف بنجاح'); 
+        
         return redirect()->route('allSupervisor');
     }
 

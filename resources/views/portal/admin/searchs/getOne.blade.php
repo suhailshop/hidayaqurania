@@ -9,7 +9,8 @@
     <!-- END PAGE LEVEL PLUGINS -->
     <link href="{!! asset('assets/global/plugins/datatables/datatables.min.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css') !!}" rel="stylesheet" type="text/css" />
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    
     
     
 @endsection
@@ -930,6 +931,31 @@
             }
         } );
        </script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- END PAGE LEVEL PLUGINS -->
+
+        @if ($message = Session::get('success_add'))
+        <script>
+        $.confirm({
+        title: 'تهانينا!',
+        content: '<?php echo Session::get("success_add"); ?>',
+        type: 'green',
+        typeAnimated: true,autoClose: 'tryAgain|3000',
+        buttons: {
+            tryAgain: {
+                text: 'اغلاق',
+                btnClass: 'btn-green',
+                action: function(){
+                }
+            }
+        }
+        });
+        </script>
+        <?php Session::forget('success_add');?>
+        @endif  
+
         
     @endsection
 @endsection

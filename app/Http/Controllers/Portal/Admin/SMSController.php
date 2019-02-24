@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 use Nexmo;
 
 
@@ -55,10 +57,14 @@ class SMSController extends Controller
                 ]);
             }
             $msg ="تم ارسال SMS للباحثين";
-            $type="success";            
+            $type="success";  
+            Session::put('success_edit', 'تم ارسال ال SMS للباحثين بنجاح'); 
+            
         }else{
             $msg ="لم يتم ارسال SMS المرجو اختيار باحث واحد على الاقل";
             $type = "danger";
+            Session::put('success_edit', 'المرجو اختيار باحث واحد على الاقل'); 
+            
         }
         $searchers = Registration::where('Type','Searcher')->get();
         return view('portal.admin.sms.stu')->with('searchers',$searchers)->with('msg',$msg)->with('type',$type);
@@ -80,10 +86,14 @@ class SMSController extends Controller
             }
             $msg ="تم ارسال SMS للمشرفين";
             $type="success";
+            Session::put('success_edit', 'تم ارسال ال SMS للمشرفين'); 
+            
             
         }else{
             $msg ="لم يتم ارسال SMS المرجو اختيار مشرف واحد على الاقل";
             $type = "danger";
+            Session::put('success_edit', 'المرجو اختيار مشرف واحد على الاقل'); 
+            
         }
         $supervisors = Registration::where('Type','Supervisor')->get();
         return view('portal.admin.sms.sup')->with('supervisors',$supervisors)->with('msg',$msg)->with('type',$type);

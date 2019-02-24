@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class SubmissionController extends Controller
 {
@@ -85,7 +87,7 @@ class SubmissionController extends Controller
                       'MonthlyProgress'=>$request->input('MonthlyProgress'),
                       'InitialProgress'=>$request->input('InitialProgress')]);
         }
-            
+        Session::put('success_edit', 'تم اضافة المهمة بنجاح'); 
         return redirect()->route('getSubmission',array('id' => $searcher->ID));
     }
   
@@ -96,7 +98,7 @@ class SubmissionController extends Controller
             'Searcher' => $request->input('searcher'),
             'Status' => 'yes'
         ]);
-        
+        Session::put('success_edit', 'تم اضافة الحضور بنجاح'); 
         return redirect()->route('allSubmissions');
     }
 
@@ -111,6 +113,7 @@ class SubmissionController extends Controller
             ]);
 
         }
+        Session::put('success_edit', 'تم اضافة المعايير للطالب بنجاح'); 
         return redirect()->route('allSubmissions');
     }
     public function editStatusSubmission($id,$status){
@@ -119,7 +122,7 @@ class SubmissionController extends Controller
             ->update([
                 'Status' => $status
         ]);
-
+        Session::put('success_edit', 'تم تعديل الحالة بنجاح'); 
         return redirect()->route('allSubmissions');
     }
 
@@ -141,6 +144,7 @@ class SubmissionController extends Controller
                 'BeginningDate' => $request->input('BeginningDate'),
                 'supervisor' => $request->input('supervisor')
             ]);
+        Session::put('success_edit', 'تم تعديل معلومات التقديم بنجاح'); 
         return redirect()->route('getSubmission',array('id' => $request->input('id_registration')));
     }
 }

@@ -7,12 +7,15 @@
     <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    
 @endsection
 
 @section('pageTitle', 'الرئيسية')
 
 
 @section('content')
+
 
     <!-- BEGIN CONTENT -->
     <div class="page-content-wrapper">
@@ -59,7 +62,7 @@
                                     <th class="all">الكاتب</th>
                                     <th class="all">رقم ISBN</th>
                                     <th class="desktop">الرابط</th>
-                                    <th class="none"> صورة الغلاف</th>
+                                    <!--<th class="none"> صورة الغلاف</th>-->
                                     <th class="desktop">الحالة</th>
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="all">خيارات.</th>
@@ -73,10 +76,10 @@
                                     <td>{{$book->Author}}</td>
                                     <td>{{$book->ISBN}}</td>
                                     <td> <a href="{{$book->URL}}">تحميل</a></td>
-                                    <td>
+                                    <!--<td>
                                         <img src="{{ url('storage/books/'.$book->PictureURL) }}" 
                                             style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
-                                    </td>
+                                    </td>-->
                                     
                                     <td>@if($book->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
@@ -119,6 +122,8 @@
     </div>
     <!-- END CONTENT -->
     @section('pageScript')
+
+    
         <!-- BEGIN PAGE LEVEL PLUGINS -->
         <script src="../assets/global/scripts/datatable.js" type="text/javascript"></script>
         <script src="../assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
@@ -126,9 +131,71 @@
          <script src="../assets/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
            <!-- BEGIN PAGE LEVEL PLUGINS -->
            <script src="../assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
-           
            <script src="../assets/pages/scripts/ui-confirmations.min.js" type="text/javascript"></script>
+           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
            <!-- END PAGE LEVEL SCRIPTS -->
         <!-- END PAGE LEVEL PLUGINS -->
+
+        @if ($message = Session::get('success_add'))
+        <script>
+           $.confirm({
+            title: 'تهانينا!',
+            content: '<?php echo Session::get("success_add"); ?>',
+            type: 'green',
+            typeAnimated: true,autoClose: 'tryAgain|3000',
+            buttons: {
+                tryAgain: {
+                    text: 'اغلاق',
+                    btnClass: 'btn-green',
+                    action: function(){
+                    }
+                }
+            }
+        });
+        </script>
+        <?php Session::forget('success_add');?>
+        @endif  
+
+        @if ($message = Session::get('success_edit'))
+        <script>
+           $.confirm({
+            title: 'تهانينا!',
+            content: '<?php echo Session::get("success_edit"); ?>',
+            type: 'green',
+            typeAnimated: true,autoClose: 'tryAgain|3000',
+            buttons: {
+                tryAgain: {
+                    text: 'اغلاق',
+                    btnClass: 'btn-green',
+                    action: function(){
+                    }
+                }
+            }
+        });
+        </script>
+        <?php Session::forget('success_edit');?>
+        @endif
+
+        @if ($message = Session::get('success_delete'))
+        <script>
+           $.confirm({
+            title: 'تهانينا!',
+            content: '<?php echo Session::get("success_delete"); ?>',
+            type: 'green',
+            typeAnimated: true,autoClose: 'tryAgain|3000',
+            buttons: {
+                tryAgain: {
+                    text: 'اغلاق',
+                    btnClass: 'btn-green',
+                    action: function(){
+                    }
+                }
+            }
+        });
+        </script>
+        <?php Session::forget('success_delete');?>
+        @endif
     @endsection
+
+    
 @endsection

@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class CountrieController extends Controller
 {
@@ -52,6 +54,7 @@ class CountrieController extends Controller
             $countrie->Flag = $fileName;
         }
         $countrie->save();
+        Session::put('success_edit', 'تم اضافة الدولة بنجاح');  
         return redirect()->route('allCountrie');
     }
     public function edit($id){
@@ -74,11 +77,12 @@ class CountrieController extends Controller
             'Status'=>$request->input('status'),
             'Flag'=>$fileName            
         ));
-                
+        Session::put('success_edit', 'تم تعديل الدولة بنجاح');  
         return redirect()->route('allCountrie');
     }
     public function delete($id){
         Countrie::where('ID', $id)->forcedelete(); 
+        Session::put('success_edit', 'تم حذف الدولة بنجاح');  
         return redirect()->route('allCountrie');
     }
 

@@ -13,6 +13,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class SearcherController extends Controller
 {
@@ -74,6 +76,7 @@ class SearcherController extends Controller
         ->update(array(
             'Note'=>$request->input('note')          
         ));
+        Session::put('success_updatenote', 'تمت اضافة الملاحظات بنجاح');        
         return redirect()->route('allSearcherSupervisor');
     }
    
