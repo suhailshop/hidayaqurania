@@ -7,6 +7,7 @@
     <link href="{!! asset('assets/global/plugins/datatables/datatables.min.css') !!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css') !!}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     
     <!-- END PAGE LEVEL PLUGINS -->
 @endsection
@@ -190,6 +191,28 @@
                 });
             });
         </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+     @if ($message = Session::get('success_edit'))
+     <script>
+        $.confirm({
+         title: 'تهانينا!',
+         content: '<?php echo Session::get("success_edit"); ?>',
+         type: 'green',
+         typeAnimated: true,autoClose: 'tryAgain|3000',
+         buttons: {
+             tryAgain: {
+                 text: 'اغلاق',
+                 btnClass: 'btn-green',
+                 action: function(){
+                 }
+             }
+         }
+     });
+     </script>
+     <?php Session::forget('success_edit');?>
+     @endif 
         <!-- END PAGE LEVEL PLUGINS -->
     @endsection
 @endsection

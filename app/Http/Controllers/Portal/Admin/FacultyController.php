@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class FacultyController extends Controller
 {
@@ -59,6 +61,7 @@ class FacultyController extends Controller
             $facultie->Logo = $fileName;
         }
         $facultie->save();
+        Session::put('success_edit', 'تم اضافة الكلية بنجاح'); 
         return redirect()->route('allFaculty');
     }
     public function edit($id){
@@ -90,11 +93,12 @@ class FacultyController extends Controller
             'University'=>$request->input('universitie'),
             'Logo'=>$fileName            
         ));
-                
+        Session::put('success_edit', 'تم تعديل الكلية بنجاح');     
         return redirect()->route('allFaculty');
     }
     public function delete($id){
         Facultie::where('ID', $id)->forcedelete(); 
+        Session::put('success_edit', 'تم حذف الكلية بنجاح'); 
         return redirect()->route('allFaculty');
     }
 }

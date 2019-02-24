@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class MeetingController extends Controller
 {
@@ -43,6 +45,7 @@ class MeetingController extends Controller
         $meeting->Date = $request->input('date');
         $meeting->Location = $request->input('location');
         $meeting->save();
+        Session::put('success_edit', 'تم اضافة الجنسية بنجاح'); 
         return redirect()->route('allMeeting');
     }
     public function edit($id){
@@ -59,11 +62,12 @@ class MeetingController extends Controller
             'Location'=>$request->input('location'),
              
         ));
-                
+        Session::put('success_edit', 'تم اضافة الجنسية بنجاح'); 
         return redirect()->route('allMeeting');
     }
     public function delete($id){
         Meeting::where('ID', $id)->forcedelete(); 
+        Session::put('success_edit', 'تم اضافة الجنسية بنجاح'); 
         return redirect()->route('allMeeting');
     }
 

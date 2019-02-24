@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class MyProfilController extends Controller
 {
@@ -65,7 +67,7 @@ class MyProfilController extends Controller
                 'Phonne1'=>$request->input('Phonne1'),
                 'Phonne2'=>$request->input('Phonne2')
             ));
-
+        Session::put('success_edit', 'تم تحديث الحساب بنجاح');  
         return redirect()->route('reviewerProfile');
     }
 
@@ -81,6 +83,7 @@ class MyProfilController extends Controller
             ->update(array(
                 'PictureURL'=>$fileName
             ));
+        Session::put('success_edit', 'تم تحديث الحساب  بنجاح');  
         return redirect()->route('reviewerProfile');
     }
 
@@ -88,9 +91,10 @@ class MyProfilController extends Controller
 
         DB::table('users')->where('ID',$request->input('id_user'))
             ->update(array(
-                'Email'=>$request->input('Email'),
-                'Password'=>  bcrypt($request->input('Password'))
+                'email'=>$request->input('Email'),
+                'password'=>  bcrypt($request->input('Password'))
             ));
+            Session::put('success_edit', 'تم تحديث الحساب بنجاح');  
         return redirect()->route('reviewerProfile');
     }
 

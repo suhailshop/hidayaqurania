@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class CycleController extends Controller
 {
@@ -44,6 +45,8 @@ class CycleController extends Controller
         $cycle->endDate = $request->input('endDate');
        
         $cycle->save();
+        Session::put('success_add', 'تم اضافة التقرير الدوري بنجاح');        
+        
         return redirect()->route('allCycle');
     }
     public function edit($id){
@@ -58,11 +61,13 @@ class CycleController extends Controller
             'startDate'=>$request->input('startDate'),
             'endDate'=>$request->input('endDate'),       
         ));
-                
+        Session::put('success_edit', 'تم تعديل التقرير الدوري بنجاح');                
         return redirect()->route('allCycle');
     }
     public function delete($id){
         Cycle::where('ID', $id)->forcedelete(); 
+        Session::put('success_delete', 'تم حذف التقرير الدوري بنجاح');        
+        
         return redirect()->route('allCycle');
     }
 }

@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class SearchController extends Controller
 {
@@ -83,6 +85,7 @@ class SearchController extends Controller
             'date'=>date('Y-m-d')
         ]);
         }
+        Session::put('success_edit', 'تم اضافة التقرير بنجاح');  
         return redirect()->route('getAllMySearchs');
     }
   

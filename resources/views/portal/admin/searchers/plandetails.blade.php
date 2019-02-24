@@ -12,6 +12,9 @@
     <link href="{!! asset('assets/pages/css/bootstrap-year-calendar.css')!!}" rel="stylesheet" type="text/css" />
     
     <!-- END PAGE LEVEL PLUGINS -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    
 @endsection
 
 @section('pageTitle', 'الرئيسية')
@@ -365,6 +368,28 @@
         <!-- END PAGE LEVEL PLUGINS -->
         <script src="{!! asset('assets/pages/scripts/bootstrap-year-calendar.js')!!}" type="text/javascript"></script>
         <script src="{!! asset('assets/pages/scripts/calendarapp.js')!!}" type="text/javascript"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+        
+             @if ($message = Session::get('success_edit'))
+             <script>
+                $.confirm({
+                 title: 'تهانينا!',
+                 content: '<?php echo Session::get("success_edit"); ?>',
+                 type: 'green',
+                 typeAnimated: true,autoClose: 'tryAgain|3000',
+                 buttons: {
+                     tryAgain: {
+                         text: 'اغلاق',
+                         btnClass: 'btn-green',
+                         action: function(){
+                         }
+                     }
+                 }
+             });
+             </script>
+             <?php Session::forget('success_edit');?>
+             @endif 
 
         <script type="text/javascript">
             $(function() {

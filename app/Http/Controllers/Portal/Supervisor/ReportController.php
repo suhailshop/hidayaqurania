@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class ReportController extends Controller
 {
@@ -63,6 +65,7 @@ class ReportController extends Controller
             $report->URL = $fileName;
         }
         $report->save();
+        Session::put('success_add', 'تم اضافة التقرير بنجاح');
         return redirect()->route('allSupervisorReports');
     }
     public function edit($id){
@@ -93,10 +96,12 @@ class ReportController extends Controller
                 'Status'=>$request->input('Status'),                
                 'URL'=>$fileName            
         ));
+        Session::put('success_edit', 'تم تعديل التقرير بنجاح');
         return redirect()->route('allSupervisorReports');
     }
     public function delete($id){
         Supervisorsreport::where('ID', $id)->forcedelete(); 
+        Session::put('success_delete', 'تم حذف التقرير بنجاح');
         return redirect()->route('allSupervisorReports');
     }
 }

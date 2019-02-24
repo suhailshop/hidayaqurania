@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class SearcherController extends Controller
 {
@@ -100,6 +102,7 @@ class SearcherController extends Controller
             ->update(['EnablePlanEdit' => 'true']);
         }
         $searcher->save();
+        Session::put('success_edit', 'تم تعديل حالة الخطة بنجاح'); 
         return redirect()->route('plandetails',array('id' => $searcher->ID));
 
     }
@@ -162,7 +165,8 @@ class SearcherController extends Controller
         DB::table('registrations')
         ->where('ID', $request->input('idsearcher'))
         ->update(['Code' => $request->input('code')]);
-
+        Session::put('success_edit', 'تم تعديل رقم الباحث بنجاح'); 
+        
         return redirect()->route('getSearcher',array('id' =>$request->input('idsearcher')));
 
     }
@@ -199,13 +203,16 @@ class SearcherController extends Controller
                       'MonthlyProgress'=>$request->input('MonthlyProgress'),
                       'InitialProgress'=>$request->input('InitialProgress')]);
         }
-            
+        Session::put('success_edit', 'تم تعديل المعلومات بنجاح'); 
+        
         return redirect()->route('getSearcher',array('id' => $searcher->ID));
     }
   
    
     public function delete($id){
         Registration::where('ID', $id)->forcedelete(); 
+        Session::put('success_edit', 'تم حذف الباحث بنجاح'); 
+        
         return redirect()->route('allSearcher');
     }
 
@@ -215,6 +222,7 @@ class SearcherController extends Controller
             'Searcher' => $request->input('searcher'),
             'Status' => 'yes'
         ]);
+        Session::put('success_edit', 'تم تسجيل الحضور بنجاح'); 
         
         return redirect()->route('allSearcher');
     }
@@ -231,6 +239,7 @@ class SearcherController extends Controller
 
             'Status' => 'yes'
         ]);
+        Session::put('success_edit', 'تم اضافة الرسالة بنجاح'); 
         
         return redirect()->route('allSearcher');
     }
@@ -246,6 +255,8 @@ class SearcherController extends Controller
             ]);
 
         }
+        Session::put('success_edit', 'تم اضافة المعايير بنجاح'); 
+        
         return redirect()->route('allSearcher');
     }
 
@@ -255,7 +266,8 @@ class SearcherController extends Controller
         ->update([
             'Status' => $status
         ]);
-
+        Session::put('success_edit', 'تم تعديل حالة الباحث بنجاح'); 
+        
         return redirect()->route('allSearcher');
     }
 
@@ -277,6 +289,8 @@ class SearcherController extends Controller
                 'BeginningDate' => $request->input('BeginningDate'),
                 'supervisor' => $request->input('supervisor')
             ]);
+            Session::put('success_edit', 'تم تعديل معلومات الباحث بنجاح'); 
+            
         return redirect()->route('getSearcher',array('id' => $request->input('id_registration')));
     }
 }

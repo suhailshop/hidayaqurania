@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use App\Mail\notifications;
 use Mail;
 
@@ -48,11 +49,13 @@ class EmailController extends Controller
                 
                 Mail::to($stu)->send(new notifications($stu,$request->input('subject'),$request->input('text')));
             }
-            $msg ="تم ارسال الايميل للمشرفين";
+            $msg ="تم ارسال الايميل للباحثين";
             $type="success";
+            Session::put('success_edit', 'تم ارسال الايميل بنجاح');  
         }else{
-            $msg ="لم يتم ارسال الايميل المرجو اختيار مشرف واحد على الاقل";
+            $msg ="لم يتم ارسال الايميل المرجو اختيار باحث واحد على الاقل";
             $type = "danger";
+            Session::put('success_edit', 'المرجو اختيار باحث على الاقل');  
         }
         $searchers = Registration::where('Type','Searcher')->get();
         return view('portal.admin.email.stu')->with('searchers',$searchers)->with('msg',$msg)->with('type',$type);
@@ -69,10 +72,12 @@ class EmailController extends Controller
             }
             $msg ="تم ارسال الايميل للمشرفين";
             $type="success";
+            Session::put('success_edit', 'تم ارسال الايميل بنجاح');  
             
         }else{
             $msg ="لم يتم ارسال الايميل المرجو اختيار مشرف واحد على الاقل";
             $type = "danger";
+            Session::put('success_edit', 'المرجو اختيار مشرف واحد على الاقل');  
         }
         $supervisors = Registration::where('Type','Supervisor')->get();
         return view('portal.admin.email.sup')->with('supervisors',$supervisors)->with('msg',$msg)->with('type',$type);

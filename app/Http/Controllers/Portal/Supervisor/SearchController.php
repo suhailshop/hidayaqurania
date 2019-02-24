@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class SearchController extends Controller
 {
@@ -40,6 +42,7 @@ class SearchController extends Controller
         ->update(array(
             'Progress'=>'موافقة المشرف'     
         ));
+        Session::put('success_update', 'تم تعديل حالة البحث بنجاح');
         return redirect()->route('allSearcherSupervisor');
     }
 
@@ -48,6 +51,7 @@ class SearchController extends Controller
         ->update(array(
             'Progress'=>'رفض المشرف'        
         ));
+        Session::put('success_update', 'تم تعديل حالة البحث بنجاح');        
         return redirect()->route('allSearcherSupervisor');
     }
 
@@ -77,6 +81,7 @@ class SearchController extends Controller
             'date'=>date('Y-m-d')
         ]);
         }
+        Session::put('success_add', 'تمت اضافة التقرير بنجاح');        
         return redirect()->route('getOneSearch',['id'=>$request->input('search')]);
     }
    

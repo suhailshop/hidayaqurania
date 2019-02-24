@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class CriteriaController extends Controller
 {
@@ -45,6 +47,7 @@ class CriteriaController extends Controller
         $criteria->MaximumScore = $request->input('maximumscore');
         $criteria->Status = "yes";
         $criteria->save();
+        Session::put('success_edit', 'تم اضافة المعيار بنجاح');  
         return redirect()->route('allCriteria');
     }
     public function edit($id){
@@ -61,11 +64,12 @@ class CriteriaController extends Controller
             'MaximumScore'=>$request->input('maximumscore'),
             'Status'=>$request->input('status')        
         ));
-                
+        Session::put('success_edit', 'تم تعديل المعيار بنجاح');  
         return redirect()->route('allCriteria');
     }
     public function delete($id){
         Criteria::where('ID', $id)->forcedelete(); 
+        Session::put('success_edit', 'تم حذف المعيار بنجاح');  
         return redirect()->route('allCriteria');
     }
 

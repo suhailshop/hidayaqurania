@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class MyProfilController extends Controller
 {
@@ -63,7 +65,7 @@ class MyProfilController extends Controller
                 'Phonne1'=>$request->input('Phonne1'),
                 'Phonne2'=>$request->input('Phonne2')          
         ));
-        
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');
         return redirect()->route('supervisorProfile');
     }
 
@@ -79,6 +81,7 @@ class MyProfilController extends Controller
         ->update(array(
             'PictureURL'=>$fileName            
         ));
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');
         return redirect()->route('supervisorProfile');
     }
 
@@ -89,6 +92,7 @@ class MyProfilController extends Controller
             'Email'=>$request->input('Email'),
             'Password'=>  bcrypt($request->input('Password'))      
         ));
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');
         return redirect()->route('supervisorProfile');
     }
 }

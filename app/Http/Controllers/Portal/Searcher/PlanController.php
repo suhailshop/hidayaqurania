@@ -12,6 +12,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class PlanController extends Controller
 {
@@ -71,6 +73,8 @@ class PlanController extends Controller
         
         $plan->save();
        // old one : return redirect()->route('searcherPlan');
+       Session::put('success_edit', 'تمت اضافة الخطة الزمنية بنجاح');                
+       
         return redirect()->route('searcherAcademic');
 
    
@@ -81,6 +85,8 @@ class PlanController extends Controller
             ->where('ID',$request->input('id_plan'))
             ->update(['Record'=>$request->input('Record') , 'StartDate'=>$request->input('StartDate') , 'EndDate'=>$request->input('EndDate')]);}
         //return redirect()->route('searcherPlan');
+        Session::put('success_edit', 'تم تعديل الخطة الزمنية بنجاح');                
+        
         return redirect()->route('searcherAcademic');
     }
 }

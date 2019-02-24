@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class NationalitieController extends Controller
 {
@@ -45,6 +47,8 @@ class NationalitieController extends Controller
         $nationalitie->Status = "yes";
        
         $nationalitie->save();
+        Session::put('success_edit', 'تم اضافة الجنسية بنجاح'); 
+        
         return redirect()->route('allNationalite');
     }
     public function edit($id){
@@ -59,11 +63,15 @@ class NationalitieController extends Controller
             'Name'=>$request->input('name'),
             'Status'=>$request->input('status')        
         ));
-                
+        Session::put('success_edit', 'تم تعديل الجنسية بنجاح'); 
+
+        
         return redirect()->route('allNationalite');
     }
     public function delete($id){
         Nationalitie::where('ID', $id)->forcedelete(); 
+        Session::put('success_edit', 'تم حذف الجنسية بنجاح'); 
+        
         return redirect()->route('allNationalite');
     }
 }

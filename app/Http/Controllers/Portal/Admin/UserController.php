@@ -11,6 +11,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class UserController extends Controller
 {
@@ -46,6 +48,7 @@ class UserController extends Controller
         $user->email    = $request->input('email');
         $user->password = bcrypt($request->input('password'));
         $user->role_id  = Role::where('name',$request->input('role'))->first()->id;
+        Session::put('success_add', 'تم اضافة المستخدم بنجاح');
         $user->save();
         return redirect()->route('allUser');
     }
@@ -94,6 +97,7 @@ class UserController extends Controller
         $success = $profileImage->storeAs($upload_path, $profileImageSaveAsName);
         $registration->PictureURL = $profileImageSaveAsName;
         $registration->save();
+        Session::put('success_add', 'تم اضافة المستخدم بنجاح');        
         return redirect()->route('allUser');
     }
 }

@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class MyProfilController extends Controller
 {
@@ -66,7 +68,7 @@ class MyProfilController extends Controller
                 'Phonne1'=>$request->input('Phonne1'),
                 'Phonne2'=>$request->input('Phonne2')          
         ));
-        
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');                
         return redirect()->route('searcherProfile');
     }
 
@@ -82,6 +84,7 @@ class MyProfilController extends Controller
         ->update(array(
             'PictureURL'=>$fileName            
         ));
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');                
         return redirect()->route('searcherProfile');
     }
 
@@ -89,9 +92,10 @@ class MyProfilController extends Controller
       
         DB::table('users')->where('ID',$request->input('id_user'))
         ->update(array(
-            'Email'=>$request->input('Email'),
-            'Password'=>  bcrypt($request->input('Password'))      
+            'email'=>$request->input('Email'),
+            'password'=>  bcrypt($request->input('Password'))      
         ));
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح'); 
         return redirect()->route('searcherProfile');
     }
 
@@ -110,7 +114,7 @@ class MyProfilController extends Controller
         ->update(array(
             'CV'=>$fileName
         ));
-
+        Session::put('success_edit', 'تمت رفع السيرة الذاتية بنجاح'); 
         return redirect()->route('searcherProfile');
     }
 
@@ -118,26 +122,19 @@ class MyProfilController extends Controller
 
 
     public function academic(){
-
-
         $this->user= Auth::user();
         $registration = Registration::where('User',$this->user->id)->first();
         $countries = Countrie::all();
         $nationalities = Nationalitie::all();
         $user = Auth::user();
         $searcher = Registration::where('User',$this->user->id)->first();
-
         $plans = Plan::where('Searcher',$searcher->ID)->get();
-
-
         $meetings = DB::table('meetings_searchers')
             ->join('registrations','meetings_searchers.Searcher','registrations.ID')
             ->join('meetings','meetings_searchers.Meeting','meetings.ID')
             ->distinct()
             ->select('meetings.Date','meetings.Location','meetings.Name')
             ->get();
-
-
         // Set dates
         $dateIni = $registration->these->BeginningDate;
         $dateFin = date("Y-m-d");
@@ -151,19 +148,12 @@ class MyProfilController extends Controller
         $monthFin = date("m", strtotime($dateFin));
 
         // Checking if both dates are some year
-
         if ($yearIni == $yearFin) {
             $numberOfMonths = ($monthFin-$monthIni) + 1;
         } else {
             $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
         }
-
-
-
         $supervisors = Registration::where('Type','Supervisor')->get();
-
-
-
         return view('portal.searcher.myacademic')->with('registration',$registration)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('meetings',$meetings)->with('plans', $plans)->with('enabledPlan',$searcher->EnablePlanEdit);
     }
 
@@ -172,6 +162,7 @@ class MyProfilController extends Controller
             DB::table('plans')
                 ->where('ID',$request->input('id_plan'))
                 ->update(['Record'=>$request->input('Record') , 'StartDate'=>$request->input('StartDate') , 'EndDate'=>$request->input('EndDate')]);}
+        Session::put('success_edit', 'تم تعديل الخطة الزمنية بنجاح'); 
         return redirect()->route('searcherAcademic');
     }
 

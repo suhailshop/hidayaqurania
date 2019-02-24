@@ -14,6 +14,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
+
 
 class ReportController extends Controller
 {
@@ -79,6 +81,8 @@ class ReportController extends Controller
             $report->URL = $fileName;
         }
         $report->save();
+        Session::put('success_edit', 'تم اضافة التقرير بنجاح'); 
+        
         return redirect()->route('allAdminReports');
     }
    
