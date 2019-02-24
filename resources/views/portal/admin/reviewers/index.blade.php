@@ -32,7 +32,7 @@
                     </li>
                     <li>
                             <i class="icon-like"></i>
-                        <span>إدارة المحكمين</span>
+                        <span>إدارة الباحثون المساعدون</span>
                     </li>
                 </ul>
             </div>
@@ -46,7 +46,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة المراجعين المسجلين بالنظام</span>
+                            <span class="caption-subject bold uppercase">لائحة الباحثون المساعدون  </span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -54,64 +54,52 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="min-phone-l">الاسم الكامل</th>
-                                    <th class="min-tablet">الجنس</th>
-                                    <th class="none">تاريخ الازدياد</th>
-                                    <th class="none">مكان الازدياد</th>
-                                    <th class="none">الجنسية</th>
-                                    <th class="desktop">الدولة</th>
-                                    <th class="none">المدينة</th>
-                                    <th class="none">العنوان</th>
-                                    <th class="none">رقم جواز السفر</th>
-                                    <th class="none">الرقم الوطني</th>
-                                    <th class="none"> البريد الالكتروني </th>
-                                    <th class="none"> الهاتف</th>
-                                    <th class="none"> الجامعة</th>
-                                    <th class="none">الكلية</th>
-                                    <th class="none">الصورة</th>
-                                    @if(auth()->user()->hasRole('admin2',auth()->user()->role_id))
-                                    <th class="all">خيارات.</th>
-                                    @endif
+                                    <th class="all">الاسم الكامل</th>
+
+                                     <th class="all">الجنسية</th>
+                                    <th class="all">الدولة</th>
+                                    <th class="all">المدينة</th>
+                                     <th class="all"> الجامعة</th>
+                                    <th class="all">الكلية</th>
+                                    <th class="all">خيارات</th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($reviewers as $reviewer)
                                 <tr>
-                                    <td>{{$reviewer->Fistname}} {{$reviewer->LastName}}</td>
-                                    <td>{{$reviewer->Gender}}</td>
-                                    <td>{{$reviewer->BirthDate}}</td>
-                                    <td>{{$reviewer->BirthCity}}</td>
+                                    <td>
+                                        <a href="{{route('adminReviewersProfile',['id'=>$reviewer->ID])}}" >
+                                        {{$reviewer->Fistname}} {{$reviewer->LastName}}
+                                        </a>
+                                    </td>
+
                                     <td>{{$reviewer->nationalitie->Name}}</td>
                                     <td>{{$reviewer->countrie->Name}}</td>
                                     <td>{{$reviewer->City}}</td>
-                                    <th>{{$reviewer->Location}}</th>
-                                    <td>{{$reviewer->PassportNumber}}</td>
-                                    <td>{{$reviewer->NationalNumber}}</td>
-                                    <td>{{$reviewer->Email}}</td>
-                                    <td>{{$reviewer->Phonne1}}</td>
+
                                     <td>{{$reviewer->University}}</td>
                                     <td>{{$reviewer->Faculty}}</td>
-                                    <td>
-                                        <img src="{{ url('storage/registrations/'.$reviewer->PictureURL) }}" 
-                                            style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
-                                    </td>        
+
+
+
                                     @if(auth()->user()->hasRole('admin2',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
-                                                <li>
+                                                {{--<li>
                                                 <a href="{{route('deleteReviwerPost',['id'=>$reviewer->ID])}}">
                                                         <i class="fa fa-remove"></i> حذف </a>
-                                                </li>
-                                                <li>
+                                                </li>--}}
+                                                <li class="myfont">
                                                     <a href="{{route('getAllReviewerSearchs',['id'=>$reviewer->ID])}}">
                                                             <i class="fa fa-search"></i> الابحاث </a>
                                                 </li>
-                                                <li>
-                                                    <a href="{{route('getOneProfile',['id'=>$reviewer->ID])}}">
+                                                <li class="myfont">
+                                                    <a href="{{route('adminReviewersProfile',['id'=>$reviewer->ID])}}" >
                                                             <i class="fa fa-user"></i> الحساب </a>
                                                 </li>
 
@@ -120,7 +108,7 @@
                                         
                                     </td>
                                     @endif
-                                </tr>
+                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>

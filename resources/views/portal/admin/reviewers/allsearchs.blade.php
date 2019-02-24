@@ -32,7 +32,7 @@
                     </li>
                     <li>
                             <i class="icon-chemistry"></i>
-                        <span>ادارة البحوث</span>
+                        <span>ادارة بحوث الباحث المساعد</span>
                     </li>
                 </ul>
             </div>
@@ -60,15 +60,19 @@
                                     <th class="all">القسم</th>
 
                                     <th class="all">الباحث</th>
-                                    <th class="all"> حالة التحكيم </th>
-                                     <th class="all">تحكيم البحث</th>
+                                    <th class="all"> تحميل البحث </th>
+
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($searchs as $search)
                                 <tr>
                                     
-                                    <td>{{$search->Name}}</td>
+                                    <td>
+                                        <a  href="{{route('getOneSearch',$search->ID)}}">
+                                        {{$search->Name}}
+                                        </a>
+                                    </td>
 
                                     <td>{{$search->divname}}</td>
 
@@ -84,7 +88,7 @@
                                         <span class="badge badge-success">{{$search->Progress}}</span>
                                         @endif                                    
                                     </td>--}}
-                                    <td>  <span class="badge badge-danger">لم يتم التحكيم</span> </td>
+
                                     
                                 </tr>
                                 @endforeach

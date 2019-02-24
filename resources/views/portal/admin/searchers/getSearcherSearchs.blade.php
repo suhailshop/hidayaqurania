@@ -58,7 +58,7 @@
 
 
                                      <th class="all">تحميل البحث</th>
-                                    <th>  تقرير المشرف </th>
+
                                     <th class="all">ملاحظات المشرف</th>
                                     <th class="all">خيارات.</th>
                                 </tr>
@@ -90,29 +90,15 @@
 
                                     </td>
 
-                                    <td>  <span class="badge badge-danger">لم يتم إرسال التقرير</span> </td>
+
+
                                     <td>@if(isset($search->Note)) {{$search->Note}} @else 'لا توجد اية ملاحظة' @endif </td>
 
-                                    <td>
+                                    <td> <a   href="{{route('getOneSearch',$search->ID)}}">
+                                            <i class="fa fa-search"></i> تفاصيل البحث </a>
                                         
-                                            
-                                        <div class="btn-group pull-right">
-                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                                    @if(!isset($search->Note))
-                                                <li class="myfont">
-                                                <a href="#" type="button" data-toggle="modal" data-target="#exampleModal{{$search->ID}}">
-                                                        <i class="fa fa-comment"></i> اضافة ملاحظة </a>
-                                                </li>
 
-                                                
-                                        @endif
-                                        <li class="myfont">
-                                                <a   href="{{route('getOneSearch',$search->ID)}}">
-                                                        <i class="fa fa-search"></i> تفاصيل البحث </a>
-                                        </li>
+
 
                                     {{--    <li>
                                                 <a data-toggle="confirmation"
@@ -132,8 +118,7 @@
                                                         data-title="هل تريد الرفض ؟" href="{{route('updateSearchProgressko',['id'=>$search->ID])}}">
                                                                 <i class="fa fa-close"></i> رفض المشرف </a>
                                                         </li>--}}
-                                            </ul>
-                                        </div>
+
                                     </td>
                                     
                                 </tr>

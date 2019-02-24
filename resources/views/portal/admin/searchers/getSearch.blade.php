@@ -32,6 +32,11 @@
                         <i class="fa fa-angle-left"></i>
                     </li>
                     <li>
+                        <i class="icon-user"></i>
+                        <a href="{{route('allSearcher')}}" class="nav-link nav-toggle"> الباحثون </a>
+                        <i class="fa fa-angle-left"></i>
+                    </li>
+                    <li>
                             <i class="icon-user"></i>
                         <span>صفحة الباحث</span>
                     </li>

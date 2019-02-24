@@ -41,6 +41,8 @@
          
             <div class="row">
             <div class="col-md-12">
+
+
                 <!-- BEGIN EXAMPLE TABLE PORTLET-->
                 <div class="portlet light ">
                     <div class="portlet-title">
@@ -87,7 +89,7 @@
                                                 </li>
 
                                                 <li class="myfont">
-                                                    <a href="{{route('getSearcherSearchs',['id'=>$searcher->ID])}}" >
+                                                    <a href="{{route('getSearcherProfile',['id'=>$searcher->ID])}}" >
                                                         <i class="fa fa-search-plus"></i> صفحة الطالب</a>
                                                 </li>
                                                 

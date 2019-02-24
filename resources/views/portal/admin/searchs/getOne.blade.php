@@ -103,7 +103,7 @@
                                             @endif
                                             @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) && count($search->reviewers_reports)==0)
                                             <li>
-                                                <a href="#tab_1_6" data-toggle="tab">إضافة تقرير المراجع</a>
+                                                <a href="#tab_1_6" data-toggle="tab">إضافة تقرير الباحث المساعد</a>
                                             </li>
                                             @endif
                                             <li>
@@ -134,7 +134,7 @@
                                                                 <input  value="{{$search->Name}}" readonly class="form-control placeholder-no-fix" type="text"  />
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label">الاختصار</label>
+                                                                    <label class="control-label">وصف البحث</label>
                                                                     <input  value="{{$search->Alias}}" readonly  class="form-control placeholder-no-fix" type="text"   /> 
                                                             </div>  
                                                             <div class="form-group">
@@ -175,11 +175,11 @@
                                             <div class="tab-pane" id="tab_1_2">
                                                     <form role="form" method="POST" action="#" >
                                                             <div class="form-group">
-                                                                <label class="control-label ">الاسم العائلي </label>
+                                                                <label class="control-label ">الاسم  </label>
                                                                 <input  value="{{$search->searcher->Fistname}}" readonly class="form-control placeholder-no-fix" type="text"  />
                                                             </div>
                                                             <div class="form-group">
-                                                                <label class="control-label ">الاسم الشخصي</label>
+                                                                <label class="control-label ">اللقب </label>
                                                                 <input  value="{{$search->searcher->LastName}}" readonly class="form-control placeholder-no-fix" type="text"  /> 
                                                             </div>
                                                             <div class="form-group">
@@ -199,32 +199,32 @@
                                                         {{ csrf_field() }}
                                                             <input type="hidden" value="{{$search->ID}}" name="search" />
                                                             <div class="form-group">
-                                                                <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
+                                                                <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : *</label>
                                                                 <textarea required class="form-control " name="q1" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : </label>
+                                                                    <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : *</label>
                                                                     <textarea required class="form-control " name="q2" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">اهم الايجابيات على عمل الطالب ؟ : </label>
+                                                                    <label class="control-label ">اهم الايجابيات على عمل الطالب ؟ : *</label>
                                                                     <textarea required class="form-control " name="q3" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : </label>
+                                                                        <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : *</label>
                                                                         <textarea required class="form-control " name="q4" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">التوصيات والمقترحات : </label>
+                                                                    <label class="control-label ">التوصيات والمقترحات : *</label>
                                                                     <textarea required class="form-control " name="q5" ></textarea>
                                                                 </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">ملاحظات عامة  : </label>
+                                                                        <label class="control-label ">ملاحظات عامة  : *</label>
                                                                         <textarea required class="form-control " name="note" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">رفع الملف : </label>
-                                                                        <input required class="form-control " name="filename" type="file"  />
+                                                                        <label class="control-label ">رفع ملف (اختياري) : </label>
+                                                                        <input  class="form-control " name="filename" type="file"  />
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">تأكيد</button>
                                                     </form>
@@ -237,20 +237,20 @@
                                                         {{ csrf_field() }}
                                                             <input type="hidden" value="{{$search->ID}}" name="search" />
                                                             <div class="form-group">
-                                                                <label class="control-label ">نسبة ما تم إنجازه من الرسالة : </label>
+                                                                <label class="control-label ">نسبة ما تم إنجازه من الرسالة : *</label>
                                                                 <textarea required class="form-control " name="q1" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مسوغات وتوضيحات حول نسبة الإنجاز : </label>
+                                                                    <label class="control-label ">مسوغات وتوضيحات حول نسبة الإنجاز : *</label>
                                                                     <textarea required class="form-control " name="q2" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي
+                                                                    <label class="control-label ">مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي *
                                                                             (ممتاز، جيد جدا، جيد، مقبول)  : </label>
                                                                     <textarea required class="form-control " name="q3" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">مدى الالتزام بتوجيهات المشرف واللجنة 
+                                                                        <label class="control-label ">مدى الالتزام بتوجيهات المشرف واللجنة *
                                                                                 العلمية بالكرسي 
                                                                                 100%, 90%,...etc 
                                                                                  : </label>
@@ -277,8 +277,8 @@
                                                                         <textarea required class="form-control " name="note" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">رفع الملف : </label>
-                                                                    <input required class="form-control " name="filename" type="file" />
+                                                                    <label class="control-label ">رفع ملف (اختياري) </label>
+                                                                    <input  class="form-control " name="filename" type="file" />
                                                             </div>
                                                             <button type="submit" class="btn btn-primary" >تأكيد</button>
                                                     </form>
@@ -327,15 +327,15 @@
                                                             <textarea required class="form-control " name="q9" ></textarea>
                                                 </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">رفع الملف : </label>
-                                                                        <input required class="form-control " name="filename" type="file"  />
+                                                                        <label class="control-label ">رفع ملف (اختياري) : </label>
+                                                                        <input  class="form-control " name="filename" type="file"  />
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">تأكيد</button>
                                                     </form>
                                             </div>
 
 
-                                            <!-- تقرير المراجع -->
+                                            <!-- تقرير الباحث المساعد -->
                                             <div class="tab-pane" id="tab_1_6">
                                                 <form role="form" method="POST" action="{{route('addreviewers_reports')}}" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
@@ -557,7 +557,8 @@
                                                                 <td> تقرير المشرف </td>
                                                                 <td>
                                                                         @if(!empty($search->supervisors_reports[0]))
-                                                                        تم الارسال من طرف : {{$search->supervisors_reports[0]->superviso->Fistname}} {{$search->supervisors_reports[0]->superviso->LastName}} @endif</td>
+                                                                        تم الارسال من طرف : {{$search->supervisors_reports[0]->superviso->Fistname}} {{$search->supervisors_reports[0]->superviso->LastName}}
+                                                                        @endif</td>
                                                                 
                                                                 <td>
                                                                         @if(!empty($search->supervisors_reports[0]))
@@ -645,7 +646,7 @@
 
                                                             <!-- تقرير المراجع -->
                                                             <tr>
-                                                                <td> تقرير المراجع </td>
+                                                                <td> تقرير الباحث المساعد </td>
                                                                 <td>@if(!empty($search->reviewers_reports[0]))
                                                                     تم الارسال من طرف : {{$search->reviewers_reports[0]->reviewe->Fistname}} {{$search->reviewers_reports[0]->reviewe->LastName}} @endif </td>
                                                                 <td>
@@ -654,11 +655,11 @@
                                                                 <td>
 
 
-                                                                    <!-- تفاصيل تقرير المراجع -->
+                                                                    <!-- تفاصيل تقرير الباحث المساعد -->
 
                                                                     @if(count($search->reviewers_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewermodal">
-                                                                            عرض تقرير المراجع
+                                                                            عرض تقرير الباحث المساعد
                                                                         </button>
                                                                         <div class="modal fade" id="reviewermodal" tabindex="-1" role="dialog" aria-labelledby="reviewermodallabel" aria-hidden="true">
                                                                             <div class="modal-dialog" role="document">
@@ -795,6 +796,8 @@
 
 
                                                                     <!-- تفاصيل تقرير الإدارة -->
+                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id))
+
                                                                     @if(count($search->admin2_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#admin2modal">
                                                                             عرض تقرير الادارة
@@ -851,6 +854,7 @@
 
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
+                                                                    @endif
                                                                     @endif
 
                                                                 </td>

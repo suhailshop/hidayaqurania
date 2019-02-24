@@ -11,7 +11,7 @@
 						</div>
 
 					</div>
-  					<div class=" about" id="about">
+  					<div class=" about" id="about" style="background-image: url('template/img/header.png');">
 						<br>
 						<div class="container">
 							<div class="row">
@@ -26,13 +26,13 @@
  في شتى جامعات العالم وفق نظام المشاريع البحثية</p>
 
 									<p>رؤيتنا: المرجع الأول في تعليم القرآن الكريم وإقرائه وفق أعلى معايير الجودة و تطبيق أفضل أساليب تعليم كتاب الله تعالى على يد ذوي الخبرة من المتخصصين لمختلف شرائح المسلمين، وإعادة الأمة إلى كتاب ربها تلاوة وحفظا وعملا.</p>
-									<a class="more pull-left" href=""> تحميل الكتيب التعريفي بالموسوعة <i class="fa fa-download"></i> </a>
+									<a class="more pull-left" target="_blank" href="https://goo.gl/f18n66"> تحميل الكتيب التعريفي بالموسوعة <i class="fa fa-download"></i> </a>
 								</div>
 							</div>
 						</div>
 					</div>	
 				
-				<div class="news" id="akhbar">
+				<div class="news" id="akhbar" >
 
 					<h3 class="text-center">:: اخبار الموسوعة :: </h3>
 
@@ -62,7 +62,7 @@
 						<div class="owl-controls clickable"><div class="owl-pagination"><div class="owl-page active"><span class=""></span></div><div class="owl-page"><span class=""></span></div></div><div class="owl-buttons"><div class="owl-prev"><i class="fa fa-angle-left"></i></div><div class="owl-next"><i class="fa fa-angle-right"></i></div></div></div></div>
 						
 					
-					<div class="charts text-center">
+					<div class="charts text-center" id="goals" style="background-image: url('template/img/header.png');">
 						<div class="container">
 							<div class="row">
                                 <h3 class="text-center">:: أهداف الموسوعة :: </h3>
@@ -70,7 +70,7 @@
                                 <div class="col-md-4 col-sm-4 col-xs-12">
 									<div class="out-line">
 										<i class="fas fa-graduation-cap fa-3x"></i>
-										<h4>عدد رساءل الدكتوراه</h4>
+										<h4>عدد رسائل الدكتوراه</h4>
 										<h2>60</h2>
 										<span>رسالة</span>
 										
@@ -119,26 +119,22 @@
 										</div>
 									</div>
 
-									<!--  http://stackoverflow.com/questions/8667882/how-to-pause-a-youtube-player-when-hiding-the-iframe  -->
-									<!-- BG color #352416 - screen is at 95% opacity -->
-									<!-- <iframe width="420" height="315" src="https://www.youtube.com/embed/TRGoy0XLrUA" frameborder="0" allowfullscreen></iframe> -->
 
 									<div class="popup__overlay">
 									  <div class="popup" id="popupVid">
 										<a href="#" class="popup__close">X</a>
-										<!-- <iframe width="640" height="480" src="https://www.youtube.com/embed/TRGoy0XLrUA?showinfo=0&rel=0" frameborder="0" allowfullscreen></iframe> -->
-										<iframe src="https://www.youtube.com/embed/GnEc1Hp8nxo" frameborder="0" allowfullscreen=""></iframe>
+ 										<iframe src="https://www.youtube.com/embed/jCitPYFeGbM" frameborder="0" allowfullscreen=""></iframe>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="features text-center">
+					<div class="features text-center" id="outcomes" style="background-image: url('template/img/bg-site.png');">
 						<div class="container">
 							<div class="row">
 								<h3>:: المخرجات المتوقعة من الموسوعة :: </h3>
-									<h4 class="title">أولاً / المخرجات العلمية </h4>
+
 								<div class="col-md-4 col-sm-4 col-xs-12">
 									<div class="dash-box dark">
 										<h4>انتاج اول موسوعه عالميه<br>في الهدايات القرانية</h4>
@@ -201,67 +197,13 @@
 										<h4>مؤتمر عالمي في<br>الهدايات القرانية</h4>
 									</div>
 								</div>
-								<h4 class="title">ثانياً / المخرجات البشرية</h4>
-								<div class="col-md-4 col-sm-4 col-xs-12">
-									<div class="dash-box dark">
-										<h4>اعداد</h4>
-										<p>60</p>
-										<h4>استاذ جامعي<br>الهدايات القرانية</h4>
-									</div>
-								</div>
-								<div class="col-md-4 col-sm-4 col-xs-12">
-									<div class="dash-box ">
-										<h4>استقطاب</h4>
-										<p>60</p>
-										<h4>مشرف اكاديمي لخدمة<br>الهدايات القرانية</h4>
-									</div>
-								</div>
-								<div class="col-md-4 col-sm-4 col-xs-12">
-									<div class="dash-box light">
-										<h4>اعداد</h4>
-										<p>20</p>
-										<h4>مدرب محترف في<br>الهدايات القرانية</h4>
-									</div>
-								</div>
-								<div class="col-md-4 col-sm-4 col-xs-12">
-									<div class="dash-box light">
-										<h4>تدريب</h4>
-										<p>2000</p>
-										<h4>طالب دراسات عليا في<br>الجامعات الشريكة</h4>
-									</div>
-								</div>
-								<div class="col-md-4 col-sm-4 col-xs-12">
-									<div class="dash-box pic dark">
-										<img class="img-responsive" src="template/img/6.jpg">
-									</div>
-								</div>
-								
-								<div class="col-md-4 col-sm-4 col-xs-12">
-									<div class="dash-box ">
-										<h4>تدريب</h4>
-										<p>400</p>
-										<h4>استاذ اكاديمي في<br>الجامعات الشريكة</h4>
-									</div>
-								</div>
-								<div class="col-md-4 col-md-pull-2 col-sm-4 col-sm-pull-2 col-xs-12">
-									<div class="dash-box ">
-										<h4>نشر ثقافة<br>الهدايات ل</h4>
-										<p>6000</p>
-										<h4>مستفيد</h4>
-									</div>
-								</div>
-								
-								<div class="col-md-4 col-md-pull-2 col-sm-4 col-sm-pull-2 col-xs-12">
-									<div class="dash-box light">
-										<h4>نشر ثقافة<br>الهدايات ل</h4>
-										<p>6000</p>
-										<h4>اكاديمي</h4>
-									</div>
-								</div>
+
+
 							</div>
 						</div>
 					</div>
-					<div class="how-work text-center">
+
+				{{--	<div class="how-work text-center">
 						<div class="container">
 							<div class="row">
 								<h3>:: آلية وخطوات تنفيذ الموسوعة ::</h3>
@@ -376,7 +318,41 @@
 							</div>
 						</div>
 								
-					</div>					
-						
-	@stop
+					</div>--}}
 
+				 
+
+	<div class=" about" id="contact" style="background-image: url('template/img/header.png');">
+		<br>
+		<div class="container">
+			<div class="row">
+				<div  class="col-md-6 col-sm-6 col-xs-12">
+
+					<div style="text-align: center; color: black;"><h3 class="text-center">للتواصل معنا</h3></div>
+
+					<p class="text-center">نتشرف بزيارتكم في مقر كرسي الهدايات القرآنية
+						<br>
+						بجامعة أم القرى - العابدية - مكة المكرمة - المملكة العربية السعودية</p>
+
+					<h5 class="text-center">أو</h5>
+
+					<p class="text-center">الاتصال على هاتف
+						<br>
+
+						رقم : 009662527000 تحويلة رقم : 5255</p>
+
+					<h5 class="text-center">أو</h5>
+
+					<p class="text-center">  مراسلتنا على البريد الالكتروني التالي</p>
+<br>
+
+					<div style="text-align: center" class="text-center"><a  class="more pull-center" target="_blank" href="mailto:info@hidayatqurania.org?Subject=استفسار"> info@hidayatqurania <i class="fa fa-envelope"></i> </a></div>
+				</div>
+				<div class="col-md-6 col-sm-6 col-xs-12">
+					<img class="img-responsive" src="template/img/contactus.jpg">
+				</div>
+			</div>
+		</div>
+	</div>
+
+@stop

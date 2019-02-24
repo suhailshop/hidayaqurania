@@ -14,7 +14,7 @@
 
 Route::get('/','Site\SiteController@index');
 Route::get('/admin','Site\SiteController@admin');
-Route::get('/add','Site\SiteController@add');
+Route::get('/add','Site\SiteController@add')->name('addNews');
 Route::post('/add','Site\SiteController@addpost');
 Route::get('/delete/{id}','Site\SiteController@delete');
 Route::get('/edit/{id}','Site\SiteController@edit');
@@ -39,8 +39,16 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/reviewers/addReviewer','Admin\ReviewerController@addReviewer')->name('addReviewer');
     Route::post('/reviewers/addReviewerPost','Admin\ReviewerController@addReviewerPost')->name('addReviewerPost');
     Route::get('/reviewers/delete/{id}','Admin\ReviewerController@delete')->name('deleteReviwerPost');
+
+    Route::get('/reviewers/profile/{id}','Admin\ReviewerController@showProfile')->name('adminReviewersProfile');
+
+
+
+    
+
     Route::get('/reviewers/getAllReviewerSearchs/{id}','Admin\ReviewerController@getAllReviewerSearchs')->name('getAllReviewerSearchs');
     Route::get('/reviewers/getOneProfile/{id}','Admin\ReviewerController@getOneProfile')->name('getOneProfile');
+
 
     Route::get('/users','Admin\UserController@index')->name('allUser');
     Route::get('/users/addUserAdmin','Admin\UserController@addUserAdmin')->name('addUserAdmin');
@@ -77,8 +85,11 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisors','Admin\SupervisorController@index')->name('allSupervisor');
     Route::get('/supervisors/add','Admin\SupervisorController@add')->name('addSupervisor');
     Route::post('/supervisors/add','Admin\SupervisorController@addPost')->name('addSupervisorPost');
+    Route::get('/supervisors/profile/{id}','Admin\SupervisorController@showProfile')->name('adminSupervisorProfile');
 
-    
+
+
+
     Route::get('/universities','Admin\UniversityController@index')->name('allUniversity');
     Route::get('/universities/add','Admin\UniversityController@add')->name('addUniversity');
     Route::post('/universities/add','Admin\UniversityController@addPost')->name('addUniversityPost');
@@ -217,6 +228,8 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/editReport/{id}','Supervisor\ReportController@edit')->name('editSupervisorReport');
     Route::post('/supervisor/editReportPost','Supervisor\ReportController@editPost')->name('editSupervisorReportPost');
     Route::get('/supervisor/deleteReport/{id}','Supervisor\ReportController@delete')->name('deleteSupervisorReport');
+    Route::get('/supervisor/allbooks','Supervisor\BooksController@index')->name('allbookssupervisor');
+
 
 
 

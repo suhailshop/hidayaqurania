@@ -23,6 +23,75 @@
 
 
 
+            <li class="nav-item  ">
+                <a href="{{route('allSearcher')}}" class="nav-link nav-toggle">
+                    <i class="icon-users"></i>
+                    <span class="title">الباحث</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+
+
+
+
+
+
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-briefcase"></i>
+                    <span class="title">المشرف</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{route('allSupervisor')}}" class="nav-link ">
+                            <span class="title">لائحة المشرفين</span>
+                        </a>
+                    </li>
+                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                        <li class="nav-item  ">
+                            <a href="{{route('addSupervisor')}}" class="nav-link ">
+                                <span class="title">أضف مشرف</span>
+                            </a>
+                        </li>
+                    @endif
+                </ul>
+            </li>
+
+
+
+
+
+
+
+            @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) )
+                <li class="nav-item  ">
+                    <a href="javascript:;" class="nav-link nav-toggle">
+                        <i class="icon-like"></i>
+                        <span class="title">الباحث المساعد</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul class="sub-menu">
+                        <li class="nav-item  ">
+                            <a href="{{route('allReviewer')}}" class="nav-link ">
+                                <span class="title">الباحث المساعد</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('addReviewer')}}" class="nav-link ">
+                                <span class="title">أضف باحث مساعد جديد</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+            @endif
+
+
+
+
+
            {{-- قائمة المراجع--}}
             @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id))
             <li class="nav-item  ">
@@ -97,62 +166,13 @@
             @endif
 
 
-            @if(auth()->user()->hasRole('admin2',auth()->user()->role_id))
-                <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-like"></i>
-                        <span class="title">المحكمون</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                            <li class="nav-item  ">
-                                <a href="{{route('allReviewer')}}" class="nav-link ">
-                                    <span class="title">لائحة المحكمين</span>
-                                </a>
-                            </li>
-                            <li class="nav-item  ">
-                            <a href="{{route('addReviewer')}}" class="nav-link ">
-                                    <span class="title">أضف محكم جديد</span>
-                                </a>
-                            </li>
-                    </ul>
-                </li>   
-            
-            @endif
-            <li class="nav-item  ">
-                <a href="{{route('allSearcher')}}" class="nav-link nav-toggle">
-                        <i class="icon-users"></i>
-                        <span class="title">الباحثون</span>
-                        <span class="arrow"></span>
-                    </a>
-            </li>
 
-            <li class="nav-item  ">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-briefcase"></i>
-                        <span class="title">المشرفون</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
-                            <li class="nav-item  ">
-                                <a href="{{route('allSupervisor')}}" class="nav-link ">
-                                    <span class="title">لائحة المشرفين</span>
-                                </a>
-                            </li>
-                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                            <li class="nav-item  ">
-                            <a href="{{route('addSupervisor')}}" class="nav-link ">
-                                    <span class="title">أضف مشرف</span>
-                                </a>
-                            </li>
-                            @endif
-                    </ul>
-            </li>
+
 
             <li class="nav-item  ">
                     <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
                             <i class="icon-docs"></i>
-                            <span class="title">جميع البحوث</span>
+                            <span class="title">البحوث</span>
                             <span class="arrow"></span>
                         </a>
              </li>
@@ -160,7 +180,7 @@
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-docs"></i>
-                        <span class="title">المراجع العلمية</span>
+                        <span class="title">المراجع</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
@@ -454,7 +474,8 @@
                             <span class="arrow"></span>
                         </a>
                 </li>
-                <li class="nav-item  ">
+
+              {{--  <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="icon-chemistry"></i>
                             <span class="title">تقاريري </span>
@@ -472,8 +493,22 @@
                                     </a>
                                 </li>
                         </ul>
-                 </li>
-                 @endif
+                 </li>--}}
+
+
+                <li class="nav-item  ">
+                    <a href="{{route('allbookssupervisor')}}" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">المصادر العلمية</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+
+
+
+
+
+            @endif
 
 
 

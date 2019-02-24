@@ -23,9 +23,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>

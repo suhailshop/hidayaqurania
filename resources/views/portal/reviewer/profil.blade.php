@@ -60,7 +60,7 @@
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
                             <div class="profile-usertitle-name"> {{$registration->Fistname}} {{$registration->LastName}}</div>
-                                <div class="profile-usertitle-job"> محكم </div>
+                                <div class="profile-usertitle-job"> باحث مساعد </div>
                             </div>
 
                             <div class="profile-userbuttons">
@@ -123,15 +123,9 @@
 
                                                     <h4 class="block myfont">معلومات أساسية</h4>
 
-                                                    <div class="form-group">
-                                                        <label class="col-md-2 control-label">اسم العائلة</label>
-                                                        <div class="col-md-10">
-                                                            <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="اسم العائلة" data-container="body"></i>
-                                                                <input type="text" class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
+
+
 
 
                                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
@@ -327,7 +321,7 @@
                                                     <hr>
 
 
-                                                    <h4 class="block myfont">معلومات المؤهل العلمي</h4>
+                                                    <h4 class="block myfont">معلومات  الجامعة</h4>
 
 
                                                     <div class="form-group{{ $errors->has('University') ? ' has-error' : '' }}">

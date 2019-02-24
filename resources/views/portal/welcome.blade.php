@@ -456,12 +456,12 @@
                                           <i class="icon-folder  font-black"></i>
                                           <span class="caption-subject bold font-dark uppercase">قائمة تقارير الباحث</span>
                                        </div>
-                                       <div class="actions">
-                                            <a class="btn-group btn-group-devided" href="{{route('addSearch')}}">
-                                                    <label class="btn btn-transparent green  btn-lg">
+                                      {{-- <div class="actions">
+                                            <a class=" btn-group  btn-group-devided" href="{{route('addSearch')}}">
+                                                    <label class="btn btn-transparent yellow  btn-lg">
                                                     <i class="icon-plus"></i> إضافة بحث جديد  </label>
                                             </a>
-                                       </div>
+                                       </div>--}}
                                     </div>
                                     <div class="portlet-body">
 

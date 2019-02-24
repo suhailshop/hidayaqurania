@@ -40,6 +40,8 @@ class SiteController extends Controller
         }
     }
     public function getdate($date='') {
+
+
         date_default_timezone_set('Africa/Cairo');
         if(empty($date)){
             $time = time();
@@ -67,6 +69,7 @@ class SiteController extends Controller
         $Arabicday['Wed']='الاربعاء';
         $Arabicday['Thu']='الخميس';
         $Arabicday['Fri']='الجمعه';
+
         if(date("A",$time)=='am'){
             $am = 'صباحا' ;
         }else{

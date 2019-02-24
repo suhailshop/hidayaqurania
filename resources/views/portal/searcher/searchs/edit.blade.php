@@ -89,10 +89,10 @@
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
-                                                <label>الاختصار</label>
+                                                <label>وصف البحث</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="alias" value="{{$search->Alias}}" placeholder="الاختصار *"/> </div>
+                                                <input type="text" class="form-control" name="alias" value="{{$search->Alias}}" placeholder="الوصف *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -131,8 +131,12 @@
                                         </div>
                                     </div>
 
-                                    
-                                    <div class="form-group">
+
+                                    <input type="hidden" value="yes" name="status" />
+
+
+
+                               {{--     <div class="form-group">
                                         
                                         <div class="col-md-12">
                                                 <label>الحالة</label>
@@ -146,6 +150,8 @@
                                                 </select> </div>
                                         </div>
                                     </div>
+                                    --}}
+
                                 <div class="form-actions">
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-9">
