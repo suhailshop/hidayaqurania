@@ -70,12 +70,14 @@ class MyProfilController extends Controller
     }
 
     public function editAvatar(Request $request){
+        
         if($request->hasFile('PictureURL')){
             $request->validate([
                 'PictureURL' => 'required|file|max:1024',
             ]);
             $fileName = "fileName".time().'.'.request()->PictureURL->getClientOriginalExtension();
             $request->PictureURL->storeAs('public/registrations',$fileName);
+
         }
         DB::table('registrations')->where('ID',$request->input('id_registration'))
         ->update(array(

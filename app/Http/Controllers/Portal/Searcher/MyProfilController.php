@@ -153,7 +153,7 @@ class MyProfilController extends Controller
         } else {
             $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
         }
-        $supervisors = Registration::where('Type','Supervisor')->get();
+        $supervisors = Registration::where('Type','supervisor')->get();
         return view('portal.searcher.myacademic')->with('registration',$registration)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('meetings',$meetings)->with('plans', $plans)->with('enabledPlan',$searcher->EnablePlanEdit);
     }
 

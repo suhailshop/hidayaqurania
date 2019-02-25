@@ -32,12 +32,12 @@ class SMSController extends Controller
         });
     }
     public function sendSup(){
-        $supervisors = Registration::where('Type','Supervisor')->get();
+        $supervisors = Registration::where('Type','supervisor')->get();
         return view('portal.admin.sms.sup')->with('supervisors',$supervisors);
         
     }
     public function sendStu(){
-        $searchers = Registration::where('Type','Searcher')->get();
+        $searchers = Registration::where('Type','searcher')->get();
         return view('portal.admin.sms.stu')->with('searchers',$searchers);
     }
 
@@ -66,7 +66,7 @@ class SMSController extends Controller
             Session::put('success_edit', 'المرجو اختيار باحث واحد على الاقل'); 
             
         }
-        $searchers = Registration::where('Type','Searcher')->get();
+        $searchers = Registration::where('Type','searcher')->get();
         return view('portal.admin.sms.stu')->with('searchers',$searchers)->with('msg',$msg)->with('type',$type);
     }
 
@@ -95,7 +95,7 @@ class SMSController extends Controller
             Session::put('success_edit', 'المرجو اختيار مشرف واحد على الاقل'); 
             
         }
-        $supervisors = Registration::where('Type','Supervisor')->get();
+        $supervisors = Registration::where('Type','supervisor')->get();
         return view('portal.admin.sms.sup')->with('supervisors',$supervisors)->with('msg',$msg)->with('type',$type);
     }
 }

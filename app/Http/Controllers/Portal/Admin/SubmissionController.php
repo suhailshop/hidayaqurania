@@ -34,9 +34,9 @@ class SubmissionController extends Controller
     }
     public function index(){
 
-        $searchers = Registration::where('Type','Searcher')->where('Status','!=','مفعل')->get();
+        $searchers = Registration::where('Type','searcher')->where('Status','!=','مفعل')->get();
         $meetings = Meeting::all();
-        $supervisors = Registration::where('Type','Supervisor')->get();
+        $supervisors = Registration::where('Type','supervisor')->get();
         $criterias = Criteria::all();
         return view('portal.admin.submissions.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors);
     }

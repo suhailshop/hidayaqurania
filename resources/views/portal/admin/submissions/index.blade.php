@@ -76,9 +76,7 @@
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="desktop">الحالة</th>
                                     @endif
-                                    @if(isset($searcher->these))
                                     <th class="all">خيارات.</th>
-                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -134,7 +132,6 @@
                                     </td>
                                     @endif
                                     
-                                    @if(isset($searcher->these))
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
@@ -163,7 +160,6 @@
                                         </div>
                                         
                                     </td>
-                                    @endif
                                 </tr>
                                 
                                 <!-- Modal -->
