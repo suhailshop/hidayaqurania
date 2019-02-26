@@ -61,7 +61,7 @@
                                     <th class="all">المدينة</th>
                                      <th class="all"> الجامعة</th>
                                     <th class="all">الكلية</th>
-                                    <th class="all">خيارات</th>
+
 
                                 </tr>
                             </thead>

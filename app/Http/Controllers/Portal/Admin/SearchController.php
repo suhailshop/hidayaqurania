@@ -67,16 +67,16 @@ class SearchController extends Controller
         $allreviewers = DB::table('registrations')
         ->join('users','registrations.User','=','users.id')
         ->join('roles','roles.id','=','users.role_id')
-        ->join('reviewerSearchs','reviewerSearchs.reviewer','=','registrations.ID')
+        ->join('reviewersearchs','reviewersearchs.reviewer','=','registrations.ID')
         ->where('roles.name','reviewer')
-        ->where('reviewerSearchs.search',$request->input('searchid'))
+        ->where('reviewersearchs.search',$request->input('searchid'))
         ->get(['registrations.id']);
 
         if(isset($reviewers)){
         foreach($allreviewers as $al){
            if(!in_array($al->id,$reviewers))
            { 
-                DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->where('reviewer',$al->id)->delete();
+                DB::table('reviewersearchs')->where('search',$request->input('searchid'))->where('reviewer',$al->id)->delete();
             }else{
                 
            }
@@ -86,21 +86,21 @@ class SearchController extends Controller
         
         if(isset($reviewers)){
             foreach($reviewers as $rev){
-                $exist= DB::table('reviewerSearchs')
+                $exist= DB::table('reviewersearchs')
                 ->where('search',$request->input('searchid'))
                 ->where('reviewer',$rev)
                 ->count();
 
                 if(empty($exist)){
-                    DB::table('reviewerSearchs')->insert(
+                    DB::table('reviewersearchs')->insert(
                         ['search' => $request->input('searchid'), 'reviewer' => $rev]
                     );
                 }else{
-                    //DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->where('reviewer',$rev)->delete();
+                    //DB::table('reviewersearchs')->where('search',$request->input('searchid'))->where('reviewer',$rev)->delete();
                 }
             }
         }else{
-            DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->delete();
+            DB::table('reviewersearchs')->where('search',$request->input('searchid'))->delete();
         }
         Session::put('success_edit', 'تم اضافة المراجعين للبحث بنجاح'); 
         

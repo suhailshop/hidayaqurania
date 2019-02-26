@@ -59,7 +59,6 @@
                                         <th class="all">رقم</th>
                                     <th class="all">الاسم الكامل</th>
 
-                                    <th class="desktop">الدولة</th>
 
                                     <th class="all"> الجامعة</th>
                                     <th class="desktop">الكلية</th>
@@ -86,7 +85,7 @@
 
                                     </td>
 
-                                    <td>{{$searcher->countrie->Name}}</td>
+                                 {{--   <td>{{$searcher->countrie->Name}}</td>--}}
 
                                     <td>{{$searcher->University}}</td>
                                     <td>{{$searcher->Faculty}}</td>

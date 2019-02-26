@@ -28,7 +28,7 @@ class SearchController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name!='reviewer' ){ return redirect('/');}            
+                if($role->name!='reviewer' ){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}

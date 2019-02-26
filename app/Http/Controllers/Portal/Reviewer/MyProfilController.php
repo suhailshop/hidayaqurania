@@ -25,7 +25,7 @@ class MyProfilController extends Controller
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
                 if($role->name=='student' || $role->name=='admin' || $role->name=='admin2' || $role->name =='supervisor')
-                { return redirect('/');}
+                { return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}

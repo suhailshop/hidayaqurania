@@ -110,7 +110,7 @@
 
 
                                                        <div class="modal-header">
-                                                           <h5 class="modal-title" id="exampleModalLabel">المراجعين</h5>
+                                                           <h5 class="modal-title" id="exampleModalLabel">الباحثون المساعدون</h5>
                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                            </button>
@@ -118,7 +118,7 @@
                                                        <div class="modal-body">
                                                            <input type="hidden" name="searchid" value="{{$search->ID}}"/>
                                                            <div class="form-group">
-                                                               <label class="col-md-4">لائحة المراجعين :</label>
+                                                               <label class="col-md-4">لائحة الباحثون المساعدون :</label>
                                                                <select class="col-md-8 multiple-checkboxes form-control" name="reviewers[]" multiple="multiple">
 
 

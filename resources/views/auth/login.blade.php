@@ -49,7 +49,9 @@
                 
                 <div class="create-account">
                     <p>
+{{--
                     <a href="{{route('register')}}" id="register-btn" class="uppercase">أنشئ حساب جديد</a>
+--}}
                     </p>
                 </div>
             </form>

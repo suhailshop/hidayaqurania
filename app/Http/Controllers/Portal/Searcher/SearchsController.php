@@ -27,7 +27,7 @@ class SearchsController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='admin' || $role->name=='supervisor' || $role->name=='admin2'){ return redirect('/');}            
+                if($role->name=='admin' || $role->name=='supervisor' || $role->name=='admin2'){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -35,8 +35,11 @@ class SearchsController extends Controller
     }
     public function index(){
 
-        $searchs = Search::all();
-        return view('portal.searcher.searchs.index')->with('searchs',$searchs);
+        $id = $this->user->id ;
+        $searcherId = Registration::where('User', $id)->first()->ID;
+        $searchs = Search::where('Searcher', $searcherId)->get();
+
+         return view('portal.searcher.searchs.index')->with('searchs',$searchs);
     }
 
 

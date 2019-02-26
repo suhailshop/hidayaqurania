@@ -92,11 +92,11 @@
                                             <ul class="dropdown-menu pull-right">
                                                 <li>
                                                 <a href="#">
-                                                        <i class="fa fa-edit"></i> خيار </a>
+                                                        <i class="fa fa-edit"></i> تعديل </a>
                                                 </li>
                                                 <li>
                                                         <a href="#">
-                                                                <i class="fa fa-edit"></i> خيار </a>
+                                                                <i class="fa fa-edit"></i> حذف </a>
                                                         </li>
                                                 
 

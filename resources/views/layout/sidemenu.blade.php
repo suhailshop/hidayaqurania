@@ -39,27 +39,15 @@
 
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
 
-            <li class="nav-item  ">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-briefcase"></i>
-                    <span class="title">المشرف</span>
-                    <span class="arrow"></span>
-                </a>
-                <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="{{route('allSupervisor')}}" class="nav-link ">
-                            <span class="title">لائحة المشرفين</span>
-                        </a>
-                    </li>
-                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                        <li class="nav-item  ">
-                            <a href="{{route('addSupervisor')}}" class="nav-link ">
-                                <span class="title">أضف مشرف</span>
-                            </a>
-                        </li>
-                    @endif
-                </ul>
-            </li>
+                <li class="nav-item  ">
+                    <a href="{{route('allSupervisor')}}" class="nav-link nav-toggle">
+                        <i class="icon-briefcase"></i>
+                        <span class="title">المشرف</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+
+
 
             @endif
 
@@ -67,26 +55,19 @@
 
 
 
-            @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) )
+            @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
+
+
+
                 <li class="nav-item  ">
-                    <a href="javascript:;" class="nav-link nav-toggle">
+                    <a href="{{route('allReviewer')}}" class="nav-link nav-toggle">
                         <i class="icon-like"></i>
                         <span class="title">الباحث المساعد</span>
                         <span class="arrow"></span>
                     </a>
-                    <ul class="sub-menu">
-                        <li class="nav-item  ">
-                            <a href="{{route('allReviewer')}}" class="nav-link ">
-                                <span class="title">الباحث المساعد</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="{{route('addReviewer')}}" class="nav-link ">
-                                <span class="title">أضف باحث مساعد جديد</span>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
+
+
 
             @endif
 
@@ -120,28 +101,47 @@
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
          
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-            <li class="nav-item  ">
+
+
+
+                    <li class="nav-item  ">
+                        <a href="{{route('allUser')}}" class="nav-link nav-toggle">
+                            <i class="icon-screen-desktop"></i>
+                            <span class="title">الإدارة</span>
+                            <span class="arrow"></span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-screen-desktop"></i>
-                        <span class="title">الادارة</span>
+                        <span class="title">إدارة الحسابات</span>
                         <span class="arrow"></span>
                     </a>
                     <ul class="sub-menu">
-                            <li class="nav-item  ">
-                                <a href="{{route('allUser')}}" class="nav-link ">
-                                    <span class="title">لائحة المدراء</span>
-                                </a>
-                            </li>
+
                             <li class="nav-item  ">
                             <a href="{{route('addUserAdmin')}}" class="nav-link ">
                                     <span class="title">أضف مدير</span>
                                 </a>
                             </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('addUserReviewer')}}" class="nav-link ">
+                                <span class="title">أضف باحث مساعد</span>
+                            </a>
+                        </li>
+                        <li class="nav-item  ">
+                            <a href="{{route('addUserSupervisor')}}" class="nav-link ">
+                                <span class="title">أضف مشرف</span>
+                            </a>
+                        </li>
                             <li class="nav-item  ">
                                 <a href="{{route('addUserSearcher')}}" class="nav-link ">
                                         <span class="title">أضف طالب</span>
                                     </a>
-                                </li>
+                             </li>
                     </ul>
             </li>
 

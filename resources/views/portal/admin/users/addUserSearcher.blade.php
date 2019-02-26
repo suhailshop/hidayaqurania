@@ -24,9 +24,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -142,15 +139,23 @@
                                         
                                         </div>
                                 </div>
-                                <div class="form-group">  <div class="col-md-12">
-                                        <label class="control-label visible-ie8 visible-ie9">تاريخ البداية</label>
-                                        <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="تاريخ البداية" name="BeginningDate" />
+                                <div class="form-group">
+
+                                    <label class="col-md-2">تاريخ بداية البرنامج</label>
+
+                                    <div class="col-md-10">
+                                         <input required class="form-control placeholder-no-fix" type="date" autocomplete="off" placeholder="تاريخ البداية" name="BeginningDate" />
                                         
                                         </div>
                                 </div>
-                                <div class="form-group">  <div class="col-md-12">
-                                        <label class="control-label visible-ie8 visible-ie9">تاريخ النهاية</label>
-                                        <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="تاريخ النهاية" name="CompletionDate" />
+
+
+                                <div class="form-group">
+                                    <label class="col-md-2">تاريخ نهاية البرنامج</label>
+
+                                    <div class="col-md-10">
+
+                                        <input required class="form-control placeholder-no-fix" type="date" autocomplete="off" placeholder="تاريخ النهاية" name="CompletionDate" />
                                         
                                         </div>
                                 </div>

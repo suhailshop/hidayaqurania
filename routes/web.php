@@ -53,8 +53,20 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/users','Admin\UserController@index')->name('allUser');
     Route::get('/users/addUserAdmin','Admin\UserController@addUserAdmin')->name('addUserAdmin');
     Route::get('/users/addUserSearcher','Admin\UserController@addUserSearcher')->name('addUserSearcher');
+    Route::get('/users/addUserSupervisor','Admin\UserController@addUserSupervisor')->name('addUserSupervisor');
+    Route::get('/users/addUserReviewer','Admin\UserController@addUserReviewer')->name('addUserReviewer');
+
     Route::post('/users/addUserAdminPost','Admin\UserController@addUserAdminPost')->name('addUserAdminPost');
     Route::post('/users/addUserSearcherPost','Admin\UserController@addUserSearcherPost')->name('addUserSearcherPost');
+    Route::post('/users/addUserSupervisor','Admin\UserController@addUserSupervisorPost')->name('addUserSupervisorPost');
+    Route::post('/users/addUserReviewer', 'Admin\UserController@addUserReviewerPost')->name('addUserReviewerPost');
+
+
+
+
+
+
+
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
     Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@getSearch')->name('getSearcher');

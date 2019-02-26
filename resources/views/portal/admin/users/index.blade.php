@@ -23,9 +23,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -59,7 +56,7 @@
                                 <tr>
                                     <th class="all">اسم المستخدم</th>
                                     <th class="all">البريد الالكتروني</th>
-                                    <th class="all">الوظيفة</th>
+                                    <th class="all">نوع الحساب</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -68,9 +65,9 @@
                                     <td>{{$admin->name}} </td>
                                     <td>{{$admin->email}}</td>
                                     <td>@if($admin->rolename=='admin') 
-                                            <span class="badge badge-primary"> مدير عام </span>
+                                            <span class="badge badge-primary"> حساب إداري </span>
                                         @else 
-                                            <span class="badge badge-danger">مدير جزئي</span> 
+                                            <span class="badge badge-danger">عضو اللجنة العلمية</span>
                                         @endif
                                     </td>
                                    
