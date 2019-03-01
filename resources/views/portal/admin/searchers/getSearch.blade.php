@@ -55,7 +55,7 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img src="{{ asset('storage/registrations/'.$registration->PictureURL) }}" class="img-responsive" alt=""> </div>
+                                <img src="{{ asset('project/storage/app/public/registrations/'.$registration->PictureURL) }}" class="img-responsive" alt=""> </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
@@ -79,6 +79,7 @@
                                         <a href="{{route('plandetails',$registration->ID)}}">
                                         <i class="icon-school"></i> مشاهدة المعلومات الأكاديمية  <i class="fa fa-search"></i></a>
                                     </li>
+                                    <br>
                                     <li class="active">
                                             <a href="#" data-toggle="modal" data-target="#exampleModal">
                                             <i class="icon-school"></i> 
@@ -348,7 +349,7 @@
                                                     <hr>
 
 
-                                                    <h4 class="block myfont">معلومات المؤهل العلمي</h4>
+                                                    <h4 class="block myfont">معلومات الجامعة</h4>
 
 
                                                     <div class="form-group{{ $errors->has('University') ? ' has-error' : '' }}">
@@ -477,7 +478,7 @@
 
                                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                         @if($registration->CV!="")
-                                                                            <a class="btn btn-primary" target="_blank" href="{{ asset('storage/CV/'.$registration->CV) }}" style="margin: inherit;">تحميل السيرة الذاتية الخاصة بالباحث</a>
+                                                                            <a class="btn btn-primary" target="_blank" href="{{ asset('project/storage/app/public/CV/'.$registration->CV) }}" style="margin: inherit;">تحميل السيرة الذاتية الخاصة بالباحث</a>
                                                                         @else
 
                                                                         <br />

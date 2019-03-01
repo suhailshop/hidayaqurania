@@ -58,7 +58,7 @@
                                     <th class="all">المبحث </th>
 
                                      <th class="all">تحميل البحث</th>
-                                    <th>  تقرير المشرف </th>
+                                     
                                     <th class="all">ملاحظات المشرف</th>
                                     <th class="all">خيارات.</th>
                                 </tr>
@@ -93,9 +93,7 @@
 
                                     </td>
 
-                                    <td>  <span class="badge badge-danger">لم يتم إرسال التقرير</span> </td>
-
-
+                                   
                                     <td>@if(isset($search->Note)) {{$search->Note}} @else 'لم يتم كتابة ملاحظة' @endif </td>
 
                                     <td>

@@ -116,6 +116,6 @@ class PortalController extends Controller
         $provides=Provide::all();
         $lastsearchers= Registration::where('Type','searcher')->orderBy('created_at', 'asc')->take(7)->get();
         
-        return view('portal.welcome',compact('searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers'));
+        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers']));
     }
 }

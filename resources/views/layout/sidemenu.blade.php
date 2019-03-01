@@ -169,7 +169,7 @@
 
 
 
-
+ {{--
 
             <li class="nav-item  ">
                     <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
@@ -178,6 +178,8 @@
                             <span class="arrow"></span>
                         </a>
              </li>
+             
+             --}}
 
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
@@ -201,7 +203,7 @@
                     </ul>
                 </li>
 
-
+{{--
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-envelope-open"></i>
@@ -244,7 +246,7 @@
                     </ul>
                 </li>
 
-
+--}}
 
              @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
 
@@ -646,4 +648,3 @@
     <!-- END SIDEBAR -->
 </div>
 <!-- END SIDEBAR -->
-                

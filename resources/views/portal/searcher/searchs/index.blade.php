@@ -94,7 +94,9 @@
                                     <td>{{$search->divisionunit->Name}}</td>
 
                                     <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
+                                    
+                                   
+                                        <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>
                                     {{--<td>@if(!isset($search->Note)) لا توجد @else {{$search->Note}} @endif</td>--}}
 

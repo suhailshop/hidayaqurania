@@ -48,11 +48,11 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                @if($reviwer->PictureURL == null)
+                                
 
-                                @else
-                                <img src="{{ asset('storage/registrations/default.jpg') }}" class="img-responsive" alt="">
-                                @endif
+                                
+                                <img src="{{ asset('project/storage/app/public/registrations/'.$reviwer->PictureURL) }}" class="img-responsive" alt="">
+                                
                             </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->

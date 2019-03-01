@@ -124,7 +124,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allHelp')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allThese')}}">
             <div class="visual">
                <i class="fa fa-credit-card"></i>
             </div>
@@ -132,7 +132,7 @@
                <div class="number"> 
                   <span data-counter="counterup" data-value="{{$helps}}">{{$helps}}</span> 
                </div>
-               <div class="desc"> المساعدات </div>
+               <div class="desc"> التنبيهات </div>
             </div>
          </a>
       </div>
@@ -154,7 +154,7 @@
                         @foreach($lastsearchers as $searcher)
                         <div class="mt-comment">
                            <div class="mt-comment-img">
-                              <img width="45px" height="45px"  src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" /> 
+                              <img width="45px" height="45px"  src="{{ asset('project/storage/app/public/registrations/'.$searcher->PictureURL) }}" /> 
                            </div>
                            <div class="mt-comment-body">
                               <div class="mt-comment-info">

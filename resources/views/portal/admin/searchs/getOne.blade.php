@@ -152,7 +152,7 @@
                                                             </div> --}}
 
                                                             <div class="form-group">
-                                                                    <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل الملف</a>
+                                                                    <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل الملف</a>
                                                             </div> 
                                                             <div class="form-group">
                                                                     <label class="control-label">ملاحظات المشرف</label>

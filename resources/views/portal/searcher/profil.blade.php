@@ -50,7 +50,7 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img src="{{ asset('storage/registrations/'.auth()->user()->registration->PictureURL) }}" class="img-responsive" alt=""> </div>
+                                <img src=" {{ asset('project/storage/app/public/registrations/'.auth()->user()->registration->PictureURL) }}" class="img-responsive" alt=""> </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
@@ -121,6 +121,13 @@
                                                 <form role="form" class="form-horizontal" action="{{route('searcherProfileEdit')}}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id_registration" value="{{$registration->ID}}" />
+                                                    
+                                                    
+                                                    
+                                                
+                                            
+                                                    
+                                                   
 
 
 
