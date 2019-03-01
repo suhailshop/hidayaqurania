@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal;
 
+use App\Searchers_reports;
 use App\User;
 use App\Role;
 use App\Registration;
@@ -60,7 +61,8 @@ class PortalController extends Controller
         $divisions = Division::orderBy('Order','asc')->get();
         $sections = Section::orderBy('Order','asc')->get();
         $searchs = Search::where('Searcher',$id)->get();
-        $myreports = Searchersreport::where('Searcher',$id)->get();
+        $myreports = Searchers_reports::where('search',$id)->get();
+
         $admin_reports = DB::table('committesreports')
                 ->join('searchersreports','searchersreports.ID','=','committesreports.Searcherreports')
                 ->where('searchersreports.Searcher',$id)

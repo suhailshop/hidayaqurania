@@ -282,7 +282,7 @@
                <div class="number">
                   <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
                </div>
-               <div class="desc">المصادر التعليمية </div>
+               <div class="desc">المصادر العلمية </div>
             </div>
          </a>
       </div>
@@ -358,7 +358,7 @@
             </a>
          </div>
          <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-            <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSearcherReports')}}">
+            <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
                <div class="visual">
                   <i class="fa fa-briefcase"></i>
                </div>
@@ -379,7 +379,7 @@
                   <div class="number">
                      <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
                   </div>
-                  <div class="desc">المصادر التعليمية </div>
+                  <div class="desc">المصادر العلمية </div>
                </div>
             </a>
          </div>
@@ -515,22 +515,27 @@
                                                       <i class="icon-docs font-blue "></i>
                                                       </div>
                                                   </div>
+
+
                                                   <div class="timeline-body">
                                                       <div class="timeline-body-arrow"> </div>
                                                       <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري  الثاني </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                                </div>
+                                                          <div class="timeline-body-head-caption">
+                                                              <span class="timeline-body-alerttitle font-dark">التقرير الدوري  الثاني </span>
+                                                              <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
                                                           </div>
+
+                                                          <div class="timeline-body-head-actions">
+                                                                  <div class="btn-group dropup">
+                                                                        <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                            <i class="fa fa-eye"></i>
+                                                                            </a>
+                                                                  </div>
+                                                          </div>
+
                                                       </div>
-                                                      </div>
+
+
                                                       <div class="timeline-body-content">
                                                       <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
                                                       </div>
@@ -545,10 +550,11 @@
                                           @if(!$exist1)
                                            <div class="timeline-item">
                                               <div class="timeline-badge">
-                                                 <div class="timeline-icon">
-                                                    <i class="icon-docs font-red"></i>
-                                                 </div>
+                                                     <div class="timeline-icon">
+                                                        <i class="icon-docs font-red"></i>
+                                                     </div>
                                               </div>
+
                                               <div class="timeline-body">
                                                  <div class="timeline-body-arrow"> </div>
                                                  <div class="timeline-body-head">
@@ -559,20 +565,26 @@
                                                               @if($cycle->name == 'التقرير الدوري الثاني')
                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
                                                                @endif
-                                                           @endforeach </span>
+                                                           @endforeach
+                                                       </span>
                                                     </div>
+
                                                     <div class="timeline-body-head-actions">
                                                        <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
                                                        <i class="fa"></i>
                                                        </button>
                                                     </div>
                                                  </div>
-                                                 <div class="timeline-body-content"><span class="font-red">     لم يتم إرسال التقرير / البحث</span>
+
+                                                 <div class="timeline-body-content"><span class="font-red">  لم يتم إرسال التقرير / البحث</span>
                                                  </div>
                                               </div>
                                            </div>
                                           @endif
                                           <!-- END TIMELINE ITEM -->
+
+
+
 
 
 
@@ -591,19 +603,20 @@
                                                   <div class="timeline-body">
                                                       <div class="timeline-body-arrow"> </div>
                                                       <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثالث </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                                </div>
+                                                                  <div class="timeline-body-head-caption">
+                                                                      <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثالث </span>
+                                                                      <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+                                                                  </div>
                                                           </div>
+                                                      <div class="timeline-body-head-actions">
+                                                              <div class="btn-group dropup">
+                                                                    <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                        <i class="fa fa-eye"></i>
+                                                                        </a>
+                                                              </div>
                                                       </div>
-                                                      </div>
+
+
                                                       <div class="timeline-body-content">
                                                       <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
                                                       </div>
@@ -649,6 +662,9 @@
 
 
 
+
+
+
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
@@ -660,29 +676,37 @@
                                                       <i class="icon-docs font-blue "></i>
                                                       </div>
                                                   </div>
+
                                                   <div class="timeline-body">
                                                       <div class="timeline-body-arrow"> </div>
                                                       <div class="timeline-body-head">
-                                                      <div class="timeline-body-head-caption">
-                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الرابع </span>
-                                                          <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
-                                                      </div>
-                                                      <div class="timeline-body-head-actions">
-                                                          <div class="btn-group dropup">
-                                                                <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
-                                                                    <i class="fa fa-eye"></i>
-                                                                    </a>
-                                                                </div>
+                                                          <div class="timeline-body-head-caption">
+                                                              <span class="timeline-body-alerttitle font-dark">التقرير الدوري الرابع </span>
+                                                              <span class="timeline-body-time font-green"> تم الإرسال بتاريخ :  {{$search->created_at->format('d-m-Y')}}</span>
+
                                                           </div>
+
+                                                          <div class="timeline-body-head-actions">
+                                                              <div class="btn-group dropup">
+                                                                    <a class="btn btn-circle blue btn-sm " href="{{route('getOneSearch',$search->ID)}}"> عرض التقارير
+                                                                        <i class="fa fa-eye"></i>
+                                                                        </a>
+                                                              </div>
+                                                          </div>
+
                                                       </div>
-                                                      </div>
+
+
                                                       <div class="timeline-body-content">
                                                       <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
                                                       </div>
                                                   </div>
                                               </div>
+
                                           @endif
                                           @endforeach
+
+
                                           @if(!$exist1)
                                            <div class="timeline-item">
                                               <div class="timeline-badge">
@@ -746,7 +770,7 @@
                                                                       </a>
                                                                   </div>
                                                               </div>
-                                                          </div>
+
                                                       </div>
                                                       <div class="timeline-body-content">
                                                           <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
@@ -755,6 +779,8 @@
                                                </div>
                                           @endif
                                           @endforeach
+
+
                                           @if(!$exist1)
                                               <div class="timeline-item">
                                                         <div class="timeline-badge">
@@ -895,7 +921,7 @@
                                                                         </a>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+
                                                         </div>
                                                         <div class="timeline-body-content">
                                                             <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
@@ -904,6 +930,7 @@
                                                     </div>
                                              @endif
                                              @endforeach
+
                                              @if(!$exist1)
                                                  <div class="timeline-item">
                                                      <div class="timeline-badge">
@@ -1182,7 +1209,7 @@
                                                                          </a>
                                                                      </div>
                                                                  </div>
-                                                             </div>
+
                                                          </div>
                                                          <div class="timeline-body-content">
                                                              <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
