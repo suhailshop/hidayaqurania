@@ -54,7 +54,7 @@
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> {{$registration->Fistname}} {{$registration->LastName}}</div>
+                            <div class="profile-usertitle-name"> {{$registration->Fistname}}</div>
                                 <div class="profile-usertitle-job"> باحث </div>
                             </div>
 
@@ -137,14 +137,14 @@
 
 
                                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">الاسم الأول </label>
+                                                        <label class="col-md-2 control-label">الاسم الثلاثي </label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الاسم كاملا" data-container="body"></i>
-                                                                <input required value="{{$registration->Fistname}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
+                                                                <input required value="{{$registration->Fistname}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم الثلاثي" name="firstname" />
                                                                 @if ($errors->has('firstname'))
                                                                     <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال الاسم '}}</strong>
+                                                            <strong>{{ 'المرجو ادخال الاسم الثلاثي '}}</strong>
                                                             </span>
                                                                 @endif
                                                             </div>
@@ -153,7 +153,7 @@
 
 
 
-                                                    <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
+                                                  {{--  <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
                                                         <label class="col-md-2 control-label">اللقب</label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
@@ -166,7 +166,7 @@
                                                                 @endif
                                                             </div>
                                                     </div>
-                                                    </div>
+                                                    </div>--}}
 
 
 

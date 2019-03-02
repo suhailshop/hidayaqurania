@@ -145,7 +145,7 @@
                                 <div class="form-group">  <div class="col-md-12">
                                         <label class="control-label visible-ie8 visible-ie9">مدة البرنامج</label>
 
- 
+
                                         <select required class="form-control placeholder-no-fix" name="ProgramDuration">
 
                                             <option disabled value="">اختر مدة الدراسة</option>

@@ -25,6 +25,17 @@
 
 
 
+
+{{--
+            <li class="nav-item  ">
+                <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
+                    <i class="icon-docs"></i>
+                    <span class="title">البحوث</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>--}}
+
+
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -129,7 +140,7 @@
                                                                    <?php
                                                                    $isAssigned = false;
                                                                    $arr = array();
-                                                                   foreach($search->reviewerSearch as $rev)
+                                                                   foreach($search->reviewersearch as $rev)
                                                                    {
                                                                        array_push($arr,$rev->reviewer);
                                                                    }

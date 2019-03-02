@@ -341,7 +341,12 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الجامعة " data-container="body"></i>
-                                                                <input required value="{{$registration->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" />
+ 
+                                                                <select name="University" required class="form-control">
+                                                                    @foreach($universities as $uni)
+                                                                        <option @if($registration->University==$uni->ID) selected @endif value="{{$uni->ID}}">{{$uni->Name}}</option>
+                                                                    @endforeach
+                                                                </select>
 
                                                             @if ($errors->has('University'))
                                                                     <span class="help-block">
