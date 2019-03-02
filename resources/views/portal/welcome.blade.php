@@ -261,7 +261,7 @@
          </a>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allSupervisorReports')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="#">
             <div class="visual">
                <i class="fa fa-briefcase"></i>
             </div>
@@ -274,7 +274,7 @@
          </a>
       </div>
       <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allbookssearcher')}}">
+         <a class="dashboard-stat dashboard-stat-v2 yellow" href="{{route('allbookssupervisor')}}">
             <div class="visual">
                <i class="fa fa-graduation-cap"></i>
             </div>

@@ -49,6 +49,7 @@
     
 <form action="{{route('addSearchPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
+    @csrf
             <div class="col-md-12">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet light portlet-fit portlet-form ">
@@ -98,14 +99,16 @@
                                         </div>
                                     </div>
 
+
+
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
-                                            <label>القسم *</label>
+                                            <label>الفصل *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <select name="division" required id="division1" class="form-control">
-                                                    <option selected disabled>اختر القسم </option>
+                                                    <option selected disabled>اختر الفصل </option>
                                                     @foreach($divisions as $division)
                                                         <option value="{{$division->ID}}">{{$division->Name}}</option>
                                                     @endforeach
@@ -120,7 +123,8 @@
                                             <label>المبحث *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select name="divisionunit" id="divisionunit" class="form-control" >
+                                                <select name="divisionunit" required id="divisionunit" class="form-control" >
+                                                    <option selected disabled>اختر المبحث </option>
                                                     @foreach($divisionunits as $divisionunit)
                                                         <option value="{{$divisionunit->id}}">{{$divisionunit->Name}}</option>
                                                     @endforeach
@@ -176,13 +180,14 @@
      <!-- BEGIN PAGE LEVEL SCRIPTS -->
      <script src="{!! asset('assets/pages/scripts/form-validation.min.js') !!}" type="text/javascript"></script>
      <!-- END PAGE LEVEL SCRIPTS -->
+
      <script>
             
           
           $('#division1').change(function() {
             var i=$('#division1').val();
                $.ajax({
-                   url: ''+ {{public_path()}}+ '/portal/searcher/getdivisionunit/'+$('#division1').val(),
+                   url: 'http://localhost/hidayat/hidayaqurania/public/portal/searcher/getdivisionunit/'+$('#division1').val(),
                    type: 'GET',
                    data: { },
                    success: function(response)
@@ -193,5 +198,6 @@
           });
         
    </script>
+
     @endsection
 @endsection

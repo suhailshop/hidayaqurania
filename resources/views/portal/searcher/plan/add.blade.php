@@ -70,7 +70,7 @@
                                             <label>تاريخ البداية *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="date" class="form-control" name="StartDate" placeholder="تاريخ البداية *"/> </div>
+                                                <input type="date" min="2014-01-01"  max="2040-12-31" class="form-control"   name="StartDate" placeholder="تاريخ البداية *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -79,7 +79,7 @@
                                             <label>تاريخ النهاية *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="date" class="form-control" name="EndDate" placeholder="تاريخ النهاية *"/> </div>
+                                                <input type="date"  min="2014-01-01"  max="2040-12-31" class="form-control" name="EndDate" placeholder="تاريخ النهاية *"/> </div>
                                         </div>
                                     </div>
                                     
@@ -107,6 +107,9 @@
         </div>
         <!-- END CONTENT BODY -->
     </div>
+
+
+
     <!-- END CONTENT -->
     @section('pageScript')
     <!-- BEGIN PAGE LEVEL PLUGINS -->

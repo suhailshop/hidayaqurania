@@ -67,7 +67,8 @@
                                 <tr>
 
                                     <th class="all">الاسم</th>
-                                    <th class="all">القسم</th>
+                                     <th class="all">الفصل</th>
+
                                     <th class="all">المبحث</th>
 
                                     <th class="all">تحميل البحث</th>
@@ -85,7 +86,6 @@
                                     <td>   <a href="{{route('getOneSearch',$search->ID)}}">
                                         {{$search->Name}} </a>
                                           </td>
-
 
 
 

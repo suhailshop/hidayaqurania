@@ -169,7 +169,6 @@
 
 
 
- {{--
 
             <li class="nav-item  ">
                     <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
@@ -179,7 +178,6 @@
                         </a>
              </li>
              
-             --}}
 
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">

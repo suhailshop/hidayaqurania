@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Portal\Searcher;
 
 use App\Meeting;
 use App\Plan;
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -41,8 +42,9 @@ class MyProfilController extends Controller
         $registration = Registration::where('User',$this->user->id)->first();
         $countries = Countrie::all();
         $nationalities = Nationalitie::all();
+        $universities = Universitie::all();
         $user = Auth::user();
-        return view('portal.searcher.profil',compact('registration','user','countries','nationalities'));
+        return view('portal.searcher.profil',compact('registration','user','countries','nationalities','universities'));
     }
   
     public function editPost(Request $request){

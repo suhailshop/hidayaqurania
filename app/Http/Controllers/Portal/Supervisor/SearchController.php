@@ -60,7 +60,7 @@ class SearchController extends Controller
         
         if($request->hasFile('filename')){
             $request->validate([
-                'filename' => 'required|file|max:1024',
+                'filename' => 'file',
             ]);
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/supervisor_reports',$fileName);

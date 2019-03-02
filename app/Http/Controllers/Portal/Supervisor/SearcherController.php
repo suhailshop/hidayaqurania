@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Portal\Supervisor;
 
 use App\Nationalitie;
+use App\Plan;
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -37,9 +39,9 @@ class SearcherController extends Controller
         $idRegistration= Registration::where('User',$this->user->id)->first()->ID;
        
         $searchers = DB::table('theses')
-                    ->join('registrations','registrations.ID','=','theses.Searcher')
-                    ->join('nationalities','nationalities.ID','=','registrations.Nationalitie')
-                    ->join('countries','countries.ID','=','registrations.Countrie')
+                    ->leftJoin('registrations','registrations.ID','=','theses.Searcher')
+                    ->leftJoin('nationalities','nationalities.ID','=','registrations.Nationalitie')
+                    ->leftJoin('countries','countries.ID','=','registrations.Countrie')
                     ->where('theses.Supervisor',$idRegistration)
                     ->select('registrations.*','countries.Name as countrieName','nationalities.Name as nationalitieName','theses.Title as thesesTitle')
                     ->get();
@@ -65,8 +67,53 @@ class SearcherController extends Controller
         $searcher = Registration::where('ID',$id)->get()->first();
         $nationalities = Nationalitie::all();
         $countries = Countrie::all();
-        return view('portal.supervisor.searchers.SearcherProfile',compact('searcher' , 'nationalities' , 'countries'));
+        $universities  = Universitie::all();
+        return view('portal.supervisor.searchers.SearcherProfile',compact('searcher' , 'nationalities' , 'countries' ,'universities'));
     }
+
+
+
+    public function getSearcherAcademic($id){
+
+        $registration = Registration::where('ID',$id)->first();
+
+        $user= User::where('id', $registration->User)->first();
+
+        $countries = Countrie::all();
+        $universities = Universitie::all();
+        $searcher = Registration::where('User',$user->id)->first();
+
+        $plans = Plan::where('Searcher',$id)->get();
+        $meetings = DB::table('meetings_searchers')
+            ->join('registrations','meetings_searchers.Searcher','registrations.ID')
+            ->join('meetings','meetings_searchers.Meeting','meetings.ID')
+            ->distinct()
+            ->select('meetings.Date','meetings.Location','meetings.Name')
+            ->get();
+        // Set dates
+        $dateIni = $registration->these->BeginningDate;
+        $dateFin = date("Y-m-d");
+
+        // Get year and month of initial date (From)
+        $yearIni = date("Y", strtotime($dateIni));
+        $monthIni = date("m", strtotime($dateIni));
+
+        // Get year an month of finish date (To)
+        $yearFin = date("Y", strtotime($dateFin));
+        $monthFin = date("m", strtotime($dateFin));
+
+        // Checking if both dates are some year
+        if ($yearIni == $yearFin) {
+            $numberOfMonths = ($monthFin-$monthIni) + 1;
+        } else {
+            $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
+        }
+        $supervisors = Registration::where('Type','supervisor')->get();
+        return view('portal.supervisor.searchers.SearcherAcademic')->with('registration',$registration)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('meetings',$meetings)->with('plans', $plans)->with('enabledPlan',$searcher->EnablePlanEdit)->with('searcher', $searcher)->with('universities', $universities);
+
+    }
+
+
 
 
     
@@ -77,7 +124,7 @@ class SearcherController extends Controller
             'Note'=>$request->input('note')          
         ));
         Session::put('success_updatenote', 'تمت اضافة الملاحظات بنجاح');        
-        return redirect()->route('allSearcherSupervisor');
+        return redirect()->back();
     }
    
 }

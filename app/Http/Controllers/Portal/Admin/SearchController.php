@@ -112,7 +112,7 @@ class SearchController extends Controller
     public function addadmin2_reports(Request $request){
         if($request->hasFile('filename')){
             $request->validate([
-                'filename' => 'required|file|max:1024',
+                'filename' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/admin2_reports',$fileName);

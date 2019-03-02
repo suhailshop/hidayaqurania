@@ -95,10 +95,13 @@
                                                 <input type="text" class="form-control" name="alias" value="{{$search->Alias}}" placeholder="الوصف *"/> </div>
                                         </div>
                                     </div>
+
+
+
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
-                                                <label>القسم</label>
+                                                <label>الفصل *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <select name="division" id="division1" class="form-control">
@@ -195,7 +198,7 @@
           $('#division1').change(function() {
             var i=$('#division1').val();
                $.ajax({
-                   url: ''+ {{public_path()}}+ '/portal/searcher/getdivisionunit/'+$('#division1').val(),
+                   url: 'http://localhost/hidayat/hidayaqurania/public/portal/searcher/getdivisionunit/'+$('#division1').val(),
                    type: 'GET',
                    data: { },
                    success: function(response)

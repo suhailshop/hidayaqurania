@@ -232,6 +232,8 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/supervisor/addsupervisor_reports','Supervisor\SearchController@addsupervisor_reports')->name('addsupervisor_reports');
 
     Route::get('/supervisor/getSearcherProfile/{id}','Supervisor\SearcherController@getSearcherProfile')->name('getSearcherProfile');
+    Route::get('/supervisor/getSearcherAcademic/{id}','Supervisor\SearcherController@getSearcherAcademic')->name('getSearcherAcademic');
+
 
     Route::get('/supervisor/reports','Supervisor\ReportController@index')->name('allSupervisorReports');
     Route::get('/supervisor/addReport','Supervisor\ReportController@add')->name('addSupervisorReport');

@@ -54,7 +54,7 @@
                                 <tr>
 
                                     <th class="all">الاسم</th>
-                                    <th class="all">القسم </th>
+                                    <th class="all">الفصل </th>
                                     <th class="all">المبحث </th>
 
                                      <th class="all">تحميل البحث</th>
@@ -89,7 +89,7 @@
                                             @endif                                    
                                         </td>--}}
                                     <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
+                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
 
                                     </td>
 

@@ -60,7 +60,7 @@ class ReportController extends Controller
         $report->Status = "yes";
         if($request->hasFile('URL')){
             $request->validate([
-                'URL' => 'required|file|max:1024',
+                'URL' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->URL->getClientOriginalExtension();
             
@@ -81,7 +81,7 @@ class ReportController extends Controller
         $fileName = $request->input('URL');
         if($request->hasFile('URL')){
             $request->validate([
-                'URL' => 'required|file|max:1024',
+                'URL' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->URL->getClientOriginalExtension();
             $request->URL->storeAs('public/searchersreports',$fileName);

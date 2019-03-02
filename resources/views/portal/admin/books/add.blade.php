@@ -17,9 +17,7 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
 
-            </h1>
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -29,17 +27,17 @@
                         </li>
                         <li>
                                 <i class="icon-docs"></i>
-                                 <a href="{{route('allBook')}}">إدارة الكتب</a>
+                                 <a href="{{route('allBook')}}">إدارة المصادر العلمية</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>كتاب جديد</span>
+                            <span>مصدر علمي جديد</span>
                         </li>
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة كتاب جديد</h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">إضافة مصدر علمي جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالكتاب :
             </div>
 <div class="row">
@@ -62,7 +60,7 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="name"  placeholder="اسم الكتاب *"/> </div>
+                                                <input type="text" class="form-control" name="name"  placeholder="اسم المرجع  *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -70,7 +68,7 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="author" placeholder="اسم الكاتب *"/> </div>
+                                                <input type="text" class="form-control" name="author" placeholder="المؤلف *"/> </div>
                                         </div>
                                     </div>
                                     
@@ -79,7 +77,7 @@
                                         <div class="col-md-12">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" id="mask_isbn" class="form-control" name="isbn"  placeholder="رقم ISBN *"/> </div>
+                                                <input type="text"  class="form-control" name="isbn"  placeholder="الوصف  *"/> </div>
                                         </div>
                                     </div>
 
@@ -101,7 +99,7 @@
                                         <div class="form-actions">
                                             <div class="row">
                                                 <div class="col-md-offset-3 col-md-9">
-                                                    <button type="submit" class="btn green">تأكيد</button>
+                                                    <button type="submit" class="btn blue">تأكيد</button>
                                                     <button type="reset" class="btn default">الغاء</button>
                                                 </div>
                                             </div>

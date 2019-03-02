@@ -51,7 +51,7 @@ class SearchController extends Controller
         $regid = Registration::where('User',$this->user->id)->first();
         if($request->hasFile('filename')){
             $request->validate([
-                'filename' => 'required|file|max:1024',
+                'filename' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/reviewers_reports',$fileName);

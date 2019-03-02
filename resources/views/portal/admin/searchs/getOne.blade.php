@@ -129,6 +129,10 @@
 
 
                                                     <form role="form" method="POST" action="#" >
+
+                                                        <span class="badge badge-info">تاريخ ووقت الإرسال : {{$search->created_at}} </span>
+
+                                                        <br> <br>
                                                             <div class="form-group">
                                                                 <label class="control-label ">الاسم </label>
                                                                 <input  value="{{$search->Name}}" readonly class="form-control placeholder-no-fix" type="text"  />
@@ -152,7 +156,7 @@
                                                             </div> --}}
 
                                                             <div class="form-group">
-                                                                    <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل الملف</a>
+                                                                    <a class="btn blue btn-block" href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل نسخة البحث</a>
                                                             </div> 
                                                             <div class="form-group">
                                                                     <label class="control-label">ملاحظات المشرف</label>
@@ -477,7 +481,7 @@
                                                                 <td>
 
                                                                     <!-- تفاصيل تقرير الباحث -->
-                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
+                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
                                                                         @if(count($search->searchers_reports)>0)
                                                                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal">
                                                                                عرض تقرير الباحث
@@ -569,6 +573,8 @@
 
 
                                                                     <!-- تفاصيل تقرير المشرف -->
+                                                                    @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id))
+
                                                                     @if(count($search->supervisors_reports)>0)
                                                                         <button type="button" class="btn  btn-info" data-toggle="modal" data-target="#supervisormodal">
                                                                        عرض تقرير المشرف
@@ -638,13 +644,14 @@
                                                                     @else
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
                                                                     @endif
+                                                                    @endif
 
 
                                                                 </td>
                                                             </tr>
 
 
-                                                            <!-- تقرير المراجع -->
+                                                            <!-- تقرير الباحث المساعد -->
                                                             <tr>
                                                                 <td> تقرير الباحث المساعد </td>
                                                                 <td>@if(!empty($search->reviewers_reports[0]))
@@ -656,6 +663,8 @@
 
 
                                                                     <!-- تفاصيل تقرير الباحث المساعد -->
+
+                                                                    @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) ||  auth()->user()->hasRole('admin',auth()->user()->role_id))
 
                                                                     @if(count($search->reviewers_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewermodal">
@@ -776,13 +785,15 @@
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
                                                                     @endif
+                                                                    @endif
+
                                                                 </td>
                                                             </tr>
 
 
                                                             <!-- تقرير الإدارة -->
                                                             <tr>
-                                                                <td> تقرير الإدارة </td>
+                                                                <td> تقرير اللجنة العلمية </td>
                                                                 <td>
                                                                     @if(!empty($search->admin2_reports[0]))
                                                                      تم الارسال من طرف : {{$search->admin2_reports[0]->admin2}} @endif</td>
