@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Registration;
@@ -24,7 +25,7 @@ class SupervisorController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/');}            
+                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -33,7 +34,8 @@ class SupervisorController extends Controller
     public function index(){
 
         $supervisors = Registration::where('Type','supervisor')->get();
-        return view('portal.admin.supervisors.index')->with('supervisors',$supervisors);
+        $universities = Universitie::all();
+        return view('portal.admin.supervisors.index')->with('supervisors',$supervisors)->with('universities' , $universities );
     }
 
     public function add(){

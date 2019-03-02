@@ -28,7 +28,7 @@ class SearchController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='student' || $role->name=='admin' || $role->name=='admin2'){ return redirect('/');}            
+                if($role->name=='student' || $role->name=='admin' || $role->name=='admin2'){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -57,14 +57,17 @@ class SearchController extends Controller
 
     public function addsupervisor_reports(Request $request){
         $regid = Registration::where('User',$this->user->id)->first();
-        
+
+        $fileName = null ;
+
         if($request->hasFile('filename')){
-            $request->validate([
-                'filename' => 'required|file|max:1024',
-            ]);
+           /* $request->validate([
+                'filename' => 'file',
+            ]);*/
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/supervisor_reports',$fileName);
-        
+        }
+
         DB::table('supervisors_reports')->insert([
             'search'=>$request->input('search'),
             'supervisor'=>$regid->ID,
@@ -80,7 +83,7 @@ class SearchController extends Controller
             'filename'=>$fileName,
             'date'=>date('Y-m-d')
         ]);
-        }
+
         Session::put('success_add', 'تمت اضافة التقرير بنجاح');        
         return redirect()->route('getOneSearch',['id'=>$request->input('search')]);
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal\Admin;
 
 use App\Nationalitie;
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -27,7 +28,7 @@ class SearcherController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/');}            
+                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -39,7 +40,8 @@ class SearcherController extends Controller
         $meetings = Meeting::all();
         $supervisors = Registration::where('Type','supervisor')->get();
         $criterias = Criteria::all();
-        return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors);
+        $universities = Universitie::all();
+        return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors)->with('universities', $universities);
     }
 
     public function plandetails($id){

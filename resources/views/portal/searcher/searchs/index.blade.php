@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'البحوث')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -67,7 +67,8 @@
                                 <tr>
 
                                     <th class="all">الاسم</th>
-                                    <th class="all">القسم</th>
+                                     <th class="all">الفصل</th>
+
                                     <th class="all">المبحث</th>
 
                                     <th class="all">تحميل البحث</th>
@@ -89,12 +90,13 @@
 
 
 
-
                                     <td>{{$search->division->Name}}</td>
                                     <td>{{$search->divisionunit->Name}}</td>
 
                                     <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
+                                    
+                                   
+                                        <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>
                                     {{--<td>@if(!isset($search->Note)) لا توجد @else {{$search->Note}} @endif</td>--}}
 

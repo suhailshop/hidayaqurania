@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'الباحث المساعد')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -48,11 +48,11 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                @if($reviwer->PictureURL == null)
+                                
 
-                                @else
-                                <img src="{{ asset('storage/registrations/default.jpg') }}" class="img-responsive" alt="">
-                                @endif
+                                
+                                <img src="{{ asset('project/storage/app/public/registrations/'.$reviwer->PictureURL) }}" class="img-responsive" alt="">
+                                
                             </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->

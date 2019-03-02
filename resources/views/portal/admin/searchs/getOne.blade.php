@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'صفحة البحث')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -129,6 +129,10 @@
 
 
                                                     <form role="form" method="POST" action="#" >
+
+                                                        <span class="badge badge-info">تاريخ ووقت الإرسال : {{$search->created_at}} </span>
+
+                                                        <br> <br>
                                                             <div class="form-group">
                                                                 <label class="control-label ">الاسم </label>
                                                                 <input  value="{{$search->Name}}" readonly class="form-control placeholder-no-fix" type="text"  />
@@ -138,21 +142,21 @@
                                                                     <input  value="{{$search->Alias}}" readonly  class="form-control placeholder-no-fix" type="text"   /> 
                                                             </div>  
                                                             <div class="form-group">
-                                                                <label class="control-label">الرقم الدوري</label>
-                                                                <input  value="{{$search->Cycle}}" readonly  class="form-control placeholder-no-fix" type="text"   /> 
+                                                                <label class="control-label">التقرير الدوري رقم:</label>
+                                                                <input  value="{{$search->Cycle}}" readonly  class="form-control placeholder-no-fix" type="text"   />
                                                         </div>  
                                                             <div class="form-group">
-                                                                <label class="control-label">القسم</label>
+                                                                <label class="control-label">الفصل</label>
                                                                 <input  value="{{$search->division->Name}}" readonly class="form-control placeholder-no-fix" type="text"   /> 
                                                             </div>
 
-                                                           {{-- <div class="form-group">
+                                                            <div class="form-group">
                                                                     <label class="control-label">المبحث</label>
                                                                     <input  value="{{$search->divisionunit->Name}}" readonly  class="form-control placeholder-no-fix" type="text"   /> 
-                                                            </div> --}}
+                                                            </div>
 
                                                             <div class="form-group">
-                                                                    <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل الملف</a>
+                                                                    <a class="btn blue btn-block" href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل نسخة البحث</a>
                                                             </div> 
                                                             <div class="form-group">
                                                                     <label class="control-label">ملاحظات المشرف</label>
@@ -162,8 +166,8 @@
         
                                                             <br />
                                                             @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id))
-                                                            <a class="btn btn-primary" href="{{route('updateProgressok',['id'=>$search->ID])}}">موافقة الادارة</a>
-                                                            <a class="btn btn-danger" href="{{route('updateProgressko',['id'=>$search->ID])}}">رفض الادارة</a>
+                                                           {{-- <a class="btn btn-primary" href="{{route('updateProgressok',['id'=>$search->ID])}}">موافقة الادارة</a>
+                                                            <a class="btn btn-danger" href="{{route('updateProgressko',['id'=>$search->ID])}}">رفض الادارة</a>--}}
                                                             @endif
                                                                                                                       
                                                         </form>
@@ -184,7 +188,10 @@
                                                             </div>
                                                             <div class="form-group">
                                                                     <label class="control-label ">الجامعة</label>
-                                                                    <input  value="{{$search->searcher->University}}" readonly class="form-control placeholder-no-fix" type="text"   name="LastName" /> 
+
+                                                                    <input  @foreach($universities as $uni)
+                                                                    @if($search->searcher->University==$uni->ID) value="{{$uni->Name}}" @endif
+                                                                    @endforeach readonly class="form-control placeholder-no-fix" type="text"   name="LastName" />
                                                             </div>      
                                                                                                                    
                                                         </form>                                             
@@ -477,7 +484,7 @@
                                                                 <td>
 
                                                                     <!-- تفاصيل تقرير الباحث -->
-                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
+                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
                                                                         @if(count($search->searchers_reports)>0)
                                                                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal">
                                                                                عرض تقرير الباحث
@@ -569,6 +576,8 @@
 
 
                                                                     <!-- تفاصيل تقرير المشرف -->
+                                                                    @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id))
+
                                                                     @if(count($search->supervisors_reports)>0)
                                                                         <button type="button" class="btn  btn-info" data-toggle="modal" data-target="#supervisormodal">
                                                                        عرض تقرير المشرف
@@ -638,13 +647,14 @@
                                                                     @else
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
                                                                     @endif
+                                                                    @endif
 
 
                                                                 </td>
                                                             </tr>
 
 
-                                                            <!-- تقرير المراجع -->
+                                                            <!-- تقرير الباحث المساعد -->
                                                             <tr>
                                                                 <td> تقرير الباحث المساعد </td>
                                                                 <td>@if(!empty($search->reviewers_reports[0]))
@@ -656,6 +666,8 @@
 
 
                                                                     <!-- تفاصيل تقرير الباحث المساعد -->
+
+                                                                    @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) ||  auth()->user()->hasRole('admin',auth()->user()->role_id))
 
                                                                     @if(count($search->reviewers_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewermodal">
@@ -776,13 +788,15 @@
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
                                                                     @endif
+                                                                    @endif
+
                                                                 </td>
                                                             </tr>
 
 
                                                             <!-- تقرير الإدارة -->
                                                             <tr>
-                                                                <td> تقرير الإدارة </td>
+                                                                <td> تقرير اللجنة العلمية </td>
                                                                 <td>
                                                                     @if(!empty($search->admin2_reports[0]))
                                                                      تم الارسال من طرف : {{$search->admin2_reports[0]->admin2}} @endif</td>
@@ -796,7 +810,7 @@
 
 
                                                                     <!-- تفاصيل تقرير الإدارة -->
-                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id))
+                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id))
 
                                                                     @if(count($search->admin2_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#admin2modal">

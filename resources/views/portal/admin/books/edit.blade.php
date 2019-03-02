@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'تعديل كتاب ')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -24,9 +24,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -36,11 +33,11 @@
                         </li>
                         <li>
                                 <i class="icon-docs"></i>
-                                 <a href="{{route('allBook')}}">إدارة الكتب</a>
+                                 <a href="{{route('allBook')}}">إدارة المصادر العلمية</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>تعديل كتاب</span>
+                            <span>تعديل مصدر علمي</span>
                         </li>
                     </ul>
                 </div>
@@ -69,37 +66,37 @@
                                     <div class="form-group  margin-top-20">
                                        
                                         <div class="col-md-12">
-                                                <label>الاسم</label>
+                                                <label>اسم المرجع</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                            <input type="text" class="form-control" name="name" value="{{$book->Name}}" placeholder="اسم الكتاب *"/> </div>
+                                            <input type="text" class="form-control" name="name" value="{{$book->Name}}" placeholder="اسم المرجع *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
-                                                <label>الكاتب</label>
+                                                <label>المؤلف</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="author" value="{{$book->Author}}" placeholder="اسم الكاتب *"/> </div>
+                                                <input type="text" class="form-control" name="author" value="{{$book->Author}}" placeholder="اسم المؤلف *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
-                                                <label>رقم ISBN</label>
+                                                <label>الوصف </label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" id="mask_isbn" class="form-control" name="isbn"  value="{{$book->ISBN}}"  placeholder="رقم ISBN *"/> </div>
+                                                <input type="text"   class="form-control" name="isbn"  value="{{$book->ISBN}}"  placeholder="الوصف *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         
                                         <div class="col-md-12">
-                                                <label>رابط الكتاب</label>
+                                                <label>رابط المرجع</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="url" class="form-control" name="URL"  value="{{$book->URL}}" placeholder="رابط الكتاب *"/> </div>
+                                                <input   class="form-control" name="URL"  value="{{$book->URL}}" placeholder="رابط المرجع *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group ">
@@ -135,7 +132,7 @@
                                 <div class="form-actions">
                                         <div class="row">
                                             <div class="col-md-offset-3 col-md-9">
-                                                <button type="submit" class="btn green">تأكيد</button>
+                                                <button type="submit" class="btn blue">تأكيد</button>
                                                 <button type="reset" class="btn default">الغاء</button>
                                             </div>
                                         </div>

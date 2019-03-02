@@ -25,7 +25,7 @@ class ReportController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='admin' || $role->name=='supervisor' || $role->name=='admin2'){ return redirect('/');}            
+                if($role->name=='admin' || $role->name=='supervisor' || $role->name=='admin2'){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -60,7 +60,7 @@ class ReportController extends Controller
         $report->Status = "yes";
         if($request->hasFile('URL')){
             $request->validate([
-                'URL' => 'required|file|max:1024',
+                'URL' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->URL->getClientOriginalExtension();
             
@@ -81,7 +81,7 @@ class ReportController extends Controller
         $fileName = $request->input('URL');
         if($request->hasFile('URL')){
             $request->validate([
-                'URL' => 'required|file|max:1024',
+                'URL' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->URL->getClientOriginalExtension();
             $request->URL->storeAs('public/searchersreports',$fileName);

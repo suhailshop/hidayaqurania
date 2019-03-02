@@ -143,7 +143,7 @@
 
 
             <!-- BEGIN TOP NAVIGATION MENU -->
-            <div class="top-menu">
+            <div class="top-menu" >
                 <ul class="nav navbar-nav pull-right">
                     
                     <!-- BEGIN USER LOGIN DROPDOWN -->
@@ -159,10 +159,10 @@
                             <img alt="" class="img-circle" src="{{ asset('storage/registrations/'.auth()->user()->registration->PictureURL) }}" />
                             
                             @endif
-                            <span class="username username-hide-on-mobile">  {{auth()->user()->name }} </span>
-                            <i class="fa fa-angle-down"></i>
+                            <span class="username username-hide-on-mobile myfont" style="color: black; font-size: large">  {{auth()->user()->name }} </span>
+                            <i class="fa fa-angle-down" style="color: black;"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-default">
+                        <ul class="dropdown-menu dropdown-menu ">
                             
                             
                             <li class="myfont">

@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'اداري جديد')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -24,9 +24,7 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
 
-            </h1>
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -40,8 +38,8 @@
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة مدير جديد</h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">إضافة مدير جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالمشرف :
             </div>
 <div class="row">
@@ -60,28 +58,30 @@
                                 <div class="form-body">
 
                                         <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <label class="control-label visible-ie8 visible-ie9">اسم المستخدم :</label>
-                                                    <input class="form-control placeholder-no-fix" type="text" placeholder="اسم المستخدم" name="name" />
+                                            <label class="col-md-2 control-label">الاسم</label>
+                                            <div class="col-md-10">
+                                                     <input class="form-control placeholder-no-fix" type="text" placeholder="مثال : د. ياسين قاري" name="name" />
                                                 </div>
                                         </div>
                                         <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <label class="control-label visible-ie8 visible-ie9">البريد الالكتروني:</label>
-                                                    <input class="form-control placeholder-no-fix" type="email" placeholder="البريد الالكتروني" name="email" />
+                                            <label class="col-md-2 control-label">البريد الالكتروني</label>
+                                            <div class="col-md-10">
+                                                     <input class="form-control placeholder-no-fix" type="email" placeholder="البريد الالكتروني" name="email" />
                                                 </div>
                                         </div>
                                         <div class="form-group">
-                                                <div class="col-md-12">
-                                                    <label class="control-label visible-ie8 visible-ie9">كلمة المرور :</label>
-                                                    <input class="form-control placeholder-no-fix" type="password" placeholder="كلمة المرور" name="password" />
+                                            <label class="col-md-2 control-label">كلمة المرور</label>
+                                            <div class="col-md-10">
+                                                     <input class="form-control placeholder-no-fix" type="password" placeholder="كلمة المرور" name="password" />
                                                 </div>
                                         </div>
                                         <div class="form-group">
-                                                <div class="col-md-12">
+                                            <label class="col-md-2 control-label">نوع الحساب</label>
+                                            <div class="col-md-10">
                                                     <select name="role" class="form-control">
-                                                        <option value="admin">مدير عام</option>
-                                                        <option value="admin2">مدير جزئي</option>
+                                                        <option selected  disabled>اختر نوع الحساب</option>
+                                                        <option value="admin">حساب الإدارة العام</option>
+                                                        <option value="admin2">عضو اللجنة العلمية</option>
                                                     </select>
                                                 </div>
                                         </div>

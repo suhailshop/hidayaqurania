@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'تسجيل جديد')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
 @endsection
@@ -17,9 +17,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -38,14 +35,15 @@
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة تسجيل جديد</h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">إضافة تسجيل جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالتسجيل :
             </div>
 <div class="row">
     
 <form action="{{route('addPlanPost')}}" method="post" id="form_sample_2" class="form-horizontal" enctype="multipart/form-data">
         {{ csrf_field() }}
+    @csrf
             <div class="col-md-12">
                     <!-- BEGIN VALIDATION STATES-->
                     <div class="portlet light portlet-fit portlet-form ">
@@ -72,7 +70,7 @@
                                             <label>تاريخ البداية *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="date" class="form-control" name="StartDate" placeholder="تاريخ البداية *"/> </div>
+                                                <input type="date" min="2014-01-01"  max="2040-12-31" class="form-control"   name="StartDate" placeholder="تاريخ البداية *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -81,14 +79,14 @@
                                             <label>تاريخ النهاية *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="date" class="form-control" name="EndDate" placeholder="تاريخ النهاية *"/> </div>
+                                                <input type="date"  min="2014-01-01"  max="2040-12-31" class="form-control" name="EndDate" placeholder="تاريخ النهاية *"/> </div>
                                         </div>
                                     </div>
                                     
                                         <div class="form-actions">
                                             <div class="row">
                                                 <div class="col-md-offset-3 col-md-9">
-                                                    <button type="submit" class="btn green">تأكيد</button>
+                                                    <button type="submit" class="btn yellow">حفظ</button>
                                                     <button type="reset" class="btn default">الغاء</button>
                                                 </div>
                                             </div>
@@ -109,6 +107,9 @@
         </div>
         <!-- END CONTENT BODY -->
     </div>
+
+
+
     <!-- END CONTENT -->
     @section('pageScript')
     <!-- BEGIN PAGE LEVEL PLUGINS -->

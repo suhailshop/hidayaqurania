@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Nationalitie;
@@ -24,7 +25,7 @@ class ReviewerController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name!='admin2'){ return redirect('/');}
+                if(($role->name!='admin2') and ($role->name!='admin'))  { return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -33,7 +34,8 @@ class ReviewerController extends Controller
     public function index(){
         
         $reviewers = Registration::where('Type','reviewer')->get();
-        return view('portal.admin.reviewers.index')->with('reviewers',$reviewers);
+        $universities = Universitie::all();
+        return view('portal.admin.reviewers.index')->with('reviewers',$reviewers)->with('universities', $universities);
     }
 
 

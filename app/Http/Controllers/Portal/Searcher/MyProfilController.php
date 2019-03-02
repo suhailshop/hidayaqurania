@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Portal\Searcher;
 
 use App\Meeting;
 use App\Plan;
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -28,7 +29,7 @@ class MyProfilController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='admin' || $role->name=='supervisor' || $role->name=='admin2'){ return redirect('/');}            
+                if($role->name=='admin' || $role->name=='supervisor' || $role->name=='admin2'){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -41,8 +42,9 @@ class MyProfilController extends Controller
         $registration = Registration::where('User',$this->user->id)->first();
         $countries = Countrie::all();
         $nationalities = Nationalitie::all();
+        $universities = Universitie::all();
         $user = Auth::user();
-        return view('portal.searcher.profil',compact('registration','user','countries','nationalities'));
+        return view('portal.searcher.profil',compact('registration','user','countries','nationalities','universities'));
     }
   
     public function editPost(Request $request){

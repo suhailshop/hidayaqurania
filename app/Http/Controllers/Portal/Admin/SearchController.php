@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Committee;
@@ -33,7 +34,8 @@ class SearchController extends Controller
   
     public function getOne($id){
         $search=Search::where('ID',$id)->first();
-        return view('portal.admin.searchs.getOne',compact('search'));
+        $universities = Universitie::all();
+        return view('portal.admin.searchs.getOne',compact('search' , 'universities'));
     }
     
     public function updateProgressok($id){
@@ -67,16 +69,16 @@ class SearchController extends Controller
         $allreviewers = DB::table('registrations')
         ->join('users','registrations.User','=','users.id')
         ->join('roles','roles.id','=','users.role_id')
-        ->join('reviewerSearchs','reviewerSearchs.reviewer','=','registrations.ID')
+        ->join('reviewersearchs','reviewersearchs.reviewer','=','registrations.ID')
         ->where('roles.name','reviewer')
-        ->where('reviewerSearchs.search',$request->input('searchid'))
+        ->where('reviewersearchs.search',$request->input('searchid'))
         ->get(['registrations.id']);
 
         if(isset($reviewers)){
         foreach($allreviewers as $al){
            if(!in_array($al->id,$reviewers))
            { 
-                DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->where('reviewer',$al->id)->delete();
+                DB::table('reviewersearchs')->where('search',$request->input('searchid'))->where('reviewer',$al->id)->delete();
             }else{
                 
            }
@@ -86,21 +88,21 @@ class SearchController extends Controller
         
         if(isset($reviewers)){
             foreach($reviewers as $rev){
-                $exist= DB::table('reviewerSearchs')
+                $exist= DB::table('reviewersearchs')
                 ->where('search',$request->input('searchid'))
                 ->where('reviewer',$rev)
                 ->count();
 
                 if(empty($exist)){
-                    DB::table('reviewerSearchs')->insert(
+                    DB::table('reviewersearchs')->insert(
                         ['search' => $request->input('searchid'), 'reviewer' => $rev]
                     );
                 }else{
-                    //DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->where('reviewer',$rev)->delete();
+                    //DB::table('reviewersearchs')->where('search',$request->input('searchid'))->where('reviewer',$rev)->delete();
                 }
             }
         }else{
-            DB::table('reviewerSearchs')->where('search',$request->input('searchid'))->delete();
+            DB::table('reviewersearchs')->where('search',$request->input('searchid'))->delete();
         }
         Session::put('success_edit', 'تم اضافة المراجعين للبحث بنجاح'); 
         
@@ -110,13 +112,15 @@ class SearchController extends Controller
 
 
     public function addadmin2_reports(Request $request){
+
+        $fileName = '';
         if($request->hasFile('filename')){
-            $request->validate([
-                'filename' => 'required|file|max:1024',
-            ]);
+           /* $request->validate([
+                'filename' => 'file',
+            ]);*/
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/admin2_reports',$fileName);
-                
+        }
         DB::table('admin2_reports')->insert([
             'search'=>$request->input('search'),
             'q1'=>$request->input('q1'),
@@ -129,9 +133,12 @@ class SearchController extends Controller
             'date'=>date('Y-m-d'),
             'admin2'=>Auth::user()->name
         ]);
-        }
-        Session::put('success_edit', 'تم اضافة تقرير المدير بنجاح'); 
+
+        Session::put('success_edit', 'تم اضافة تقرير اللجنة العلمية بنجاح');
         
-        return redirect()->route('getAllSearchs');
+       // return redirect()->route('getAllSearchs');
+        //return redirect()->back();
+        return redirect()->route('getOneSearch',array('id' =>$request->input('search')));
+
     }
 }

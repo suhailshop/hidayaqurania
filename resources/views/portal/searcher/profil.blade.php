@@ -50,7 +50,7 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img src="{{ asset('storage/registrations/'.auth()->user()->registration->PictureURL) }}" class="img-responsive" alt=""> </div>
+                                <img src=" {{ asset('project/storage/app/public/registrations/'.auth()->user()->registration->PictureURL) }}" class="img-responsive" alt=""> </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
@@ -121,6 +121,13 @@
                                                 <form role="form" class="form-horizontal" action="{{route('searcherProfileEdit')}}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id_registration" value="{{$registration->ID}}" />
+                                                    
+                                                    
+                                                    
+                                                
+                                            
+                                                    
+                                                   
 
 
 
@@ -322,7 +329,7 @@
                                                     <hr>
 
 
-                                                    <h4 class="block myfont">معلومات المؤهل العلمي</h4>
+                                                    <h4 class="block myfont">معلومات  الجامعة</h4>
 
 
                                                     <div class="form-group{{ $errors->has('University') ? ' has-error' : '' }}">
@@ -330,8 +337,14 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الجامعة" data-container="body"></i>
-                                                                <input required value="{{$registration->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" />
-                                                            </div>
+
+                                                                <select name="University" required class="form-control">
+                                                                    @foreach($universities as $uni)
+                                                                        <option @if($registration->University==$uni->ID) selected @endif value="{{$uni->ID}}">{{$uni->Name}}</option>
+                                                                    @endforeach
+                                                                </select>
+
+                                                             </div>
                                                         </div>
                                                     </div>
 
@@ -355,16 +368,6 @@
 
 
 
-                                                    <div class="form-group{{ $errors->has('CertificateType') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">نوع الشهادة</label>
-                                                        <div class="col-md-10">
-                                                            <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="نوع الشهادة" data-container="body"></i>
-                                                                <input required value="{{$registration->CertificateType}}" class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
 
 
 
@@ -376,7 +379,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الدرجة العلمية" data-container="body"></i>
-                                                                <input required value="{{$registration->CertificateDegree}}" class="form-control placeholder-no-fix" type="text" placeholder="درجة الشهادة" name="CertificateDegree" />
+                                                                <input required value="{{$registration->CertificateDegree}}" class="form-control placeholder-no-fix" type="text" placeholder="مثال : دكتوراة" name="CertificateDegree" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -545,7 +548,7 @@
 
                                                                     <div class="fileinput fileinput-new" data-provides="fileinput">
                                                                         @if($registration->CV!="")
-                                                                            <a class="btn btn-primary" target="_blank" href="{{ asset('storage/CV/'.auth()->user()->registration->CV) }}" style="margin: inherit;">تحميل الملف</a>
+                                                                            <a class="btn btn-primary" target="_blank" href="{{ asset('storage/CV/'.auth()->user()->registration->CV) }}" style="margin: inherit;">تنزيل نسخة من السيرة الذاتية  </a>
                                                                         @endif
                                                                         <br />
                                                                         <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>

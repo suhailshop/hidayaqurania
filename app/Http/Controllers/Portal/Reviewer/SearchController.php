@@ -28,7 +28,7 @@ class SearchController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name!='reviewer' ){ return redirect('/');}            
+                if($role->name!='reviewer' ){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -49,13 +49,17 @@ class SearchController extends Controller
 
     public function addreviewers_reports(Request $request){
         $regid = Registration::where('User',$this->user->id)->first();
+
+        $fileName = null;
+
         if($request->hasFile('filename')){
-            $request->validate([
-                'filename' => 'required|file|max:1024',
-            ]);
+           /* $request->validate([
+                'filename' => 'required|file',
+            ]);*/
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/reviewers_reports',$fileName);
-        
+        }
+
         DB::table('reviewers_reports')->insert([
             'search'=>$request->input('search'),
             'reviewer'=>$regid->ID,
@@ -84,7 +88,7 @@ class SearchController extends Controller
             'filename'=>$fileName,
             'date'=>date('Y-m-d')
         ]);
-        }
+
         Session::put('success_edit', 'تم اضافة التقرير بنجاح');  
         return redirect()->route('getAllMySearchs');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Nationalitie;
@@ -25,7 +26,7 @@ class UserController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/');}            
+                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -88,4 +89,78 @@ class UserController extends Controller
         Session::put('success_add', 'تم اضافة المستخدم بنجاح');        
         return redirect()->route('allUser');
     }
+
+
+
+
+
+
+
+
+    public function addUserSupervisor(){
+        $universities = Universitie::all();
+        return view('portal.admin.users.addUserSupervisor', compact('universities'));
+    }
+
+
+    public function addUserSupervisorPost(Request $request){
+        $user = new User;
+        $user->name=$request->input('firstname');
+        $user->email =$request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->role_id = Role::where('name','supervisor')->first()->id;
+        $user->save();
+
+        $registration = new Registration;
+        $registration->Fistname = $user->name;
+        $registration->Type = "supervisor";
+        $registration->Status = 'yes';
+        $registration->User = $user->id;
+        $registration->Email = $request->input('email');
+        $registration->University = $request->input('university');
+        $registration->save();
+
+        Session::put('success_add', 'تم اضافة المشرف بنجاح');
+        return redirect()->route('allUser');
+    }
+
+
+
+
+
+
+
+    public function addUserReviewer(){
+        $countries = Countrie::all();
+        return view('portal.admin.users.addUserReviwer', compact('countries'));
+    }
+
+
+    public function addUserReviewerPost(Request $request){
+        $user = new User;
+        $user->name=$request->input('firstname');
+        $user->email =$request->input('email');
+        $user->password = bcrypt($request->input('password'));
+        $user->role_id = Role::where('name','reviewer')->first()->id;
+        $user->save();
+
+        $registration = new Registration;
+        $registration->Fistname = $user->name;
+        $registration->Type = "reviewer";
+        $registration->Status = 'yes';
+        $registration->User = $user->id;
+        $registration->Email = $request->input('email');
+        $registration->Countrie = $request->input('country');
+        $registration->save();
+
+        Session::put('success_add', 'تم اضافة باحث مساعد بنجاح');
+        return redirect()->route('allUser');
+    }
+
+
+
+
+
+
+
 }

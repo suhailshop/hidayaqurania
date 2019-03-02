@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'المصادر التعليمية')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -44,7 +44,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة المصادر التعليمية  بالنظام</span>
+                            <span class="caption-subject bold uppercase">لائحة المصادر العلمية  بالنظام</span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -52,11 +52,11 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="all">الاسم</th>
-                                    <th class="all">الكاتب</th>
-                                    <th class="all">رقم ISBN</th>
+                                    <th class="all">اسم المرجع</th>
+                                    <th class="all"> المؤلف</th>
+                                    <th class="all">الوصف</th>
                                     <th class="none"> صورة الغلاف</th>
-                                    <th class="all">الرابط</th>
+                                    <th class="all">رابط المرجع</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -66,10 +66,10 @@
                                     <td>{{$book->Author}}</td>
                                     <td>{{$book->ISBN}}</td>
                                     <td>
-                                        <img src="{{ url('storage/books/'.$book->PictureURL) }}" 
+                                      <div>  <img src="{{ url('storage/books/'.$book->PictureURL) }}"
                                             style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
                                     </td>
-                                    <td><a href="{{$book->URL}}">تحميل</a></td>
+                                    <td><a href="{{$book->URL}}" target="_blank">تحميل</a></td>
                                     
                                 </tr>
                                 @endforeach

@@ -23,9 +23,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -58,17 +55,16 @@
                             <thead>
                                 <tr>
                                     <th class="all">الاسم</th>
-                                    <th class="min-phone-l">الرئيس</th>
+                                    <th class="min-phone-l">مدير الجامعة</th>
                                     <th class="min-tablet">الدولة</th>
-                                    <th class="none">المدينة</th>
+                                    <th class="all">المدينة</th>
                                     <th class="none">العنوان</th>
-                                    <th class="none">الهاتف</th>
-                                    <th class="desktop">الفاكس</th>
-                                    <th class="none">الاميل</th>
-                                    <th class="none">اللوجو</th>
-                                    <th class="none">رقم العقدة</th>
+                                    <th class="all">الهاتف</th>
+                                    <th class="none">الفاكس</th>
+                                    <th class="none">البريد الالكتروني</th>
+                                     <th class="none">رقم العقدة</th>
                                     <th class="none">تاريخ العقدة</th>
-                                    <th class="desktop">الحالة</th>
+
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="all">خيارات.</th>
                                     @endif
@@ -85,14 +81,11 @@
                                     <td>{{$universitie->Phonne}}</td>
                                     <td>{{$universitie->Fax}}</td>
                                     <td>{{$universitie->Email}}</td>
-                                    <td>
-                                        <img src="{{ url('storage/universities/'.$universitie->Logo) }}" 
-                                            style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
-                                    </td>
+
                                     
                                     <td>{{$universitie->ContractID}}</td>
                                     <td>{{$universitie->ContractDate}}</td>
-                                    <td>@if($universitie->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
+
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">

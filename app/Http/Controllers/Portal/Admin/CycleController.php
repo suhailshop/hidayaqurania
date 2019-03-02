@@ -21,7 +21,7 @@ class CycleController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name!='admin' ){ return redirect('/');}            
+                if($role->name!='admin' ){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}

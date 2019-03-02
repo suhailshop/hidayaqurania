@@ -56,9 +56,8 @@
                                 <tr>
                                     <th class="min-phone-l">الاسم الكامل</th>
 
-                                    <th class="all">الجنسية</th>
-                                    <th class="all">الدولة</th>
-                                    <th class="all">المدينة</th>
+                                    <th class="all">البريد الالكتروني</th>
+
 
                                     <th class="all"> الجامعة</th>
                                     <th class="all">الكلية</th>
@@ -75,11 +74,18 @@
                                     <td>  <a href="{{route('adminSupervisorProfile',['id'=>$supervisor->ID])}}" > {{$supervisor->Fistname}} {{$supervisor->LastName}}
                                     </a> </td>
 
-                                    <td>{{$supervisor->nationalitie->Name}}</td>
-                                    <td>{{$supervisor->countrie->Name}}</td>
-                                    <td>{{$supervisor->City}}</td>
+                                    <td>{{$supervisor->Email}}</td>
 
-                                    <td>{{$supervisor->University}}</td>
+
+                                    <td>
+
+
+                                        @foreach($universities as $uni)
+                                            @if($supervisor->University==$uni->ID)  {{$uni->Name}} @endif
+                                        @endforeach
+
+
+                                    </td>
                                     <td>{{$supervisor->Faculty}}</td>
 
 
@@ -90,13 +96,13 @@
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
-                                                <li>
+                                                <li class="myfont">
                                                 <a href="#">
-                                                        <i class="fa fa-edit"></i> خيار </a>
+                                                        <i class="fa fa-edit"></i> تعديل </a>
                                                 </li>
-                                                <li>
+                                                <li class="myfont">
                                                         <a href="#">
-                                                                <i class="fa fa-edit"></i> خيار </a>
+                                                                <i class="fa fa-edit"></i> حذف </a>
                                                         </li>
                                                 
 

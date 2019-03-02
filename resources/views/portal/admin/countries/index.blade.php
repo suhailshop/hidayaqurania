@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'الدول')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -23,9 +23,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -71,7 +68,7 @@
                                     <td>{{$countrie->Name}}</td>
                                     <td>
                                         <img src="{{ url('storage/countries/'.$countrie->Flag) }}" 
-                                            style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
+                                            style="width: 29%;height: 29%;" class="img-responsive" alt=""> </div>
                                     </td>
                                     
                                     <td>@if($countrie->Status == 'yes') مفعلة @else غير مفعلة @endif</td>

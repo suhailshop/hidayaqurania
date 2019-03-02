@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Searcher;
 
+use App\Section;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -27,7 +28,7 @@ class SearchsController extends Controller
             if(Auth::user() != null)
             {
                 $role=Role::get()->where('id',$this->user->role_id)->first();
-                if($role->name=='admin' || $role->name=='supervisor' || $role->name=='admin2'){ return redirect('/');}            
+                if($role->name=='admin' || $role->name=='supervisor' || $role->name=='admin2'){ return redirect('/portal');}
                 return $next($request);
             }
             else{return redirect('/login');}
@@ -35,8 +36,11 @@ class SearchsController extends Controller
     }
     public function index(){
 
-        $searchs = Search::all();
-        return view('portal.searcher.searchs.index')->with('searchs',$searchs);
+        $id = $this->user->id ;
+        $searcherId = Registration::where('User', $id)->first()->ID;
+        $searchs = Search::where('Searcher', $searcherId)->get();
+
+         return view('portal.searcher.searchs.index')->with('searchs',$searchs);
     }
 
 
@@ -54,15 +58,16 @@ class SearchsController extends Controller
     public function add(){
        
         $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',date(now()))->get();
-        $divisionunits=Divisionunit::where('Division',1)->get();
-        $divisions = Division::all();
+         $divisionunits=Divisionunit::where('Division',1)->get();
+         $divisions = Division::all();
+
         return view('portal.searcher.searchs.add',compact('divisions','divisionunits','cycles'));
     }
     public function addPost(Request $request){
         $search = new Search;
         $search->Name = $request->input('name');
         $search->Alias = $request->input('alias');
-        $search->Division = $request->input('division');
+         $search->Division = $request->input('division');
         $search->Order = $request->input('order');
         $search->Divisionunit = $request->input('divisionunit');
         $search->Cycle = $request->input('cycle');
@@ -72,7 +77,7 @@ class SearchsController extends Controller
         $search->Progress= "تم الرفع";
         if($request->hasFile('searchURL')){
             $request->validate([
-                'searchURL' => 'required|file|max:1024',
+                'searchURL' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->searchURL->getClientOriginalExtension();
             
@@ -83,18 +88,22 @@ class SearchsController extends Controller
         Session::put('success_edit', 'تم اضافة البحث بنجاح');           
         return redirect()->route('allSearchs');
     }
+
+
+
     public function edit($id){
         $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',date(now()))->get();
         $divisionunits=Divisionunit::all();
+        $sections = Section::all();
         $search = Search::where('ID',$id)->first();
         $divisions = Division::all();
-        return view('portal.searcher.searchs.edit',compact('search','divisions','divisionunits','cycles'));
+        return view('portal.searcher.searchs.edit',compact('search','divisions','divisionunits','cycles','sections'));
     }
     public function editPost(Request $request){
         $fileName = $request->input('URL');
         if($request->hasFile('searchURL')){
             $request->validate([
-                'searchURL' => 'required|file|max:1024',
+                'searchURL' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->searchURL->getClientOriginalExtension();
             $request->searchURL->storeAs('public/searchs',$fileName);
@@ -118,13 +127,15 @@ class SearchsController extends Controller
         return redirect()->route('allSearchs');
     }
     public function addsearcher_reports(Request $request){
+
+        $fileName = null;
         if($request->hasFile('filename')){
-            $request->validate([
-                'filename' => 'required|file|max:1024',
-            ]);
+           /* $request->validate([
+                'filename' => 'file',
+            ]);*/
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/searcher_reports',$fileName);
-        
+        }
         DB::table('searchers_reports')->insert([
             'search'=>$request->input('search'),
             'q1'=>$request->input('q1'),
@@ -139,7 +150,7 @@ class SearchsController extends Controller
             'filename'=>$fileName,
             'date'=>date('Y-m-d')
         ]);
-        }
+
 
         Session::put('success_edit', 'تم اضافة التقرير  بنجاح');           
         return redirect()->route('allSearchs');

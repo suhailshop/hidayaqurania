@@ -24,9 +24,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -58,21 +55,13 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="min-phone-l">الاسم الكامل</th>
+                                    <th class="all">الاسم الكامل</th>
                                     <th class="min-tablet">الجنس</th>
-                                    <th class="none">تاريخ الازدياد</th>
-                                    <th class="none">مكان الازدياد</th>
-                                    <th class="none">الجنسية</th>
-                                    <th class="desktop">الدولة</th>
-                                    <th class="none">المدينة</th>
-                                    <th class="none">العنوان</th>
-                                    <th class="none">رقم جواز السفر</th>
-                                    <th class="none">الرقم الوطني</th>
-                                    <th class="none"> البريد الالكتروني </th>
-                                    <th class="none"> الهاتف</th>
-                                    <th class="none"> الجامعة</th>
-                                    <th class="none">الكلية</th>
-                                    <th class="none">الصورة</th>
+
+
+
+                                    <th class="all"> البريد الالكتروني </th>
+
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <th class="desktop">الحالة</th>
                                     @endif
@@ -84,46 +73,34 @@
                                 <tr>
                                     <td>{{$searcher->Fistname}} {{$searcher->LastName}}</td>
                                     <td>{{$searcher->Gender}}</td>
-                                    <td>{{$searcher->BirthDate}}</td>
-                                    <td>{{$searcher->BirthCity}}</td>
-                                    <td>{{$searcher->nationalitie->Name}}</td>
-                                    <td>{{$searcher->countrie->Name}}</td>
-                                    <td>{{$searcher->City}}</td>
-                                    <th>{{$searcher->Location}}</th>
-                                    <td>{{$searcher->PassportNumber}}</td>
-                                    <td>{{$searcher->NationalNumber}}</td>
+
                                     <td>{{$searcher->Email}}</td>
-                                    <td>{{$searcher->Phonne1}}</td>
-                                    <td>{{$searcher->University}}</td>
-                                    <td>{{$searcher->Faculty}}</td>
-                                    <td>
-                                        <img src="{{ url('storage/registrations/'.$searcher->PictureURL) }}" 
-                                            style="width: 39%;height: 39%;" class="img-responsive" alt=""> </div>
-                                    </td>
+
+
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))        
                                     <td>
-                                            <div class="btn-group pull-right">
+                                            <div class="btn-group myfont pull-right">
                                                     <button class="btn red btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">{{$searcher->Status}}
                                                         <i class="fa fa-angle-down"></i>
                                                     </button>
-                                                    <ul class="dropdown-menu pull-right">
-                                                        <li>
+                                                    <ul class="dropdown-menu pull-right myfont">
+                                                        <li class="myfont">
                                                         <a href="{{route('editStatusSubmission',['id'=>$searcher->ID,'status'=>'مفعل'])}}" type="button">
                                                         <i class="fa fa-check"></i>مفعل </a>
                                                         </li>
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSubmission',['id'=>$searcher->ID,'status'=>'مرشح أولي'])}}" type="button">
                                                         <i class="fa fa-angle-up"></i>مرشح أولي </a>
                                                         </li>
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSubmission',['id'=>$searcher->ID,'status'=>'مرشح نهائي'])}}" type="button">
                                                         <i class="fa fa-angle-double-up"></i>مرشح نهائي </a>
                                                         </li>
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSubmission',['id'=>$searcher->ID,'status'=>'مستبعد'])}}" type="button">
                                                         <i class="fa fa-sign-out"></i>مستبعد </a>
                                                         </li>
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSubmission',['id'=>$searcher->ID,'status'=>'موقف'])}}" type="button">
                                                         <i class="fa fa-stop"></i>موقف </a>
                                                         </li>
@@ -134,22 +111,22 @@
                                     
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
                                                  
-                                                <li>
+                                                <li  class="myfont">
                                                 <a href="{{route('getSubmission',$searcher->ID)}}" >
                                                                 <i class="fa fa-user"></i> عرض صفحة المتقدم
                                                             </a></li>
                                                   @if(auth()->user()->hasRole('admin',auth()->user()->role_id))        
-                                                            <li>
+                                                            <li  class="myfont">
                                                 <a href="#" type="button" data-toggle="modal" data-target="#exampleModal">
                                                     <i class="fa fa-check"></i> تسجيل حضور </a>
                                                 </li>
 
-                                                <li>
+                                                <li  class="myfont">
                                                 <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2">
                                                     <i class="fa fa-balance-scale"></i>  تنقيط المعايير </a>
                                                 </li>
