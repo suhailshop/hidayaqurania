@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'الباحث المساعد')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->

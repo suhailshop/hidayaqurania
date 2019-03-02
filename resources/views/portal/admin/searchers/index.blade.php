@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'الباحثين')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -87,34 +87,45 @@
 
                                  {{--   <td>{{$searcher->countrie->Name}}</td>--}}
 
-                                    <td>{{$searcher->University}}</td>
+                                    <td>
+
+
+                                            @foreach($universities as $uni)
+                                                @if($searcher->University==$uni->ID)  {{$uni->Name}} @endif
+                                            @endforeach
+
+
+                                    </td>
+
+
+
                                     <td>{{$searcher->Faculty}}</td>
 
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                             <div class="btn-group pull-right">
-                                                    <button class="btn red btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">{{$searcher->Status}}
+                                                    <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">{{$searcher->Status}}
                                                         <i class="fa fa-angle-down"></i>
                                                     </button>
                                                     <ul class="dropdown-menu pull-right">
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'غير مفعل'])}}" type="button">
                                                         <i class="fa fa-close"></i>غير مفعل </a>
                                                         </li>
                                                         <li>
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'مرشح أولي'])}}" type="button">
                                                         <i class="fa fa-angle-up"></i>مرشح أولي </a>
                                                         </li>
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'مرشح نهائي'])}}" type="button">
                                                         <i class="fa fa-angle-double-up"></i>مرشح نهائي </a>
                                                         </li>
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'مستبعد'])}}" type="button">
                                                         <i class="fa fa-sign-out"></i>مستبعد </a>
                                                         </li>
-                                                        <li>
+                                                        <li  class="myfont">
                                                         <a href="{{route('editStatusSearcher',['id'=>$searcher->ID,'status'=>'موقف'])}}" type="button">
                                                         <i class="fa fa-stop"></i>موقف </a>
                                                         </li>
@@ -143,19 +154,16 @@
                                                 @endif
                                                            
                                                  @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                                 <li>
+                                                 <li  class="myfont">
                                                 <a href="#" type="button" data-toggle="modal" data-target="#exampleModal{{$searcher->ID}}">
                                                     <i class="fa fa-check"></i> تسجيل حضور </a>
                                                 </li>
-                                                <li>
-                                                <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal1{{$searcher->ID}}">
-                                                    <i class="fa fa-black-tie"></i>  الاطروحة</a>
-                                                </li>
 
-                                                <li>
+{{--
+                                                <li  class="myfont">
                                                 <a href="#"  type="button" data-toggle="modal" data-target="#exampleModal2{{$searcher->ID}}">
                                                     <i class="fa fa-balance-scale"></i>  تنقيط المعايير </a>
-                                                </li>
+                                                </li>--}}
                                                 @endif
 
                                             </ul>

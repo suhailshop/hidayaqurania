@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'حسابي')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -64,7 +64,7 @@
                                    
                                     <li class="active">
                                             <a href="{{route('supervisorProfile')}}">
-                                            <i class="icon-settings"></i> تعديل معلوماتي الشخصية </a>
+                                            <i class="icon-settings"></i>  معلوماتي الشخصية </a>
                                     </li>
                                 </ul>
                             </div>
@@ -92,7 +92,7 @@
                                                 <a href="#tab_1_2" data-toggle="tab">تغيير الصورة</a>
                                             </li>
                                             <li>
-                                                <a href="#tab_1_3" data-toggle="tab">معلومات الحساب</a>
+                                                <a href="#tab_1_3" data-toggle="tab">تغيير الرقم السري</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -371,22 +371,6 @@
                                                         </div>
                                                     </div>
 
-
-                                                    <div class="form-group{{ $errors->has('CertificateType') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">الشهادة</label>
-                                                        <div class="col-md-10">
-                                                            <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="الشهادة " data-container="body"></i>
-                                                                <input required value="{{$registration->CertificateType}}" class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" />
-
-                                                            @if ($errors->has('CertificateType'))
-                                                                    <span class="help-block">
-                                                    <strong>{{ 'المرجو ادخال الشهادة '}}</strong>
-                                                    </span>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
 
 

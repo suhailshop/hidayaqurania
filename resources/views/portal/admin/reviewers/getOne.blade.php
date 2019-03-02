@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'محكم')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -31,7 +31,7 @@
                     </li>
                     <li>
                             <i class="icon-user"></i>
-                        <span>معلومات المحكم</span>
+                        <span>معلومات الباحث المساعد</span>
                     </li>
                 </ul>
             </div>

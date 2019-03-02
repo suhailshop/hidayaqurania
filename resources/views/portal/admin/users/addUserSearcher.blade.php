@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'طالب جديد')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -144,7 +144,7 @@
                                     <label class="col-md-2">تاريخ بداية البرنامج</label>
 
                                     <div class="col-md-10">
-                                         <input required class="form-control placeholder-no-fix" type="date" autocomplete="off" placeholder="تاريخ البداية" name="BeginningDate" />
+                                         <input required class="form-control placeholder-no-fix" type="date"  min="2014-01-01"  max="2040-12-31" autocomplete="off" placeholder="تاريخ البداية" name="BeginningDate" />
                                         
                                         </div>
                                 </div>
@@ -155,7 +155,7 @@
 
                                     <div class="col-md-10">
 
-                                        <input required class="form-control placeholder-no-fix" type="date" autocomplete="off" placeholder="تاريخ النهاية" name="CompletionDate" />
+                                        <input required class="form-control placeholder-no-fix" type="date"  min="2014-01-01"  max="2040-12-31" autocomplete="off" placeholder="تاريخ النهاية" name="CompletionDate" />
                                         
                                         </div>
                                 </div>

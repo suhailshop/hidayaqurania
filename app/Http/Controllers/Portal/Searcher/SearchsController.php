@@ -103,7 +103,7 @@ class SearchsController extends Controller
         $fileName = $request->input('URL');
         if($request->hasFile('searchURL')){
             $request->validate([
-                'searchURL' => 'required|file|max:1024',
+                'searchURL' => 'required|file',
             ]);
             $fileName = "fileName".time().'.'.request()->searchURL->getClientOriginalExtension();
             $request->searchURL->storeAs('public/searchs',$fileName);
@@ -127,13 +127,15 @@ class SearchsController extends Controller
         return redirect()->route('allSearchs');
     }
     public function addsearcher_reports(Request $request){
+
+        $fileName = null;
         if($request->hasFile('filename')){
-            $request->validate([
+           /* $request->validate([
                 'filename' => 'file',
-            ]);
+            ]);*/
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/searcher_reports',$fileName);
-        
+        }
         DB::table('searchers_reports')->insert([
             'search'=>$request->input('search'),
             'q1'=>$request->input('q1'),
@@ -148,7 +150,7 @@ class SearchsController extends Controller
             'filename'=>$fileName,
             'date'=>date('Y-m-d')
         ]);
-        }
+
 
         Session::put('success_edit', 'تم اضافة التقرير  بنجاح');           
         return redirect()->route('allSearchs');

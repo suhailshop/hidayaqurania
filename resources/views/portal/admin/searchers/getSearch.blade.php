@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'حساب الباحث')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -86,7 +86,8 @@
                                                 @if(empty($registration->Code))
                                                     لا يوجد رقم للباحث <i class="icon-plus"></i>
                                                 @else
-                                                   رقم الباحث : {{$registration->Code}} <i class="fa fa-edit"></i>
+                                                    <span class="rtl" style="direction: rtl;">   رقم الباحث : {{$registration->Code}} <i class="fa fa-edit"></i>
+ </span>
                                                 @endif
                                             </a>
                                     </li>

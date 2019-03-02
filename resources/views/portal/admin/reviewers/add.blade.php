@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'مراجع جديد')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -33,17 +33,17 @@
                         </li>
                         <li>
                                 <i class="icon-like"></i>
-                                 <a href="{{route('allReviewer')}}">إدارة  المحكمين</a>
+                                 <a href="{{route('allReviewer')}}">إدارة  الباحثين المساعدون</a>
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>محكم جديد</span>
+                            <span>باحث مساعد جديد</span>
                         </li>
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
             <div class="m-heading-1 border-yellow m-bordered">
-                <h3 class="myfont">إضافة محكم جديد</h3>
+                <h3 class="myfont">إضافة باحث مساعد جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالمراجع :
             </div>
 <div class="row">

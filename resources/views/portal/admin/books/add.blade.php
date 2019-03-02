@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'كتاب جديد')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
 @endsection
@@ -56,16 +56,18 @@
                                         <button class="close" data-close="alert"></button> لديك بعض الاخطاء في النموذج . يرجى مراجعة أدناه. </div>
                                    
                                     <div class="form-group  margin-top-20">
-                                       
-                                        <div class="col-md-12">
+
+                                        <label class="col-md-2 control-label"> اسم المرجع *</label>
+                                        <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="name"  placeholder="اسم المرجع  *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        
-                                        <div class="col-md-12">
+
+                                        <label class="col-md-2 control-label">اسم المؤلف *</label>
+                                        <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="author" placeholder="المؤلف *"/> </div>
@@ -73,8 +75,9 @@
                                     </div>
                                     
                                     <div class="form-group">
-                                        
-                                        <div class="col-md-12">
+
+                                        <label class="col-md-2 control-label">الوصف *</label>
+                                        <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text"  class="form-control" name="isbn"  placeholder="الوصف  *"/> </div>
@@ -82,15 +85,17 @@
                                     </div>
 
                                     <div class="form-group">
-                                        
-                                        <div class="col-md-12">
+
+                                        <label class="col-md-2 control-label"> رابط الكتاب *</label>
+                                        <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="url" class="form-control" name="URL" placeholder="رابط الكتاب *"/> </div>
+                                                <input   class="form-control" name="URL" placeholder="مثال : http://www.book.com *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group ">
-                                            <div class="col-md-12">
+                                        <label class="col-md-2 control-label">صورة الغلاف (اختياري)</label>
+                                        <div class="col-md-10">
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
                                                     <input type="file" class="form-control" name="pictureurl" > </div>

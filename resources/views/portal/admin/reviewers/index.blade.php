@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'المراجعين')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -56,11 +56,10 @@
                                 <tr>
                                     <th class="all">الاسم الكامل</th>
 
-                                     <th class="all">الجنسية</th>
-                                    <th class="all">الدولة</th>
-                                    <th class="all">المدينة</th>
+                                     <th class="all">البريد الكتروني</th>
                                      <th class="all"> الجامعة</th>
                                     <th class="all">الكلية</th>
+                                    <th class="all">خيارات</th>
 
 
                                 </tr>
@@ -74,16 +73,22 @@
                                         </a>
                                     </td>
 
-                                    <td>{{$reviewer->nationalitie->Name}}</td>
-                                    <td>{{$reviewer->countrie->Name}}</td>
-                                    <td>{{$reviewer->City}}</td>
+                                    <td>{{$reviewer->Email}}</td>
 
-                                    <td>{{$reviewer->University}}</td>
+                                    <td>
+
+
+                                        @foreach($universities as $uni)
+                                            @if($reviewer->University==$uni->ID) {{$uni->Name}} @endif
+                                        @endforeach
+
+
+                                    </td>
                                     <td>{{$reviewer->Faculty}}</td>
 
 
 
-                                    @if(auth()->user()->hasRole('admin2',auth()->user()->role_id))
+                                    @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
                                             <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر

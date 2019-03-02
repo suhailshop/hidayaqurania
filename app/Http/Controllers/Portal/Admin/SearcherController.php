@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Portal\Admin;
 
 use App\Nationalitie;
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -39,7 +40,8 @@ class SearcherController extends Controller
         $meetings = Meeting::all();
         $supervisors = Registration::where('Type','supervisor')->get();
         $criterias = Criteria::all();
-        return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors);
+        $universities = Universitie::all();
+        return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors)->with('universities', $universities);
     }
 
     public function plandetails($id){

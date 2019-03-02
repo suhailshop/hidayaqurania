@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Nationalitie;
@@ -33,7 +34,8 @@ class ReviewerController extends Controller
     public function index(){
         
         $reviewers = Registration::where('Type','reviewer')->get();
-        return view('portal.admin.reviewers.index')->with('reviewers',$reviewers);
+        $universities = Universitie::all();
+        return view('portal.admin.reviewers.index')->with('reviewers',$reviewers)->with('universities', $universities);
     }
 
 

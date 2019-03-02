@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'تعديل كتاب ')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
         <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -96,7 +96,7 @@
                                                 <label>رابط المرجع</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="url" class="form-control" name="URL"  value="{{$book->URL}}" placeholder="رابط المرجع *"/> </div>
+                                                <input   class="form-control" name="URL"  value="{{$book->URL}}" placeholder="رابط المرجع *"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group ">

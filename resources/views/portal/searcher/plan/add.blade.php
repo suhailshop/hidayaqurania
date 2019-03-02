@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'تسجيل جديد')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
 @endsection

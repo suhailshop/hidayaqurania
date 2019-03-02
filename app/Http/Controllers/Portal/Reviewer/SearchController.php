@@ -49,13 +49,17 @@ class SearchController extends Controller
 
     public function addreviewers_reports(Request $request){
         $regid = Registration::where('User',$this->user->id)->first();
+
+        $fileName = null;
+
         if($request->hasFile('filename')){
-            $request->validate([
+           /* $request->validate([
                 'filename' => 'required|file',
-            ]);
+            ]);*/
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/reviewers_reports',$fileName);
-        
+        }
+
         DB::table('reviewers_reports')->insert([
             'search'=>$request->input('search'),
             'reviewer'=>$regid->ID,
@@ -84,7 +88,7 @@ class SearchController extends Controller
             'filename'=>$fileName,
             'date'=>date('Y-m-d')
         ]);
-        }
+
         Session::put('success_edit', 'تم اضافة التقرير بنجاح');  
         return redirect()->route('getAllMySearchs');
     }

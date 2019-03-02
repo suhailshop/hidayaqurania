@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'البحوث')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -51,7 +51,11 @@
                             <span class="caption-subject bold uppercase">لائحة البحوث بالنظام  </span>
                         </div>
                         <div class="tools"> </div>
+
                     </div>
+                    <br>
+                    الرجاء تعيين باحث مساعد واحد أو أكثر لكل بحث في القائمة حتى يستطيع الباحث المساعد مشاهدة البحث ومن ثم تقييمه.
+
                     <div class="portlet-body">
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
@@ -84,7 +88,7 @@
 
 
                                      <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
+                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>
 
 
@@ -110,7 +114,7 @@
 
 
                                                        <div class="modal-header">
-                                                           <h5 class="modal-title" id="exampleModalLabel">الباحثون المساعدون</h5>
+                                                           <h5 class="modal-title myfont" id="exampleModalLabel">الباحثون المساعدون</h5>
                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                            </button>

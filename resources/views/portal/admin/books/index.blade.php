@@ -1,6 +1,6 @@
 @extends('layout.master')
 
-@section('pageTitle', 'الكتب')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
@@ -24,9 +24,6 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -36,7 +33,7 @@
                     </li>
                     <li>
                             <i class="icon-docs"></i>
-                        <span>إدارة الكتب</span>
+                        <span>إدارة المراجع العلمية</span>
                     </li>
                 </ul>
             </div>
@@ -50,7 +47,7 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة الكتب  بالنظام</span>
+                            <span class="caption-subject bold uppercase">لائحة المراجع  العلمية</span>
                         </div>
                         <div class="tools"> </div>
                     </div>
@@ -60,11 +57,10 @@
                                 <tr>
                                     <th class="all">الاسم</th>
                                     <th class="all">الكاتب</th>
-                                    <th class="all">رقم ISBN</th>
+                                    <th class="all">الوصف</th>
                                     <th class="desktop">الرابط</th>
                                     <!--<th class="none"> صورة الغلاف</th>-->
-                                    <th class="desktop">الحالة</th>
-                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) )
                                     <th class="all">خيارات.</th>
                                     @endif
                                 </tr>
@@ -75,25 +71,24 @@
                                     <td>{{$book->Name}}</td>
                                     <td>{{$book->Author}}</td>
                                     <td>{{$book->ISBN}}</td>
-                                    <td> <a href="{{$book->URL}}">تحميل</a></td>
+                                    <td> <a href="{{$book->URL}}">تنزيل</a></td>
                                     <!--<td>
                                         <img src="{{ url('storage/books/'.$book->PictureURL) }}" 
                                             style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>
                                     </td>-->
                                     
-                                    <td>@if($book->Status == 'yes') مفعلة @else غير مفعلة @endif</td>
-                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li>
+                                            <ul class="dropdown-menu pull-right myfont">
+                                                <li class="myfont">
                                                 <a href="{{route('editBook',['id'=>$book->ID])}}">
                                                         <i class="fa fa-edit"></i> تعديل </a>
                                                 </li>
-                                                <li>
+                                                <li class="myfont">
                                                 <a data-toggle="confirmation"
                                                 data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
                                                 data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"

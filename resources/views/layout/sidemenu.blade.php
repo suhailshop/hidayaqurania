@@ -188,7 +188,7 @@
                     <ul class="sub-menu">
                         <li class="nav-item  ">
                             <a href="{{route('allBook')}}" class="nav-link ">
-                                <span class="title">لائحة الكتب</span>
+                                <span class="title">لائحة المراجع</span>
                             </a>
                         </li>
 

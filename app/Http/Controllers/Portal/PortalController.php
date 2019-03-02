@@ -76,9 +76,9 @@ class PortalController extends Controller
             $id = Registration::where('User',$this->user->id)->first()->ID;
             $myreports = Supervisorsreport::where('Supervisor',$id)->get();
             $searchers = DB::table('theses')
-            ->join('registrations','registrations.ID','=','theses.Searcher')
-            ->join('nationalities','nationalities.ID','=','registrations.Nationalitie')
-            ->join('countries','countries.ID','=','registrations.Countrie')
+            ->leftJoin('registrations','registrations.ID','=','theses.Searcher')
+            ->leftJoin('nationalities','nationalities.ID','=','registrations.Nationalitie')
+            ->leftJoin('countries','countries.ID','=','registrations.Countrie')
             ->where('theses.Supervisor',$id)
             ->select('registrations.*','countries.Name as countrieName','nationalities.Name as nationalitieName','theses.Title as thesesTitle')
             ->get();
@@ -116,8 +116,10 @@ class PortalController extends Controller
         $theses = These::all();
         $helps=Help::all()->sum('Price');
         $provides=Provide::all();
+        $reviwers = Registration::where('type','reviewer')->get();
         $lastsearchers= Registration::where('Type','searcher')->orderBy('created_at', 'asc')->take(7)->get();
+        $allsearchs = Search::all();
         
-        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers']));
+        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers' , 'reviwers' , 'allsearchs']));
     }
 }

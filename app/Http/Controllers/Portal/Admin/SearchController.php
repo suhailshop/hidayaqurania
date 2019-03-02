@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Committee;
@@ -33,7 +34,8 @@ class SearchController extends Controller
   
     public function getOne($id){
         $search=Search::where('ID',$id)->first();
-        return view('portal.admin.searchs.getOne',compact('search'));
+        $universities = Universitie::all();
+        return view('portal.admin.searchs.getOne',compact('search' , 'universities'));
     }
     
     public function updateProgressok($id){
@@ -110,13 +112,15 @@ class SearchController extends Controller
 
 
     public function addadmin2_reports(Request $request){
+
+        $fileName = '';
         if($request->hasFile('filename')){
-            $request->validate([
-                'filename' => 'required|file',
-            ]);
+           /* $request->validate([
+                'filename' => 'file',
+            ]);*/
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/admin2_reports',$fileName);
-                
+        }
         DB::table('admin2_reports')->insert([
             'search'=>$request->input('search'),
             'q1'=>$request->input('q1'),
@@ -129,9 +133,12 @@ class SearchController extends Controller
             'date'=>date('Y-m-d'),
             'admin2'=>Auth::user()->name
         ]);
-        }
-        Session::put('success_edit', 'تم اضافة تقرير المدير بنجاح'); 
+
+        Session::put('success_edit', 'تم اضافة تقرير اللجنة العلمية بنجاح');
         
-        return redirect()->route('getAllSearchs');
+       // return redirect()->route('getAllSearchs');
+        //return redirect()->back();
+        return redirect()->route('getOneSearch',array('id' =>$request->input('search')));
+
     }
 }

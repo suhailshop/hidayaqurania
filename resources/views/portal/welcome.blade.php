@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('pageTitle', 'الرئيسية')
+@section('pageTitle', 'الموسوعة العالمية للهدايات القرآنية')
 @section('pageStyle')
 {{--include here the style of the current page--}}
 <link href="{!! asset('assets/global/plugins/datatables/datatables.min.css') !!}" rel="stylesheet" type="text/css" />
@@ -85,15 +85,15 @@
    </div>
    <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allProvide')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allReviewer')}}">
             <div class="visual">
                <i class="fa fa-certificate"></i>
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($provides)}}">{{count($provides)}}</span>
+                  <span data-counter="counterup" data-value="{{count($reviwers)}}">{{count($reviwers)}}</span>
                </div>
-               <div class="desc"> المراجعون </div>
+               <div class="desc"> الباحثون المساعدون </div>
             </div>
          </a>
       </div>
@@ -111,7 +111,7 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allThese')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="#">
             <div class="visual">
                <i class="fa fa-comments"></i>
             </div>
@@ -124,15 +124,15 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allThese')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('getAllSearchs')}}">
             <div class="visual">
                <i class="fa fa-credit-card"></i>
             </div>
             <div class="details">
                <div class="number"> 
-                  <span data-counter="counterup" data-value="{{$helps}}">{{$helps}}</span> 
+                  <span data-counter="counterup" data-value="{{count($allsearchs)}}">{{count($allsearchs)}}</span>
                </div>
-               <div class="desc"> التنبيهات </div>
+               <div class="desc"> البحوث </div>
             </div>
          </a>
       </div>

@@ -57,14 +57,17 @@ class SearchController extends Controller
 
     public function addsupervisor_reports(Request $request){
         $regid = Registration::where('User',$this->user->id)->first();
-        
+
+        $fileName = null ;
+
         if($request->hasFile('filename')){
-            $request->validate([
+           /* $request->validate([
                 'filename' => 'file',
-            ]);
+            ]);*/
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/supervisor_reports',$fileName);
-        
+        }
+
         DB::table('supervisors_reports')->insert([
             'search'=>$request->input('search'),
             'supervisor'=>$regid->ID,
@@ -80,7 +83,7 @@ class SearchController extends Controller
             'filename'=>$fileName,
             'date'=>date('Y-m-d')
         ]);
-        }
+
         Session::put('success_add', 'تمت اضافة التقرير بنجاح');        
         return redirect()->route('getOneSearch',['id'=>$request->input('search')]);
     }
