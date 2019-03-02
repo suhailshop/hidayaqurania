@@ -104,10 +104,12 @@ class SearchController extends Controller
         }else{
             DB::table('reviewersearchs')->where('search',$request->input('searchid'))->delete();
         }
-        Session::put('success_edit', 'تم اضافة المراجعين للبحث بنجاح'); 
+        Session::put('success_edit', 'تم ارسال الأبحاث لحساب الباحث المساعد بنجاح');
         
         return redirect()->route('getAllSearchs');
     }
+
+
 
 
 

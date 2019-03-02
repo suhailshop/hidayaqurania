@@ -54,7 +54,19 @@
                             <div class="portlet-body">
                         <div class="form-body">
                                 <p class="hint">  معلومات الحساب : </p>
-                                <div class="alert alert-danger" role="alert">
+
+                            @if ($errors->email)
+                                <div>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li class="alert alert-danger">هذا البريد الالكتروني مسجل مسبقاً</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
+
+                            <div class="alert alert-danger" role="alert">
                                         <strong>ملاحظة! </strong>         المرجو الاحتفاظ بمعلومات الحساب وتزويدها الباحث المساعد الجديد
                                       </div>
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  <div class="col-md-12">

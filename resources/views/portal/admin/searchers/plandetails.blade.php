@@ -183,7 +183,13 @@
 
                                             <div class="form-group">
                                                 <label class="control-label ">الجامعة : </label>
-                                                <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->University}}" class="form-control placeholder-no-fix" type="text"   name="University" /> </div>
+                                                <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif
+
+                                                    @foreach($universities as $uni)
+                                                        @if($searcher->University==$uni->ID)  value="{{$uni->Name}}"   @endif
+                                                    @endforeach
+
+                                                class="form-control placeholder-no-fix" type="text"   name="University" /> </div>
 
                                             <div class="form-group">
                                                 <label class="control-label">المشرف : </label>

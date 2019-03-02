@@ -206,27 +206,27 @@
                                                         {{ csrf_field() }}
                                                             <input type="hidden" value="{{$search->ID}}" name="search" />
                                                             <div class="form-group">
-                                                                <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : *</label>
+                                                                <label class="control-label ">1. مدى مطابقة تقرير الطالب مع واقع عمله ؟ : *</label>
                                                                 <textarea required class="form-control " name="q1" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : *</label>
+                                                                    <label class="control-label ">2. مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : *</label>
                                                                     <textarea required class="form-control " name="q2" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">اهم الايجابيات على عمل الطالب ؟ : *</label>
+                                                                    <label class="control-label ">3. أهم الايجابيات على عمل الطالب ؟ : *</label>
                                                                     <textarea required class="form-control " name="q3" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : *</label>
+                                                                        <label class="control-label ">4. أهم المآخذ على عمل الطالب ؟  : *</label>
                                                                         <textarea required class="form-control " name="q4" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">التوصيات والمقترحات : *</label>
+                                                                    <label class="control-label ">5. التوصيات والمقترحات : *</label>
                                                                     <textarea required class="form-control " name="q5" ></textarea>
                                                                 </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">ملاحظات عامة  : *</label>
+                                                                        <label class="control-label ">6. ملاحظات عامة  : *</label>
                                                                         <textarea required class="form-control " name="note" ></textarea>
                                                             </div>
                                                             <div class="form-group">
@@ -243,45 +243,77 @@
                                                     <form role="form" method="POST" action="{{route('addsupervisor_reports')}}" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
                                                             <input type="hidden" value="{{$search->ID}}" name="search" />
+
                                                             <div class="form-group">
-                                                                <label class="control-label ">نسبة ما تم إنجازه من الرسالة : *</label>
-                                                                <textarea required class="form-control " name="q1" ></textarea>
+                                                                <label class="control-label ">1. نسبة ما تم إنجازه من الرسالة : *</label>
+                                                                 <select required class="form-control" name="q1">
+                                                                    <option  value="" selected disabled>الرجاء اختيار النسبة</option>
+                                                                    <option value="10%">10%</option>
+                                                                    <option value="20%">20%</option>
+                                                                    <option value="30%">30%</option>
+                                                                    <option value="40%">40%</option>
+                                                                    <option value="50%">50%</option>
+                                                                    <option value="60%">60%</option>
+                                                                    <option value="70%">70%</option>
+                                                                    <option value="80%">80%</option>
+                                                                    <option value="90%">90%</option>
+                                                                    <option value="100%">100%</option>
+                                                                </select>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مسوغات وتوضيحات حول نسبة الإنجاز : *</label>
+                                                                    <label class="control-label ">2. مسوغات وتوضيحات حول نسبة الإنجاز : *</label>
                                                                     <textarea required class="form-control " name="q2" ></textarea>
+
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي *
-                                                                            (ممتاز، جيد جدا، جيد، مقبول)  : </label>
-                                                                    <textarea required class="form-control " name="q3" ></textarea>
+                                                                    <label class="control-label ">3. مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي *   </label>
+                                                                 <select required class="form-control" name="q3">
+                                                                    <option  value="" selected disabled>الرجاء اختيار النسبة</option>
+                                                                    <option value="ممتاز">ممتاز</option>
+                                                                    <option value="جيد جدا">جيد جدا</option>
+                                                                    <option value="جيد">جيد</option>
+                                                                    <option value="مقبول">مقبول</option>
+
+                                                                </select>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">مدى الالتزام بتوجيهات المشرف واللجنة *
-                                                                                العلمية بالكرسي 
-                                                                                100%, 90%,...etc 
-                                                                                 : </label>
-                                                                        <textarea required class="form-control " name="q4" ></textarea>
+                                                                        <label class="control-label ">4. مدى الالتزام بتوجيهات المشرف واللجنة * </label>
+                                                                <select required class="form-control" name="q4">
+                                                                    <option  value="" selected disabled>الرجاء اختيار النسبة</option>
+                                                                    <option value="أكثر من 10%">أكثر من 10%</option>
+                                                                    <option value="أكثر من 20%">أكثر من 20%</option>
+                                                                    <option value="أكثر من 30%">أكثر من 30%</option>
+                                                                    <option value="أكثر من 40%">أكثر من 40%</option>
+                                                                    <option value="أكثر من 50%">أكثر من 50%</option>
+                                                                    <option value="أكثر من 60%">أكثر من 60%</option>
+                                                                    <option value="أكثر من 70%">أكثر من 70%</option>
+                                                                    <option value="أكثر من 80%">أكثر من 80%</option>
+                                                                    <option value="أكثر من 90%">أكثر من 90%</option>
+                                                                    <option value="100%">100%</option>
+                                                                </select>
                                                             </div>
+
+                                                        <p style="font-weight: bold">ملاحظات المشرف على عمل الباحث :</p>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">أبرز الملاحظات الإيجابية على عمل الباحث  : </label>
+                                                                    <label class="control-label ">5. أبرز الملاحظات الإيجابية على عمل الباحث  : * </label>
                                                                     <textarea required class="form-control " name="q5" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">أبرز الملاحظات السلبية على عمل الباحث : </label>
+                                                                        <label class="control-label ">6. أبرز الملاحظات السلبية على عمل الباحث : * </label>
                                                                         <textarea required class="form-control " name="q6" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">ما الصعوبات التي تواجه الباحث ( إن وجدت ) : </label>
+                                                                        <label class="control-label ">7. ما الصعوبات التي تواجه الباحث ( إن وجدت ) : * </label>
                                                                         <textarea required class="form-control " name="q7" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                            <label class="control-label ">التوصيات والمقترحات التطويرية : </label>
+                                                                            <label class="control-label ">8. التوصيات والمقترحات التطويرية : * </label>
                                                                             <textarea required class="form-control " name="q8" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                        <label class="control-label ">ملاحظات : </label>
-                                                                        <textarea required class="form-control " name="note" ></textarea>
+                                                                        <label class="control-label ">ملاحظات :  </label>
+                                                                        <textarea  class="form-control " name="note" ></textarea>
                                                             </div>
                                                             <div class="form-group">
                                                                     <label class="control-label ">رفع ملف (اختياري) </label>
@@ -347,96 +379,254 @@
                                                 <form role="form" method="POST" action="{{route('addreviewers_reports')}}" enctype="multipart/form-data">
                                                         {{ csrf_field() }}
                                                             <input type="hidden" value="{{$search->ID}}" name="search" />
+
                                                             <div class="form-group">
-                                                                <label class="control-label ">1- كفاية المصادر وأصالتها، والمراجع وحداثتها، ومدى إفادة الباحث منها، واستيعابه للدراسات السابقة. (الدرجة 1-10) : </label>
-                                                                <input required class="form-control " name="q1" type="text"  />
+                                                                <label class="control-label ">1- كفاية المصادر وأصالتها، والمراجع وحداثتها، ومدى إفادة الباحث منها، واستيعابه للدراسات السابقة. (الدرجة 1-10) : * </label>
+
+                                                                <select required class="form-control" name="q1">
+                                                                    <option value="" selected disabled>الرجاء اختيار الدرجة</option>
+
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+
+                                                                </select>
+
+
                                                             </div>
+
                                                             <div class="form-group">
-                                                                <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                <label class="control-label ">التعليقات والمبررات  : * </label>
                                                                 <textarea required class="form-control " name="q1_details" ></textarea>
                                                             </div>
+
+
                                                             <div class="form-group">
-                                                                    <label class="control-label ">2- مدى تقيد الطالب بعقيدة أهل السنة والجماعة فيما يقرره من هدايات.(الدرجة 1-10) : </label>
-                                                                    <input required class="form-control " name="q2" type="text"  />
+                                                                    <label class="control-label ">2- مدى تقيد الطالب بعقيدة أهل السنة والجماعة فيما يقرره من هدايات.(الدرجة 1-10) : * </label>
+                                                                 <select required class="form-control" name="q2">
+                                                                     <option  value="" selected disabled>الرجاء اختيار الدرجة</option>
+
+                                                                     <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
                                                             </div>
+
+
                                                             <div class="form-group">
-                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                    <label class="control-label ">التعليقات والمبررات  : * </label>
                                                                     <textarea required class="form-control " name="q2_details" ></textarea>
                                                             </div>
+
+
                                                             <div class="form-group">
-                                                                    <label class="control-label ">3- التقيد بالخطة والإجراءات الموضوعة للدراسة.(الدرجة 1-10)  : </label>
-                                                                    <input required class="form-control " name="q3" type="text"  />
+                                                                    <label class="control-label ">3- التقيد بالخطة والإجراءات الموضوعة للدراسة.(الدرجة 1-10)  * </label>
+                                                                 <select required  class="form-control" name="q3">
+                                                                     <option  value="" selected  disabled>الرجاء اختيار الدرجة</option>
+
+                                                                     <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
                                                             </div>
+
+
                                                             <div class="form-group">
-                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                    <label class="control-label ">التعليقات والمبررات * : </label>
                                                                     <textarea required class="form-control " name="q3_details" ></textarea>
                                                             </div>
+
+
+
                                                             <div class="form-group">
                                                                     <label class="control-label ">4- مراعاة ضوابط الكتابة العلمية من سلامة اللغة، ودقة الصياغة، ووضوحها، والقدرة على تنظيم المعلومات والأفكار، وعرضها بطريقة علمية، ودعمها بالأدلة المناسبة.(الدرجة 1-10) * : </label>
-                                                                    <input required class="form-control " name="q4" type="text"  />
+                                                                <select required class="form-control" name="q4">
+                                                                    <option  value="" selected disabled>الرجاء اختيار الدرجة</option>
+
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                    <label class="control-label ">التعليقات والمبررات  : * </label>
                                                                     <textarea required class="form-control " name="q4_details" ></textarea>
                                                             </div>
+
+
                                                             <div class="form-group">
-                                                                        <label class="control-label ">5- مدى التزام الباحث بضوابط النقل والاقتباس، والتحلي بالأمانة العلمية، والتزام منهج البحث العلمي وخطواته الإجرائية في التوثيق، والتخريج والحكم على الأحاديث، والترجمة للأعلام وغيرها.(الدرجة 1-10)  : </label>
-                                                                        <input required class="form-control " name="q5" type="text"  />
+                                                                        <label class="control-label ">5- مدى التزام الباحث بضوابط النقل والاقتباس، والتحلي بالأمانة العلمية، والتزام منهج البحث العلمي وخطواته الإجرائية في التوثيق، والتخريج والحكم على الأحاديث، والترجمة للأعلام وغيرها.(الدرجة 1-10)  : * </label>
+                                                                <select required class="form-control" name="q5">
+                                                                    <option  value="" selected disabled>الرجاء اختيار الدرجة</option>
+
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                        <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                        <label class="control-label ">التعليقات والمبررات  : * </label>
                                                                         <textarea required class="form-control " name="q5_details" ></textarea>
-                                                            </div><div class="form-group">
-                                                                            <label class="control-label ">6- مستوى تطبيق الباحث لمحتوى الدراسة التأصيلية والتزامه بها، وبالضوابط والإجراءات الموضوعة للمشروع.(الدرجة 1-10) * : </label>
-                                                                            <input required class="form-control " name="q6" type="text"  />
                                                             </div>
+
                                                             <div class="form-group">
-                                                                <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                            <label class="control-label ">6- مستوى تطبيق الباحث لمحتوى الدراسة التأصيلية والتزامه بها، وبالضوابط والإجراءات الموضوعة للمشروع.(الدرجة 1-10) * : </label>
+                                                                <select required class="form-control" name="q6">
+                                                                    <option  value="" selected disabled>الرجاء اختيار الدرجة</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
+                                                            </div>
+
+
+                                                            <div class="form-group">
+                                                                <label class="control-label ">التعليقات والمبررات  : * </label>
                                                                 <textarea required class="form-control " name="q6_details" ></textarea>
                                                             </div>
+
                                                             <div class="form-group">
                                                                 <label class="control-label ">7- ظهور شخصية الباحث، ومستوى ما له من تحليلات ومناقشات واستنتاجات وإضافات.(الدرجة 1-10) * : </label>
-                                                                <input required class="form-control " name="q7" type="text"  />
+                                                                <select required class="form-control" name="q7">
+                                                                    <option  value="" selected disabled>الرجاء اختيار الدرجة</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
                                                             </div>
+
+
                                                             <div class="form-group">
-                                                                 <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                 <label class="control-label ">التعليقات والمبررات  : * </label>
                                                                 <textarea required class="form-control " name="q7_details" ></textarea>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                <label class="control-label ">8- مطابقة المحتوى للعنوان، وتحقيق الباحث للأهداف، ومستوى الإضافات العلمية التي قدمها(الدرجة 1-10) : </label>
-                                                                <input required class="form-control " name="q8" type="text"  />
+                                                                <label class="control-label ">8- مطابقة المحتوى للعنوان، وتحقيق الباحث للأهداف، ومستوى الإضافات العلمية التي قدمها(الدرجة 1-10) : * </label>
+                                                                 <select required class="form-control" name="q8">
+                                                                    <option  value="" selected disabled>الرجاء اختيار الدرجة</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                <label class="control-label ">التعليقات والمبررات  : * </label>
                                                                 <textarea required class="form-control " name="q8_details" ></textarea>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                    <label class="control-label ">9- مدى ارتباط الهدايات بالواقع ودورها في حل المشكلات. (الدرجة 1-10) : </label>
-                                                                    <input required class="form-control " name="q9" type="text"  />
+                                                                    <label class="control-label ">9- مدى ارتباط الهدايات بالواقع ودورها في حل المشكلات. (الدرجة 1-10) : * </label>
+                                                                <select required class="form-control" name="q9">
+                                                                    <option  value=""  selected disabled>الرجاء اختيار الدرجة</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
                                                                 </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                    <label class="control-label ">التعليقات والمبررات  : * </label>
                                                                     <textarea required class="form-control " name="q9_details" ></textarea>
                                                             </div>
+
                                                             <div class="form-group">
-                                                                    <label class="control-label ">10- التنسيق والإخراج (الدرجة 1-10) : </label>
-                                                                    <input required class="form-control " name="q10" type="text"  />
+                                                                    <label class="control-label ">10- التنسيق والإخراج (الدرجة 1-10) : * </label>
+                                                                <select required class="form-control" name="q10">
+                                                                    <option  value="" selected disabled>الرجاء اختيار الدرجة</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
                                                                 </div>
+
                                                             <div class="form-group">
-                                                                <label class="control-label ">التعليقات والمبررات  : </label>
+                                                                <label class="control-label ">التعليقات والمبررات  : *</label>
                                                                 <textarea required class="form-control " name="q10_details"></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">ملحوظات ومقترحات اضافية :  </label>
+                                                                    <label class="control-label ">ملحوظات ومقترحات اضافية : * </label>
                                                                     <textarea required class="form-control " name="q11" ></textarea>
                                                             </div>
                                                             <div class="form-group">
-                                                                    <label class="control-label ">رابط ملف البحث بعد التحديث </label>
+                                                                    <label class="control-label ">رابط ملف البحث بعد التحديث *</label>
                                                                     <input required class="form-control " name="filename" type="file"  />
                                                             </div>
                                                             <div class="form-group">
                                                                     <label class="control-label ">ملاحظات  : </label>
-                                                                    <textarea required class="form-control " name="note" ></textarea>
+                                                                    <textarea  class="form-control " name="note" ></textarea>
                                                             </div>
                                                             <button type="submit" class="btn btn-primary">تأكيد</button>
                                                 </form> 

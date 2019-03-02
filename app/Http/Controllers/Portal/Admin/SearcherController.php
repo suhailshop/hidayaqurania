@@ -84,7 +84,9 @@ class SearcherController extends Controller
         $supervisors = Registration::where('Type','supervisor')->get();
         $countries = Countrie::all();
 
-        return view('portal.admin.searchers.plandetails')->with('searcher',$searcher)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings);
+        $universities = Universitie::all();
+
+        return view('portal.admin.searchers.plandetails')->with('searcher',$searcher)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings)->with('universities' , $universities);
     }
 
     public function editPlanEnable(Request $request){
@@ -143,6 +145,7 @@ class SearcherController extends Controller
         
         $supervisors = Registration::where('Type','supervisor')->get();  
         $countries = Countrie::all();
+
         return view('portal.admin.searchers.get')->with('countries',$countries)->with('supervisors',$supervisors)->with('searcher',$searcher)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings);
     }
 
@@ -154,9 +157,10 @@ class SearcherController extends Controller
         $registration = Registration::where('ID',$id)->get()->first();
         $countries = Countrie::all();
         $nationalities = Nationalitie::all();
+        $universities = Universitie::all();
 
 
-        return view('portal.admin.searchers.getSearch', compact('registration', 'countries','nationalities'));
+        return view('portal.admin.searchers.getSearch', compact('registration', 'countries','nationalities','universities'));
 
     }
 

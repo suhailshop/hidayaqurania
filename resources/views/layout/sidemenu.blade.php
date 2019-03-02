@@ -73,9 +73,20 @@
 
 
 
+            <li class="nav-item  ">
+                <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
+                    <i class="icon-docs"></i>
+                    <span class="title">البحوث</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
 
 
-           {{-- قائمة المراجع--}}
+
+
+
+
+            {{-- قائمة المراجع--}}
             @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id))
             <li class="nav-item  ">
                 <a href="{{route('getAllMySearchs')}}" class="nav-link nav-toggle">
@@ -170,14 +181,6 @@
 
 
 
-            <li class="nav-item  ">
-                    <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
-                            <i class="icon-docs"></i>
-                            <span class="title">البحوث</span>
-                            <span class="arrow"></span>
-                        </a>
-             </li>
-             
 
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
