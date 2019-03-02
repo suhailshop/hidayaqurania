@@ -268,10 +268,10 @@
                                                         <td>{{$plan->EndDate}}</td>
                                                         <td>
                                                             @if($enabledPlan == 'true')
-                                                                <a class="btn btn-sm"  data-toggle="modal" data-target="#exampleModal1">
+                                                                <a class="btn btn-sm"  data-toggle="modal" data-target="#exampleModal1{{$plan->ID}}">
                                                                     <i class="fa fa-edit"></i> تعديل </a>
                                                             @else
-                                                                <a class="btn btn-sm"  data-toggle="modal" data-target="#exampleModal2">
+                                                                <a class="btn btn-sm"  data-toggle="modal" data-target="#exampleModal2{{$plan->ID}}">
                                                                     <i class="fa fa-edit"></i> تعديل </a>
 
                                                             @endif
@@ -280,7 +280,7 @@
 
                                                     </tr>
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal2{{$plan->ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
@@ -299,7 +299,7 @@
                                                         </div>
                                                     </div>
                                                     <!-- Modal -->
-                                                    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal fade" id="exampleModal1{{$plan->ID}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
                                                                 <form  action="{{route('editPlan2')}}" method="POST">
