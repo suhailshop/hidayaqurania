@@ -119,7 +119,7 @@
                <div class="number">
                   <span data-counter="counterup" data-value="{{count($theses)}}">{{count($theses)}}</span>
                </div>
-               <div class="desc"> الاطروحات </div>
+               <div class="desc"> الرسائل العلمية </div>
             </div>
          </a>
       </div>

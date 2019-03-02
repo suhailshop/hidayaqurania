@@ -93,7 +93,7 @@ class MyProfilController extends Controller
       
         DB::table('users')->where('ID',$request->input('id_user'))
         ->update(array(
-            'Email'=>$request->input('Email'),
+
             'Password'=>  bcrypt($request->input('Password'))      
         ));
         Session::put('success_edit', 'تم تعديل الحساب بنجاح');

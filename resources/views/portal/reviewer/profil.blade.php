@@ -249,14 +249,14 @@
 
 
                                                     <div class="form-group{{ $errors->has('NationalNumber') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">رقم الهوية الوطنية</label>
+                                                        <label class="col-md-2 control-label">رقم الهوية </label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم الهوية" data-container="body"></i>
-                                                                <input required value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" />
+                                                                <input  value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهوية فقط لمواطني ومقيمي المملكة العربية السعودية " name="NationalNumber" />
                                                                 @if ($errors->has('NationalNumber'))
                                                                     <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال رقم الهوية الوطنية'}}</strong>
+                                                            <strong>{{ 'المرجو ادخال رقم الهوية '}}</strong>
                                                         </span>
                                                                 @endif
                                                             </div>
@@ -329,7 +329,11 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الجامعة" data-container="body"></i>
-                                                                <input required value="{{$registration->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" />
+                                                                 <select name="University" required class="form-control">
+                                                                    @foreach($universities as $uni)
+                                                                        <option @if($registration->University==$uni->ID) selected @endif value="{{$uni->ID}}">{{$uni->Name}}</option>
+                                                                    @endforeach
+                                                                </select>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -351,18 +355,6 @@
 
 
 
-
-
-
-                                                    <div class="form-group{{ $errors->has('CertificateType') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">نوع الشهادة</label>
-                                                        <div class="col-md-10">
-                                                            <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="نوع الشهادة" data-container="body"></i>
-                                                                <input required value="{{$registration->CertificateType}}" class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" />
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
 
 
@@ -407,11 +399,11 @@
 
 
                                                     <div class="form-group{{ $errors->has('Phonne1') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">رقم الهاتف 1</label>
+                                                        <label class="col-md-2 control-label">رقم الجوال 1</label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم الهاتف 1" data-container="body"></i>
-                                                                <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 1" name="Phonne1" />
+                                                                <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الجوال مع الكود الدولي مثال : 966505055050 " name="Phonne1" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -426,7 +418,7 @@
                                                         <label class="col-md-2 control-label">رقم الواتس اب </label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="رقم الهاتف 2" data-container="body"></i>
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="رقم الواتس اب 2" data-container="body"></i>
                                                                 <input required value="{{$registration->Phonne2}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 2" name="Phonne2" />
                                                             </div>
                                                         </div>
@@ -482,21 +474,6 @@
                                                     <input type="hidden" name="id_user" value="{{$user->id}}" />
 
 
-
-                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label class="col-md-2 control-label">البريد الالكتروني الخاص بالحساب</label>
-                                                    <div class="col-md-10">
-                                                        <div class="input-icon right">
-                                                            <i class="fa fa-info-circle tooltips" data-original-title="البريد الالكتروني" data-container="body"></i>
-                                                            <input class="form-control placeholder-no-fix" type="email" autocomplete="off" required value="" placeholder="البريد الالكتروني" name="Email" />
-                                                            @if ($errors->has('email'))
-                                                                <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال البريد الالكتروني'}}</strong>
-                                                        </span>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
 
 
 

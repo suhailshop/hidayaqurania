@@ -73,15 +73,6 @@
 
 
 
-            <li class="nav-item  ">
-                <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
-                    <i class="icon-docs"></i>
-                    <span class="title">البحوث</span>
-                    <span class="arrow"></span>
-                </a>
-            </li>
-
-
 
 
 
@@ -112,6 +103,7 @@
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
          
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+
 
 
 
@@ -178,6 +170,15 @@
 
             @endif
 
+
+
+                <li class="nav-item  ">
+                    <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">البحوث</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
 
 
 

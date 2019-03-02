@@ -6,6 +6,7 @@ use App\Countrie;
 use App\Nationalitie;
 use App\Registration;
 use App\Role;
+use App\Universitie;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -40,8 +41,9 @@ class MyProfilController extends Controller
         $registration = Registration::where('User',$this->user->id)->first();
         $countries = Countrie::all();
         $nationalities = Nationalitie::all();
+        $universities = Universitie::all();
         $user = Auth::user();
-        return view('portal.reviewer.profil',compact('registration','user','countries','nationalities'));
+        return view('portal.reviewer.profil',compact('registration','user','countries','nationalities', 'universities'));
     }
 
     public function editPost(Request $request){
@@ -91,7 +93,6 @@ class MyProfilController extends Controller
 
         DB::table('users')->where('ID',$request->input('id_user'))
             ->update(array(
-                'email'=>$request->input('Email'),
                 'password'=>  bcrypt($request->input('Password'))
             ));
             Session::put('success_edit', 'تم تحديث الحساب بنجاح');  

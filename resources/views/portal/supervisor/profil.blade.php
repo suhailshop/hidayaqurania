@@ -49,11 +49,11 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img src="{{ asset('storage/registrations/'.auth()->user()->registration->PictureURL) }}" class="img-responsive" alt=""> </div>
+                                <img src="{{ asset('project/storage/app/public/registrations/'.auth()->user()->registration->PictureURL) }}" class="img-responsive" alt=""> </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> {{$registration->Fistname}} {{$registration->LastName}}</div>
+                            <div class="profile-usertitle-name"> {{$registration->Fistname}} </div>
                                 <div class="profile-usertitle-job"> مشرف </div>
                             </div>
                             <!-- END SIDEBAR USER TITLE -->
@@ -115,7 +115,7 @@
 
 
                                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">الاسم  </label>
+                                                        <label class="col-md-2 control-label">الاسم الثلاثي  </label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الاسم كاملا" data-container="body"></i>
@@ -424,8 +424,11 @@
 
 
 
+                                                    الرجاء إدخال رقم الجوال مع المفتاح الدولي، مثال : 966505055050
+
+                                                    <br><br>
                                                     <div class="form-group{{ $errors->has('Phonne1') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label"> هاتف 1 </label>
+                                                        <label class="col-md-2 control-label"> رقم الجوال </label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="هاتف 1 " data-container="body"></i>
@@ -463,7 +466,7 @@
 
                                                    
                                                     <div class="margiv-top-10">
-                                                        <input type="submit"  class="btn green" value="تأكيد" />  
+                                                        <input type="submit"  class="btn blue" value="حفظ" />
                                                     </div>
                                                 </form>
                                             </div>
@@ -491,7 +494,7 @@
                                                     </div>
                                                     
                                                     <div class="margin-top-10">
-                                                        <input type="submit" value="تأكيد" class="btn green" />
+                                                        <input type="submit" value="حفظ" class="btn blue" />
                                                         <input type="reset" value="الغاء" class="btn default" />
                                                     </div>
                                                 </form>
@@ -502,26 +505,23 @@
                                             <form action="{{route('supervisorProfileEditPassword')}}" method="POST">
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id_user" value="{{$user->id}}" />
-                                                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                        <label class="control-label visible-ie8 visible-ie9">البريد الالكتروني</label>
-                                                        <input class="form-control placeholder-no-fix" type="email" autocomplete="off" required value="" placeholder="البريد الالكتروني" name="Email" />
-                                                        @if ($errors->has('email'))
-                                                        <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال البريد الالكتروني'}}</strong>
-                                                        </span>
-                                                        @endif
-                                                     </div>
+
+
+
+
                                                     <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                                        <label class="control-label visible-ie8 visible-ie9">كلمة المرور</label>
-                                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" required id="register_password" placeholder="كلمة المرور" name="Password" /> 
+                                                        <label class="col-md-2 control-label"> أدخل الرقم السري الجديد </label>
+                                                        <div class="col-md-10">
+                                                        <input class="form-control placeholder-no-fix" type="password" autocomplete="off" required id="register_password" placeholder="كلمة المرور الجديدة" name="Password" />
                                                         @if ($errors->has('password'))
                                                         <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال كلمة المرور'}}</strong>
                                                         </span>
                                                         @endif
+                                                            </div>
                                                     </div>
                                                     <div class="margin-top-10">
-                                                        <input type="submit" class="btn green" value="تأكيد" />
+                                                        <input type="submit" class="btn blue" value="حفظ" />
                                                         <input type="reset" value="الغاء" class="btn default" /> 
                                                     </div>
                                                 </form>

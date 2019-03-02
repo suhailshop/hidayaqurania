@@ -156,7 +156,7 @@
                             <img alt="" class="img-circle" src="{!! asset('assets/layouts/layout2/img/avatar.png') !!}" />
                             
                             @else 
-                            <img alt="" class="img-circle" src="{{ asset('storage/registrations/'.auth()->user()->registration->PictureURL) }}" />
+                            <img alt="" class="img-circle" src="{{ asset('project/storage/app/public/registrations/'.auth()->user()->registration->PictureURL) }}" />
                             
                             @endif
                             <span class="username username-hide-on-mobile myfont" style="color: black; font-size: large">  {{auth()->user()->name }} </span>

@@ -182,10 +182,7 @@
                                                                 <label class="control-label ">الاسم  </label>
                                                                 <input  value="{{$search->searcher->Fistname}}" readonly class="form-control placeholder-no-fix" type="text"  />
                                                             </div>
-                                                            <div class="form-group">
-                                                                <label class="control-label ">اللقب </label>
-                                                                <input  value="{{$search->searcher->LastName}}" readonly class="form-control placeholder-no-fix" type="text"  /> 
-                                                            </div>
+
                                                             <div class="form-group">
                                                                     <label class="control-label ">الجامعة</label>
 
@@ -728,7 +725,7 @@
                                                                                                     <textarea readonly class="form-control " name="q9" >{{$search->searchers_reports[0]->q9}}</textarea>
                                                                                                 </div>
                                                                                                 <div class="form-group">
-                                                                                                    <label class="control-label ">رفع الملف : </label>
+                                                                                                    <label class="control-label "> الملف : </label>
                                                                                                     <a class="btn btn-primary" target="_blank" href="{{url('storage/searcher_reports/'.$search->searchers_reports[0]->filename)}}"> تقرير الباحث </a>
                                                                                                 </div>
                                                                                             </form>
@@ -826,7 +823,7 @@
                                                                                                 <textarea readonly class="form-control " name="note" >{{$search->supervisors_reports[0]->note}}</textarea>
                                                                                             </div>
                                                                                             <div class="form-group">
-                                                                                                <label class="control-label ">رفع الملف : </label>
+                                                                                                <label class="control-label "> الملف : </label>
                                                                                                 <a class="btn btn-primary" target="_blank" href="{{url('storage/supervisor_reports/'.$search->supervisors_reports[0]->filename)}}"> تقرير المشرف </a>
                                                                                             </div>
                                                                                         </form>
