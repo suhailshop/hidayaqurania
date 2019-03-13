@@ -102,12 +102,13 @@ class SupervisorController extends Controller
         $supervisor = Registration::where('ID',$id)->get()->first();
         $nationalities = Nationalitie::all();
         $countries = Countrie::all();
+       $universities = Universitie::all();
 
 
         $searchers = DB::table('theses')
-            ->join('registrations','registrations.ID','=','theses.Searcher')
-            ->join('nationalities','nationalities.ID','=','registrations.Nationalitie')
-            ->join('countries','countries.ID','=','registrations.Countrie')
+            ->leftJoin('registrations','registrations.ID','=','theses.Searcher')
+            ->leftJoin('nationalities','nationalities.ID','=','registrations.Nationalitie')
+            ->leftJoin('countries','countries.ID','=','registrations.Countrie')
             ->where('theses.Supervisor',$supervisor->ID)
             ->select('registrations.*','countries.Name as countrieName','nationalities.Name as nationalitieName','theses.Title as thesesTitle')
             ->get();
@@ -115,7 +116,7 @@ class SupervisorController extends Controller
 
 
 
-        return view('portal.admin.supervisors.profile',compact('supervisor' , 'nationalities' , 'countries'))->with('searchers',$searchers);
+        return view('portal.admin.supervisors.profile',compact('supervisor' , 'nationalities' , 'countries', 'universities'))->with('searchers',$searchers);
 
 
     }

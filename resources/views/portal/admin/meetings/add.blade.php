@@ -16,10 +16,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
 
-
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
+ 
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -38,8 +35,8 @@
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة لقاء تعريفي جديد</h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">إضافة لقاء تعريفي جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة باللقاء :
             </div>
 <div class="row">
@@ -59,7 +56,8 @@
                                    
                                     <div class="form-group  margin-top-20">
                                        
-                                        <div class="col-md-12">
+                                       <label class="col-md-2 control-label">اسم اللقاء</label>
+                                                    <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="name"  placeholder="اللقاء  *"/> </div>
@@ -67,7 +65,8 @@
                                     </div>
                                     <div class="form-group">
                                         
-                                        <div class="col-md-12">
+                                       <label class="col-md-2 control-label">تاريخ اللقاء</label>
+                                                    <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="date" class="form-control" name="date" placeholder="التاريخ *"/> </div>
@@ -76,7 +75,8 @@
                                     
                                     <div class="form-group ">
                                         
-                                         <div class="col-md-12">
+                                          <label class="col-md-2 control-label">المكان</label>
+                                                    <div class="col-md-10">
                                              <div class="input-icon right">
                                                  <i class="fa"></i>
                                                  <input type="text" class="form-control" name="location"  placeholder="المكان  *"/> </div>

@@ -52,6 +52,17 @@
                         <div class="tools"> </div>
                     </div>
                     <div class="portlet-body">
+                    
+                    
+                        <div>
+                            <a class=" btn-group  btn-group-devided" href="{{route('addBook')}}">
+                                <label class="btn btn-transparent yellow">
+                                    <i class="icon-plus"></i> إضافة مرجع علمي جديد  </label>
+                            </a>
+                        </div>
+                        <br>
+                        
+                        
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
@@ -71,7 +82,7 @@
                                     <td>{{$book->Name}}</td>
                                     <td>{{$book->Author}}</td>
                                     <td>{{$book->ISBN}}</td>
-                                    <td> <a href="{{$book->URL}}">تنزيل</a></td>
+                                    <td> <a href="{{$book->URL}}" target="_blank">تنزيل</a></td>
                                     <!--<td>
                                         <img src="{{ url('storage/books/'.$book->PictureURL) }}" 
                                             style="width: 59%;height: 59%;" class="img-responsive" alt=""> </div>

@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class ReviewerSearch extends Model 
 {
 
-    protected $table = 'reviewerSearchs';
+    protected $table = 'reviewersearchs';
     public $timestamps = true;
 
 

@@ -10,13 +10,24 @@
 
 <!-- BEGIN HEAD -->
 <head>
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-K6KWW5J');</script>
+<!-- End Google Tag Manager -->
+
+
     <meta charset="utf-8" />
     <title> @yield('pageTitle') </title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="بوابة الهدايات القرآنية" name="description" />
-    <meta content="M.Moussa, M.Badouch" name="author" />
+    <meta content="M.Moussa, M.Badouch" name="developer" />
+     <meta content="كرسي الملك عبدالله للقرآن الكريم بجامعة أم القرى" name="owner" />
 
 
 
@@ -84,7 +95,7 @@
 
  <link rel="shortcut icon" href="favicon.ico" />
 
-
+<meta name="theme-color" content="#655129" />
 </head>
 <!-- END HEAD -->
 
@@ -159,7 +170,7 @@
                             <img alt="" class="img-circle" src="{{ asset('project/storage/app/public/registrations/'.auth()->user()->registration->PictureURL) }}" />
                             
                             @endif
-                            <span class="username username-hide-on-mobile myfont" style="color: black; font-size: large">  {{auth()->user()->name }} </span>
+                            <span class="username username-hide-on-mobile myfont" style="color: black; font-size: small">  {{auth()->user()->name }} </span>
                             <i class="fa fa-angle-down" style="color: black;"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu ">
@@ -223,6 +234,3 @@
         @include('layout.sidemenu')
         @endif
         <!-- END SIDEBAR -->
-
-
-

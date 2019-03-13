@@ -77,7 +77,7 @@
 
                                     <td>{{$search->Fistname}} {{$search->LastName}}</td>
                                      <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
+                                        <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>
                                    {{-- <td>  @if($search->Progress=='تم الرفع')
                                         <span class="badge badge-warning">{{$search->Progress}}</span>

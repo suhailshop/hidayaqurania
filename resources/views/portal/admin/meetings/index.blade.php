@@ -22,10 +22,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
 
-
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
+ 
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -54,6 +51,16 @@
                         <div class="tools"> </div>
                     </div>
                     <div class="portlet-body">
+                    
+                    
+                        <div>
+                            <a class=" btn-group  btn-group-devided" href="{{route('addMeeting')}}">
+                                <label class="btn btn-transparent yellow">
+                                    <i class="icon-plus"></i> إضافة لقاء جديد  </label>
+                            </a>
+                        </div>
+                        <br>
+                        
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>

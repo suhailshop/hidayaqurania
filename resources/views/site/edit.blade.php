@@ -100,7 +100,7 @@
     </div><div class="form-group">
     <label for="exampleInputEmail1">تعديل صورة الخبر</label>
     <input type="file" name='image' class="form-control"/>
-    <img src="{{asset('uploads/'.$news->image)}}" class="img-responsive" style="max-height: 200;max-width: 250px;margin: 25px;">
+    <img src="{{asset('/project/public/uploads/'.$news->image)}}" class="img-responsive" style="max-height: 200;max-width: 250px;margin: 25px;">
     </div>
   <div class="form-group">
     <label for="exampleInputPassword1">تفاصيل الخبر</label>

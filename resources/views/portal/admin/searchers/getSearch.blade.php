@@ -162,7 +162,7 @@
 
 
                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                        <label class="col-md-2 control-label">الاسم الأول </label>
+                        <label class="col-md-2 control-label">الاسم الكامل</label>
                         <div class="col-md-10">
                             <div class="input-icon right">
                                 <i class="fa fa-info-circle tooltips" data-original-title="الاسم كاملا" data-container="body"></i>
@@ -177,22 +177,7 @@
                     </div>
 
 
-
-                    <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
-                        <label class="col-md-2 control-label">اللقب</label>
-                        <div class="col-md-10">
-                            <div class="input-icon right">
-                                <i class="fa fa-info-circle tooltips" data-original-title="اسم العائلة" data-container="body"></i>
-                                <input  disabled value="{{$registration->LastName}}"  class="form-control placeholder-no-fix" type="text" placeholder="الاسم الشخصي" name="lastname" />
-                                @if ($errors->has('lastname'))
-                                    <span class="help-block">
-                            <strong>{{ 'المرجو ادخال  اللقب'}}</strong>
-                        </span>
-                                @endif
-                            </div>
-                    </div>
-                    </div>
-
+ 
 
 
 

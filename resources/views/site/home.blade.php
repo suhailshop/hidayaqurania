@@ -45,7 +45,7 @@
 								<div class="top">
 									<p>{{str_limit($new->title,50)}}</p>
 								</div>
-							    <img src="{{asset('uploads/'.$new->image)}}" alt="{{$new->title}}">
+							    <img src="{{asset('/project/public/uploads/'.$new->image)}}" alt="{{$new->title}}">
 								<span class="more" >مشاهدة المزيد</span>
 							</div></a>
 							</div>

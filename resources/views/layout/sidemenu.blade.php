@@ -175,7 +175,7 @@
                 <li class="nav-item  ">
                     <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
                         <i class="icon-docs"></i>
-                        <span class="title">البحوث</span>
+                        <span class="title">إرسال بحث لباحث مساعد</span>
                         <span class="arrow"></span>
                     </a>
                 </li>
@@ -249,6 +249,18 @@
                 </li>
 
 --}}
+
+
+                <li class="nav-item  ">
+                    <a href="{{route('adminProfile')}}" class="nav-link nav-toggle">
+                        <i class="icon-user"></i>
+                        <span class="title">حسابي</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                
+                
+                
 
              @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
 
@@ -403,15 +415,15 @@
                     </ul>
              </li>
 
-                <li class="nav-item  ">
+                {{-- <li class="nav-item  ">
                     <a href="{{route('allAdminReports')}}" class="nav-link nav-toggle">
                             <i class="icon-notebook"></i>
                             <span class="title">التقارير</span>
                             <span class="arrow"></span>
                         </a>
-                </li>
+                </li>  --}}
 
-                <li class="nav-item  ">
+               {{-- <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="icon-credit-card"></i>
                             <span class="title">المساعدات</span>
@@ -431,10 +443,10 @@
                                 </li>
                                 @endif
                         </ul>
-                </li>
+                </li>  --}}
 
                 @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                <li class="nav-item  ">
+                {{-- <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
                             <i class="icon-chemistry"></i>
                             <span class="title">الاختبارات</span>
@@ -448,17 +460,18 @@
                                     </a>
                                 </li>
                         </ul>
-                    </li>
+                    </li> --}}
                 @endif
 
-                <li class="nav-item  ">
-                        <a href="{{route('allConfigs')}}" class="nav-link nav-toggle">
-                                <i class="icon-settings"></i>
-                                <span class="title">الاعدادات</span>
-                                <span class="arrow"></span>
-                            </a>
-                </li>
-
+               {{-- <li class="nav-item  ">
+                <a href="{{route('allConfigs')}}" class="nav-link nav-toggle">
+                    <i class="icon-settings"></i>
+                    <span class="title">
+                    </span>
+                    <span class="arrow"></span>
+                </a>
+            </li> --}}
+            
                 @endif
 
             @endif

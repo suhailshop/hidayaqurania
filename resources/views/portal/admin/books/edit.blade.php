@@ -42,8 +42,8 @@
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>تعديل معلومات الكتاب </h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">تعديل المرجع العلمي </h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالكتاب :
             </div>
 <div class="row">

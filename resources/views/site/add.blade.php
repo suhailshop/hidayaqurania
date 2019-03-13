@@ -97,6 +97,8 @@
       {{Form::open(['url'=>'add/','files'=>true,'class'=>'form-horizontal'])}}
 --}}
 <form action="{{route('addNews')}}" method="POST" class="form-horizontal" enctype="multipart/form-data">
+
+   {{ csrf_field() }}
   <div class="form-group">
     <label for="title">عنوان الخبر</label>
     <input type="text" name='title' class="form-control" placeholder="من فضلك أدخل عنوان الخبر"  required />

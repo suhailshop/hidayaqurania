@@ -60,7 +60,7 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img src="{{ asset('storage/registrations/'.$searcher->PictureURL) }}" class="img-responsive" alt=""> </div>
+                                <img src="{{ asset('project/storage/app/public/registrations/'.$searcher->PictureURL) }}" class="img-responsive" alt=""> </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
@@ -150,13 +150,10 @@
                                                     <input type="hidden" name="id_registration" value="{{$searcher->ID}}" />
                                                     <p class="hint">اسم الباحث :</p>
                                                     <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
+                                                        <label class="control-label visible-ie8 visible-ie9">الاسم الكامل</label>
                                                         <input   @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->Fistname}}" class="form-control placeholder-no-fix" type="text"  name="Fistname" />
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الاسم الشخصي</label>
-                                                        <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->LastName}}"  class="form-control placeholder-no-fix" type="text"   name="LastName" />
-                                                    </div>
+                                                    
 
                                                     <br>
 

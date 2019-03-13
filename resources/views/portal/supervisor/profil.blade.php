@@ -172,7 +172,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="تاريخ الميلاد" data-container="body"></i>
-                                                                <input required value="{{$registration->BirthDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
+                                                                <input required value="{{$registration->BirthDate}}"  min="1500-01-01" max="2050-12-31" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
 
                                                                 @if ($errors->has('birthdate'))
                                                                     <span class="help-block">
@@ -247,14 +247,14 @@
 
 
                                                     <div class="form-group{{ $errors->has('BirthCity') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">الرقم الوطني</label>
+                                                        <label class="col-md-2 control-label">رقم الهوية</label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الرقم الوطني" data-container="body"></i>
-                                                                <input required value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" /> </div>
+                                                                <input required value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهوية لمواطني ومقيمي المملكة العربية السعودية فقط" name="NationalNumber" /> </div>
                                                             @if ($errors->has('BirthCity'))
                                                                 <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال الرقم الوطني'}}</strong>
+                                                            <strong>{{ 'المرجو ادخال رقم الهوية'}}</strong>
                                                             </span>
                                                             @endif
                                                         </div>
@@ -402,11 +402,11 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="تاريخ الالتحاق " data-container="body"></i>
-                                                                <input required value="{{$registration->InscriptionDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ التسجيل" name="InscriptionDate" />
+                                                                <input required value="{{$registration->InscriptionDate}}"  min="1500-01-01" max="2050-12-31" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الالتحاق بالجامعة" name="InscriptionDate" />
 
                                                             @if ($errors->has('InscriptionDate'))
                                                                     <span class="help-block">
-                                                    <strong>{{ 'المرجو ادخال الدرجة العلمية '}}</strong>
+                                                    <strong>{{ 'المرجو ادخال تاريخ الالتحاق'}}</strong>
                                                     </span>
                                                                 @endif
                                                             </div>

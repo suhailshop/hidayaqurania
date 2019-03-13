@@ -106,7 +106,7 @@
                <div class="number">
                   <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
                </div>
-               <div class="desc"> الكتب </div>
+               <div class="desc"> المراجع العلمية</div>
             </div>
          </a>
       </div>

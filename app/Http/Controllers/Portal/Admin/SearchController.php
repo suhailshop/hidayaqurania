@@ -25,10 +25,12 @@ class SearchController extends Controller
     
     public function getAll(){
         $searchs = Search::all();
+        
         $reviewers = DB::table('registrations')
                     ->join('users','registrations.User','=','users.id')
                     ->join('roles','roles.id','=','users.role_id')
                     ->where('roles.name','reviewer')->get(['registrations.id','registrations.Fistname','registrations.LastName']);
+                    
         return view('portal.admin.searchs.index',compact('searchs','reviewers'));
     }
   

@@ -193,7 +193,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="تاريخ الميلاد" data-container="body"></i>
-                                                                <input required value="{{$registration->BirthDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
+                                                                <input required value="{{$registration->BirthDate}}"  min="1500-01-01" max="2022-12-31" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
 
                                                             </div>
                                                         </div>
@@ -208,7 +208,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="مكان الميلاد" data-container="body"></i>
-                                                                <input required value="{{$registration->BirthCity}}" class="form-control placeholder-no-fix" type="text" placeholder="مكان الميلاد" name="BirthCity" />
+                                                                <input required value="{{$registration->BirthCity}}"  class="form-control placeholder-no-fix" type="text" placeholder="مكان الميلاد" name="BirthCity" />
                                                                 @if ($errors->has('BirthCity'))
                                                                     <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال مكان الميلاد'}}</strong>
@@ -390,11 +390,11 @@
 
 
                                                     <div class="form-group{{ $errors->has('InscriptionDate') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">تاريخ التسجيل</label>
+                                                        <label class="col-md-2 control-label">تاريخ تسجيل الرسالة في الجامعة</label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="تاريخ التسجيل" data-container="body"></i>
-                                                                <input required value="{{$registration->InscriptionDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ التسجيل" name="InscriptionDate" />
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="تاريخ تسجيل الرسالة الجامعية" data-container="body"></i>
+                                                                <input required value="{{$registration->InscriptionDate}}" min="2000-01-01" max="2050-12-31" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ تسجيل الرسالة في الجامعة" name="InscriptionDate" />
                                                             </div>
                                                         </div>
                                                     </div>

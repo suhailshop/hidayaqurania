@@ -187,7 +187,7 @@
           $('#division1').change(function() {
             var i=$('#division1').val();
                $.ajax({
-                   url: 'http://localhost/hidayat/hidayaqurania/public/portal/searcher/getdivisionunit/'+$('#division1').val(),
+                   url: 'https://hidayatqurania.org/portal/searcher/getdivisionunit/'+$('#division1').val(),
                    type: 'GET',
                    data: { },
                    success: function(response)

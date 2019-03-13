@@ -726,7 +726,7 @@
                                                                                                 </div>
                                                                                                 <div class="form-group">
                                                                                                     <label class="control-label "> الملف : </label>
-                                                                                                    <a class="btn btn-primary" target="_blank" href="{{url('storage/searcher_reports/'.$search->searchers_reports[0]->filename)}}"> تقرير الباحث </a>
+                                                                                                    <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/searcher_reports/'.$search->searchers_reports[0]->filename)}}"> تحميل الملف </a>
                                                                                                 </div>
                                                                                             </form>
 
@@ -824,7 +824,7 @@
                                                                                             </div>
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label "> الملف : </label>
-                                                                                                <a class="btn btn-primary" target="_blank" href="{{url('storage/supervisor_reports/'.$search->supervisors_reports[0]->filename)}}"> تقرير المشرف </a>
+                                                                                                <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/supervisor_reports/'.$search->supervisors_reports[0]->filename)}}"> تحميل الملف </a>
                                                                                             </div>
                                                                                         </form>
                                                                                     </div>
@@ -962,8 +962,8 @@
                                                                                                 <textarea readonly class="form-control " name="note" >{{$search->reviewers_reports[0]->note}}</textarea>
                                                                                             </div>
                                                                                             <div class="form-group">
-                                                                                                <label class="control-label ">رابط ملف البحث بعد التحديث </label>
-                                                                                                <a class="btn btn-primary" target="_blank" href="{{url('storage/reviewers_reports/'.$search->reviewers_reports[0]->filename)}}"> تقرير المراجع </a>
+                                                                                                <label class="control-label ">رابط ملف البحث بعد المراجعة والتعليقات</label>
+                                                                                                <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/reviewers_reports/'.$search->reviewers_reports[0]->filename)}}"> تقرير المراجع </a>
                                                                                             </div>
                                                                                         </form>
                                                                                     </div>

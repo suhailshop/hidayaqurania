@@ -24,7 +24,7 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-
+ 
 
 {{--
             <li class="nav-item  ">
@@ -99,7 +99,7 @@
 
 
                                      <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
+                                        <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>
 
 

@@ -64,6 +64,12 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
 
 
+    Route::get('/admin/account', 'Admin\AdminAccountController@index')->name('adminProfile');
+    Route::post('/admin/account/editpassword', 'Admin\AdminAccountController@editpassword')->name('editAdminPassword');
+    Route::post('/admin/account/editavatar', 'Admin\AdminAccountController@editavatar')->name('editAdminAvatar');
+
+
+
 
 
 
