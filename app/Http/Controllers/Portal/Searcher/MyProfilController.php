@@ -70,7 +70,7 @@ class MyProfilController extends Controller
                 'Phonne1'=>$request->input('Phonne1'),
                 'Phonne2'=>$request->input('Phonne2')          
         ));
-        Session::put('success_edit', 'تم تعديل الحساب بنجاح');                
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');
         return redirect()->route('searcherProfile');
     }
 
@@ -93,11 +93,13 @@ class MyProfilController extends Controller
     public function editpassword(Request $request){
 
 
-        DB::table('users')->where('ID',$request->input('id_user'))
+       DB::table('users')->where('ID',$request->input('id_user'))
         ->update(array(
 
             'password'=>  bcrypt($request->input('Password'))      
         ));
+
+
         Session::put('success_edit', 'تم تعديل الحساب بنجاح');
         return redirect()->route('searcherProfile');
     }

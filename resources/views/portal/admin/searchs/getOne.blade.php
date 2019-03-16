@@ -652,7 +652,9 @@
                                                         <table class="table table-hover table-striped table-bordered">
                                                             <tbody>
 
-                                                            <!-- تقرير الباحث -->
+                                                            @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
+
+                                                                <!-- تقرير الباحث -->
                                                             <tr>
 
                                                                 <td> تقرير الباحث </td>
@@ -671,7 +673,6 @@
                                                                 <td>
 
                                                                     <!-- تفاصيل تقرير الباحث -->
-                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
                                                                         @if(count($search->searchers_reports)>0)
                                                                             <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal">
                                                                                عرض تقرير الباحث
@@ -739,15 +740,18 @@
                                                                             <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
                                                                         @endif
-                                                                    @endif
+
 
                                                                 </td>
                                                                
                                                             </tr>
+                                                            @endif
 
 
                                                             <!-- تقرير المشرف -->
-                                                            <tr>
+                                                            @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id))
+
+                                                                <tr>
                                                                 <td> تقرير المشرف </td>
                                                                 <td>
                                                                         @if(!empty($search->supervisors_reports[0]))
@@ -763,7 +767,6 @@
 
 
                                                                     <!-- تفاصيل تقرير المشرف -->
-                                                                    @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id))
 
                                                                     @if(count($search->supervisors_reports)>0)
                                                                         <button type="button" class="btn  btn-info" data-toggle="modal" data-target="#supervisormodal">
@@ -834,12 +837,15 @@
                                                                     @else
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
                                                                     @endif
-                                                                    @endif
+
 
 
                                                                 </td>
                                                             </tr>
+                                                            @endif
 
+
+                                                            @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) ||  auth()->user()->hasRole('admin',auth()->user()->role_id))
 
                                                             <!-- تقرير الباحث المساعد -->
                                                             <tr>
@@ -854,7 +860,6 @@
 
                                                                     <!-- تفاصيل تقرير الباحث المساعد -->
 
-                                                                    @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) ||  auth()->user()->hasRole('admin',auth()->user()->role_id))
 
                                                                     @if(count($search->reviewers_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#reviewermodal">
@@ -975,29 +980,42 @@
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
                                                                     @endif
-                                                                    @endif
+
 
                                                                 </td>
                                                             </tr>
+                                                            @endif
 
 
-                                                            <!-- تقرير الإدارة -->
+
+
+                                                            @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id))
+
+                                                                <!-- تقرير الإدارة -->
                                                             <tr>
                                                                 <td> تقرير اللجنة العلمية </td>
                                                                 <td>
+
+                                                                 @if(auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) )
+
                                                                     @if(!empty($search->admin2_reports[0]))
-                                                                     تم الارسال من طرف : {{$search->admin2_reports[0]->admin2}} @endif</td>
-                                                                <td>@if(!empty($search->admin2_reports[0]))
-                                                                    تم الارسال بتاريخ : {{$search->admin2_reports[0]->date}} @endif</td>
-                                                               
-                                                                
+                                                                     تم الارسال من طرف : {{$search->admin2_reports[0]->admin2}}
+                                                                    @endif
+                                                                 @endif
+
+                                                                </td>
+                                                                <td>
+                                                                    @if(!empty($search->admin2_reports[0]))
+                                                                    تم الارسال بتاريخ : {{$search->admin2_reports[0]->date}}
+                                                                    @endif</td>
+
+
                                                                 <td>
 
 
 
 
                                                                     <!-- تفاصيل تقرير الإدارة -->
-                                                                    @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id))
 
                                                                     @if(count($search->admin2_reports)>0)
                                                                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#admin2modal">
@@ -1014,7 +1032,7 @@
                                                                                     </div>
                                                                                     <div class="modal-body">
                                                                                         <form role="form" method="POST" action="#" >
-                                                                                              
+
                                                                                             <div class="form-group">
                                                                                                 <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
                                                                                                 <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q1}}</textarea>
@@ -1056,10 +1074,11 @@
                                                                         <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
 
                                                                     @endif
-                                                                    @endif
+
 
                                                                 </td>
                                                             </tr>
+                                                            @endif
 
                                                             </tbody></table>
 
@@ -1079,7 +1098,7 @@
 
 
 
-                                            </div>                               
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1097,7 +1116,7 @@
     <!-- END CONTENT -->
     @section('pageScript')
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-     
+
          <script src="{!! asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.js')!!}" type="text/javascript"></script>
          <script src="{!! asset('assets/global/plugins/jquery.sparkline.min.js')!!}" type="text/javascript"></script>
          <script src="{!! asset('assets/pages/scripts/profile.min.js')!!}" type="text/javascript"></script>
@@ -1155,8 +1174,8 @@
         });
         </script>
         <?php Session::forget('success_add');?>
-        @endif  
+        @endif
 
-        
+
     @endsection
 @endsection

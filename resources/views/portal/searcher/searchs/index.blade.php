@@ -131,16 +131,18 @@
                                                 <a href="{{route('editSearch',['id'=>$search->ID])}}">
                                                         <i class="fa fa-edit"></i> تعديل </a>
                                                 </li>
-                                                @endif
-                                                {{--<li>
+
+                                                <li class="myfont">
                                                 <a data-toggle="confirmation"
                                                 data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
                                                 data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
                                                 data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
                                                 data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
+                                                onclick="return confirm('هل تريد حذف البحث حقاً؟ لايمكنك التراجع بعد هذه الخطوة!');"
                                                 data-title="هل تريد الحذف ؟" href="{{route('deleteSearchPost',['id'=>$search->ID])}}">
                                                         <i class="fa fa-remove"></i> حذف </a>
-                                                </li>--}}
+                                                </li>
+                                                @endif
 
                                             </ul>
                                         </div>

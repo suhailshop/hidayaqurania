@@ -1,5 +1,4 @@
-
- </div>
+</div>
 
 
 
@@ -13,6 +12,16 @@
           </div>
 
     </div>
+    
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+ <span class="badge">
+    وقت النظام حسب توقيت مكة المكرمة : 
+    <?php
+ $mytime = Carbon\Carbon::now();
+echo $mytime->toDateTimeString();
+?>
+ </span>
 
     <div class="btn-group   btn-group-sm pull-right ">
 

@@ -41,9 +41,6 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/reviewers/delete/{id}','Admin\ReviewerController@delete')->name('deleteReviwerPost');
 
     Route::get('/reviewers/profile/{id}','Admin\ReviewerController@showProfile')->name('adminReviewersProfile');
-
-
-
     
 
     Route::get('/reviewers/getAllReviewerSearchs/{id}','Admin\ReviewerController@getAllReviewerSearchs')->name('getAllReviewerSearchs');
@@ -63,19 +60,17 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
 
 
-
     Route::get('/admin/account', 'Admin\AdminAccountController@index')->name('adminProfile');
     Route::post('/admin/account/editpassword', 'Admin\AdminAccountController@editpassword')->name('editAdminPassword');
     Route::post('/admin/account/editavatar', 'Admin\AdminAccountController@editavatar')->name('editAdminAvatar');
 
-
-
-
-
-
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
     Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@getSearch')->name('getSearcher');
+    Route::post('/searchers/updateSearcherProfile', 'Admin\SearcherController@editSearcherProfile')->name('updateSearcherProfile');
+    Route::post('/searchers/updatePassword', 'Admin\SearcherController@editpassword')->name('updateSearcherPassword');
+
+
     Route::post('/searchers/updateCodeSearcher','Admin\SearcherController@updateCodeSearcher')->name('updateCodeSearcher');
     Route::post('/searchers/addToMeeting','Admin\SearcherController@addToMeeting')->name('addToMeeting');
     Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
@@ -85,6 +80,14 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchers/editPlanEnable','Admin\SearcherController@editPlanEnable')->name('editPlanEnable');
     Route::get('/searchers/editStatusSearcher/{id}/{status}','Admin\SearcherController@editStatusSearcher')->name('editStatusSearcher');
     Route::post('/searchers/updateSearcherInfos','Admin\SearcherController@updateSearcherInfos')->name('updateSearcherInfos');
+    Route::post('/searchers/changeSupervisor' , 'Admin\SearcherController@changeSupervisor')->name('changeSearcherSupervisor');
+
+
+
+
+
+
+
 
     //show searchers searchs for admins
     Route::get('/searchers/getSearcherSearchs/{id}','Admin\SearcherController@getSearcherSearchs')->name('getSearcherSearchsAdmin');

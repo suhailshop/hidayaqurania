@@ -88,7 +88,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     @yield('pageStyle')
     <!-- End Page Level Style -->
 
-
+<?php  date_default_timezone_set("Asia/Riyadh");   ?>
 
 
 
@@ -152,10 +152,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
             
 
+ 
 
             <!-- BEGIN TOP NAVIGATION MENU -->
             <div class="top-menu" >
+            
+
+ 
                 <ul class="nav navbar-nav pull-right">
+                
+                               
+ 
                     
                     <!-- BEGIN USER LOGIN DROPDOWN -->
                     <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
@@ -173,6 +180,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                             <span class="username username-hide-on-mobile myfont" style="color: black; font-size: small">  {{auth()->user()->name }} </span>
                             <i class="fa fa-angle-down" style="color: black;"></i>
                         </a>
+                        
+
+ 
                         <ul class="dropdown-menu dropdown-menu ">
                             
                             
