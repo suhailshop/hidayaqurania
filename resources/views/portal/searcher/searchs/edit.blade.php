@@ -99,31 +99,35 @@
 
 
                                     <div class="form-group">
-                                        
-                                        <div class="col-md-12">
-                                                <label>الفصل *</label>
-                                            <div class="input-icon right">
-                                                <i class="fa"></i>
-                                                <select name="division" id="division1" class="form-control">
-                                                    @foreach($divisions as $division)
-                                                        <option @if($search->division->ID==$division->ID) selected @endif value="{{$division->ID}}">{{$division->Name}}</option>
-                                                    @endforeach
-                                                </select>
-                                        </div>
-                                    </div></div>
-                                    <div class="form-group">
+                                            
                                             <div class="col-md-12">
-                                                <label>المبحث *</label>
+                                                <label>الفصل *</label>
                                                 <div class="input-icon right">
                                                     <i class="fa"></i>
-                                                    <select name="divisionunit" id="divisionunit" class="form-control" >
-                                                        @foreach($divisionunits as $divisionunit)
-                                                            <option @if($search->divisionunit->id==$divisionunit->id) selected @endif  value="{{$divisionunit->id}}">{{$divisionunit->Name}}</option>
+                                                    <select multiple name="division[]" required id="division1" class="form-control">
+                                                        @foreach($divisions as $division)
+                                                            <option value="{{$division->Name}}">{{$division->Name}}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                         </div>
+    
+                                        <div class="form-group">
+                                            
+                                            <div class="col-md-12">
+                                                <label>المبحث *</label>
+                                                <div class="input-icon right">
+                                                    <i class="fa"></i>
+                                                    <select multiple name="divisionunit[]" required id="divisionunit" class="form-control" >
+                                                        @foreach($divisionunits as $divisionunit)
+                                                            <option value="{{$divisionunit->Name}}">{{$divisionunit->Name}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+    
     
                                     <div class="form-group ">
                                         <div class="col-md-12">

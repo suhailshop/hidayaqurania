@@ -107,10 +107,9 @@
                                             <label>الفصل *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select name="division" required id="division1" class="form-control">
-                                                    <option selected disabled>اختر الفصل </option>
+                                                <select multiple name="division[]" required id="division1" class="form-control">
                                                     @foreach($divisions as $division)
-                                                        <option value="{{$division->ID}}">{{$division->Name}}</option>
+                                                        <option value="{{$division->Name}}">{{$division->Name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -123,10 +122,9 @@
                                             <label>المبحث *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <select name="divisionunit" required id="divisionunit" class="form-control" >
-                                                    <option selected disabled>اختر المبحث </option>
+                                                <select multiple name="divisionunit[]" required id="divisionunit" class="form-control" >
                                                     @foreach($divisionunits as $divisionunit)
-                                                        <option value="{{$divisionunit->id}}">{{$divisionunit->Name}}</option>
+                                                        <option value="{{$divisionunit->Name}}">{{$divisionunit->Name}}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

@@ -147,12 +147,24 @@
                                                         </div>  
                                                             <div class="form-group">
                                                                 <label class="control-label">الفصل</label>
-                                                                <input  value="{{$search->division->Name}}" readonly class="form-control placeholder-no-fix" type="text"   /> 
+                                                                <pre    style="font-family: 'droid-sans', serif"><?php 
+                                                                        $divs = explode(";", $search->DivisionAll);
+                                                                        foreach($divs as $div){
+                                                                            echo $div.'<br />';
+                                                                        }
+                                                                        ?>    
+                                                                </pre> 
                                                             </div>
 
                                                             <div class="form-group">
                                                                     <label class="control-label">المبحث</label>
-                                                                    <input  value="{{$search->divisionunit->Name}}" readonly  class="form-control placeholder-no-fix" type="text"   /> 
+                                                                    <pre  style="font-family: 'droid-sans', serif" ><?php 
+                                                                        $divs = explode(";", $search->DivisionunitAll);
+                                                                        foreach($divs as $div){
+                                                                            echo $div.'<br />';
+                                                                        }
+                                                                        ?>
+                                                                    </pre> 
                                                             </div>
 
                                                             <div class="form-group">
