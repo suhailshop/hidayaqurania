@@ -51,6 +51,15 @@
                         <div class="tools"> </div>
                     </div>
                     <div class="portlet-body">
+                    
+                      <div>
+                            <a class=" btn-group  btn-group-devided" href="{{route('addUniversity')}}">
+                                <label class="btn btn-transparent yellow">
+                                    <i class="icon-plus"></i> إضافة جامعة جديدة   </label>
+                            </a>
+                        </div>
+                        <br>
+                        
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
@@ -89,15 +98,15 @@
                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
-                                                <li>
+                                                <li class="myfont">
                                                 <a href="{{route('editUniversity',['id'=>$universitie->ID])}}">
                                                         <i class="fa fa-edit"></i> تعديل </a>
                                                 </li>
-                                                <li>
+                                                <li class="myfont">
                                                 <a data-toggle="confirmation"
                                                 data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
                                                 data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"

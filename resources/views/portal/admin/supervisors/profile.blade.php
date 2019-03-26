@@ -53,7 +53,7 @@
                             <div class="portlet light profile-sidebar-portlet ">
                                 <!-- SIDEBAR USERPIC -->
                                 <div class="profile-userpic">
-                                    <img src="{{ asset('storage/registrations/'.$supervisor->PictureURL) }}" class="img-responsive" alt=""> </div>
+                                    <img src="{{ asset('project/storage/app/public/registrations/'.$supervisor->PictureURL) }}" class="img-responsive" alt=""> </div>
                                 <!-- END SIDEBAR USERPIC -->
                                 <!-- SIDEBAR USER TITLE -->
                                 <div class="profile-usertitle">
@@ -127,7 +127,7 @@
 
 
                                                         <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                                                            <label class="col-md-2 control-label">الاسم  </label>
+                                                            <label class="col-md-2 control-label">الاسم الكامل</label>
                                                             <div class="col-md-10">
                                                                 <div class="input-icon right">
                                                                     <i class="fa fa-info-circle tooltips" data-original-title="الاسم كاملا" data-container="body"></i>
@@ -143,21 +143,7 @@
 
 
 
-                                                        <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                                                            <label class="col-md-2 control-label">اللقب</label>
-                                                            <div class="col-md-10">
-                                                                <div class="input-icon right">
-                                                                    <i class="fa fa-info-circle tooltips" data-original-title="اللقب " data-container="body"></i>
-                                                                    <input required value="{{$supervisor->LastName}}" class="form-control placeholder-no-fix" type="text" placeholder="اللقب" name="lastname" />
-                                                                    @if ($errors->has('LastName'))
-                                                                        <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال اللقب '}}</strong>
-                                                            </span>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
+                                                      
 
 
                                                         <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
@@ -259,11 +245,11 @@
 
 
                                                         <div class="form-group{{ $errors->has('BirthCity') ? ' has-error' : '' }}">
-                                                            <label class="col-md-2 control-label">الرقم الوطني</label>
+                                                            <label class="col-md-2 control-label">رقم الهوية</label>
                                                             <div class="col-md-10">
                                                                 <div class="input-icon right">
                                                                     <i class="fa fa-info-circle tooltips" data-original-title="الرقم الوطني" data-container="body"></i>
-                                                                    <input required value="{{$supervisor->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" /> </div>
+                                                                    <input required value="{{$supervisor->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهوية لمواطني ومقيمي المملكة العربية السعودية فقط" name="NationalNumber" /> </div>
                                                                 @if ($errors->has('BirthCity'))
                                                                     <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال الرقم الوطني'}}</strong>
@@ -353,8 +339,14 @@
                                                             <div class="col-md-10">
                                                                 <div class="input-icon right">
                                                                     <i class="fa fa-info-circle tooltips" data-original-title="الجامعة " data-container="body"></i>
-                                                                    <input required value="{{$supervisor->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الجامعة" name="University" />
+                                                                     
 
+ 								<select name="University" required class="form-control">
+                                                                    @foreach($universities as $uni)
+                                                                        <option @if($supervisor->University==$uni->ID) selected @endif value="{{$uni->ID}}">{{$uni->Name}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                                
                                                                     @if ($errors->has('University'))
                                                                         <span class="help-block">
                                                     <strong>{{ 'المرجو ادخال الجامعة '}}</strong>
@@ -384,22 +376,7 @@
                                                         </div>
 
 
-                                                        <div class="form-group{{ $errors->has('CertificateType') ? ' has-error' : '' }}">
-                                                            <label class="col-md-2 control-label">الشهادة</label>
-                                                            <div class="col-md-10">
-                                                                <div class="input-icon right">
-                                                                    <i class="fa fa-info-circle tooltips" data-original-title="الشهادة " data-container="body"></i>
-                                                                    <input required value="{{$supervisor->CertificateType}}" class="form-control placeholder-no-fix" type="text" placeholder="نوع الشهادة" name="CertificateType" />
-
-                                                                    @if ($errors->has('CertificateType'))
-                                                                        <span class="help-block">
-                                                    <strong>{{ 'المرجو ادخال الشهادة '}}</strong>
-                                                    </span>
-                                                                    @endif
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
+                                                    
 
 
                                                         <div class="form-group{{ $errors->has('CertificateDegree') ? ' has-error' : '' }}">

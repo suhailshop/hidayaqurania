@@ -23,9 +23,7 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
+          
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
@@ -53,6 +51,16 @@
                         </div>
                         <div class="tools"> </div>
                     </div>
+                    
+                   
+                        <div>
+                            <a class=" btn-group  btn-group-devided" href="{{route('addCycle')}}">
+                                <label class="btn btn-transparent yellow">
+                                    <i class="icon-plus"></i> إضافة تقرير دوري جديد  </label>
+                            </a>
+                        </div>
+                        <br>
+                    
                     <div class="portlet-body">
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
@@ -72,7 +80,7 @@
                                     
                                     <td>
                                         <div class="btn-group pull-right">
-                                            <button class="btn green btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">اختر
+                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">

@@ -117,16 +117,6 @@
                                                     </div>
 
 
-                                                    <div class="form-group">
-                                                        <label class="col-md-2 control-label">اللقب</label>
-                                                        <div class="col-md-10">
-                                                            <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="اللقب " data-container="body"></i>
-                                                                <input disabled value="{{$supervisor->LastName}}" class="form-control placeholder-no-fix" type="text"  />
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
 
 
@@ -165,7 +155,11 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الجامعة " data-container="body"></i>
-                                                                <input disabled value="{{$supervisor->University}}" class="form-control placeholder-no-fix" type="text"  />
+                                                                 <select disabled name="University" required class="form-control">
+                                                                    @foreach($universities as $uni)
+                                                                        <option @if($supervisor->University==$uni->ID) selected @endif value="{{$uni->ID}}">{{$uni->Name}}</option>
+                                                                    @endforeach
+                                                                </select>
 
                                                             </div>
                                                         </div>
@@ -236,24 +230,6 @@
 
 
 
-                                                    <h4 class="block myfont"> المؤهل الدراسي </h4>
-
-
-
-
-                                                    <div class="form-group">
-                                                        <label class="col-md-2 control-label">الشهادة العلمية</label>
-                                                        <div class="col-md-10">
-                                                            <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="الشهادة العلمية" data-container="body"></i>
-                                                                <input disabled value="{{$supervisor->CertificateType}}" class="form-control placeholder-no-fix" type="text"  />
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <hr>
 
 
 

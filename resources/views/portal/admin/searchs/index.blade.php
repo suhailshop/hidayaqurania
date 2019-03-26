@@ -24,6 +24,17 @@
             <!-- BEGIN PAGE HEADER-->
 
 
+ 
+
+{{--
+            <li class="nav-item  ">
+                <a href="{{route('getAllSearchs')}}" class="nav-link nav-toggle">
+                    <i class="icon-docs"></i>
+                    <span class="title">البحوث</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>--}}
+
 
             <div class="page-bar">
                 <ul class="page-breadcrumb">
@@ -93,7 +104,7 @@
 
 
                                      <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
+                                        <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>
 
 
@@ -134,7 +145,7 @@
                                                                    <?php
                                                                    $isAssigned = false;
                                                                    $arr = array();
-                                                                   foreach($search->reviewerSearch as $rev)
+                                                                   foreach($search->reviewersearch as $rev)
                                                                    {
                                                                        array_push($arr,$rev->reviewer);
                                                                    }

@@ -20,7 +20,7 @@
                 <div class="form-group">
                     <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                     <label class="control-label visible-ie8 visible-ie9">البريد الالكتروني</label>
-                    <input class="form-control form-control-solid placeholder-no-fix" type="email" autocomplete="off" placeholder="البريد الالكتروني" name="email" /> 
+                    <input class="form-control form-control-solid placeholder-no-fix" type="email" style="font-size: large; color: black"  id="email" autocomplete="off" placeholder="البريد الالكتروني" name="email" /> 
                   </div>
                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                     <label class="control-label visible-ie8 visible-ie9">كلمة المرور</label>
@@ -58,5 +58,73 @@
             <!-- END LOGIN FORM -->
             
         </div>
+        
+        
+        <script src="{!! asset('assets/global/plugins/jquery.min.js') !!}" type="text/javascript"></script>
+
+
+<script>
+
+    var EmailDomainSuggester = {
+
+        domains: ["hidayatqurania.org"],
+
+        bindTo: $('#email'),
+
+        init: function() {
+            this.addElements();
+            this.bindEvents();
+        },
+
+        addElements: function() {
+            // Create empty datalist
+            this.datalist = $("<datalist />", {
+                id: 'email-options'
+            }).insertAfter(this.bindTo);
+            // Corelate to input
+            this.bindTo.attr("list", "email-options");
+        },
+
+        bindEvents: function() {
+            this.bindTo.on("keyup", this.testValue);
+        },
+
+        testValue: function(event) {
+            var el = $(this),
+                    value = el.val();
+
+            // email has @
+            // remove != -1 to open earlier
+            if (value.indexOf("@") != -1) {
+                value = value.split("@")[0];
+                EmailDomainSuggester.addDatalist(value);
+            } else {
+                // empty list
+                EmailDomainSuggester.datalist.empty();
+            }
+
+        },
+
+        addDatalist: function(value) {
+            var i, newOptionsString = "";
+            for (i = 0; i < this.domains.length; i++) {
+                newOptionsString +=
+                        "<option value='" +
+                        value +
+                        "@" +
+                        this.domains[i] +
+                        "'>";
+            }
+
+            // add new ones
+            this.datalist.html(newOptionsString);
+        }
+
+    }
+
+    EmailDomainSuggester.init();
+
+    </script>
+    
        
         @include('auth.layout.login_footer')

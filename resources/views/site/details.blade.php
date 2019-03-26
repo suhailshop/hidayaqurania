@@ -27,7 +27,7 @@
 
 								<div class="item ">
 									
-											<img src="{{asset('uploads/'.$news->image)}}" alt="slide1" style="max-width:50%">
+											<img src="{{asset('project/public/uploads/'.$news->image)}}" alt="slide1" style="max-width:50%">
 						
 										
 								</div>
@@ -35,8 +35,8 @@
 										
 							</div>
 							<br>
-							{{	$news->details	}}
 							
+							{!! $news->details	 !!}
 							<br>
 														
 							<div class="soch text-center">

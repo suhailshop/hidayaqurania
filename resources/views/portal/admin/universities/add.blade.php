@@ -23,10 +23,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
 
-
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
+ 
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -45,8 +42,8 @@
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة جامعة جديدة</h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">إضافة جامعة جديدة</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالجامعة :
             </div>
 <div class="row">

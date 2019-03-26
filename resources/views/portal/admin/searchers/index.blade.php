@@ -56,7 +56,7 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                        <th class="all">رقم</th>
+                                        <th class="all">رقم الباحث</th>
                                     <th class="all">الاسم الكامل</th>
 
 

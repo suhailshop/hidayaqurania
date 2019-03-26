@@ -54,7 +54,7 @@
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
-                            <div class="profile-usertitle-name"> {{$registration->Fistname}} {{$registration->LastName}}</div>
+                            <div class="profile-usertitle-name"> {{$registration->Fistname}}</div>
                                 <div class="profile-usertitle-job"> باحث </div>
                             </div>
 
@@ -72,12 +72,12 @@
                                    
                                     <li class="active">
                                             <a href="{{route('searcherProfile')}}">
-                                            <i class="icon-settings"></i> تعديل معلوماتي الشخصية </a>
+                                            <i class="icon-settings"></i> معلوماتي الشخصية </a>
                                     </li>
                                     <br>
                                     <li class="active">
                                         <a href="{{route('searcherAcademic')}}">
-                                            <i class="fa fa-graduation-cap"></i> عرض معلوماتي الأكاديمية </a>
+                                            <i class="fa fa-graduation-cap"></i>  معلوماتي الأكاديمية </a>
                                     </li>
 
                                 </ul>
@@ -137,14 +137,14 @@
 
 
                                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">الاسم الأول </label>
+                                                        <label class="col-md-2 control-label">الاسم الثلاثي </label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="الاسم كاملا" data-container="body"></i>
-                                                                <input required value="{{$registration->Fistname}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
+                                                                <input required value="{{$registration->Fistname}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم الثلاثي" name="firstname" />
                                                                 @if ($errors->has('firstname'))
                                                                     <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال الاسم '}}</strong>
+                                                            <strong>{{ 'المرجو ادخال الاسم الثلاثي '}}</strong>
                                                             </span>
                                                                 @endif
                                                             </div>
@@ -153,7 +153,7 @@
 
 
 
-                                                    <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
+                                                  {{--  <div class="form-group{{ $errors->has('lastname') ? ' has-error' : '' }}">
                                                         <label class="col-md-2 control-label">اللقب</label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
@@ -166,7 +166,7 @@
                                                                 @endif
                                                             </div>
                                                     </div>
-                                                    </div>
+                                                    </div>--}}
 
 
 
@@ -193,7 +193,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="تاريخ الميلاد" data-container="body"></i>
-                                                                <input required value="{{$registration->BirthDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
+                                                                <input required value="{{$registration->BirthDate}}"  min="1500-01-01" max="2022-12-31" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ الولادة" name="birthdate" />
 
                                                             </div>
                                                         </div>
@@ -208,7 +208,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="مكان الميلاد" data-container="body"></i>
-                                                                <input required value="{{$registration->BirthCity}}" class="form-control placeholder-no-fix" type="text" placeholder="مكان الميلاد" name="BirthCity" />
+                                                                <input required value="{{$registration->BirthCity}}"  class="form-control placeholder-no-fix" type="text" placeholder="مكان الميلاد" name="BirthCity" />
                                                                 @if ($errors->has('BirthCity'))
                                                                     <span class="help-block">
                                                             <strong>{{ 'المرجو ادخال مكان الميلاد'}}</strong>
@@ -257,14 +257,14 @@
 
 
                                                     <div class="form-group{{ $errors->has('NationalNumber') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">رقم الهوية الوطنية</label>
+                                                        <label class="col-md-2 control-label">رقم الهوية</label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم الهوية" data-container="body"></i>
-                                                                <input required value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="الرقم الوطني" name="NationalNumber" />
+                                                                <input  value="{{$registration->NationalNumber}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهوية خاص بمواطني ومقيمي المملكة العربية السعودية " name="NationalNumber" />
                                                                 @if ($errors->has('NationalNumber'))
                                                                     <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال رقم الهوية الوطنية'}}</strong>
+                                                            <strong>{{ 'المرجو ادخال رقم الهوية '}}</strong>
                                                         </span>
                                                                 @endif
                                                             </div>
@@ -390,11 +390,11 @@
 
 
                                                     <div class="form-group{{ $errors->has('InscriptionDate') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">تاريخ التسجيل</label>
+                                                        <label class="col-md-2 control-label">تاريخ تسجيل الرسالة في الجامعة</label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="تاريخ التسجيل" data-container="body"></i>
-                                                                <input required value="{{$registration->InscriptionDate}}" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ التسجيل" name="InscriptionDate" />
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="تاريخ تسجيل الرسالة الجامعية" data-container="body"></i>
+                                                                <input required value="{{$registration->InscriptionDate}}" min="2000-01-01" max="2050-12-31" class="form-control placeholder-no-fix" type="date" placeholder="تاريخ تسجيل الرسالة في الجامعة" name="InscriptionDate" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -410,12 +410,17 @@
 
 
 
+                                                    الرجاء ادخال رقم الجوال مع كود الدولة حسب المثال التالي : 966505055050
+
+                                                    <br><br>
                                                     <div class="form-group{{ $errors->has('Phonne1') ? ' has-error' : '' }}">
-                                                        <label class="col-md-2 control-label">رقم الهاتف 1</label>
+
+
+                                                        <label class="col-md-2 control-label">رقم الجوال 1</label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
-                                                                <i class="fa fa-info-circle tooltips" data-original-title="رقم الهاتف 1" data-container="body"></i>
-                                                                <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 1" name="Phonne1" />
+                                                                <i class="fa fa-info-circle tooltips" data-original-title="رقم الجوال 1" data-container="body"></i>
+                                                                <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="أدخل الرقم مع كود الدولة : 96650505050" name="Phonne1" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -487,26 +492,10 @@
 
 
 
-                                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label class="col-md-2 control-label">البريد الالكتروني الخاص بالحساب</label>
-                                                    <div class="col-md-10">
-                                                        <div class="input-icon right">
-                                                            <i class="fa fa-info-circle tooltips" data-original-title="البريد الالكتروني" data-container="body"></i>
-                                                            <input class="form-control placeholder-no-fix" type="email" autocomplete="off" required value="" placeholder="البريد الالكتروني" name="Email" />
-                                                            @if ($errors->has('email'))
-                                                                <span class="help-block">
-                                                            <strong>{{ 'المرجو ادخال البريد الالكتروني'}}</strong>
-                                                        </span>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
 
 
                                                 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                                    <label class="col-md-2 control-label">الرقم السري الجديد</label>
+                                                    <label class="col-md-2 control-label">أدخل الرقم السري الجديد</label>
                                                     <div class="col-md-10">
                                                         <div class="input-icon right">
                                                             <i class="fa fa-info-circle tooltips" data-original-title="الرقم السري" data-container="body"></i>

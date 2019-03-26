@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Supervisor;
 
+use App\Universitie;
 use App\User;
 use App\Role;
 use App\Countrie;
@@ -39,7 +40,8 @@ class MyProfilController extends Controller
         $countries = Countrie::all();
         $nationalities = Nationalitie::all();
         $user = Auth::user();
-        return view('portal.supervisor.profil',compact('registration','user','countries','nationalities'));
+        $universities = Universitie::all();
+        return view('portal.supervisor.profil',compact('registration','user','countries','nationalities' , 'universities'));
     }
   
     public function editPost(Request $request){
@@ -91,7 +93,7 @@ class MyProfilController extends Controller
       
         DB::table('users')->where('ID',$request->input('id_user'))
         ->update(array(
-            'Email'=>$request->input('Email'),
+
             'Password'=>  bcrypt($request->input('Password'))      
         ));
         Session::put('success_edit', 'تم تعديل الحساب بنجاح');

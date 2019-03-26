@@ -16,10 +16,7 @@
         <div class="page-content">
             <!-- BEGIN PAGE HEADER-->
 
-
-            <h1 class="page-title"> البوابة الالكترونية لموسوعة الهدايات القرآنية
-
-            </h1>
+ 
             <div class="page-bar">
                     <ul class="page-breadcrumb">
                         <li>
@@ -38,8 +35,8 @@
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
-                <h3>أضافة دورة جديدة</h3>
+            <div class="m-heading-1 border-yellow m-bordered">
+                <h3 class="myfont">إضافة دورة جديدة</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالدورة :
             </div>
 <div class="row">
@@ -59,15 +56,17 @@
                                    
                                     <div class="form-group  margin-top-20">
                                        
-                                        <div class="col-md-12">
+                                         <label class="col-md-2 control-label">أدخل اسم التقرير الدوري </label>
+                                                    <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="name"  placeholder="رقم التقرير الدوري *"/> </div>
+                                                <input type="text" class="form-control" name="name"  placeholder="مثال : التقرير الدوري الثامن"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         
-                                        <div class="col-md-12">
+                                        <label class="col-md-2 control-label">تاريخ بداية السماح لإرسال التقرير</label>
+                                                    <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="date" class="form-control" name="startDate" placeholder="تاريخ البداية *"/> </div>
@@ -77,7 +76,8 @@
 
                                     <div class="form-group">
                                         
-                                        <div class="col-md-12">
+                                         <label class="col-md-2 control-label">آخر تاريخ مسموح لإرسال التقرير</label>
+                                                    <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="date" class="form-control" name="endDate" placeholder="تاريخ النهاية *"/> </div>

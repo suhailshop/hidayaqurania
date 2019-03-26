@@ -14,7 +14,7 @@
         <link href="{!! asset('assets/global/plugins/simple-line-icons/simple-line-icons.min.css') !!}" rel="stylesheet" type="text/css" />
         <link href="{!! asset('assets/global/plugins/bootstrap/css/bootstrap-rtl.min.css') !!}" rel="stylesheet" type="text/css" />
         <link href="{!! asset('assets/global/plugins/bootstrap-switch/css/bootstrap-switch-rtl.min.css') !!}" rel="stylesheet" type="text/css" />
-        <link rel="stylesheet" type="text/css" href="//www.fontstatic.com/f=droid-sans" />
+        <link rel="stylesheet" type="text/css" href="https://www.fontstatic.com/f=droid-sans" />
         
         <link href="{!! asset('assets/global/plugins/select2/css/select2.min.css') !!}" rel="stylesheet" type="text/css" />
         <link href="{!! asset('assets/global/plugins/select2/css/select2-bootstrap.min.css') !!}" rel="stylesheet" type="text/css" />

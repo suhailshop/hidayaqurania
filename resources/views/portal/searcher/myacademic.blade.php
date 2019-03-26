@@ -58,7 +58,7 @@
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
-                                <div class="profile-usertitle-name"> {{$registration->Fistname}} {{$registration->LastName}}</div>
+                                <div class="profile-usertitle-name"> {{$registration->Fistname}}</div>
                                 <div class="profile-usertitle-job"> باحث </div>
                             </div>
 
@@ -142,7 +142,7 @@
 
 
                                                     <div class="form-group">
-                                                        <label class="col-md-2 control-label">عنوان الأطروحـة </label>
+                                                        <label class="col-md-2 control-label">عنوان الرسالة </label>
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="عنوان الأطروحة" data-container="body"></i>
@@ -184,7 +184,12 @@
                                                 <div class="col-md-10">
                                                     <div class="input-icon right">
                                                         <i class="fa fa-info-circle tooltips" data-original-title="اسم الجامعة" data-container="body"></i>
-                                                        <input disabled value="{{$registration->University}}" class="form-control placeholder-no-fix" type="text" placeholder="الاسم العائلي" name="firstname" />
+
+                                                        <select disabled name="University" required class="form-control">
+                                                            @foreach($universities as $uni)
+                                                                <option @if($registration->University==$uni->ID) selected @endif value="{{$uni->ID}}">{{$uni->Name}}</option>
+                                                            @endforeach
+                                                        </select>
 
                                                     </div>
                                                 </div>

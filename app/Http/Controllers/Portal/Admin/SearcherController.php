@@ -84,7 +84,9 @@ class SearcherController extends Controller
         $supervisors = Registration::where('Type','supervisor')->get();
         $countries = Countrie::all();
 
-        return view('portal.admin.searchers.plandetails')->with('searcher',$searcher)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings);
+        $universities = Universitie::all();
+
+        return view('portal.admin.searchers.plandetails')->with('searcher',$searcher)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings)->with('universities' , $universities);
     }
 
     public function editPlanEnable(Request $request){
@@ -143,6 +145,7 @@ class SearcherController extends Controller
         
         $supervisors = Registration::where('Type','supervisor')->get();  
         $countries = Countrie::all();
+
         return view('portal.admin.searchers.get')->with('countries',$countries)->with('supervisors',$supervisors)->with('searcher',$searcher)->with('numberOfMonths',$numberOfMonths)->with('criterias',$criterias)->with('meetings',$meetings);
     }
 
@@ -154,9 +157,10 @@ class SearcherController extends Controller
         $registration = Registration::where('ID',$id)->get()->first();
         $countries = Countrie::all();
         $nationalities = Nationalitie::all();
+        $universities = Universitie::all();
 
 
-        return view('portal.admin.searchers.getSearch', compact('registration', 'countries','nationalities'));
+        return view('portal.admin.searchers.getSearch', compact('registration', 'countries','nationalities','universities'));
 
     }
 
@@ -292,5 +296,86 @@ class SearcherController extends Controller
             
         return redirect()->route('getSearcher',array('id' => $request->input('id_registration')));
     }
+
+
+
+    // now admin can update user's profile on behalf of
+
+    public function editSearcherProfile(Request $request){
+
+        $id = $request->input('id_registration');
+        DB::table('registrations')->where('ID',$request->input('id_registration'))
+            ->update(array(
+                'PassportNumber'=>$request->input('PassportNumber'),
+                'NationalNumber'=>$request->input('NationalNumber'),
+                'Fistname'=>$request->input('firstname'),
+                'Lastname'=>$request->input('lastname'),
+                'Gender'=>$request->input('gender'),
+                'BirthDate'=>$request->input('birthdate'),
+                'BirthCity'=>$request->input('BirthCity'),
+                'Nationalitie'=>$request->input('nationalitie'),
+                'Countrie'=>$request->input('countrie'),
+                'City'=>$request->input('city1'),
+                'Location'=>$request->input('location'),
+                'University'=>$request->input('University'),
+                'Faculty'=>$request->input('Faculty'),
+                'CertificateType'=>$request->input('CertificateType'),
+                'CertificateDegree'=>$request->input('CertificateDegree'),
+                'InscriptionDate'=>$request->input('InscriptionDate'),
+                'Phonne1'=>$request->input('Phonne1'),
+                'Phonne2'=>$request->input('Phonne2')
+            ));
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');
+        return redirect()->route('getSearcher', ['ID'=>$id]);
+    }
+
+
+    // now admin can change user's password or reset it
+    public function editpassword(Request $request){
+
+        $id = $request->input('id_user');
+        $regId = $request->input('reg_id');
+        $newPassword = bcrypt($request->input('Password'));
+
+
+
+            DB::table('users')
+            ->where("id", '=',  $id)
+            ->update(['password'=> $newPassword]);
+
+
+
+
+        Session::put('success_edit', 'تم تغيير الرقم السري للحساب بنجاح');
+        return redirect()->route('getSearcher', ['ID'=>$regId]);
+    }
+
+
+
+    public function changeSupervisor(Request $request){
+
+
+        $searcher = $request->input('id_searcher');
+
+
+        DB::table('theses')->where('Searcher',$searcher)
+            ->update(array(
+
+            'Supervisor' => $request->input('Supervisor'),
+            'Searcher' => $searcher,
+            'Title' => $request->input('Title'),
+            'ProgramDuration' => $request->input('ProgramDuration'),
+            'BeginningDate' => $request->input('BeginningDate'),
+            'CompletionDate' => $request->input('CompletionDate'),
+
+
+            ));
+
+        Session::put('success_edit', 'تم تعديل المعلومات  بنجاح');
+        return redirect()->route('getSearcher', ['ID'=>$searcher]);
+
+
+    }
+
 }
 

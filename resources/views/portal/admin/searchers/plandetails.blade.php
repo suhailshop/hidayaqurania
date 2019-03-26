@@ -60,7 +60,7 @@
                         <div class="portlet light profile-sidebar-portlet ">
                             <!-- SIDEBAR USERPIC -->
                             <div class="profile-userpic">
-                                <img src="{{ asset('storage/registrations/'.$searcher->PictureURL) }}" class="img-responsive" alt=""> </div>
+                                <img src="{{ asset('project/storage/app/public/registrations/'.$searcher->PictureURL) }}" class="img-responsive" alt=""> </div>
                             <!-- END SIDEBAR USERPIC -->
                             <!-- SIDEBAR USER TITLE -->
                             <div class="profile-usertitle">
@@ -107,28 +107,36 @@
                                                 <a href="#tab_1_1" data-toggle="tab">معلومات الأطروحة</a>
                                             </li>
 
+
+
                                             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+
                                             <li>
-                                                <a href="#tab_1_2" data-toggle="tab">تعديل معدل نسبة التقدم</a>
+                                                <a href="#tab_1_7" data-toggle="tab">تغيير المشرف والأطروحة</a>
+                                            </li>
+
+
+                                            <li>
+                                                <a href="#tab_1_2" data-toggle="tab"> نسبة التقدم</a>
                                             </li>
                                             @endif
 
                                             <li>
-                                                <a href="#tab_1_3" data-toggle="tab">جدول الخطة الزمنية للباحث</a>
+                                                <a href="#tab_1_3" data-toggle="tab">الخطة الزمنية</a>
                                             </li>
                                             <li>
-                                                <a href="#tab_1_4" data-toggle="tab"> تقويم الخطة الزمنية للباحث</a>
+                                                <a href="#tab_1_4" data-toggle="tab"> تقويم الخطة</a>
                                             </li>
 
 
                                             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
                                             <li>
-                                                <a href="#tab_1_5" data-toggle="tab">تعديل الخطة الزمنية</a>
+                                                <a href="#tab_1_5" data-toggle="tab">تعديل الخطة </a>
                                             </li>
                                             @endif
 
                                             <li>
-                                                <a href="#tab_1_6" data-toggle="tab"> لائحة اللقاءات </a>
+                                                <a href="#tab_1_6" data-toggle="tab">اللقاءات </a>
                                             </li>
 
 
@@ -145,18 +153,16 @@
                                         <div class="tab-pane active" id="tab_1_1">
 
 
-                                                <form role="form" method="POST" action="{{route('updateSubmissionInfos')}}" >
+                                          <form role="form" method="POST" action="{{route('updateSubmissionInfos')}}" >
+
                                                     {{ csrf_field() }}
                                                     <input type="hidden" name="id_registration" value="{{$searcher->ID}}" />
                                                     <p class="hint">اسم الباحث :</p>
                                                     <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الاسم العائلي</label>
+                                                        <label class="control-label visible-ie8 visible-ie9">الاسم الكامل</label>
                                                         <input   @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->Fistname}}" class="form-control placeholder-no-fix" type="text"  name="Fistname" />
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="control-label visible-ie8 visible-ie9">الاسم الشخصي</label>
-                                                        <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->LastName}}"  class="form-control placeholder-no-fix" type="text"   name="LastName" />
-                                                    </div>
+                                                    
 
                                                     <br>
 
@@ -176,45 +182,148 @@
                                                     @else
                                                         المرجو ملئ المعلومات في النافذة الخاصة
                                                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%"></div>
-                                                </div>
-                                                @endif
+                                                     </div>
+                                                    @endif
 
 
 
-                                            <div class="form-group">
-                                                <label class="control-label ">الجامعة : </label>
-                                                <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->University}}" class="form-control placeholder-no-fix" type="text"   name="University" /> </div>
+                                                <div class="form-group">
+                                                    <label class="control-label ">الجامعة : </label>
+                                                    <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif
 
-                                            <div class="form-group">
-                                                <label class="control-label">المشرف : </label>
-                                                <select  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  class="form-control" name="supervisor">
-                                                    @foreach($supervisors as $supervisor)
-                                                        <option value="{{$supervisor->ID}}" @if($supervisor->ID == $searcher->these->supervisor->ID) selected @endif>{{$searcher->these->supervisor->Fistname}} {{$searcher->these->supervisor->LastName}}</option>
-                                                    @endforeach
-                                                </select></div>
-                                            <input type="hidden" name="these_id" value="{{$searcher->these->ID}}"/>
+                                                        @foreach($universities as $uni)
+                                                            @if($searcher->University==$uni->ID)  value="{{$uni->Name}}"   @endif
+                                                        @endforeach
+
+                                                    class="form-control placeholder-no-fix" type="text"   name="University" /> </div>
+
+                                                <div class="form-group">
+                                                    <label class="control-label">المشرف : </label>
+                                                    <select  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  class="form-control" name="supervisor">
+                                                        @foreach($supervisors as $supervisor)
+                                                            <option value="{{$supervisor->ID}}" @if($supervisor->ID == $searcher->these->supervisor->ID) selected @endif>{{$searcher->these->supervisor->Fistname}} {{$searcher->these->supervisor->LastName}}</option>
+                                                        @endforeach
+                                                    </select></div>
+                                                <input type="hidden" name="these_id" value="{{$searcher->these->ID}}"/>
 
 
 
-                                            <div class="form-group">
-                                                <label class="control-label ">تاريخ بداية البرنامج : </label>
-                                                <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  dir="rtl" value="{{$searcher->these->BeginningDate}}" class="form-control placeholder-no-fix"    name="BeginningDate" /> </div>
-                                            <div class="form-group">
-                                                <label class="control-label ">تاريخ نهاية البرنامج : </label>
-                                                <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  dir="rtl" value="{{$searcher->these->CompletionDate}}" class="form-control placeholder-no-fix"   name="CompletionDate" /> </div>
-                                            @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                                <div class="margin-top-10">
-                                                    <input type="submit" class="btn green" value="تأكيد" />
-                                                    <input type="reset" value="الغاء" class="btn default" />
-                                                </div>
-                                                @endif
+                                                <div class="form-group">
+                                                    <label class="control-label ">تاريخ بداية البرنامج : </label>
+                                                    <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  dir="rtl" value="{{$searcher->these->BeginningDate}}" class="form-control placeholder-no-fix"    name="BeginningDate" /> </div>
+                                                <div class="form-group">
+                                                    <label class="control-label ">تاريخ نهاية البرنامج : </label>
+                                                    <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  dir="rtl" value="{{$searcher->these->CompletionDate}}" class="form-control placeholder-no-fix"   name="CompletionDate" /> </div>
+                                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                                    <div class="margin-top-10">
+                                                        <input type="submit" class="btn green" value="تأكيد" />
+                                                        <input type="reset" value="الغاء" class="btn default" />
+                                                    </div>
+                                                    @endif
 
-                                                </form>
+                                          </form>
 
 
 
                                         </div>
                                             <!-- END CHANGE PASSWORD TAB -->
+
+
+
+
+
+
+
+                                        <!-- CHANGE Supervisor TAB -->
+                                        @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+
+                                            <div class="tab-pane" id="tab_1_7">
+                                                <form action="{{route('changeSearcherSupervisor')}}" method="POST">
+                                                    {{ csrf_field() }}
+
+                                                    <input type="hidden" name="id_searcher" value="{{$searcher->ID}}" />
+
+
+
+                                                    <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }} ">
+
+                                                            <label class="control-label ">تعديل المشرف : </label>
+                                                            <select class="form-control placeholder-no-fix" name="Supervisor"  >
+                                                                @foreach($supervisors as $sup)
+                                                                    <option  @if($sup->ID == $searcher->these->supervisor->ID) selected @endif   value="{{$sup->ID}}">{{$sup->Fistname}} {{$sup->LastName}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group">
+
+                                                            <label class="control-label ">تعديل عنوان البحث</label>
+                                                            <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="عنوان الأطروحة" value="{{$searcher->these->Title}}" name="Title" />
+
+                                                    </div>
+
+
+
+                                                    <div class="form-group">
+                                                            <label class="control-label">تعديل مدة البرنامج</label>
+                                                            <select required class="form-control placeholder-no-fix" name="ProgramDuration">
+
+
+                                                                <option selected value="{{$searcher->these->ProgramDuration}}">{{$searcher->these->ProgramDuration}}</option>
+                                                                <option value="12">12 شهر</option>
+                                                                <option value="24">24 شهر</option>
+                                                                <option value="36">36 شهر</option>
+                                                            </select>
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group">
+
+                                                        <label class="control-label">تاريخ بداية البرنامج</label>
+                                                        <input required class="form-control placeholder-no-fix" type="date" value="{{$searcher->these->BeginningDate}}"  min="2014-01-01"  max="2040-12-31" autocomplete="off" placeholder="تاريخ البداية" name="BeginningDate" />
+
+                                                    </div>
+
+
+
+
+                                                    <div class="form-group">
+                                                        <label class="control-label">تاريخ نهاية البرنامج</label>
+                                                        <input required class="form-control placeholder-no-fix" type="date"  value="{{$searcher->these->CompletionDate}}"  min="2014-01-01"  max="2040-12-31" autocomplete="off" placeholder="تاريخ النهاية" name="CompletionDate" />
+                                                    </div>
+
+
+
+
+
+
+
+                                                    <div class="form-actions">
+                                                        <div class="row">
+                                                            <div class="col-md-offset-3 col-md-9">
+                                                                <button type="submit" class="btn green">حفظ التغييرات</button>
+                                                                <button type="reset" class="btn default">الغاء</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </form>
+
+
+
+                                            </div>
+                                        @endif
+                                    <!-- END CHANGE Supervisor TAB -->
+
+
+
+
 
 
 
@@ -294,6 +403,8 @@
 
                                             <!-- CHANGE PASSWORD TAB -->
                                             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                                بالإمكان السماح للطالب بتعديل خطة البحث الخاصة به أو إيقاف التعديل:  <br>
+                                        <div></div>
                                             <div class="tab-pane" id="tab_1_5">
                                             <form action="{{route('editPlanEnable')}}" method="POST">
                                                         {{ csrf_field() }}

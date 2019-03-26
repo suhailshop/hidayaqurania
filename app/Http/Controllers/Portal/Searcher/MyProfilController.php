@@ -70,7 +70,7 @@ class MyProfilController extends Controller
                 'Phonne1'=>$request->input('Phonne1'),
                 'Phonne2'=>$request->input('Phonne2')          
         ));
-        Session::put('success_edit', 'تم تعديل الحساب بنجاح');                
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');
         return redirect()->route('searcherProfile');
     }
 
@@ -91,13 +91,16 @@ class MyProfilController extends Controller
     }
 
     public function editpassword(Request $request){
-      
-        DB::table('users')->where('ID',$request->input('id_user'))
+
+
+       DB::table('users')->where('ID',$request->input('id_user'))
         ->update(array(
-            'email'=>$request->input('Email'),
+
             'password'=>  bcrypt($request->input('Password'))      
         ));
-        Session::put('success_edit', 'تم تعديل الحساب بنجاح'); 
+
+
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');
         return redirect()->route('searcherProfile');
     }
 
@@ -156,7 +159,8 @@ class MyProfilController extends Controller
             $numberOfMonths = ((($yearFin - $yearIni) * 12) - $monthIni) + 1 + $monthFin;
         }
         $supervisors = Registration::where('Type','supervisor')->get();
-        return view('portal.searcher.myacademic')->with('registration',$registration)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('meetings',$meetings)->with('plans', $plans)->with('enabledPlan',$searcher->EnablePlanEdit);
+        $universities = Universitie::all();
+        return view('portal.searcher.myacademic')->with('registration',$registration)->with('countries',$countries)->with('supervisors',$supervisors)->with('numberOfMonths',$numberOfMonths)->with('meetings',$meetings)->with('plans', $plans)->with('enabledPlan',$searcher->EnablePlanEdit)->with('universities', $universities);
     }
 
     public function editPlan(Request $request){

@@ -57,7 +57,18 @@
                             <!-- BEGIN FORM-->
                                 <div class="form-body">
 
-                                        <div class="form-group">
+                                    @if ($errors->email)
+                                        <div>
+                                            <ul>
+                                                @foreach ($errors->all() as $error)
+                                                    <li class="alert alert-danger">هذا البريد الالكتروني مسجل مسبقاً</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+
+
+                                    <div class="form-group">
                                             <label class="col-md-2 control-label">الاسم</label>
                                             <div class="col-md-10">
                                                      <input class="form-control placeholder-no-fix" type="text" placeholder="مثال : د. ياسين قاري" name="name" />

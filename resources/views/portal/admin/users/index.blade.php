@@ -51,6 +51,28 @@
                         <div class="tools"> </div>
                     </div>
                     <div class="portlet-body">
+                    
+                    
+<tr>
+    <td><a class=" btn-group  btn-group-devided" href="{{route('addUserSearcher')}}">
+            <label class="btn btn-transparent yellow">
+                <i class="icon-plus"></i> إضافة طالب جديد  </label>
+        </a></td>
+    <td><a class=" btn-group  btn-group-devided" href="{{route('addUserSupervisor')}}">
+            <label class="btn btn-transparent yellow">
+                <i class="icon-plus"></i> إضافة مشرف جديد  </label>
+        </a></td>
+    <td><a class=" btn-group  btn-group-devided" href="{{route('addUserReviewer')}}">
+            <label class="btn btn-transparent yellow">
+                <i class="icon-plus"></i> إضافة باحث مساعد جديد  </label>
+        </a></td>
+    <td><a class=" btn-group  btn-group-devided" href="{{route('addUserAdmin')}}">
+            <label class="btn btn-transparent yellow">
+                <i class="icon-plus"></i> إضافة إداري جديد  </label>
+        </a></td>
+</tr>
+
+<br><br>
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>

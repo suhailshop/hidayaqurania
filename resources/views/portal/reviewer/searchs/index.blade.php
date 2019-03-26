@@ -63,7 +63,7 @@
 
                                     <th class="all">الباحث</th>
                                      <th class="all">تحميل البحث</th>
-                                    <th> حالة التحكيم </th>
+                                   {{-- <th> حالة التحكيم </th>--}}
                                      <th class="all">تحكيم البحث</th>
                                 </tr>
                             </thead>
@@ -77,7 +77,7 @@
 
                                     <td>{{$search->Fistname}} {{$search->LastName}}</td>
                                      <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
+                                        <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>
                                    {{-- <td>  @if($search->Progress=='تم الرفع')
                                         <span class="badge badge-warning">{{$search->Progress}}</span>
@@ -87,7 +87,7 @@
                                         <span class="badge badge-success">{{$search->Progress}}</span>
                                         @endif                                    
                                     </td>--}}
-                                    <td>  <span class="badge badge-danger">لم يتم التحكيم</span> </td>
+                                    {{--<td>  <span class="badge badge-danger"> لم يتم التحكيم </span> </td>--}}
                                     <td>
                                         <a  href="{{route('getOneSearch',$search->ID)}}">
                                             <i class="fa fa-search"></i> تحكيم البحث </a>

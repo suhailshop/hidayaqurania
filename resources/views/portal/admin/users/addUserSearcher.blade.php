@@ -37,7 +37,7 @@
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
-            <div class="m-heading-1 border-green m-bordered">
+            <div class="m-heading-1 border-yellow m-bordered">
                 <h3>أضافة باحث جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالطالب :
             </div>
@@ -53,6 +53,15 @@
                             <div class="portlet-body">
                         <div class="form-body">
                                 <p class="hint">  معلومات الحساب : </p>
+                            @if ($errors->email)
+                                <div>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li class="alert alert-danger">هذا البريد الالكتروني مسجل مسبقاً</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                                 <div class="alert alert-danger" role="alert">
                                         <strong>ملاحظة! </strong>         المرجو الاحتفاظ بمعلومات الحساب ليتم ارسالها للطالب الجديد    
                                       </div>
@@ -135,8 +144,17 @@
                                 </div>
                                 <div class="form-group">  <div class="col-md-12">
                                         <label class="control-label visible-ie8 visible-ie9">مدة البرنامج</label>
-                                        <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="مدة البرنامج" name="ProgramDuration" />
-                                        
+
+
+                                        <select required class="form-control placeholder-no-fix" name="ProgramDuration">
+
+                                            <option disabled value="">اختر مدة الدراسة</option>
+                                            <option value="12">12 شهر</option>
+                                            <option value="24">24 شهر</option>
+                                            <option value="36">36 شهر</option>
+                                        </select>
+
+
                                         </div>
                                 </div>
                                 <div class="form-group">

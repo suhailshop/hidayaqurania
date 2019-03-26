@@ -59,7 +59,7 @@ class SearchsController extends Controller
        
         $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',date(now()))->get();
          $divisionunits=Divisionunit::where('Division',1)->get();
-         $divisions = Division::all();
+         $divisions = Division::orderBy('Order')->get();
 
         return view('portal.searcher.searchs.add',compact('divisions','divisionunits','cycles'));
     }

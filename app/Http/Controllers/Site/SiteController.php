@@ -75,7 +75,7 @@ class SiteController extends Controller
         }else{
             $am = 'مساءا' ;
         }
-        $mth = 'الساعة ('.date("h:i",$time).') '. $am .' - '.$Arabicday[date("D",$time)].' '.date("d",$time).' / '.$Arabicmonth[date("m",$time)].' / '.date("Y",$time);
+        $mth = 'الساعة ('.date("h:i",$time).') '. $am .' - '.@$Arabicday[date("D",$time)].' '.date("d",$time).' / '.@$Arabicmonth[date("m",$time)].' / '.date("Y",$time);
 
 
 

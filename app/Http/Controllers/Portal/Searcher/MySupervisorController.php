@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Portal\Searcher;
  use App\Nationalitie;
  use App\Registration;
  use App\Role;
+ use App\Universitie;
  use Illuminate\Support\Facades\Auth;
 
  class MySupervisorController extends Controller
@@ -32,7 +33,8 @@ namespace App\Http\Controllers\Portal\Searcher;
         $supervisor = Registration::where('ID',$id)->get()->first();
         $nationalities = Nationalitie::all();
         $countries = Countrie::all();
-        return view('portal.searcher.supervisor.mySupervisor',compact('supervisor' , 'nationalities' , 'countries'));
+        $universities = Universitie::all();
+        return view('portal.searcher.supervisor.mySupervisor',compact('supervisor' , 'nationalities' , 'countries' , 'universities'));
     }
 
 

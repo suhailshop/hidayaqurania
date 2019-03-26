@@ -45,6 +45,13 @@ class UserController extends Controller
     }
 
     public function addUserAdminPost(Request $request){
+
+        if($request->input('email')) {
+            $request->validate([
+                'email' => 'required|unique:users,email'
+            ]);
+        }
+
         $user           = new User;
         $user->name     = $request->input('name');
         $user->email    = $request->input('email');
@@ -61,6 +68,13 @@ class UserController extends Controller
     }
 
     public function addUserSearcherPost(Request $request){
+
+        if($request->input('email')) {
+            $request->validate([
+                'email' => 'required|unique:users,email'
+             ]);
+        }
+
         $user = new User;
         $user->name=$request->input('firstname');
         $user->email =$request->input('email');
@@ -104,6 +118,13 @@ class UserController extends Controller
 
 
     public function addUserSupervisorPost(Request $request){
+
+        if($request->input('email')) {
+            $request->validate([
+                'email' => 'required|unique:users,email'
+            ]);
+        }
+
         $user = new User;
         $user->name=$request->input('firstname');
         $user->email =$request->input('email');
@@ -137,6 +158,14 @@ class UserController extends Controller
 
 
     public function addUserReviewerPost(Request $request){
+
+        if($request->input('email')) {
+            $request->validate([
+                'email' => 'required|unique:users,email'
+            ]);
+        }
+
+
         $user = new User;
         $user->name=$request->input('firstname');
         $user->email =$request->input('email');

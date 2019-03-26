@@ -54,6 +54,17 @@
                             <div class="portlet-body">
                         <div class="form-body">
                                 <p class="hint">  معلومات الحساب : </p>
+
+                            @if ($errors->email)
+                                <div>
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li class="alert alert-danger">هذا البريد الالكتروني مسجل مسبقاً</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
+
                                 <div class="alert alert-danger" role="alert">
                                         <strong>ملاحظة! </strong>         المرجو الاحتفاظ بمعلومات الحساب وتزويدها للمشرف الجديد
                                       </div>
