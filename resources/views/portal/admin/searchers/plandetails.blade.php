@@ -160,7 +160,7 @@
                                                     <p class="hint">اسم الباحث :</p>
                                                     <div class="form-group">
                                                         <label class="control-label visible-ie8 visible-ie9">الاسم الكامل</label>
-                                                        <input   @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->Fistname}}" class="form-control placeholder-no-fix" type="text"  name="Fistname" />
+                                                        <input  disabled    value="{{$searcher->Fistname}}" class="form-control placeholder-no-fix" type="text"  name="Fistname" />
                                                     </div>
                                                     
 
@@ -169,7 +169,7 @@
 
                                                     <div class="form-group">
                                                         <label class="control-label">عنوان الاطروحة : </label>
-                                                        <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  value="{{$searcher->these->Title}}" class="form-control placeholder-no-fix"  type="text"  name="Title" />
+                                                        <input   disabled    value="{{$searcher->these->Title}}" class="form-control placeholder-no-fix"  type="text"  name="Title" />
                                                     </div>
 
                                                    <br>
@@ -189,7 +189,7 @@
 
                                                 <div class="form-group">
                                                     <label class="control-label ">الجامعة : </label>
-                                                    <input  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif
+                                                    <input   disabled  
 
                                                         @foreach($universities as $uni)
                                                             @if($searcher->University==$uni->ID)  value="{{$uni->Name}}"   @endif
@@ -199,7 +199,7 @@
 
                                                 <div class="form-group">
                                                     <label class="control-label">المشرف : </label>
-                                                    <select  @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)) disabled @endif  class="form-control" name="supervisor">
+                                                    <select   disabled    class="form-control" name="supervisor">
                                                         @foreach($supervisors as $supervisor)
                                                             <option value="{{$supervisor->ID}}" @if($supervisor->ID == $searcher->these->supervisor->ID) selected @endif>{{$searcher->these->supervisor->Fistname}} {{$searcher->these->supervisor->LastName}}</option>
                                                         @endforeach
@@ -403,8 +403,10 @@
 
                                             <!-- CHANGE PASSWORD TAB -->
                                             @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
-                                                بالإمكان السماح للطالب بتعديل خطة البحث الخاصة به أو إيقاف التعديل:  <br>
-                                        <div></div>
+                                            
+                                                                                     
+
+
                                             <div class="tab-pane" id="tab_1_5">
                                             <form action="{{route('editPlanEnable')}}" method="POST">
                                                         {{ csrf_field() }}

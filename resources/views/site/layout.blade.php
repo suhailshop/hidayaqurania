@@ -100,10 +100,10 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<div class="list-unstyled soch">
 								<h5>شبكات التواصل الاجتماعي</h5>
 								<li><a href="https://www.twitter.com/hidayatqurania" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></li>
-								<li><a href="https://www.facebook.com/hidayatqurania" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a></li>
+								<li><a href="https://fb.me/hidayatquraniaorg" target="_blank"><i class="fab fa-facebook-f fa-2x"></i></a></li>
 								<li><a href="https://www.instagram.com/hidayatqurania" target="_blank"><i class="fab fa-instagram fa-2x"></i></a></li>
-								<li><a href="https://www.youtube.com/hidayatqurania" target="_blank"><i class="fab fa-youtube fa-2x"></i></a></li>
-								<li><a href="https://www.snapchat.com/hidayatqurania" target="_blank"><i class="fab fa-snapchat-ghost fa-2x"></i></a></li>
+								<li><a href="https://www.youtube.com/channel/UCxA6yR3njKcsnslKxVraDOQ" target="_blank"><i class="fab fa-youtube fa-2x"></i></a></li>
+								<li><a href="https://www.snapchat.com/add/hidayatqurania" target="_blank"><i class="fab fa-snapchat-ghost fa-2x"></i></a></li>
 								
 							</div>
 						</div>

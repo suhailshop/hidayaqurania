@@ -420,7 +420,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم الجوال 1" data-container="body"></i>
-                                                                <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="text" placeholder="أدخل الرقم مع كود الدولة : 96650505050" name="Phonne1" />
+                                                                <input required value="{{$registration->Phonne1}}" class="form-control placeholder-no-fix" type="number" placeholder="أدخل الرقم مع كود الدولة : 96650505050" name="Phonne1" />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -436,7 +436,7 @@
                                                         <div class="col-md-10">
                                                             <div class="input-icon right">
                                                                 <i class="fa fa-info-circle tooltips" data-original-title="رقم الهاتف 2" data-container="body"></i>
-                                                                <input required value="{{$registration->Phonne2}}" class="form-control placeholder-no-fix" type="text" placeholder="رقم الهاتف 2" name="Phonne2" />
+                                                                <input required value="{{$registration->Phonne2}}" class="form-control placeholder-no-fix" type="number" placeholder="رقم الهاتف 2" name="Phonne2" />
                                                             </div>
                                                         </div>
                                                     </div>
