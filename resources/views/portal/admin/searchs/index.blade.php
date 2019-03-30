@@ -95,7 +95,12 @@
                                         {{$search->Name}}
                                         </a>
                                     </td>
-                                     <td>{{$search->division->Name}}</td>
+                                     <td><?php 
+                                        $divs = explode(";", $search->DivisionunitAll);
+                                        foreach($divs as $div){
+                                            echo $div.'<br />';
+                                        }
+                                        ?></td>
 
 
                                      <td>

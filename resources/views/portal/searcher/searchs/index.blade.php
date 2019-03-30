@@ -90,8 +90,21 @@
 
 
 
-                                    <td>{{$search->division->Name}}</td>
-                                    <td>{{$search->divisionunit->Name}}</td>
+                                    <td>
+                                        <?php 
+                                        $divs = explode(";", $search->DivisionAll);
+                                        foreach($divs as $div){
+                                            echo $div.'<br />';
+                                        }
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php 
+                                        $divs = explode(";", $search->DivisionunitAll);
+                                        foreach($divs as $div){
+                                            echo $div.'<br />';
+                                        }
+                                        ?></td>
 
                                     <td>
                                     

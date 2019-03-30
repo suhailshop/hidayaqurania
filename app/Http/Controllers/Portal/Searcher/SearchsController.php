@@ -67,11 +67,28 @@ class SearchsController extends Controller
         $search = new Search;
         $search->Name = $request->input('name');
         $search->Alias = $request->input('alias');
-         $search->Division = $request->input('division');
         $search->Order = $request->input('order');
-        $search->Divisionunit = $request->input('divisionunit');
+
+        $search->Division = Division::where('Name',$request->input('division')[0])->first()->ID;
+        $search->Divisionunit = Divisionunit::where('Name',$request->input('divisionunit')[0])->first()->id;
+       
+        $divAll='';
+        foreach($request->input('division') as $d  ){
+            $divAll.= $d.';';
+        }
+        $search->DivisionAll = $divAll;
+
+        $divAll = '';
+
+        foreach($request->input('divisionunit') as $d  ){
+            $divAll.= $d.';';
+        }
+        $search->DivisionunitAll = $divAll;
+
+
         $search->Cycle = $request->input('cycle');
         $this->user= Auth::user();
+
         $search->Searcher = Registration::where('User',$this->user->id)->first()->ID;
         $search->Status = "yes";
         $search->Progress= "تم الرفع";
@@ -108,13 +125,29 @@ class SearchsController extends Controller
             $fileName = "fileName".time().'.'.request()->searchURL->getClientOriginalExtension();
             $request->searchURL->storeAs('public/searchs',$fileName);
         }
+        
+               
+        $divAll='';
+        foreach($request->input('division') as $d  ){
+            $divAll.= $d.';';
+        }
+        $search->DivisionAll = $divAll;
+
+        $divUnitAll = '';
+        foreach($request->input('divisionunit') as $d  ){
+            $divUnitAll.= $d.';';
+        }
+        $search->DivisionunitAll = $divUnitAll;
+
         DB::table('searchs')->where('ID',$request->input('id'))
         ->update(array(
             'Name'=>$request->input('name'),
-            'Division'=>$request->input('division'),
+            'Division'=>Division::where('Name',$request->input('division')[0])->first()->ID,
             'Status'=>$request->input('status'),
+            'DivisionAll'=>$divAll,
+            'DivisionunitAll'=>$divUnitAll,
             'Alias'=>$request->input('alias'),
-            'Divisionunit' => $request->input('divisionunit'),
+            'Divisionunit' => Divisionunit::where('Name',$request->input('divisionunit')[0])->first()->id,
             'Cycle'=> $request->input('cycle'),
             'searchURL'=>$fileName            
         ));
