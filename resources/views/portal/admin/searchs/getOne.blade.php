@@ -85,9 +85,10 @@
                               <?php 
                               $alreadySubmit=false;
                               foreach($search->reviewers_reports as $re){
+                                  if(!empty(auth()->user()->registration)){
                                 if($re->reviewer == auth()->user()->registration->ID){
                                     $alreadySubmit=true;
-                                }
+                                }}
                               }
                               ?>
                               @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) && !$alreadySubmit)

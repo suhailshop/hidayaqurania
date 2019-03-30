@@ -66,7 +66,8 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
     Route::get('/admin/changeAccountToSupervisor', 'Admin\AccountController@index')->name('changeAccountToSupervisor');
     
-
+    Route::get('/admin/getCycle/{id}', 'Admin\CycleController@getCycle')->name('getCycle');
+    
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
     Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@getSearch')->name('getSearcher');

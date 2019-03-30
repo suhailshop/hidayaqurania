@@ -70,4 +70,16 @@ class CycleController extends Controller
         
         return redirect()->route('allCycle');
     }
+    public function getCycle($id){
+        $cycles = DB::select("select distinct searchs.ID,concat(reg1.Fistname ,' ', reg1.LastName) as searcher , concat(reg2.Fistname ,' ', reg2.LastName) as supervisor ,  concat(reg3.Fistname ,' ', reg3.LastName) as reviewer, `cycles`.`name`
+            from `searchs` 
+            inner join `cycles` on `cycles`.`ID` = `searchs`.`Cycle` 
+            inner join supervisors_reports on supervisors_reports.search = searchs.ID
+            inner join reviewers_reports on reviewers_reports.search = searchs.ID
+            inner join `registrations` reg1 on reg1.`ID` = `searchs`.`Searcher`
+            inner join `registrations` reg2 on reg2.`ID` = supervisors_reports.supervisor
+            inner join `registrations` reg3 on reg3.`ID` = reviewers_reports.reviewer
+            where cycles.ID=".$id." ");
+        return view('portal.admin.cycles.getCycle',compact('cycles'));
+    }
 }
