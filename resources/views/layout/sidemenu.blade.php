@@ -21,6 +21,29 @@
                 
             </li>
 
+            @if(auth()->user()->getCurrentRole(auth()->user()->id) == 'admin2')
+                @if(auth()->user()->hasRoleSupervisor(auth()->user()->email))
+                <li class="nav-item  ">
+                    <a href="{{route('changeAccountToSupervisor')}}" class="nav-link nav-toggle">
+                        <i class="icon-user"></i>
+                        <span class="title">حساب المشرف</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                @endif
+            @endif
+
+            @if(auth()->user()->getCurrentRole(auth()->user()->id) == 'supervisor')
+                @if(auth()->user()->hasRoleAdmin2(auth()->user()->email))
+                <li class="nav-item  ">
+                    <a href="{{route('changeAccountToAdmin2')}}" class="nav-link nav-toggle">
+                        <i class="icon-docs"></i>
+                        <span class="title">حساب مدير</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
+                @endif
+            @endif
 
             @if(auth()->user()->hasRole('admin',auth()->user()->role_id) or auth()->user()->hasRole('admin2',auth()->user()->role_id))
 
@@ -32,6 +55,7 @@
                 </a>
             </li>
             @endif
+
 
 
 
@@ -67,6 +91,7 @@
                     </a>
                 </li>
 
+               
 
 
             @endif
@@ -522,7 +547,7 @@
                         <span class="arrow"></span>
                     </a>
                 </li>
-
+               
 
 
 

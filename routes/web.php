@@ -64,6 +64,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/admin/account/editpassword', 'Admin\AdminAccountController@editpassword')->name('editAdminPassword');
     Route::post('/admin/account/editavatar', 'Admin\AdminAccountController@editavatar')->name('editAdminAvatar');
 
+    Route::get('/admin/changeAccountToSupervisor', 'Admin\AccountController@index')->name('changeAccountToSupervisor');
+    
+
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
     Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@getSearch')->name('getSearcher');
@@ -253,7 +256,8 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/deleteReport/{id}','Supervisor\ReportController@delete')->name('deleteSupervisorReport');
     Route::get('/supervisor/allbooks','Supervisor\BooksController@index')->name('allbookssupervisor');
 
-
+    Route::get('/supervisor/changeAccountToAdmin2','Supervisor\AccountController@index')->name('changeAccountToAdmin2');
+    
 
 
     //---------------------- Searcher ---------------------------------

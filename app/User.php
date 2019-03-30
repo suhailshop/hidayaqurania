@@ -6,6 +6,7 @@ use App\Role;
 use App\Registration;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
@@ -62,5 +63,38 @@ class User extends Authenticatable
       if($role_id->id==$id)
         return true;
       else return false;
+    }
+    
+    public function hasRoleAdmin2($email)
+    {
+
+      $exist = DB::select('select * from users 
+                            inner join roles on roles.id=users.role_id 
+                            where roles.name="admin2" and users.email="'.$email.'"');
+                  
+
+      if(count($exist) >= 1)
+        return true;
+      else return false;
+    }
+
+    public function hasRoleSupervisor($email)
+    {
+      $exist = DB::select('select * from users 
+                            inner join roles on roles.id=users.role_id 
+                            where roles.name="supervisor" and users.email="'.$email.'"');
+
+      if(count($exist) >= 1)
+        return true;
+      else return false;
+    }
+
+    public function getCurrentRole($id){
+      $role = DB::select('select roles.name as nam from users 
+                          inner join roles on roles.id=users.role_id 
+                          where users.id="'.$id.'"');
+                        
+
+      return $role[0]->nam;
     }
 }
