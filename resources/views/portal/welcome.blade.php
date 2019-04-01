@@ -37,9 +37,9 @@
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($searchers)}}">{{count($searchers)}}</span>
+                  <span data-counter="counterup" data-value="{{count($nationalities)}}">{{count($nationalities)}}</span>
                </div>
-               <div class="desc"> الطلاب </div>
+               <div class="desc"> الجنسيات </div>
             </div>
          </a>
       </div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal;
 
+use App\Nationalitie;
 use App\Searchers_reports;
 use App\User;
 use App\Role;
@@ -112,6 +113,7 @@ class PortalController extends Controller
         $supervisors = Registration::where('type','supervisor')->get();
         $universities = Universitie::all();
         $countries = Countrie::all();
+        $nationalities = Nationalitie::all();
         $books = Book::all();
         $theses = These::all();
         $helps=Help::all()->sum('Price');
@@ -120,6 +122,6 @@ class PortalController extends Controller
         $lastsearchers= Registration::where('Type','searcher')->orderBy('created_at', 'asc')->take(7)->get();
         $allsearchs = Search::all();
         
-        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers' , 'reviwers' , 'allsearchs']));
+        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers' , 'reviwers' , 'allsearchs' ,'nationalities']));
     }
 }

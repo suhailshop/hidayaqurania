@@ -295,7 +295,7 @@
                                     <input type="hidden" value="{{$search->ID}}" name="search" />
                                     <div class="form-group">
                                        <label class="control-label ">1- اجمالي عدد الهدايات القرآنية التي تضمنتها رسالتك حتى تاريخه : </label>
-                                       <textarea required class="form-control " name="q1" ></textarea>
+                                       <input type="number" required class="form-control " name="q1" ></input>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label ">2- مستوى التواصل بين المشرف و الطالب : </label>
@@ -307,11 +307,11 @@
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label ">4- عدد الجلسات الاشرافية : </label>
-                                       <textarea required class="form-control " name="q4" ></textarea>
+                                       <input type="number" required class="form-control " name="q4" ></input>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label ">5- مجموع ساعات الإشراف : </label>
-                                       <textarea required class="form-control " name="q5" ></textarea>
+                                       <input type="number" required class="form-control " name="q5" ></input>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label ">6- مدى الالتزام بتعديلات المشرف واللجنة العلمية بالكرسي   : </label>
