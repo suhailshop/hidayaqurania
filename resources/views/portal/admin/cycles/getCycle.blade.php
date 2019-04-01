@@ -1,11 +1,11 @@
 @extends('layout.master')
 
-@section('pageTitle', 'الدورات')
+@section('pageTitle', 'الرقم الدوري')
 @section('pageStyle')
     {{--include here the style of the current page--}}
     <!-- BEGIN PAGE LEVEL PLUGINS -->
-    <link href="../assets/global/plugins/datatables/datatables.min.css" rel="stylesheet" type="text/css" />
-    <link href="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/datatables/datatables.min.css') !!}" rel="stylesheet" type="text/css" />
+    <link href="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css') !!}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
     
@@ -33,7 +33,7 @@
                     </li>
                     <li>
                             <i class="icon-reload"></i>
-                        <span>إدارة الدورات</span>
+                        <span>الرقم الدوري</span>
                     </li>
                 </ul>
             </div>
@@ -47,63 +47,34 @@
                     <div class="portlet-title">
                         <div class="caption font-dark">
                             <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة الدورات  بالنظام</span>
+                            <span class="caption-subject bold uppercase">لائحة المشاريع المكتملة بالرقم الدوري</span>
                         </div>
                         <div class="tools"> </div>
                     </div>
                     
                    
-                        <div>
-                            <a class=" btn-group  btn-group-devided" href="{{route('addCycle')}}">
-                                <label class="btn btn-transparent yellow">
-                                    <i class="icon-plus"></i> إضافة تقرير دوري جديد  </label>
-                            </a>
-                        </div>
+                        
                         <br>
                     
                     <div class="portlet-body">
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="all">رقم التقرير الدوري</th>
-                                    <th class="all">تاريخ البداية</th>
-                                    <th class="all">تاريخ النهاية</th>
-                                    <th class="all">خيارات.</th>
+                                    <th class="all">رقم البحث</th>
+                                    <th class="all">الباحث</th>
+                                    <th class="all">المشرف</th>
+                                    <th class="all">المراجع</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($cycles as $cycle)
                                 <tr>
-                                    <td><a href="{{route('getCycle',['id'=>$cycle->ID])}}">{{$cycle->name}}</a>
+                                    <td><a href="{{route('getOneSearch',['id'=>$cycle->ID])}}">{{$cycle->ID}}</a>
                                         
                                     </td>
-                                    <td>{{$cycle->startDate}}</td>
-                                    <td>{{$cycle->endDate}}</td>
-                                    
-                                    <td>
-                                        <div class="btn-group pull-right">
-                                            <button class="btn yellow btn-xs   dropdown-toggle" data-toggle="dropdown">اختر
-                                                <i class="fa fa-angle-down"></i>
-                                            </button>
-                                            <ul class="dropdown-menu pull-right">
-                                                <li>
-                                                <a href="{{route('editCycle',['id'=>$cycle->ID])}}">
-                                                        <i class="fa fa-edit"></i> تعديل </a>
-                                                </li>
-                                                <li>
-                                                <a data-toggle="confirmation"
-                                                data-btn-ok-label="نعم" data-btn-ok-class="btn-success"
-                                                data-btn-ok-icon-class="material-icons" data-btn-ok-icon-content="check"
-                                                data-btn-cancel-label="لا" data-btn-cancel-class="btn-danger"
-                                                data-btn-cancel-icon-class="material-icons" data-btn-cancel-icon-content="close"
-                                                data-title="هل تريد الحذف ؟" href="{{route('deleteCyclePost',['id'=>$cycle->ID])}}">
-                                                        <i class="fa fa-remove"></i> حذف </a>
-                                                </li>
-
-                                            </ul>
-                                        </div>
-                                        
-                                    </td>
+                                    <td>{{$cycle->searcher}}</td>
+                                    <td>{{$cycle->supervisor}}</td>
+                                    <td>{{$cycle->reviewer}}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -119,14 +90,13 @@
     <!-- END CONTENT -->
     @section('pageScript')
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="../assets/global/scripts/datatable.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/datatables/datatables.min.js" type="text/javascript"></script>
-        <script src="../assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js" type="text/javascript"></script>
-         <script src="../assets/pages/scripts/table-datatables-responsive.min.js" type="text/javascript"></script>
-           <!-- BEGIN PAGE LEVEL PLUGINS -->
-           <script src="../assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js" type="text/javascript"></script>
+        <script src="{!! asset('assets/global/scripts/datatable.js') !!}" type="text/javascript"></script>
+        <script src="{!! asset('assets/global/plugins/datatables/datatables.min.js') !!}" type="text/javascript"></script>
+        <script src="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}" type="text/javascript"></script>
+         <script src="{!! asset('assets/pages/scripts/table-datatables-responsive.min.js') !!}" type="text/javascript"></script>
+           <script src="{!! asset('assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js') !!}" type="text/javascript"></script>
            
-           <script src="../assets/pages/scripts/ui-confirmations.min.js" type="text/javascript"></script>
+           <script src="{!! asset('assets/pages/scripts/ui-confirmations.min.js') !!}" type="text/javascript"></script>
          
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
         <!-- END PAGE LEVEL SCRIPTS -->
@@ -188,8 +158,6 @@
              }
          }
      });
-
-    
      </script>
      <?php Session::forget('success_delete');?>
      @endif
