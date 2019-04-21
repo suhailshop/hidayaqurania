@@ -21,14 +21,13 @@
                 
             </li>
 
-            @if(auth()->user()->getCurrentRole(auth()->user()->id) == 'admin2')
+            @if(auth()->user()->getCurrentRole(auth()->user()->id) == 'admin')
                 @if(auth()->user()->hasRoleSupervisor(auth()->user()->email))
                 <li class="nav-item  ">
                     <a href="{{route('changeAccountToSupervisor')}}" class="nav-link nav-toggle">
-                        <i class="icon-user"></i>
-                        <span class="title">حساب المشرف</span>
-                        <span class="arrow"></span>
-                    </a>
+                        <i class="glyphicon glyphicon-transfer"></i>
+                        <span class="title">تغيير لـ حساب المشرف</span>
+                     </a>
                 </li>
                 @endif
             @endif
@@ -37,9 +36,9 @@
                 @if(auth()->user()->hasRoleAdmin2(auth()->user()->email))
                 <li class="nav-item  ">
                     <a href="{{route('changeAccountToAdmin2')}}" class="nav-link nav-toggle">
-                        <i class="icon-docs"></i>
-                        <span class="title">حساب مدير</span>
-                        <span class="arrow"></span>
+                        <i class="glyphicon glyphicon-transfer"></i>
+                        <span class="title">تغيير لـ حساب المدير</span>
+
                     </a>
                 </li>
                 @endif

@@ -70,7 +70,7 @@ class User extends Authenticatable
 
       $exist = DB::select('select * from users 
                             inner join roles on roles.id=users.role_id 
-                            where roles.name="admin2" and users.email="'.$email.'"');
+                            where roles.name="admin" and users.email="'.$email.'"');
                   
 
       if(count($exist) >= 1)

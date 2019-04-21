@@ -760,8 +760,9 @@
                                                    <!-- تفاصيل تقرير الباحث المساعد -->
                                                    @if(count($search->reviewers_reports)>0)
                                                    @foreach($search->reviewers_reports as $rev)
-                                                <button type="button" class="badge badge-info" data-toggle="modal" data-target="#reviewermodal{{$rev->ID}}">
-                                                   عرض تقرير الباحث المساعد
+
+                                                <button type="button" class="btn btn-sm  btn-info"  data-toggle="modal" data-target="#reviewermodal{{$rev->ID}}">
+                                                    عرض تقرير الباحث المساعد: {{$rev->reviewe->Fistname}}
                                                    </button>
                                                    <div class="modal fade" id="reviewermodal{{$rev->ID}}" tabindex="-1" role="dialog" aria-labelledby="reviewermodallabel" aria-hidden="true">
                                                       <div class="modal-dialog" role="document">

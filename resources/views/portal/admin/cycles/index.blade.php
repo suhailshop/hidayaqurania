@@ -74,7 +74,8 @@
                             <tbody>
                                 @foreach($cycles as $cycle)
                                 <tr>
-                                    <td><a href="{{route('getCycle',['id'=>$cycle->ID])}}">{{$cycle->name}}</a>
+                                    <td>
+                                        <a href="{{route('getCycle',['id'=>$cycle->ID])}}"> {{$cycle->name}} </a>
                                         
                                     </td>
                                     <td>{{$cycle->startDate}}</td>
@@ -86,6 +87,8 @@
                                                 <i class="fa fa-angle-down"></i>
                                             </button>
                                             <ul class="dropdown-menu pull-right">
+
+
                                                 <li>
                                                 <a href="{{route('editCycle',['id'=>$cycle->ID])}}">
                                                         <i class="fa fa-edit"></i> تعديل </a>

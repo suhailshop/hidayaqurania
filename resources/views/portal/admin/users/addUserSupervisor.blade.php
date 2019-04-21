@@ -107,7 +107,7 @@
                                 <div class="col-md-12">
                                     <select class="form-control placeholder-no-fix" name="university"  >
                                         @foreach($universities as $uni)
-                                            <option value="{{$uni->Name}}">{{$uni->Name}}</option>
+                                            <option value="{{$uni->ID}}">{{$uni->Name}}</option>
                                         @endforeach
                                     </select>
 

@@ -18,7 +18,7 @@ class AccountController extends Controller
     public function index(Request $request)
     {
         $this->user= Auth::user();
-        $role_id = Role::where('name','admin2')->first()->id;
+        $role_id = Role::where('name','admin')->first()->id;
        
         $user = User::where('email',auth()->user()->email)->where('role_id',$role_id)->first();
         Auth::logout();
