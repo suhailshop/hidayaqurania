@@ -73,8 +73,8 @@
                                         
                                     </td>
                                     <td>{{$cycle->searcher}}</td>
-                                    <td>{{$cycle->supervisor}}</td>
-                                    <td>{{$cycle->reviewer}}</td>
+                                    <td>@if($cycle->supervisor != null) {{$cycle->supervisor}} @else لا @endif</td>
+                                    <td>@if($cycle->reviewer != null) {{$cycle->reviewer}} @else لا @endif</td>
                                 </tr>
                                 @endforeach
                             </tbody>
