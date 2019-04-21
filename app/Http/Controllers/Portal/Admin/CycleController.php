@@ -71,17 +71,7 @@ class CycleController extends Controller
         return redirect()->route('allCycle');
     }
     public function getCycle($id){
-<<<<<<< HEAD
-        $cycles = DB::select("select  searchs.ID,concat(reg1.Fistname ,' ', reg1.LastName) as searcher , concat(reg2.Fistname ,' ', reg2.LastName) as supervisor ,  concat(reg3.Fistname ,' ', reg3.LastName) as reviewer, `cycles`.`name`
-            from `searchs` 
-            left join `cycles` on `cycles`.`ID` = `searchs`.`Cycle` 
-            left join supervisors_reports on supervisors_reports.search = searchs.ID
-            left join reviewers_reports on reviewers_reports.search = searchs.ID
-            left join `registrations` reg1 on reg1.`ID` = `searchs`.`Searcher`
-            left join `registrations` reg2 on reg2.`ID` = supervisors_reports.supervisor
-            left join `registrations` reg3 on reg3.`ID` = reviewers_reports.reviewer
-            where cycles.ID=".$id." ");
-=======
+
         $cycles = DB::select("SELECT DISTINCT searchs.ID, 
                                               concat(reg1.Fistname ,' ', reg1.LastName) AS searcher , 
                                               concat(reg2.Fistname ,' ', reg2.LastName) AS supervisor , 
@@ -95,7 +85,7 @@ class CycleController extends Controller
                                LEFT JOIN `registrations` reg2 ON reg2.`ID` = supervisors_reports.supervisor 
                                LEFT JOIN `registrations` reg3 ON reg3.`ID` = reviewers_reports.reviewer 
                                 where cycles.ID=".$id." ");
->>>>>>> d100f0bbfa0e47e10ba96bf7c5757f4b8da6e252
+
         return view('portal.admin.cycles.getCycle',compact('cycles'));
     }
 }
