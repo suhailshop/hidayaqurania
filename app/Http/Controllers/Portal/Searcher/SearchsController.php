@@ -44,21 +44,21 @@ class SearchsController extends Controller
     }
 
 
-    public function getdivisionunit($id){
-        $divisionunits = Divisionunit::where('Division',intval($id))->get();
+   /* public function getdivisionunit(){
+        $divisionunits = Divisionunit::all();
         $html = '<select name="divisionunit" class="form-control" >';
         foreach($divisionunits as $divi){
             $html =$html.'<option value="'.$divi->id.'">'.$divi->Name.'</option>';
         }
         $html .='</select>';
         return $html;
-    }
+    }*/
 
 
     public function add(){
        
         $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',date(now()))->get();
-         $divisionunits=Divisionunit::where('Division',1)->get();
+         $divisionunits=Divisionunit::orderBy('Order')->get();
          $divisions = Division::orderBy('Order')->get();
 
         return view('portal.searcher.searchs.add',compact('divisions','divisionunits','cycles'));

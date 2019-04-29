@@ -73,7 +73,7 @@ class CycleController extends Controller
     public function getCycle($id){
 
         $cycles = DB::select("SELECT DISTINCT searchs.ID, 
-                                              concat(reg1.Fistname ,' ', reg1.LastName) AS searcher , 
+                                              reg1.Fistname AS searcher , 
                                               concat(reg2.Fistname ,' ', reg2.LastName) AS supervisor , 
                                               concat(reg3.Fistname ,' ', reg3.LastName) AS reviewer, 
                                               `cycles`.`name` 
