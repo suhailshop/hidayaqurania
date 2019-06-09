@@ -142,35 +142,35 @@
 
 
                     <li class="nav-item  ">
-                <a href="javascript:;" class="nav-link nav-toggle">
-                        <i class="icon-screen-desktop"></i>
-                        <span class="title">إدارة الحسابات</span>
-                        <span class="arrow"></span>
-                    </a>
-                    <ul class="sub-menu">
+                         <a href="javascript:;" class="nav-link nav-toggle">
+                            <i class="icon-screen-desktop"></i>
+                            <span class="title">إدارة الحسابات</span>
+                            <span class="arrow"></span>
+                        </a>
+                        <ul class="sub-menu">
 
+                                <li class="nav-item  ">
+                                <a href="{{route('addUserAdmin')}}" class="nav-link ">
+                                        <span class="title">أضف مدير</span>
+                                    </a>
+                                </li>
                             <li class="nav-item  ">
-                            <a href="{{route('addUserAdmin')}}" class="nav-link ">
-                                    <span class="title">أضف مدير</span>
+                                <a href="{{route('addUserReviewer')}}" class="nav-link ">
+                                    <span class="title">أضف باحث مساعد</span>
                                 </a>
                             </li>
-                        <li class="nav-item  ">
-                            <a href="{{route('addUserReviewer')}}" class="nav-link ">
-                                <span class="title">أضف باحث مساعد</span>
-                            </a>
-                        </li>
-                        <li class="nav-item  ">
-                            <a href="{{route('addUserSupervisor')}}" class="nav-link ">
-                                <span class="title">أضف مشرف</span>
-                            </a>
-                        </li>
                             <li class="nav-item  ">
-                                <a href="{{route('addUserSearcher')}}" class="nav-link ">
-                                        <span class="title">أضف طالب</span>
-                                    </a>
-                             </li>
-                    </ul>
-            </li>
+                                <a href="{{route('addUserSupervisor')}}" class="nav-link ">
+                                    <span class="title">أضف مشرف</span>
+                                </a>
+                            </li>
+                                <li class="nav-item  ">
+                                    <a href="{{route('addUserSearcher')}}" class="nav-link ">
+                                            <span class="title">أضف طالب</span>
+                                        </a>
+                                 </li>
+                        </ul>
+                    </li>
 
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -438,6 +438,30 @@
                             @endif
                     </ul>
              </li>
+
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-screen-desktop"></i>
+                    <span class="title">إدارة الموقع الالكتروني</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+
+                    <li class="nav-item  ">
+                        <a href="{{route('news')}}" class="nav-link ">
+                            <span class="title">الأخبار</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item  ">
+                        <a href="{{route('conferences')}}" class="nav-link ">
+                            <span class="title">المؤتمرات</span>
+                        </a>
+                    </li>
+
+
+                </ul>
+            </li>
 
                 {{-- <li class="nav-item  ">
                     <a href="{{route('allAdminReports')}}" class="nav-link nav-toggle">

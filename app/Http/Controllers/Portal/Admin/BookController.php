@@ -29,6 +29,9 @@ class BookController extends Controller
             else{return redirect('/login');}
         });
     }
+
+
+
     public function index(){
 
         $books = Book::all();

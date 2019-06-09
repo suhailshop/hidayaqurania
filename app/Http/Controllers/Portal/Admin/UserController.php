@@ -32,6 +32,7 @@ class UserController extends Controller
             else{return redirect('/login');}
         });
     }
+
     public function index(){
         $admins =DB::table('users')
                 ->join('roles','users.role_id','=','roles.id') 
@@ -39,6 +40,7 @@ class UserController extends Controller
                 ->get(['roles.name as rolename','users.email','users.name']);
         return view('portal.admin.users.index')->with('admins',$admins);
     }
+
 
     public function addUserAdmin(){
         return view('portal.admin.users.addUserAdmin');

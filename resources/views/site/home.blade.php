@@ -21,12 +21,23 @@
 								<div  class="col-md-6 col-sm-6 col-xs-12">
 							
 									<div style="text-align: center"><h3 class="text-center">عن الموسوعة</h3></div>
-
-									<p>الفكرة : إعداد موسوعة علمية عالمية في مجال الهدايات القرآنية يتم إنجازها من خلال رسائل أكاديمية بمرحلة الدكتوراه
+									
+									<p  align="justify">
+		
+									
+									 <b> هدايات القرآن : </b>
+									
+									مشروع حضاري، تحتاجه أمة الإسلام، لتجدد علاقتها بوحي القرآن، وتنهض من بين آياته لتقود البشرية إلى بر الأمان، فهي الأمة الشاهدة على الأمم، ولا خلاص للإنسانية بغير منهج القرآن، قال تعالى : (يهدي به الله من اتبع رضوانه سبل السلام ويخرجهم من الظلمات إلى النور بإذنه ويهديهم إلى صراط مستقيم) وخدمة لهدايات القرآن أطلقت جامعة أم القرى ممثلة في كرسي الهدايات القرآنية مشروعها العلمي العالمي (الموسوعة العالمية للهدايات القرآنية) والذي يتكون من (60) رسالة دكتوراه مقسمة على أحزاب القرآن يتم تنفيذها بمشاركة عدد من الجامعات في شتى أنحاء العالم.
+									</p>
+									
+									<p align="justify">
+									<b> الفكرة :  </b>
+									 إعداد موسوعة علمية عالمية في مجال الهدايات القرآنية يتم إنجازها من خلال رسائل أكاديمية بمرحلة الدكتوراه
  في شتى جامعات العالم وفق نظام المشاريع البحثية</p>
 
-									<p>رؤيتنا: المرجع الأول في تعليم القرآن الكريم وإقرائه وفق أعلى معايير الجودة و تطبيق أفضل أساليب تعليم كتاب الله تعالى على يد ذوي الخبرة من المتخصصين لمختلف شرائح المسلمين، وإعادة الأمة إلى كتاب ربها تلاوة وحفظا وعملا.</p>
-									<a class="more pull-left" target="_blank" href="https://goo.gl/f18n66"> تحميل الكتيب التعريفي بالموسوعة <i class="fa fa-download"></i> </a>
+									 
+									
+									<a class="more pull-left" target="_blank" href="https://drive.google.com/file/d/1ZXD8HS43mEmGduihPt7tgULzxxpusqc8/view?usp=sharing"> تحميل الكتيب التعريفي بالموسوعة <i class="fa fa-download"></i> </a>
 								</div>
 							</div>
 						</div>
@@ -40,7 +51,7 @@
 					 <div id="owl-demo3" class="owl-carousel text-center" style="direction: ltr;">
 
 						@forelse($news as $new)
-							<div class="item "><a href="{{url('/details/'.$new->id)}}">
+							<div class="item "><a href="{{url('/news/details/'.$new->id)}}">
 							  <div class="boximg ">
 								<div class="top">
 									<p>{{str_limit($new->title,50)}}</p>
@@ -100,6 +111,50 @@
 						</div>
 
 					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+							
+					<div class="features text-center" id="conference" style="background-image: url('template/img/bg-site.png'); padding-top: 2%; padding-bottom: 2%">
+						<div class="container">
+							<div class="row">
+								<h3>:: المؤتمرات العلمية :: </h3>
+				
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="dash-box dark pic">
+										<img class="img-responsive" src="template/img/5.jpg">
+									</div>
+								</div>
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<a href="{{url('/conferences/details/15')}}">
+										<div class="dash-box ">
+											<img class="img-responsive" src="template/img/sudanConference.jpg">
+										</div>
+									</a>
+								</div>
+								<div class="col-md-4 col-sm-4 col-xs-12">
+									<div class="dash-box dark pic">
+										<img class="img-responsive" src="template/img/5.jpg">
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					 </div>
+
+					
+					
+					
+					
+					
+					
+					
 					<div class="vedio text-center">
 						<div class="container">
 							<div class="row">
@@ -113,23 +168,29 @@
 								</div>
 								<div class="left">
 									<h3>بالموسوعة العلمية</h3>
-									<div class="popup__overlay">
-										<div class="popup"> <a href="#" class="popup__close">X</a> https://developers.google.com/youtube/player_parameters?hl=ru
-											<br> https://developers.google.com/youtube/iframe_api_reference?hl=ru
-										</div>
-									</div>
-
+									 
 
 									<div class="popup__overlay">
 									  <div class="popup" id="popupVid">
 										<a href="#" class="popup__close">X</a>
- 										<iframe src="https://www.youtube.com/embed/jCitPYFeGbM" frameborder="0" allowfullscreen=""></iframe>
+ 										<iframe src="https://www.youtube.com/embed/XYpMApOsFCw" frameborder="0" allowfullscreen=""></iframe>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 					<div class="features text-center" id="outcomes" style="background-image: url('template/img/bg-site.png');">
 						<div class="container">
 							<div class="row">
@@ -202,6 +263,14 @@
 							</div>
 						</div>
 					</div>
+					
+					
+					
+					
+					
+					
+					
+					
 
 				{{--	<div class="how-work text-center">
 						<div class="container">
@@ -320,6 +389,13 @@
 								
 					</div>--}}
 
+	
+	
+	
+	
+	
+	
+	
 				 
 
 	<div class=" about" id="contact" style="background-image: url('template/img/header.png');">
@@ -333,20 +409,20 @@
 					<p class="text-center">نتشرف بزيارتكم في مقر كرسي الهدايات القرآنية
 						<br>
 						بجامعة أم القرى - العابدية - مكة المكرمة - المملكة العربية السعودية</p>
+						
+		 
+		 
+		 					<center>
+		 					<a href="https://goo.gl/maps/F7cJGFedHXjSLrps5" target="_blank">
+		 					<div class="dash-box dark"> 
+								<img class="img-responsive"  src="template/img/location.PNG" height="280" width="450">
+							</div>
+							</a></center>
+							<br>
+		 
+		 
+						
 
-					<h5 class="text-center">أو</h5>
-
-					<p class="text-center">الاتصال على هاتف
-						<br>
-
-						رقم : 009662527000 تحويلة رقم : 5255</p>
-
-					<h5 class="text-center">أو</h5>
-
-					<p class="text-center">  مراسلتنا على البريد الالكتروني التالي</p>
-<br>
-
-					<div style="text-align: center" class="text-center"><a  class="more pull-center" target="_blank" href="mailto:info@hidayatqurania.org?Subject=استفسار"> info@hidayatqurania <i class="fa fa-envelope"></i> </a></div>
 				</div>
 				<div class="col-md-6 col-sm-6 col-xs-12">
 					<img class="img-responsive" src="template/img/contactus.jpg">

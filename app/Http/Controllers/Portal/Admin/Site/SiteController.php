@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Site;
+namespace App\Http\Controllers\Portal\Admin\Site;
 
 
-use App\Conference;
 use App\News;
+use App\Role;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 
@@ -14,54 +15,49 @@ use Illuminate\Support\Facades\DB;
 class SiteController extends Controller
 {
 
-    public function index(){
-        $news = News::orderBy('id','desc')->get();
-        $conference = News::orderBy('id','desc')->take(3)->get();
-
-        return view('site.home',compact('news', 'conference'));
+    private $user ;
+    public function __construct()
+    {
+        $this->middleware(function ($request, $next) {
+            $this->user= Auth::user();
+            if(Auth::user() != null)
+            {
+                $role=Role::get()->where('id',$this->user->role_id)->first();
+                if($role->name=='student' || $role->name=='supervisor'){ return redirect('/portal');}
+                return $next($request);
+            }
+            else{return redirect('/login');}
+        });
     }
 
+
+
+    public function index(){
+        $news = News::orderBy('id','desc')->get();
+        return view('portal.admin.news.admin',compact('news'));
+    }
     public function admin(){
         $news = News::orderBy('id','desc')->get();
-        return view('site.admin',compact('news'));
+        return view('portal.admin.news.admin',compact('news'));
     }
     public function add(){
         $news = News::orderBy('id','desc')->get();
-        return view('site.add',compact('news'));
+        return view('portal.admin.news.add',compact('news'));
     }
     public function edit($id){
         $news = News::find($id);
-        return view('site.edit',compact('news'));
+        return view('portal.admin.news.edit',compact('news'));
     }
     public function details($id){
         $news = News::find($id);
         if($news){
             $cdate =  $this->getdate($news->created_at);
-            return view('site.news.details',compact('news'))->with('cdate',$cdate);
+            return view('site.details',compact('news'))->with('cdate',$cdate);
 
         }else{
             return view('site.errors.404');
         }
     }
-
-
-
-    public function conference($id){
-        $news = Conference::find($id);
-        if($news){
-            $cdate =  $this->getdate($news->created_at);
-            return view('site.conference.details',compact('news'))->with('cdate',$cdate);
-
-        }else{
-            return view('site.errors.404');
-        }
-    }
-
-
-
-
-
-
     public function getdate($date='') {
 
 
@@ -98,7 +94,7 @@ class SiteController extends Controller
         }else{
             $am = 'مساءا' ;
         }
-        $mth = 'الساعة ('.date("h:i",$time).') '. $am .' - '.@$Arabicday[date("D",$time)].' '.date("d",$time).' / '.@$Arabicmonth[(int)date("m",$time)]. ' / '.date("Y",$time);
+        $mth = 'الساعة ('.date("h:i",$time).') '. $am .' - '.@$Arabicday[date("D",$time)].' '.date("d",$time).' / '.@$Arabicmonth[date("m",$time)].' / '.date("Y",$time);
 
 
 
@@ -124,10 +120,9 @@ class SiteController extends Controller
         $input['updated_at']=date("Y-m-d H:i:s");
         DB::table('news')->insert($input);
 
-        return Redirect::back()->with('success','تمت اضافة الخبر');
+        return Redirect::back()->with('success','تم اضافة الخبر بنجاح');
 
 
-        return view('site.add');
 
 
     }
@@ -147,17 +142,16 @@ class SiteController extends Controller
         $input['created_at']=date("Y-m-d H:i:s");
         DB::table('news')->where('id', $id)->update($input);
 
-        return Redirect::back()->with('success','تمت تعديل الخبر');
+        return Redirect::back()->with('success','تم تعديل الخبر بنجاح');
 
 
-        return view('site.edit');
 
 
     }
     public function delete($id)
     {
         DB::table('news')->where('id', '=', $id)->delete();
-        return Redirect::back()->with('success','تم حذف الخبر');
+        return Redirect::back()->with('success','تم حذف الخبر بنجاح');
 
     }
 

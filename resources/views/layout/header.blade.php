@@ -100,10 +100,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- END HEAD -->
 
 
-
-
-
-
 <!-- BEGIN BODY -->
 
 {{--@if(Auth::check())--}}

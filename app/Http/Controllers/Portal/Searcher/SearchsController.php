@@ -56,8 +56,10 @@ class SearchsController extends Controller
 
 
     public function add(){
-       
-        $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',date(now()))->get();
+
+        $endDate = date(now(),  strtotime("+1 day"));
+
+        $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',$endDate)->get();
          $divisionunits=Divisionunit::orderBy('Order')->get();
          $divisions = Division::orderBy('Order')->get();
 

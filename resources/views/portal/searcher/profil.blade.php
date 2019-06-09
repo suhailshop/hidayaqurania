@@ -135,7 +135,6 @@
 
 
 
-
                                                     <div class="form-group{{ $errors->has('firstname') ? ' has-error' : '' }}">
                                                         <label class="col-md-2 control-label">الاسم الثلاثي </label>
                                                         <div class="col-md-10">

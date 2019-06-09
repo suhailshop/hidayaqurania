@@ -67,12 +67,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 					<!-- Collect the nav links, forms, and other content for toggling -->
 					<div class="collapse navbar-collapse navbar-ex1-collapse">
-					  <ul class="nav navbar-nav navbar-left">
+					  <ul class="nav navbar-nav navbar-left dropdown">
 						<li><a href="{{url('/')}}">الرئيسية</a></li>
-						<li><a href="#about">عن الموسوعة</a></li>
-						<li><a href="#akhbar">الأخبار</a></li>
-						<li><a href="#goals">الأهداف</a></li>
-						 <li><a href="#outcomes">المخرجات</a></li>
+
+
+					    <li role="presentation" class="dropdown">
+						  <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+							  عن الموسوعة <span class="caret"></span>
+						  </a>
+						  <ul class="dropdown-menu">
+							  <li><a href="{{url('/')}}#goals">الأهداف</a></li>
+							  <li><a href="{{url('/')}}#outcomes">المخرجات</a></li>
+						  </ul>
+					    </li>
+
+
+						<li><a href="{{url('/')}}#akhbar">الأخبار</a></li>
+
+						
+						<li><a href="{{url('/')}}#conference">المؤتمرات</a></li>
+
+
+
+						  <li><a href="{{url('/team')}}">هيئات الكرسي</a></li>
+
+
 						  <li><a href="#contact">الاتصال بنا</a></li>
 						  <li style="display: block;  background-color: #87744e; font-size: small ;"><a href="{{url('/portal')}}">البوابة الالكترونية</a></li>
 

@@ -13,13 +13,12 @@
 
 
 Route::get('/','Site\SiteController@index');
-Route::get('/admin','Site\SiteController@admin');
-Route::get('/add','Site\SiteController@add')->name('addNews');
-Route::post('/add','Site\SiteController@addpost');
-Route::get('/delete/{id}','Site\SiteController@delete');
-Route::get('/edit/{id}','Site\SiteController@edit');
-Route::post('/edit/{id}','Site\SiteController@editpost');
-Route::get('/details/{id}','Site\SiteController@details');
+Route::get('/team',function (){
+    return view('site.team');
+});
+
+Route::get('/news/details/{id}','Site\SiteController@details');
+Route::get('/conferences/details/{id}', 'Site\SiteController@conference');
 
 /*Route::get('/', function () {
     return view('site.welcome');
@@ -211,6 +210,33 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchs/addSearchReviewer','Admin\SearchController@addSearchReviewer')->name('addSearchReviewer');
     Route::post('/searchs/addadmin2_reports','Admin\SearchController@addadmin2_reports')->name('addadmin2_reports');
     
+
+
+
+    // --------------------- Manage news and conference pages ----------------------------------------//
+    Route::get('/website/news','Admin\Site\SiteController@admin')->name('news');
+    Route::get('/website/news/add','Admin\Site\SiteController@add')->name('addNews');
+    Route::post('/website/news/add','Admin\Site\SiteController@addpost');
+    Route::get('/website/news/edit/{id}','Admin\Site\SiteController@edit')->name('editNews');
+    Route::post('/website/news/edit/{id}','Admin\Site\SiteController@editpost')->name('updateNews');
+    Route::post('/website/news/delete/{id}','Admin\Site\SiteController@delete')->name('deleteNews') ;
+
+
+
+
+    Route::get('/website/conferences','Admin\Site\ConferenceController@index')->name('conferences');
+    Route::get('/website/conferences/add','Admin\Site\ConferenceController@add')->name('addConference');
+    Route::post('/website/conferences/add','Admin\Site\ConferenceController@addpost');
+    Route::get('/website/conferences/edit/{id}','Admin\Site\ConferenceController@edit')->name('editConference');
+    Route::post('/website/conferences/edit/{id}','Admin\Site\ConferenceController@editpost')->name('updateConference');
+    Route::post('/website/conferences/delete/{id}','Admin\Site\ConferenceController@delete')->name('deleteConference');
+
+
+
+
+
+
+
 
 
     //----------------------- Reviewer -------------------------

@@ -67,7 +67,8 @@
                               <li>
                                  <a href="#tab_1_2" data-toggle="tab">معلومات الباحث </a>
                               </li>
-                              @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) && count($search->admin2_reports)==0)
+                              @if( auth()->user()->hasRole('admin2',auth()->user()->role_id) && count($search->admin2_reports)==0 ||
+                                   auth()->user()->hasRole('admin',auth()->user()->role_id) && count($search->admin2_reports)==0 )
                               <li>
                                  <a href="#tab_1_3" data-toggle="tab">إضافة تقرير الادارة  </a>
                               </li>
