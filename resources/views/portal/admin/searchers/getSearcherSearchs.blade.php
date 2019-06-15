@@ -53,13 +53,16 @@
                             <thead>
                                 <tr>
 
-                                    <th class="all">الاسم</th>
-                                    <th class="all">القسم </th>
+                                    <th class="all">م</th>
+                                    <th class="all">رقم التقرير</th>
+                                    <th class="all">اسم الجزء البحثي</th>
+                                    <th class="none">الفصل </th>
+                                    <th class="all">المبحث </th>
 
 
                                      <th class="all">تحميل البحث</th>
 
-                                    <th class="all">ملاحظات المشرف</th>
+                                    <th class="none">ملاحظات المشرف</th>
                                     <th class="all">خيارات.</th>
                                 </tr>
                             </thead>
@@ -67,6 +70,8 @@
                                 @foreach($searchs as $search)
                                 <tr>
 
+                                    <td>{{$search->ID}}</td>
+                                    <td>{{   $search->Cycle  }}</td>
                                     <td>
                                         <a   href="{{route('getOneSearch',$search->ID)}}">
                                              {{$search->Name}}</a>
@@ -74,17 +79,35 @@
                                        </td>
 
 
-                                    <td>{{$search->diviName}}</td>
+                                    <td>
+                                        @isset($search->diviName)
+                                            {{$search->diviName}}
+                                        @else
+                                            {{$search->DivisionAll}}
+                                        @endisset
+
+                                    </td>
 
 
-                                  {{--  <td>  @if($search->Progress=='تم الرفع')
-                                            <span class="badge badge-warning">{{$search->Progress}}</span>
-                                            @elseif($search->Progress=='رفض الادارة' || $search->Progress=='رفض المشرف' ) 
-                                            <span class="badge badge-danger">{{$search->Progress}}</span>
-                                            @elseif($search->Progress=='موافقة المشرف' || $search->Progress=='موافقة الادارة' ) 
-                                            <span class="badge badge-success">{{$search->Progress}}</span>
-                                            @endif                                    
-                                        </td>--}}
+                                    <td>
+                                        @isset($search->divName)
+                                            {{$search->divName}}
+                                        @else
+                                            {{$search->DivisionunitAll}}
+                                        @endisset
+
+                                    </td>
+
+
+
+                                    {{--  <td>  @if($search->Progress=='تم الرفع')
+                                              <span class="badge badge-warning">{{$search->Progress}}</span>
+                                              @elseif($search->Progress=='رفض الادارة' || $search->Progress=='رفض المشرف' )
+                                              <span class="badge badge-danger">{{$search->Progress}}</span>
+                                              @elseif($search->Progress=='موافقة المشرف' || $search->Progress=='موافقة الادارة' )
+                                              <span class="badge badge-success">{{$search->Progress}}</span>
+                                              @endif
+                                          </td>--}}
                                     <td>
                                         <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
 

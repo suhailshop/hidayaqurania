@@ -63,7 +63,7 @@ a.bg-danger:hover{background-color:#f36371;color:#fff;text-decoration:none}
 .nav-up {
  // top: -135px;
 }
-header img{width:60px}
+header img{width:50px}
 .navbar-nav > li > a{line-height:3.5;font-size:14px;color:#fff !important;font-weight:bold;-webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;

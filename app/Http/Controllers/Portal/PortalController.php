@@ -19,6 +19,8 @@ use App\Provide;
 use App\Searchersreport;
 use App\Supervisorsreport;
 use App\Cycle;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -121,7 +123,39 @@ class PortalController extends Controller
         $reviwers = Registration::where('type','reviewer')->get();
         $lastsearchers= Registration::where('Type','searcher')->orderBy('created_at', 'asc')->take(7)->get();
         $allsearchs = Search::all();
-        
+
+
+
         return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers' , 'reviwers' , 'allsearchs' ,'nationalities']));
+    }
+
+
+    public static function getDays($to)
+    {
+
+
+        $from1 =  Carbon::now()->format('Y-m-d');
+
+        $to1 = new Carbon($to);
+
+        //dd(  $from1  == $to);
+//       if($from1 == $to)
+//       {
+//           return  '<span class="badge badge-warning"> اليوم آخر يوم للإرسال  </span>' ;
+//
+//       } else
+
+
+         if ($from1 >= $to)
+       {
+           return '<span class="badge badge-danger"> انتهى وقت الإرسال  </span>' ;
+
+       } else {
+
+           $diff_in_days = $to1->diffInDays($from1);
+           return '<span class="badge badge-info"> تبقى عدد : '. $diff_in_days . ' يوم للإرسال </span>' ;
+       }
+
+
     }
 }

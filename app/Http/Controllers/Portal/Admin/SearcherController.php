@@ -179,10 +179,11 @@ class SearcherController extends Controller
         $searcher = Registration::where('ID',$id)->get()->first();
         $searchs = DB::table('searchs')
             ->join('registrations','registrations.ID','=','searchs.Searcher')
-            ->join('divisionunits','divisionunits.id','=','searchs.Divisionunit')
-            ->join('divisions','divisions.ID','=','searchs.Division')
+            ->leftJoin('divisionunits','divisionunits.id','=','searchs.Divisionunit')
+            ->leftJoin('divisions','divisions.ID','=','searchs.Division')
             ->where('registrations.ID',$id)
             ->select('searchs.*','divisionunits.Name as divName','divisions.Name as diviName')
+            ->orderBy('searchs.ID', 'desc')
             ->get();
         return view('portal.admin.searchers.getSearcherSearchs',compact('searchs','searcher'));
     }

@@ -37,9 +37,10 @@
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($nationalities)}}">{{count($nationalities)}}</span>
+                  <span data-counter="counterup"  data-value="{{count($searchers)}}">{{count($searchers)}}</span>
+
                </div>
-               <div class="desc"> الجنسيات </div>
+               <div class="desc"> عدد الطلاب </div>
             </div>
          </a>
       </div>
@@ -91,9 +92,9 @@
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($reviwers)}}">{{count($reviwers)}}</span>
+                  <span data-counter="counterup"  data-value="{{count($nationalities)}}">{{count($nationalities)}}</span>
                </div>
-               <div class="desc"> الباحثون المساعدون </div>
+               <div class="desc"> عدد الجنسيات  </div>
             </div>
          </a>
       </div>
@@ -462,6 +463,9 @@
                                                         </div>
                                                         <div class="timeline-body-content">
                                                         <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+
+
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -483,9 +487,10 @@
                                                          <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                              @foreach($cycles as $cycle)
                                                                 @if($cycle->name == 'التقرير الدوري الأول')
-                                                                 إلى تاريخ : {{$cycle->startDate}}  {{$cycle->endDate}} فترة إرسال التقرير من :
+                                                                     <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{  date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}} </span> </td></tr>
+                                                                     {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
-                                                                @endif
+                                                                 @endif
                                                              @endforeach </span>
                                                       </div>
                                                       <div class="timeline-body-head-actions">
@@ -563,7 +568,11 @@
                                                        <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                            @foreach($cycles as $cycle)
                                                               @if($cycle->name == 'التقرير الدوري الثاني')
-                                                                  <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                  <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+
+                                                        {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+
+
                                                                @endif
                                                            @endforeach
                                                        </span>
@@ -573,8 +582,12 @@
                                                        <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
                                                        <i class="fa"></i>
                                                        </button>
+
                                                     </div>
+
                                                  </div>
+
+
 
                                                  <div class="timeline-body-content"><span class="font-red">  لم يتم إرسال التقرير / البحث</span>
                                                  </div>
@@ -639,7 +652,8 @@
                                                        <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
                                                            @foreach($cycles as $cycle)
                                                               @if($cycle->name == 'التقرير الدوري الثالث')
-                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                   {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                @endif
                                                            @endforeach </span>
@@ -722,7 +736,8 @@
                                                        <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                            @foreach($cycles as $cycle)
                                                               @if($cycle->name == 'التقرير الدوري الرابع')
-                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                   {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                @endif
                                                            @endforeach </span>
@@ -796,7 +811,8 @@
                                                                     <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                         @foreach($cycles as $cycle)
                                                                             @if($cycle->name == 'التقرير الدوري الخامس')
-                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                                {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                             @endif
                                                                         @endforeach </span>
@@ -869,7 +885,8 @@
                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                     @foreach($cycles as $cycle)
                                                                         @if($cycle->name == 'التقرير الدوري السادس')
-                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                            {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                         @endif
                                                                     @endforeach </span>
@@ -946,7 +963,8 @@
                                                                  <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                      @foreach($cycles as $cycle)
                                                                          @if($cycle->name == 'التقرير الدوري السابع')
-                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1017,7 +1035,8 @@
                                                                  <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                      @foreach($cycles as $cycle)
                                                                          @if($cycle->name == 'التقرير الدوري الثامن')
-                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1090,7 +1109,8 @@
                                                                  <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                      @foreach($cycles as $cycle)
                                                                          @if($cycle->name == 'التقرير الدوري التاسع')
-                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1160,7 +1180,8 @@
                                                                  <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                      @foreach($cycles as $cycle)
                                                                          @if($cycle->name == 'التقرير الدوري العاشر')
-                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1233,7 +1254,9 @@
                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                     @foreach($cycles as $cycle)
                                                                         @if($cycle->name == 'التقرير الدوري الحادي عشر')
-                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                            {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+
                                                                         @endif
                                                                     @endforeach </span>
                                                             </div>
@@ -1304,7 +1327,9 @@
                                                                     <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                         @foreach($cycles as $cycle)
                                                                             @if($cycle->name == 'التقرير الدوري الثاني عشر')
-                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                                {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+
                                                                             @endif
                                                                         @endforeach </span>
                                                                 </div>

@@ -87,7 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- for each page, we include it's Style seperately to enhance the performance -->
     @yield('pageStyle')
     <!-- End Page Level Style -->
-
+<!-- ضبط التوقيت حسب توقيت مكة المكرمة -->
 <?php  date_default_timezone_set("Asia/Riyadh");   ?>
 
 

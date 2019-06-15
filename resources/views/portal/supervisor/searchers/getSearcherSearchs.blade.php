@@ -53,8 +53,8 @@
                             <thead>
                                 <tr>
 
-                                    <th class="all">الاسم</th>
-                                    <th class="all">الفصل </th>
+                                    <th class="all"> الجزء البحثي</th>
+                                    <th class="none">الفصل </th>
                                     <th class="all">المبحث </th>
 
                                      <th class="all">تحميل البحث</th>
@@ -74,9 +74,24 @@
                                        </td>
 
 
-                                    <td>{{$search->diviName}}</td>
+                                    <td>
+                                        @isset($search->diviName)
+                                        {{$search->diviName}}
+                                        @else
+                                        {{$search->DivisionAll}}
+                                        @endisset
 
-                                    <td>{{$search->divName}}</td>
+                                    </td>
+
+
+                                    <td>
+                                        @isset($search->divName)
+                                        {{$search->divName}}
+                                        @else
+                                            {{$search->DivisionunitAll}}
+                                        @endisset
+
+                                    </td>
 
 
 

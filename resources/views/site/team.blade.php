@@ -46,7 +46,7 @@
 
 
 
-									<div class="col-md-3 col-sm-4 col-xs-6 team-pic">
+									<div class="col-md-4 col-sm-4 col-xs-6 team-pic">
 										<img class="img-responsive" src="{{asset('template/team/prof-yahya.jpeg')}}"/>
 										<h4 class="gold">أستاذ الكرسي</h4>
 										<h4>أ.د / يحيى بن محمد زمزمي</h4>

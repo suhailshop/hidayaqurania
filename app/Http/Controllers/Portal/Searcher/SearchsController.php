@@ -71,8 +71,12 @@ class SearchsController extends Controller
         $search->Alias = $request->input('alias');
         $search->Order = $request->input('order');
 
-        $search->Division = Division::where('Name',$request->input('division')[0])->first()->ID;
-        $search->Divisionunit = Divisionunit::where('Name',$request->input('divisionunit')[0])->first()->id;
+
+        // updated in 15/6/2019 :
+        // reason : when searchers upload their file and chose multiple division they can't do it
+       // $search->Division = Division::where('Name',$request->input('division')[0])->first()->ID;
+
+        //$search->Divisionunit = Divisionunit::where('Name',$request->input('divisionunit')[0])->first()->ID;
        
         $divAll='';
         foreach($request->input('division') as $d  ){
@@ -80,12 +84,12 @@ class SearchsController extends Controller
         }
         $search->DivisionAll = $divAll;
 
-        $divAll = '';
+        $divAllUnit = '';
 
         foreach($request->input('divisionunit') as $d  ){
-            $divAll.= $d.';';
+            $divAllUnit.= $d.';';
         }
-        $search->DivisionunitAll = $divAll;
+        $search->DivisionunitAll = $divAllUnit;
 
 
         $search->Cycle = $request->input('cycle');
