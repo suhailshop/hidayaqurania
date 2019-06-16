@@ -54,6 +54,7 @@
                                 <tr>
 
                                     <th class="all"> الجزء البحثي</th>
+                                    <th class="all"> رقم التقرير </th>
                                     <th class="none">الفصل </th>
                                     <th class="all">المبحث </th>
 
@@ -72,6 +73,8 @@
                                              {{$search->Name}}</a>
 
                                        </td>
+
+                                    <td>{{$search->Cycle}}</td>
 
 
                                     <td>
