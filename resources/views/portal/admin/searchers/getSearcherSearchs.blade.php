@@ -109,7 +109,7 @@
                                               @endif
                                           </td>--}}
                                     <td>
-                                        <a href="{{ url('storage/searchs/'.$search->SearchURL) }}" >تحميل</a>
+                                        <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" >تحميل</a>
 
                                     </td>
 

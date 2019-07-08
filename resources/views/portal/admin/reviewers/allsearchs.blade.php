@@ -58,6 +58,7 @@
                                     <th class="all">اسم الجزء البحثي</th>
 
                                     <th class="all">القسم</th>
+                                    <th class="all">رقم التقرير</th>
 
                                     <th class="all">الباحث</th>
                                     <th class="all"> تحميل البحث </th>
@@ -75,6 +76,8 @@
                                     </td>
 
                                     <td>{{$search->divname}}</td>
+
+                                    <td>{{$search->Cycle}}</td>
 
                                     <td>{{$search->Fistname}} {{$search->LastName}}</td>
                                      <td>

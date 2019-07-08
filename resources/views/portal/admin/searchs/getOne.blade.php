@@ -886,7 +886,9 @@
 {{--                                             @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id))--}}
 
                                              <!-- new update on 12/6/2018 , student no longer see this report -->
-                                             @if(auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id))
+                                             <!-- newer update on 18/6/2018 , supervisor no longer see this report -->
+
+                                             @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)  || auth()->user()->hasRole('admin',auth()->user()->role_id))
 
                                                 <!-- تقرير الإدارة -->
                                              <tr>

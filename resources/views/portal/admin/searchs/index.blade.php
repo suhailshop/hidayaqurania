@@ -74,7 +74,8 @@
                                     <th class="all">الرقم</th>
                                     <th class="all">الباحث</th>
                                     <th class="all">جزء البحث</th>
-                                     <th class="all">القسم</th>
+                                     <th class="none">القسم</th>
+                                     <th class="all">رقم التقرير</th>
 
 
                                      <th class="all">الملف</th>
@@ -101,6 +102,8 @@
                                             echo $div.'<br />';
                                         }
                                         ?></td>
+
+                                    <td>{{$search->Cycle}}</td>
 
 
                                      <td>
