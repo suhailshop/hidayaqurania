@@ -96,12 +96,14 @@
                                         {{$search->Name}}
                                         </a>
                                     </td>
-                                     <td><?php 
+                                     <td>
+                                         <?php
                                         $divs = explode(";", $search->DivisionunitAll);
                                         foreach($divs as $div){
                                             echo $div.'<br />';
                                         }
-                                        ?></td>
+                                        ?>
+                                     </td>
 
                                     <td>{{$search->Cycle}}</td>
 

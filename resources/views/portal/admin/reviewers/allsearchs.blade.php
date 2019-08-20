@@ -75,7 +75,20 @@
                                         </a>
                                     </td>
 
-                                    <td>{{$search->divname}}</td>
+                                    <td>
+                                        @isset($search->divname)
+                                            {{$search->divname}}
+                                        @else
+
+                                            <?php
+                                            $divs = explode(";", $search->DivisionunitAll);
+                                            foreach($divs as $div){
+                                                echo $div.'<br />';
+                                            }
+                                            ?>
+
+                                        @endisset
+                                    </td>
 
                                     <td>{{$search->Cycle}}</td>
 

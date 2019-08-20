@@ -122,7 +122,13 @@ class SearchsController extends Controller
         $divisions = Division::all();
         return view('portal.searcher.searchs.edit',compact('search','divisions','divisionunits','cycles','sections'));
     }
+
+
     public function editPost(Request $request){
+
+        $search =  Search::where('ID', $request->id);
+
+
         $fileName = $request->input('URL');
         if($request->hasFile('searchURL')){
             $request->validate([
@@ -148,7 +154,7 @@ class SearchsController extends Controller
         DB::table('searchs')->where('ID',$request->input('id'))
         ->update(array(
             'Name'=>$request->input('name'),
-            'Division'=>Division::where('Name',$request->input('division')[0])->first()->ID,
+            //'Division'=>Division::where('Name',$request->input('division')[0])->first()->ID,
             'Status'=>$request->input('status'),
             'DivisionAll'=>$divAll,
             'DivisionunitAll'=>$divUnitAll,
@@ -160,6 +166,9 @@ class SearchsController extends Controller
         Session::put('success_edit', 'تم تعديل البحث بنجاح');           
         return redirect()->route('allSearchs');
     }
+
+
+
     public function delete($id){
         Search::where('ID', $id)->forcedelete(); 
         Session::put('success_edit', 'تم حذف البحث بنجاح');           

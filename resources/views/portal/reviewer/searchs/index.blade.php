@@ -59,8 +59,7 @@
                                     
                                     <th class="all">اسم الجزء البحثي</th>
 
-
-                                    <th class="all">القسم</th>
+                                    <th class="none">القسم</th>
                                     <th class="all">رقم التقرير</th>
                                     <th class="all">الباحث</th>
                                      <th class="all">تحميل البحث</th>
@@ -75,7 +74,20 @@
                                     <td>{{$search->Name}}</td>
 
 
-                                    <td>{{$search->divname}}</td>
+                                    <td>
+                                        @isset($search->divname)
+                                            {{$search->divname}}
+                                        @else
+
+                                        <?php
+                                        $divs = explode(";", $search->DivisionunitAll);
+                                        foreach($divs as $div){
+                                            echo $div.'<br />';
+                                        }
+                                        ?>
+
+                                        @endisset
+                                    </td>
 
                                     <td>{{$search->Cycle}}</td>
 

@@ -125,8 +125,8 @@ class ReviewerController extends Controller
 
     public function getAllReviewerSearchs($id){
         $searchs = DB::table('searchs')
-                    ->join('divisions','divisions.ID','=','searchs.Division')
-                    ->join('divisionunits','divisionunits.ID','=','searchs.Divisionunit')
+                    ->leftJoin('divisions','divisions.ID','=','searchs.Division')
+                    ->leftJoin('divisionunits','divisionunits.ID','=','searchs.Divisionunit')
                     ->join('reviewersearchs','reviewersearchs.search','=','searchs.ID')
                     ->join('registrations','registrations.ID','=','searchs.Searcher')
                     ->join('users','users.id','=','registrations.User')
