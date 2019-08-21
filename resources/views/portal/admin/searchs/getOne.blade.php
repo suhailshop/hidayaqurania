@@ -626,13 +626,16 @@
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
                                                             <div class="modal-header">
-                                                               <h5 class="modal-title" id="searchermodallabel"> <input type="button" value="طبع" onclick="window.print()"/> تفاصيل التقرير</h5>
+                                                               <h5 class="modal-title" id="searchermodallabel"> <button type="button" class="btn btn-primary" onclick="printDiv('print-me5');">طباعة</button> 
+                                                            </h5>
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                               <form role="form" method="POST"  id="print11" action="#" enctype="multipart/form-data">
+                                                               <form role="form" method="POST"  action="#" enctype="multipart/form-data" id="print-me5">
+                                                                <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
+                                                                
                                                                   <div class="form-group">
                                                                      <label class="control-label ">1- اجمالي عدد الهدايات القرآنية التي تضمنتها رسالتك حتى تاريخه : </label>
                                                                      <textarea readonly class="form-control " name="q1" >{{$search->searchers_reports[0]->q1}}</textarea>
@@ -707,13 +710,17 @@
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
                                                             <div class="modal-header">
-                                                               <h5 class="modal-title" id="searchermodallabel">تفاصيل التقرير</h5>
+                                                               <h5 class="modal-title" id="searchermodallabel">
+                                                                    <button type="button" class="btn btn-primary" onclick="printDiv('print-me4');">طباعة</button> 
+                                                                    </h5>
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                               <form role="form" method="POST" action="#" enctype="multipart/form-data">
+                                                               <form role="form" method="POST" action="#" enctype="multipart/form-data" id="print-me4">
+                                                                <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
+                                                                
                                                                   <div class="form-group">
                                                                      <label class="control-label ">نسبة ما تم إنجازه من الرسالة : </label>
                                                                      <textarea readonly class="form-control " name="q1" >{{$search->supervisors_reports[0]->q1}}</textarea>
@@ -802,14 +809,17 @@
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
                                                             <div class="modal-header">
-                                                               <h5 class="modal-title" id="reviewermodallabel">تفاصيل التقرير</h5>
+                                                               <h5 class="modal-title" id="reviewermodallabel">
+                                                                    <button type="button" class="btn btn-primary" onclick="printDiv('print-me3{{$rev->ID}}');">طباعة</button> 
+                                                               </h5>
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                               <form role="form" method="POST" action="#" enctype="multipart/form-data">
-                                                                  {{ csrf_field() }}
+                                                               <form role="form" method="POST" action="#" enctype="multipart/form-data" id="print-me3{{$rev->ID}}">
+                                                                <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
+                                                                
                                                                   <div class="form-group">
                                                                      <label class="control-label ">1- كفاية المصادر وأصالتها، والمراجع وحداثتها، ومدى إفادة الباحث منها، واستيعابه للدراسات السابقة. (الدرجة 1-10) : </label>
                                                                      <input readonly class="form-control " name="q1" type="text" value="{{$rev->q1}}"  />
@@ -945,13 +955,16 @@
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
                                                             <div class="modal-header">
-                                                               <h5 class="modal-title" id="exampleModalLabel">تفاصيل التقرير</h5>
+                                                               <h5 class="modal-title" id="exampleModalLabel">
+                                                                   <button type="button" class="btn btn-primary" onclick="printDiv('print-me2');">طباعة</button> 
+                                                                </h5>
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                               <form role="form" method="POST" action="#" >
+                                                               <form role="form" method="POST" action="#"  id="print-me2" >
+                                                                    <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
                                                                   <div class="form-group">
                                                                      <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
                                                                      <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q1}}</textarea>
