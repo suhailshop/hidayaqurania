@@ -83,6 +83,7 @@
                                  <a href="#tab_1_5" data-toggle="tab">إضافة تقرير الطالب </a>
                               </li>
                               @endif
+                             
                               <?php 
                               $alreadySubmit=false;
                               foreach($search->reviewers_reports as $re){
@@ -95,6 +96,17 @@
                               @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id) && !$alreadySubmit)
                               <li>
                                  <a href="#tab_1_6" data-toggle="tab">إضافة تقرير الباحث المساعد</a>
+                              </li>
+                              @endif
+                             
+                              @if(auth()->user()->hasRole('admin',auth()->user()->role_id) &&  count($search->examiner_reports)==0)
+                              <li>
+                                 <a href="#tab_1_8" data-toggle="tab">إضافة تقرير الفاحص </a>
+                              </li>
+                              @endif
+                              @if(auth()->user()->hasRole('admin',auth()->user()->role_id) &&  count($search->examiner_reports)!=0)
+                              <li>
+                                 <a href="#tab_1_9" data-toggle="tab">تعديل تقرير الفاحص </a>
                               </li>
                               @endif
                               <li>
@@ -171,7 +183,7 @@
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label ">الجامعة</label>
-                                       <input  value="{{$search->searcher->University}}" readonly class="form-control placeholder-no-fix" type="text"   name="LastName" />
+                                       <input  value="{{$search->searcher->university->Name}}" readonly class="form-control placeholder-no-fix" type="text"   name="LastName" />
                                     </div>
                                  </form>
                               </div>
@@ -882,14 +894,11 @@
                                                 </td>
                                              </tr>
                                              @endif
-
 {{--                                             @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id))--}}
 
                                              <!-- new update on 12/6/2018 , student no longer see this report -->
                                              <!-- newer update on 18/6/2018 , supervisor no longer see this report -->
-
                                              @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)  || auth()->user()->hasRole('admin',auth()->user()->role_id))
-
                                                 <!-- تقرير الإدارة -->
                                              <tr>
                                                 <td> تقرير اللجنة العلمية </td>
@@ -959,12 +968,152 @@
                                                    <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
                                                    @endif
                                                 </td>
+                                                @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
+                                             <!-- تفاصيل التقرير الفاحص -->
+                                             <tr>
+                                                <td> التقرير الفاحص </td>
+                                                <td>
+                                                   @if(!empty($search->examiner_reports[0]))
+                                                   تم الارسال من طرف : {{$search->examiner_reports[0]->admin}}
+                                                   @endif
+                                                </td>
+                                                <td>
+                                                   @if(!empty($search->examiner_reports[0]))
+                                                   تم الارسال بتاريخ :{{$search->examiner_reports[0]->date}} 
+                                                   @endif
+                                                </td>
+                                                <td>
+                                                   <!-- تفاصيل التقرير الفاحص -->
+                                                   @if(count($search->examiner_reports)>0)
+                                                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal123">
+                                                   عرض التقرير الفاحص
+                                                   </button>
+                                                   <div class="modal fade" id="searchermodal123" tabindex="-1" role="dialog" aria-labelledby="searchermodallabel123" aria-hidden="true">
+                                                      <div class="modal-dialog" role="document">
+                                                         <div class="modal-content">
+                                                            <div class="modal-header">
+                                                               <h5 class="modal-title" id="searchermodallabel123">تفاصيل التقرير</h5>
+                                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                               <span aria-hidden="true">&times;</span>
+                                                               </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                               <form role="form" method="POST" action="#" enctype="multipart/form-data">
+                                                                  <div class="form-group">
+                                                                     <label class="control-label ">اسم الجزء البحثي</label>
+                                                                     <textarea readonly class="form-control " name="q1" >{{$search->examiner_reports[0]->searche->Name}}</textarea>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                     <label class="control-label ">فصل الجزء البحثي</label>
+                                                                     <textarea readonly class="form-control " name="q1" >{{$search->examiner_reports[0]->searche->Alias}}</textarea>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                     <label class="control-label ">تم الرفع من قبل </label>
+                                                                     <textarea readonly class="form-control " name="q2" >{{$search->examiner_reports[0]->admin}}</textarea>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                     <label class="control-label ">تم كتابة التعليق من طرف </label>
+                                                                     <textarea readonly class="form-control " name="q2" >{{$search->examiner_reports[0]->comment_admin}}</textarea>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                     <label class="control-label "> هل يتسطيع الباحث رؤية التقرير </label>
+                                                                     <textarea readonly class="form-control " name="q2" >{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}</textarea>
+                                                                  </div>
+                                                                 
+                                                                  <div class="form-group">
+                                                                     <label class="control-label "> الملف : </label>
+                                                                     <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
+                                                                  </div>
+                                                               </form>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+                                                   </div>
+                                                   @else
+                                                   <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
+                                                   @endif
+                                                </td>
+                                             </tr>
+                                             @endif
                                              </tr>
                                              @endif
                                           </tbody>
                                        </table>
                                     </div>
                                  </div>
+                              </div>
+                               <!-- تفاصيل تقرير الفاحص -->
+                              <div class="tab-pane" id="tab_1_8">
+                                 <form role="form" method="POST" action="{{route('addexaminer_reports')}}" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" value="{{$search->ID}}" name="search" />
+                                    <input type="hidden" value="{{$search->searcher->ID}}" name="searcher" />
+                                    <div class="form-group">
+                                       <label class="control-label ">اسم الباحث </label>
+                                       <input class="form-control" name="searcher_name" value="{{$search->searcher->Fistname}}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">رقم الباحث </label>
+                                       <input class="form-control" name="searcher_id" value="{{$search->searcher->ID}}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">اسم البحث </label>
+                                       <input class="form-control " readonly  name="search_name" value="{{$search->Name}}" />
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">وصف البحث </label>
+                                       <input class="form-control " readonly  name="search_alias" value="{{$search->Alias}}" />
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">هل يستطيع الباحث رؤية التقرير ؟ </label>
+                                       <input class="form-control " type="checkbox"  name="searcher_access" />
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">رابط ملف البحث  *</label>
+                                       <input required class="form-control " name="filename" type="file"  />
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">ملاحظات  : </label>
+                                       <textarea  class="form-control " name="comment" ></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">تأكيد</button>
+                                 </form>
+                              </div>
+                              <div class="tab-pane" id="tab_1_9">
+                                 <form role="form" method="POST" action="{{route('updateexaminer_reports')}}" enctype="multipart/form-data">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" value="{{$search->ID}}" name="search" />
+                                    <input type="hidden" value="{{$search->searcher->ID}}" name="searcher" />
+                                    <div class="form-group">
+                                       <label class="control-label ">اسم الباحث </label>
+                                       <input class="form-control" name="searcher_name" value="{{$search->searcher->Fistname}}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">رقم الباحث </label>
+                                       <input class="form-control" name="searcher_id" value="{{$search->searcher->ID}}" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">اسم البحث </label>
+                                       <input class="form-control " readonly  name="search_name" value="{{$search->Name}}" />
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">وصف البحث </label>
+                                       <input class="form-control " readonly  name="search_alias" value="{{$search->Alias}}" />
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">هل يستطيع الباحث رؤية التقرير ؟ </label>
+                                       <input class="form-control " type="checkbox"  name="searcher_access" />
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">رابط ملف البحث  *</label>
+                                       <input required class="form-control " name="filename" type="file"  />
+                                    </div>
+                                    <div class="form-group">
+                                       <label class="control-label ">ملاحظات  : </label>
+                                       <textarea  class="form-control " name="comment" ></textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">تأكيد</button>
+                                 </form>
                               </div>
                            </div>
                         </div>

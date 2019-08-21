@@ -145,4 +145,51 @@ class SearchController extends Controller
         return redirect()->route('getOneSearch',array('id' =>$request->input('search')));
 
     }
+
+    public function addexaminer_reports(Request $request){
+
+        $fileName = '';
+        if($request->hasFile('filename')){
+            $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
+            $request->filename->storeAs('public/examiner_reports',$fileName);
+        }
+        DB::table('examiner_reports')->insert([
+            'searcher'=>$request->input('searcher'),
+            'search'=>$request->input('search'),
+            'comment_admin'=>Auth::user()->name,
+            'searcher_access'=> ($request->input('searcher_access') =="on" ? 1 : 0),
+            'comment'=>$request->input('comment'),
+            'file'=>$fileName,
+            'date'=>date('Y-m-d'),
+            'admin'=>Auth::user()->name
+        ]);
+
+        Session::put('success_edit', 'تم اضافة تقرير الفاحص بنجاح');
+        
+        return redirect()->route('getOneSearch',array('id' =>$request->input('search')));
+
+    }
+
+    public function updateexaminer_reports(Request $request){
+
+        $fileName = '';
+        if($request->hasFile('filename')){
+            $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
+            $request->filename->storeAs('public/examiner_reports',$fileName);
+        }
+        DB::table('examiner_reports')->where('id',$request->input('id_report_examiner'))
+        ->update(array(
+            'comment_admin'=>Auth::user()->name,
+            'searcher_access'=> ($request->input('searcher_access') =="on" ? 1 : 0),
+            'comment'=>$request->input('comment'),
+            'file'=>$fileName,
+            'date'=>date('Y-m-d')
+        ));
+
+        Session::put('success_edit', 'تم  تعديل تقرير الفاحص بنجاح');
+        
+        return redirect()->route('getOneSearch',array('id' =>$request->input('search')));
+
+    }
+    
 }

@@ -9,6 +9,7 @@ use App\These;
 use App\Progress;
 use App\Plan;
 use App\Supervisors_reports;
+use App\Universitie;
 use Illuminate\Database\Eloquent\Model;
 
 class Registration extends Model
@@ -41,5 +42,9 @@ class Registration extends Model
     public function supervisors_report(){
         return $this->hasMany('App\Supervisors_reports','supervisor','ID');
     }
+    public function university(){
+        return $this->hasOne('App\Universitie','ID','University');
+    }
+
     
 }

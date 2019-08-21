@@ -209,8 +209,8 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchs/updateProgressko/{id}','Admin\SearchController@updateProgressko')->name('updateProgressko');
     Route::post('/searchs/addSearchReviewer','Admin\SearchController@addSearchReviewer')->name('addSearchReviewer');
     Route::post('/searchs/addadmin2_reports','Admin\SearchController@addadmin2_reports')->name('addadmin2_reports');
-    
-
+    Route::post('/searchs/addexaminer_reports','Admin\SearchController@addexaminer_reports')->name('addexaminer_reports');
+    Route::post('/searchs/updateexaminer_reports','Admin\SearchController@updateexaminer_reports')->name('updateexaminer_reports');
 
 
     // --------------------- Manage news and conference pages ----------------------------------------//

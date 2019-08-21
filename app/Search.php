@@ -11,6 +11,7 @@ use App\Reviewers_reports;
 use App\Supervisors_reports;
 use App\Searchers_reports;
 use App\Admin2_reports;
+use App\Examiner_reports;
 use Illuminate\Database\Eloquent\Model;
 
 class Search extends Model 
@@ -52,5 +53,8 @@ class Search extends Model
     }
     public function reviewers_reports(){
         return $this->hasMany('App\Reviewers_reports','search','ID');
+    }
+    public function examiner_reports(){
+        return $this->hasMany('App\Examiner_reports','search','ID');
     }
 }
