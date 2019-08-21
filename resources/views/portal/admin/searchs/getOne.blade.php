@@ -9,6 +9,27 @@
 <link href="{!! asset('assets/global/plugins/datatables/datatables.min.css') !!}" rel="stylesheet" type="text/css" />
 <link href="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css') !!}" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+<style type="text/css">
+   @media screen {
+        #printSection {
+           display: none;
+        }
+   }
+
+   @media print {
+        body > *:not(#printSection) {
+           display: none;
+        }
+        #printSection, #printSection * {
+            visibility: visible;
+        }
+        #printSection {
+            position:absolute;
+            left:0;
+            top:0;
+        }
+   }
+</style>
 @endsection
 @section('pageTitle', 'الرئيسية')
 @section('content')
@@ -579,7 +600,7 @@
                                        </div>
                                     </div>
                                     <div class="portlet-body">
-                                       <table class="table table-hover table-striped table-bordered">
+                                       <table class="table table-hover table-striped table-bordered" >
                                           <tbody>
                                              @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
                                              <!-- تقرير الباحث -->
@@ -605,13 +626,13 @@
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
                                                             <div class="modal-header">
-                                                               <h5 class="modal-title" id="searchermodallabel">تفاصيل التقرير</h5>
+                                                               <h5 class="modal-title" id="searchermodallabel"> <input type="button" value="طبع" onclick="window.print()"/> تفاصيل التقرير</h5>
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                               <form role="form" method="POST" action="#" enctype="multipart/form-data">
+                                                               <form role="form" method="POST"  id="print11" action="#" enctype="multipart/form-data">
                                                                   <div class="form-group">
                                                                      <label class="control-label ">1- اجمالي عدد الهدايات القرآنية التي تضمنتها رسالتك حتى تاريخه : </label>
                                                                      <textarea readonly class="form-control " name="q1" >{{$search->searchers_reports[0]->q1}}</textarea>
@@ -971,7 +992,7 @@
                                                 @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
                                              <!-- تفاصيل التقرير الفاحص -->
                                              <tr>
-                                                <td> التقرير الفاحص </td>
+                                                <td> تقرير الفاحص </td>
                                                 <td>
                                                    @if(!empty($search->examiner_reports[0]))
                                                    تم الارسال من طرف : {{$search->examiner_reports[0]->admin}}
@@ -982,47 +1003,51 @@
                                                    تم الارسال بتاريخ :{{$search->examiner_reports[0]->date}} 
                                                    @endif
                                                 </td>
-                                                <td>
+                                                <td >
                                                    <!-- تفاصيل التقرير الفاحص -->
                                                    @if(count($search->examiner_reports)>0)
                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal123">
-                                                   عرض التقرير الفاحص
+                                                   عرض تقرير الفاحص
                                                    </button>
+                                                   
                                                    <div class="modal fade" id="searchermodal123" tabindex="-1" role="dialog" aria-labelledby="searchermodallabel123" aria-hidden="true">
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
                                                             <div class="modal-header">
-                                                               <h5 class="modal-title" id="searchermodallabel123">تفاصيل التقرير</h5>
+                                                               <h5 class="modal-title" id="searchermodallabel123">  
+                                                                   <button type="button" class="btn btn-primary" onclick="printDiv('print-me1');">طباعة</button> 
+                                                                   </h5>
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
-                                                               <form role="form" method="POST" action="#" enctype="multipart/form-data">
+                                                               <form role="form" method="POST" action="#" enctype="multipart/form-data" id="print-me1">
+                                                                <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">اسم الجزء البحثي</label>
-                                                                     <textarea readonly class="form-control " name="q1" >{{$search->examiner_reports[0]->searche->Name}}</textarea>
+                                                                     <input readonly class="form-control " name="q1" value="{{$search->examiner_reports[0]->searche->Name}}" />
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">فصل الجزء البحثي</label>
-                                                                     <textarea readonly class="form-control " name="q1" >{{$search->examiner_reports[0]->searche->Alias}}</textarea>
+                                                                     <input readonly class="form-control " name="q1" value="{{$search->examiner_reports[0]->searche->Alias}}"/>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">تم الرفع من قبل </label>
-                                                                     <textarea readonly class="form-control " name="q2" >{{$search->examiner_reports[0]->admin}}</textarea>
+                                                                     <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->admin}}" />
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">تم كتابة التعليق من طرف </label>
-                                                                     <textarea readonly class="form-control " name="q2" >{{$search->examiner_reports[0]->comment_admin}}</textarea>
+                                                                     <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->comment_admin}}" />
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label "> هل يتسطيع الباحث رؤية التقرير </label>
-                                                                     <textarea readonly class="form-control " name="q2" >{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}</textarea>
+                                                                     <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}" >
                                                                   </div>
                                                                  
                                                                   <div class="form-group">
                                                                      <label class="control-label "> الملف : </label>
-                                                                     <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
+                                                                     <a class="btn btn-primary" target="_blank" href="{{url('storage/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
                                                                   </div>
                                                                </form>
                                                             </div>
@@ -1084,6 +1109,7 @@
                                     {{ csrf_field() }}
                                     <input type="hidden" value="{{$search->ID}}" name="search" />
                                     <input type="hidden" value="{{$search->searcher->ID}}" name="searcher" />
+                                    <input type="hidden" value="{{$search->examiner_reports[0]->id}}" name="id_report_examiner" />
                                     <div class="form-group">
                                        <label class="control-label ">اسم الباحث </label>
                                        <input class="form-control" name="searcher_name" value="{{$search->searcher->Fistname}}" readonly>
@@ -1112,7 +1138,7 @@
                                        <label class="control-label ">ملاحظات  : </label>
                                        <textarea  class="form-control " name="comment" ></textarea>
                                     </div>
-                                    <button type="submit" class="btn btn-primary">تأكيد</button>
+                                    <button type="submit" class="btn btn-primary">تعديل</button>
                                  </form>
                               </div>
                            </div>
@@ -1139,6 +1165,24 @@
 <script src="{!! asset('assets/pages/scripts/table-datatables-responsive.min.js')!!}" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <script>
+  function printDiv(div) {    
+    // Create and insert new print section
+    var elem = document.getElementById(div);
+    var domClone = elem.cloneNode(true);
+    var $printSection = document.createElement("div");
+    $printSection.id = "printSection";
+    $printSection.appendChild(domClone);
+    document.body.insertBefore($printSection, document.body.firstChild);
+
+    window.print(); 
+
+    // Clean up print section for future use
+    var oldElem = document.getElementById("printSection");
+    if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); } 
+                          //oldElem.remove() not supported by IE
+
+    return true;
+}
    $('#table12').DataTable( {
     "language": {
     "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Arabic.json"
