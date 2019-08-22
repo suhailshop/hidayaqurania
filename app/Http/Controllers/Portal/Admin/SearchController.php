@@ -12,6 +12,11 @@ use App\Committesreport;
 use App\Section;
 use App\Search;
 use App\Registration;
+use App\Examiner_reports;
+use App\Reviewers_reports;
+use App\Supervisors_reports;
+use App\Searchers_reports;
+use App\Admin2_reports;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -176,19 +181,49 @@ class SearchController extends Controller
         if($request->hasFile('filename')){
             $fileName = "fileName".time().'.'.request()->filename->getClientOriginalExtension();
             $request->filename->storeAs('public/examiner_reports',$fileName);
-        }
-        DB::table('examiner_reports')->where('id',$request->input('id_report_examiner'))
-        ->update(array(
+            DB::table('examiner_reports')->where('id',$request->input('id_report_examiner'))
+            ->update(array(
+                'comment_admin'=>Auth::user()->name,
+                'searcher_access'=> ($request->input('searcher_access') =="on" ? 1 : 0),
+                'comment'=>$request->input('comment'),
+                'file'=>$fileName,
+                'date'=>date('Y-m-d')
+            ));
+        }else{
+            DB::table('examiner_reports')->where('id',$request->input('id_report_examiner'))
+            ->update(array(
             'comment_admin'=>Auth::user()->name,
             'searcher_access'=> ($request->input('searcher_access') =="on" ? 1 : 0),
             'comment'=>$request->input('comment'),
-            'file'=>$fileName,
             'date'=>date('Y-m-d')
-        ));
-
+            ));
+        }
         Session::put('success_edit', 'تم  تعديل تقرير الفاحص بنجاح');
         
         return redirect()->route('getOneSearch',array('id' =>$request->input('search')));
+
+    }
+
+    public function delete_reports($id,$idsearch,$type){
+        
+        if($type == 'searcher_reports'){
+            Searchers_report::where('id', $id)->forcedelete(); 
+        }
+        if($type == 'examiner_reports'){
+            Examiner_reports::where('id', $id)->forcedelete(); 
+        }
+        if($type == 'supervisors_reports'){
+            Supervisors_reports::where('id', $id)->forcedelete(); 
+        }
+        if($type == 'reviewers_reports'){
+            Reviewers_reports::where('id', $id)->forcedelete(); 
+        }
+        if($type == 'admin2_reports'){
+            Admin2_reports::where('id', $id)->forcedelete(); 
+        }
+        
+
+        return redirect()->route('getOneSearch',array('id' =>$idsearch));
 
     }
     

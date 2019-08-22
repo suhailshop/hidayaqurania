@@ -626,11 +626,19 @@
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
                                                             <div class="modal-header">
-                                                               <h5 class="modal-title" id="searchermodallabel"> <button type="button" class="btn btn-primary" onclick="printDiv('print-me5');">طباعة</button> 
-                                                            </h5>
+                                                               <h5 class="modal-title" id="searchermodallabel"> 
+                                                               <button type="button" class="btn btn-primary" onclick="printDiv('print-me5');">طباعة</button> 
+                                                                @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
+
+                                                               <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->searchers_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'searcher_reports' ] ) !!}">حذف </a> 
+
+                                                                @endif
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                                </button>
+                                                            </h5>
+                                                             
+                                                              
                                                             </div>
                                                             <div class="modal-body">
                                                                <form role="form" method="POST"  action="#" enctype="multipart/form-data" id="print-me5">
@@ -712,9 +720,15 @@
                                                             <div class="modal-header">
                                                                <h5 class="modal-title" id="searchermodallabel">
                                                                     <button type="button" class="btn btn-primary" onclick="printDiv('print-me4');">طباعة</button> 
-                                                                    </h5>
-                                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
+
+                                                                    <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->supervisors_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'supervisors_reports' ] ) !!}">حذف </a>      
+
+                                                                    @endif
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
+                                                                    </h5>
+                                                            
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -811,9 +825,15 @@
                                                             <div class="modal-header">
                                                                <h5 class="modal-title" id="reviewermodallabel">
                                                                     <button type="button" class="btn btn-primary" onclick="printDiv('print-me3{{$rev->ID}}');">طباعة</button> 
-                                                               </h5>
-                                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
+
+<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->reviewers_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'reviewers_reports' ] ) !!}">حذف </a>      
+
+@endif
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
+                                                               </h5>
+                                                              
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -957,9 +977,15 @@
                                                             <div class="modal-header">
                                                                <h5 class="modal-title" id="exampleModalLabel">
                                                                    <button type="button" class="btn btn-primary" onclick="printDiv('print-me2');">طباعة</button> 
-                                                                </h5>
-                                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                   @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
+
+<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->admin2_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'admin2_reports' ] ) !!}">حذف </a>      
+
+@endif
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
+                                                                </h5>
+                                                             
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -1002,8 +1028,13 @@
                                                    <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
                                                    @endif
                                                 </td>
+                                               
                                                 @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
                                              <!-- تفاصيل التقرير الفاحص -->
+                                             @endif 
+                                             @endif
+                                             @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  
+                                             ((auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1 ) ) )
                                              <tr>
                                                 <td> تقرير الفاحص </td>
                                                 <td>
@@ -1029,9 +1060,15 @@
                                                             <div class="modal-header">
                                                                <h5 class="modal-title" id="searchermodallabel123">  
                                                                    <button type="button" class="btn btn-primary" onclick="printDiv('print-me1');">طباعة</button> 
-                                                                   </h5>
-                                                               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                   @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
+
+<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->examiner_reports[0]->id , 'idsearch' => $search->ID , 'type' => 'examiner_reports' ] ) !!}">حذف </a>      
+
+@endif
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
+                                                                   </h5>
+                                                              
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -1060,7 +1097,7 @@
                                                                  
                                                                   <div class="form-group">
                                                                      <label class="control-label "> الملف : </label>
-                                                                     <a class="btn btn-primary" target="_blank" href="{{url('storage/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
+                                                                     <a class="btn btn-primary" target="_blank" href="{{url('../storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
                                                                   </div>
                                                                </form>
                                                             </div>
@@ -1074,12 +1111,13 @@
                                              </tr>
                                              @endif
                                              </tr>
-                                             @endif
+                                            
                                           </tbody>
                                        </table>
                                     </div>
                                  </div>
                               </div>
+                              
                                <!-- تفاصيل تقرير الفاحص -->
                               <div class="tab-pane" id="tab_1_8">
                                  <form role="form" method="POST" action="{{route('addexaminer_reports')}}" enctype="multipart/form-data">
@@ -1117,6 +1155,7 @@
                                     <button type="submit" class="btn btn-primary">تأكيد</button>
                                  </form>
                               </div>
+                              @if(count($search->examiner_reports)>0)
                               <div class="tab-pane" id="tab_1_9">
                                  <form role="form" method="POST" action="{{route('updateexaminer_reports')}}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
@@ -1153,7 +1192,10 @@
                                     </div>
                                     <button type="submit" class="btn btn-primary">تعديل</button>
                                  </form>
+                                 
                               </div>
+                              @endif
+
                            </div>
                         </div>
                      </div>
