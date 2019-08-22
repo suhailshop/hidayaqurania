@@ -2286,6 +2286,22 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_tok
 (196, 'أ.د مورتس برخر', 'mberger@hidayatqurania.org', '$2y$10$Z9ZRIBNXwCEU3iwI86AHueSw4r1b2rw5I8dieSSlQpl8pLJKlONMS', 3, NULL, '2019-08-18 07:07:21', '2019-08-18 07:07:21'),
 (197, 'سعيد عمراني', 'samrani@hidayatqurania.org', '$2y$10$P/bwg3ds.Fq8Z.92M4XOYeOLOuXeZzUXAP50Xgy.lmHuD/bAgBuxO', 2, 'Fj5CZsbBzgDtXm2fgaUF6znJzkysQcQHRmgJVSzZ3ipKpHr3R0W9XbHpqSFm', '2019-08-18 07:39:55', '2019-08-18 07:15:42');
 
+
+CREATE TABLE `examiner_reports` (
+  `id` int(11) NOT NULL,
+  `searcher` int(11) NOT NULL,
+  `search` int(11) NOT NULL,
+  `file` text NOT NULL,
+  `admin` text NOT NULL,
+  `comment` text NOT NULL,
+  `comment_admin` text NOT NULL,
+  `searcher_access` tinyint(1) NOT NULL DEFAULT '0',
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+
 --
 -- Indexes for dumped tables
 --
@@ -2749,6 +2765,22 @@ ALTER TABLE `universities`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
+COMMIT;
+
+ALTER TABLE `examiner_reports`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `searcher` (`searcher`),
+  ADD KEY `search` (`search`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `examiner_reports`
+--
+ALTER TABLE `examiner_reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
