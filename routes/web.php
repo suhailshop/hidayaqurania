@@ -66,6 +66,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/admin/changeAccountToSupervisor', 'Admin\AccountController@index')->name('changeAccountToSupervisor');
     
     Route::get('/admin/getCycle/{id}', 'Admin\CycleController@getCycle')->name('getCycle');
+
+
+
     
     
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
@@ -84,7 +87,6 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/searchers/editStatusSearcher/{id}/{status}','Admin\SearcherController@editStatusSearcher')->name('editStatusSearcher');
     Route::post('/searchers/updateSearcherInfos','Admin\SearcherController@updateSearcherInfos')->name('updateSearcherInfos');
     Route::post('/searchers/changeSupervisor' , 'Admin\SearcherController@changeSupervisor')->name('changeSearcherSupervisor');
-
 
 
 

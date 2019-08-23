@@ -630,7 +630,7 @@
                                                                <button type="button" class="btn btn-primary" onclick="printDiv('print-me5');">طباعة</button> 
                                                                 @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
 
-                                                               <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->searchers_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'searcher_reports' ] ) !!}">حذف </a> 
+                                                               <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->searchers_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'searcher_reports' ] ) !!}">حذف </a>
 
                                                                 @endif
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
