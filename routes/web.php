@@ -211,6 +211,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchs/addadmin2_reports','Admin\SearchController@addadmin2_reports')->name('addadmin2_reports');
     Route::post('/searchs/addexaminer_reports','Admin\SearchController@addexaminer_reports')->name('addexaminer_reports');
     Route::post('/searchs/updateexaminer_reports','Admin\SearchController@updateexaminer_reports')->name('updateexaminer_reports');
+    Route::get('/searchs/delete_reports/{id}/{idsearch}/{type}','Admin\SearchController@delete_reports')->name('delete_reports');
 
 
     // --------------------- Manage news and conference pages ----------------------------------------//
