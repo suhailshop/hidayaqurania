@@ -813,43 +813,43 @@
                                                                 
                                                                   <div class="form-group">
                                                                      <label class="control-label ">نسبة ما تم إنجازه من الرسالة : </label>
-                                                                     <textarea readonly class="form-control " name="q1" >{{$search->supervisors_reports[0]->q1}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->supervisors_reports[0]->q1}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">مسوغات وتوضيحات حول نسبة الإنجاز : </label>
-                                                                     <textarea readonly class="form-control " name="q2" >{{$search->supervisors_reports[0]->q2}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->supervisors_reports[0]->q2}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">مدى جودة البحث والتزامه بالمنهج العلمي  المحدد من الكرسي
                                                                      (ممتاز، جيد جدا، جيد، مقبول)  : </label>
-                                                                     <textarea readonly class="form-control " name="q3" >{{$search->supervisors_reports[0]->q3}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->supervisors_reports[0]->q3}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">مدى الالتزام بتوجيهات المشرف واللجنة
                                                                      العلمية بالكرسي
                                                                      100%, 90%,...etc
                                                                      : </label>
-                                                                     <textarea readonly class="form-control " name="q4" >{{$search->supervisors_reports[0]->q4}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->supervisors_reports[0]->q4}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">أبرز الملاحظات الإيجابية على عمل الباحث  : </label>
-                                                                     <textarea readonly class="form-control " name="q5" >{{$search->supervisors_reports[0]->q5}}</textarea>
+                                                                     <p style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->supervisors_reports[0]->q5}} </p>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">أبرز الملاحظات السلبية على عمل الباحث : </label>
-                                                                     <textarea readonly class="form-control " name="q6" >{{$search->supervisors_reports[0]->q6}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->supervisors_reports[0]->q6}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">ما الصعوبات التي تواجه الباحث ( إن وجدت ) : </label>
-                                                                     <textarea readonly class="form-control " name="q7" >{{$search->supervisors_reports[0]->q7}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->supervisors_reports[0]->q7}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التوصيات والمقترحات التطويرية : </label>
-                                                                     <textarea readonly class="form-control " name="q8" >{{$search->supervisors_reports[0]->q8}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->supervisors_reports[0]->q8}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">ملاحظات : </label>
-                                                                     <textarea readonly class="form-control " name="note" >{{$search->supervisors_reports[0]->note}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">@if(empty($search->supervisors_reports[0]->note)) لا توجد @else {{$search->supervisors_reports[0]->note}} @endif</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label "> الملف : </label>
@@ -922,7 +922,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q1_details" >{{$rev->q1_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q1_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">2- مدى تقيد الطالب بعقيدة أهل السنة والجماعة فيما يقرره من هدايات.(الدرجة 1-10) : </label>
@@ -930,7 +930,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q2_details" >{{$rev->q2_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q2_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">3- التقيد بالخطة والإجراءات الموضوعة للدراسة.(الدرجة 1-10)  : </label>
@@ -938,7 +938,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q3_details" >{{$rev->q3_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q3_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">4- مراعاة ضوابط الكتابة العلمية من سلامة اللغة، ودقة الصياغة، ووضوحها، والقدرة على تنظيم المعلومات والأفكار، وعرضها بطريقة علمية، ودعمها بالأدلة المناسبة.(الدرجة 1-10) * : </label>
@@ -946,7 +946,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q4_details" >{{$rev->q4_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q4_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">5- مدى التزام الباحث بضوابط النقل والاقتباس، والتحلي بالأمانة العلمية، والتزام منهج البحث العلمي وخطواته الإجرائية في التوثيق، والتخريج والحكم على الأحاديث، والترجمة للأعلام وغيرها.(الدرجة 1-10)  : </label>
@@ -954,7 +954,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q5_details" >{{$rev->q5_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q5_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">6- مستوى تطبيق الباحث لمحتوى الدراسة التأصيلية والتزامه بها، وبالضوابط والإجراءات الموضوعة للمشروع.(الدرجة 1-10) * : </label>
@@ -962,7 +962,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q6_details" >{{$rev->q6_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q6_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">7- ظهور شخصية الباحث، ومستوى ما له من تحليلات ومناقشات واستنتاجات وإضافات.(الدرجة 1-10) * : </label>
@@ -970,7 +970,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q7_details" >{{$rev->q7_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q7_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">8- مطابقة المحتوى للعنوان، وتحقيق الباحث للأهداف، ومستوى الإضافات العلمية التي قدمها(الدرجة 1-10) : </label>
@@ -978,7 +978,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q8_details" >{{$rev->q8_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q8_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">9- مدى ارتباط الهدايات بالواقع ودورها في حل المشكلات. (الدرجة 1-10) : </label>
@@ -986,7 +986,7 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q9_details" >{{$rev->q9_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q9_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">10- التنسيق والإخراج (الدرجة 1-10) : </label>
@@ -994,15 +994,15 @@
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التعليقات والمبررات  : </label>
-                                                                     <textarea readonly class="form-control " name="q10_details">{{$rev->q10_details}} </textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q10_details}} </div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">ملحوظات ومقترحات اضافية :  </label>
-                                                                     <textarea readonly class="form-control " name="q11" >{{$rev->q11}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->q11}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">ملاحظات  : </label>
-                                                                     <textarea readonly class="form-control " name="note" >{{$rev->note}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$rev->note}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">رابط ملف البحث بعد المراجعة والتعليقات</label>
@@ -1069,27 +1069,27 @@
                                                                     <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
                                                                   <div class="form-group">
                                                                      <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
-                                                                     <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q1}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q1}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : </label>
-                                                                     <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q2}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q2}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">اهم الايجابيات على عمل الطالب ؟ : </label>
-                                                                     <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q3}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q3}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : </label>
-                                                                     <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q4}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q4}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التوصيات والمقترحات : </label>
-                                                                     <textarea readonly class="form-control " >{{$search->admin2_reports[0]->q5}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q5}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label ">ملاحظات عامة  : </label>
-                                                                     <textarea readonly class="form-control " >{{$search->admin2_reports[0]->note}}</textarea>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->note}}</div>
                                                                   </div>
                                                                   <div class="form-group">
                                                                      <label class="control-label "> الملف : </label>
@@ -1196,6 +1196,11 @@
                                                                      <label class="control-label "> هل يتسطيع الباحث رؤية التقرير </label>
                                                                      <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}" >
                                                                   </div>
+                                                                  <div class="form-group">
+                                                                    <label class="control-label "> ملاحظات </label>
+                                                                    <br />
+                                                                    <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->examiner_reports[0]->comment}}</div>
+                                                                 </div>
 
                                                                   <div class="form-group">
                                                                      <label class="control-label "> الملف : </label>
