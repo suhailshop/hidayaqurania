@@ -207,6 +207,81 @@
                                        <input  value="{{$search->searcher->university->Name}}" readonly class="form-control placeholder-no-fix" type="text"   name="LastName" />
                                     </div>
                                  </form>
+
+
+                                 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searcherallinfo">
+                                    عرض تفاصيل معلومات الباحث
+                                 </button>
+
+
+                                 <div class="modal fade" id="searcherallinfo" tabindex="-1" role="dialog" aria-labelledby="searcherallinfolabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                       <div class="modal-content">
+                                          <div class="modal-header">
+                                             <h5 class="modal-title" id="searcherallinfolabel">
+                                                <button type="button" class="btn btn-primary" onclick="printDiv('print-me6');">طباعة</button>
+
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                   <span aria-hidden="true">&times;</span>
+                                                </button>
+                                             </h5>
+                                          </div>
+                                          <div class="modal-bod">
+                                             <form role="form" method="POST"  action="#" enctype="multipart/form-data" id="print-me6">
+                                                <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل الباحث" readonly /></div>
+
+                                                <div class="form-group cl-12">
+                                                   <label class="control-label ">اسم الباحث </label>
+                                                   <input class="form-control" name="searcher_name" value="{{$search->searcher->Fistname}}" readonly>
+                                                </div>
+                                                <div class="form-group">
+                                                   <label class="control-label ">رقم الباحث في الموسوعة</label>
+                                                   <input class="form-control" name="searcher_id" value="{{$search->searcher->Code}}" readonly>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                   <label class="control-label ">الجنسية</label>
+                                                   <input class="form-control" name="searcher_id" value="{{$nationality->Name}}" readonly>
+                                                </div>
+
+                                                <div class="form-group">
+                                                   <label class="control-label ">اسم المشرف </label>
+                                                   <select   disabled   class="form-control" >
+                                                      @foreach($supervisors as $supervisor)
+                                                         <option value="{{$supervisor->ID}}" @if($supervisor->ID == $thesis->supervisor->ID) selected @endif>{{$thesis->supervisor->Fistname}} {{$thesis->supervisor->LastName}}</option>
+                                                      @endforeach
+                                                   </select>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                   <label class="control-label ">  الجامعة </label>
+                                                   <select disabled name="University" required class="form-control">
+                                                      @foreach($universities as $uni)
+                                                         <option @if($search->University==$uni->ID) selected @endif value="{{$uni->ID}}">{{$uni->Name}}</option>
+                                                      @endforeach
+                                                   </select>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                   <label class="control-label ">عنوان الرسالة </label>
+                                                   <input class="form-control" name="searcher_id" value="{{$thesis->Title}}" readonly>
+                                                </div>
+
+                                                <div class="form-group">
+                                                   <label class="control-label ">تاريخ تسجيل الرسالة </label>
+                                                   <input class="form-control" name="searcher_id" value="{{$thesis->BeginningDate}}" readonly>
+                                                </div>
+
+                                             </form>
+                                          </div>
+                                       </div>
+                                    </div>
+                                 </div>
+
+
                               </div>
                               <!-- تقرير الإدارة -->
                               <div class="tab-pane" id="tab_1_3">
@@ -622,6 +697,7 @@
                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal">
                                                    عرض تقرير الباحث
                                                    </button>
+
                                                    <div class="modal fade" id="searchermodal" tabindex="-1" role="dialog" aria-labelledby="searchermodallabel" aria-hidden="true">
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
@@ -1030,45 +1106,71 @@
                                                 </td>
                                                
                                                 @if(auth()->user()->hasRole('student',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('reviewer',auth()->user()->role_id))
-                                             <!-- تفاصيل التقرير الفاحص -->
-                                             @endif 
+
+
+
+
+                                            <!-- تفاصيل التقرير الفاحص -->
+                                             @endif
+
                                              @endif
                                              @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  
                                              ((auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1 ) ) )
                                              <tr>
-                                                <td> تقرير الفاحص </td>
+
+                                                @if( auth()->user()->hasRole('admin', auth()->user()->role_id))
+                                                   <td> تقرير الفاحص الخاص بالباحث </td>
+
+                                                @else
+
+
+                                                <td> التقرير الإداري الخاص بك </td>
+
+                                                @endif
                                                 <td>
-                                                   @if(!empty($search->examiner_reports[0]))
-                                                   تم الارسال من طرف : {{$search->examiner_reports[0]->admin}}
-                                                   @endif
+
+                                                   بإمكانك الآن الاطلاع على التقرير الإداري الخاص بك وطباعته.
+
+{{--                                                   @if(!empty($search->examiner_reports[0]))--}}
+{{--                                                   تم الارسال من طرف : {{$search->examiner_reports[0]->admin}}--}}
+{{--                                                   @endif--}}
+
                                                 </td>
                                                 <td>
                                                    @if(!empty($search->examiner_reports[0]))
-                                                   تم الارسال بتاريخ :{{$search->examiner_reports[0]->date}} 
+                                                   تم النشر بتاريخ :{{$search->examiner_reports[0]->date}}
                                                    @endif
                                                 </td>
                                                 <td >
                                                    <!-- تفاصيل التقرير الفاحص -->
                                                    @if(count($search->examiner_reports)>0)
-                                                   <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal123">
+
+
+
+
+
+                                                      @if( auth()->user()->hasRole('admin', auth()->user()->role_id))
+
+
+                                                      <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal123">
                                                    عرض تقرير الفاحص
                                                    </button>
-                                                   
+
                                                    <div class="modal fade" id="searchermodal123" tabindex="-1" role="dialog" aria-labelledby="searchermodallabel123" aria-hidden="true">
                                                       <div class="modal-dialog" role="document">
                                                          <div class="modal-content">
                                                             <div class="modal-header">
-                                                               <h5 class="modal-title" id="searchermodallabel123">  
-                                                                   <button type="button" class="btn btn-primary" onclick="printDiv('print-me1');">طباعة</button> 
+                                                               <h5 class="modal-title" id="searchermodallabel123">
+                                                                   <button type="button" class="btn btn-primary" onclick="printDiv('print-me1');">طباعة</button>
                                                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
 
-<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->examiner_reports[0]->id , 'idsearch' => $search->ID , 'type' => 'examiner_reports' ] ) !!}">حذف </a>      
+<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->examiner_reports[0]->id , 'idsearch' => $search->ID , 'type' => 'examiner_reports' ] ) !!}">حذف </a>
 
 @endif
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                <span aria-hidden="true">&times;</span>
                                                                    </h5>
-                                                              
+
                                                                </button>
                                                             </div>
                                                             <div class="modal-body">
@@ -1094,7 +1196,7 @@
                                                                      <label class="control-label "> هل يتسطيع الباحث رؤية التقرير </label>
                                                                      <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}" >
                                                                   </div>
-                                                                 
+
                                                                   <div class="form-group">
                                                                      <label class="control-label "> الملف : </label>
                                                                      <a class="btn btn-primary" target="_blank" href="{{url('../storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
@@ -1104,6 +1206,15 @@
                                                          </div>
                                                       </div>
                                                    </div>
+
+                                                   @else
+
+                                                         <a class="btn btn-primary" target="_blank" href="{{url('../storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير الخاص بك </a>
+
+
+                                                      @endif
+
+
                                                    @else
                                                    <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
                                                    @endif
@@ -1111,13 +1222,13 @@
                                              </tr>
                                              @endif
                                              </tr>
-                                            
+
                                           </tbody>
                                        </table>
                                     </div>
                                  </div>
                               </div>
-                              
+
                                <!-- تفاصيل تقرير الفاحص -->
                               <div class="tab-pane" id="tab_1_8">
                                  <form role="form" method="POST" action="{{route('addexaminer_reports')}}" enctype="multipart/form-data">
@@ -1129,15 +1240,53 @@
                                        <input class="form-control" name="searcher_name" value="{{$search->searcher->Fistname}}" readonly>
                                     </div>
                                     <div class="form-group">
-                                       <label class="control-label ">رقم الباحث </label>
-                                       <input class="form-control" name="searcher_id" value="{{$search->searcher->ID}}" readonly>
+                                       <label class="control-label ">رقم الباحث في الموسوعة</label>
+                                       <input class="form-control" name="searcher_id" value="{{$search->searcher->Code}}" readonly>
                                     </div>
+
+
                                     <div class="form-group">
-                                       <label class="control-label ">اسم البحث </label>
+                                       <label class="control-label ">الجنسية</label>
+                                       <input class="form-control" name="searcher_id" value="{{$nationality->Name}}" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                       <label class="control-label ">اسم المشرف </label>
+                                       <select   disabled   class="form-control" >
+                                          @foreach($supervisors as $supervisor)
+                                             <option value="{{$supervisor->ID}}" @if($supervisor->ID == $thesis->supervisor->ID) selected @endif>{{$thesis->supervisor->Fistname}} {{$thesis->supervisor->LastName}}</option>
+                                          @endforeach
+                                       </select>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                       <label class="control-label ">  الجامعة </label>
+                                       <select disabled name="University" required class="form-control">
+                                          @foreach($universities as $uni)
+                                             <option @if($search->University==$uni->ID) selected @endif value="{{$uni->ID}}">{{$uni->Name}}</option>
+                                          @endforeach
+                                       </select>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                       <label class="control-label ">عنوان الرسالة </label>
+                                       <input class="form-control" name="searcher_id" value="{{$thesis->Title}}" readonly>
+                                    </div>
+
+                                    <div class="form-group">
+                                       <label class="control-label ">تاريخ تسجيل الرسالة </label>
+                                       <input class="form-control" name="searcher_id" value="{{$thesis->BeginningDate}}" readonly>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                       <label class="control-label ">اسم الجزء البحثي </label>
                                        <input class="form-control " readonly  name="search_name" value="{{$search->Name}}" />
                                     </div>
                                     <div class="form-group">
-                                       <label class="control-label ">وصف البحث </label>
+                                       <label class="control-label ">وصف الجزء البحثي </label>
                                        <input class="form-control " readonly  name="search_alias" value="{{$search->Alias}}" />
                                     </div>
                                     <div class="form-group">
@@ -1145,7 +1294,7 @@
                                        <input class="form-control " type="checkbox"  name="searcher_access" />
                                     </div>
                                     <div class="form-group">
-                                       <label class="control-label ">رابط ملف البحث  *</label>
+                                       <label class="control-label ">رفع ملف تقرير الفاحص الخاص بهذا الباحث  *</label>
                                        <input required class="form-control " name="filename" type="file"  />
                                     </div>
                                     <div class="form-group">
@@ -1168,7 +1317,7 @@
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label ">رقم الباحث </label>
-                                       <input class="form-control" name="searcher_id" value="{{$search->searcher->ID}}" readonly>
+                                       <input class="form-control" name="searcher_id" value="{{$search->searcher->Code}}" readonly>
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label ">اسم البحث </label>
@@ -1178,21 +1327,39 @@
                                        <label class="control-label ">وصف البحث </label>
                                        <input class="form-control " readonly  name="search_alias" value="{{$search->Alias}}" />
                                     </div>
+
+
+                                    <div class="form-group">
+                                       <label class="control-label "> هل يتسطيع الباحث رؤية التقرير </label>
+                                       <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}" >
+                                    </div>
+
+
                                     <div class="form-group">
                                        <label class="control-label ">هل يستطيع الباحث رؤية التقرير ؟ </label>
-                                       <input class="form-control " type="checkbox"  name="searcher_access" />
+                                       <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "حاليا: نعم" : "حالياً: لا"}}" >
+
+                                       <input class="form-control " type="checkbox"  name="searcher_access" @if($search->examiner_reports[0]->searcher_access == 1) checked @endif />
                                     </div>
+
+
+                           <div class="form-group">
+                               <a class="btn btn-primary" target="_blank" href="{{url('../storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير الخاص بك </a>
+
+                           </div>
+
                                     <div class="form-group">
-                                       <label class="control-label ">رابط ملف البحث  *</label>
-                                       <input required class="form-control " name="filename" type="file"  />
+                                       <label class="control-label ">تحديث ملف تقرير الفاحص</label>
+                                       <input class="form-control" name="filename" type="file"  />
                                     </div>
+
                                     <div class="form-group">
                                        <label class="control-label ">ملاحظات  : </label>
-                                       <textarea  class="form-control " name="comment" ></textarea>
+                                       <textarea  class="form-control " name="comment" > {{$search->examiner_reports[0]->comment}} </textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary">تعديل</button>
                                  </form>
-                                 
+
                               </div>
                               @endif
 
@@ -1220,7 +1387,7 @@
 <script src="{!! asset('assets/pages/scripts/table-datatables-responsive.min.js')!!}" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
 <script>
-  function printDiv(div) {    
+  function printDiv(div) {
     // Create and insert new print section
     var elem = document.getElementById(div);
     var domClone = elem.cloneNode(true);
@@ -1229,11 +1396,11 @@
     $printSection.appendChild(domClone);
     document.body.insertBefore($printSection, document.body.firstChild);
 
-    window.print(); 
+    window.print();
 
     // Clean up print section for future use
     var oldElem = document.getElementById("printSection");
-    if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); } 
+    if (oldElem != null) { oldElem.parentNode.removeChild(oldElem); }
                           //oldElem.remove() not supported by IE
 
     return true;

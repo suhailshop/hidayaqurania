@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Nationalitie;
+use App\These;
 use App\Universitie;
 use App\User;
 use App\Role;
@@ -42,7 +44,13 @@ class SearchController extends Controller
     public function getOne($id){
         $search=Search::where('ID',$id)->first();
         $universities = Universitie::all();
-        return view('portal.admin.searchs.getOne',compact('search' , 'universities'));
+        $nationality = Nationalitie::where('ID', $search->searcher->Nationalitie)->first();
+        $thesis = These::where('Searcher', $search->searcher->ID)->first();
+        $supervisors = Registration::where('Type', 'supervisor')->get();
+
+        //dd($supervisors);
+
+        return view('portal.admin.searchs.getOne',compact('search' , 'universities', 'nationality' , 'thesis' , 'supervisors'));
     }
     
     public function updateProgressok($id){

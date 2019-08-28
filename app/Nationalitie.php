@@ -13,6 +13,11 @@ class Nationalitie extends Model
 
     protected $dates = ['deleted_at'];
 
+
+    public function searcher()
+    {
+        return $this->hasMany('App\Registration');
+    }
    
 
 }
