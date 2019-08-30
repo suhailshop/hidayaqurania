@@ -120,12 +120,12 @@
                               </li>
                               @endif
                              
-                              @if(auth()->user()->hasRole('admin',auth()->user()->role_id) &&  count($search->examiner_reports)==0)
+                              @if(auth()->user()->hasRole('admin',auth()->user()->role_id || 'admin2',auth()->user()->role_id)  &&  count($search->examiner_reports)==0)
                               <li>
                                  <a href="#tab_1_8" data-toggle="tab">إضافة تقرير الفاحص </a>
                               </li>
                               @endif
-                              @if(auth()->user()->hasRole('admin',auth()->user()->role_id) &&  count($search->examiner_reports)!=0)
+                              @if( auth()->user()->hasRole('admin',auth()->user()->role_id || 'admin2',auth()->user()->role_id)   &&  count($search->examiner_reports)!=0)
                               <li>
                                  <a href="#tab_1_9" data-toggle="tab">تعديل تقرير الفاحص </a>
                               </li>
@@ -706,7 +706,7 @@
                                                                <button type="button" class="btn btn-primary" onclick="printDiv('print-me5');">طباعة</button> 
                                                                 @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
 
-                                                               <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->searchers_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'searcher_reports' ] ) !!}">حذف </a>
+                                                               <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->searchers_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'searcher_reports' ] ) !!}"  onclick="return confirm('هل أنت متأكد من الحذف؟ سيتم حذف التقرير من قاعدة البيانات، لن تستطيع التراجع')">حذف </a>
 
                                                                 @endif
                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -798,7 +798,7 @@
                                                                     <button type="button" class="btn btn-primary" onclick="printDiv('print-me4');">طباعة</button> 
                                                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
 
-                                                                    <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->supervisors_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'supervisors_reports' ] ) !!}">حذف </a>      
+                                                                    <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->supervisors_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'supervisors_reports' ] ) !!}" onclick="return confirm('هل أنت متأكد من الحذف؟ سيتم حذف التقرير من قاعدة البيانات، لن تستطيع التراجع')">حذف </a>
 
                                                                     @endif
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -903,7 +903,7 @@
                                                                     <button type="button" class="btn btn-primary" onclick="printDiv('print-me3{{$rev->ID}}');">طباعة</button> 
                                                                     @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
 
-<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->reviewers_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'reviewers_reports' ] ) !!}">حذف </a>      
+<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->reviewers_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'reviewers_reports' ] ) !!}" onclick="return confirm('هل أنت متأكد من الحذف؟ سيتم حذف التقرير من قاعدة البيانات، لن تستطيع التراجع')">حذف </a>
 
 @endif
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1055,7 +1055,7 @@
                                                                    <button type="button" class="btn btn-primary" onclick="printDiv('print-me2');">طباعة</button> 
                                                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
 
-<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->admin2_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'admin2_reports' ] ) !!}">حذف </a>      
+<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->admin2_reports[0]->ID , 'idsearch' => $search->ID , 'type' => 'admin2_reports' ] ) !!}" onclick="return confirm('هل أنت متأكد من الحذف؟ سيتم حذف التقرير من قاعدة البيانات، لن تستطيع التراجع')">حذف </a>
 
 @endif
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1114,11 +1114,11 @@
                                              @endif
 
                                              @endif
-                                             @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  
+                                             @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id)  ||
                                              ((auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1 ) ) )
                                              <tr>
 
-                                                @if( auth()->user()->hasRole('admin', auth()->user()->role_id))
+                                                @if( auth()->user()->hasRole('admin', auth()->user()->role_id)  )
                                                    <td> تقرير الفاحص الخاص بالباحث </td>
 
                                                 @else
@@ -1149,7 +1149,7 @@
 
 
 
-                                                      @if( auth()->user()->hasRole('admin', auth()->user()->role_id))
+                                                      @if( auth()->user()->hasRole('admin', auth()->user()->role_id) || auth()->user()->hasRole('admin2', auth()->user()->role_id))
 
 
                                                       <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal123">
@@ -1164,7 +1164,7 @@
                                                                    <button type="button" class="btn btn-primary" onclick="printDiv('print-me1');">طباعة</button>
                                                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
 
-<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->examiner_reports[0]->id , 'idsearch' => $search->ID , 'type' => 'examiner_reports' ] ) !!}">حذف </a>
+<a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->examiner_reports[0]->id , 'idsearch' => $search->ID , 'type' => 'examiner_reports' ] ) !!}" onclick="return confirm('هل أنت متأكد من الحذف؟ سيتم حذف التقرير من قاعدة البيانات، لن تستطيع التراجع')">حذف </a>
 
 @endif
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1204,7 +1204,7 @@
 
                                                                   <div class="form-group">
                                                                      <label class="control-label "> الملف : </label>
-                                                                     <a class="btn btn-primary" target="_blank" href="{{url('../storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
+                                                                     <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
                                                                   </div>
                                                                </form>
                                                             </div>
@@ -1214,7 +1214,7 @@
 
                                                    @else
 
-                                                         <a class="btn btn-primary" target="_blank" href="{{url('../storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير الخاص بك </a>
+                                                         <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير الخاص بك </a>
 
 
                                                       @endif
@@ -1304,7 +1304,7 @@
                                     </div>
                                     <div class="form-group">
                                        <label class="control-label ">ملاحظات  : </label>
-                                       <textarea  class="form-control " name="comment" ></textarea>
+                                       <textarea  class="form-control " name="comment"  required></textarea>
                                     </div>
                                     <button type="submit" class="btn btn-primary">تأكيد</button>
                                  </form>
@@ -1349,7 +1349,7 @@
 
 
                            <div class="form-group">
-                               <a class="btn btn-primary" target="_blank" href="{{url('../storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير الخاص بك </a>
+                               <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير الخاص بك </a>
 
                            </div>
 

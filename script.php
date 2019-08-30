@@ -28,11 +28,11 @@ try {
         $to_email = $row['Email'];
         $subject = 'هداية قرانية';
         $message = 'رسالة تذكيرية بداية التقرير' . $cycle_name;
-        $headers = 'From: contact@hidayatqurania.org';
+        $headers = 'From: info@hidayatqurania.org';
         mail($to_email,$subject,$message,$headers);
         $message = $client->message()->send([
             'to' => $row['Phonne1'],
-            'from' => 'Hidaya Qurania',
+            'from' => 'hidayatqurania',
             'text' => 'رسالة تذكيرية بداية التقرير' . $cycle_name,
             'type' => 'unicode'
         ]);
@@ -48,11 +48,11 @@ try {
         $to_email = $row['Email'];
         $subject = 'هداية قرانية';
         $message = 'رسالة تذكيرية نهاية التقرير' . $cycle_name;
-        $headers = 'From: contact@hidayatqurania.org';
+        $headers = 'From: info@hidayatqurania.org';
         mail($to_email,$subject,$message,$headers);
         $message = $client->message()->send([
             'to' => $row['Phonne1'],
-            'from' => 'Hidaya Qurania',
+            'from' => 'hidayatqurania',
             'text' => 'رسالة تذكيرية نهاية التقرير' . $cycle_name,
             'type' => 'unicode'
         ]);
