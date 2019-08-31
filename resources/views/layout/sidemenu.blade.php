@@ -581,7 +581,7 @@
 
 
 
-          {{--  قائمة الباحث--}}
+            {{--  قائمة الباحث--}}
 
                      @if(auth()->user()->hasRole('student',auth()->user()->role_id))
 
@@ -705,7 +705,17 @@
 
                       
                      @endif
-              </ul>
+
+
+            <li class="nav-item  ">
+                <a href="{{url('https://webmail.exclusivehosting.net/')}}" class="nav-link nav-toggle" target="_blank">
+                    <i class="icon-globe"></i>
+                    <span class="title">البريد الالكتروني</span>
+                    <span class="arrow"></span>
+                </a>
+            </li>
+
+        </ul>
         <!-- END SIDEBAR MENU -->
     </div>
     <!-- END SIDEBAR -->
