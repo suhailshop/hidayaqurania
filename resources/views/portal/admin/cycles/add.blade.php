@@ -60,7 +60,7 @@
                                                     <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="name"  placeholder="مثال : التقرير الدوري الثامن"/> </div>
+                                                <input type="text" required class="form-control" name="name"  placeholder="مثال : التقرير الدوري الثامن"/> </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -69,7 +69,7 @@
                                                     <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="date" class="form-control" name="startDate" placeholder="تاريخ البداية *"/> </div>
+                                                <input type="date" required  class="form-control" name="startDate" placeholder="تاريخ البداية *"/> </div>
                                         </div>
                                     </div>
                                     
@@ -80,7 +80,17 @@
                                                     <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="date" class="form-control" name="endDate" placeholder="تاريخ النهاية *"/> </div>
+                                                <input type="date"  required class="form-control" name="endDate" placeholder="تاريخ النهاية *"/> </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        
+                                         <label class="col-md-2 control-label">الدفعة</label>
+                                                    <div class="col-md-10">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" required class="form-control" name="regiment" placeholder="الدفعة *"/> </div>
                                         </div>
                                     </div>
                                     

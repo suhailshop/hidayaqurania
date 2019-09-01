@@ -90,6 +90,15 @@
                                                 <input type="date" class="form-control" name="endDate"  value="{{$cycle->endDate}}" placeholder="تاريخ النهاية *"/> </div>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        
+                                          <label class="col-md-2 control-label">الدفعة</label>
+                                                    <div class="col-md-10">
+                                            <div class="input-icon right">
+                                                <i class="fa"></i>
+                                                <input type="text" class="form-control" name="regiment"  value="{{$cycle->regiment}}" placeholder="الدفعة *"/> </div>
+                                        </div>
+                                    </div>
                                     
                                 <div class="form-actions">
                                         <div class="row">
