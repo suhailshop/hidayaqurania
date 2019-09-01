@@ -78,6 +78,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
 
     Route::post('/searchers/updateCodeSearcher','Admin\SearcherController@updateCodeSearcher')->name('updateCodeSearcher');
+    Route::post('/searchers/updateRegimentSearcher','Admin\SearcherController@updateRegimentSearcher')->name('updateRegimentSearcher');    
     Route::post('/searchers/addToMeeting','Admin\SearcherController@addToMeeting')->name('addToMeeting');
     Route::post('/searchers/addThese','Admin\SearcherController@addThese')->name('addThese');
     Route::post('/searchers/addCriteriasToSearcher','Admin\SearcherController@addCriteriasToSearcher')->name('addCriteriasToSearcher'); 

@@ -84,6 +84,8 @@
                                             <i class="fa fa-graduation-cap"></i>  معلوماتي الأكاديمية </a>
                                     </li>
 
+                                    
+
                                 </ul>
                             </div>
                             <!-- END MENU -->
