@@ -91,7 +91,7 @@
                               @if( auth()->user()->hasRole('admin2',auth()->user()->role_id) && count($search->admin2_reports)==0 ||
                                    auth()->user()->hasRole('admin',auth()->user()->role_id) && count($search->admin2_reports)==0 )
                               <li>
-                                 <a href="#tab_1_3" data-toggle="tab">إضافة تقرير الادارة  </a>
+                                 <a href="#tab_1_3" data-toggle="tab">إضافة تقرير الفاحص من اللجنة العلمية  </a>
                               </li>
                               @endif
                               @if(auth()->user()->hasRole('supervisor',auth()->user()->role_id) && count($search->supervisors_reports)==0)
@@ -120,14 +120,16 @@
                               </li>
                               @endif
                              
-                              @if(auth()->user()->hasRole('admin',auth()->user()->role_id || 'admin2',auth()->user()->role_id)  &&  count($search->examiner_reports)==0)
+                              @if(  ( auth()->user()->hasRole('admin',auth()->user()->role_id) ||
+                                      auth()->user()->hasRole('admin2',auth()->user()->role_id))  &&  count($search->examiner_reports)==0)
                               <li>
-                                 <a href="#tab_1_8" data-toggle="tab">إضافة تقرير الفاحص </a>
+                                 <a href="#tab_1_8" data-toggle="tab">إضافة تقرير اللجنة العلمية </a>
                               </li>
                               @endif
-                              @if( auth()->user()->hasRole('admin',auth()->user()->role_id || 'admin2',auth()->user()->role_id)   &&  count($search->examiner_reports)!=0)
+                              @if( (auth()->user()->hasRole('admin',auth()->user()->role_id) ||
+                                   auth()->user()->hasRole('admin2',auth()->user()->role_id) )  &&  count($search->examiner_reports)!=0)
                               <li>
-                                 <a href="#tab_1_9" data-toggle="tab">تعديل تقرير الفاحص </a>
+                                 <a href="#tab_1_9" data-toggle="tab">تعديل تقرير اللجنة العلمية </a>
                               </li>
                               @endif
                               <li>
@@ -718,6 +720,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                <form role="form" method="POST"  action="#" enctype="multipart/form-data" id="print-me5">
+                                                                  <div class="form-group"> تقرير الباحث : {{$search->searcher->Fistname}}   ، رقم الباحث :    {{$search->searcher->Code}}</div>
                                                                 <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
                                                                 
                                                                   <div class="form-group">
@@ -914,6 +917,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                <form role="form" method="POST" action="#" enctype="multipart/form-data" id="print-me3{{$rev->ID}}">
+                                                                  <div class="form-group"> معد التقرير : {{$rev->reviewe->Fistname}} </div>
                                                                 <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
                                                                 
                                                                   <div class="form-group">
@@ -1028,7 +1032,7 @@
                                              @if(auth()->user()->hasRole('admin2',auth()->user()->role_id)  || auth()->user()->hasRole('admin',auth()->user()->role_id))
                                                 <!-- تقرير الإدارة -->
                                              <tr>
-                                                <td> تقرير اللجنة العلمية </td>
+                                                <td> تقرير الفاحص من اللجنة العلمية </td>
                                                 <td>
                                                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id) || auth()->user()->hasRole('admin2',auth()->user()->role_id) )
                                                    @if(!empty($search->admin2_reports[0]))
@@ -1045,7 +1049,7 @@
                                                    <!-- تفاصيل تقرير الإدارة -->
                                                    @if(count($search->admin2_reports)>0)
                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#admin2modal">
-                                                   عرض تقرير الادارة
+                                                   عرض تقرير الفاحص من اللجنة العلمية
                                                    </button>
                                                    <div class="modal fade" id="admin2modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                       <div class="modal-dialog" role="document">
@@ -1066,6 +1070,7 @@
                                                             </div>
                                                             <div class="modal-body">
                                                                <form role="form" method="POST" action="#"  id="print-me2" >
+                                                                  <div class="form-group"> معد من قبل : {{$search->admin2_reports[0]->admin2}}</div>
                                                                     <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
                                                                   <div class="form-group">
                                                                      <label class="control-label ">مدى مطابقة تقرير الطالب مع واقع عمله ؟ : </label>
@@ -1114,22 +1119,21 @@
                                              @endif
 
                                              @endif
-                                             @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id)  ||
-                                             ((auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1 ) ) )
+                                             @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id)  || (auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1 ) )
                                              <tr>
 
                                                 @if( auth()->user()->hasRole('admin', auth()->user()->role_id)  )
-                                                   <td> تقرير الفاحص الخاص بالباحث </td>
+                                                   <td> تقرير اللجنة العلمية الخاص بالباحث </td>
 
-                                                @else
+                                                @endif
 
-
-                                                <td> التقرير الإداري الخاص بك </td>
+                                               @if( auth()->user()->hasRole('student', auth()->user()->role_id)  )
+                                                <td> تقرير اللجنة العلمية الخاصة بك </td>
 
                                                 @endif
                                                 <td>
 
-                                                   بإمكانك الآن الاطلاع على التقرير الإداري الخاص بك وطباعته.
+                                                   بإمكانك الآن الاطلاع على تقرير اللجنة العلمية الخاص بك وطباعته.
 
 {{--                                                   @if(!empty($search->examiner_reports[0]))--}}
 {{--                                                   تم الارسال من طرف : {{$search->examiner_reports[0]->admin}}--}}
@@ -1153,7 +1157,7 @@
 
 
                                                       <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal123">
-                                                   عرض تقرير الفاحص
+                                                   عرض تقرير اللجنة العلمية
                                                    </button>
 
                                                    <div class="modal fade" id="searchermodal123" tabindex="-1" role="dialog" aria-labelledby="searchermodallabel123" aria-hidden="true">
@@ -1214,7 +1218,7 @@
 
                                                    @else
 
-                                                         <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير الخاص بك </a>
+                                                         <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير  </a>
 
 
                                                       @endif
@@ -1354,7 +1358,7 @@
                            </div>
 
                                     <div class="form-group">
-                                       <label class="control-label ">تحديث ملف تقرير الفاحص</label>
+                                       <label class="control-label ">تحديث ملف تقرير اللجنة العلمية</label>
                                        <input class="form-control" name="filename" type="file"  />
                                     </div>
 

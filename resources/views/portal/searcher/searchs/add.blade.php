@@ -92,7 +92,9 @@
                                                 <select name="cycle"  id="cycle" class="form-control" required>
                                                     <option selected disabled>اختر رقم التقرير</option>
                                                     @foreach($cycles as $cycle)
+                                                        @if(Auth::user()->registration->regiment == $cycle->regiment)
                                                 <option value="{{$cycle->ID}}">{{$cycle->name}} [ {{$cycle->startDate}} => {{$cycle->endDate}} ]</option>
+                                                        @endif
                                                     @endforeach
                                                 </select>
                                             </div>

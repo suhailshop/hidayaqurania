@@ -90,7 +90,7 @@
                                                     <div class="col-md-10">
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" required class="form-control" name="regiment" placeholder="الدفعة *"/> </div>
+                                                <input type="number" min="1" max="10" required class="form-control" name="regiment" placeholder="الدفعة *"/> </div>
                                         </div>
                                     </div>
                                     
