@@ -37,8 +37,10 @@ class SearchsController extends Controller
     public function index(){
 
         $id = $this->user->id ;
-        $searcherId = Registration::where('User', $id)->first()->ID;
-        $searchs = Search::where('Searcher', $searcherId)->get();
+        $searcherId = Registration::where('User', $id)->first();
+        $searchs = Search::where('Searcher', $searcherId->ID)
+            ->rightJoin('cycles', 'searchs.Cycle', '=', 'cycles.ID')
+            ->where('cycles.regiment', $searcherId->regiment)->get(['cycles.ID AS cyclesID', 'searchs.*']);
 
          return view('portal.searcher.searchs.index')->with('searchs',$searchs);
     }
@@ -57,9 +59,12 @@ class SearchsController extends Controller
 
     public function add(){
 
+        $id = $this->user->id ;
+        $regiment = Registration::where('User', $id)->first()->regiment;
+
         $endDate = date(now(),  strtotime("+1 day"));
 
-        $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',$endDate)->get();
+        $cycles = Cycle::where('startDate','<=',date(now()))->where('endDate','>=',$endDate)->where('regiment','=',$regiment)->get();
          $divisionunits=Divisionunit::orderBy('Order')->get();
          $divisions = Division::orderBy('Order')->get();
 

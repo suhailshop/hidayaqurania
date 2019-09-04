@@ -43,6 +43,7 @@ class CycleController extends Controller
         $cycle->name = $request->input('name');
         $cycle->startDate = $request->input('startDate');
         $cycle->endDate = $request->input('endDate');
+        $cycle->regiment = $request->input('regiment');
        
         $cycle->save();
         Session::put('success_add', 'تم اضافة التقرير الدوري بنجاح');        
@@ -59,7 +60,8 @@ class CycleController extends Controller
         ->update(array(
             'name'=>$request->input('name'),
             'startDate'=>$request->input('startDate'),
-            'endDate'=>$request->input('endDate'),       
+            'endDate'=>$request->input('endDate'), 
+            'regiment'=>$request->input('regiment'),      
         ));
         Session::put('success_edit', 'تم تعديل التقرير الدوري بنجاح');                
         return redirect()->route('allCycle');

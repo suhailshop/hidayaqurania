@@ -43,12 +43,12 @@ class SearchController extends Controller
   
     public function getOne($id){
         $search=Search::where('ID',$id)->first();
+        
         $universities = Universitie::all();
         $nationality = Nationalitie::where('ID', $search->searcher->Nationalitie)->first();
         $thesis = These::where('Searcher', $search->searcher->ID)->first();
         $supervisors = Registration::where('Type', 'supervisor')->get();
 
-        //dd($supervisors);
 
         return view('portal.admin.searchs.getOne',compact('search' , 'universities', 'nationality' , 'thesis' , 'supervisors'));
     }

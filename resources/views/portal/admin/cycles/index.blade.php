@@ -69,6 +69,7 @@
                                     <th class="all">رقم التقرير الدوري</th>
                                     <th class="all">تاريخ البداية</th>
                                     <th class="all">تاريخ النهاية</th>
+                                    <th class="all">الدفعة</th>
                                     <th class="all">خيارات.</th>
                                 </tr>
                                 </thead>
@@ -82,6 +83,7 @@
                                         </td>
                                         <td>{{$cycle->startDate}}</td>
                                         <td>{{$cycle->endDate}}</td>
+                                        <td>{{$cycle->regiment}}</td>
 
                                         <td>
                                             <div class="btn-group pull-right">

@@ -109,7 +109,7 @@
                             {{ csrf_field() }}
                         <input type="hidden" name="idsearcher" value="{{$registration->ID}}"/>
                         <div class="form-group">
-                        <input type="text" class="form-control " name="code" value="{{$registration->Code}}" />
+                        <input type="text" class="form-control "  required name="code" value="{{$registration->Code}}" />
                         </div>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
                         <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
@@ -118,6 +118,46 @@
               </div>
             </div>
           </div>
+
+          <br>
+          @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+          <li class="active">
+                  <a href="#" data-toggle="modal" data-target="#exampleModal159">
+                  <i class="icon-school"></i>
+                      @if(empty($registration->regiment))
+                          لم يتم ادخال الدفعة <i class="icon-plus"></i>
+                      @else
+                          <span class="rtl" style="direction: rtl;">   الدفعة : {{$registration->regiment}} <i class="fa fa-edit"></i>
+                         </span>
+                      @endif
+                  </a>
+          </li>
+          @endif
+
+          <div class="modal fade" id="exampleModal159" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">دفعة الباحث :</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{route('updateRegimentSearcher')}}">
+                            {{ csrf_field() }}
+                        <input type="hidden" name="idsearcher" value="{{$registration->ID}}"/>
+                        <div class="form-group">
+                        <input type="text" class="form-control " required name="regiment" value="{{$registration->regiment}}" />
+                        </div>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">اغلاق</button>
+                        <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                    </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
 </ul>
 </div>
 <!-- END MENU -->

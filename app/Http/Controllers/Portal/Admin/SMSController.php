@@ -50,7 +50,7 @@ class SMSController extends Controller
             foreach($request->input('selectedstu') as $stu){
                
                 $message = $client->message()->send([
-                    'to' => $stu,
+                    'to' => preg_replace('/^(0+)/','',preg_replace('/^(\++)/','',$stu)),
                     'from' => 'Hidaya Qurania',
                     'text' => $request->input('text'),
                     'type' => 'unicode'
@@ -78,7 +78,7 @@ class SMSController extends Controller
             $client = new Nexmo\Client(new Nexmo\Client\Credentials\Basic('806ba54a', 'hsRZYwq8S6dGTKxb'));
             foreach($request->input('selectedsup') as $stu){
                 $message = $client->message()->send([
-                    'to' => $stu,
+                    'to' => preg_replace('/^(0+)/','',preg_replace('/^(\++)/','',$stu)),
                     'from' => 'Hidaya Qurania',
                     'text' => $request->input('text'),
                     'type' => 'unicode'

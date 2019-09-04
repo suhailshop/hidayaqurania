@@ -174,6 +174,16 @@ class SearcherController extends Controller
 
     }
 
+    public function updateRegimentSearcher(Request $request){
+        DB::table('registrations')
+        ->where('ID', $request->input('idsearcher'))
+        ->update(['regiment' => $request->input('regiment')]);
+        Session::put('success_edit', 'تم تعديل الدفعة بنجاح'); 
+        
+        return redirect()->route('getSearcher',array('id' =>$request->input('idsearcher')));
+
+    }
+
     public function getSearcherSearchs($id) {
 
         $searcher = Registration::where('ID',$id)->get()->first();

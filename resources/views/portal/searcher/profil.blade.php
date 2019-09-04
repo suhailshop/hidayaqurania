@@ -79,6 +79,11 @@
                                         <a href="{{route('searcherAcademic')}}">
                                             <i class="fa fa-graduation-cap"></i>  معلوماتي الأكاديمية </a>
                                     </li>
+                                    <br>
+                                    <li class="active">
+                                        <a href="#">
+                                            <i class="fa fa-university"></i>  الدفعة : {{$registration->regiment}} </a>
+                                    </li>
 
                                 </ul>
                             </div>

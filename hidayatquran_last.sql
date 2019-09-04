@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 10.123.0.52:3306
--- Generation Time: Aug 20, 2019 at 04:39 AM
--- Server version: 5.7.24
--- PHP Version: 7.0.33-0+deb9u3
+-- Hôte : 127.0.0.1
+-- Généré le :  Dim 01 sep. 2019 à 14:48
+-- Version du serveur :  10.1.30-MariaDB
+-- Version de PHP :  7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hidayatquran_dv1`
+-- Base de données :  `hidayaqorania`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin2_reports`
+-- Structure de la table `admin2_reports`
 --
 
 CREATE TABLE `admin2_reports` (
@@ -43,7 +43,7 @@ CREATE TABLE `admin2_reports` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `admin2_reports`
+-- Déchargement des données de la table `admin2_reports`
 --
 
 INSERT INTO `admin2_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `note`, `filename`, `date`, `admin2`) VALUES
@@ -82,12 +82,13 @@ INSERT INTO `admin2_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `not
 (49, 52, 'لم يرسل', 'لم يرسل', 'العمق والتأمل', '1-عدم التحرير في كثير من المسائل\r\n2-عدم ذكر بعض المفردات الهامة مثل فتردى، واضركه في أمري .....\r\n3-إغفال كتب التفسير في بيان معاني المفردات\r\n4-عدم الاستقصاء في المراجع\r\n5-كثرة الأخطاء اللغوية', 'المزيد من الرعاية للباحث لتطوير عمله حيث يمتلك ملكة استنباطية عالية', 'سبقت', '', '2019-07-10', 'د. فخر الدين الزبير'),
 (50, 53, 'لم يرسل', 'لم يرسل', 'قوة التأمل والاستنباط\r\nتنوع الهدايات', '1-تكرار بعض الهدايات بأساليب متعددة\r\n2-عدم ذكر وجوه الدلالة في بعض الهدايات مع الإشكال فيها\r\n3-تكرار كلمة : تفيد\r\n4-ضعف الاستقراء لكتب العلماء في جمع الهدايات\r\n5-عدم استقصاء المراجع\r\n6-الخلل في منهج التخريج بين التطويل والاستطراد وأحيانا ذكر الإسناد في المتن أو الاختصار  المخل\r\n7-أسلوب صياغة الهدايات مقتضب ويحتاج إلى البسط والسلاسة والعلمية\r\n8-كثرة الأخطاء اللغوية\r\n9-بعض الأخطاء العلمية كاستحباب خلع النعلين في الحرم استدلالا بقصة موسى!!!', 'زيادة العناية بالباحث لتطويره علميا', 'سبقت', '', '2019-07-10', 'د. فخر الدين الزبير'),
 (51, 125, 'مطابق', 'مطابق', 'التأني في البحث، ومحاولة الاستيعاب', '1-عدم الاستقصاء والتنوع في المراجع\r\n2-القصور الشديد في تخريج الأحاديث\r\n3-كثرة النقل وقلة التحرير والتحقيق\r\n4-الأخطاء اللغوية \r\n5-عدم التفصيل في طرق العلماء\r\n6-كثرة الإنشاء والاستطراد\r\n7-قوله بأن الهدايات تنزيل الحكيم الحميد، ولو فصل بين هدى القرآن وعلم الهدايات الذي يدخله الاجتهاد \r\n8-من الطرائف قوله 46: (تناول الدكتور فخرالدين الرازي حفظه الله)!!!', 'متابعة الباحث فيما سبق', 'سبقت', '', '2019-07-10', 'د. فخر الدين الزبير'),
-(52, 92, 'متطابق', 'متطابق', 'لا يوجد', 'التاخر الكبير في مستوى الانجاز \r\n-عدم الالتزام بمعايير وموجهات الكتابة المفصلة في دليل الكتابة ، ومنهجيات الكتابة .\r\n- كلام الطالبة عن مقصد السورة ضعيف جاء في اسطر لم تدلل عليه من كلام العلماء وموضوعات الس لم تلتزم بدليل الكتابة \r\nفيما يتعلق بمعاني المفردات فجاء الكلام مختصرا ، لم توضح أصل المفردة ومعانيها في اللغة وفي السياق .\r\n- لم تتبع المنهج العلمي في بناء المعنى الاجمالي فالطالبة عملها فيه استعراض لموضوعات السورة ، وهذا ليس هوه المطلوب والمحدد في دليل الكتابة .', 'تنبه الطالبة على تأخر الانجاز وضعفه', 'العمل غير مرضي للجنة العلمية', '', '2019-07-11', 'أ.د طه عابدين');
+(52, 92, 'متطابق', 'متطابق', 'لا يوجد', 'التاخر الكبير في مستوى الانجاز \r\n-عدم الالتزام بمعايير وموجهات الكتابة المفصلة في دليل الكتابة ، ومنهجيات الكتابة .\r\n- كلام الطالبة عن مقصد السورة ضعيف جاء في اسطر لم تدلل عليه من كلام العلماء وموضوعات الس لم تلتزم بدليل الكتابة \r\nفيما يتعلق بمعاني المفردات فجاء الكلام مختصرا ، لم توضح أصل المفردة ومعانيها في اللغة وفي السياق .\r\n- لم تتبع المنهج العلمي في بناء المعنى الاجمالي فالطالبة عملها فيه استعراض لموضوعات السورة ، وهذا ليس هوه المطلوب والمحدد في دليل الكتابة .', 'تنبه الطالبة على تأخر الانجاز وضعفه', 'العمل غير مرضي للجنة العلمية', '', '2019-07-11', 'أ.د طه عابدين'),
+(53, 46, 'm\r\np', 'u', 'u', 'uu', 'u', 'y', 'fileName1566418424.pdf', '2019-08-21', 'admin');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `books`
+-- Structure de la table `books`
 --
 
 CREATE TABLE `books` (
@@ -104,7 +105,7 @@ CREATE TABLE `books` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `books`
+-- Déchargement des données de la table `books`
 --
 
 INSERT INTO `books` (`ID`, `Code`, `Name`, `Author`, `URL`, `ISBN`, `PictureURL`, `Status`, `created_at`, `updated_at`) VALUES
@@ -130,7 +131,7 @@ INSERT INTO `books` (`ID`, `Code`, `Name`, `Author`, `URL`, `ISBN`, `PictureURL`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `committees`
+-- Structure de la table `committees`
 --
 
 CREATE TABLE `committees` (
@@ -147,7 +148,7 @@ CREATE TABLE `committees` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `committees`
+-- Déchargement des données de la table `committees`
 --
 
 INSERT INTO `committees` (`ID`, `Code`, `FirstName`, `LastName`, `Gender`, `Function`, `PictureURL`, `Status`, `created_at`, `updated_at`) VALUES
@@ -156,7 +157,7 @@ INSERT INTO `committees` (`ID`, `Code`, `FirstName`, `LastName`, `Gender`, `Func
 -- --------------------------------------------------------
 
 --
--- Table structure for table `committesreports`
+-- Structure de la table `committesreports`
 --
 
 CREATE TABLE `committesreports` (
@@ -182,7 +183,7 @@ CREATE TABLE `committesreports` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `committesreports`
+-- Déchargement des données de la table `committesreports`
 --
 
 INSERT INTO `committesreports` (`ID`, `Code`, `Section`, `DoneRange`, `CurrentProgress`, `QualityDirection`, `Recommendations`, `UpdatedRange`, `DateCommittee`, `Reasons`, `URL`, `President`, `Professor`, `Committee`, `Searcherreports`, `Supervisorreports`, `Status`, `created_at`, `updated_at`) VALUES
@@ -193,7 +194,7 @@ INSERT INTO `committesreports` (`ID`, `Code`, `Section`, `DoneRange`, `CurrentPr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `conferences`
+-- Structure de la table `conferences`
 --
 
 CREATE TABLE `conferences` (
@@ -206,7 +207,7 @@ CREATE TABLE `conferences` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `conferences`
+-- Déchargement des données de la table `conferences`
 --
 
 INSERT INTO `conferences` (`id`, `title`, `image`, `details`, `created_at`, `updated_at`) VALUES
@@ -217,7 +218,7 @@ INSERT INTO `conferences` (`id`, `title`, `image`, `details`, `created_at`, `upd
 -- --------------------------------------------------------
 
 --
--- Table structure for table `configs`
+-- Structure de la table `configs`
 --
 
 CREATE TABLE `configs` (
@@ -233,7 +234,7 @@ CREATE TABLE `configs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `countries`
+-- Structure de la table `countries`
 --
 
 CREATE TABLE `countries` (
@@ -247,7 +248,7 @@ CREATE TABLE `countries` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `countries`
+-- Déchargement des données de la table `countries`
 --
 
 INSERT INTO `countries` (`ID`, `Code`, `Name`, `Flag`, `Status`, `created_at`, `updated_at`) VALUES
@@ -264,7 +265,7 @@ INSERT INTO `countries` (`ID`, `Code`, `Name`, `Flag`, `Status`, `created_at`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `criterias`
+-- Structure de la table `criterias`
 --
 
 CREATE TABLE `criterias` (
@@ -279,7 +280,7 @@ CREATE TABLE `criterias` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `criterias`
+-- Déchargement des données de la table `criterias`
 --
 
 INSERT INTO `criterias` (`ID`, `Code`, `Name`, `ProposedScore`, `MaximumScore`, `Status`, `created_at`, `updated_at`) VALUES
@@ -289,7 +290,7 @@ INSERT INTO `criterias` (`ID`, `Code`, `Name`, `ProposedScore`, `MaximumScore`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cycles`
+-- Structure de la table `cycles`
 --
 
 CREATE TABLE `cycles` (
@@ -297,32 +298,33 @@ CREATE TABLE `cycles` (
   `name` varchar(100) NOT NULL,
   `startDate` date NOT NULL,
   `endDate` date NOT NULL,
+  `regiment` text CHARACTER SET utf8,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `cycles`
+-- Déchargement des données de la table `cycles`
 --
 
-INSERT INTO `cycles` (`ID`, `name`, `startDate`, `endDate`, `created_at`, `updated_at`) VALUES
-(1, 'التقرير الدوري الأول', '2019-03-05', '2019-03-16', '2019-07-25 10:31:39', '2019-01-29 20:46:04'),
-(2, 'التقرير الدوري الثاني', '2019-06-05', '2019-06-16', '2019-06-30 10:18:27', '0000-00-00 00:00:00'),
-(3, 'التقرير الدوري الثالث', '2019-09-05', '2019-09-16', '2019-06-23 20:00:02', '0000-00-00 00:00:00'),
-(4, 'التقرير الدوري الرابع', '2019-12-05', '2019-12-16', '2019-03-17 09:26:37', '0000-00-00 00:00:00'),
-(5, 'التقرير الدوري الخامس', '2020-03-05', '2020-03-16', '2019-03-17 09:27:11', '0000-00-00 00:00:00'),
-(6, 'التقرير الدوري السادس', '2020-06-05', '2020-06-16', '2019-03-18 20:50:43', '0000-00-00 00:00:00'),
-(7, 'التقرير الدوري السابع', '2020-09-05', '2020-09-16', '2019-03-18 20:51:16', '0000-00-00 00:00:00'),
-(8, 'التقرير الدوري الثامن', '2020-12-05', '2020-12-16', '2019-03-18 20:51:54', '2019-02-18 17:47:43'),
-(9, 'التقرير الدوري التاسع', '2021-03-05', '2021-03-16', '2019-03-18 20:52:17', '2019-02-18 17:48:14'),
-(10, 'التقرير الدوري العاشر', '2021-06-05', '2021-06-16', '2019-03-18 20:52:50', '2019-02-18 17:48:46'),
-(11, 'التقرير الدوري الحادي عشر', '2021-09-05', '2021-09-16', '2019-03-18 20:53:10', '2019-02-18 17:49:16'),
-(12, 'التقرير الدوري الثاني عشر', '2021-12-05', '2021-12-16', '2019-03-18 20:53:40', '2019-02-18 17:49:35');
+INSERT INTO `cycles` (`ID`, `name`, `startDate`, `endDate`, `regiment`, `created_at`, `updated_at`) VALUES
+(1, 'التقرير الدوري الأول', '2019-08-21', '2019-09-14', '1', '2019-09-01 12:30:49', '2019-01-29 20:46:04'),
+(2, 'التقرير الدوري الثاني', '2019-06-05', '2019-06-16', '1', '2019-09-01 12:25:43', '0000-00-00 00:00:00'),
+(3, 'التقرير الدوري الثالث', '2019-09-05', '2019-09-16', '1', '2019-09-01 12:25:43', '0000-00-00 00:00:00'),
+(4, 'التقرير الدوري الرابع', '2019-12-05', '2019-12-16', '1', '2019-09-01 12:25:43', '0000-00-00 00:00:00'),
+(5, 'التقرير الدوري الخامس', '2020-03-05', '2020-03-16', '1', '2019-09-01 12:25:43', '0000-00-00 00:00:00'),
+(6, 'التقرير الدوري السادس', '2020-06-05', '2020-06-16', '1', '2019-09-01 12:25:43', '0000-00-00 00:00:00'),
+(7, 'التقرير الدوري السابع', '2020-09-05', '2020-09-16', '1', '2019-09-01 12:25:43', '0000-00-00 00:00:00'),
+(8, 'التقرير الدوري الثامن', '2020-12-05', '2020-12-16', '1', '2019-09-01 12:25:43', '2019-02-18 17:47:43'),
+(9, 'التقرير الدوري التاسع', '2021-03-05', '2021-03-16', '1', '2019-09-01 12:25:43', '2019-02-18 17:48:14'),
+(10, 'التقرير الدوري العاشر', '2021-06-05', '2021-06-16', '1', '2019-09-01 12:25:43', '2019-02-18 17:48:46'),
+(11, 'التقرير الدوري الحادي عشر', '2021-09-05', '2021-09-16', '1', '2019-09-01 12:25:43', '2019-02-18 17:49:16'),
+(12, 'التقرير الدوري الثاني عشر', '2021-12-05', '2021-12-16', '1', '2019-09-01 12:25:43', '2019-02-18 17:49:35');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `divisions`
+-- Structure de la table `divisions`
 --
 
 CREATE TABLE `divisions` (
@@ -338,7 +340,7 @@ CREATE TABLE `divisions` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `divisions`
+-- Déchargement des données de la table `divisions`
 --
 
 INSERT INTO `divisions` (`ID`, `Code`, `Section`, `Alias`, `Name`, `Order`, `Status`, `created_at`, `updated_at`) VALUES
@@ -354,7 +356,7 @@ INSERT INTO `divisions` (`ID`, `Code`, `Section`, `Alias`, `Name`, `Order`, `Sta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `divisionunits`
+-- Structure de la table `divisionunits`
 --
 
 CREATE TABLE `divisionunits` (
@@ -369,7 +371,7 @@ CREATE TABLE `divisionunits` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `divisionunits`
+-- Déchargement des données de la table `divisionunits`
 --
 
 INSERT INTO `divisionunits` (`id`, `Code`, `Division`, `Name`, `Description`, `Order`, `created_at`, `updated_at`) VALUES
@@ -380,7 +382,7 @@ INSERT INTO `divisionunits` (`id`, `Code`, `Division`, `Name`, `Description`, `O
 (5, 5, 2, 'ق1-ف2 المبحث الثاني: معاني مفردات السورة ومدى دلالاتها على هدايات السورة.', '', 7, '2019-05-04 09:13:04', '2018-10-27 16:19:43'),
 (6, 6, 2, 'ق1-ف2 المبحث الثالث: المعنى الاجمالي للسورة بما يتوافق مع هدايات السورة.', '', 8, '2019-05-04 09:13:14', '2018-10-27 16:19:43'),
 (7, 7, 3, 'ق2-ف1 المبحث الأول : الهدايات الجزئية في السورة.', '', 9, '2019-05-04 09:13:38', '2018-10-27 16:19:43'),
-(8, 8, 3, 'ق2-ف1 المبحث الثاني :  الهدايات الكلية للسورة.', '', 10, '2019-05-04 09:14:09', '2018-10-27 16:19:43'),
+(8, 8, 3, 'ق2-ف1 المبحث الثاني :  الهدايات الكلية للسورة.', '', 10, '2019-05-04 09:14:09', '2018-10-27 16:19:43'),
 (9, 9, 4, 'ق2-ف2 المبحث الأول: المناسبات المتعلقة بهدايات آيات السورة.', '', 11, '2019-05-04 09:14:34', '2018-10-27 16:19:43'),
 (10, 10, 4, 'ق2-ف2 المبحث الثاني: خصائص هدايات آيات السورة.', '', 12, '2019-05-04 09:14:52', '2018-10-27 16:19:43'),
 (11, 11, 4, 'ق2-ف2 المبحث الثالث: أساليب السورة في عرض هداياتها', '', 13, '2019-05-04 09:15:09', '2018-10-27 16:19:43'),
@@ -394,7 +396,32 @@ INSERT INTO `divisionunits` (`id`, `Code`, `Division`, `Name`, `Description`, `O
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examsfiles`
+-- Structure de la table `examiner_reports`
+--
+
+CREATE TABLE `examiner_reports` (
+  `id` int(11) NOT NULL,
+  `search` int(11) NOT NULL,
+  `searcher` int(11) NOT NULL,
+  `admin` text NOT NULL,
+  `comment` text NOT NULL,
+  `comment_admin` text NOT NULL,
+  `date` date NOT NULL,
+  `searcher_access` tinyint(1) NOT NULL,
+  `file` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `examiner_reports`
+--
+
+INSERT INTO `examiner_reports` (`id`, `search`, `searcher`, `admin`, `comment`, `comment_admin`, `date`, `searcher_access`, `file`) VALUES
+(1, 46, 81, 'admin', 'sss', 'admin', '2019-08-28', 1, 'fileName1566418193.pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `examsfiles`
 --
 
 CREATE TABLE `examsfiles` (
@@ -411,7 +438,7 @@ CREATE TABLE `examsfiles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `faculties`
+-- Structure de la table `faculties`
 --
 
 CREATE TABLE `faculties` (
@@ -432,7 +459,7 @@ CREATE TABLE `faculties` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `faculties`
+-- Déchargement des données de la table `faculties`
 --
 
 INSERT INTO `faculties` (`ID`, `Code`, `Name`, `PresidentName`, `City`, `Location`, `Phonne`, `Fax`, `Email`, `Logo`, `University`, `Status`, `created_at`, `updated_at`) VALUES
@@ -441,7 +468,7 @@ INSERT INTO `faculties` (`ID`, `Code`, `Name`, `PresidentName`, `City`, `Locatio
 -- --------------------------------------------------------
 
 --
--- Table structure for table `helps`
+-- Structure de la table `helps`
 --
 
 CREATE TABLE `helps` (
@@ -459,7 +486,7 @@ CREATE TABLE `helps` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `meetings`
+-- Structure de la table `meetings`
 --
 
 CREATE TABLE `meetings` (
@@ -472,7 +499,7 @@ CREATE TABLE `meetings` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `meetings`
+-- Déchargement des données de la table `meetings`
 --
 
 INSERT INTO `meetings` (`ID`, `Date`, `Name`, `Location`, `created_at`, `updated_at`) VALUES
@@ -481,7 +508,7 @@ INSERT INTO `meetings` (`ID`, `Date`, `Name`, `Location`, `created_at`, `updated
 -- --------------------------------------------------------
 
 --
--- Table structure for table `meetings_searchers`
+-- Structure de la table `meetings_searchers`
 --
 
 CREATE TABLE `meetings_searchers` (
@@ -495,7 +522,7 @@ CREATE TABLE `meetings_searchers` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `nationalities`
+-- Structure de la table `nationalities`
 --
 
 CREATE TABLE `nationalities` (
@@ -508,7 +535,7 @@ CREATE TABLE `nationalities` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `nationalities`
+-- Déchargement des données de la table `nationalities`
 --
 
 INSERT INTO `nationalities` (`ID`, `Code`, `Name`, `Status`, `created_at`, `updated_at`) VALUES
@@ -540,7 +567,7 @@ INSERT INTO `nationalities` (`ID`, `Code`, `Name`, `Status`, `created_at`, `upda
 -- --------------------------------------------------------
 
 --
--- Table structure for table `news`
+-- Structure de la table `news`
 --
 
 CREATE TABLE `news` (
@@ -553,7 +580,7 @@ CREATE TABLE `news` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `news`
+-- Déchargement des données de la table `news`
 --
 
 INSERT INTO `news` (`id`, `title`, `image`, `details`, `created_at`, `updated_at`) VALUES
@@ -565,7 +592,7 @@ INSERT INTO `news` (`id`, `title`, `image`, `details`, `created_at`, `updated_at
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plans`
+-- Structure de la table `plans`
 --
 
 CREATE TABLE `plans` (
@@ -579,7 +606,7 @@ CREATE TABLE `plans` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `plans`
+-- Déchargement des données de la table `plans`
 --
 
 INSERT INTO `plans` (`ID`, `Searcher`, `Record`, `StartDate`, `EndDate`, `updated_at`, `created_at`) VALUES
@@ -616,7 +643,7 @@ INSERT INTO `plans` (`ID`, `Searcher`, `Record`, `StartDate`, `EndDate`, `update
 -- --------------------------------------------------------
 
 --
--- Table structure for table `progress`
+-- Structure de la table `progress`
 --
 
 CREATE TABLE `progress` (
@@ -628,7 +655,7 @@ CREATE TABLE `progress` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `progress`
+-- Déchargement des données de la table `progress`
 --
 
 INSERT INTO `progress` (`ID`, `Searcher`, `Months`, `MonthlyProgress`, `InitialProgress`) VALUES
@@ -637,7 +664,7 @@ INSERT INTO `progress` (`ID`, `Searcher`, `Months`, `MonthlyProgress`, `InitialP
 -- --------------------------------------------------------
 
 --
--- Table structure for table `provides`
+-- Structure de la table `provides`
 --
 
 CREATE TABLE `provides` (
@@ -660,7 +687,7 @@ CREATE TABLE `provides` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `registrations`
+-- Structure de la table `registrations`
 --
 
 CREATE TABLE `registrations` (
@@ -691,101 +718,102 @@ CREATE TABLE `registrations` (
   `Status` varchar(50) DEFAULT NULL,
   `User` int(11) DEFAULT NULL,
   `EnablePlanEdit` varchar(11) DEFAULT 'true',
+  `regiment` text CHARACTER SET utf8,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `registrations`
+-- Déchargement des données de la table `registrations`
 --
 
-INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `CV`, `Status`, `User`, `EnablePlanEdit`, `updated_at`, `created_at`) VALUES
-(89, '38-9', 'p01495525', NULL, 'هالة هاشم أبوزيد', NULL, 'أنثى', '1975-02-12', 'السودان', 3, 3, 'الخرطوم', 'الخرطوم - المعمورة - مربع 69 - منزل رقم 30', NULL, 'دكتوراة', '2017-12-25', 'searcher', 3, 'كلية القرآن الكريم', '00249122706724', '00249122706724', 'hahmed@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 142, 'true', '2019-03-14 06:09:36', '2019-03-14 06:09:36'),
-(79, NULL, '07634420', '-', 'د. يوسف محمد عبده محمد', 'العواضي', 'ذكر', '1975-12-07', 'اليمن - إب', 10, 16, 'كولالمبور', 'C-12-05, Amadesa Resort Condominium Jalan 5/125, Taman Desa Petaling, 57100 Kuala Lumpur', NULL, 'أستاذ مشارك', '1975-10-04', 'supervisor', 10, 'العلوم الإسلامية', '00601139725667', '00601139725667', 'ymohammed@hidayatqurania.org', 'fileName1551843967.jpg', NULL, 'yes', 132, 'true', '2019-03-06 03:46:07', '2019-03-06 03:46:07'),
-(81, '38-1', '08282088', '2318641871', 'عادل سليمان ضحوي', NULL, 'ذكر', '1981-08-09', 'اليمن', 10, 2, 'مكة', 'حي العمرة', NULL, 'ماجستير', '2017-03-22', 'searcher', 2, 'الدعوة', '96649748615', '96649748615', 'adahawi@hidayatqurania.org', 'fileName1551727133.jpg', 'CV1551727536.pdf', 'مفعل', 134, 'true', '2019-03-04 19:30:52', '2019-03-04 19:30:52'),
-(82, '38-2', '1051316824', '1051316824', 'محمد آل منشط', NULL, 'ذكر', '1988-03-28', 'أبها', 2, 2, 'أبها', 'أبها', NULL, 'ماجستير', '2017-09-21', 'searcher', 2, 'الدعوة وأصول الدين', '966508574599', '966508574599', 'masiri@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 135, 'true', '2019-03-11 18:22:49', '2019-03-11 18:22:49'),
-(83, '38-3', 'T290753', '1018403434', 'محمد إبراهيم الدعيس', NULL, 'ذكر', '1399-08-11', 'يبه', 2, 2, 'القنفذة/ القوز', 'القوز ـ الدار البيضاء', NULL, 'دكتوراه', '2018-01-01', 'searcher', 2, 'الدعوة وأصول الدين', '966504510122', '966504510122', 'malduays@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 136, 'true', '2019-03-04 19:58:48', '2019-03-04 19:58:48'),
-(84, '38-4', 'U325444', '1055080616', 'أيمن غازي صابر', NULL, 'ذكر', '1978-12-20', 'جدة', 2, 2, 'جدة', 'حي المروة 8- شارع وادي الخمس', NULL, 'دكتوراه', '2017-09-21', 'searcher', 2, 'الدعوة وأصول الدين', '966546191863', '966546191863', 'asaber@hidayatqurania.org', 'fileName1552068514.jpg', 'CV1552068910.pdf', 'مفعل', 137, 'true', '2019-03-08 18:15:10', '2019-03-08 18:15:10'),
-(85, '38-5', 'W434900', '1025504067', 'عبدالهادي بن علي بن عبدالرحمن الشمراني', NULL, 'ذكر', '1978-02-25', 'نجران/ المملكة العربية السعودية', 2, 2, 'مكة المكرمة', 'الرصيفة - حي إسكان الملك فهد', NULL, 'الدكتوراة', '2017-04-11', 'searcher', 2, 'كلية الدعوة وأصول الدين', '966550045858', '966550045858', 'aalshamrani@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 138, 'true', '2019-03-11 18:00:21', '2019-03-11 18:00:21'),
-(86, '38-6', '011593693', '2238397471', 'عبدالله التركاوي', NULL, 'ذكر', '1973-10-01', 'سوريا', 21, 2, 'المدينة المنورة', 'أول طريق الهجرة - خلف مستوصف دار السلام', NULL, 'ماجستير', '2016-06-06', 'searcher', 4, 'الدراسات العلية', '00966500263901', '00966500263901', 'aalterkawi@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 139, 'true', '2019-05-06 21:05:56', '2019-05-06 21:05:56'),
-(87, '38-7', 'P02642718', NULL, 'عثمان محمد', NULL, 'ذكر', '1983-01-01', 'الحصاحيصا ولاية الجزيرة', 3, 2, 'الخرطوم', 'جامعة افريقيا العالمية كلية القرآن الكريم', NULL, 'دكتوراه', '2018-01-01', 'searcher', 3, 'الدراسات الإسلامية', '00249121573337', '00249121573337', 'oali@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 140, 'true', '2019-03-11 11:18:40', '2019-03-11 11:18:40'),
-(88, '38-8', 'P04502675', NULL, 'مايو إدريس يونس', NULL, 'أنثى', '1972-12-27', 'ام درمان', 3, 3, 'ام درمان', 'ام درمان الثورة الحارة 21', NULL, 'دكتوراه', '2018-01-25', 'searcher', 5, 'كلية الدراسات العليا أصول الدين', '249122960033', '249117235933', 'mbahar@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 141, 'true', '2019-03-11 12:00:43', '2019-03-11 12:00:43'),
-(78, NULL, 'V417664', '1027669389', 'أ.د يحيى', 'زمزمي', 'ذكر', '1966-07-29', 'مكة المكرمة', 2, 2, 'مكة المكرمة', 'الاسكان ( حي الملك فهد )', NULL, 'أستاذ دكتور', '2000-01-01', 'supervisor', 2, 'كلية الدعوة وأصول الدين', '966505657432', '966505657432', 'yzamzami1@hidayatqurania.org', 'avat.png', NULL, 'yes', 131, 'true', '2019-03-11 09:45:58', '2019-03-11 09:45:58'),
-(76, NULL, 'A12751585', '2266450812', 'نبيل محمد إبراهيم الجوهري', 'الجوهري', 'ذكر', '1962-07-23', 'مصر', 6, 2, 'المدينة المنورة', 'الجامعة الإسلامية/ كلية القرآن/ قسم التفسير.', NULL, 'أستاذ', '2009-02-01', 'supervisor', 11, 'كلية القرآن الكريم والدراسات الإسلامية.', '966568841020', '966568841020', 'naljohari@hidayatqurania.org', 'avat.png', NULL, 'yes', 129, 'true', '2019-03-14 10:59:08', '2019-03-14 10:59:08'),
-(77, NULL, 'U271683', '1015011701', 'د. ياسين', 'قاري', 'ذكر', '1967-12-26', 'المدينة المنورة', 2, 2, 'مكة المكرمة', 'السبهاني', NULL, 'دكتور', '2000-01-01', 'supervisor', 2, 'كلية الدعوة وأصول الدين', '966555305443', '966555305443', 'yqari1@hidayatqurania.org', 'avat.png', NULL, 'yes', 130, 'true', '2019-03-11 09:44:38', '2019-03-11 09:44:38'),
-(75, NULL, NULL, NULL, 'د. محمد نجيب', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 9, NULL, NULL, NULL, 'mqader@hidayatqurania.org', 'avat.png', NULL, 'yes', 128, 'true', '2019-03-04 02:14:02', '2019-03-04 02:14:02'),
-(73, NULL, 'O840000', '-', 'د. محمد خازر المجالي', 'أستاذ', 'ذكر', '1961-02-06', 'الزرقاء-الأردن', 8, 12, 'عمان', 'كلية الشريعة-الجامعة الأردنية', NULL, 'أستاذ', '1993-09-04', 'supervisor', 6, 'الشريعة', '00962777622322', '00962777622322', 'malmajali@hidayatqurania.org', 'avat.png', NULL, 'yes', 126, 'true', '2019-03-11 16:24:51', '2019-03-11 16:24:51'),
-(74, NULL, 'BL9851935', 'لست مقيما في المملكة', 'د. محمد بلحسان', 'المهدي', 'ذكر', '1963-03-25', 'المغرب', 4, 20, 'القنيطرة', '70، المغرب العربي أ توسعة. القنيطرة', NULL, 'أستاذ التعليم العالي درجة ج', '1994-01-13', 'supervisor', 15, 'كلية الآداب و العلوم الانسانية', '212661406692', '212661406692', 'mbalhsan@hidayatqurania.org', 'avat.png', NULL, 'yes', 127, 'true', '2019-03-11 21:28:56', '2019-03-11 21:28:56'),
-(70, NULL, NULL, NULL, 'د. محمد الأمين', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 3, NULL, NULL, NULL, 'maismail@hidayatqurania.org', 'avat.png', NULL, 'yes', 123, 'true', '2019-03-04 02:11:49', '2019-03-04 02:11:49'),
-(71, NULL, 'w416656', '1014150153', 'د. محمد بن ناصر الحميد', 'الدكتور', 'ذكر', '1963-11-28', 'المدينة المنورة', 2, 2, 'المدينة المنورة', 'حي الرانوناء', NULL, 'أستاذ', '1986-06-16', 'supervisor', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '966554353942', '966543334882', 'malhumaid@hidayatqurania.org', 'avat.png', NULL, 'yes', 124, 'true', '2019-06-18 17:32:33', '2019-06-18 17:32:33'),
-(72, NULL, '1013770449', '1013770449', 'د. محمد بن عبدالله الربيعة', 'الربيعة', 'ذكر', '1969-09-13', 'القصسم', 2, 2, 'القصيم', 'جامعة القصيم - قسم القرآن وعلومه', NULL, 'استاذ مشارك', '2019-03-13', 'supervisor', 12, 'الشريعة والدراسات الإسلامية', '966504882342', '96613424563', 'malrabiah@hidayatqurania.org', 'avat.png', NULL, 'yes', 125, 'true', '2019-03-13 05:24:05', '2019-03-13 05:24:05'),
-(61, NULL, 'P03937058', '178-9571-5912', 'د. عائشة علي', 'عائشه', 'أنثى', '1957-01-01', 'دنقلا', 3, 3, 'الخرطوم', 'الخرطوم', NULL, 'دكتوراه', '2010-01-01', 'supervisor', 3, 'القرآن الكريم', '٠٩٢٢٣٩٤٩٠٩', '٠٩٢٢٣٩٤٩٠٩', 'aalimam@hidayatqurania.org', 'avat2.png', NULL, 'yes', 114, 'true', '2019-03-12 17:44:23', '2019-03-12 17:44:23'),
-(62, NULL, 'H95659647', 'H95659647', 'د. عبداللطيف أحمدي رمجاهي', 'أبو فيحاء', 'ذكر', '1981-02-20', 'ايران-جزيرة قشم', 7, 16, 'كولالمبور', 'University of Malaya, Petaling Jaya', NULL, 'كبار الاساتذة', '2012-10-01', 'supervisor', 8, 'أكاديمية الدراسات الإسلامية', '0060146276640', '0060146276640', 'aramchahi@hidayatqurania.org', 'avat.png', NULL, 'yes', 115, 'true', '2019-03-14 04:14:02', '2019-03-14 04:14:02'),
-(63, NULL, 'GS2652452', 'H16450', 'د. عبدالله البخاري', 'العبدي', 'ذكر', '1960-12-31', 'آسفي المملكة المغربية', 4, 20, 'أغادير', 'حي السلام زنقة 942 رقم 20 أغادير', NULL, 'أستاذ التعليم العالي', '2000-01-24', 'supervisor', 14, 'كلية الآداب والعلوم الانسانية', '212668108509', '212668108509', 'aelboukhari@hidayatqurania.org', 'avat.png', NULL, 'yes', 116, 'true', '2019-03-04 23:01:52', '2019-03-04 23:01:52'),
-(64, NULL, NULL, NULL, 'د. عبدالله الزبير', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 3, NULL, NULL, NULL, 'asalih@hidayatqurania.org', 'avat.png', NULL, 'yes', 117, 'true', '2019-03-04 02:08:56', '2019-03-04 02:08:56'),
-(65, NULL, 'u680627', '1063625147', 'د. علي بن عبد الله بن حمد السكاكر', 'السكاكر', 'ذكر', '1982-06-06', 'بريدة', 2, 2, 'المدينة المنورة', 'الجامعة الإسلامية', NULL, 'أستاذ', '1998-01-11', 'supervisor', 11, 'القرآن الكريم', '0598541834', '0598541834', 'aalsakaker@hidayatqurania.org', 'avat.png', NULL, 'yes', 118, 'true', '2019-06-19 21:12:10', '2019-06-19 21:12:10'),
-(66, NULL, 'w421698', '1001959095', 'أ.د. فايز بن حبيب الترجمي', 'الترجمي', 'ذكر', '1963-11-17', 'خلص', 2, 2, 'المدينة', 'المدينة - عروة - بجوار شرطة قباء', NULL, 'أسناذ', '1989-12-05', 'supervisor', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '966505308737', '966505308737', 'falturjmi@hidayatqurania.org', 'avat.png', NULL, 'yes', 119, 'true', '2019-03-14 11:14:29', '2019-03-14 11:14:29'),
-(67, NULL, 'A29131305', '750323-10-5935', 'د. فضلان محمد عثمان', 'الماليزي', 'ذكر', '1975-03-23', 'سلانحور، ماليزيا', 5, 16, 'BANGI', 'PUSAT KELESTARIAN TURATH ISLAMI, FAKULTI PENGAJIAN ISLAM, UNIVERSITI KEBANGSAAN MALAYSIA, 43600 UKM, BANGI, SELANGOR, MALAYSIA', NULL, 'الدكتوراة', '2004-02-12', 'supervisor', 9, 'كلية الدراسات الإسلامية', '0060192233754', '0060192233754', 'fothman@hidayatqurania.org', 'fileName1552451936.jpg', NULL, 'yes', 120, 'true', '2019-03-13 04:38:56', '2019-03-13 04:38:56'),
-(68, NULL, 'V164579', '1048808255', 'د. فيصل جميل الغزاوي', 'الغزاوي', 'ذكر', '1966-04-18', 'مكة', 2, 2, 'مكة', 'بطحاء قريش', NULL, 'أستاذ مشارك', '1989-09-13', 'supervisor', 2, 'الدعوة وأصول الدين', '966505531322', '966543806356', 'fghazzawi@hidayatqurania.org', 'avat.png', NULL, 'yes', 121, 'true', '2019-03-14 16:25:19', '2019-03-14 16:25:19'),
-(69, NULL, '02446778', '02446778', 'د. مبارك ابراهيم التجاني', 'المبارك', 'ذكر', '1965-11-30', 'مدني ( ام سنط)', 3, 3, 'الخرطوم', 'السودان _ الخرطوم _ بحري _ الجيلي _ مصفاة الخرطوم', NULL, 'استاذ مشارك', '1991-06-01', 'supervisor', 4, 'كلية القران الكريم', '249121584121', '24911090734', 'maltijani@hidayatqurania.org', 'fileName1552656732.jpg', NULL, 'yes', 122, 'true', '2019-03-15 13:32:12', '2019-03-15 13:32:12'),
-(58, NULL, '092287', 'لا يوجد', 'د. سليمان محمد الدقور', 'الدقور', 'ذكر', '1972-11-07', 'الاردن/ الشوبك', 8, 12, 'الجبيهة', 'الجامعة الأردنية', NULL, 'أستاذ', '2007-02-10', 'supervisor', 6, 'الشريعة', '962772345664', '962772345664', 'saldgoor@hidayatqurania.org', 'avat.png', NULL, 'yes', 111, 'true', '2019-03-12 07:28:34', '2019-03-12 07:28:34'),
-(59, NULL, NULL, NULL, 'د. صبري محمد', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 9, NULL, NULL, NULL, 'smohamad@hidayatqurania.org', 'avat.png', NULL, 'yes', 112, 'true', '2019-03-04 02:03:09', '2019-03-04 02:03:09'),
-(60, NULL, 'P01293162', '2163348879', 'أ.د/ طه عابدين', 'طه حمد', 'ذكر', '1965-06-16', 'دنقلا - السودان', 3, 2, 'مكة المكرمة', 'بطحاء قريش', NULL, 'أستاذ دكتور', '2000-01-01', 'supervisor', 2, 'كلية الدعوة وأصول الدين', '966508166974', '966508166974', 'thamed1@hidayatqurania.org', 'avat.png', NULL, 'yes', 113, 'true', '2019-03-11 09:51:47', '2019-03-11 09:51:47'),
-(57, NULL, NULL, NULL, 'د. رضوان الأطرش', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 16, NULL, NULL, NULL, 'ralatrash@hidayatqurania.org', 'avat.png', NULL, 'yes', 110, 'true', '2019-03-04 01:56:34', '2019-03-04 01:56:34'),
-(45, NULL, 'Tj2972340', 'J223118', 'د. إبراهيم رضا', 'رضا', 'ذكر', '1965-01-10', 'اكادير  المغرب', 4, 20, 'مراكش', 'اسيل رقم ٣٥٧ مراكش المغرب', NULL, 'استاذ التعليم العالي', '1993-09-01', 'supervisor', 13, 'كلية الاداب والعلوم الانسانية', '212668675861', '212668675861', 'iridha@hidayatqurania.org', 'avat.png', NULL, 'yes', 98, 'true', '2019-03-15 11:49:17', '2019-03-15 11:49:17'),
-(46, NULL, 'po5307373', '1', 'د. أزهري حسين محمد', 'أبو مصعب', 'ذكر', '1957-11-16', 'مروي', 3, 3, 'أم درمان', 'جامعة أم درمان الإسلامية', NULL, 'أستاذ مشارك', '1999-05-02', 'supervisor', 5, 'أصول الدين', '00249123395003', '00249123395003', 'azmhd@hidayatqurania.org', 'avat.png', NULL, 'yes', 99, 'true', '2019-03-14 14:32:48', '2019-03-14 14:32:48'),
-(47, NULL, 'P02141918', '0', 'د. البدري بشارة', 'بشارة', 'ذكر', '1970-12-11', 'السودان', 3, 3, 'الخرطوم', 'جامعة أفريقيا العالمية - كلية القرآن الكريم', NULL, 'أستاذ مساعد', '2007-11-11', 'supervisor', 3, 'كلية القرآن الكريم', '249019400559', '249019400559', 'abisharah@hidayatqurania.org', 'avat.png', NULL, 'yes', 100, 'true', '2019-03-14 10:11:36', '2019-03-14 10:11:36'),
-(48, NULL, NULL, NULL, 'د. الطاهر أحمد', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 3, NULL, NULL, NULL, 'aqader@hidayatqurania.org', 'avat.png', NULL, 'yes', 101, 'true', '2019-03-04 01:42:18', '2019-03-04 01:42:18'),
-(49, NULL, '783691', '12345', 'د. أحمد خالد شكري', 'شكري', 'ذكر', '1960-11-27', 'عمان', 8, 12, 'عمان', 'شفا بدران', NULL, 'أستاذ', '1991-05-09', 'supervisor', 6, 'الشريعة', '00962775432557', '00962798513487', 'ashukri@hidayatqurania.org', 'fileName1552242527.jpg', NULL, 'yes', 102, 'true', '2019-03-11 19:00:18', '2019-03-11 19:00:18'),
-(50, NULL, 'T025689', '١٠٧٠٢٦٠٨١٣', 'أ.د أمجد بن محمد زيدان', 'زيدان', 'ذكر', '1980-09-25', 'قرية الواصلي منطقة جازان  السعودية', 2, 2, 'المدينة المنورة', 'إسكان الجامعة  الإسلامية مبنى ٢١ شقة ١٢', NULL, 'أستاذ', '2003-06-01', 'supervisor', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '00966505768597', '00966505768597', 'azaidan@hidayatqurania.org', 'avat.png', NULL, 'yes', 103, 'true', '2019-03-11 16:45:34', '2019-03-11 16:45:34'),
-(51, NULL, 'Nh9370951', 'E233498', 'د. توفيق بن ي. أحمد بن ي. عبد الرحمن', 'العبقري', 'ذكر', '1966-11-28', 'اليوسفية', 4, 20, 'مراكش', 'حي بركة البهجة 38، أسيف، مراكش', NULL, 'أستاذ التعليم العالي (ج)', '1995-11-01', 'supervisor', 13, 'كلية الآداب والعلوم الإنسانية', '212615652269', '212615652269', 'talabqari@hidayatqurania.org', 'avat.png', NULL, 'yes', 104, 'true', '2019-03-11 11:31:31', '2019-03-11 11:31:31'),
-(52, NULL, 'N526483', 'لا يوجد', 'د. ثابت أحمد أبو الحاج', 'أستاذ مشارك', 'ذكر', '1970-08-24', 'عمّان', 8, 16, 'كوالالمبور', 'قسم القرآن والحديث، أكاديمية الدراسات الإسلامية،جامعة ملايا-كوالالمبور- ماليزيا', NULL, 'الدكتوراة/ أستاذ مشارك', '2012-12-10', 'supervisor', 8, 'الدراسات الإسلامية', '0060166586630', '0060166586630', 'talhaj@hidayatqurania.org', 'fileName1552349902.jpg', NULL, 'yes', 105, 'true', '2019-03-12 00:31:16', '2019-03-12 00:31:16'),
-(53, NULL, 'MI2891653', 'H202066', 'د. حسن حميتو', 'حميتو', 'ذكر', '1973-06-09', 'مراكش', 4, 20, 'اكادير', 'رقم ٢٦ بلوك س حي اركانة ايت ملول - المغرب.', NULL, 'استاذ مشارك', '2011-04-18', 'supervisor', 14, 'كلية الاداب والعلوم الانسانية', '212668513974', '212668513974', 'hhmeto@hidayatqurania.org', 'fileName1552309658.jpg', NULL, 'yes', 106, 'true', '2019-06-16 13:19:36', '2019-06-16 13:19:36'),
-(54, NULL, 'v721750', '1002360491', 'د. خالد بن علي الغامدي', 'الغامدي', 'ذكر', '2019-03-11', 'مكة المكرمة', 2, 2, 'مكة', 'بطحاء قريش', NULL, 'أستاذ مشارك', '2010-01-08', 'supervisor', 2, 'كلية الدعوة وأصول الدين', '00966555526370', '00966555526370', 'kghamdi@hidayatqurania.org', 'avat.png', NULL, 'yes', 107, 'true', '2019-03-11 16:56:20', '2019-03-11 16:56:20'),
-(55, NULL, NULL, NULL, 'د. داتو محمد يعقوب', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 8, NULL, NULL, NULL, 'dyaqob@hidayatqurania.org', 'avat.png', NULL, 'yes', 108, 'true', '2019-03-04 01:46:03', '2019-03-04 01:46:03'),
-(56, NULL, '37144803', '00', 'د. روحيزان بارو محمد زين', 'روحيزان', 'ذكر', '1966-01-15', 'كوالا ترنقانو', 5, 16, 'كوالا ترنقانو', 'جامعة السلطان زين العابدين ترنقانو ماليزيا', NULL, 'دكتوراه', '1995-10-15', 'supervisor', 7, 'كلية الدراسات الإسلامية المعاصرة', '60199147438+', '60199147438+', 'rbaru@hidayatqurania.org', 'fileName1552370882.jpg', NULL, 'yes', 109, 'true', '2019-03-12 06:08:02', '2019-03-12 06:08:02'),
-(90, '38-10', 'P02568234', NULL, 'فاطمة أحمد البدوي', NULL, 'أنثى', '1981-05-15', 'مكة المكرمة', 3, 3, 'الخرطوم', 'الخرطوم / الأزهري / مربع 19', NULL, 'دكتوراة', '2017-12-20', 'searcher', 3, 'الدراسات الإسلامية', '249908525346', '249908525346', 'felbadawi@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 143, 'true', '2019-03-11 08:44:30', '2019-03-11 08:44:30'),
-(91, '39-11', 'K740809', NULL, 'أسامة شاهين العداسي', NULL, 'ذكر', '1986-03-06', 'الأردن - الزرقاء', 8, 12, 'عمان', 'ضاحية الياسمين', NULL, 'دكتوراة', '2018-08-15', 'searcher', 6, 'الشريعة', '962785692454', '962785692454', 'oaladdasi@hidayatqurania.org', 'fileName1552460963.jpg', 'CV1552461087.pdf', 'مفعل', 144, 'true', '2019-03-13 07:11:27', '2019-03-13 07:11:27'),
-(92, '39-12', '10638597', NULL, 'مصطفى جمعة', NULL, 'ذكر', '1987-09-03', 'العراق', 16, 12, 'عمان', 'المدينة الرياضية', NULL, 'دكتوراة', '2018-07-09', 'searcher', 6, 'الشريعة', '962788947390', '962788947390', 'mjumaah@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 145, 'true', '2019-03-11 18:04:36', '2019-03-11 18:04:36'),
-(93, '39-13', 'P467016 / وأحمل جواز سفر أمريكي برقم 499237877', NULL, 'محمد منذر محمد السالم', NULL, 'ذكر', '1982-09-21', 'الولايات المتحدة الأمريكية (أمريكا)', 8, 12, 'عمّان', 'العاصمة عمان / شارع المطار / ضاحية الأمير علي (بجانب مدارس بيت المقدس', NULL, 'ماجستير من جامعة الشارقة / طالب دكتوراه في الجامعة الأردنية', '2018-08-29', 'searcher', 6, 'كلية الشريعة والدراسات الإسلامية', '962789191970', '962789191970', 'msalem@hidayatqurania.org', 'fileName1551872012.jpg', NULL, 'مفعل', 146, 'true', '2019-03-11 10:14:10', '2019-03-11 10:14:10'),
-(94, '39-14', '04820162', NULL, 'أحمد حسن صالح الفقيه', NULL, 'ذكر', '1975-12-01', 'أب _ اليمن', 10, 16, 'كولا ترنجانو', 'AL- FAKIH AHMED HASAN  SALEH MBKT- 21717 , KG.MENGABANG  TELONG  BATU RAKIT, 21020 KUALA TERENGGANU', NULL, 'دكتور', '2018-07-23', 'searcher', 7, 'القرآن والسنة', '601121997745+', '601121997745+', 'aalfakih@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 147, 'true', '2019-03-10 10:52:52', '2019-03-10 10:52:52'),
-(95, '39-15', 'A12076328', NULL, 'محمد أزهر', NULL, 'ذكر', '1975-08-31', 'العراق-بغداد', 16, 16, 'KUALA LUMPUR', 'jalan 3a/155 Bukit oug condiminium 3A-13A-6', NULL, 'دكتوراه', '2018-10-22', 'searcher', 8, 'أكاديمية الدراسات الإسلامية', '00601111690757', '00601111690757', 'mibrahim@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 148, 'true', '2019-03-11 10:09:09', '2019-03-11 10:09:09'),
-(96, '39-16', 'HJ731F8H', NULL, 'أحمد الأطرش', NULL, 'ذكر', '1978-02-25', 'طرابلس / ليبيا', 19, 16, 'شاه علام', '15 jalan tukul', NULL, 'دكتوراه', '2018-06-07', 'searcher', 9, 'القرآن والسنة', '601121150130', '601121150130', 'alatrash@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 149, 'true', '2019-03-09 02:39:56', '2019-03-09 02:39:56'),
-(97, '39-17', '155501154', NULL, 'زينب طلحة', NULL, 'أنثى', '1984-04-29', 'الجزائر', 15, 16, 'كوالا لمبور', 'istac. jalan duta. kuala lumpur', NULL, 'دكتوراه', '2018-02-20', 'searcher', 8, 'اكاديمية الدراسات الاسلامية', '601118910104', '601118910104', 'ztalha@hidayatqurania.org', 'fileName1552323647.jpeg', 'CV1552323709.pdf', 'مفعل', 150, 'true', '2019-03-11 17:01:49', '2019-03-11 17:01:49'),
-(98, '39-18', '05803922', NULL, 'محمد المطري', NULL, 'ذكر', '1978-03-04', 'صنعاء', 10, 17, 'صنعاء', 'بني مطر - الصباحة', NULL, 'دكتوراه', '2018-05-02', 'searcher', 10, 'كلية العلوم اﻹسلامية', '967777175927', '967777175927', 'malmatari@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 151, 'true', '2019-03-05 04:46:15', '2019-03-05 04:46:15'),
-(100, '39-20', 'A06708052', '2244564544', 'موسى سليمان', NULL, 'ذكر', '1984-09-13', 'كدونا، نيجيريا', 18, 2, 'المدينة الننورة', 'الجامعة الاسلامية', NULL, 'دكتوراه', '2018-07-15', 'searcher', 11, 'كلية القرآن الكريم', '966508452634', '966508452634', 'mabubakar@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 153, 'true', '2019-03-12 00:09:58', '2019-03-12 00:09:58'),
-(101, '39-21', '05933440', '2244637332', 'هشام محمد سيف', NULL, 'ذكر', '1985-10-20', 'اليمن', 10, 2, 'المدينة المنورة', 'الجامعة الإسلامية', NULL, 'دكتوراه', '2018-05-16', 'searcher', 11, 'القرآن الكريم والدراسات الإسلامية', '00966550968321', '00966550968321', 'halmalki@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 154, 'true', '2019-03-11 10:45:38', '2019-03-11 10:45:38'),
-(102, '39-22', 'P6984102A', '2263673382', 'محمد عطاء إبراهيم عبد الكريم', NULL, 'ذكر', '1987-03-07', 'جنوب الفلبين', 11, 2, 'المدينة النبوية', 'حي الربوية، الحرة الشرقية.', NULL, 'ماجستير', '2018-05-16', 'searcher', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '966534934679', '966534934679', 'mabdulkarim@hidayatqurania.org', 'fileName1551872316.jpg', 'CV1551872664.pdf', 'مفعل', 155, 'true', '2019-03-07 07:03:17', '2019-03-07 07:03:17'),
-(103, '39-23', 'AA0069873', '2244637019', 'محمدو دوكوري', NULL, 'ذكر', '1986-08-13', 'Mali', 9, 2, 'المدينة المنورة', 'الجامعة الإسلامية', NULL, 'دكتوراه', '2018-01-01', 'searcher', 11, 'كلية القرآن الكريم', '966544464870', '966544464870', 'mdoucoure@hidayatqurania.org', 'fileName1551703348.jpeg', 'CV1551703493.docx', 'مفعل', 156, 'true', '2019-03-04 13:01:34', '2019-03-04 13:01:34'),
-(104, '39-24', 'P05417210', NULL, 'عبدالمحسن المعيلي', NULL, 'ذكر', '1990-05-18', 'الكويت', 13, 2, 'المدينة المنورة', 'حي الأزهري', NULL, 'دكتوراه', '2018-10-10', 'searcher', 11, 'القرآن الكريم', '96597946680', '96597946680', 'aalmeaili@hidayatqurania.org', 'avat.png', 'CV1552378236.pdf', 'مفعل', 157, 'true', '2019-03-12 08:13:40', '2019-03-12 08:13:40'),
-(105, '39-25', 'AA092660', '2244637985', 'بكري درامي محمد', NULL, 'ذكر', '1984-06-24', 'كيبا، مالي.', 9, 2, 'المدينة النبوية', 'حي الربوية، الحرة الشرقية.', NULL, 'ماجستير', '2018-05-16', 'searcher', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '966562310799', '966562310799', 'bdrame@hidayatqurania.org', 'fileName1552290155.jpg', NULL, 'مفعل', 158, 'true', '2019-03-11 07:42:35', '2019-03-11 07:42:35'),
-(106, '39-26', '03337207', '4337391546', 'مسعود راشد حمد الهاشمي', NULL, 'ذكر', '1983-07-22', 'سلطنة عمان صور', 17, 2, 'المدينة المنورة', 'حي الربوة', NULL, 'دكتوراه', '2018-05-14', 'searcher', 11, 'القرآن والدراسات الإسلامية', '96892542587', '96892542587', 'malhashimi@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 159, 'true', '2019-03-15 20:58:11', '2019-03-15 20:58:11'),
-(107, '39-27', 'R533358', '1047036809', 'عبدالرحمن الصبحي', NULL, 'ذكر', '1987-06-22', 'جدة - المملكة العربية السعودية', 2, 2, 'المدينة المنورة', 'حي الفيصلية - المدينة المنورة', NULL, 'ماجستير', '2018-07-10', 'searcher', 11, 'كلية القرآن الكريم', '00966540888127', '00966540888127', 'aalsubhy@hidayatqurania.org', 'fileName1552495666.jpg', NULL, 'مفعل', 160, 'true', '2019-03-13 16:57:13', '2019-03-13 16:57:13'),
-(108, '39-28', '7745474', '2268131550', 'راشد خالد سعيد الحبسي', NULL, 'ذكر', '1989-02-01', 'سلطنة عمان', 17, 2, 'المدينة المنورة', 'المدينة المنورة', NULL, 'دكتوراة', '2019-03-01', 'searcher', 11, 'كلية القرآن الكريم والدراسات الاسلامية', '966566656946', '966592702773', 'ralhabsi@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 161, 'true', '2019-03-13 09:21:59', '2019-03-13 09:21:59'),
-(109, '39-29', '530792258', '2264237807', 'بلكاروف أنزور', NULL, 'ذكر', '1981-10-28', 'روسيا', 20, 2, 'المدينة', 'حي العريض', NULL, 'ماجستير', '2018-11-01', 'searcher', 11, 'القرآن الكريم', '966534230750', '966534230750', 'banzor@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 162, 'true', '2019-03-11 21:56:39', '2019-03-11 21:56:39'),
-(110, '39-30', 'u540181', '1064271610', 'أمين عبدالرحمن السكاكر', NULL, 'ذكر', '1990-01-01', 'بريدة', 2, 2, 'القصيم - بريدة', 'حي البساتين', NULL, 'دكتوراه', '2018-10-10', 'searcher', 12, 'كلية الشريعو والدراسات الإسلامية', '966540744466', '966540744466', 'aalsakakir@hidayatqurania.org', 'avat.png', 'CV1552326676.pdf', 'مفعل', 163, 'true', '2019-03-11 17:51:16', '2019-03-11 17:51:16'),
-(111, '39-31', 'ٌٌR628702', '1020792139', 'نورةعبد العزيز المانع', NULL, 'أنثى', '1983-01-14', 'عنيزة', 2, 2, 'عنيزة', 'الريان', NULL, 'دكتوراه', '2018-10-12', 'searcher', 12, 'كلية الشريعة والدراسات الإسلامية', '966506158292', '966506158292', 'nalmani@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 164, 'true', '2019-03-11 21:42:13', '2019-03-11 21:42:13'),
-(112, '39-32', 'N418003', '1046117345', 'خالد الحربي', NULL, 'ذكر', '1986-04-26', 'القيصومة', 2, 2, 'حفرالباطن', 'القيصومة', NULL, 'الدكتوراة', '2018-10-16', 'searcher', 2, 'الشريعة', '0508446676', '0508446676', 'kalharbi@hidayatqurania.org', 'fileName1551713485.jpg', 'CV1551713553.pdf', 'مفعل', 165, 'true', '2019-03-11 19:49:50', '2019-03-11 19:49:50'),
-(113, '39-33', 'T991163', '1020792147', 'زينب عبدالعزيز المانع', NULL, 'أنثى', '1984-01-18', 'المملكة العربية السعودية القصيم عنيزة', 2, 2, 'القصيم عنيزة', 'القصيم عنيزة حي السلام جادة القنارة. رقم المنزل:7118', NULL, 'محاضر', '2018-05-06', 'searcher', 12, 'كلية الشريعة والدراسات الإسلامية', '966505705560', '966505705560', 'zalmani@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 166, 'true', '2019-03-11 13:32:55', '2019-03-11 13:32:55'),
-(114, '39-34', 'EQ5015789', NULL, 'رشيد الحمداوي', NULL, 'ذكر', '1977-04-15', 'الدار البيضاء', 4, 20, 'مراكش', 'حي أزلي الجنوبي، رقم 788، مراكش', NULL, 'الدكتوراه', '2019-01-01', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية', '212666913601', '212666913601', 'ralhamdaoui@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 167, 'true', '2019-03-12 10:53:43', '2019-03-12 10:53:43'),
-(115, '39-35', 'MI9524149', NULL, 'عبد الإله هرماشي', NULL, 'ذكر', '1976-07-25', 'مراكش', 4, 20, 'مراكش', '1253 تجزئة الزرقطوني المحاميد مراكش المغرب', NULL, 'دكتوراه', '2019-01-01', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية', '00212670726050', '00212670726050', 'aharmachi@hidayatqurania.org', 'fileName1552297721.jpg', NULL, 'مفعل', 168, 'true', '2019-03-11 09:48:41', '2019-03-11 09:48:41'),
-(116, '39-36', 'JP2610259', 'LC89968', 'أحمد الريفي', NULL, 'ذكر', '1978-02-20', 'دائرة باب برد - إقليم شفشاون', 4, 20, 'العرائش', 'تجزئة المغرب الجديد رقم 1880', NULL, 'ماجستير', '2019-01-01', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية', '212666384124', '212666384124', 'arifi@hidayatqurania.org', 'fileName1551896733.jpg', 'CV1551954454.pdf', 'مفعل', 169, 'true', '2019-03-07 10:27:34', '2019-03-07 10:27:34'),
-(117, '39-37', 'WU3970437', NULL, 'عبدالاله الهنا', NULL, 'ذكر', '1975-12-02', 'مراكش', 4, 20, 'مراكش', '41 درب الخشاب سيبع مراكش المغرب', NULL, 'الدكتوراه', '2018-12-10', 'searcher', 14, 'كلية الاداب والعلوم الإنسانية', '212611010011', '212611010011', 'aaitlahna@hidayatqurania.org', 'fileName1552368455.JPG', 'CV1552372555.pdf', 'مفعل', 170, 'true', '2019-03-12 06:35:56', '2019-03-12 06:35:56'),
-(118, '39-38', 'CE6513719', NULL, 'نور الدين آقجضاض', NULL, 'ذكر', '1981-08-07', 'Marrakech', 4, 20, 'Marrakech', 'المحاميد 4 رقم 750 مراكش المغرب', NULL, 'ماجستر', '2009-01-01', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية مراكش', '212662495565', '212662495565', 'nakojdad@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 171, 'true', '2019-07-17 06:30:46', '2019-07-17 06:30:46'),
-(119, '39-39', 'VT0291813', NULL, 'عبدالجليل حيمود', NULL, 'ذكر', '1984-04-01', 'العطاوية، عمالة قلعة السراغنة، جهة مراكش', 4, 20, 'مراكش', 'مجموعة لحسن أغريب، رقم 229 حي يوسف ابن تاشفين مراكش', NULL, 'ماستر', '2019-01-10', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية مراكش', '21268785556', '212624243058', 'ahaymoud@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 172, 'true', '2019-03-10 23:28:40', '2019-03-10 23:28:40'),
-(120, '39-40', 'ls5903213', NULL, 'عبدالرزاق الصادقي', NULL, 'ذكر', '1983-03-01', 'الرشيدية', 4, 20, 'الفقيه بن صالح', 'حي الفرح ،زنقة الفتح،رقم الدار:10', NULL, 'الماستر', '2017-12-04', 'searcher', 15, 'كلية الآداب والعلوم الإنسانية', '0610289926', '0610289926', 'aalsadiki@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 173, 'true', '2019-03-13 12:42:23', '2019-03-13 12:42:23'),
-(121, '39-41', 'HB2987573', 'G:375854', 'دنيا الرامي', NULL, 'أنثى', '1980-03-25', 'الجديدة', 4, 20, 'القنيطرة', 'حي الوفاء 2 رقم 64 القنيطرة', NULL, 'الماستر', '2018-12-25', 'searcher', 15, 'كلية الآداب والعلوم الإنسانية', '212675378752', '212682913908', 'derrami@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 174, 'true', '2019-03-10 00:04:55', '2019-03-10 00:04:55'),
-(122, '39-42', 'oq4525917', NULL, 'الجيلالي بوزيري', NULL, 'ذكر', '1987-03-31', 'كيسر سطات المغرب', 4, 20, 'سطات', 'درب عمر. زنقة مولاي إسماعيل. رقم: 10. سطات. المغرب', NULL, 'دكتوراه', '2018-12-06', 'searcher', 14, 'كلية الآداب والعلوم الإنسانية', '212676426844', '212617090980', 'abouziri@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 175, 'true', '2019-03-11 09:42:30', '2019-03-11 09:42:30'),
-(123, '39-43', 'YE0756501', NULL, 'محمد العمراني', NULL, 'ذكر', '1972-01-01', 'الراشدية المملكة المغربية', 4, 20, 'مكناس', '27 رياض الزيتون مكناس المملكة المغربية', NULL, 'دكتوراه', '2018-12-01', 'searcher', 14, 'كلية الآداب والعلوم الإنسانية', '212666908421', '212666908421', 'melamrani@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 176, 'true', '2019-03-06 23:57:57', '2019-03-06 23:57:57'),
-(124, NULL, NULL, NULL, 'د أحمد خليفة', NULL, NULL, NULL, NULL, 1, 3, NULL, NULL, NULL, NULL, NULL, 'reviewer', NULL, NULL, NULL, NULL, 'akmohammed@hidayatqurania.org', 'avat.png', NULL, 'yes', 190, 'true', '2019-03-04 06:22:55', '2019-03-04 06:22:55'),
-(125, NULL, NULL, NULL, 'د يوسف الحسن', NULL, NULL, NULL, NULL, 1, 3, NULL, NULL, NULL, NULL, NULL, 'reviewer', NULL, NULL, NULL, NULL, 'yelhassan@hidayatqurania.org', 'avat.png', NULL, 'yes', 191, 'true', '2019-03-04 06:31:05', '2019-03-04 06:31:05'),
-(129, NULL, NULL, NULL, 'أ.د مورتس برخر', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 17, NULL, NULL, NULL, 'mberger@hidayatqurania.org', 'avat.png', NULL, 'yes', 196, 'true', '2019-08-18 07:07:21', '2019-08-18 07:07:21'),
-(130, '40-46', NULL, NULL, 'سعيد عمراني', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'searcher', NULL, NULL, NULL, NULL, 'samrani@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 197, 'true', '2019-08-18 07:39:27', '2019-08-18 07:39:27');
+INSERT INTO `registrations` (`ID`, `Code`, `PassportNumber`, `NationalNumber`, `Fistname`, `LastName`, `Gender`, `BirthDate`, `BirthCity`, `Nationalitie`, `Countrie`, `City`, `Location`, `CertificateType`, `CertificateDegree`, `InscriptionDate`, `Type`, `University`, `Faculty`, `Phonne1`, `Phonne2`, `Email`, `PictureURL`, `CV`, `Status`, `User`, `EnablePlanEdit`, `regiment`, `updated_at`, `created_at`) VALUES
+(89, '38-9', 'p01495525', NULL, 'هالة هاشم أبوزيد', NULL, 'أنثى', '1975-02-12', 'السودان', 3, 3, 'الخرطوم', 'الخرطوم - المعمورة - مربع 69 - منزل رقم 30', NULL, 'دكتوراة', '2017-12-25', 'searcher', 3, 'كلية القرآن الكريم', '00249122706724', '00249122706724', 'hahmed@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 142, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(79, NULL, '07634420', '-', 'د. يوسف محمد عبده محمد', 'العواضي', 'ذكر', '1975-12-07', 'اليمن - إب', 10, 16, 'كولالمبور', 'C-12-05, Amadesa Resort Condominium Jalan 5/125, Taman Desa Petaling, 57100 Kuala Lumpur', NULL, 'أستاذ مشارك', '1975-10-04', 'supervisor', 10, 'العلوم الإسلامية', '00601139725667', '00601139725667', 'ymohammed@hidayatqurania.org', 'fileName1551843967.jpg', NULL, 'yes', 132, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(81, '38-1', '08282088', '2318641871', 'عادل سليمان ضحوي', NULL, 'ذكر', '1981-08-09', 'اليمن', 10, 2, 'مكة', 'حي العمرة', NULL, 'ماجستير', '2017-03-22', 'searcher', 2, 'الدعوة', '96649748615', '96649748615', 'adahawi@hidayatqurania.org', 'fileName1551727133.jpg', 'CV1551727536.pdf', 'مفعل', 134, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(82, '38-2', '1051316824', '1051316824', 'محمد آل منشط', NULL, 'ذكر', '1988-03-28', 'أبها', 2, 2, 'أبها', 'أبها', NULL, 'ماجستير', '2017-09-21', 'searcher', 2, 'الدعوة وأصول الدين', '966508574599', '966508574599', 'masiri@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 135, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(83, '38-3', 'T290753', '1018403434', 'محمد إبراهيم الدعيس', NULL, 'ذكر', '1399-08-11', 'يبه', 2, 2, 'القنفذة/ القوز', 'القوز ـ الدار البيضاء', NULL, 'دكتوراه', '2018-01-01', 'searcher', 2, 'الدعوة وأصول الدين', '966504510122', '966504510122', 'malduays@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 136, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(84, '38-4', 'U325444', '1055080616', 'أيمن غازي صابر', NULL, 'ذكر', '1978-12-20', 'جدة', 2, 2, 'جدة', 'حي المروة 8- شارع وادي الخمس', NULL, 'دكتوراه', '2017-09-21', 'searcher', 2, 'الدعوة وأصول الدين', '966546191863', '966546191863', 'asaber@hidayatqurania.org', 'fileName1552068514.jpg', 'CV1552068910.pdf', 'مفعل', 137, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(85, '38-5', 'W434900', '1025504067', 'عبدالهادي بن علي بن عبدالرحمن الشمراني', NULL, 'ذكر', '1978-02-25', 'نجران/ المملكة العربية السعودية', 2, 2, 'مكة المكرمة', 'الرصيفة - حي إسكان الملك فهد', NULL, 'الدكتوراة', '2017-04-11', 'searcher', 2, 'كلية الدعوة وأصول الدين', '966550045858', '966550045858', 'aalshamrani@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 138, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(86, '38-6', '011593693', '2238397471', 'عبدالله التركاوي', NULL, 'ذكر', '1973-10-01', 'سوريا', 21, 2, 'المدينة المنورة', 'أول طريق الهجرة - خلف مستوصف دار السلام', NULL, 'ماجستير', '2016-06-06', 'searcher', 4, 'الدراسات العلية', '00966500263901', '00966500263901', 'aalterkawi@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 139, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(87, '38-7', 'P02642718', NULL, 'عثمان محمد', NULL, 'ذكر', '1983-01-01', 'الحصاحيصا ولاية الجزيرة', 3, 2, 'الخرطوم', 'جامعة افريقيا العالمية كلية القرآن الكريم', NULL, 'دكتوراه', '2018-01-01', 'searcher', 3, 'الدراسات الإسلامية', '00249121573337', '00249121573337', 'oali@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 140, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(88, '38-8', 'P04502675', NULL, 'مايو إدريس يونس', NULL, 'أنثى', '1972-12-27', 'ام درمان', 3, 3, 'ام درمان', 'ام درمان الثورة الحارة 21', NULL, 'دكتوراه', '2018-01-25', 'searcher', 5, 'كلية الدراسات العليا أصول الدين', '249122960033', '249117235933', 'mbahar@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 141, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(78, NULL, 'V417664', '1027669389', 'أ.د يحيى', 'زمزمي', 'ذكر', '1966-07-29', 'مكة المكرمة', 2, 2, 'مكة المكرمة', 'الاسكان ( حي الملك فهد )', NULL, 'أستاذ دكتور', '2000-01-01', 'supervisor', 2, 'كلية الدعوة وأصول الدين', '966505657432', '966505657432', 'yzamzami1@hidayatqurania.org', 'avat.png', NULL, 'yes', 131, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(76, NULL, 'A12751585', '2266450812', 'نبيل محمد إبراهيم الجوهري', 'الجوهري', 'ذكر', '1962-07-23', 'مصر', 6, 2, 'المدينة المنورة', 'الجامعة الإسلامية/ كلية القرآن/ قسم التفسير.', NULL, 'أستاذ', '2009-02-01', 'supervisor', 11, 'كلية القرآن الكريم والدراسات الإسلامية.', '966568841020', '966568841020', 'naljohari@hidayatqurania.org', 'avat.png', NULL, 'yes', 129, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(77, NULL, 'U271683', '1015011701', 'د. ياسين', 'قاري', 'ذكر', '1967-12-26', 'المدينة المنورة', 2, 2, 'مكة المكرمة', 'السبهاني', NULL, 'دكتور', '2000-01-01', 'supervisor', 2, 'كلية الدعوة وأصول الدين', '966555305443', '966555305443', 'yqari1@hidayatqurania.org', 'avat.png', NULL, 'yes', 130, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(75, NULL, NULL, NULL, 'د. محمد نجيب', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 9, NULL, NULL, NULL, 'mqader@hidayatqurania.org', 'avat.png', NULL, 'yes', 128, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(73, NULL, 'O840000', '-', 'د. محمد خازر المجالي', 'أستاذ', 'ذكر', '1961-02-06', 'الزرقاء-الأردن', 8, 12, 'عمان', 'كلية الشريعة-الجامعة الأردنية', NULL, 'أستاذ', '1993-09-04', 'supervisor', 6, 'الشريعة', '00962777622322', '00962777622322', 'malmajali@hidayatqurania.org', 'avat.png', NULL, 'yes', 126, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(74, NULL, 'BL9851935', 'لست مقيما في المملكة', 'د. محمد بلحسان', 'المهدي', 'ذكر', '1963-03-25', 'المغرب', 4, 20, 'القنيطرة', '70، المغرب العربي أ توسعة. القنيطرة', NULL, 'أستاذ التعليم العالي درجة ج', '1994-01-13', 'supervisor', 15, 'كلية الآداب و العلوم الانسانية', '212661406692', '212661406692', 'mbalhsan@hidayatqurania.org', 'avat.png', NULL, 'yes', 127, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(70, NULL, NULL, NULL, 'د. محمد الأمين', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 3, NULL, NULL, NULL, 'maismail@hidayatqurania.org', 'avat.png', NULL, 'yes', 123, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(71, NULL, 'w416656', '1014150153', 'د. محمد بن ناصر الحميد', 'الدكتور', 'ذكر', '1963-11-28', 'المدينة المنورة', 2, 2, 'المدينة المنورة', 'حي الرانوناء', NULL, 'أستاذ', '1986-06-16', 'supervisor', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '966554353942', '966543334882', 'malhumaid@hidayatqurania.org', 'avat.png', NULL, 'yes', 124, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(72, NULL, '1013770449', '1013770449', 'د. محمد بن عبدالله الربيعة', 'الربيعة', 'ذكر', '1969-09-13', 'القصسم', 2, 2, 'القصيم', 'جامعة القصيم - قسم القرآن وعلومه', NULL, 'استاذ مشارك', '2019-03-13', 'supervisor', 12, 'الشريعة والدراسات الإسلامية', '966504882342', '96613424563', 'malrabiah@hidayatqurania.org', 'avat.png', NULL, 'yes', 125, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(61, NULL, 'P03937058', '178-9571-5912', 'د. عائشة علي', 'عائشه', 'أنثى', '1957-01-01', 'دنقلا', 3, 3, 'الخرطوم', 'الخرطوم', NULL, 'دكتوراه', '2010-01-01', 'supervisor', 3, 'القرآن الكريم', '٠٩٢٢٣٩٤٩٠٩', '٠٩٢٢٣٩٤٩٠٩', 'aalimam@hidayatqurania.org', 'avat2.png', NULL, 'yes', 114, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(62, NULL, 'H95659647', 'H95659647', 'د. عبداللطيف أحمدي رمجاهي', 'أبو فيحاء', 'ذكر', '1981-02-20', 'ايران-جزيرة قشم', 7, 16, 'كولالمبور', 'University of Malaya, Petaling Jaya', NULL, 'كبار الاساتذة', '2012-10-01', 'supervisor', 8, 'أكاديمية الدراسات الإسلامية', '0060146276640', '0060146276640', 'aramchahi@hidayatqurania.org', 'avat.png', NULL, 'yes', 115, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(63, NULL, 'GS2652452', 'H16450', 'د. عبدالله البخاري', 'العبدي', 'ذكر', '1960-12-31', 'آسفي المملكة المغربية', 4, 20, 'أغادير', 'حي السلام زنقة 942 رقم 20 أغادير', NULL, 'أستاذ التعليم العالي', '2000-01-24', 'supervisor', 14, 'كلية الآداب والعلوم الانسانية', '212668108509', '212668108509', 'aelboukhari@hidayatqurania.org', 'avat.png', NULL, 'yes', 116, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(64, NULL, NULL, NULL, 'د. عبدالله الزبير', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 3, NULL, NULL, NULL, 'asalih@hidayatqurania.org', 'avat.png', NULL, 'yes', 117, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(65, NULL, 'u680627', '1063625147', 'د. علي بن عبد الله بن حمد السكاكر', 'السكاكر', 'ذكر', '1982-06-06', 'بريدة', 2, 2, 'المدينة المنورة', 'الجامعة الإسلامية', NULL, 'أستاذ', '1998-01-11', 'supervisor', 11, 'القرآن الكريم', '0598541834', '0598541834', 'aalsakaker@hidayatqurania.org', 'avat.png', NULL, 'yes', 118, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(66, NULL, 'w421698', '1001959095', 'أ.د. فايز بن حبيب الترجمي', 'الترجمي', 'ذكر', '1963-11-17', 'خلص', 2, 2, 'المدينة', 'المدينة - عروة - بجوار شرطة قباء', NULL, 'أسناذ', '1989-12-05', 'supervisor', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '966505308737', '966505308737', 'falturjmi@hidayatqurania.org', 'avat.png', NULL, 'yes', 119, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(67, NULL, 'A29131305', '750323-10-5935', 'د. فضلان محمد عثمان', 'الماليزي', 'ذكر', '1975-03-23', 'سلانحور، ماليزيا', 5, 16, 'BANGI', 'PUSAT KELESTARIAN TURATH ISLAMI, FAKULTI PENGAJIAN ISLAM, UNIVERSITI KEBANGSAAN MALAYSIA, 43600 UKM, BANGI, SELANGOR, MALAYSIA', NULL, 'الدكتوراة', '2004-02-12', 'supervisor', 9, 'كلية الدراسات الإسلامية', '0060192233754', '0060192233754', 'fothman@hidayatqurania.org', 'fileName1552451936.jpg', NULL, 'yes', 120, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(68, NULL, 'V164579', '1048808255', 'د. فيصل جميل الغزاوي', 'الغزاوي', 'ذكر', '1966-04-18', 'مكة', 2, 2, 'مكة', 'بطحاء قريش', NULL, 'أستاذ مشارك', '1989-09-13', 'supervisor', 2, 'الدعوة وأصول الدين', '966505531322', '966543806356', 'fghazzawi@hidayatqurania.org', 'avat.png', NULL, 'yes', 121, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(69, NULL, '02446778', '02446778', 'د. مبارك ابراهيم التجاني', 'المبارك', 'ذكر', '1965-11-30', 'مدني ( ام سنط)', 3, 3, 'الخرطوم', 'السودان _ الخرطوم _ بحري _ الجيلي _ مصفاة الخرطوم', NULL, 'استاذ مشارك', '1991-06-01', 'supervisor', 4, 'كلية القران الكريم', '249121584121', '24911090734', 'maltijani@hidayatqurania.org', 'fileName1552656732.jpg', NULL, 'yes', 122, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(58, NULL, '092287', 'لا يوجد', 'د. سليمان محمد الدقور', 'الدقور', 'ذكر', '1972-11-07', 'الاردن/ الشوبك', 8, 12, 'الجبيهة', 'الجامعة الأردنية', NULL, 'أستاذ', '2007-02-10', 'supervisor', 6, 'الشريعة', '962772345664', '962772345664', 'saldgoor@hidayatqurania.org', 'avat.png', NULL, 'yes', 111, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(59, NULL, NULL, NULL, 'د. صبري محمد', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 9, NULL, NULL, NULL, 'smohamad@hidayatqurania.org', 'avat.png', NULL, 'yes', 112, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(60, NULL, 'P01293162', '2163348879', 'أ.د/ طه عابدين', 'طه حمد', 'ذكر', '1965-06-16', 'دنقلا - السودان', 3, 2, 'مكة المكرمة', 'بطحاء قريش', NULL, 'أستاذ دكتور', '2000-01-01', 'supervisor', 2, 'كلية الدعوة وأصول الدين', '966508166974', '966508166974', 'thamed1@hidayatqurania.org', 'avat.png', NULL, 'yes', 113, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(57, NULL, NULL, NULL, 'د. رضوان الأطرش', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 16, NULL, NULL, NULL, 'ralatrash@hidayatqurania.org', 'avat.png', NULL, 'yes', 110, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(45, NULL, 'Tj2972340', 'J223118', 'د. إبراهيم رضا', 'رضا', 'ذكر', '1965-01-10', 'اكادير  المغرب', 4, 20, 'مراكش', 'اسيل رقم ٣٥٧ مراكش المغرب', NULL, 'استاذ التعليم العالي', '1993-09-01', 'supervisor', 13, 'كلية الاداب والعلوم الانسانية', '212668675861', '212668675861', 'iridha@hidayatqurania.org', 'avat.png', NULL, 'yes', 98, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(46, NULL, 'po5307373', '1', 'د. أزهري حسين محمد', 'أبو مصعب', 'ذكر', '1957-11-16', 'مروي', 3, 3, 'أم درمان', 'جامعة أم درمان الإسلامية', NULL, 'أستاذ مشارك', '1999-05-02', 'supervisor', 5, 'أصول الدين', '00249123395003', '00249123395003', 'azmhd@hidayatqurania.org', 'avat.png', NULL, 'yes', 99, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(47, NULL, 'P02141918', '0', 'د. البدري بشارة', 'بشارة', 'ذكر', '1970-12-11', 'السودان', 3, 3, 'الخرطوم', 'جامعة أفريقيا العالمية - كلية القرآن الكريم', NULL, 'أستاذ مساعد', '2007-11-11', 'supervisor', 3, 'كلية القرآن الكريم', '249019400559', '249019400559', 'abisharah@hidayatqurania.org', 'avat.png', NULL, 'yes', 100, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(48, NULL, NULL, NULL, 'د. الطاهر أحمد', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 3, NULL, NULL, NULL, 'aqader@hidayatqurania.org', 'avat.png', NULL, 'yes', 101, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(49, NULL, '783691', '12345', 'د. أحمد خالد شكري', 'شكري', 'ذكر', '1960-11-27', 'عمان', 8, 12, 'عمان', 'شفا بدران', NULL, 'أستاذ', '1991-05-09', 'supervisor', 6, 'الشريعة', '00962775432557', '00962798513487', 'ashukri@hidayatqurania.org', 'fileName1552242527.jpg', NULL, 'yes', 102, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(50, NULL, 'T025689', '١٠٧٠٢٦٠٨١٣', 'أ.د أمجد بن محمد زيدان', 'زيدان', 'ذكر', '1980-09-25', 'قرية الواصلي منطقة جازان  السعودية', 2, 2, 'المدينة المنورة', 'إسكان الجامعة  الإسلامية مبنى ٢١ شقة ١٢', NULL, 'أستاذ', '2003-06-01', 'supervisor', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '00966505768597', '00966505768597', 'azaidan@hidayatqurania.org', 'avat.png', NULL, 'yes', 103, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(51, NULL, 'Nh9370951', 'E233498', 'د. توفيق بن ي. أحمد بن ي. عبد الرحمن', 'العبقري', 'ذكر', '1966-11-28', 'اليوسفية', 4, 20, 'مراكش', 'حي بركة البهجة 38، أسيف، مراكش', NULL, 'أستاذ التعليم العالي (ج)', '1995-11-01', 'supervisor', 13, 'كلية الآداب والعلوم الإنسانية', '212615652269', '212615652269', 'talabqari@hidayatqurania.org', 'avat.png', NULL, 'yes', 104, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(52, NULL, 'N526483', 'لا يوجد', 'د. ثابت أحمد أبو الحاج', 'أستاذ مشارك', 'ذكر', '1970-08-24', 'عمّان', 8, 16, 'كوالالمبور', 'قسم القرآن والحديث، أكاديمية الدراسات الإسلامية،جامعة ملايا-كوالالمبور- ماليزيا', NULL, 'الدكتوراة/ أستاذ مشارك', '2012-12-10', 'supervisor', 8, 'الدراسات الإسلامية', '0060166586630', '0060166586630', 'talhaj@hidayatqurania.org', 'fileName1552349902.jpg', NULL, 'yes', 105, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(53, NULL, 'MI2891653', 'H202066', 'د. حسن حميتو', 'حميتو', 'ذكر', '1973-06-09', 'مراكش', 4, 20, 'اكادير', 'رقم ٢٦ بلوك س حي اركانة ايت ملول - المغرب.', NULL, 'استاذ مشارك', '2011-04-18', 'supervisor', 14, 'كلية الاداب والعلوم الانسانية', '212668513974', '212668513974', 'hhmeto@hidayatqurania.org', 'fileName1552309658.jpg', NULL, 'yes', 106, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(54, NULL, 'v721750', '1002360491', 'د. خالد بن علي الغامدي', 'الغامدي', 'ذكر', '2019-03-11', 'مكة المكرمة', 2, 2, 'مكة', 'بطحاء قريش', NULL, 'أستاذ مشارك', '2010-01-08', 'supervisor', 2, 'كلية الدعوة وأصول الدين', '00966555526370', '00966555526370', 'kghamdi@hidayatqurania.org', 'avat.png', NULL, 'yes', 107, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(55, NULL, NULL, NULL, 'د. داتو محمد يعقوب', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 8, NULL, NULL, NULL, 'dyaqob@hidayatqurania.org', 'avat.png', NULL, 'yes', 108, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(56, NULL, '37144803', '00', 'د. روحيزان بارو محمد زين', 'روحيزان', 'ذكر', '1966-01-15', 'كوالا ترنقانو', 5, 16, 'كوالا ترنقانو', 'جامعة السلطان زين العابدين ترنقانو ماليزيا', NULL, 'دكتوراه', '1995-10-15', 'supervisor', 7, 'كلية الدراسات الإسلامية المعاصرة', '60199147438+', '60199147438+', 'rbaru@hidayatqurania.org', 'fileName1552370882.jpg', NULL, 'yes', 109, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(90, '38-10', 'P02568234', NULL, 'فاطمة أحمد البدوي', NULL, 'أنثى', '1981-05-15', 'مكة المكرمة', 3, 3, 'الخرطوم', 'الخرطوم / الأزهري / مربع 19', NULL, 'دكتوراة', '2017-12-20', 'searcher', 3, 'الدراسات الإسلامية', '249908525346', '249908525346', 'felbadawi@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 143, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(91, '39-11', 'K740809', NULL, 'أسامة شاهين العداسي', NULL, 'ذكر', '1986-03-06', 'الأردن - الزرقاء', 8, 12, 'عمان', 'ضاحية الياسمين', NULL, 'دكتوراة', '2018-08-15', 'searcher', 6, 'الشريعة', '962785692454', '962785692454', 'oaladdasi@hidayatqurania.org', 'fileName1552460963.jpg', 'CV1552461087.pdf', 'مفعل', 144, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(92, '39-12', '10638597', NULL, 'مصطفى جمعة', NULL, 'ذكر', '1987-09-03', 'العراق', 16, 12, 'عمان', 'المدينة الرياضية', NULL, 'دكتوراة', '2018-07-09', 'searcher', 6, 'الشريعة', '962788947390', '962788947390', 'mjumaah@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 145, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(93, '39-13', 'P467016 / وأحمل جواز سفر أمريكي برقم 499237877', NULL, 'محمد منذر محمد السالم', NULL, 'ذكر', '1982-09-21', 'الولايات المتحدة الأمريكية (أمريكا)', 8, 12, 'عمّان', 'العاصمة عمان / شارع المطار / ضاحية الأمير علي (بجانب مدارس بيت المقدس', NULL, 'ماجستير من جامعة الشارقة / طالب دكتوراه في الجامعة الأردنية', '2018-08-29', 'searcher', 6, 'كلية الشريعة والدراسات الإسلامية', '962789191970', '962789191970', 'msalem@hidayatqurania.org', 'fileName1551872012.jpg', NULL, 'مفعل', 146, 'true', '1', '2019-09-01 12:47:50', '2019-09-01 12:47:50'),
+(94, '39-14', '04820162', NULL, 'أحمد حسن صالح الفقيه', NULL, 'ذكر', '1975-12-01', 'أب _ اليمن', 10, 16, 'كولا ترنجانو', 'AL- FAKIH AHMED HASAN  SALEH MBKT- 21717 , KG.MENGABANG  TELONG  BATU RAKIT, 21020 KUALA TERENGGANU', NULL, 'دكتور', '2018-07-23', 'searcher', 7, 'القرآن والسنة', '601121997745+', '601121997745+', 'aalfakih@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 147, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(95, '39-15', 'A12076328', NULL, 'محمد أزهر', NULL, 'ذكر', '1975-08-31', 'العراق-بغداد', 16, 16, 'KUALA LUMPUR', 'jalan 3a/155 Bukit oug condiminium 3A-13A-6', NULL, 'دكتوراه', '2018-10-22', 'searcher', 8, 'أكاديمية الدراسات الإسلامية', '00601111690757', '00601111690757', 'mibrahim@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 148, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(96, '39-16', 'HJ731F8H', NULL, 'أحمد الأطرش', NULL, 'ذكر', '1978-02-25', 'طرابلس / ليبيا', 19, 16, 'شاه علام', '15 jalan tukul', NULL, 'دكتوراه', '2018-06-07', 'searcher', 9, 'القرآن والسنة', '601121150130', '601121150130', 'alatrash@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 149, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(97, '39-17', '155501154', NULL, 'زينب طلحة', NULL, 'أنثى', '1984-04-29', 'الجزائر', 15, 16, 'كوالا لمبور', 'istac. jalan duta. kuala lumpur', NULL, 'دكتوراه', '2018-02-20', 'searcher', 8, 'اكاديمية الدراسات الاسلامية', '601118910104', '601118910104', 'ztalha@hidayatqurania.org', 'fileName1552323647.jpeg', 'CV1552323709.pdf', 'مفعل', 150, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(98, '39-18', '05803922', NULL, 'محمد المطري', NULL, 'ذكر', '1978-03-04', 'صنعاء', 10, 17, 'صنعاء', 'بني مطر - الصباحة', NULL, 'دكتوراه', '2018-05-02', 'searcher', 10, 'كلية العلوم اﻹسلامية', '967777175927', '967777175927', 'malmatari@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 151, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(100, '39-20', 'A06708052', '2244564544', 'موسى سليمان', NULL, 'ذكر', '1984-09-13', 'كدونا، نيجيريا', 18, 2, 'المدينة الننورة', 'الجامعة الاسلامية', NULL, 'دكتوراه', '2018-07-15', 'searcher', 11, 'كلية القرآن الكريم', '966508452634', '966508452634', 'mabubakar@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 153, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(101, '39-21', '05933440', '2244637332', 'هشام محمد سيف', NULL, 'ذكر', '1985-10-20', 'اليمن', 10, 2, 'المدينة المنورة', 'الجامعة الإسلامية', NULL, 'دكتوراه', '2018-05-16', 'searcher', 11, 'القرآن الكريم والدراسات الإسلامية', '00966550968321', '00966550968321', 'halmalki@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 154, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(102, '39-22', 'P6984102A', '2263673382', 'محمد عطاء إبراهيم عبد الكريم', NULL, 'ذكر', '1987-03-07', 'جنوب الفلبين', 11, 2, 'المدينة النبوية', 'حي الربوية، الحرة الشرقية.', NULL, 'ماجستير', '2018-05-16', 'searcher', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '966534934679', '966534934679', 'mabdulkarim@hidayatqurania.org', 'fileName1551872316.jpg', 'CV1551872664.pdf', 'مفعل', 155, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(103, '39-23', 'AA0069873', '2244637019', 'محمدو دوكوري', NULL, 'ذكر', '1986-08-13', 'Mali', 9, 2, 'المدينة المنورة', 'الجامعة الإسلامية', NULL, 'دكتوراه', '2018-01-01', 'searcher', 11, 'كلية القرآن الكريم', '966544464870', '966544464870', 'mdoucoure@hidayatqurania.org', 'fileName1551703348.jpeg', 'CV1551703493.docx', 'مفعل', 156, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(104, '39-24', 'P05417210', NULL, 'عبدالمحسن المعيلي', NULL, 'ذكر', '1990-05-18', 'الكويت', 13, 2, 'المدينة المنورة', 'حي الأزهري', NULL, 'دكتوراه', '2018-10-10', 'searcher', 11, 'القرآن الكريم', '96597946680', '96597946680', 'aalmeaili@hidayatqurania.org', 'avat.png', 'CV1552378236.pdf', 'مفعل', 157, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(105, '39-25', 'AA092660', '2244637985', 'بكري درامي محمد', NULL, 'ذكر', '1984-06-24', 'كيبا، مالي.', 9, 2, 'المدينة النبوية', 'حي الربوية، الحرة الشرقية.', NULL, 'ماجستير', '2018-05-16', 'searcher', 11, 'كلية القرآن الكريم والدراسات الإسلامية', '966562310799', '966562310799', 'bdrame@hidayatqurania.org', 'fileName1552290155.jpg', NULL, 'مفعل', 158, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(106, '39-26', '03337207', '4337391546', 'مسعود راشد حمد الهاشمي', NULL, 'ذكر', '1983-07-22', 'سلطنة عمان صور', 17, 2, 'المدينة المنورة', 'حي الربوة', NULL, 'دكتوراه', '2018-05-14', 'searcher', 11, 'القرآن والدراسات الإسلامية', '96892542587', '96892542587', 'malhashimi@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 159, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(107, '39-27', 'R533358', '1047036809', 'عبدالرحمن الصبحي', NULL, 'ذكر', '1987-06-22', 'جدة - المملكة العربية السعودية', 2, 2, 'المدينة المنورة', 'حي الفيصلية - المدينة المنورة', NULL, 'ماجستير', '2018-07-10', 'searcher', 11, 'كلية القرآن الكريم', '00966540888127', '00966540888127', 'aalsubhy@hidayatqurania.org', 'fileName1552495666.jpg', NULL, 'مفعل', 160, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(108, '39-28', '7745474', '2268131550', 'راشد خالد سعيد الحبسي', NULL, 'ذكر', '1989-02-01', 'سلطنة عمان', 17, 2, 'المدينة المنورة', 'المدينة المنورة', NULL, 'دكتوراة', '2019-03-01', 'searcher', 11, 'كلية القرآن الكريم والدراسات الاسلامية', '966566656946', '966592702773', 'ralhabsi@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 161, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(109, '39-29', '530792258', '2264237807', 'بلكاروف أنزور', NULL, 'ذكر', '1981-10-28', 'روسيا', 20, 2, 'المدينة', 'حي العريض', NULL, 'ماجستير', '2018-11-01', 'searcher', 11, 'القرآن الكريم', '966534230750', '966534230750', 'banzor@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 162, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(110, '39-30', 'u540181', '1064271610', 'أمين عبدالرحمن السكاكر', NULL, 'ذكر', '1990-01-01', 'بريدة', 2, 2, 'القصيم - بريدة', 'حي البساتين', NULL, 'دكتوراه', '2018-10-10', 'searcher', 12, 'كلية الشريعو والدراسات الإسلامية', '966540744466', '966540744466', 'aalsakakir@hidayatqurania.org', 'avat.png', 'CV1552326676.pdf', 'مفعل', 163, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(111, '39-31', 'ٌٌR628702', '1020792139', 'نورةعبد العزيز المانع', NULL, 'أنثى', '1983-01-14', 'عنيزة', 2, 2, 'عنيزة', 'الريان', NULL, 'دكتوراه', '2018-10-12', 'searcher', 12, 'كلية الشريعة والدراسات الإسلامية', '966506158292', '966506158292', 'nalmani@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 164, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(112, '39-32', 'N418003', '1046117345', 'خالد الحربي', NULL, 'ذكر', '1986-04-26', 'القيصومة', 2, 2, 'حفرالباطن', 'القيصومة', NULL, 'الدكتوراة', '2018-10-16', 'searcher', 2, 'الشريعة', '0508446676', '0508446676', 'kalharbi@hidayatqurania.org', 'fileName1551713485.jpg', 'CV1551713553.pdf', 'مفعل', 165, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(113, '39-33', 'T991163', '1020792147', 'زينب عبدالعزيز المانع', NULL, 'أنثى', '1984-01-18', 'المملكة العربية السعودية القصيم عنيزة', 2, 2, 'القصيم عنيزة', 'القصيم عنيزة حي السلام جادة القنارة. رقم المنزل:7118', NULL, 'محاضر', '2018-05-06', 'searcher', 12, 'كلية الشريعة والدراسات الإسلامية', '966505705560', '966505705560', 'zalmani@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 166, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(114, '39-34', 'EQ5015789', NULL, 'رشيد الحمداوي', NULL, 'ذكر', '1977-04-15', 'الدار البيضاء', 4, 20, 'مراكش', 'حي أزلي الجنوبي، رقم 788، مراكش', NULL, 'الدكتوراه', '2019-01-01', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية', '212666913601', '212666913601', 'ralhamdaoui@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 167, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(115, '39-35', 'MI9524149', NULL, 'عبد الإله هرماشي', NULL, 'ذكر', '1976-07-25', 'مراكش', 4, 20, 'مراكش', '1253 تجزئة الزرقطوني المحاميد مراكش المغرب', NULL, 'دكتوراه', '2019-01-01', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية', '00212670726050', '00212670726050', 'aharmachi@hidayatqurania.org', 'fileName1552297721.jpg', NULL, 'مفعل', 168, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(116, '39-36', 'JP2610259', 'LC89968', 'أحمد الريفي', NULL, 'ذكر', '1978-02-20', 'دائرة باب برد - إقليم شفشاون', 4, 20, 'العرائش', 'تجزئة المغرب الجديد رقم 1880', NULL, 'ماجستير', '2019-01-01', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية', '212666384124', '212666384124', 'arifi@hidayatqurania.org', 'fileName1551896733.jpg', 'CV1551954454.pdf', 'مفعل', 169, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(117, '39-37', 'WU3970437', NULL, 'عبدالاله الهنا', NULL, 'ذكر', '1975-12-02', 'مراكش', 4, 20, 'مراكش', '41 درب الخشاب سيبع مراكش المغرب', NULL, 'الدكتوراه', '2018-12-10', 'searcher', 14, 'كلية الاداب والعلوم الإنسانية', '212611010011', '212611010011', 'aaitlahna@hidayatqurania.org', 'fileName1552368455.JPG', 'CV1552372555.pdf', 'مفعل', 170, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(118, '39-38', 'CE6513719', NULL, 'نور الدين آقجضاض', NULL, 'ذكر', '1981-08-07', 'Marrakech', 4, 20, 'Marrakech', 'المحاميد 4 رقم 750 مراكش المغرب', NULL, 'ماجستر', '2009-01-01', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية مراكش', '212662495565', '212662495565', 'nakojdad@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 171, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(119, '39-39', 'VT0291813', NULL, 'عبدالجليل حيمود', NULL, 'ذكر', '1984-04-01', 'العطاوية، عمالة قلعة السراغنة، جهة مراكش', 4, 20, 'مراكش', 'مجموعة لحسن أغريب، رقم 229 حي يوسف ابن تاشفين مراكش', NULL, 'ماستر', '2019-01-10', 'searcher', 13, 'كلية الآداب والعلوم الإنسانية مراكش', '21268785556', '212624243058', 'ahaymoud@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 172, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(120, '39-40', 'ls5903213', NULL, 'عبدالرزاق الصادقي', NULL, 'ذكر', '1983-03-01', 'الرشيدية', 4, 20, 'الفقيه بن صالح', 'حي الفرح ،زنقة الفتح،رقم الدار:10', NULL, 'الماستر', '2017-12-04', 'searcher', 15, 'كلية الآداب والعلوم الإنسانية', '0610289926', '0610289926', 'aalsadiki@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 173, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(121, '39-41', 'HB2987573', 'G:375854', 'دنيا الرامي', NULL, 'أنثى', '1980-03-25', 'الجديدة', 4, 20, 'القنيطرة', 'حي الوفاء 2 رقم 64 القنيطرة', NULL, 'الماستر', '2018-12-25', 'searcher', 15, 'كلية الآداب والعلوم الإنسانية', '212675378752', '212682913908', 'derrami@hidayatqurania.org', 'avat2.png', NULL, 'مفعل', 174, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(122, '39-42', 'oq4525917', NULL, 'الجيلالي بوزيري', NULL, 'ذكر', '1987-03-31', 'كيسر سطات المغرب', 4, 20, 'سطات', 'درب عمر. زنقة مولاي إسماعيل. رقم: 10. سطات. المغرب', NULL, 'دكتوراه', '2018-12-06', 'searcher', 14, 'كلية الآداب والعلوم الإنسانية', '212676426844', '212617090980', 'abouziri@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 175, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(123, '39-43', 'YE0756501', NULL, 'محمد العمراني', NULL, 'ذكر', '1972-01-01', 'الراشدية المملكة المغربية', 4, 20, 'مكناس', '27 رياض الزيتون مكناس المملكة المغربية', NULL, 'دكتوراه', '2018-12-01', 'searcher', 14, 'كلية الآداب والعلوم الإنسانية', '212666908421', '212666908421', 'melamrani@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 176, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(124, NULL, NULL, NULL, 'د أحمد خليفة', NULL, NULL, NULL, NULL, 1, 3, NULL, NULL, NULL, NULL, NULL, 'reviewer', NULL, NULL, NULL, NULL, 'akmohammed@hidayatqurania.org', 'avat.png', NULL, 'yes', 190, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(125, NULL, NULL, NULL, 'د يوسف الحسن', NULL, NULL, NULL, NULL, 1, 3, NULL, NULL, NULL, NULL, NULL, 'reviewer', NULL, NULL, NULL, NULL, 'yelhassan@hidayatqurania.org', 'avat.png', NULL, 'yes', 191, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(129, NULL, NULL, NULL, 'أ.د مورتس برخر', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'supervisor', 17, NULL, NULL, NULL, 'mberger@hidayatqurania.org', 'avat.png', NULL, 'yes', 196, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15'),
+(130, '40-46', NULL, NULL, 'سعيد عمراني', NULL, NULL, NULL, NULL, 1, 2, NULL, NULL, NULL, NULL, NULL, 'searcher', NULL, NULL, NULL, NULL, 'samrani@hidayatqurania.org', 'avat.png', NULL, 'مفعل', 197, 'true', '1', '2019-09-01 12:26:15', '2019-09-01 12:26:15');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviewersearchs`
+-- Structure de la table `reviewersearchs`
 --
 
 CREATE TABLE `reviewersearchs` (
@@ -794,7 +822,7 @@ CREATE TABLE `reviewersearchs` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reviewersearchs`
+-- Déchargement des données de la table `reviewersearchs`
 --
 
 INSERT INTO `reviewersearchs` (`reviewer`, `search`) VALUES
@@ -1112,7 +1140,7 @@ INSERT INTO `reviewersearchs` (`reviewer`, `search`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reviewers_reports`
+-- Structure de la table `reviewers_reports`
 --
 
 CREATE TABLE `reviewers_reports` (
@@ -1146,7 +1174,7 @@ CREATE TABLE `reviewers_reports` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `reviewers_reports`
+-- Déchargement des données de la table `reviewers_reports`
 --
 
 INSERT INTO `reviewers_reports` (`ID`, `search`, `reviewer`, `q1`, `q1_details`, `q2`, `q2_details`, `q3`, `q3_details`, `q4`, `q4_details`, `q5`, `q5_details`, `q6`, `q6_details`, `q7`, `q7_details`, `q8`, `q8_details`, `q9`, `q9_details`, `q10`, `q10_details`, `q11`, `filename`, `note`, `date`) VALUES
@@ -1398,7 +1426,7 @@ INSERT INTO `reviewers_reports` (`ID`, `search`, `reviewer`, `q1`, `q1_details`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Structure de la table `roles`
 --
 
 CREATE TABLE `roles` (
@@ -1407,7 +1435,7 @@ CREATE TABLE `roles` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `roles`
+-- Déchargement des données de la table `roles`
 --
 
 INSERT INTO `roles` (`id`, `name`) VALUES
@@ -1420,7 +1448,7 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `role_user`
+-- Structure de la table `role_user`
 --
 
 CREATE TABLE `role_user` (
@@ -1432,7 +1460,7 @@ CREATE TABLE `role_user` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `searchersreports`
+-- Structure de la table `searchersreports`
 --
 
 CREATE TABLE `searchersreports` (
@@ -1457,7 +1485,7 @@ CREATE TABLE `searchersreports` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `searchersreports`
+-- Déchargement des données de la table `searchersreports`
 --
 
 INSERT INTO `searchersreports` (`ID`, `Code`, `Searcher`, `TypeCyclic`, `Section`, `DateSearcher`, `DoneRange`, `SessionsCount`, `HoursNumber`, `UpdatedRange`, `DateCommittee`, `Reasons`, `Difficulties`, `Notes`, `URL`, `Status`, `created_at`, `updated_at`) VALUES
@@ -1467,7 +1495,7 @@ INSERT INTO `searchersreports` (`ID`, `Code`, `Searcher`, `TypeCyclic`, `Section
 -- --------------------------------------------------------
 
 --
--- Table structure for table `searchers_reports`
+-- Structure de la table `searchers_reports`
 --
 
 CREATE TABLE `searchers_reports` (
@@ -1487,7 +1515,7 @@ CREATE TABLE `searchers_reports` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `searchers_reports`
+-- Déchargement des données de la table `searchers_reports`
 --
 
 INSERT INTO `searchers_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `q9`, `filename`, `date`) VALUES
@@ -1633,7 +1661,7 @@ INSERT INTO `searchers_reports` (`ID`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `searcher_critera`
+-- Structure de la table `searcher_critera`
 --
 
 CREATE TABLE `searcher_critera` (
@@ -1643,7 +1671,7 @@ CREATE TABLE `searcher_critera` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `searcher_critera`
+-- Déchargement des données de la table `searcher_critera`
 --
 
 INSERT INTO `searcher_critera` (`Searcher`, `Criteria`, `Status`) VALUES
@@ -1653,7 +1681,7 @@ INSERT INTO `searcher_critera` (`Searcher`, `Criteria`, `Status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `searchs`
+-- Structure de la table `searchs`
 --
 
 CREATE TABLE `searchs` (
@@ -1677,7 +1705,7 @@ CREATE TABLE `searchs` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `searchs`
+-- Déchargement des données de la table `searchs`
 --
 
 INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Division`, `Searcher`, `Note`, `Progress`, `Divisionunit`, `Cycle`, `Status`, `DivisionAll`, `DivisionunitAll`, `created_at`, `updated_at`) VALUES
@@ -1727,7 +1755,7 @@ INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Div
 (60, NULL, 'يحتوي هذا الجزء من البحث على المعنى الإجمالي لآيات السورة بما يتوافق مع هداياتها، من الآية27 إلى نهاية السورة، وتضمن: 1) تقسيم السورة إلى تسعة مقاطع.2) وضع عنوان مناسب لكل مقطع مما يضمه هذا المقطع من قضايا وأحكام وهدايات. 3) تقديم معنى إجمالي بما يتوافق مع هدايات كل مقطع.', 'المعنى الإجمالي لآيات السورة بما يتوافق مع هداياتها، من الآية27 إلى نهاية السورة', NULL, 'fileName1552518850.pdf', 2, 116, NULL, 'تم الرفع', 6, 1, 'yes', NULL, NULL, '2019-03-15 17:55:19', '2019-03-15 17:55:19'),
 (98, NULL, 'الهدايات الجزئية في المقطع الأول عن حادثة تحويل القبلة', 'الهدايات الجزئية في الآيات من 142 إلى 152', NULL, 'fileName1552633012.pdf', 3, 83, NULL, 'تم الرفع', 7, 1, 'yes', NULL, NULL, '2019-03-15 06:56:52', '2019-03-15 06:56:52'),
 (61, NULL, 'الهدايات الجزئية للآيات: (204- 210)، (228- 230)', 'الهدايات الجزئية للآيات: (204- 210)، (228- 230)', NULL, 'fileName1552541361.pdf', 3, 84, NULL, 'تم الرفع', 7, 1, 'yes', NULL, NULL, '2019-03-14 05:29:21', '2019-03-14 05:29:21'),
-(62, NULL, 'مقدمة الرسالة : تحتوي على مقدمة / مشكلة الدراسة / أهمية الموضوع / أسباب اختياره / أهداف البحث / حدود البحث / الدراسات السابقة / الجديد الذي يقدمه / المنهج المُتبع / الخطوات الإجرائية / الخطة', 'الهدايات القرآنية للحزب 13 - المقدمة', NULL, 'fileName1552542441.pdf', 6, 93, 'تم الاطلاع على المقدمة', 'تم الرفع', 15, 1, 'yes', NULL, NULL, '2019-03-15 07:47:11', '2019-03-15 07:47:11'),
+(62, NULL, 'مقدمة الرسالة : تحتوي على مقدمة / مشكلة الدراسة / أهمية الموضوع / أسباب اختياره / أهداف البحث / حدود البحث / الدراسات السابقة / الجديد الذي يقدمه / المنهج المُتبع / الخطوات الإجرائية / الخطة', 'الهدايات القرآنية للحزب 13 - المقدمة', NULL, 'fileName1552542441.pdf', 6, 93, 'تم الاطلاع على المقدمة', 'تم الرفع', 15, 2, 'yes', NULL, NULL, '2019-09-01 12:15:43', '2019-09-01 12:15:43'),
 (64, NULL, 'من الفصل الأول المبحث الأول : أسماء السور القرآنية توقيفية أم اجتهادية / اسم السورة / ما جاء في أسماءها / الراجح', 'المبحث الأول : اسم السورة', NULL, 'fileName1552543588.pdf', 1, 93, 'هذا المبحث بحاجة إلى إعادة كتابة\r\nلما فيه من إشكال ترجيح التوقيف في أسماء السور ثم القول بأن منها اجتهادي ومنها توقيفي مع الحادة إلى تخريج الروايات والحكم عليها', 'تم الرفع', 1, 1, 'yes', NULL, NULL, '2019-03-15 07:45:29', '2019-03-15 07:45:29'),
 (65, NULL, 'فضل السورة', 'فضل السورة', NULL, 'fileName1552544114.pdf', 1, 93, 'من الواضح أن هذا المبحث لم يتم وفيه نواقص كما ذكر الباحث سيتم تداركها ومن المهم الحكم على الروايات فإن فيها ما لم يصح وروايات نزول سورة المائدة جملة تعارض ما هو أصح منها كأسباب النزول لآيات منها وموضوعاتها المتفرقة والمنتشرة زمنيا بما يمنع من نزولها جملة واحدة ولذا المبحث بحاجة إلى تحرير', 'تم الرفع', 2, 1, 'yes', NULL, NULL, '2019-03-15 07:51:06', '2019-03-15 07:51:06'),
 (66, NULL, 'أحوال نزول السورة / ترتيب نزولها / أسباب النزول', 'أحوال نزولها', NULL, 'fileName1552548627.pdf', 1, 93, 'مبحث احوال النزول يلحظ بعض اخطاء الطباعة\r\nوالحاجة إلى إتمام البحث فيه\r\nأسباب النزول يوجد أسباب نزول لآيات أخرى في هذه المجموعة مثل آيات بداية الجزء\r\nالحاجة إلى وضع النص المنقول بالحرف بين علامتي تنصيص\r\nوفي الهامس انظر بتصرف : انظر تغني عن بتصرف\r\nوبالنسبة لوقت نزول السورة الموجود جيد ولبحاجة إلى إتمام وبالله التوفيق', 'تم الرفع', 3, 1, 'yes', NULL, NULL, '2019-03-15 07:17:14', '2019-03-15 07:17:14'),
@@ -1841,7 +1869,7 @@ INSERT INTO `searchs` (`ID`, `Code`, `Alias`, `Name`, `Order`, `SearchURL`, `Div
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sections`
+-- Structure de la table `sections`
 --
 
 CREATE TABLE `sections` (
@@ -1857,7 +1885,7 @@ CREATE TABLE `sections` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `sections`
+-- Déchargement des données de la table `sections`
 --
 
 INSERT INTO `sections` (`ID`, `Code`, `Alias`, `Name`, `Order`, `Status`, `created_at`, `updated_at`, `deleted_at`) VALUES
@@ -1870,7 +1898,7 @@ INSERT INTO `sections` (`ID`, `Code`, `Alias`, `Name`, `Order`, `Status`, `creat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sessions`
+-- Structure de la table `sessions`
 --
 
 CREATE TABLE `sessions` (
@@ -1889,7 +1917,7 @@ CREATE TABLE `sessions` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supervisorsreports`
+-- Structure de la table `supervisorsreports`
 --
 
 CREATE TABLE `supervisorsreports` (
@@ -1912,7 +1940,7 @@ CREATE TABLE `supervisorsreports` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `supervisorsreports`
+-- Déchargement des données de la table `supervisorsreports`
 --
 
 INSERT INTO `supervisorsreports` (`ID`, `Supervisor`, `TypeCyclic`, `DateSupervisor`, `DoneRange`, `QualityProcess`, `QualityDirection`, `UpdatedRange`, `DateCommittee`, `Difficulties`, `NotesPositive`, `NotesNegative`, `URL`, `Status`, `created_at`, `updated_at`) VALUES
@@ -1921,7 +1949,7 @@ INSERT INTO `supervisorsreports` (`ID`, `Supervisor`, `TypeCyclic`, `DateSupervi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `supervisors_reports`
+-- Structure de la table `supervisors_reports`
 --
 
 CREATE TABLE `supervisors_reports` (
@@ -1942,11 +1970,11 @@ CREATE TABLE `supervisors_reports` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `supervisors_reports`
+-- Déchargement des données de la table `supervisors_reports`
 --
 
 INSERT INTO `supervisors_reports` (`ID`, `supervisor`, `search`, `q1`, `q2`, `q3`, `q4`, `q5`, `q6`, `q7`, `q8`, `note`, `filename`, `date`) VALUES
-(9, 78, 46, '50%', 'الطالب جاد وعمله متقن', 'ممتاز', 'أكثر من 80%', '1) جودة العمل المنجز\r\n2) كثرة الهدايات المستنبطة.\r\n3) جودة التنسيق والاخراج', '1/ الاستطراد في بعض الهوامش والتعليقات', 'لايوجد', 'اختصار الهوامش والتعليقات', NULL, NULL, '2019-03-13'),
+(9, 78, 46, '50%', 'الطالب جاد وعمله متقن', 'ممتاز', 'أكثر من 80%', '1) جودة العمل المنجز\r\n2) كثرة الهدايات المستنبطة.\r\n3) جودة التنسيق والاخراج', '1/ الاستطراد في بعض الهوامش \r\n2/ جودة العمل', 'لايوجد', 'اختصار الهوامش والتعليقات', NULL, NULL, '2019-03-13'),
 (10, 74, 76, '10%', 'النسبة متناسبة مع البداية', 'ممتاز', 'أكثر من 80%', 'عمل ممتاز لغة قوية وسليمة وتحليل دقيق', 'لا شيء', 'لا شيء', 'لا شيء', 'لا شيء', NULL, '2019-03-15'),
 (11, 65, 71, '10%', 'الطالب يسير مع الخطة الزمنية', 'ممتاز', '100%', 'اكتب كل شيء\r\n\r\n\r\nاستيعاب الباحث للموضوع\r\n\r\nولغة الباحث جيدة', 'لا يوجد', 'لا يوجد', 'لا يوجد', 'لا يوجد', NULL, '2019-03-15'),
 (12, 65, 72, '10%', 'الطالب يسير مع الخطة الزمنية', 'ممتاز', '100%', 'استيعاب الباحث للموضوع\r\n\r\nولغة الباحث جيدة', 'لا يوجد', 'لا يوجد', 'لا يوجد', 'لا يوجد', NULL, '2019-03-15'),
@@ -2055,7 +2083,7 @@ INSERT INTO `supervisors_reports` (`ID`, `supervisor`, `search`, `q1`, `q2`, `q3
 -- --------------------------------------------------------
 
 --
--- Table structure for table `theses`
+-- Structure de la table `theses`
 --
 
 CREATE TABLE `theses` (
@@ -2072,7 +2100,7 @@ CREATE TABLE `theses` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `theses`
+-- Déchargement des données de la table `theses`
 --
 
 INSERT INTO `theses` (`ID`, `Title`, `ProgramDuration`, `BeginningDate`, `CompletionDate`, `Notes`, `Status`, `created_at`, `Supervisor`, `Searcher`) VALUES
@@ -2123,7 +2151,7 @@ INSERT INTO `theses` (`ID`, `Title`, `ProgramDuration`, `BeginningDate`, `Comple
 -- --------------------------------------------------------
 
 --
--- Table structure for table `universities`
+-- Structure de la table `universities`
 --
 
 CREATE TABLE `universities` (
@@ -2146,7 +2174,7 @@ CREATE TABLE `universities` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `universities`
+-- Déchargement des données de la table `universities`
 --
 
 INSERT INTO `universities` (`ID`, `Code`, `Name`, `President`, `Countrie`, `City`, `Location`, `Phonne`, `Fax`, `Email`, `Logo`, `ContractID`, `ContractDate`, `Status`, `created_at`, `updated_at`) VALUES
@@ -2170,7 +2198,7 @@ INSERT INTO `universities` (`ID`, `Code`, `Name`, `President`, `Countrie`, `City
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
@@ -2185,12 +2213,12 @@ CREATE TABLE `users` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_token`, `created_at`, `updated_at`) VALUES
-(39, 'admin', 'admin@admin.com', '$2y$10$CJcyRgxWll4yVl.Pc1Onn.NIgoW0Zz4SaEE3YhMOTV1/L0LuUCGNO', 1, 'DiM2eJC2dJjC3lR6dEIkRmjC7AhUvJAO2pHWrlgZPffMK9SG2hAK6Op8udcH', '2019-07-03 08:05:33', '2018-10-03 08:22:44'),
-(146, 'محمد منذر', 'msalem@hidayatqurania.org', '$2y$10$APvHZehPZlEmUXthNQYM5eK20acLPqeVdwhqr9lajip/JHFX3PZ4W', 2, '0C8i9fUR7QQJkBX9i44FRHzZcnSjwsYg3JjoaqHG0ZZ7UDrqzSeQjmUilzbW', '2019-07-25 09:04:30', '2019-03-04 04:46:11'),
+(39, 'admin', 'admin@admin.com', '$2y$10$CJcyRgxWll4yVl.Pc1Onn.NIgoW0Zz4SaEE3YhMOTV1/L0LuUCGNO', 1, '8fx2jXTPfinEXVmkhBV3aqOJMgMGN6Ai9NuzGE8dXhqzIUJBcCnNCESCZZCt', '2019-08-31 17:30:43', '2018-10-03 08:22:44'),
+(146, 'محمد منذر', 'msalem@hidayatqurania.org', '$2y$10$CJcyRgxWll4yVl.Pc1Onn.NIgoW0Zz4SaEE3YhMOTV1/L0LuUCGNO', 2, 'hjyOnK6mGe6WgkzwogRwDOjht19nukwd0xROzmF8Qvdl5uvYR0yo102NSAZD', '2019-09-01 12:35:53', '2019-03-04 04:46:11'),
 (145, 'مصطفى جمعة', 'mjumaah@hidayatqurania.org', '$2y$10$NImxwPdIG9PNGPvHu04ReuhbJa5cR5RfeVZGDJDGkiF2C.HCGJyye', 2, 'Bgj77MbJk3CtvbyQncUNjiRNQDp8eBbf8QvDn2Jk8Rctaq2r58jFB1iThKwl', '2019-03-11 18:34:04', '2019-03-04 04:44:54'),
 (124, 'د. محمد الحميد', 'malhumaid@hidayatqurania.org', '$2y$10$1J7JAEbFzW2zGgDG510nZemDlSpdG2Mkd1NPXLSYwJftsHVb6xsYK', 3, 'Pt5QOEP6yEsy2JVieGvN2Z21W7qPq7ZfbGSfuPSP8RdIaA7e1BiYqvo9PMjf', '2019-06-25 16:55:49', '2019-03-04 02:12:16'),
 (125, 'د. محمد الربيعة', 'malrabiah@hidayatqurania.org', '$2y$10$z83l.eQPfIQSWyQq4aVpG.9tX04mcg3MMXnVxIJUj1scXN8kQNxP.', 3, '3Dz4TDkZbbRfls9W7RlpUjx2kRfYWhhsPNxT8lOyNmHxyG4t5g6UPUqn2Hrt', '2019-03-04 21:23:47', '2019-03-04 02:12:42'),
@@ -2286,46 +2314,30 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `role_id`, `remember_tok
 (196, 'أ.د مورتس برخر', 'mberger@hidayatqurania.org', '$2y$10$Z9ZRIBNXwCEU3iwI86AHueSw4r1b2rw5I8dieSSlQpl8pLJKlONMS', 3, NULL, '2019-08-18 07:07:21', '2019-08-18 07:07:21'),
 (197, 'سعيد عمراني', 'samrani@hidayatqurania.org', '$2y$10$P/bwg3ds.Fq8Z.92M4XOYeOLOuXeZzUXAP50Xgy.lmHuD/bAgBuxO', 2, 'Fj5CZsbBzgDtXm2fgaUF6znJzkysQcQHRmgJVSzZ3ipKpHr3R0W9XbHpqSFm', '2019-08-18 07:39:55', '2019-08-18 07:15:42');
 
-
-CREATE TABLE `examiner_reports` (
-  `id` int(11) NOT NULL,
-  `searcher` int(11) NOT NULL,
-  `search` int(11) NOT NULL,
-  `file` text NOT NULL,
-  `admin` text NOT NULL,
-  `comment` text NOT NULL,
-  `comment_admin` text NOT NULL,
-  `searcher_access` tinyint(1) NOT NULL DEFAULT '0',
-  `date` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-
-
 --
--- Indexes for dumped tables
+-- Index pour les tables déchargées
 --
 
 --
--- Indexes for table `admin2_reports`
+-- Index pour la table `admin2_reports`
 --
 ALTER TABLE `admin2_reports`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `books`
+-- Index pour la table `books`
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `committees`
+-- Index pour la table `committees`
 --
 ALTER TABLE `committees`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `committesreports`
+-- Index pour la table `committesreports`
 --
 ALTER TABLE `committesreports`
   ADD PRIMARY KEY (`ID`),
@@ -2335,78 +2347,84 @@ ALTER TABLE `committesreports`
   ADD KEY `Supervisorreports` (`Supervisorreports`);
 
 --
--- Indexes for table `conferences`
+-- Index pour la table `conferences`
 --
 ALTER TABLE `conferences`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `configs`
+-- Index pour la table `configs`
 --
 ALTER TABLE `configs`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `countries`
+-- Index pour la table `countries`
 --
 ALTER TABLE `countries`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `criterias`
+-- Index pour la table `criterias`
 --
 ALTER TABLE `criterias`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `cycles`
+-- Index pour la table `cycles`
 --
 ALTER TABLE `cycles`
   ADD PRIMARY KEY (`ID`,`name`,`startDate`,`endDate`);
 
 --
--- Indexes for table `divisions`
+-- Index pour la table `divisions`
 --
 ALTER TABLE `divisions`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_Divisions_Sections1_idx` (`Section`);
 
 --
--- Indexes for table `divisionunits`
+-- Index pour la table `divisionunits`
 --
 ALTER TABLE `divisionunits`
   ADD PRIMARY KEY (`id`),
   ADD KEY `Division` (`Division`);
 
 --
--- Indexes for table `examsfiles`
+-- Index pour la table `examiner_reports`
+--
+ALTER TABLE `examiner_reports`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `examsfiles`
 --
 ALTER TABLE `examsfiles`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_ExamsFiles_Provides1_idx` (`Provide`);
 
 --
--- Indexes for table `faculties`
+-- Index pour la table `faculties`
 --
 ALTER TABLE `faculties`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `University` (`University`);
 
 --
--- Indexes for table `helps`
+-- Index pour la table `helps`
 --
 ALTER TABLE `helps`
   ADD PRIMARY KEY (`ID`,`Searcher`),
   ADD KEY `fk_Helps_Searchers1_idx` (`Searcher`);
 
 --
--- Indexes for table `meetings`
+-- Index pour la table `meetings`
 --
 ALTER TABLE `meetings`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `meetings_searchers`
+-- Index pour la table `meetings_searchers`
 --
 ALTER TABLE `meetings_searchers`
   ADD PRIMARY KEY (`ID`),
@@ -2414,33 +2432,33 @@ ALTER TABLE `meetings_searchers`
   ADD KEY `Searcher` (`Searcher`);
 
 --
--- Indexes for table `nationalities`
+-- Index pour la table `nationalities`
 --
 ALTER TABLE `nationalities`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `news`
+-- Index pour la table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `plans`
+-- Index pour la table `plans`
 --
 ALTER TABLE `plans`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Searcher` (`Searcher`);
 
 --
--- Indexes for table `progress`
+-- Index pour la table `progress`
 --
 ALTER TABLE `progress`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `Searcher` (`Searcher`);
 
 --
--- Indexes for table `provides`
+-- Index pour la table `provides`
 --
 ALTER TABLE `provides`
   ADD PRIMARY KEY (`ID`,`Searcher`,`Book`),
@@ -2448,7 +2466,7 @@ ALTER TABLE `provides`
   ADD KEY `fk_Provides_Books1_idx` (`Book`);
 
 --
--- Indexes for table `registrations`
+-- Index pour la table `registrations`
 --
 ALTER TABLE `registrations`
   ADD PRIMARY KEY (`ID`),
@@ -2457,14 +2475,14 @@ ALTER TABLE `registrations`
   ADD KEY `Nationalitie` (`Nationalitie`);
 
 --
--- Indexes for table `reviewersearchs`
+-- Index pour la table `reviewersearchs`
 --
 ALTER TABLE `reviewersearchs`
   ADD PRIMARY KEY (`reviewer`,`search`),
   ADD KEY `search` (`search`);
 
 --
--- Indexes for table `reviewers_reports`
+-- Index pour la table `reviewers_reports`
 --
 ALTER TABLE `reviewers_reports`
   ADD PRIMARY KEY (`ID`),
@@ -2472,13 +2490,13 @@ ALTER TABLE `reviewers_reports`
   ADD KEY `reviewer` (`reviewer`);
 
 --
--- Indexes for table `roles`
+-- Index pour la table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `role_user`
+-- Index pour la table `role_user`
 --
 ALTER TABLE `role_user`
   ADD PRIMARY KEY (`id`),
@@ -2486,7 +2504,7 @@ ALTER TABLE `role_user`
   ADD KEY `role_id` (`role_id`);
 
 --
--- Indexes for table `searchersreports`
+-- Index pour la table `searchersreports`
 --
 ALTER TABLE `searchersreports`
   ADD PRIMARY KEY (`ID`,`Searcher`,`Section`),
@@ -2494,20 +2512,20 @@ ALTER TABLE `searchersreports`
   ADD KEY `fk_SearchersReports_Sections1_idx` (`Section`);
 
 --
--- Indexes for table `searchers_reports`
+-- Index pour la table `searchers_reports`
 --
 ALTER TABLE `searchers_reports`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `searcher_critera`
+-- Index pour la table `searcher_critera`
 --
 ALTER TABLE `searcher_critera`
   ADD PRIMARY KEY (`Searcher`,`Criteria`),
   ADD KEY `Criteria` (`Criteria`);
 
 --
--- Indexes for table `searchs`
+-- Index pour la table `searchs`
 --
 ALTER TABLE `searchs`
   ADD PRIMARY KEY (`ID`),
@@ -2517,33 +2535,33 @@ ALTER TABLE `searchs`
   ADD KEY `cycle` (`Cycle`);
 
 --
--- Indexes for table `sections`
+-- Index pour la table `sections`
 --
 ALTER TABLE `sections`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `sessions`
+-- Index pour la table `sessions`
 --
 ALTER TABLE `sessions`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_Sessions_Searchers1_idx` (`Searcher`);
 
 --
--- Indexes for table `supervisorsreports`
+-- Index pour la table `supervisorsreports`
 --
 ALTER TABLE `supervisorsreports`
   ADD PRIMARY KEY (`ID`,`Supervisor`),
   ADD KEY `fk_SearchersReports_copy1_Supervisors1_idx` (`Supervisor`);
 
 --
--- Indexes for table `supervisors_reports`
+-- Index pour la table `supervisors_reports`
 --
 ALTER TABLE `supervisors_reports`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Indexes for table `theses`
+-- Index pour la table `theses`
 --
 ALTER TABLE `theses`
   ADD PRIMARY KEY (`ID`,`Supervisor`,`Searcher`),
@@ -2551,236 +2569,226 @@ ALTER TABLE `theses`
   ADD KEY `fk_Theses_Supervisors_idx` (`Supervisor`);
 
 --
--- Indexes for table `universities`
+-- Index pour la table `universities`
 --
 ALTER TABLE `universities`
   ADD PRIMARY KEY (`ID`) USING BTREE,
   ADD KEY `Countrie` (`Countrie`);
 
 --
--- Indexes for table `users`
+-- Index pour la table `users`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD KEY `fk_role` (`role_id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT pour les tables déchargées
 --
 
 --
--- AUTO_INCREMENT for table `admin2_reports`
+-- AUTO_INCREMENT pour la table `admin2_reports`
 --
 ALTER TABLE `admin2_reports`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
--- AUTO_INCREMENT for table `books`
+-- AUTO_INCREMENT pour la table `books`
 --
 ALTER TABLE `books`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT for table `committees`
+-- AUTO_INCREMENT pour la table `committees`
 --
 ALTER TABLE `committees`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `committesreports`
+-- AUTO_INCREMENT pour la table `committesreports`
 --
 ALTER TABLE `committesreports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `conferences`
+-- AUTO_INCREMENT pour la table `conferences`
 --
 ALTER TABLE `conferences`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
--- AUTO_INCREMENT for table `configs`
+-- AUTO_INCREMENT pour la table `configs`
 --
 ALTER TABLE `configs`
   MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `countries`
+-- AUTO_INCREMENT pour la table `countries`
 --
 ALTER TABLE `countries`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `criterias`
+-- AUTO_INCREMENT pour la table `criterias`
 --
 ALTER TABLE `criterias`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `cycles`
+-- AUTO_INCREMENT pour la table `cycles`
 --
 ALTER TABLE `cycles`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT for table `divisions`
+-- AUTO_INCREMENT pour la table `divisions`
 --
 ALTER TABLE `divisions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT for table `divisionunits`
+-- AUTO_INCREMENT pour la table `divisionunits`
 --
 ALTER TABLE `divisionunits`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `faculties`
+-- AUTO_INCREMENT pour la table `examiner_reports`
+--
+ALTER TABLE `examiner_reports`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT pour la table `faculties`
 --
 ALTER TABLE `faculties`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `helps`
+-- AUTO_INCREMENT pour la table `helps`
 --
 ALTER TABLE `helps`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `meetings`
+-- AUTO_INCREMENT pour la table `meetings`
 --
 ALTER TABLE `meetings`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `meetings_searchers`
+-- AUTO_INCREMENT pour la table `meetings_searchers`
 --
 ALTER TABLE `meetings_searchers`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `nationalities`
+-- AUTO_INCREMENT pour la table `nationalities`
 --
 ALTER TABLE `nationalities`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `news`
+-- AUTO_INCREMENT pour la table `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT for table `plans`
+-- AUTO_INCREMENT pour la table `plans`
 --
 ALTER TABLE `plans`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `progress`
+-- AUTO_INCREMENT pour la table `progress`
 --
 ALTER TABLE `progress`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `registrations`
+-- AUTO_INCREMENT pour la table `registrations`
 --
 ALTER TABLE `registrations`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
--- AUTO_INCREMENT for table `reviewers_reports`
+-- AUTO_INCREMENT pour la table `reviewers_reports`
 --
 ALTER TABLE `reviewers_reports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=257;
 
 --
--- AUTO_INCREMENT for table `roles`
+-- AUTO_INCREMENT pour la table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `role_user`
+-- AUTO_INCREMENT pour la table `role_user`
 --
 ALTER TABLE `role_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `searchersreports`
+-- AUTO_INCREMENT pour la table `searchersreports`
 --
 ALTER TABLE `searchersreports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `searchers_reports`
+-- AUTO_INCREMENT pour la table `searchers_reports`
 --
 ALTER TABLE `searchers_reports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=148;
 
 --
--- AUTO_INCREMENT for table `searchs`
+-- AUTO_INCREMENT pour la table `searchs`
 --
 ALTER TABLE `searchs`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=196;
 
 --
--- AUTO_INCREMENT for table `sections`
+-- AUTO_INCREMENT pour la table `sections`
 --
 ALTER TABLE `sections`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `sessions`
+-- AUTO_INCREMENT pour la table `sessions`
 --
 ALTER TABLE `sessions`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `supervisorsreports`
+-- AUTO_INCREMENT pour la table `supervisorsreports`
 --
 ALTER TABLE `supervisorsreports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `supervisors_reports`
+-- AUTO_INCREMENT pour la table `supervisors_reports`
 --
 ALTER TABLE `supervisors_reports`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=114;
 
 --
--- AUTO_INCREMENT for table `theses`
+-- AUTO_INCREMENT pour la table `theses`
 --
 ALTER TABLE `theses`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
--- AUTO_INCREMENT for table `universities`
+-- AUTO_INCREMENT pour la table `universities`
 --
 ALTER TABLE `universities`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `users`
+-- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=198;
-COMMIT;
-
-ALTER TABLE `examiner_reports`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `searcher` (`searcher`),
-  ADD KEY `search` (`search`);
-
---
--- AUTO_INCREMENT pour les tables déchargées
---
-
---
--- AUTO_INCREMENT pour la table `examiner_reports`
---
-ALTER TABLE `examiner_reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
