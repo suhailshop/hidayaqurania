@@ -76,6 +76,8 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchers/updateSearcherProfile', 'Admin\SearcherController@editSearcherProfile')->name('updateSearcherProfile');
     Route::post('/searchers/updatePassword', 'Admin\SearcherController@editpassword')->name('updateSearcherPassword');
 
+    Route::get('/searchers/deleteSearch/{id}','Admin\SearchController@delete')->name('adminDeleteSearchPost');
+
 
     Route::post('/searchers/updateCodeSearcher','Admin\SearcherController@updateCodeSearcher')->name('updateCodeSearcher');
     Route::post('/searchers/updateRegimentSearcher','Admin\SearcherController@updateRegimentSearcher')->name('updateRegimentSearcher');    
@@ -204,9 +206,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/reports/get/{i}','Admin\ReportController@get')->name('getReportDetails');
     Route::post('/reports/add','Admin\ReportController@add')->name('addReportDetails');
     Route::get('/reports','Admin\ReportController@index')->name('allAdminReports');
-
-    
     Route::get('/searchs/getAll','Admin\SearchController@getAll')->name('getAllSearchs');
+
+
+
     Route::get('/searchs/getOneSearch/{id}','Admin\SearchController@getOne')->name('getOneSearch');
     Route::get('/searchs/updateProgressok/{id}','Admin\SearchController@updateProgressok')->name('updateProgressok');
     Route::get('/searchs/updateProgressko/{id}','Admin\SearchController@updateProgressko')->name('updateProgressko');

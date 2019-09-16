@@ -78,6 +78,25 @@ class SearchController extends Controller
 
 
 
+
+
+
+
+    public function delete($id){
+        Search::where('ID', $id)->forcedelete();
+        Session::put('success_edit', 'تم حذف البحث بنجاح');
+        return redirect()->back();
+    }
+
+
+
+
+
+
+
+
+
+
     public function addSearchReviewer(Request $request){
 
         $reviewers = $request->input('reviewers');

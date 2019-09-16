@@ -179,6 +179,8 @@ class SearchsController extends Controller
         Session::put('success_edit', 'تم حذف البحث بنجاح');           
         return redirect()->route('allSearchs');
     }
+
+
     public function addsearcher_reports(Request $request){
 
         $fileName = null;
