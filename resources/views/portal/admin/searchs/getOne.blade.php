@@ -295,7 +295,7 @@
                                        <textarea required class="form-control " name="q1" ></textarea>
                                     </div>
                                     <div class="form-group">
-                                       <label class="control-label ">2. مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : *</label>
+                                       <label class="control-label ">2. مدى مطابقة تقرير الطالب مع تقرير المشرف ؟ : *</label>
                                        <textarea required class="form-control " name="q2" ></textarea>
                                     </div>
                                     <div class="form-group">
@@ -1077,7 +1077,7 @@
                                                                      <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q1}}</div>
                                                                   </div>
                                                                   <div class="form-group">
-                                                                     <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير الشرف ؟ : </label>
+                                                                     <label class="control-label ">مدى مطابقة تقرير الطالب مع تقرير المشرف ؟ : </label>
                                                                      <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q2}}</div>
                                                                   </div>
                                                                   <div class="form-group">
