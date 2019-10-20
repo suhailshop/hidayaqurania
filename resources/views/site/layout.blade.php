@@ -78,6 +78,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 						  <ul class="dropdown-menu">
 							  <li><a href="{{url('/')}}#goals">الأهداف</a></li>
 							  <li><a href="{{url('/')}}#outcomes">المخرجات</a></li>
+							  <li><a href="{{url('/publication')}}">المطبوعات</a></li>
+
 						  </ul>
 					    </li>
 

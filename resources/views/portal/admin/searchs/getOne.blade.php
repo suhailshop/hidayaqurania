@@ -285,7 +285,7 @@
 
 
                               </div>
-                              <!-- تقرير الإدارة -->
+                              <!-- تقرير الفاحص من اللجنة العلمية -->
                               <div class="tab-pane" id="tab_1_3">
                                  <form role="form" method="POST" action="{{route('addadmin2_reports')}}" enctype="multipart/form-data">
                                     {{ csrf_field() }}
@@ -310,10 +310,36 @@
                                        <label class="control-label ">5. التوصيات والمقترحات : *</label>
                                        <textarea required class="form-control " name="q5" ></textarea>
                                     </div>
+
                                     <div class="form-group">
                                        <label class="control-label ">6. ملاحظات عامة  : *</label>
                                        <textarea required class="form-control " name="note" ></textarea>
                                     </div>
+
+                                    <!-- إضافة سؤالين تحديث اكتوبر   -->
+                                    <hr>
+
+                                    <div class="form-group">
+                                       <label class="control-label ">7. مدى تميز البحث  : *</label>
+                                       <select required class="form-control" name="q6" onchange="showReason(this);">
+                                          <option  value="" selected disabled>مدى تميز البحث ؟ </option>
+                                          <option value="متميز">متميز</option>
+                                          <option value="متوسط">متوسط</option>
+                                          <option value="ضعيف">ضعيف</option>
+
+                                       </select>
+                                    </div>
+
+
+                                    <div class="form-group" style="display: none" id="reasonDiv">
+                                       <label class="control-label ">8. مبررات التميز  : *</label>
+                                       <textarea required class="form-control" id="reasonnote" name="q6r" >لايوجد</textarea>
+                                    </div>
+
+                                    <hr>
+                                    <!-- نهاية إضافة سؤالين تحديث اكتوبر   -->
+
+
                                     <div class="form-group">
                                        <label class="control-label ">رفع ملف (اختياري) : </label>
                                        <input  class="form-control " name="filename" type="file"  />
@@ -724,7 +750,7 @@
                                                                 <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>                                                                    
                                                                 
                                                                   <div class="form-group">
-                                                                     <label class="control-label ">1- اجمالي عدد الهدايات القرآنية التي تضمنتها رسالتك حتى تاريخه : </label>
+                                                                     <label class="control-label ">1- اجمالي عدد الهدايات القرآنية (الجزئية) التي تضمنتها رسالتك حتى تاريخه : </label>
                                                                      <textarea readonly class="form-control " name="q1" >{{$search->searchers_reports[0]->q1}}</textarea>
                                                                   </div>
                                                                   <div class="form-group">
@@ -1046,7 +1072,7 @@
                                                    @endif
                                                 </td>
                                                 <td>
-                                                   <!-- تفاصيل تقرير الإدارة -->
+                                                   <!-- تفاصيل تقرير الفاحص من اللجنة العلمية -->
                                                    @if(count($search->admin2_reports)>0)
                                                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#admin2modal">
                                                    عرض تقرير الفاحص من اللجنة العلمية
@@ -1088,6 +1114,26 @@
                                                                      <label class="control-label ">أهم المآخذ على عمل الطالب ؟  : </label>
                                                                      <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q4}}</div>
                                                                   </div>
+
+
+                                                                  <!-- تحديث اضافة سؤالين 8 أكتوبر -->
+
+                                                                  <div class="form-group">
+                                                                     <label class="control-label ">مدى تميز البحث ؟  : </label>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q6}}</div>
+                                                                  </div>
+
+
+
+                                                                  <div class="form-group">
+                                                                     <label class="control-label ">مبررات التميز ؟ </label>
+                                                                     <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q6r}}</div>
+                                                                  </div>
+
+
+                                                                  <!-- نهاية تحديث اضافة سؤالين 8 أكتوبر -->
+
+
                                                                   <div class="form-group">
                                                                      <label class="control-label ">التوصيات والمقترحات : </label>
                                                                      <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->admin2_reports[0]->q5}}</div>
@@ -1395,6 +1441,38 @@
 <script src="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js')!!}" type="text/javascript"></script>
 <script src="{!! asset('assets/pages/scripts/table-datatables-responsive.min.js')!!}" type="text/javascript"></script>
 <!-- END PAGE LEVEL PLUGINS -->
+
+
+
+<script>
+
+   function showReason(val) {
+
+
+       value = val.options[val.selectedIndex].value;
+      if (value === "متميز") {
+         document.getElementById("reasonDiv").style.display='block';
+         document.getElementById("reasonDiv").focus();
+         document.getElementById("reasonnote").value = "";
+
+      }
+      else if(value === "متوسط"){
+         document.getElementById("reasonDiv").style.display='block';
+         document.getElementById("reasonDiv").focus();
+         document.getElementById("reasonnote").value = "";
+
+
+
+      } else {
+         document.getElementById("reasonDiv").style.display='none';
+         document.getElementById("reasonnote").value = "لايوجد";
+
+
+      }
+
+   }
+</script>
+
 <script>
   function printDiv(div) {
     // Create and insert new print section
@@ -1439,6 +1517,7 @@
     }
    } );
 </script>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <!-- END PAGE LEVEL PLUGINS -->
@@ -1459,6 +1538,8 @@
    }
    });
 </script>
+
+
 <?php Session::forget('success_add');?>
 @endif
 @endsection

@@ -164,6 +164,9 @@ class SearchController extends Controller
             'q3'=>$request->input('q3'),
             'q4'=>$request->input('q4'),
             'q5'=>$request->input('q5'),
+            'q6'=>$request->input('q6'),
+            'q6r'=>$request->input('q6r'),
+
             'note'=>$request->input('note'),
             'filename'=>$fileName,
             'date'=>date('Y-m-d'),

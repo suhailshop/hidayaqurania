@@ -13,8 +13,14 @@
 
 
 Route::get('/','Site\SiteController@index');
+
 Route::get('/team',function (){
     return view('site.team');
+});
+
+
+Route::get('/publication',function (){
+    return view('site.publication.publication');
 });
 
 Route::get('/news/details/{id}','Site\SiteController@details');
