@@ -78,6 +78,7 @@ class CycleController extends Controller
                                               reg1.Fistname AS searcher , 
                                               concat(reg2.Fistname ,' ', reg2.LastName) AS supervisor , 
                                               concat(reg3.Fistname ,' ', reg3.LastName) AS reviewer, 
+                                              
                                               `cycles`.`name` 
                                FROM `searchs` 
                                LEFT JOIN `cycles` ON `cycles`.`ID` = `searchs`.`Cycle` 
@@ -85,7 +86,8 @@ class CycleController extends Controller
                                LEFT JOIN reviewers_reports ON reviewers_reports.search = searchs.ID 
                                LEFT JOIN `registrations` reg1 ON reg1.`ID` = `searchs`.`Searcher` 
                                LEFT JOIN `registrations` reg2 ON reg2.`ID` = supervisors_reports.supervisor 
-                               LEFT JOIN `registrations` reg3 ON reg3.`ID` = reviewers_reports.reviewer 
+                               LEFT JOIN `registrations` reg3 ON reg3.`ID` = reviewers_reports.reviewer
+                               
                                 where cycles.ID=".$id." ");
 
         return view('portal.admin.cycles.getCycle',compact('cycles'));

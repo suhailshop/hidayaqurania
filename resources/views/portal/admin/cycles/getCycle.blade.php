@@ -8,7 +8,7 @@
     <link href="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap-rtl.css') !!}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-    
+
 @endsection
 
 @section('pageTitle', 'الرئيسية')
@@ -23,143 +23,146 @@
             <!-- BEGIN PAGE HEADER-->
 
 
-          
+
             <div class="page-bar">
                 <ul class="page-breadcrumb">
                     <li>
                         <i class="icon-home"></i>
-                    <a href="{{route('portalwelcome')}}">الرئيسية</a>
+                        <a href="{{route('portalwelcome')}}">الرئيسية</a>
                         <i class="fa fa-angle-left"></i>
                     </li>
                     <li>
-                            <i class="icon-reload"></i>
+                        <i class="icon-reload"></i>
                         <span>الرقم الدوري</span>
                     </li>
                 </ul>
             </div>
             <!-- END PAGE HEADER-->
 
-         
+
             <div class="row">
-            <div class="col-md-12">
-                <!-- BEGIN EXAMPLE TABLE PORTLET-->
-                <div class="portlet light ">
-                    <div class="portlet-title">
-                        <div class="caption font-dark">
-                            <i class="icon-graduation font-dark"></i>
-                            <span class="caption-subject bold uppercase">لائحة المشاريع المكتملة بالرقم الدوري</span>
+                <div class="col-md-12">
+                    <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                    <div class="portlet light ">
+                        <div class="portlet-title">
+                            <div class="caption font-dark">
+                                <i class="icon-graduation font-dark"></i>
+                                <span class="caption-subject bold uppercase">لائحة المشاريع المكتملة بالرقم الدوري</span>
+                            </div>
+                            <div class="tools"> </div>
                         </div>
-                        <div class="tools"> </div>
-                    </div>
-                    
-                   
-                        
+
+
+
                         <br>
-                    
-                    <div class="portlet-body">
-                        <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
-                            <thead>
+
+                        <div class="portlet-body">
+                            <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
+                                <thead>
                                 <tr>
                                     <th class="all">رقم البحث</th>
                                     <th class="all">الباحث</th>
                                     <th class="all">المشرف</th>
                                     <th class="all">المراجع</th>
+                                    <th class="all">اللجنة العلمية</th>
                                 </tr>
-                            </thead>
-                            <tbody>
+                                </thead>
+                                <tbody>
                                 @foreach($cycles as $cycle)
-                                <tr>
-                                    <td><a href="{{route('getOneSearch',['id'=>$cycle->ID])}}">{{$cycle->ID}}</a>
-                                        
-                                    </td>
-                                    <td>{{$cycle->searcher}}</td>
-                                    <td>@if($cycle->supervisor != null) {{$cycle->supervisor}} @else لا @endif</td>
-                                    <td>@if($cycle->reviewer != null) {{$cycle->reviewer}} @else لا @endif</td>
-                                </tr>
+                                    <tr>
+                                        <td><a href="{{route('getOneSearch',['id'=>$cycle->ID])}}">{{$cycle->ID}}</a>
+
+                                        </td>
+                                        <td>{{$cycle->searcher}}</td>
+                                        <td>@if($cycle->supervisor != null) {{$cycle->supervisor}} @else لايوجد تقرير @endif</td>
+                                        <td>@if($cycle->reviewer != null) {{$cycle->reviewer}} @else لايوجد تقرير @endif</td>
+
+
+                                    </tr>
                                 @endforeach
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+
+
                 </div>
-
-
+            </div>
+            <!-- END CONTENT BODY -->
         </div>
-</div>
-        <!-- END CONTENT BODY -->
-    </div>
-    <!-- END CONTENT -->
+        <!-- END CONTENT -->
     @section('pageScript')
         <!-- BEGIN PAGE LEVEL PLUGINS -->
-        <script src="{!! asset('assets/global/scripts/datatable.js') !!}" type="text/javascript"></script>
-        <script src="{!! asset('assets/global/plugins/datatables/datatables.min.js') !!}" type="text/javascript"></script>
-        <script src="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}" type="text/javascript"></script>
-         <script src="{!! asset('assets/pages/scripts/table-datatables-responsive.min.js') !!}" type="text/javascript"></script>
-           <script src="{!! asset('assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js') !!}" type="text/javascript"></script>
-           
-           <script src="{!! asset('assets/pages/scripts/ui-confirmations.min.js') !!}" type="text/javascript"></script>
-         
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
-        <!-- END PAGE LEVEL SCRIPTS -->
-     <!-- END PAGE LEVEL PLUGINS -->
+            <script src="{!! asset('assets/global/scripts/datatable.js') !!}" type="text/javascript"></script>
+            <script src="{!! asset('assets/global/plugins/datatables/datatables.min.js') !!}" type="text/javascript"></script>
+            <script src="{!! asset('assets/global/plugins/datatables/plugins/bootstrap/datatables.bootstrap.js') !!}" type="text/javascript"></script>
+            <script src="{!! asset('assets/pages/scripts/table-datatables-responsive.min.js') !!}" type="text/javascript"></script>
+            <script src="{!! asset('assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js') !!}" type="text/javascript"></script>
 
-     @if ($message = Session::get('success_add'))
-     <script>
-        $.confirm({
-         title: 'تهانينا!',
-         content: '<?php echo Session::get("success_add"); ?>',
-         type: 'green',
-         typeAnimated: true,autoClose: 'tryAgain|3000',
-         buttons: {
-             tryAgain: {
-                 text: 'اغلاق',
-                 btnClass: 'btn-green',
-                 action: function(){
-                 }
-             }
-         }
-     });
-     </script>
-     <?php Session::forget('success_add');?>
-     @endif  
+            <script src="{!! asset('assets/pages/scripts/ui-confirmations.min.js') !!}" type="text/javascript"></script>
 
-     @if ($message = Session::get('success_edit'))
-     <script>
-        $.confirm({
-         title: 'تهانينا!',
-         content: '<?php echo Session::get("success_edit"); ?>',
-         type: 'green',
-         typeAnimated: true,autoClose: 'tryAgain|3000',
-         buttons: {
-             tryAgain: {
-                 text: 'اغلاق',
-                 btnClass: 'btn-green',
-                 action: function(){
-                 }
-             }
-         }
-     });
-     </script>
-     <?php Session::forget('success_edit');?>
-     @endif
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+            <!-- END PAGE LEVEL SCRIPTS -->
+            <!-- END PAGE LEVEL PLUGINS -->
 
-     @if ($message = Session::get('success_delete'))
-     <script>
-        $.confirm({
-         title: 'تهانينا!',
-         content: '<?php echo Session::get("success_delete"); ?>',
-         type: 'green',
-         typeAnimated: true,autoClose: 'tryAgain|3000',
-         buttons: {
-             tryAgain: {
-                 text: 'اغلاق',
-                 btnClass: 'btn-green',
-                 action: function(){
-                 }
-             }
-         }
-     });
-     </script>
-     <?php Session::forget('success_delete');?>
-     @endif
-    @endsection
+            @if ($message = Session::get('success_add'))
+                <script>
+                    $.confirm({
+                        title: 'تهانينا!',
+                        content: '<?php echo Session::get("success_add"); ?>',
+                        type: 'green',
+                        typeAnimated: true,autoClose: 'tryAgain|3000',
+                        buttons: {
+                            tryAgain: {
+                                text: 'اغلاق',
+                                btnClass: 'btn-green',
+                                action: function(){
+                                }
+                            }
+                        }
+                    });
+                </script>
+                <?php Session::forget('success_add');?>
+            @endif
+
+            @if ($message = Session::get('success_edit'))
+                <script>
+                    $.confirm({
+                        title: 'تهانينا!',
+                        content: '<?php echo Session::get("success_edit"); ?>',
+                        type: 'green',
+                        typeAnimated: true,autoClose: 'tryAgain|3000',
+                        buttons: {
+                            tryAgain: {
+                                text: 'اغلاق',
+                                btnClass: 'btn-green',
+                                action: function(){
+                                }
+                            }
+                        }
+                    });
+                </script>
+                <?php Session::forget('success_edit');?>
+            @endif
+
+            @if ($message = Session::get('success_delete'))
+                <script>
+                    $.confirm({
+                        title: 'تهانينا!',
+                        content: '<?php echo Session::get("success_delete"); ?>',
+                        type: 'green',
+                        typeAnimated: true,autoClose: 'tryAgain|3000',
+                        buttons: {
+                            tryAgain: {
+                                text: 'اغلاق',
+                                btnClass: 'btn-green',
+                                action: function(){
+                                }
+                            }
+                        }
+                    });
+                </script>
+    <?php Session::forget('success_delete');?>
+    @endif
+@endsection
 @endsection

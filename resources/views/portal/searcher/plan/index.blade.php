@@ -63,7 +63,7 @@
                         <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th class="all">التسجيل</th>
+                                    <th class="all">الخطة / المبحث</th>
                                     <th class="all">تاريخ البداية</th>
                                     <th class="all">تاريخ النهاية</th>
                                     <th class="all">خيارات</th>

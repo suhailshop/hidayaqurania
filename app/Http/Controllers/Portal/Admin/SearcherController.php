@@ -93,12 +93,12 @@ class SearcherController extends Controller
         $searcher = Registration::where('ID',$request->input('id_searcher'))->first();
         if($searcher->EnablePlanEdit=='true')
         {
-                DB::table('Registrations')
+                DB::table('registrations')
                 ->where('ID', $searcher->ID)
                 ->update(['EnablePlanEdit' => 'false']);
         }
         else {
-            DB::table('Registrations')
+            DB::table('registrations')
             ->where('ID', $searcher->ID)
             ->update(['EnablePlanEdit' => 'true']);
         }
@@ -203,7 +203,7 @@ class SearcherController extends Controller
     public function searcherProgressPost(Request $request){
         $searcher = Registration::where('ID',$request->input('id_searcher'))->first();
         if(!isset($searcher->progress->ID)){
-            DB::table('Progress')->insert([
+            DB::table('progress')->insert([
                 'Months' => $request->input('Months'),
                 'Searcher' => $request->input('id_searcher'),
                 'MonthlyProgress' => $request->input('MonthlyProgress'),
@@ -211,7 +211,7 @@ class SearcherController extends Controller
             ]);
         }
         else{
-            DB::table('Progress')
+            DB::table('progress')
             ->where('Searcher', $searcher->ID)
             ->update(['Months' => $request->input('Months'),
                       'MonthlyProgress'=>$request->input('MonthlyProgress'),

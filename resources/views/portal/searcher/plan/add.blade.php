@@ -37,7 +37,7 @@
             <!-- END PAGE HEADER-->
             <div class="m-heading-1 border-yellow m-bordered">
                 <h3 class="myfont">إضافة تسجيل جديد</h3>
-                <p> المرجو ملء الخانات بالمعلومات الخاصة بالتسجيل :
+                <p> المرجو ملء الخانات بالمعلومات الخاصة بالخطة :
             </div>
 <div class="row">
     
@@ -58,7 +58,7 @@
                                     <div class="form-group  margin-top-20">
                                        
                                         <div class="col-md-12">
-                                            <label>عنوان التسجيل</label>
+                                            <label>عنوان الخطة أو المبحث</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
                                                 <input type="text" class="form-control" name="Record"  placeholder="عنوان التسجيل *"/> </div>

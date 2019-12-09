@@ -76,7 +76,7 @@
 
 
                                     <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<a href="#" target="_blank">
+										<a href="https://drive.google.com/open?id=1iI8yUZGbiGoHTg64fJihKGi-bO-T7l-l" target="_blank">
                                             <img class="img-responsive" src="{{asset('template/publication/mosharakt-bronai.JPG')}}"/>
                                         </a>
 										<h4 class="gold">مشاركات دولية</h4>
@@ -88,8 +88,8 @@
 
 
                                     <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-                                        <a href="#" target="_blank">
-                                            <img class="img-responsive" src="{{asset('template/publication/msharee-bahtheya.JPG')}}"/>
+                                        <a href="https://drive.google.com/open?id=1zzkzUvVnacikjXFq3dXbDzuf9qQoVSeH" target="_blank">
+                                            <img class="img-responsive" src="{{asset('template/publication/msharee-bahtheya.jpg')}}"/>
                                         </a>
                                         <h4 class="gold">المشاريع البحثية</h4>
                                         <h4>في الدراسات القرآنية</h4>
@@ -108,7 +108,7 @@
 
 
                                     <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<a href="#" target="_blank">
+										<a href="https://drive.google.com/open?id=1RxfiUkkNxxq_QWc9ze74G_2PpI9OoXAg" target="_blank">
                                             <img class="img-responsive" src="{{asset('template/publication/musharakat-dollya.PNG')}}"/>
                                         </a>
 										<h4 class="gold">مشاركات دولية</h4>
@@ -119,7 +119,7 @@
 
 
                                     <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<a href="#" target="_blank">
+										<a href="https://drive.google.com/open?id=1nJx5-slQ5t377KV6RJ6hoUebqnTJiR7_" target="_blank">
                                             <img class="img-responsive" src="{{asset('template/publication/tafseer-haza-alquran.PNG')}}"/>
                                         </a>
 										<h4 class="gold">تفسير "إن هذا القرآن"</h4>
@@ -127,6 +127,53 @@
 										<h5>للشيخ/ محمد الشنقيطي رحمه الله </h5>
 									</div>
 
+
+
+                                    <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
+										<a href="https://drive.google.com/open?id=1_yfGCjkCMPZI-58rIQZJ4KKKhE6JeZ75" target="_blank">
+                                            <img class="img-responsive" src="{{asset('template/publication/hidayat1.jpg')}}"/>
+                                        </a>
+										<h4 class="gold">الهدايات القرآنية</h4>
+										<h4>دراسة تأصيلية - المجلد الأول</h4>
+										<h5>إعداد / الفريق البحثي </h5>
+									</div>
+
+ 
+
+
+
+									  <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
+										<a href="" target="_blank">
+                                         </a>
+										 
+									</div>
+
+
+									
+									  <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
+										<a href="https://drive.google.com/open?id=1fnV_ohqNVRTnJb7QMy_c0FFEHTk9O-YW" target="_blank">
+                                            <img class="img-responsive" src="{{asset('template/publication/hidayat2.jpg')}}"/>
+                                        </a>
+										<h4 class="gold">الهدايات القرآنية</h4>
+										<h4>دراسة تأصيلية - المجلد الثاني</h4>
+										<h5>إعداد / الفريق البحثي </h5>
+									</div>
+									
+
+									
+									  <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
+										<a href="https://drive.google.com/open?id=1Bao0UlyM_-j4Wo-DCo2sw6PARuPSPref" target="_blank">
+                                            <img class="img-responsive" src="{{asset('template/publication/story.jpg')}}"/>
+                                        </a>
+										<h4 class="gold">قصة مؤتمر</h4>
+										<h4>تقرير وثائقي عن المشاركة في</h4>
+										<h5> المؤتمر القرآني السنوي مقدس</h5>
+									</div>
+
+
+ 
+								
+								
 
 
 								</div>
