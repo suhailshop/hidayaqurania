@@ -122,6 +122,10 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/supervisors/add','Admin\SupervisorController@addPost')->name('addSupervisorPost');
     Route::get('/supervisors/profile/{id}','Admin\SupervisorController@showProfile')->name('adminSupervisorProfile');
 
+    //added newly on 26 January 2020
+    Route::post('/supervisors/editspprofile','Admin\SupervisorController@editPost')->name('AdminsupervisorProfileEdit');
+
+
 
 
 

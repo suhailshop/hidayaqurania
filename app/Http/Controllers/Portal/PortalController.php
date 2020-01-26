@@ -112,7 +112,7 @@ class PortalController extends Controller
             
             $searchsko = count($searchs) - $searchsok;
         }
-        $supervisors = Registration::where('type','supervisor')->get();
+        $supervisors = Registration::where('type','supervisor')->where('Status', 'yes')->get();
         $universities = Universitie::all();
         $countries = Countrie::all();
         $nationalities = Nationalitie::all();

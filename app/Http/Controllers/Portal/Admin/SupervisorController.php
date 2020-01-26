@@ -33,7 +33,9 @@ class SupervisorController extends Controller
     }
     public function index(){
 
-        $supervisors = Registration::where('Type','supervisor')->get();
+        // Updated on 26 Jan 2020, to show only active supervisors instead of all.
+        $supervisors = Registration::where('type','supervisor')->where('Status', 'yes')->get();
+       // $supervisors = Registration::where('Type','supervisor')->get();
         $universities = Universitie::all();
         return view('portal.admin.supervisors.index')->with('supervisors',$supervisors)->with('universities' , $universities );
     }
@@ -87,6 +89,45 @@ class SupervisorController extends Controller
         
         return redirect()->route('allSupervisor');
     }
+
+
+
+
+
+
+// added on 26 January 2020
+
+    public function editPost(Request $request){
+
+        DB::table('registrations')->where('ID',$request->input('id_registration'))
+            ->update(array(
+                'PassportNumber'=>$request->input('PassportNumber'),
+                'NationalNumber'=>$request->input('NationalNumber'),
+                'Fistname'=>$request->input('firstname'),
+                'Lastname'=>$request->input('lastname'),
+                'Gender'=>$request->input('gender'),
+                'BirthDate'=>$request->input('birthdate'),
+                'BirthCity'=>$request->input('BirthCity'),
+                'Nationalitie'=>$request->input('nationalitie'),
+                'Countrie'=>$request->input('countrie'),
+                'City'=>$request->input('city1'),
+                'Location'=>$request->input('location'),
+                'University'=>$request->input('University'),
+                'Faculty'=>$request->input('Faculty'),
+                'CertificateType'=>$request->input('CertificateType'),
+                'CertificateDegree'=>$request->input('CertificateDegree'),
+                'InscriptionDate'=>$request->input('InscriptionDate'),
+                'Phonne1'=>$request->input('Phonne1'),
+                'Phonne2'=>$request->input('Phonne2')
+            ));
+        Session::put('success_edit', 'تم تعديل الحساب بنجاح');
+        return redirect()->route('allSupervisor');
+    }
+
+
+
+
+
 
     public function delete($id){
         Registration::where('ID', $id)->forcedelete(); 

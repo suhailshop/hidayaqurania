@@ -112,7 +112,7 @@
                                             <div class="tab-content">
                                                 <!-- PERSONAL INFO TAB -->
                                                 <div class="tab-pane active" id="tab_1_1">
-                                                    <form role="form" class="form-horizontal" action="{{route('supervisorProfileEdit')}}" method="POST">
+                                                    <form role="form" class="form-horizontal" action="{{route('AdminsupervisorProfileEdit')}}" method="POST">
 
                                                         {{ csrf_field() }}
                                                         <input type="hidden" name="id_registration" value="{{$supervisor->ID}}" />
