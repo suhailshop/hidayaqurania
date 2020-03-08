@@ -30,14 +30,14 @@
                                 <i class="fa fa-angle-left"></i>
                             </li>
                         <li>
-                            <span>تسجيل جديد</span>
+                            <span>خطة جديدة</span>
                         </li>
                     </ul>
                 </div>
             <!-- END PAGE HEADER-->
             <div class="m-heading-1 border-yellow m-bordered">
-                <h3 class="myfont">إضافة تسجيل جديد</h3>
-                <p> المرجو ملء الخانات بالمعلومات الخاصة بالخطة :
+                <h3 class="myfont">إضافة خطة / مبحث جديد</h3>
+                <p> المرجو ملء الخانات بالمعلومات الخاصة بالخطة:
             </div>
 <div class="row">
     

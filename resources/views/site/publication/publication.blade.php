@@ -130,7 +130,7 @@
 
 
                                     <div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<a href="https://drive.google.com/open?id=1_yfGCjkCMPZI-58rIQZJ4KKKhE6JeZ75" target="_blank">
+										<a href="https://drive.google.com/file/d/1bMTUeW6GQb6HluwDVSV_kjsepdaExNPx/view?usp=sharing" target="_blank">
                                             <img class="img-responsive" src="{{asset('template/publication/hidayat1.jpg')}}"/>
                                         </a>
 										<h4 class="gold">الهدايات القرآنية</h4>
@@ -172,43 +172,9 @@
 
 
 
-									<div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<a href="https://drive.google.com/file/d/13-uDxak4Cya8hQQWg7tzq9TfQ1ixo8g8/view?usp=sharing" target="_blank">
-											<img class="img-responsive" src="{{asset('template/publication/50pub01.png')}}"/>
-										</a>
-										<h4 class="gold">50 بحثاً علمياً</h4>
-										<h4>في الهدايات القرآنية</h4>
-										<h5>الجزء الأول</h5>
-									</div>
+									 
 
-
-
-									<div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<a href="" target="_blank">
-										</a>
-
-									</div>
-
-
-									<div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<a href="https://drive.google.com/open?id=1ZnyayZqb35kp9NOTUwP8nIE5DZYLjBAB" target="_blank">
-											<img class="img-responsive" src="{{asset('template/publication/50pub02.png')}}"/>
-										</a>
-										<h4 class="gold">50 بحثاً علمياً</h4>
-										<h4>في الهدايات القرآنية</h4>
-										<h5>الجزء الثاني</h5>
-									</div>
-
-
-									<div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<a href="https://drive.google.com/open?id=1LLU6-XjvVL6Lmm_BUWpK9aDeYCsxOzBe" target="_blank">
-											<img class="img-responsive" src="{{asset('template/publication/50pub03.png')}}"/>
-										</a>
-										<h4 class="gold">50 بحثاً علمياً</h4>
-										<h4>في الهدايات القرآنية</h4>
-										<h5>الجزء الثالث</h5>
-									</div>
-
+									 
 
 
 								</div>

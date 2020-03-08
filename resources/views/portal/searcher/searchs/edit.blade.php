@@ -80,9 +80,7 @@
                                                 <i class="fa"></i>
                                                 <select name="cycle" id="cycle" class="form-control" required>
                                                     @foreach($cycles as $cycle)
-                                                        @if(Auth::user()->registration->regiment == $cycle->regiment)
-                                                        <option @if($search->cycle->ID==$cycle->ID) selected @endif  value="{{$cycle->ID}}">{{$cycle->name}} [ {{$cycle->startDate}} => {{$cycle->endDate}} ]</option>
-                                                        @endif
+                                                <option @if($search->cycle->ID==$cycle->ID) selected @endif  value="{{$cycle->ID}}">{{$cycle->name}} [ {{$cycle->startDate}} => {{$cycle->endDate}} ]</option>
                                                     @endforeach
                                                 </select>
                                             </div>

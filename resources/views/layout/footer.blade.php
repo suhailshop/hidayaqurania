@@ -25,7 +25,7 @@ echo $mytime->toDateTimeString();
 
     <div class="btn-group   btn-group-sm pull-right ">
 
-        <a type="button" class="btn red" href="https://wa.me/966506087020" target="_blank">فضلا راسلنا لأي مشكلة فنية </a>
+        <a type="button" class="btn green" href="https://wa.me/966545433503" target="_blank">لمراسلة اللجنة العلمية </a>
 
     </div>
 

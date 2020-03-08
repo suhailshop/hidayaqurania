@@ -471,11 +471,6 @@
                                                 </form>
                                             </div>
                                             <!-- END PERSONAL INFO TAB -->
-
-
-
-
-
                                             <!-- CHANGE AVATAR TAB -->
                                             <div class="tab-pane" id="tab_1_2">
                                                 <p> يمكنك اختيار صورة جديدة </p>

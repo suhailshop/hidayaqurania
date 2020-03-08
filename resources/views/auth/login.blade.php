@@ -11,7 +11,7 @@
         <div class="content myfont">
             <!-- BEGIN LOGIN FORM -->
             <form class="login-form" action="{{ route('login') }}" method="POST">
-                    {{ csrf_field() }}
+                   @csrf
                 <h3 class="form-title font-yellow myfont">تسجيل الدخول</h3>
                 <div class="alert alert-danger display-hide">
                     <button class="close" data-close="alert"></button>

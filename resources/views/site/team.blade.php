@@ -46,7 +46,7 @@
 
 
 
-									<div class="col-md-4 col-sm-4 col-xs-6 team-pic">
+									<div class="col-md-3 col-sm-4 col-xs-6 team-pic">
 										<img class="img-responsive" src="{{asset('template/team/prof-yahya.jpeg')}}"/>
 										<h4 class="gold">أستاذ الكرسي</h4>
 										<h4>أ.د / يحيى بن محمد زمزمي</h4>
@@ -101,7 +101,7 @@
 									<div class="col-md-3 col-sm-4 col-xs-6 team-pic">
 										<img class="img-responsive" src="{{asset('template/team/emad.jpeg')}}"/>
 										<h4 class="gold">عضو الفريق الإداري</h4>
-										<h4>أ/ عماد الدين حسن الكناني</h4>
+										<h4>أ/ عماد الدين حسين الكناني</h4>
 									</div>
 
 									<div class="col-md-3 col-sm-4 col-xs-6 team-pic">
@@ -119,7 +119,7 @@
 									<div class="col-md-3 col-sm-4 col-xs-6 team-pic">
 										<img class="img-responsive" src="{{asset('template/team/hisham.jpeg')}}"/>
 										<h4 class="gold">عضو الفريق الإداري</h4>
-										<h4>أ/ هشام أبو الهشام كالو</h4>
+										<h4>أ/ هشام أبو الهاشم محمد كالو</h4>
 									</div>
 
 									<div class="col-md-3 col-sm-4 col-xs-6 team-pic">

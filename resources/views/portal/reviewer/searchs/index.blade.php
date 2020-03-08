@@ -60,7 +60,10 @@
                                     <th class="all">اسم الجزء البحثي</th>
 
                                     <th class="none">القسم</th>
-                                    <th class="all">رقم التقرير</th>
+                                    
+                                     <th class="all">رقم التقرير</th>
+
+
                                     <th class="all">الباحث</th>
                                      <th class="all">تحميل البحث</th>
                                    {{-- <th> حالة التحكيم </th>--}}
@@ -73,8 +76,7 @@
                                     
                                     <td>{{$search->Name}}</td>
 
-
-                                    <td>
+                                      <td>
                                         @isset($search->divname)
                                             {{$search->divname}}
                                         @else
@@ -88,8 +90,8 @@
 
                                         @endisset
                                     </td>
-
-                                    <td>{{$search->Cycle}}</td>
+                                    
+                                     <td>{{$search->Cycle}}</td>
 
                                     <td>{{$search->Fistname}} {{$search->LastName}}</td>
                                      <td>

@@ -26,7 +26,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta content="بوابة الهدايات القرآنية" name="description" />
-    <meta content="M.Moussa, M.Badouch" name="developer" />
+    <meta content="Mohammed Moussa, binmosa.com" name="developer" />
      <meta content="كرسي الملك عبدالله للقرآن الكريم بجامعة أم القرى" name="owner" />
 
 
@@ -87,7 +87,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- for each page, we include it's Style seperately to enhance the performance -->
     @yield('pageStyle')
     <!-- End Page Level Style -->
-<!-- ضبط التوقيت حسب توقيت مكة المكرمة -->
+
 <?php  date_default_timezone_set("Asia/Riyadh");   ?>
 
 

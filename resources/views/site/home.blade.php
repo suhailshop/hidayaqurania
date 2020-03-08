@@ -127,9 +127,11 @@
 								<h3>:: المؤتمرات العلمية :: </h3>
 				
 								<div class="col-md-4 col-sm-4 col-xs-12">
-									<div class="dash-box dark pic">
-										<img class="img-responsive" src="template/img/5.jpg">
-									</div>
+									<a href="{{url('/conferences/details/6')}}">
+										<div class="dash-box ">
+											<img class="img-responsive" src="template/img/malaysia.jpeg">
+										</div>
+									</a>
 								</div>
 								<div class="col-md-4 col-sm-4 col-xs-12">
 									<a href="{{url('/conferences/details/15')}}">
@@ -430,5 +432,40 @@
 			</div>
 		</div>
 	</div>
+	
+	
+	
+
+{{-- 	
+	
+	  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          
+        </div>
+        <div class="modal-body">
+	<img class="img-responsive" src="template/img/nationalday.jpeg">		 
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+  
+  
+  <script>
+  
+  $(window).load(function()
+{
+    $('#myModal').modal('show');
+});
+  
+  </script>
+
+--}}
 
 @stop

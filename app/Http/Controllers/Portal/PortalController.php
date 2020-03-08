@@ -51,10 +51,21 @@ class PortalController extends Controller
         $my_searchs='';
         $searchs=[];
         $myreports=[];
+
+        // added on 3 March 2020 : control the batch (batch1, batch2, ..etc):
+        $student_batch = '';
+
+
         if($role->name=='student'){
+
+        $student_batch = Registration::where('User',$this->user->id)->first()->regiment;
         $cycles=Cycle::all();
         $this->user= Auth::user();
         $id = Registration::where('User',$this->user->id)->first()->ID;
+
+
+
+
         if(!empty(These::where('Searcher',$id)->first()->Title)){
             $these_name = These::where('Searcher',$id)->first()->Title;
         }else{
@@ -70,7 +81,8 @@ class PortalController extends Controller
                 ->join('searchersreports','searchersreports.ID','=','committesreports.Searcherreports')
                 ->where('searchersreports.Searcher',$id)
                 ->count();
-        }
+        } // end of student
+
 
         $searchers = Registration::where('type','searcher')->get();
         if($role->name=='supervisor'){
@@ -126,7 +138,7 @@ class PortalController extends Controller
 
 
 
-        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers' , 'reviwers' , 'allsearchs' ,'nationalities']));
+        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers' , 'reviwers' , 'allsearchs' ,'nationalities' , 'student_batch']));
     }
 
 
@@ -139,13 +151,10 @@ class PortalController extends Controller
         $to1 = new Carbon($to);
 
         //dd(  $from1  == $to);
-//       if($from1 == $to)
-//       {
-//           return  '<span class="badge badge-warning"> اليوم آخر يوم للإرسال  </span>' ;
-//
-//       } else
-
-
+        
+        
+ 
+    
          if ($from1 >= $to)
        {
            return '<span class="badge badge-danger"> انتهى وقت الإرسال  </span>' ;
@@ -155,7 +164,33 @@ class PortalController extends Controller
            $diff_in_days = $to1->diffInDays($from1);
            return '<span class="badge badge-info"> تبقى عدد : '. $diff_in_days . ' يوم للإرسال </span>' ;
        }
+       
 
+    }
+
+
+    public static function getBatch($batch) {
+
+        if($batch == 1)
+            return "الأولى" ;
+        elseif ($batch == 2)
+            return "الثانية" ;
+        elseif ($batch == 3)
+            return "الثالثة" ;
+        elseif ($batch == 4)
+            return "الرابعة" ;
+        elseif ($batch == 5)
+            return "الخامسة" ;
+        elseif ($batch == 6)
+            return "السادسة" ;
+        elseif ($batch == 7)
+            return "السابعة" ;
+        elseif ($batch == 8)
+            return "الثامنة" ;
+        elseif ($batch == 9)
+            return "التاسعة" ;
+        elseif ($batch == 10)
+            return "العاشرة" ;
 
     }
 }

@@ -69,7 +69,7 @@
                                     <th class="all">الاسم</th>
                                      <th class="all">الفصل</th>
 
-                                    <th class="none">المبحث</th>
+                                       <th class="none">المبحث</th>
 
                                     <th class="all">رقم التقرير</th>
 
@@ -107,13 +107,14 @@
                                             echo $div.'<br />';
                                         }
                                         ?></td>
-
-
-                                    <td>
-                                        {{$search->Cycle}}
+                                        
+                                          <td>
+                                        {{$search->cycleName}}
                                     </td>
 
                                     <td>
+                                    
+                                   
                                         <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>
                                     {{--<td>@if(!isset($search->Note)) لا توجد @else {{$search->Note}} @endif</td>--}}

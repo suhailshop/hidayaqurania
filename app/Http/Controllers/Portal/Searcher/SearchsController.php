@@ -40,7 +40,7 @@ class SearchsController extends Controller
         $searcherId = Registration::where('User', $id)->first();
         $searchs = Search::where('Searcher', $searcherId->ID)
             ->rightJoin('cycles', 'searchs.Cycle', '=', 'cycles.ID')
-            ->where('cycles.regiment', $searcherId->regiment)->get(['cycles.ID AS cyclesID', 'searchs.*']);
+            ->where('cycles.regiment', $searcherId->regiment)->get(['cycles.ID AS cyclesID', 'searchs.*', 'cycles.name AS cycleName']);
 
          return view('portal.searcher.searchs.index')->with('searchs',$searchs);
     }
@@ -179,8 +179,6 @@ class SearchsController extends Controller
         Session::put('success_edit', 'تم حذف البحث بنجاح');           
         return redirect()->route('allSearchs');
     }
-
-
     public function addsearcher_reports(Request $request){
 
         $fileName = null;

@@ -34,8 +34,6 @@ class SearchController extends Controller
             else{return redirect('/login');}
         });
     }
-
-
     public function getAllMySearchs(){
         $regid = Registration::where('User',$this->user->id)->first();
         $searchs = DB::table('searchs')

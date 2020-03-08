@@ -32,10 +32,12 @@ class SupervisorController extends Controller
         });
     }
     public function index(){
-
-        // Updated on 26 Jan 2020, to show only active supervisors instead of all.
+    
+     // Updated on 26 Jan 2020, to show only active supervisors instead of all.
         $supervisors = Registration::where('type','supervisor')->where('Status', 'yes')->get();
-       // $supervisors = Registration::where('Type','supervisor')->get();
+
+        //$supervisors = Registration::where('Type','supervisor')->get();   this is the old code.
+        
         $universities = Universitie::all();
         return view('portal.admin.supervisors.index')->with('supervisors',$supervisors)->with('universities' , $universities );
     }
@@ -89,10 +91,13 @@ class SupervisorController extends Controller
         
         return redirect()->route('allSupervisor');
     }
-
-
-
-
+    
+    
+    
+    
+    
+    
+    
 
 
 // added on 26 January 2020
@@ -125,9 +130,11 @@ class SupervisorController extends Controller
     }
 
 
-
-
-
+    
+    
+    
+    
+    
 
     public function delete($id){
         Registration::where('ID', $id)->forcedelete(); 
