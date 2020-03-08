@@ -152,16 +152,21 @@
                                           <span class="badge badge-info">تاريخ ووقت الإرسال : {{$search->created_at}} </span>
                                           <br> <br>
                                           <div class="form-group">
-                                             <label class="control-label ">الاسم </label>
+                                             <label class="control-label ">عنوان الجزء البحثي </label>
                                              <input  value="{{$search->Name}}" readonly class="form-control placeholder-no-fix" type="text"  />
                                           </div>
+
                                           <div class="form-group">
                                              <label class="control-label">وصف البحث</label>
                                              <input  value="{{$search->Alias}}" readonly  class="form-control placeholder-no-fix" type="text"   />
                                           </div>
                                           <div class="form-group">
                                              <label class="control-label">التقرير الدوري رقم:</label>
-                                             <input  value="{{$search->Cycle}}" readonly  class="form-control placeholder-no-fix" type="text"   />
+                                             <input  value="{{$cycles->name}}" readonly  class="form-control placeholder-no-fix" type="text"   />
+                                          </div>
+                                          <div class="form-group">
+                                             <label class="control-label">رقم دفعة الطالب :</label>
+                                             <input  value="الدفعة {!!   App\Http\Controllers\Portal\PortalController::getBatch($search->searcher->regiment)  !!}  " readonly  class="form-control placeholder-no-fix" type="text"   />
                                           </div>
                                           <div class="form-group">
                                              <label class="control-label">الفصل</label>
@@ -184,7 +189,7 @@
                                                                     </pre>
                                           </div>
                                           <div class="form-group">
-                                             <a class="btn blue btn-block" href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل نسخة البحث</a>
+                                             <a class="btn blue btn-block" href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تنزيل نسخة البحث</a>
                                           </div>
                                           <div class="form-group">
                                              <label class="control-label">ملاحظات المشرف</label>
@@ -276,6 +281,8 @@
                                                          <label class="control-label ">تاريخ تسجيل الرسالة </label>
                                                          <input class="form-control" name="searcher_id" value="{{$thesis->BeginningDate}}" readonly>
                                                       </div>
+
+
 
                                                    </form>
                                                 </div>
@@ -1353,6 +1360,10 @@
                                              <input class="form-control" name="searcher_id" value="{{$thesis->BeginningDate}}" readonly>
                                           </div>
 
+                                          <div class="form-group">
+                                             <label class="control-label">رقم دفعة الطالب :</label>
+                                             <input  value="الدفعة {!!   App\Http\Controllers\Portal\PortalController::getBatch($search->searcher->regiment)  !!}  " readonly  class="form-control placeholder-no-fix" type="text"   />
+                                          </div>
 
                                           <div class="form-group">
                                              <label class="control-label ">اسم الجزء البحثي </label>

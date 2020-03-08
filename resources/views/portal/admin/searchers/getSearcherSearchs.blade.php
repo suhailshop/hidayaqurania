@@ -72,7 +72,7 @@
                                 <tr>
 
                                     <td>{{$search->ID}}</td>
-                                    <td>{{   $search->Cycle  }}</td>
+                                    <td>{{ $search->name  }}</td>
                                     <td>
                                         <a   href="{{route('getOneSearch',$search->ID)}}">
                                              {{$search->Name}}</a>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Cycle;
 use App\Nationalitie;
 use App\These;
 use App\Universitie;
@@ -32,25 +33,25 @@ class SearchController extends Controller
     
     public function getAll(){
         $searchs = Search::all();
-        
+        $cycles = Cycle::all();
         $reviewers = DB::table('registrations')
                     ->join('users','registrations.User','=','users.id')
                     ->join('roles','roles.id','=','users.role_id')
                     ->where('roles.name','reviewer')->get(['registrations.id','registrations.Fistname','registrations.LastName']);
                     
-        return view('portal.admin.searchs.index',compact('searchs','reviewers'));
+        return view('portal.admin.searchs.index',compact('searchs','reviewers', 'cycles'));
     }
   
     public function getOne($id){
         $search=Search::where('ID',$id)->first();
-        
+
         $universities = Universitie::all();
         $nationality = Nationalitie::where('ID', $search->searcher->Nationalitie)->first();
         $thesis = These::where('Searcher', $search->searcher->ID)->first();
         $supervisors = Registration::where('Type', 'supervisor')->get();
+        $cycles = Cycle::where('ID', $search->Cycle)->first();
 
-
-        return view('portal.admin.searchs.getOne',compact('search' , 'universities', 'nationality' , 'thesis' , 'supervisors'));
+        return view('portal.admin.searchs.getOne',compact('search' , 'universities', 'nationality' , 'thesis' , 'supervisors', 'cycles'));
     }
     
     public function updateProgressok($id){

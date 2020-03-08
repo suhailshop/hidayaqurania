@@ -64,10 +64,10 @@
                                     <div class="form-group  margin-top-20">
 
                                         <div class="col-md-12">
-                                            <label>اسم الجزء البحثي *</label>
+                                            <label>عنوان الجزء البحثي *</label>
                                             <div class="input-icon right">
                                                 <i class="fa"></i>
-                                                <input type="text" class="form-control" name="name" placeholder="الاسم *"/> </div>
+                                                <input type="text" class="form-control" name="name" placeholder="عنوان الجزء البحثي *"/> </div>
                                         </div>
                                     </div>
 

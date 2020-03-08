@@ -83,6 +83,7 @@
                                     <li class="active">
                                         <a href="#">
                                             <i class="fa fa-university"></i> الدفعة : {!!   App\Http\Controllers\Portal\PortalController::getBatch($registration->regiment)  !!}
+
                                         </a>
                                     </li>
 

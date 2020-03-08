@@ -46,6 +46,8 @@ class SearchsController extends Controller
     }
 
 
+
+
    /* public function getdivisionunit(){
         $divisionunits = Divisionunit::all();
         $html = '<select name="divisionunit" class="form-control" >';

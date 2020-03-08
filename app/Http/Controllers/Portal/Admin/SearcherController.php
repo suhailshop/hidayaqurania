@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Portal\Admin;
 
+use App\Cycle;
 use App\Nationalitie;
 use App\Universitie;
 use App\User;
@@ -191,10 +192,13 @@ class SearcherController extends Controller
             ->join('registrations','registrations.ID','=','searchs.Searcher')
             ->leftJoin('divisionunits','divisionunits.id','=','searchs.Divisionunit')
             ->leftJoin('divisions','divisions.ID','=','searchs.Division')
+            ->leftJoin('cycles', 'cycles.ID', '=' , 'searchs.Cycle')
             ->where('registrations.ID',$id)
-            ->select('searchs.*','divisionunits.Name as divName','divisions.Name as diviName')
+            ->select('searchs.*','divisionunits.Name as divName','divisions.Name as diviName', 'cycles.name')
             ->orderBy('searchs.ID', 'desc')
             ->get();
+
+
         return view('portal.admin.searchers.getSearcherSearchs',compact('searchs','searcher'));
     }
 

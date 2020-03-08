@@ -76,6 +76,7 @@
                                     <th class="all">جزء البحث</th>
                                      <th class="none">القسم</th>
                                      <th class="all">رقم التقرير</th>
+                                    <th class="all">دفعة الطالب</th>
 
 
                                      <th class="all">الملف</th>
@@ -105,9 +106,9 @@
                                         ?>
                                      </td>
 
-                                    <td>{{$search->Cycle}}</td>
+                                    <td>{{$search->cycle->name}}</td>
 
-
+                                    <td>{!!   App\Http\Controllers\Portal\PortalController::getBatch($search->searcher->regiment)  !!}</td>
                                      <td>
                                         <a href="{{ url('project/storage/app/public/searchs/'.$search->SearchURL) }}" target="_blank" >تحميل</a>
                                     </td>

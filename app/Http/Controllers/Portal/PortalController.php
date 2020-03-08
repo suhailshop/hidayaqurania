@@ -55,7 +55,6 @@ class PortalController extends Controller
         // added on 3 March 2020 : control the batch (batch1, batch2, ..etc):
         $student_batch = '';
 
-
         if($role->name=='student'){
 
         $student_batch = Registration::where('User',$this->user->id)->first()->regiment;
