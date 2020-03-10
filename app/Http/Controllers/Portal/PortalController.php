@@ -161,12 +161,31 @@ class PortalController extends Controller
        } else {
 
            $diff_in_days = $to1->diffInDays($from1);
-           return '<span class="badge badge-info"> تبقى عدد : '. $diff_in_days . ' يوم للإرسال </span>' ;
+           if($diff_in_days == 1)
+           {
+               return '<span class="badge badge-warning"> اليوم آخر يوم للإرسال </span>' ;
+
+           } else {
+               return '<span class="badge badge-info"> تبقى عدد : '. $diff_in_days . ' يوم للإرسال </span>' ;
+           }
        }
        
 
     }
 
+
+    public static function getRemainTime($to)
+    {
+        $now = new DateTime();
+        $to = new Carbon($to);
+
+        $interval = $to->diff($now);
+
+        if($to >= $now) {
+            echo '<tr><td><span class="badge">' .$interval->format("الوقت المتبقي: %a يوم, %h ساعة, %i دقيقة, %s ثانية") .'</span> </td></tr>' ;
+
+        }
+    }
 
     public static function getBatch($batch) {
 

@@ -491,9 +491,15 @@
                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الأول</span>
                                                          <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                              @foreach($cycles as $cycle)
+
                                                                 @if($cycle->name == 'التقرير الدوري الأول' && $cycle->regiment == $student_batch)
+
                                                                      <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{  date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}} </span> </td></tr>
                                                                      {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+
+                                                                     {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
+
+
 
                                                                  @endif
                                                              @endforeach </span>
@@ -580,6 +586,8 @@
                                                         {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
 
+                                                     {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
+
                                                                @endif
                                                            @endforeach
                                                        </span>
@@ -658,11 +666,12 @@
                                                  <div class="timeline-body-head">
                                                     <div class="timeline-body-head-caption">
                                                        <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثالث</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
+                                                       <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                            @foreach($cycles as $cycle)
                                                               @if($cycle->name == 'التقرير الدوري الثالث' && $cycle->regiment == $student_batch)
                                                                    <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                    {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                   {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
 
                                                                @endif
                                                            @endforeach </span>
@@ -743,11 +752,12 @@
                                                  <div class="timeline-body-head">
                                                     <div class="timeline-body-head-caption">
                                                        <span class="timeline-body-alerttitle font-dark">التقرير الدوري الرابع</span>
-                                                       <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                       <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                            @foreach($cycles as $cycle)
                                                               @if($cycle->name == 'التقرير الدوري الرابع' && $cycle->regiment == $student_batch )
                                                                    <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                    {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                   {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
 
                                                                @endif
                                                            @endforeach </span>
@@ -820,11 +830,12 @@
                                                             <div class="timeline-body-head">
                                                                 <div class="timeline-body-head-caption">
                                                                     <span class="timeline-body-alerttitle font-dark">التقرير الدوري الخامس</span>
-                                                                    <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                    <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                                         @foreach($cycles as $cycle)
                                                                             @if($cycle->name == 'التقرير الدوري الخامس' && $cycle->regiment == $student_batch)
                                                                                 <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                                 {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                                {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
 
                                                                             @endif
                                                                         @endforeach </span>
@@ -896,11 +907,12 @@
                                                         <div class="timeline-body-head">
                                                             <div class="timeline-body-head-caption">
                                                                 <span class="timeline-body-alerttitle font-dark">التقرير الدوري السادس</span>
-                                                                <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                                     @foreach($cycles as $cycle)
                                                                         @if($cycle->name == 'التقرير الدوري السادس' && $cycle->regiment == $student_batch)
                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                            {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
 
                                                                         @endif
                                                                     @endforeach </span>
@@ -976,11 +988,12 @@
                                                          <div class="timeline-body-head">
                                                              <div class="timeline-body-head-caption">
                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري السابع</span>
-                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                 <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                                      @foreach($cycles as $cycle)
                                                                          @if($cycle->name == 'التقرير الدوري السابع' && $cycle->regiment == $student_batch)
                                                                              <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                              {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1050,11 +1063,13 @@
                                                          <div class="timeline-body-head">
                                                              <div class="timeline-body-head-caption">
                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثامن</span>
-                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                 <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                                      @foreach($cycles as $cycle)
                                                                          @if($cycle->name == 'التقرير الدوري الثامن' && $cycle->regiment == $student_batch)
                                                                              <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                              {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
+
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1126,11 +1141,12 @@
                                                          <div class="timeline-body-head">
                                                              <div class="timeline-body-head-caption">
                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري التاسع</span>
-                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                 <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                                      @foreach($cycles as $cycle)
                                                                          @if($cycle->name == 'التقرير الدوري التاسع' && $cycle->regiment == $student_batch)
                                                                              <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                              {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1199,11 +1215,13 @@
                                                          <div class="timeline-body-head">
                                                              <div class="timeline-body-head-caption">
                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري العاشر</span>
-                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                 <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                                      @foreach($cycles as $cycle)
                                                                          @if($cycle->name == 'التقرير الدوري العاشر' && $cycle->regiment == $student_batch)
                                                                              <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                              {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
+
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1275,11 +1293,13 @@
                                                         <div class="timeline-body-head">
                                                             <div class="timeline-body-head-caption">
                                                                 <span class="timeline-body-alerttitle font-dark">التقرير الدوري الحادي عشر</span>
-                                                                <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                                     @foreach($cycles as $cycle)
                                                                         @if($cycle->name == 'التقرير الدوري الحادي عشر' && $cycle->regiment == $student_batch)
                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                            {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
+
 
                                                                         @endif
                                                                     @endforeach </span>
@@ -1350,11 +1370,13 @@
                                                             <div class="timeline-body-head">
                                                                 <div class="timeline-body-head-caption">
                                                                     <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثاني عشر</span>
-                                                                    <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
+                                                                    <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                                         @foreach($cycles as $cycle)
                                                                             @if($cycle->name == 'التقرير الدوري الثاني عشر' && $cycle->regiment == $student_batch)
                                                                                 <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
                                                                                 {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+                                                                                {!!   App\Http\Controllers\Portal\PortalController::getRemainTime($cycle->endDate)  !!}
+
 
                                                                             @endif
                                                                         @endforeach </span>
