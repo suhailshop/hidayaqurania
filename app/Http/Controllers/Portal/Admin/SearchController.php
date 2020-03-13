@@ -236,25 +236,37 @@ class SearchController extends Controller
     }
 
     public function delete_reports($id,$idsearch,$type){
-        
+
+
         if($type == 'searcher_reports'){
-            Searchers_report::where('id', $id)->forcedelete(); 
+
+            $dreport = Searchers_reports::where('id', $id)->forcedelete();
+
         }
         if($type == 'examiner_reports'){
-            Examiner_reports::where('id', $id)->forcedelete(); 
+
+            $dreport = examiner_reports::where('id', $id)->forcedelete();
+
         }
         if($type == 'supervisors_reports'){
-            Supervisors_reports::where('id', $id)->forcedelete(); 
+
+            $dreport = Supervisors_reports::where('id', $id)->forcedelete();
+
         }
         if($type == 'reviewers_reports'){
-            Reviewers_reports::where('id', $id)->forcedelete(); 
+
+            $dreport = Reviewers_reports::where('id', $id)->forcedelete();
+
         }
         if($type == 'admin2_reports'){
-            Admin2_reports::where('id', $id)->forcedelete(); 
+
+            $dreport = Admin2_reports::where('id', $id)->forcedelete();
+
         }
-        
 
         return redirect()->route('getOneSearch',array('id' =>$idsearch));
+
+
 
     }
     
