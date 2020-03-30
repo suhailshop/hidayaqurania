@@ -281,9 +281,9 @@
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
+                  <span data-counter="counterup" data-value="205">205</span>
                </div>
-               <div class="desc">المصادر العلمية </div>
+               <div class="desc">المراجع العلمية </div>
             </div>
          </a>
       </div>
@@ -378,9 +378,9 @@
                </div>
                <div class="details">
                   <div class="number">
-                     <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
+                     <span data-counter="counterup" data-value="205">205</span>
                   </div>
-                  <div class="desc">المصادر العلمية </div>
+                  <div class="desc">المراجع العلمية </div>
                </div>
             </a>
          </div>
