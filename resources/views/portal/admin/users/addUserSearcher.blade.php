@@ -66,11 +66,11 @@
                                         <strong>ملاحظة! </strong>         المرجو الاحتفاظ بمعلومات الحساب ليتم ارسالها للطالب الجديد    
                                       </div>
                                     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">  <div class="col-md-12">
-                                            <label class="control-label visible-ie8 visible-ie9">اسم المستخدم</label>
-                                            <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="اسم المستخدم" name="firstname" />
+                                            <label class="control-label visible-ie8 visible-ie9">اسم الباحث الثلاثي</label>
+                                            <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="اسم الباحث" name="firstname" />
                                             @if ($errors->has('email'))
                                             <span class="help-block">
-                                                <strong>{{ 'المرجو ادخال اسم المستخدم'}}</strong>
+                                                <strong>{{ 'المرجو ادخال اسم الباحث'}}</strong>
                                             </span>
                                             @endif
                                             </div>
@@ -106,6 +106,16 @@
                                     @endif
                                         </div>
                                 </div>
+                                <br>
+
+                            <p class="hint">  الدفعة : فضلاً قم بتعيين رقم الدفعة للطالب </p>
+                            <div class="form-group{{ $errors->has('regiment') ? ' has-error' : '' }} ">
+                                <div class="col-md-12">
+                                    <input required class="form-control placeholder-no-fix" type="number" min="1" max="20" placeholder="دفعة الطالب" name="regiment" />
+
+                                </div>
+                            </div>
+
                             
                            
                                 </div>
@@ -137,13 +147,13 @@
                                         </div>
                                         <p class="hint">  الأطروحة: </p>
                                 <div class="form-group">  <div class="col-md-12">
-                                        <label class="control-label visible-ie8 visible-ie9">الأطروحة</label>
+                                        <label class="control-label visible-ie8 visible-ie9">عنوان الأطروحة</label>
                                         <input required class="form-control placeholder-no-fix" type="text" autocomplete="off" placeholder="عنوان الأطروحة" name="Title" />
                                         
                                         </div>
                                 </div>
                                 <div class="form-group">  <div class="col-md-12">
-                                        <label class="control-label visible-ie8 visible-ie9">مدة البرنامج</label>
+                                        <label class="control-label visible-ie8 visible-ie9">مدة البرنامج بالأشهر</label>
 
 
                                         <select required class="form-control placeholder-no-fix" name="ProgramDuration">

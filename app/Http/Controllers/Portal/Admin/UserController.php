@@ -89,6 +89,7 @@ class UserController extends Controller
         $registration->User = $user->id;
         $registration->Email = $request->input('email');
         $registration->Code = $request->input('Code');
+        $registration->regiment = $request->input('regiment');
         $registration->save();
 
         $these = new These;
