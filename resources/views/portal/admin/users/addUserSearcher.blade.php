@@ -38,7 +38,7 @@
                 </div>
             <!-- END PAGE HEADER-->
             <div class="m-heading-1 border-yellow m-bordered">
-                <h3>أضافة باحث جديد</h3>
+                <h3>إضافة باحث جديد</h3>
                 <p> المرجو ملء الخانات بالمعلومات الخاصة بالطالب :
             </div>
 <div class="row">
