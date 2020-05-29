@@ -59,6 +59,7 @@
                                         <th class="all">رقم الباحث</th>
                                     <th class="all">الاسم الكامل</th>
 
+                                    <th class="desktop">الدفعة</th>
 
                                     <th class="all"> الجامعة</th>
                                     <th class="desktop">الكلية</th>
@@ -85,7 +86,7 @@
 
                                     </td>
 
-                                 {{--   <td>{{$searcher->countrie->Name}}</td>--}}
+                                   <td>{{$searcher->regiment}}</td>
 
                                     <td>
 

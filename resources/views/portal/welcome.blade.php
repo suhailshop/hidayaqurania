@@ -40,7 +40,7 @@
                   <span data-counter="counterup"  data-value="{{count($searchers)}}">{{count($searchers)}}</span>
 
                </div>
-               <div class="desc"> عدد الطلاب </div>
+               <div class="desc"> الطلاب </div>
             </div>
          </a>
       </div>
@@ -86,7 +86,7 @@
    </div>
    <div class="row">
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allReviewer')}}">
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint" href="{{route('allNationalite')}}">
             <div class="visual">
                <i class="fa fa-certificate"></i>
             </div>
@@ -94,7 +94,7 @@
                <div class="number">
                   <span data-counter="counterup"  data-value="{{count($nationalities)}}">{{count($nationalities)}}</span>
                </div>
-               <div class="desc"> عدد الجنسيات  </div>
+               <div class="desc"> الجنسيات  </div>
             </div>
          </a>
       </div>
