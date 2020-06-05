@@ -125,6 +125,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     //added newly on 26 January 2020
     Route::post('/supervisors/editspprofile','Admin\SupervisorController@editPost')->name('AdminsupervisorProfileEdit');
 
+    Route::post('/supervisors/updatePassword', 'Admin\SupervisorController@editpassword')->name('updateSupervisorPassword');
+
+
 
 
 

@@ -171,4 +171,32 @@ class SupervisorController extends Controller
 
 
 
+
+
+    // now admin can change supervisor's password or reset it
+    public function editpassword(Request $request){
+
+
+
+        $id = $request->input('id_user');
+        $supId = $request->input('supervisor_id');
+        $newPassword = bcrypt($request->input('Password'));
+
+
+
+        DB::table('users')
+            ->where("id", '=',  $id)
+            ->update(['password'=> $newPassword]);
+
+
+
+
+        Session::put('success_edit', 'تم تغيير الرقم السري للحساب بنجاح');
+        return redirect()->route('adminSupervisorProfile', ['ID'=>$supId]);
+    }
+
+
+
+
+
 }

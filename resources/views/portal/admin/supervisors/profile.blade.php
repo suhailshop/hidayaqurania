@@ -7,6 +7,8 @@
     <link href="{!! asset('assets/global/plugins/bootstrap-fileinput/bootstrap-fileinput.css')!!}" rel="stylesheet" type="text/css" />
     <link href="{!! asset('assets/pages/css/profile-rtl.min.css')!!}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+
 @endsection
 
 @section('pageTitle', 'الرئيسية')
@@ -102,8 +104,13 @@
                                                 <li class="active">
                                                     <a href="#tab_1_1" data-toggle="tab">معلومات المشرف</a>
                                                 </li>
+
                                                 <li>
                                                     <a href="#tab_1_2" data-toggle="tab">قائمة طلاب المشرف</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="#tab_1_3" data-toggle="tab">تغيير الرقم السري</a>
                                                 </li>
 
                                             </ul>
@@ -545,6 +552,49 @@
                                                 <!-- END CHANGE AVATAR TAB -->
 
 
+
+                                                <!-- CHANGE supervisor PASSWORD TAB -->
+                                                <div class="tab-pane" id="tab_1_3">
+                                                    <form class="form-horizontal" action="{{route('updateSupervisorPassword')}}" method="POST">
+                                                        {{ csrf_field() }}
+                                                        <input type="hidden" name="id_user" value="{{$supervisor->User}}" />
+
+                                                        <input type="hidden" name="supervisor_id" value="{{$supervisor->ID}}" />
+
+
+
+                                                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                                                            <label class="col-md-2 control-label">أدخل الرقم السري الجديد</label>
+                                                            <div class="col-md-10">
+                                                                <div class="input-icon right">
+                                                                    <i class="fa fa-info-circle tooltips" data-original-title="الرقم السري" data-container="body"></i>
+                                                                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" required   placeholder="أدخل الرقم السري الجديد" name="Password" />
+                                                                    @if ($errors->has('password'))
+                                                                        <span class="help-block">
+                                                            <strong>{{ 'المرجو ادخال كلمة السر'}}</strong>
+                                                        </span>
+                                                                    @endif
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+
+
+
+
+                                                        <div class="margin-top-10">
+                                                            <input type="submit" class="btn blue" value="حفظ التغييرات" />
+                                                            <input type="reset" value="الغاء" class="btn default" />
+                                                        </div>
+
+
+                                                    </form>
+                                                </div>
+                                                <!-- END CHANGE supervisor PASSWORD TAB -->
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -568,5 +618,34 @@
             <script src="{!! asset('assets/pages/scripts/profile.min.js')!!}" type="text/javascript"></script>
 
             <!-- END PAGE LEVEL PLUGINS -->
+
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+
+
+            <script src="{!! asset('assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js')!!}" type="text/javascript"></script>
+
+            <script src="{!! asset('assets/pages/scripts/ui-confirmations.min.js')!!}" type="text/javascript"></script>
+
+
+            @if ($message = Session::get('success_edit'))
+                <script>
+                    $.confirm({
+                        title: 'تهانينا!',
+                        content: '<?php echo Session::get("success_edit"); ?>',
+                        type: 'green',
+                        typeAnimated: true,autoClose: 'tryAgain|3000',
+                        buttons: {
+                            tryAgain: {
+                                text: 'اغلاق',
+                                btnClass: 'btn-green',
+                                action: function(){
+                                }
+                            }
+                        }
+                    });
+                </script>
+    <?php Session::forget('success_edit');?>
+    @endif
+
 @endsection
 @endsection
