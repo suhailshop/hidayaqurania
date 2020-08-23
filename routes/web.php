@@ -74,9 +74,13 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/admin/getCycle/{id}', 'Admin\CycleController@getCycle')->name('getCycle');
 
 
+    // newly added on 23 August to enable admin to add plan
+    Route::get('/admin/SearcherPlan/add/{searcherID}', 'Admin\SearcherController@addPlanByAdminGet' )->name('addPlanByAdmin');
+    Route::post('/admin/SearcherPlan/add', 'Admin\SearcherController@addPlanByAdminPost' )->name('addPlanAdminPost');
+    Route::get('/admin/SearcherPlan/deletePlanByAdmin/{id}', 'Admin\SearcherController@deletePlanByAdmin' )->name('deletePlanAdminPost');
 
-    
-    
+
+
     Route::get('/searchers','Admin\SearcherController@index')->name('allSearcher');
     Route::get('/searchers/getSearcher/{id}','Admin\SearcherController@getSearch')->name('getSearcher');
     Route::post('/searchers/updateSearcherProfile', 'Admin\SearcherController@editSearcherProfile')->name('updateSearcherProfile');

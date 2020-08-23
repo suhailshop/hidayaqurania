@@ -175,10 +175,14 @@
                                                    <br>
 
 
-                                                    <p class="hint"> نسبة التقدم في الاطروحة : @if(isset($searcher->progress)) {{ ceil(((($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress) * 100)/ (($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress))}}% @else 0% @endif </p>
-                                                    <div class="progress">
+                                              <!--  تعديل نسبة التغير إلى يدوي -->
+{{--
+                                                  <!--  <p class="hint"> نسبة التقدم في الاطروحة : @if(isset($searcher->progress)) {{ ceil(((($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress) * 100)/ (($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress))}}% @else 0% @endif </p> -->
+--}}
+                                              <p class="hint"> نسبة التقدم في الاطروحة : @if(isset($searcher->progress)) {{ $searcher->progress->InitialProgress }}% @else 0% @endif </p>
+                                              <div class="progress">
                                                         @if(isset($searcher->progress))
-                                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width: {{ ceil(((($numberOfMonths * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress) * 100)/ (($searcher->progress->Months * $searcher->progress->MonthlyProgress) + $searcher->progress->InitialProgress))}}%"></div></div>
+                                                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="" aria-valuemin="0" aria-valuemax="100" style="width:{{ $searcher->progress->InitialProgress }}%"></div></div>
                                                     @else
                                                         المرجو ملئ المعلومات في النافذة الخاصة
                                                         <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width:1%"></div>
@@ -340,14 +344,16 @@
                                                     <input class="form-control placeholder-no-fix"  type="number"  required value="@if(isset($searcher->progress->Months)){{$searcher->progress->Months}}@endif"  name="Months" />
 
                                                 </div>
-                                                <div class="form-group">
+                                               {{-- <div class="form-group">
                                                     <label class="control-label ">التقدم في كل شهر : </label>
                                                     <input class="form-control placeholder-no-fix" type="number" step="0.01" value="@if(isset($searcher->progress->MonthlyProgress)){{$searcher->progress->MonthlyProgress}}@endif" required name="MonthlyProgress" />
 
-                                                </div>
+                                                </div>--}}
+
+                                                <input class="form-control placeholder-no-fix" type="hidden" step="0.01" value="1" name="MonthlyProgress" />
                                                 <div class="form-group">
-                                                    <label class="control-label ">التقدم البدئي : </label>
-                                                    <input class="form-control placeholder-no-fix" type="number" step="0.01" value="@if(isset($searcher->progress->InitialProgress)){{$searcher->progress->InitialProgress}}@endif" required name="InitialProgress" />
+                                                    <label class="control-label "> نسبة التقدم في الأطروحة : </label>
+                                                    <input class="form-control placeholder-no-fix" type="number" step="1" value="@if(isset($searcher->progress->InitialProgress)){{$searcher->progress->InitialProgress}}@endif" required name="InitialProgress" />
 
                                                 </div>
                                                 @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
@@ -369,12 +375,19 @@
 
                                             <!-- CHANGE PASSWORD TAB -->
                                             <div class="tab-pane" id="tab_1_3">
+                                                <a class="btn btn-primary" href="{{route('addPlanByAdmin', ['searcherID' => $searcher->ID ])}}" class="nav-link ">
+                                                    <i class="icon-plus"></i>
+                                                    إضافة خطة جديدة
+                                                </a>
+                                                <br>
+                                                <br>
                                                 <table class="table table-striped table-bordered table-hover dt-responsive" width="100%" id="sample_1">
                                                     <thead>
                                                         <tr>
                                                             <th class="all">المهام</th>
                                                             <th class="min-tablet">تاريخ البداية</th>
                                                             <th class="min-tablet">تاريخ النهاية</th>
+                                                            <th class="min-tablet">تعديل الخطة</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -383,7 +396,13 @@
                                                             <td>{{$pla->Record}}</td>
                                                             <td>{{$pla->StartDate}}</td>
                                                             <td>{{$pla->EndDate}}</td>
+                                                            <td>
+                                                                    <a class="btn btn-sm btn-danger" href="{{route('deletePlanAdminPost', ['id' => $pla->ID])}}">
+                                                                        <i class="fa fa-trash"></i> حذف </a>
+                                                            </td>
                                                         </tr>
+
+
                                                         @endforeach
                                                     </tbody>
                                                 </table>

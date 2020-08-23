@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Portal\Admin;
 
 use App\Cycle;
 use App\Nationalitie;
+use App\Plan;
 use App\Universitie;
 use App\User;
 use App\Role;
@@ -44,6 +45,46 @@ class SearcherController extends Controller
         $universities = Universitie::all();
         return view('portal.admin.searchers.index')->with('searchers',$searchers)->with('criterias',$criterias)->with('meetings',$meetings)->with('supervisors',$supervisors)->with('universities', $universities);
     }
+
+
+    // this update is to enable Admin to add plans to students :
+    public function addPlanByAdminGet($id){
+        $searcherID = $id ;
+        return view('portal.admin.searcherPlan.add')->with('searcherID', $searcherID);
+    }
+
+
+    public function addPlanByAdminPost(Request $request){
+
+        $plan = new Plan;
+        $plan->Record = $request->input('Record');
+        $plan->StartDate = $request->input('StartDate');
+        $plan->EndDate = $request->input('EndDate');
+        $plan->Searcher = $request->input('theID');
+
+        $plan->save();
+        // old one : return redirect()->route('searcherPlan');
+        Session::put('success_edit', 'تمت اضافة الخطة الزمنية بنجاح');
+
+        return redirect()->route('plandetails',array('id' => $request->input('theID')));
+
+    }
+
+
+
+
+    public function deletePlanByAdmin($id){
+
+        Plan::where('ID', $id)->forcedelete();
+        Session::put('success_edit', 'تم حذف المبحث بنجاح');
+        return redirect()->back();
+
+    }
+
+
+
+
+
 
     public function plandetails($id){
         $searcher = Registration::where('ID',$id)->first();

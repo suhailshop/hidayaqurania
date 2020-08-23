@@ -48,7 +48,7 @@
                         <ul class="nav nav-tabs navbar-left">
                                 
                                  <li class="active">
-                                     <a href="#tab_1_3" data-toggle="tab">جدول الخطة الزمنية للطالب</a>
+                                     <a href="#tab_1_3" data-toggle="tab">جدول الخطة الزمنية</a>
                                  </li>
                                  <li>
                                      <a href="#tab_1_4" data-toggle="tab">تتبع الخطة الزمنية</a>
