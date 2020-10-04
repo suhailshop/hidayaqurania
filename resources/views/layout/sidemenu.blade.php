@@ -121,6 +121,48 @@
             @endif
 
 
+            <li class="nav-item  ">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-screen-desktop"></i>
+                    <span class="title">نماذج التخرج</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+
+                    @if(auth()->user()->hasRole('supervisor',auth()->user()->role_id))
+
+                    <li class="nav-item  ">
+                        <a href="{{route('getGraduationForms')}}" class="nav-link ">
+                            <span class="title">نماذج تسليم الرسالة قبل المناقشة</span>
+                        </a>
+                    </li>
+                    @endif
+
+
+                    @if(auth()->user()->hasRole('admin',auth()->user()->role_id))
+
+                        <li class="nav-item  ">
+                            <a href="{{route('getGraduationFormsAdmin')}}" class="nav-link ">
+                                <span class="title">نماذج تسليم الرسالة قبل المناقشة</span>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if(auth()->user()->hasRole('student',auth()->user()->role_id))
+                    <li class="nav-item  ">
+                        <a href="{{route('b4graduatoinForm')}}" class="nav-link ">
+                            <span class="title">نموذج تسليم الرسالة قبل المناقشة</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="#" class="nav-link ">
+                            <span class="title">نموذج تسليم الرسالة النهائية بعد المناقشة</span>
+                        </a>
+                    </li>
+                    @endif
+
+                </ul>
+            </li>
 
 
 

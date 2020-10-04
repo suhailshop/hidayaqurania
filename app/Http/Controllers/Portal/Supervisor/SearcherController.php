@@ -37,7 +37,7 @@ class SearcherController extends Controller
     public function index(){
         $this->user= Auth::user();
         $idRegistration= Registration::where('User',$this->user->id)->first()->ID;
-       
+
         $searchers = DB::table('theses')
                     ->leftJoin('registrations','registrations.ID','=','theses.Searcher')
                     ->leftJoin('nationalities','nationalities.ID','=','registrations.Nationalitie')
@@ -47,6 +47,12 @@ class SearcherController extends Controller
                     ->get();
         return view('portal.supervisor.searchers.index')->with('searchers',$searchers);
     }
+
+
+
+
+
+
   
     public function getSearcherSearchs($id){
         $searcher = Registration::where('ID',$id)->get()->first();

@@ -110,6 +110,13 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     //show searchers searchs for admins
     Route::get('/searchers/getSearcherSearchs/{id}','Admin\SearcherController@getSearcherSearchs')->name('getSearcherSearchsAdmin');
 
+    // show list of gradutoin forms for supervisors
+    Route::get('/searchers/graduationForms' ,'Admin\GraduationFormController@getGraduationForms')->name('getGraduationForms');
+
+    // show list of gradutoin forms for admins
+    Route::get('/searchers/graduationFormsList' ,'Admin\GraduationFormController@getGraduationFormsAdmin')->name('getGraduationFormsAdmin');
+
+
 
     Route::get('/submissions','Admin\SubmissionController@index')->name('allSubmissions');
     Route::get('/submissions/getSubmission/{id}','Admin\SubmissionController@getSubmission')->name('getSubmission');
@@ -236,6 +243,16 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::post('/searchs/updateexaminer_reports','Admin\SearchController@updateexaminer_reports')->name('updateexaminer_reports');
     Route::get('/searchs/delete_reports/{id}/{idsearch}/{type}','Admin\SearchController@delete_reports')->name('delete_reports');
 
+    // edit on 20 September : add before graduation
+    Route::get('/searchs/getGraduationForm/{id?}', 'Admin\GraduationFormController@getOne')->name('b4graduatoinForm');
+    Route::post('/searchs/getGraduationForm', 'Admin\GraduationFormController@getOnePost')->name('b4graduatoinFormSubmit');
+    Route::post('/serachs/getGraduationForm', 'Admin\GraduationFormController@getOnePostUpdate')->name('b4graduatoinFormSubmitUpdate');
+
+
+
+
+
+
 
     // --------------------- Manage news and conference pages ----------------------------------------//
     Route::get('/website/news','Admin\Site\SiteController@admin')->name('news');
@@ -308,7 +325,11 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/supervisor/allbooks','Supervisor\BooksController@index')->name('allbookssupervisor');
 
     Route::get('/supervisor/changeAccountToAdmin2','Supervisor\AccountController@index')->name('changeAccountToAdmin2');
-    
+
+
+
+
+
 
 
     //---------------------- Searcher ---------------------------------
