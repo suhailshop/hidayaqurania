@@ -156,7 +156,7 @@ class GraduationFormController extends Controller
                 'searchURLb4' => 'required|file',
             ]);
             $fileName = "PreSubmissionThesis" . time() . '.' . request()->searchURLb4->getClientOriginalExtension();
-            
+
             $request->searchURLb4->storeAs('public/searchs', $fileName);
             $graduationForm->searchURL = $fileName;
         }
