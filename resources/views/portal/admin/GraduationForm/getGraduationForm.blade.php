@@ -416,13 +416,13 @@
                                                    @endif
 
                                                    @if($submitted == false)
-                                                   <input  value=""   class="form-control placeholder-no-fix" name="studentAgreementDate" type="date" required  />                                                </div>
+                                                   <input  value=""   class="form-control placeholder-no-fix" name="studentAgreementDate" type="date" min="2018-01-01" max="2030-12-30" required  />                                                </div>
                                                    @endif
                                              </div>
                                              </div>
                                           </div>
 
-                                          <button type="submit" @if($submitted == true) disabled @endif class="btn btn-primary">موافقة وإرسال</button>
+                                          <button type="submit" id="okforstudent" style="display: none" @if($submitted == true) disabled @endif class="btn btn-primary">موافقة وإرسال</button>
 
                                        </form>
                                        <br><br><hr>
@@ -519,7 +519,7 @@
 
                                        </div>
 
-                                       <button  @if($submitted && $myformData->supervisorAgreementDate != null) disabled @endif type="submit" class="btn btn-primary ">موافقة وإرسال</button>
+                                       <button style="display: none" id="okforsup"  @if($submitted && $myformData->supervisorAgreementDate != null) disabled @endif type="submit" class="btn btn-primary ">موافقة وإرسال</button>
                                        <br />
                                     </form>
 
@@ -565,6 +565,9 @@
 
             var canvas1 = document.getElementById('signature-pad-std');  // for student
             var canvas2 = document.getElementById('signature-pad-sup');  // for supervisor
+
+            var okstd = document.getElementById('okforstudent'); // the ok and send button for student
+            var oksup = document.getElementById('okforsup') ; // the ok and send for supervisor.
 
             // Adjust canvas coordinate space taking into account pixel ratio,
             // to make it look crisp on mobile devices.
@@ -614,7 +617,10 @@
                   var data = signaturePad1.toDataURL('image/png');
 
                   var stdsign = document.getElementById("stdsign");
-                  if(stdsign){stdsign.value = data;}
+                  if(stdsign){
+                      stdsign.value = data;
+                      okstd.style.display = "block";
+                  }
 
                   var notyetstd = document.getElementById("notyetstd");
                   if(notyetstd){notyetstd.style.display = "None"}
@@ -665,8 +671,9 @@
                   document.getElementById("supsign").value = data2;
                   document.getElementById("notyetsup").style.display = "None";
                   document.getElementById("yesconfirmsup").style.display = "block";
+                  oksup.style.display = "block";
 
-                  return false ;
+                   return false ;
 
                });
 

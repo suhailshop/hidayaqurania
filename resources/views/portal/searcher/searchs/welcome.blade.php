@@ -37,9 +37,10 @@
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($searchers)}}">{{count($searchers)}}</span>
+                  <span data-counter="counterup"  data-value="{{count($searchers)}}">{{count($searchers)}}</span>
+
                </div>
-               <div class="desc"> الطلاب </div>
+               <div class="desc"> عدد الطلاب </div>
             </div>
          </a>
       </div>
@@ -91,9 +92,9 @@
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($reviwers)}}">{{count($reviwers)}}</span>
+                  <span data-counter="counterup"  data-value="{{count($nationalities)}}">{{count($nationalities)}}</span>
                </div>
-               <div class="desc"> الباحثون المساعدون </div>
+               <div class="desc"> عدد الجنسيات  </div>
             </div>
          </a>
       </div>
@@ -104,7 +105,7 @@
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="{{count($books)}}">{{count($books)}}</span>
+                  <span data-counter="counterup" data-value="205">205</span>  {{-- {{count($books)}} --}}
                </div>
                <div class="desc"> المراجع العلمية</div>
             </div>
@@ -385,6 +386,7 @@
          </div>
          
       </div>
+
      
                     <div class="portlet light portlet-fit ">
          <div class="portlet-body">
@@ -394,6 +396,8 @@
                      <!-- هنا يتم استبدال اسم السورة حسب عنوان البحث الخاص بكل طالب، فمثلا هذا الطالب عنوان البحث الخاص به عن سورة الأنفال  -->
                      <h4 class="list-title myfont">  عنوان الرسالة البحثية  : {{$these_name}}
                      </h4>
+                      <br>
+                      <span class="bold info"> رقم الدفعة : الدفعة {!!   App\Http\Controllers\Portal\PortalController::getBatch($student_batch)  !!}  </span>
                   </div>
                </div>
                <div class="mt-list-container list-todo">
@@ -432,12 +436,13 @@
                                             <!-- بداية التقارير -->
 
 
-
+                                             <!-- التقرير الدوري الأول -->
                                              <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                            <div class="timeline  white-bg white-bg">
                                               @foreach($my_searchs as $search)
                                                 @if($search->cycle->name == 'التقرير الدوري الأول' && $search->Status =='yes' )
+                                                       @if($search->cycle->regiment == $student_batch)
                                                     <?php $exist1=true;?>
                                                 <div class="timeline-item">
                                                     <div class="timeline-badge">
@@ -462,9 +467,13 @@
                                                         </div>
                                                         <div class="timeline-body-content">
                                                         <span class="font-blue"> الجزء البحثي بعنوان : <a href="{{route('getOneSearch',$search->ID)}}"> {{$search->Name}} </a></span>
+
+
+
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endif
                                           @endforeach
 
@@ -482,10 +491,11 @@
                                                          <span class="timeline-body-alerttitle font-dark">التقرير الدوري الأول</span>
                                                          <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                              @foreach($cycles as $cycle)
-                                                                @if($cycle->name == 'التقرير الدوري الأول')
-                                                                 إلى تاريخ : {{$cycle->startDate}}  {{$cycle->endDate}} فترة إرسال التقرير من :
+                                                                @if($cycle->name == 'التقرير الدوري الأول' && $cycle->regiment == $student_batch)
+                                                                     <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{  date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}} </span> </td></tr>
+                                                                     {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
-                                                                @endif
+                                                                 @endif
                                                              @endforeach </span>
                                                       </div>
                                                       <div class="timeline-body-head-actions">
@@ -503,11 +513,12 @@
 
 
 
-
+                                         <!-- التقرير الدوري الثاني -->
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
                                           @if($search->cycle->name == 'التقرير الدوري الثاني' && $search->Status =='yes')
+                                              @if($search->cycle->regiment == $student_batch)
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -541,6 +552,7 @@
                                                       </div>
                                                   </div>
                                               </div>
+                                              @endif
                                           @endif
                                           @endforeach
 
@@ -562,8 +574,12 @@
                                                        <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثاني</span>
                                                        <span class="timeline-body-time font-red">فترة إرسال التقرير :
                                                            @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري الثاني')
-                                                                  <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                              @if($cycle->name == 'التقرير الدوري الثاني' && $cycle->regiment == $student_batch)
+                                                                  <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+
+                                                        {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+
+
                                                                @endif
                                                            @endforeach
                                                        </span>
@@ -573,8 +589,12 @@
                                                        <button class="btn btn-circle red btn-sm disable" type="button"> لم يتم إرسال التقرير
                                                        <i class="fa"></i>
                                                        </button>
+
                                                     </div>
+
                                                  </div>
+
+
 
                                                  <div class="timeline-body-content"><span class="font-red">  لم يتم إرسال التقرير / البحث</span>
                                                  </div>
@@ -588,11 +608,12 @@
 
 
 
-
+                                         <!-- التقرير الدوري الثالث -->
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
                                           @if($search->cycle->name == 'التقرير الدوري الثالث' && $search->Status =='yes' )
+                                              @if($search->cycle->regiment == $student_batch)
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -622,6 +643,7 @@
                                                       </div>
                                                   </div>
                                               </div>
+                                              @endif
                                           @endif
                                           @endforeach
                                           @if(!$exist1)
@@ -638,8 +660,9 @@
                                                        <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثالث</span>
                                                        <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير : 
                                                            @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري الثالث')
-                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                              @if($cycle->name == 'التقرير الدوري الثالث' && $cycle->regiment == $student_batch)
+                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                   {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                @endif
                                                            @endforeach </span>
@@ -664,11 +687,12 @@
 
 
 
-
+                                          <!-- التقرير الدوري الرابع -->
                                           <!-- TIMELINE ITEM -->
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
                                           @if($search->cycle->name == 'التقرير الدوري الرابع' && $search->Status =='yes')
+                                              @if($search->cycle->regiment == $student_batch)
                                               <?php $exist1=true;?>
                                               <div class="timeline-item">
                                                   <div class="timeline-badge">
@@ -702,7 +726,7 @@
                                                       </div>
                                                   </div>
                                               </div>
-
+                                             @endif
                                           @endif
                                           @endforeach
 
@@ -721,8 +745,9 @@
                                                        <span class="timeline-body-alerttitle font-dark">التقرير الدوري الرابع</span>
                                                        <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                            @foreach($cycles as $cycle)
-                                                              @if($cycle->name == 'التقرير الدوري الرابع')
-                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                              @if($cycle->name == 'التقرير الدوري الرابع' && $cycle->regiment == $student_batch )
+                                                                   <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                   {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                @endif
                                                            @endforeach </span>
@@ -749,6 +774,7 @@
                                           <?php $exist1=false;?>
                                           @foreach($my_searchs as $search)
                                           @if($search->cycle->name == 'التقرير الدوري الخامس' && $search->Status =='yes')
+                                            @if($search->cycle->regiment == $student_batch)
                                            <?php $exist1=true;?>
                                                <div class="timeline-item">
                                                       <div class="timeline-badge">
@@ -777,6 +803,7 @@
                                                       </div>
                                                   </div>
                                                </div>
+                                           @endif
                                           @endif
                                           @endforeach
 
@@ -795,8 +822,9 @@
                                                                     <span class="timeline-body-alerttitle font-dark">التقرير الدوري الخامس</span>
                                                                     <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                         @foreach($cycles as $cycle)
-                                                                            @if($cycle->name == 'التقرير الدوري الخامس')
-                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                            @if($cycle->name == 'التقرير الدوري الخامس' && $cycle->regiment == $student_batch)
+                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                                {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                             @endif
                                                                         @endforeach </span>
@@ -825,6 +853,7 @@
                                             <?php $exist1=false;?>
                                             @foreach($my_searchs as $search)
                                                 @if($search->cycle->name == 'التقرير الدوري السادس' && $search->Status =='yes')
+                                                    @if($search->cycle->regiment == $student_batch)
                                                     <?php $exist1=true;?>
                                                     <div class="timeline-item">
                                                         <div class="timeline-badge">
@@ -852,6 +881,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    @endif
                                                 @endif
                                             @endforeach
                                             @if(!$exist1)
@@ -868,8 +898,9 @@
                                                                 <span class="timeline-body-alerttitle font-dark">التقرير الدوري السادس</span>
                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                     @foreach($cycles as $cycle)
-                                                                        @if($cycle->name == 'التقرير الدوري السادس')
-                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                        @if($cycle->name == 'التقرير الدوري السادس' && $cycle->regiment == $student_batch)
+                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                            {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                         @endif
                                                                     @endforeach </span>
@@ -900,7 +931,8 @@
                                             <?php $exist1=false;?>
                                              @foreach($my_searchs as $search)
                                               @if($search->cycle->name == 'التقرير الدوري السابع' && $search->Status =='yes' )
-                                                    <?php $exist1=true;?>
+                                                   @if($search->cycle->regiment == $student_batch)
+                                                          <?php $exist1=true;?>
                                                     <div class="timeline-item">
                                                         <div class="timeline-badge">
                                                             <div class="timeline-icon">
@@ -928,6 +960,7 @@
                                                         </div>
                                                     </div>
                                                     </div>
+                                                 @endif
                                              @endif
                                              @endforeach
 
@@ -945,8 +978,9 @@
                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري السابع</span>
                                                                  <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                      @foreach($cycles as $cycle)
-                                                                         @if($cycle->name == 'التقرير الدوري السابع')
-                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                         @if($cycle->name == 'التقرير الدوري السابع' && $cycle->regiment == $student_batch)
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -973,6 +1007,7 @@
                                              <?php $exist1=false;?>
                                              @foreach($my_searchs as $search)
                                                  @if($search->cycle->name == 'التقرير الدوري الثامن' && $search->Status =='yes' )
+                                                    @if($search->cycle->regiment == $student_batch)
                                                      <?php $exist1=true;?>
                                                      <div class="timeline-item">
                                                          <div class="timeline-badge">
@@ -1001,6 +1036,7 @@
                                                          </div>
                                                      </div>
                                                  @endif
+                                                 @endif
                                              @endforeach
                                              @if(!$exist1)
                                                  <div class="timeline-item">
@@ -1016,8 +1052,9 @@
                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثامن</span>
                                                                  <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                      @foreach($cycles as $cycle)
-                                                                         @if($cycle->name == 'التقرير الدوري الثامن')
-                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                         @if($cycle->name == 'التقرير الدوري الثامن' && $cycle->regiment == $student_batch)
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1046,6 +1083,7 @@
                                              <?php $exist1=false;?>
                                              @foreach($my_searchs as $search)
                                                  @if($search->cycle->name == 'التقرير الدوري التاسع' && $search->Status =='yes')
+                                                    @if($search->cycle->regiment == $student_batch)
                                                      <?php $exist1=true;?>
                                                      <div class="timeline-item">
                                                          <div class="timeline-badge">
@@ -1073,6 +1111,7 @@
                                                              </div>
                                                          </div>
                                                      </div>
+                                                  @endif
                                                  @endif
                                              @endforeach
                                              @if(!$exist1)
@@ -1089,8 +1128,9 @@
                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري التاسع</span>
                                                                  <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                      @foreach($cycles as $cycle)
-                                                                         @if($cycle->name == 'التقرير الدوري التاسع')
-                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                         @if($cycle->name == 'التقرير الدوري التاسع' && $cycle->regiment == $student_batch)
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1116,6 +1156,7 @@
                                              <?php $exist1=false;?>
                                              @foreach($my_searchs as $search)
                                                  @if($search->cycle->name == 'التقرير الدوري العاشر' && $search->Status =='yes' )
+                                                    @if($search->cycle->regiment == $student_batch)
                                                      <?php $exist1=true;?>
                                                      <div class="timeline-item">
                                                          <div class="timeline-badge">
@@ -1144,6 +1185,7 @@
                                                          </div>
                                                      </div>
                                                  @endif
+                                                 @endif
                                              @endforeach
                                              @if(!$exist1)
                                                  <div class="timeline-item">
@@ -1159,8 +1201,9 @@
                                                                  <span class="timeline-body-alerttitle font-dark">التقرير الدوري العاشر</span>
                                                                  <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                      @foreach($cycles as $cycle)
-                                                                         @if($cycle->name == 'التقرير الدوري العاشر')
-                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                         @if($cycle->name == 'التقرير الدوري العاشر' && $cycle->regiment == $student_batch)
+                                                                             <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                             {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
 
                                                                          @endif
                                                                      @endforeach </span>
@@ -1188,6 +1231,7 @@
                                              <?php $exist1=false;?>
                                              @foreach($my_searchs as $search)
                                                  @if($search->cycle->name == 'التقرير الدوري الحادي عشر' && $search->Status =='yes' )
+                                                   @if($search->cycle->regiment == $student_batch)
                                                      <?php $exist1=true;?>
                                                      <div class="timeline-item">
                                                          <div class="timeline-badge">
@@ -1216,6 +1260,7 @@
                                                          </div>
                                                      </div>
                                                     </div>
+                                                 @endif
                                              @endif
                                              @endforeach
                                              @if(!$exist1)
@@ -1232,8 +1277,10 @@
                                                                 <span class="timeline-body-alerttitle font-dark">التقرير الدوري الحادي عشر</span>
                                                                 <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                     @foreach($cycles as $cycle)
-                                                                        @if($cycle->name == 'التقرير الدوري الحادي عشر')
-                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                        @if($cycle->name == 'التقرير الدوري الحادي عشر' && $cycle->regiment == $student_batch)
+                                                                            <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                            {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+
                                                                         @endif
                                                                     @endforeach </span>
                                                             </div>
@@ -1260,7 +1307,8 @@
                                             <?php $exist1=false;?>
                                             @foreach($my_searchs as $search)
                                                @if($search->cycle->name == 'التقرير الدوري الثاني عشر' && $search->Status =='yes')
-                                                    <?php $exist1=true;?>
+                                                   @if($search->cycle->regiment == $student_batch)
+                                                          <?php $exist1=true;?>
                                                     <div class="timeline-item">
                                                         <div class="timeline-badge">
                                                             <div class="timeline-icon">
@@ -1287,6 +1335,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                   @endif
                                                 @endif
                                                 @endforeach
                                                 @if(!$exist1)
@@ -1303,8 +1352,10 @@
                                                                     <span class="timeline-body-alerttitle font-dark">التقرير الدوري الثاني عشر</span>
                                                                     <span class="timeline-body-time font-red">آخر موعد لإرسال التقرير :
                                                                         @foreach($cycles as $cycle)
-                                                                            @if($cycle->name == 'التقرير الدوري الثاني عشر')
-                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">  {{$cycle->endDate}} </span> </td></tr>
+                                                                            @if($cycle->name == 'التقرير الدوري الثاني عشر' && $cycle->regiment == $student_batch)
+                                                                                <tr><td>من تاريخ:</td><td>  </td><td><span class="badge"> {{$cycle->startDate}} </span></td><td>  </td><td>إلى تاريخ:</td><td><span class="badge">   {{date('Y-m-d', strtotime('-1 day', strtotime($cycle->endDate)))}}  </span> </td></tr>
+                                                                                {!!   App\Http\Controllers\Portal\PortalController::getDays($cycle->endDate)  !!}
+
                                                                             @endif
                                                                         @endforeach </span>
                                                                 </div>

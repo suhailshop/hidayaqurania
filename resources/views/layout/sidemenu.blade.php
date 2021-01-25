@@ -101,7 +101,7 @@
 
 
 
-            {{-- قائمة المراجع--}}
+           
             @if(auth()->user()->hasRole('reviewer',auth()->user()->role_id))
             <li class="nav-item  ">
                 <a href="{{route('getAllMySearchs')}}" class="nav-link nav-toggle">
@@ -119,7 +119,8 @@
                     </a>
                 </li>
             @endif
-
+ 
+    
 
             <li class="nav-item  ">
                 <a href="javascript:;" class="nav-link nav-toggle">
@@ -247,7 +248,7 @@
                 </li>
 
 
-
+<!--
 
                 <li class="nav-item  ">
                     <a href="javascript:;" class="nav-link nav-toggle">
@@ -270,6 +271,8 @@
 
                     </ul>
                 </li>
+                
+                -->
 
 {{--
                 <li class="nav-item  ">

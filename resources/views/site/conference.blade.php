@@ -1,4 +1,5 @@
 @extends('site.layout')
+@section('thePageTitle', 'المؤتمرات')
 @section('content')
 <div class="wrapper">
 				<div class="banar text-center">

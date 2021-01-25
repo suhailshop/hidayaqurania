@@ -11,7 +11,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>الموسوعة العالمية للهدايات القرآنية</title>
+		<title>الموسوعة العالمية للهدايات القرآنية - @yield('thePageTitle') </title>
 		<link href="{{ URL::asset('template/css/bootstrap.css') }}" rel="stylesheet" type="text/css">
 		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
@@ -133,7 +133,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 							<h5>الموسوعة العالمية للهدايات القرآنية</h5>
 								<li><i class="fas fa-map-marker-alt"></i><span>:</span> مكة المكرمة - العابدية - جامعة أم القرى - كلية الدعوة وأصول الدين</li>
 								<li><i class="fas fa-phone"></i><span>:</span> 009662527000 تحويلة 5255</li>
-								<li><i class="far fa-envelope"></i><span>:</span> info@hidayatqurania.org</li>
+								<li><i class="far fa-envelope"></i><span>:</span> hidayatqurania@uqu.edu.sa</li>
 							</div>
 						</div>
 						
@@ -175,7 +175,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 					<div class="copy text-center">
-						<h6> جميع الحقوق محفوظة للموسوعة العالمية للهدايات القرانية © 2019</h6>
+						<h6> جميع الحقوق محفوظة للموسوعة العالمية للهدايات القرانية © <?php echo date('Y'); ?></h6>
 					</div>					
 				</footer>	
 			  

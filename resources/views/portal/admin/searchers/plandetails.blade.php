@@ -346,14 +346,14 @@
                                                 </div>
                                                {{-- <div class="form-group">
                                                     <label class="control-label ">التقدم في كل شهر : </label>
-                                                    <input class="form-control placeholder-no-fix" type="number" step="0.01" value="@if(isset($searcher->progress->MonthlyProgress)){{$searcher->progress->MonthlyProgress}}@endif" required name="MonthlyProgress" />
+                                                    <input class="form-control placeholder-no-fix" type="number"  value="@if(isset($searcher->progress->MonthlyProgress)){{$searcher->progress->MonthlyProgress}}@endif" required name="MonthlyProgress" />
 
                                                 </div>--}}
 
                                                 <input class="form-control placeholder-no-fix" type="hidden"  value="1" name="MonthlyProgress" />
                                                 <div class="form-group">
                                                     <label class="control-label "> نسبة التقدم في الأطروحة : </label>
-                                                    <input class="form-control placeholder-no-fix" type="number" step="1" max="100" min="1" value="@if(isset($searcher->progress->InitialProgress)){{$searcher->progress->InitialProgress}}@endif"  name="InitialProgress" />
+                                                    <input class="form-control placeholder-no-fix" type="number" step="1" max="100" min="1" value="@if(isset($searcher->progress->InitialProgress)){{$searcher->progress->InitialProgress}}@endif" name="InitialProgress" />
 
                                                 </div>
                                                 @if(auth()->user()->hasRole('admin',auth()->user()->role_id))

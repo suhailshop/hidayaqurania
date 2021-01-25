@@ -1472,19 +1472,29 @@
          <!-- END PAGE LEVEL PLUGINS -->
 
 
-
          <script>
 
             function showReason(val) {
 
 
                value = val.options[val.selectedIndex].value;
-               if (value === "متميز") {
+
+               if (value === "متميز جداً") {
                   document.getElementById("reasonDiv").style.display='block';
                   document.getElementById("reasonDiv").focus();
                   document.getElementById("reasonnote").value = "";
 
                }
+
+               else if(value === "متميز"){
+                   document.getElementById("reasonDiv").style.display='block';
+                   document.getElementById("reasonDiv").focus();
+                   document.getElementById("reasonnote").value = "";
+
+
+
+               }
+
                else if(value === "متوسط"){
                   document.getElementById("reasonDiv").style.display='block';
                   document.getElementById("reasonDiv").focus();

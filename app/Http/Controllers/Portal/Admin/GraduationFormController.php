@@ -77,7 +77,7 @@ class GraduationFormController extends Controller
             ->select('registrations.*',  'theses.Title as thesesTitle', 'graduation_forms.studentAgreementDate as stdsubmission', 'graduation_forms.searchURL as searchURL', 'graduation_forms.searcher as seracherForm', 'graduation_forms.supervisorAgreementDate as supsubmission', 'registrations.User as UserId', 'graduation_forms.ID as formID' ,'universities.Name as uniName')
             ->get();
 
-        return view('portal.admin.GraduationForm.AllGraduationForms')->with('searchers', $searchers);
+        return view('portal.admin.graduationForm.AllGraduationForms')->with('searchers', $searchers);
 
     }
 
@@ -95,6 +95,8 @@ class GraduationFormController extends Controller
         $isSupervisor = false;
 
         $submitted = false;
+        
+        $supervisorData = null ;
 
         if (auth()->user()->hasRole('student', auth()->user()->role_id)) {
             $studentId = $this->user = Auth::user()->id;
@@ -122,17 +124,23 @@ class GraduationFormController extends Controller
 
         if (isset($id)) {
 
-            $thesis = These::where('Searcher', $studentId)->first(); // supervisor id is here too.
+            $thesis = These::where('Searcher', $student->ID)->first(); // supervisor id is here too.
 
         } else {
 
             $thesis = These::where('Searcher', $student->ID)->first(); // supervisor id is here too.
 
+
         }
 
         $university = Universitie::where('ID', $student->University)->first();
+        
 
         $supervisorData = Registration::where('ID', $thesis->Supervisor)->first();
+
+       
+    
+        
 
         return view('portal.admin.graduationForm.getGraduationForm', compact('student', 'myformData', 'thesis', 'supervisorData', 'university', 'submitted', 'conditions', 'isSupervisor' , 'studentId'));
     }

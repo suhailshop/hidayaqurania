@@ -76,7 +76,7 @@
                                      <td>{{$searcher->uniName}}</td>
                                     <td>{{$searcher->Faculty}}</td>
 
-
+                                    
                                     <td>  <a  target="_blank" href="{{url('project/storage/app/public/searchs/'. $searcher->searchURL)}}">  {{$searcher->thesesTitle}} </a>
                                     </td>
                                     <td>@if($searcher->stdsubmission != null)تم الإرسال بتاريخ :{{ $searcher->stdsubmission}}@else  لم يتم الإرسال @endif</td>

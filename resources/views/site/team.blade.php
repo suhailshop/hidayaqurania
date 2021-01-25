@@ -1,4 +1,5 @@
 @extends('site.layout')
+@section('thePageTitle', 'هيئات الكرسي')
 @section('content')
 <div class="wrapper">
 
@@ -73,6 +74,13 @@
 									</div>
 
 
+									<div class="col-md-3 col-sm-4 col-xs-6 team-pic">
+										<img class="img-responsive" src="{{asset('template/team/dr-rabyaa.jpg')}}"/>
+										<h4 class="gold">عضو الفريق الإداري</h4>
+										<h4>أ.د/ محمد بن عبدالله الربيعة</h4>
+									</div>
+									
+									
 									<div class="col-md-3 col-sm-4 col-xs-6 team-pic">
 										<img class="img-responsive" src="{{asset('template/team/dr-ahmed.jpeg')}}"/>
 										<h4 class="gold">عضو الفريق الإداري</h4>
@@ -184,10 +192,10 @@
 
 
 									<div class="col-md-4 col-sm-4 col-xs-6 team-pic">
-										<img class="img-responsive" src="{{asset('template/team/default.jpg')}}"/>
+										<img class="img-responsive" src="{{asset('template/team/dr-rabyaa.jpg')}}"/>
 										<h4 class="gold">عضو الهيئه الاستشارية</h4>
-										<h5>د/ محمد بن عبدالله الربيعة</h5>
-										<h6>أستاذ مشارك. ممثل الداعم مؤسسة النبأ العظيم الوقفية.</h6>
+										<h5>أ.د/ محمد بن عبدالله الربيعة</h5>
+										<h6>أستاذ. ممثل الداعم مؤسسة النبأ العظيم الوقفية.</h6>
 									</div>
 
 

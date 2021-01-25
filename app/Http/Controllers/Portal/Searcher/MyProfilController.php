@@ -173,6 +173,4 @@ class MyProfilController extends Controller
     }
 
 
-
-
 }

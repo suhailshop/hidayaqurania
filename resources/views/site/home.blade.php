@@ -127,14 +127,14 @@
 								<h3>:: المؤتمرات العلمية :: </h3>
 				
 								<div class="col-md-4 col-sm-4 col-xs-12">
-									<a href="{{url('/conferences/details/6')}}">
+									<a href="#">  <!-- {{url('/conferences/details/6')}}  -->
 										<div class="dash-box ">
 											<img class="img-responsive" src="template/img/malaysia.jpeg">
 										</div>
 									</a>
 								</div>
 								<div class="col-md-4 col-sm-4 col-xs-12">
-									<a href="{{url('/conferences/details/15')}}">
+									<a href="#">  <!--  {{url('/conferences/details/15')}}  -->
 										<div class="dash-box ">
 											<img class="img-responsive" src="template/img/sudanConference.jpg">
 										</div>
@@ -175,7 +175,7 @@
 									<div class="popup__overlay">
 									  <div class="popup" id="popupVid">
 										<a href="#" class="popup__close">X</a>
- 										<iframe src="https://www.youtube.com/embed/XYpMApOsFCw" frameborder="0" allowfullscreen=""></iframe>
+ 										<iframe src="https://www.youtube.com/embed/YILTnmfIs10" frameborder="0" allowfullscreen=""></iframe>
 										</div>
 									</div>
 								</div>
