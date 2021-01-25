@@ -60,8 +60,9 @@ class SearcherController extends Controller
         ->join('registrations','registrations.ID','=','searchs.Searcher')
         ->leftJoin('divisionunits','divisionunits.id','=','searchs.Divisionunit')
         ->leftJoin('divisions','divisions.ID','=','searchs.Division')
+        ->leftJoin('cycles', 'cycles.ID', '=' , 'searchs.Cycle')
         ->where('registrations.ID',$id)
-        ->select('searchs.*','divisionunits.Name as divName','divisions.Name as diviName', 'DivisionAll', 'DivisionunitAll')
+        ->select('searchs.*','divisionunits.Name as divName','divisions.Name as diviName', 'DivisionAll', 'DivisionunitAll', 'cycles.name as cycleName')
         ->get();
         return view('portal.supervisor.searchers.getSearcherSearchs',compact('searchs','searcher'));
     }

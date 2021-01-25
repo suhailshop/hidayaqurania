@@ -74,7 +74,7 @@
 
                                        </td>
 
-                                    <td>{{$search->Cycle}}</td>
+                                    <td>{{$search->cycleName}}</td>
 
 
                                     <td>
