@@ -19,9 +19,4 @@ class Universitie extends Model
         return $this->belongsTo('App\Countrie','Countrie','ID');
     }
 
-    public function registration()
-    {
-        return $this->belongsTo('App\Registration', 'Registration','ID');
-    }
-
 }

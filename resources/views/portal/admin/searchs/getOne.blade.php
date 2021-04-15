@@ -1190,7 +1190,9 @@
                                                 @endif
 
                                                 @endif
-                                                @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id)  || (auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1 ) )
+                                                @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id)  || (auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1 ) )
+
+                                                   @if( auth()->user()->hasRole('supervisor', auth()->user()->role_id) &&  $search->examiner_reports[0]->searcher_access==1  || auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('student', auth()->user()->role_id) &&  $search->examiner_reports[0]->searcher_access==1 )
                                                    <tr>
 
                                                       @if( auth()->user()->hasRole('admin', auth()->user()->role_id)  )
@@ -1198,13 +1200,15 @@
 
                                                       @endif
 
+
+
                                                       @if( auth()->user()->hasRole('student', auth()->user()->role_id)  )
                                                          <td> تقرير اللجنة العلمية الخاصة بك </td>
 
                                                       @endif
                                                       <td>
 
-                                                         بإمكانك الآن الاطلاع على تقرير اللجنة العلمية الخاص بك وطباعته.
+                                                         بإمكانك الآن الاطلاع على تقرير اللجنة العلمية الخاص بالباحث وطباعته.
 
                                                          {{--                                                   @if(!empty($search->examiner_reports[0]))--}}
                                                          {{--                                                   تم الارسال من طرف : {{$search->examiner_reports[0]->admin}}--}}
@@ -1301,6 +1305,7 @@
                                                       </td>
                                                    </tr>
                                                    @endif
+                                                @endif
                                                    </tr>
 
                                                 </tbody>
@@ -1374,7 +1379,7 @@
                                              <input class="form-control " readonly  name="search_alias" value="{{$search->Alias}}" />
                                           </div>
                                           <div class="form-group">
-                                             <label class="control-label ">هل يستطيع الباحث رؤية التقرير ؟ </label>
+                                             <label class="control-label ">هل يستطيع الباحث والمشرف رؤية التقرير ؟ </label>
                                              <input class="form-control " type="checkbox"  name="searcher_access" />
                                           </div>
                                           <div class="form-group">
@@ -1414,13 +1419,13 @@
 
 
                                              <div class="form-group">
-                                                <label class="control-label "> هل يتسطيع الباحث رؤية التقرير </label>
+                                                <label class="control-label "> هل يتسطيع الباحث والمشرف رؤية التقرير </label>
                                                 <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}" >
                                              </div>
 
 
                                              <div class="form-group">
-                                                <label class="control-label ">هل يستطيع الباحث رؤية التقرير ؟ </label>
+                                                <label class="control-label ">هل يستطيع الباحث والمشرف رؤية التقرير ؟ </label>
                                                 <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "حاليا: نعم" : "حالياً: لا"}}" >
 
                                                 <input class="form-control " type="checkbox"  name="searcher_access" @if($search->examiner_reports[0]->searcher_access == 1) checked @endif />

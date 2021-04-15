@@ -43,7 +43,7 @@ class Registration extends Model
         return $this->hasMany('App\Supervisors_reports','supervisor','ID');
     }
     public function university(){
-        return $this->hasOne('App\Universitie','University','ID');
+        return $this->hasOne('App\Universitie','ID','University');
     }
 
     

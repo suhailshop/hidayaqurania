@@ -99,13 +99,13 @@
          </a>
       </div>
       <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-         <a class="dashboard-stat dashboard-stat-v2 grey-mint " href="#"> {{--  {{route('allBook')}} --}}
+         <a class="dashboard-stat dashboard-stat-v2 grey-mint " href="{{route('allBook')}}">  
             <div class="visual">
                <i class="fa fa-book"></i>
             </div>
             <div class="details">
                <div class="number">
-                  <span data-counter="counterup" data-value="205">205</span>  {{-- {{count($books)}} --}}
+                  <span data-counter="counterup" data-value="205">205</span>  {{-- {{count($books)}}  --}}
                </div>
                <div class="desc"> المراجع العلمية</div>
             </div>

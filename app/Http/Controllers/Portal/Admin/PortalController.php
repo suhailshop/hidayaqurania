@@ -85,7 +85,7 @@ class PortalController extends Controller
 
         $searchers = Registration::where('type','searcher')->get();
         if($role->name=='supervisor'){
-
+            
             $this->user= Auth::user();
             $id = Registration::where('User',$this->user->id)->first()->ID;
             $myreports = Supervisorsreport::where('Supervisor',$id)->get();
@@ -93,14 +93,10 @@ class PortalController extends Controller
             ->leftJoin('registrations','registrations.ID','=','theses.Searcher')
             ->leftJoin('nationalities','nationalities.ID','=','registrations.Nationalitie')
             ->leftJoin('countries','countries.ID','=','registrations.Countrie')
-            ->leftJoin('universities', 'universities.ID', '=', 'registrations.University')
             ->where('theses.Supervisor',$id)
-            ->select('registrations.*','countries.Name as countrieName','nationalities.Name as nationalitieName','theses.Title as thesesTitle' , 'universities.*')
+            ->select('registrations.*','countries.Name as countrieName','nationalities.Name as nationalitieName','theses.Title as thesesTitle')
             ->get();
-
         }
-
-
         $searchsok=0;
         $searchsko=0;
         if($role->name=='reviewer'){
@@ -141,7 +137,7 @@ class PortalController extends Controller
 
 
 
-        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers' , 'reviwers' , 'allsearchs' ,'nationalities' , 'student_batch' ]));
+        return view('portal.welcome',compact(['searchsok','searchsko','cycles','admin_reports','myreports','searchs','sections','divisions','countries','my_searchs','these_name','universities','supervisors','searchers','books','theses','helps','provides','lastsearchers' , 'reviwers' , 'allsearchs' ,'nationalities' , 'student_batch']));
     }
 
 
