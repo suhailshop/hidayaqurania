@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Portal\Admin;
 
 use App\Cycle;
-use App\Graduation_form;
+use App\Aftergraduation_form;
 use App\Nationalitie;
 use App\These;
 use App\Universitie;
@@ -28,7 +28,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
 
-class GraduationFormController extends Controller
+class AfterGraduationFormController extends Controller
 {
     private $user;
 
@@ -58,11 +58,11 @@ class GraduationFormController extends Controller
             ->leftJoin('nationalities', 'nationalities.ID', '=', 'registrations.Nationalitie')
             ->leftJoin('countries', 'countries.ID', '=', 'registrations.Countrie')
             ->leftJoin('universities', 'universities.ID', '=', 'registrations.University')
-            ->leftJoin('graduation_forms', 'graduation_forms.Searcher', '=', 'registrations.ID')
+            ->leftJoin('aftergraduation_forms', 'aftergraduation_forms.Searcher', '=', 'registrations.ID')
             ->where('theses.Supervisor', $idRegistration)
-            ->select('registrations.*', 'countries.Name as countrieName', 'nationalities.Name as nationalitieName', 'theses.Title as thesesTitle', 'graduation_forms.studentAgreementDate as stdsubmission', 'graduation_forms.searchURL as searchURL', 'graduation_forms.searcher as seracherForm', 'graduation_forms.supervisorAgreementDate as supsubmission', 'registrations.User as UserId', 'graduation_forms.ID as formID', 'universities.Name as uniName')
+            ->select('registrations.*', 'countries.Name as countrieName', 'nationalities.Name as nationalitieName', 'theses.Title as thesesTitle', 'aftergraduation_forms.studentAgreementDate as stdsubmission', 'aftergraduation_forms.searchURL as searchURL', 'aftergraduation_forms.search2URL as search2URL', 'aftergraduation_forms.search3URL as search3URL', 'aftergraduation_forms.searcher as seracherForm', 'aftergraduation_forms.supervisorAgreementDate as supsubmission', 'registrations.User as UserId', 'aftergraduation_forms.ID as formID', 'universities.Name as uniName')
             ->get();
-        return view('portal.supervisor.searchers.searchersGraduationForms')->with('searchers', $searchers);
+        return view('portal.supervisor.searchers.searchersGraduationFormsAfter')->with('searchers', $searchers);
     }
 
 
@@ -73,11 +73,11 @@ class GraduationFormController extends Controller
         $searchers = DB::table('theses')
             ->leftJoin('registrations', 'registrations.ID', '=', 'theses.Searcher')
             ->leftJoin('universities', 'universities.ID', '=', 'registrations.University')
-            ->leftJoin('graduation_forms', 'graduation_forms.Searcher', '=', 'registrations.ID')
-            ->select('registrations.*',  'theses.Title as thesesTitle', 'graduation_forms.studentAgreementDate as stdsubmission', 'graduation_forms.searchURL as searchURL', 'graduation_forms.searcher as seracherForm', 'graduation_forms.supervisorAgreementDate as supsubmission', 'registrations.User as UserId', 'graduation_forms.ID as formID' ,'universities.Name as uniName')
+            ->leftJoin('aftergraduation_forms', 'aftergraduation_forms.Searcher', '=', 'registrations.ID')
+            ->select('registrations.*',  'theses.Title as thesesTitle', 'aftergraduation_forms.studentAgreementDate as stdsubmission', 'aftergraduation_forms.searchURL as searchURL', 'aftergraduation_forms.search2URL as search2URL', 'aftergraduation_forms.search3URL as search3URL', 'aftergraduation_forms.searcher as seracherForm', 'aftergraduation_forms.supervisorAgreementDate as supsubmission', 'registrations.User as UserId', 'aftergraduation_forms.ID as formID' ,'universities.Name as uniName')
             ->get();
 
-        return view('portal.admin.graduationForm.AllGraduationForms')->with('searchers', $searchers);
+        return view('portal.admin.graduationFormAfter.AllGraduationForms')->with('searchers', $searchers);
 
     }
 
@@ -119,7 +119,7 @@ class GraduationFormController extends Controller
         $student = Registration::where('User', $studentId)->first();
 
 
-        $myformData = Graduation_form::where('Searcher', $student->ID)->first();
+        $myformData = Aftergraduation_form::where('Searcher', $student->ID)->first();
 
         $conditions = null;
         if ($myformData) {
@@ -149,16 +149,16 @@ class GraduationFormController extends Controller
 
        
     
-        
 
-        return view('portal.admin.graduationForm.getGraduationForm', compact('student', 'myformData', 'thesis', 'supervisorData', 'university', 'submitted', 'conditions', 'isSupervisor' , 'studentId', 'isAdmin'));
+
+        return view('portal.admin.graduationFormAfter.getGraduationForm', compact('student', 'myformData', 'thesis', 'supervisorData', 'university', 'submitted', 'conditions', 'isSupervisor' , 'studentId', 'isAdmin'));
     }
 
 
     public function getOnePost(Request $request)
     {
 
-        $graduationForm = new Graduation_form;
+        $graduationForm = new Aftergraduation_form;
 
         $cond = '';
 
@@ -168,14 +168,26 @@ class GraduationFormController extends Controller
 
         $graduationForm->conditions = $cond;
 
+
         if ($request->hasFile('searchURLb4')) {
             $request->validate([
                 'searchURLb4' => 'required|file',
             ]);
-            $fileName = "PreSubmissionThesis" . time() . '.' . request()->searchURLb4->getClientOriginalExtension();
+            $fileName = "PDF_FinalSubmissionThesis" . time() . '.' . request()->searchURLb4->getClientOriginalExtension();
 
             $request->searchURLb4->storeAs('public/searchs', $fileName);
             $graduationForm->searchURL = $fileName;
+        }
+
+
+        if ($request->hasFile('search2URL')) {
+            $request->validate([
+                'search2URL' => 'required|file',
+            ]);
+            $fileName = "Word_FinalSubmissionThesis" . time() . '.' . request()->searchURLb4->getClientOriginalExtension();
+
+            $request->search2URL->storeAs('public/searchs', $fileName);
+            $graduationForm->search2URL = $fileName;
         }
 
         $graduationForm->studentAgreement = $request->input('studentAgreement');
@@ -190,7 +202,7 @@ class GraduationFormController extends Controller
         $graduationForm->save();
 
         Session::put('success_edit', 'تم اضافة النموذج بنجاح');
-        return redirect()->route('b4graduatoinForm');
+        return redirect()->route('postGraduationForm');
 
     }
 
@@ -200,11 +212,11 @@ class GraduationFormController extends Controller
 
         $userID = Registration::where('User' , $request->input('stdID'))->first() ;
 
-        $graduationForm = Graduation_form::where('Searcher', $userID->ID)->first();
+        $graduationForm = Aftergraduation_form::where('Searcher', $userID->ID)->first();
 
         $studentId = $request->input('stdID');
 
-        DB::table('graduation_forms')
+        DB::table('aftergraduation_forms')
             ->where('ID', $graduationForm->ID)
             ->update(['supervisorAgreement' => $request->input('supervisorAgreement'),
                 'supervisorAgreementDate' => $request->input('supervisorAgreementDate'),]);
@@ -214,7 +226,7 @@ class GraduationFormController extends Controller
 
         Session::put('success_edit', 'تم اعتماد النموذج بنجاح');
 
-        return redirect()->route('b4graduatoinForm', ['id'=>$studentId]);
+        return redirect()->route('postGraduationForm', ['id'=>$studentId]);
 
     }
 
@@ -226,30 +238,43 @@ class GraduationFormController extends Controller
 
         $userID = Registration::where('User' , $request->input('stdID'))->first() ;
 
-        $graduationForm = Graduation_form::where('Searcher', $userID->ID)->first();
+        $graduationForm = Aftergraduation_form::where('Searcher', $userID->ID)->first();
 
         $studentId = $request->input('stdID');
+
+        $fileName = '';
+
+        if($graduationForm->search3URL != null) {
+            $fileName = $graduationForm->search3URL ;
+        }
 
         if ($request->hasFile('adminFile')) {
             $request->validate([
                 'adminFile' => 'required|file',
             ]);
-            $fileName = "PreSubmissionAdminReport" . time() . '.' . request()->adminFile->getClientOriginalExtension();
+            $fileName = "FinalSubmissionAdminReport" . time() . '.' . request()->adminFile->getClientOriginalExtension();
 
             $request->adminFile->storeAs('public/searchs', $fileName);
-            $graduationForm->finalReport = $fileName;
+            //$graduationForm->searchURL = $fileName;
         }
 
-        DB::table('graduation_forms')
+
+
+
+        DB::table('aftergraduation_forms')
             ->where('ID', $graduationForm->ID)
-            ->update(['finalReport' => $graduationForm->finalReport,]);
+            ->update(['search3URL' => $fileName,
+                       'discusDate' => $request->input('discusDate'),
+                        'isGraduated' => $request->input('isGraduated'),
+                        'finalMark' => $request->input('finalMark'),
+                        'recommendation' => $request->input('recommendation'),]);
 
 
         $graduationForm->save();
 
         Session::put('success_edit', 'تم رفع التقرير بنجاح');
 
-        return redirect()->route('b4graduatoinForm', ['id'=>$studentId]);
+        return redirect()->route('postGraduationForm', ['id'=>$studentId]);
 
     }
 

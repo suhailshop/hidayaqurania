@@ -110,11 +110,21 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     //show searchers searchs for admins
     Route::get('/searchers/getSearcherSearchs/{id}','Admin\SearcherController@getSearcherSearchs')->name('getSearcherSearchsAdmin');
 
-    // show list of gradutoin forms for supervisors
-    Route::get('/searchers/graduationForms' ,'Admin\GraduationFormController@getGraduationForms')->name('getGraduationForms');
 
-    // show list of gradutoin forms for admins
+
+
+    // show list of before gradutoin forms for supervisors
+    Route::get('/searchers/graduationForms' ,'Admin\GraduationFormController@getGraduationForms')->name('getGraduationForms');
+    // show list of after graduation forms for supervisors
+    Route::get('/searchers/graduationFormsAfter' ,'Admin\AfterGraduationFormController@getGraduationForms')->name('getGraduationForms2');
+
+
+    // show list of before gradutoin forms for admins
     Route::get('/searchers/graduationFormsList' ,'Admin\GraduationFormController@getGraduationFormsAdmin')->name('getGraduationFormsAdmin');
+
+    // show list of after graduation forms for admin
+    Route::get('/searchers/afterGraduationFormsList' ,'Admin\AfterGraduationFormController@getGraduationFormsAdmin')->name('getAfterGraduationFormsAdmin');
+
 
 
 
@@ -245,8 +255,16 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
     // edit on 20 September : add before graduation
     Route::get('/searchs/getGraduationForm/{id?}', 'Admin\GraduationFormController@getOne')->name('b4graduatoinForm');
+    Route::post('/searchs/uploadGraduationFile', 'Admin\GraduationFormController@updateReport')->name('uploadFinalReport');
     Route::post('/searchs/getGraduationForm', 'Admin\GraduationFormController@getOnePost')->name('b4graduatoinFormSubmit');
     Route::post('/serachs/getGraduationForm', 'Admin\GraduationFormController@getOnePostUpdate')->name('b4graduatoinFormSubmitUpdate');
+
+
+    // edit in 25 April 2021 - 12 Ramadan
+    Route::get('/searchs/getِAfterGraduationForm/{id?}', 'Admin\AfterGraduationFormController@getOne')->name('postGraduationForm');
+    Route::post('/searchs/UpdateFinalReport', 'Admin\AfterGraduationFormController@updateReport')->name('UpdateFinalReport');
+    Route::post('/searchs/getِAfterGraduationForm', 'Admin\AfterGraduationFormController@getOnePost')->name('postGraduatoinFormSubmit');
+    Route::post('/serachs/getAfterGraduationForm', 'Admin\AfterGraduationFormController@getOnePostUpdate')->name('postGraduatoinFormSubmitUpdate');
 
 
 
@@ -261,6 +279,7 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
     Route::get('/website/news/edit/{id}','Admin\Site\SiteController@edit')->name('editNews');
     Route::post('/website/news/edit/{id}','Admin\Site\SiteController@editpost')->name('updateNews');
     Route::post('/website/news/delete/{id}','Admin\Site\SiteController@delete')->name('deleteNews') ;
+
 
 
 
@@ -297,7 +316,9 @@ Route::group(array('prefix' => 'portal', 'namespace' => 'Portal', 'middleware' =
 
 
     //----------------------- Supervisor -----------------------------
-    
+
+
+
     Route::get('/supervisor/myprofile','Supervisor\MyProfilController@index')->name('supervisorProfile');
     Route::post('/supervisor/editmyprofile','Supervisor\MyProfilController@editPost')->name('supervisorProfileEdit');
     Route::post('/supervisor/editavatar','Supervisor\MyProfilController@editAvatar')->name('supervisorProfileEditAvatar');

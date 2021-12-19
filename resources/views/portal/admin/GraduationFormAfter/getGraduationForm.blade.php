@@ -97,7 +97,7 @@
 
                <li>
                   <i class="icon-paper-plane"></i>
-                  <span>نموذج تسليم الرسالة قبل المناقشة</span>
+                  <span>نموذج تسليم الرسالة بعد المناقشة</span>
                </li>
             </ul>
          </div>
@@ -117,7 +117,7 @@
                                  </div>
                                  <ul class="nav nav-tabs navbar-left">
                                     <li class="active">
-                                       <a href="#tab_1_1" data-toggle="tab">نموذج تسليم وإقرار قبل المناقشة</a>
+                                       <a href="#tab_1_1" data-toggle="tab">نموذج تسليم الرسالة بعد المناقشة</a>
                                     </li>
 
 
@@ -132,13 +132,13 @@
                                        <button type="button" class="btn btn-primary" onclick="printDiv('print-me1');">طباعة</button>
 
 
-                                       <form action="{{route('b4graduatoinFormSubmit')}}" method="post"  class="form-horizontal" enctype="multipart/form-data">
+                                       <form action="{{route('postGraduatoinFormSubmit')}}" method="post"  class="form-horizontal" enctype="multipart/form-data">
                                           {{ csrf_field() }}
                                           @csrf
 
                                           <br> <br>
 
-                                          <center><h2 class="block myfont">::: نموذج تسليم وإقرار قبل المناقشة :::</h2></center>
+                                          <center><h2 class="block myfont">::: نموذج تسليم الرسالة النهائية بعد المناقشة :::</h2></center>
                                           <hr>
 
                                           <h4 class="block myfont">معلومات الطالب</h4>
@@ -189,19 +189,20 @@
 
 
                                           <div class="form-group">
-                                             <label class="col-md-2 control-label" style="font-size:large">إجمالي الهدايات القرآنية (الجزئية) التي تضمنتها رسالتك؟</label>
-                                             <div class="col-md-8">
+                                             <label class="col-md-4 control-label" style="font-size:large">إجمالي الهدايات القرآنية (الجزئية) التي تضمنتها النسخة النهائية من رسالتك؟</label>
+                                             <div class="col-md-6">
+
                                                 <div class="input-icon right">
-                                                   <input style="font-size:large" name="totalPartialHidayat"  value="@if($submitted){{$myformData->totalPartialHidayat}} @endif"  @if($submitted) readonly @endif  class="form-control placeholder-no-fix" type="text"  required />
+                                                   <input style="font-size:large" name="totalPartialHidayat"  value="@if($submitted){{$myformData->totalPartialHidayat}}@endif"  @if($submitted) readonly @endif  class="form-control placeholder-no-fix" type="number" min="1"  required />
                                                 </div>
                                              </div>
                                           </div>
 
                                           <div class="form-group">
-                                             <label class="col-md-2 control-label" style="font-size:large">إجمالي الهدايات القرآنية (الكلية) التي تضمنتها رسالتك؟</label>
-                                             <div class="col-md-8">
+                                             <label class="col-md-4 control-label" style="font-size:large">إجمالي الهدايات القرآنية (الكلية) التي تضمنتها النسخة النهائية من رسالتك؟</label>
+                                             <div class="col-md-6">
                                                 <div class="input-icon right">
-                                                   <input style="font-size:large" name="totalFullHidayat"  value="@if($submitted) {{$myformData->totalFullHidayat}} @endif"  @if($submitted) readonly @endif  class="form-control placeholder-no-fix" type="text"  required />
+                                                   <input style="font-size:large" name="totalFullHidayat"  value="@if($submitted){{$myformData->totalFullHidayat}}@endif"  @if($submitted) readonly @endif  class="form-control placeholder-no-fix" type="number" min="1"  required />
                                                 </div>
                                              </div>
                                           </div>
@@ -210,10 +211,19 @@
                                           @if($submitted == true)
 
                                              <div class="form-group">
-                                                <label class="col-md-2 control-label" style="font-size:large">تحميل ملف الرسالة الكاملة</label>
-                                                <div class="col-md-8">
+                                                <label class="col-md-4 control-label" style="font-size:large">تحميل ملف الرسالة الكاملة صيغة PDF</label>
+                                                <div class="col-md-6">
                                                    <div class="input-icon right">
                                                       <a style="font-size:large" class="btn btn-primary btn-lg" target="_blank" href="{{url('project/storage/app/public/searchs/'.$myformData->searchURL)}}"> تحميل الملف </a>
+                                                   </div>
+                                                </div>
+                                             </div>
+
+                                             <div class="form-group">
+                                                <label class="col-md-4 control-label" style="font-size:large">تحميل ملف الرسالة الكاملة صيغة وورد</label>
+                                                <div class="col-md-6">
+                                                   <div class="input-icon right">
+                                                      <a style="font-size:large" class="btn btn-primary btn-lg" target="_blank" href="{{url('project/storage/app/public/searchs/'.$myformData->search2URL)}}"> تحميل الملف </a>
                                                    </div>
                                                 </div>
                                              </div>
@@ -221,22 +231,33 @@
                                           @elseif($submitted == false)
 
                                              <div class="form-group">
-                                                <label class="col-md-2 control-label" style="font-size:large">الرجاء رفع الرسالة الكاملة الخاصة بك بصيغة PDF :</label>
-                                                <div class="col-md-8">
+                                                <label class="col-md-4 control-label" style="font-size:large">*الرجاء رفع الرسالة النهائية الخاصة بك بصيغة PDF:</label>
+                                                <div class="col-md-6">
                                                    <div class="input-icon right">
-                                                      <input  class="form-control" required name="searchURLb4" type="file"  />
+                                                      <input  class="form-control" required name="searchURLb4" type="file" accept="application/pdf" />
                                                    </div>
                                                 </div>
                                              </div>
+
+                                             <div class="form-group">
+                                                <label class="col-md-4 control-label" style="font-size:large">*الرجاء رفع الرسالة النهائية الخاصة بك بصيغة وورد:</label>
+                                                <div class="col-md-6">
+                                                   <div class="input-icon right">
+                                                      <input  class="form-control" required name="search2URL" type="file" accept="application/.doc, .docx" />
+                                                   </div>
+                                                </div>
+                                             </div>
+
+
 
                                           @endif
 
                                           <hr>
 
-                                          <h4 class="block myfont">إقرار</h4>
+                                         <center> <h4 class="block myfont">::: إقرار :::</h4> </center>
 
                                           <div class="form-group">
-                                             <label class="col-md-2 control-label" style="font-size:large">المستند الرسمي </label>
+                                             <label class="col-md-2 control-label" style="font-size:large">التسليم النهائي للرسالة </label>
                                              <div class="col-md-8">
                                                 <div class="input-icon right">
                                                    <p style="font-size: large; text-align: justify; line-height: 40px;">
@@ -253,7 +274,7 @@
                                              <label class="col-md-2 control-label" style="font-size:large">الموضوع </label>
                                              <div class="col-md-8">
                                                 <div class="input-icon right">
-                                                   <p style="font-size: large; text-align: justify; line-height: 40px;"> تسليم الرسالة بالكامل للجنة العلمية بكرسي الهدايات القرآنية بعنوان
+                                                   <p style="font-size: large; text-align: justify; line-height: 40px;"> تسليم النسخة النهائية من الرسالة بالكامل للجنة العلمية بكرسي الهدايات القرآنية بعنوان
                                                       <b style="color: darkred;"> {{$thesis->Title}} </b>.
                                                    </p>
                                                 </div>
@@ -332,7 +353,7 @@
                                                                             @else  value="شرط5"   @endif
                                                                             required /></div>
                                              <div class="col-md-9" style="font-size: large; text-align: right; line-height: 40px;">
-                                                تسليم نسخة من الرسالة بعد التعديلات المطلوبة من لجنة المناقشة
+                                                توقيع النموذج من قبل الطالب والمشرف
                                              </div>
                                           </div>
 
@@ -346,7 +367,7 @@
                                                                             @endforeach
                                                                             @else  value="شرط6"   @endif required /></div>
                                              <div class="col-md-9" style="font-size: large; text-align: right; line-height: 40px;">
-                                                توقيع النموذج من قبل الطالب والمشرف
+                                                يتم رفع البحث بالكامل بالبوابة الالكترونية بالتنسيق مع السكرتارية
                                              </div>
                                           </div>
 
@@ -438,7 +459,7 @@
                                     <div class="form-group" style="@if(!$isSupervisor)  pointer-events: none; opacity: 0.6; @endif">
 
 
-                                       <form action="{{route('b4graduatoinFormSubmitUpdate')}}" method="post"  class="form-horizontal" enctype="multipart/form-data">
+                                       <form action="{{route('postGraduatoinFormSubmitUpdate')}}" method="post"  class="form-horizontal" enctype="multipart/form-data">
                                           {{ csrf_field() }}
                                           @csrf
 
@@ -531,11 +552,15 @@
 
 
 
-                                 <div class="form-group">
-                                    <center><label class="col-md-12 control-label" style="font-size:large">::: التقرير النهائي للرسالة كاملة من قبل اللجنة العلمية (قبل المناقشة) :::</label></center>
+
+                                    <center><label class="col-md-12 control-label" style="font-size:large">::: التقرير النهائي للباحث :::</label></center>
                                     <br><hr>
-                                    <span>سيتم رفع تقرير الإدارة هنا فور الانتهاء من إعداده</span>
-                                    <form action="{{route('uploadFinalReport')}}" method="post"   enctype="multipart/form-data">
+                                    <center><span>سيتم رفع التقرير النهائي هنا فور الانتهاء من إعداده</span></center>
+                                    <br><br>
+
+
+
+                                    <form action="{{route('UpdateFinalReport')}}" method="post" enctype="multipart/form-data">
                                        {{ csrf_field() }}
                                        @csrf
 
@@ -543,45 +568,107 @@
                                        <input type="hidden" name="stdID" value="@if(isset($studentId)){{$studentId}}@endif">
 
 
-                                       @if($submitted == true && $myformData->finalReport !=null && $myformData->supervisorAgreementDate != null && $myformData->studentAgreementDate != null)
+                                       @if($submitted == true && $myformData->search3URL !=null && $myformData->supervisorAgreementDate != null && $myformData->studentAgreementDate != null)
 
                                           <div class="form-group">
-                                             @if($myformData->finalReport !=null)
-                                             <label class="col-md-6 control-label" style="font-size:large">الآن بإمكانك الاطلاع على تقرير الإدارة الخاص ببحثك بعد المناقشة</label>
-                                            @elseif($myformData->finalReport ==null)
-                                                <label class="col-md-6 control-label" style="font-size:large">سيتم رفع تقرير الإدارة بعد المناقشة هنا فور الانتهاء منه</label>
+                                             @if($myformData->search3URL !=null)
+                                             <label class="col-md-6 control-label" style="font-size:large">الآن بإمكانك الاطلاع على التقرير النهائي الخاص ببحثك  </label>
+                                            @elseif($myformData->search3URL ==null)
+                                                <label class="col-md-6 control-label" style="font-size:large">سيتم رفع التقرير النهائي هنا فور الانتهاء منه</label>
                                             @endif
                                              <div class="col-md-6">
                                                 <div class="input-icon right">
-                                                   <a style="font-size:large" class="btn btn-primary btn-lg" target="_blank" href="{{url('project/storage/app/public/searchs/'.$myformData->finalReport)}}"> تحميل تقرير الإدارة </a>
+                                                   <a style="font-size:large" class="btn btn-primary btn-lg" target="_blank" href="{{url('project/storage/app/public/searchs/'.$myformData->search3URL)}}"> تحميل تقرير الإدارة </a>
                                                 </div>
                                              </div>
                                           </div>
-                                      </form>
+
                                     <br><br><br>
 
 
-                                       @elseif($submitted == true &&  $myformData->finalReport ==null && $myformData->supervisorAgreementDate != null && $myformData->studentAgreementDate != null  && $isAdmin == true)
+                                       @elseif($submitted == true &&  $myformData->search3URL ==null && $myformData->supervisorAgreementDate != null && $myformData->studentAgreementDate != null  && $isAdmin == true)
 
-                                          <div class="form-group">
-                                             <label class="col-md-2 control-label" style="font-size:large">الرجاء رفع تقرير الإدارة للباحث كملف PDF :</label>
-                                             <div class="col-md-8">
+                                       <div class="form-group col-md-12">
+                                          <label class="col-md-2 control-label" style="font-size:large">تاريخ المناقشة :</label>
+                                          <div class="col-md-8">
+                                             <div class="input-icon right">
+                                                <input  class="form-control" value="@if(isset($myformData->discusDate)){{$myformData->discusDate}}@endif" required name="discusDate" type="date"/>
+                                             </div>
+                                          </div>
+                                       </div>
+
+                                       <br>
+
+                                       <div class="form-group col-md-12">
+                                          <label class="col-md-2 control-label" style="font-size:large">الدرجة النهائية للباحث:</label>
+                                          <div class="col-md-8">
+                                             <div class="input-icon right">
+                                                <input  class="form-control" required name="finalMark" type="text"  value="@if(isset($myformData->finalMark)){{$myformData->finalMark}}@endif" />
+                                             </div>
+                                          </div>
+                                       </div>
+
+
+                                       <div class="form-group col-md-12">
+                                          <label class="col-md-2 control-label" style="font-size:large">التوصيات:</label>
+                                          <div class="col-md-8">
+                                             <div class="input-icon right">
+                                                <textarea  class="form-control" required name="recommendation" type="text" value="@if(isset($myformData->recommendation)) {{$myformData->recommendation}} @endif">@if(isset($myformData->recommendation)) {{$myformData->recommendation}} @endif</textarea>
+                                             </div>
+                                          </div>
+                                       </div>
+
+
+                                       <div class="form-group col-md-12">
+                                          <label class="col-md-2 control-label" style="font-size:large">حالة التخرج:</label>
+                                          <div class="col-md-8">
+                                             <div class="input-icon right">
                                                 <div class="input-icon right">
-                                                   <input  class="form-control" required name="adminFile" type="file"  />
+                                                   <i class="fa fa-info-circle tooltips" data-original-title="حالة التخرج" data-container="body"></i>
+                                                   <select name="isGraduated" class="form-control">
+                                                      <option @if($myformData->isGraduated == 1) selected @endif value="1">متخرج</option>
+                                                      <option @if($myformData->isGraduated == 0) selected @endif value="0">غير متخرج</option>
+                                                   </select>
                                                 </div>
                                              </div>
                                           </div>
+                                       </div>
+
+
+                                       @if(isset($myformData->search3URL))
+                                             <div class="form-group">
+                                                <label class="col-md-4 control-label" style="font-size:large">تحميل التقرير النهائي PDF</label>
+                                                <div class="col-md-6">
+                                                   <div class="input-icon right">
+                                                      <a style="font-size:large" class="btn btn-primary btn-lg" target="_blank" href="{{url('project/storage/app/public/searchs/'.$myformData->search3URL)}}"> تحميل التقرير النهائي </a>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                       @else
+                                       <div class="form-group col-md-12">
+                                          <label class="col-md-2 control-label" style="font-size:large">الرجاء رفع التقرير النهائي  للباحث كملف PDF :</label>
+                                          <div class="col-md-8">
+                                             <div class="input-icon right">
+                                                <input  class="form-control"  name="adminFile" type="file" value=""  />
+                                             </div>
+                                          </div>
+                                       </div>
+                                          @endif
 
                                           <br><br><br>
-                                          <center> <button type="submit" class="btn btn-lg btn-primary "> حفظ </button> </center>
+
+                                             <center> <button type="submit" class="btn btn-lg btn-primary "> حفظ / تعديل </button> </center>
+
+
                                           <br />
+
+
                                           <hr>
 
 
-                                    </form>
 
                                     @endif
-
+                                    </form>
 
 
                                  </div>

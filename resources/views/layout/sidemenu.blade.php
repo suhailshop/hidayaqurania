@@ -137,6 +137,11 @@
                             <span class="title">نماذج تسليم الرسالة قبل المناقشة</span>
                         </a>
                     </li>
+                    <li class="nav-item  ">
+                        <a href="{{route('getGraduationForms2')}}" class="nav-link ">
+                            <span class="title">نموذج تسليم الرسالة النهائية بعد المناقشة</span>
+                        </a>
+                    </li>
                     @endif
 
 
@@ -147,6 +152,11 @@
                                 <span class="title">نماذج تسليم الرسالة قبل المناقشة</span>
                             </a>
                         </li>
+                            <li class="nav-item  ">
+                                <a href="{{route('getAfterGraduationFormsAdmin')}}" class="nav-link ">
+                                    <span class="title">نماذج تسليم الرسالة النهائية بعد المناقشة</span>
+                                </a>
+                            </li>
                     @endif
 
                     @if(auth()->user()->hasRole('student',auth()->user()->role_id))
@@ -156,7 +166,7 @@
                         </a>
                     </li>
                     <li class="nav-item  ">
-                        <a href="#" class="nav-link ">
+                        <a href="{{route('postGraduationForm')}}" class="nav-link ">
                             <span class="title">نموذج تسليم الرسالة النهائية بعد المناقشة</span>
                         </a>
                     </li>

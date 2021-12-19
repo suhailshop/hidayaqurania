@@ -324,7 +324,7 @@
                                           </div>
 
                                           <!-- إضافة سؤالين تحديث اكتوبر   -->
-                                              <hr>
+                                          <hr>
                                           <b> معايير تحكيم الأبحاث المتميزة (لتحديد مدى تميز البحث)</b>
                                           <hr>
                                           <ul>
@@ -341,7 +341,7 @@
 
                                           </ul>
 
-                          
+
 
                                           <div class="form-group">
                                              <label class="control-label ">7. مدى تميز البحث  : *</label>
@@ -1190,123 +1190,122 @@
                                                 @endif
 
                                                 @endif
-                                                @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id)  || (auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1 ) )
+                                                @if( auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('supervisor',auth()->user()->role_id)  || (auth()->user()->hasRole('student',auth()->user()->role_id) && !empty($search->examiner_reports[0]) && $search->examiner_reports[0]->searcher_access==1) )
 
-                                                   @if( auth()->user()->hasRole('supervisor', auth()->user()->role_id) &&  $search->examiner_reports[0]->searcher_access==1  || auth()->user()->hasRole('admin',auth()->user()->role_id) ||  auth()->user()->hasRole('admin2',auth()->user()->role_id) || auth()->user()->hasRole('student', auth()->user()->role_id) &&  $search->examiner_reports[0]->searcher_access==1 )
-                                                   <tr>
+                                                       <tr>
 
-                                                      @if( auth()->user()->hasRole('admin', auth()->user()->role_id)  )
-                                                         <td> تقرير اللجنة العلمية الخاص بالباحث </td>
+                                                         @if( auth()->user()->hasRole('admin', auth()->user()->role_id)  )
+                                                            <td> تقرير اللجنة العلمية الخاص بالباحث </td>
 
-                                                      @endif
-
-
-
-                                                      @if( auth()->user()->hasRole('student', auth()->user()->role_id)  )
-                                                         <td> تقرير اللجنة العلمية الخاصة بك </td>
-
-                                                      @endif
-                                                      <td>
-
-                                                         بإمكانك الآن الاطلاع على تقرير اللجنة العلمية الخاص بالباحث وطباعته.
-
-                                                         {{--                                                   @if(!empty($search->examiner_reports[0]))--}}
-                                                         {{--                                                   تم الارسال من طرف : {{$search->examiner_reports[0]->admin}}--}}
-                                                         {{--                                                   @endif--}}
-
-                                                      </td>
-                                                      <td>
-                                                         @if(!empty($search->examiner_reports[0]))
-                                                            تم النشر بتاريخ :{{$search->examiner_reports[0]->date}}
                                                          @endif
-                                                      </td>
-                                                      <td >
-                                                         <!-- تفاصيل التقرير الفاحص -->
-                                                         @if(count($search->examiner_reports)>0)
+
+
+
+                                                         @if( auth()->user()->hasRole('student', auth()->user()->role_id)  )
+                                                            <td> تقرير اللجنة العلمية الخاصة بك </td>
+
+                                                         @endif
+                                                         <td>
+
+                                                            بإمكانك الآن الاطلاع على تقرير اللجنة العلمية الخاص بالباحث وطباعته.
+
+                                                            {{--                                                   @if(!empty($search->examiner_reports[0]))--}}
+                                                            {{--                                                   تم الارسال من طرف : {{$search->examiner_reports[0]->admin}}--}}
+                                                            {{--                                                   @endif--}}
+
+                                                         </td>
+                                                         <td>
+                                                            @if(!empty($search->examiner_reports[0]))
+                                                               تم النشر بتاريخ :{{$search->examiner_reports[0]->date}}
+                                                            @endif
+                                                         </td>
+                                                         <td >
+                                                            <!-- تفاصيل التقرير الفاحص -->
+                                                            @if(count($search->examiner_reports)>0)
 
 
 
 
 
-                                                            @if( auth()->user()->hasRole('admin', auth()->user()->role_id) || auth()->user()->hasRole('admin2', auth()->user()->role_id))
+                                                               @if( auth()->user()->hasRole('admin', auth()->user()->role_id) || auth()->user()->hasRole('admin2', auth()->user()->role_id))
 
 
-                                                               <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal123">
-                                                                  عرض تقرير اللجنة العلمية
-                                                               </button>
+                                                                  <button type="button" class="btn btn-info" data-toggle="modal" data-target="#searchermodal123">
+                                                                     عرض تقرير اللجنة العلمية
+                                                                  </button>
 
-                                                               <div class="modal fade" id="searchermodal123" tabindex="-1" role="dialog" aria-labelledby="searchermodallabel123" aria-hidden="true">
-                                                                  <div class="modal-dialog" role="document">
-                                                                     <div class="modal-content">
-                                                                        <div class="modal-header">
-                                                                           <h5 class="modal-title" id="searchermodallabel123">
-                                                                              <button type="button" class="btn btn-primary" onclick="printDiv('print-me1');">طباعة</button>
-                                                                              @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
+                                                                  <div class="modal fade" id="searchermodal123" tabindex="-1" role="dialog" aria-labelledby="searchermodallabel123" aria-hidden="true">
+                                                                     <div class="modal-dialog" role="document">
+                                                                        <div class="modal-content">
+                                                                           <div class="modal-header">
+                                                                              <h5 class="modal-title" id="searchermodallabel123">
+                                                                                 <button type="button" class="btn btn-primary" onclick="printDiv('print-me1');">طباعة</button>
+                                                                                 @if(auth()->user()->hasRole('admin',auth()->user()->role_id) )
 
-                                                                                 <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->examiner_reports[0]->id , 'idsearch' => $search->ID , 'type' => 'examiner_reports' ] ) !!}" onclick="return confirm('هل أنت متأكد من الحذف؟ سيتم حذف التقرير من قاعدة البيانات، لن تستطيع التراجع')">حذف </a>
+                                                                                    <a type="button" class="btn btn-danger" href="{!! route('delete_reports',['id' => $search->examiner_reports[0]->id , 'idsearch' => $search->ID , 'type' => 'examiner_reports' ] ) !!}" onclick="return confirm('هل أنت متأكد من الحذف؟ سيتم حذف التقرير من قاعدة البيانات، لن تستطيع التراجع')">حذف </a>
 
-                                                                              @endif
-                                                                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                 <span aria-hidden="true">&times;</span>
-                                                                           </h5>
+                                                                                 @endif
+                                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                                    <span aria-hidden="true">&times;</span>
+                                                                              </h5>
 
-                                                                           </button>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                           <form role="form" method="POST" action="#" enctype="multipart/form-data" id="print-me1">
-                                                                              <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>
-                                                                              <div class="form-group">
-                                                                                 <label class="control-label ">اسم الجزء البحثي</label>
-                                                                                 <input readonly class="form-control " name="q1" value="{{$search->examiner_reports[0]->searche->Name}}" />
-                                                                              </div>
-                                                                              <div class="form-group">
-                                                                                 <label class="control-label ">فصل الجزء البحثي</label>
-                                                                                 <input readonly class="form-control " name="q1" value="{{$search->examiner_reports[0]->searche->Alias}}"/>
-                                                                              </div>
-                                                                              <div class="form-group">
-                                                                                 <label class="control-label ">تم الرفع من قبل </label>
-                                                                                 <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->admin}}" />
-                                                                              </div>
-                                                                              <div class="form-group">
-                                                                                 <label class="control-label ">تم كتابة التعليق من طرف </label>
-                                                                                 <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->comment_admin}}" />
-                                                                              </div>
-                                                                              <div class="form-group">
-                                                                                 <label class="control-label "> هل يتسطيع الباحث رؤية التقرير </label>
-                                                                                 <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}" >
-                                                                              </div>
-                                                                              <div class="form-group">
-                                                                                 <label class="control-label "> ملاحظات </label>
-                                                                                 <br />
-                                                                                 <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->examiner_reports[0]->comment}}</div>
-                                                                              </div>
+                                                                              </button>
+                                                                           </div>
+                                                                           <div class="modal-body">
+                                                                              <form role="form" method="POST" action="#" enctype="multipart/form-data" id="print-me1">
+                                                                                 <div class="form-group"><input style="text-align:center" class="form-control " value="تفاصيل التقرير" readonly /></div>
+                                                                                 <div class="form-group">
+                                                                                    <label class="control-label ">اسم الجزء البحثي</label>
+                                                                                    <input readonly class="form-control " name="q1" value="{{$search->examiner_reports[0]->searche->Name}}" />
+                                                                                 </div>
+                                                                                 <div class="form-group">
+                                                                                    <label class="control-label ">فصل الجزء البحثي</label>
+                                                                                    <input readonly class="form-control " name="q1" value="{{$search->examiner_reports[0]->searche->Alias}}"/>
+                                                                                 </div>
+                                                                                 <div class="form-group">
+                                                                                    <label class="control-label ">تم الرفع من قبل </label>
+                                                                                    <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->admin}}" />
+                                                                                 </div>
+                                                                                 <div class="form-group">
+                                                                                    <label class="control-label ">تم كتابة التعليق من طرف </label>
+                                                                                    <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->comment_admin}}" />
+                                                                                 </div>
+                                                                                 <div class="form-group">
+                                                                                    <label class="control-label "> هل يتسطيع الباحث رؤية التقرير </label>
+                                                                                    <input readonly class="form-control " name="q2" value="{{$search->examiner_reports[0]->searcher_access == 1 ? "نعم" : "لا"}}" >
+                                                                                 </div>
+                                                                                 <div class="form-group">
+                                                                                    <label class="control-label "> ملاحظات </label>
+                                                                                    <br />
+                                                                                    <div style="background-color:#eef1f5;padding:6px 12px;border:1px solid #c2cad8;border-radius:4px;white-space:pre-wrap;">{{$search->examiner_reports[0]->comment}}</div>
+                                                                                 </div>
 
-                                                                              <div class="form-group">
-                                                                                 <label class="control-label "> الملف : </label>
-                                                                                 <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
-                                                                              </div>
-                                                                           </form>
+                                                                                 <div class="form-group">
+                                                                                    <label class="control-label "> الملف : </label>
+                                                                                    <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تحميل الملف </a>
+                                                                                 </div>
+                                                                              </form>
+                                                                           </div>
                                                                         </div>
                                                                      </div>
                                                                   </div>
-                                                               </div>
+
+                                                               @else
+
+                                                                  <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير  </a>
+
+
+                                                               @endif
+
 
                                                             @else
-
-                                                               <a class="btn btn-primary" target="_blank" href="{{url('project/storage/app/public/examiner_reports/'.$search->examiner_reports[0]->file)}}"> تنزيل التقرير  </a>
-
-
+                                                               <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
                                                             @endif
+                                                         </td>
+                                                      </tr>
 
-
-                                                         @else
-                                                            <span class="btn btn-danger"> لم يتم إرسال التقرير </span>
-                                                         @endif
-                                                      </td>
-                                                   </tr>
-                                                   @endif
                                                 @endif
-                                                   </tr>
+                                                      </tr>
 
                                                 </tbody>
                                              </table>
@@ -1492,9 +1491,9 @@
                }
 
                else if(value === "متميز"){
-                   document.getElementById("reasonDiv").style.display='block';
-                   document.getElementById("reasonDiv").focus();
-                   document.getElementById("reasonnote").value = "";
+                  document.getElementById("reasonDiv").style.display='block';
+                  document.getElementById("reasonDiv").focus();
+                  document.getElementById("reasonnote").value = "";
 
 
 
